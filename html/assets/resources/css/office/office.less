@@ -1,1 +1,198 @@
 @import "../color";
+
+[office] {
+  h2 {
+    height: 109px;
+    line-height: 109px;
+  }
+  .procedure {
+    height: 175px;
+    margin-bottom: 17px;
+    background-color: @bg_white;
+    ul {
+      li {
+        float: left;
+        width: 300px;
+        height: 175px;
+        position: relative;
+        .office_num {
+          width: 39px;
+          height: 175px;
+          margin-left: 55px;
+          &.one {
+            background: url("../../images/office/num1.png") left center no-repeat;
+          }
+          &.two {
+            width: 60px;
+            background: url("../../images/office/num2.png") left center no-repeat;
+          }
+          &.three {
+            width: 57px;
+            background: url("../../images/office/num3.png") left center no-repeat;
+          }
+          &.four {
+            width: 57px;
+            background: url("../../images/office/num4.png") left center no-repeat;
+          }
+        }
+        .office_mid {
+          width: 140px;
+          padding-top: 38px;
+          text-align: center;
+          span.office_icon {
+            display: inline-block;
+            margin-bottom: 15px;
+
+            &.icon1 {
+              width: 59px;
+              height: 60px;
+              background: url("../../images/office/demand.png") no-repeat;
+            }
+            &.icon2 {
+              width: 62px;
+              height: 60px;
+              background: url("../../images/office/home_res.png") no-repeat;
+            }
+            &.icon3 {
+              width: 60px;
+              height: 60px;
+              background: url("../../images/office/living.png") no-repeat;
+            }
+            &.icon4 {
+              width: 48px;
+              height: 66px;
+              background: url("../../images/office/look_location.png") no-repeat;
+            }
+          }
+          span.office_text {
+            font-size: @font18;
+            color: @cl_default;
+          }
+
+        }
+        .office_arrow {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          margin-top: -13px;
+          width: 17px;
+          height: 26px;
+          background: url("../../images/office/right_arrow.png") no-repeat;
+
+        }
+      }
+    }
+  }
+
+  .center_trade {
+    .center_trade_head {
+      height: 86px;
+      line-height: 86px;
+      > span {
+        font-size: @font28;
+        color: @cl_default;
+        margin-right: 20px;
+      }
+      a {
+        color: @cl_blockgray;
+        font-style: @font17;
+        margin: 0 20px;
+        &.active {
+          color: @cl_orange;
+        }
+      }
+    }
+    .center_list {
+      > ul {
+        margin-right: 20px;
+        width: 785px;
+        margin-bottom: 45px;
+        > li {
+          height: 257px;
+          background-color: @bg_white;
+          margin-bottom: 18px;
+          img {
+            width: 394px;
+            height: 258px;
+            margin-right: 28px;
+          }
+
+          .center_detail {
+            padding-top: 30px;
+            max-width: 300px;
+
+            h3 {
+              margin-bottom: 10px;
+            }
+            span {
+              color: @cl_gray;
+            }
+            ul {
+              margin: 15px 0 30px;
+              color: @cl_blockgray;
+              .list_square {
+                display: inline-block;
+                width: 4px;
+                height: 4px;
+                background-color: @cl_blockgray;
+                margin-right: 6px;
+                vertical-align: middle;
+              }
+            }
+          }
+
+          .apply_btn {
+            width: 135px;
+            height: 35px;
+            background-color: @cl_orange;
+            text-align: center;
+            display: block;
+            line-height: 35px;
+            color: @cl_white;
+            font-size: @font15;
+          }
+
+        }
+      }
+      .trade_per {
+        width: 394px;
+        height: 483px;
+        text-align: center;
+        padding-top: 30px;
+        background: @bg_white;
+        h3 {
+          font-size: @font28;
+        }
+        .manager_wrap {
+          text-align: center;
+          .manager_portrait {
+            width: 126px;
+            height: 126px;
+            display: inline-block;
+          }
+          span {
+            display: block;
+            &.manager_name {
+              color: @cl_orange;
+              font-size: @font18;
+            }
+          }
+        }
+
+        .manage_attract {
+          position: relative;
+          padding: 20px 89px 0 75px;
+          text-align: left;
+          .double_marks{
+            position: absolute;
+            left: 40px;
+            top: 0;
+            width: 26px;
+            height: 24px;
+            background: url("../../images/office/quotationMarks.png") no-repeat;
+          }
+        }
+      }
+    }
+  }
+}
