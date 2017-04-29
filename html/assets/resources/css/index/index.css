@@ -1,0 +1,357 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*默认主色调 特别用于强调的字、button和icon*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*登录背景深紫色 */
+/*辅助色*/
+/*用于搜索按钮*/
+/*用于各板块标题背景*/
+/*公共顶部背景色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*按钮划过颜色*/
+/*按钮划过颜色*/
+/*支付页首部背景色*/
+/*详情title背景色*/
+/*边线颜色*/
+/*小竖线*/
+/*小竖线*/
+/*默认主色调 特别用于强调的字、button和icon*/
+/*预订底部边框变色*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*提示边框值*/
+/*提示边框阴影值*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+/*index content*/
+[index_content] .banner_wrap {
+  position: relative;
+  height: 668px;
+}
+[index_content] .banner_wrap .banner_cont {
+  position: relative;
+  height: 560px;
+}
+[index_content] .banner_wrap .banner_cont img {
+  height: 560px;
+}
+[index_content] .banner_wrap .banner_cont .ban_tip_bot {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+}
+[index_content] .banner_wrap .banner_cont .ban_tip_bot .ban_tip {
+  text-align: center;
+}
+[index_content] .banner_wrap .banner_cont .ban_tip_bot .ban_tip span {
+  display: inline-block;
+  width: 35px;
+  height: 3px;
+  background-color: #fff;
+  margin: 0 8px;
+}
+[index_content] .banner_wrap .banner_cont .ban_tip_bot .ban_tip span.active {
+  background-color: #0f6fac;
+}
+[index_content] .banner_wrap .banner_bot {
+  width: 100%;
+  height: 108px;
+  background-color: #c9c9c9;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+[index_content] .banner_wrap .banner_bot .banner_introduce {
+  height: 108px;
+  color: #fff;
+}
+[index_content] .banner_wrap .banner_bot .banner_introduce > li {
+  float: left;
+  padding-top: 10px;
+  height: 100%;
+  width: 285px;
+  padding-left: 45px;
+  border-right: 1px solid #fff;
+  transition: .5s all ease;
+}
+[index_content] .banner_wrap .banner_bot .banner_introduce > li:hover {
+  background-color: #ea5433;
+}
+[index_content] .banner_wrap .banner_bot .banner_introduce > li:last-child {
+  border-right: none;
+}
+[index_content] .banner_wrap .banner_bot .banner_introduce > li p {
+  font-size: 17px;
+}
+[index_content] .banner_wrap .banner_bot .banner_introduce > li span {
+  font-size: 36px;
+}
+[index_content] .content_tit {
+  height: 200px;
+  line-height: 200px;
+  font-size: 28px;
+  font-weight: normal;
+  text-align: center;
+}
+[index_content] [one_state] {
+  padding-bottom: 87px;
+}
+[index_content] [one_state] ul li {
+  width: 286px;
+  height: 443px;
+  border: 1px solid #dfdfdf;
+  float: left;
+  text-align: center;
+  margin-right: 18px;
+  padding: 50px 25px 0;
+  transition: .5s all ease;
+}
+[index_content] [one_state] ul li:hover {
+  background-color: #0f6fac;
+  color: #fff;
+}
+[index_content] [one_state] ul li:last-child {
+  margin-right: 0;
+}
+[index_content] [one_state] ul li .one_tip {
+  display: inline-block;
+  width: 118px;
+  height: 103px;
+  margin-bottom: 60px;
+  background: url("../../images/index/location.png") no-repeat;
+}
+[index_content] [one_state] ul li .one_tip.service {
+  background: url("../../images/index/service.png") no-repeat;
+}
+[index_content] [one_state] ul li .one_tip.update {
+  background: url("../../images/index/update.png") no-repeat;
+}
+[index_content] [one_state] ul li .one_tip.communicate {
+  background: url("../../images/index/communicate.png") no-repeat;
+}
+[index_content] [one_state] ul li h4 {
+  font-weight: normal;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+[index_content] [one_state] ul li p {
+  text-align: left;
+  line-height: 24px;
+}
+[index_content] [space] h3 {
+  background-color: #f5f5f5;
+}
+[index_content] [space] img {
+  height: 100%;
+}
+[index_content] [space] .space_top {
+  margin-bottom: 40px;
+}
+[index_content] [space] .space_top .space_top_left {
+  width: 635px;
+  height: 396px;
+  margin-right: 15px;
+}
+[index_content] [space] .space_top .space_top_right {
+  width: 550px;
+}
+[index_content] [space] .space_top .space_top_right .spa_top {
+  margin-bottom: 16px;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_left {
+  width: 300px;
+  height: 190px;
+  margin-right: 16px;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_right {
+  width: 230px;
+  height: 190px;
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_left {
+  width: 230px;
+  height: 190px;
+  margin-right: 16px;
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_right {
+  width: 300px;
+  height: 190px;
+}
+[index_content] [space] .space_bot {
+  height: 378px;
+  background: url("../../images/index/city_bg.png") no-repeat;
+  background-size: cover;
+  position: relative;
+}
+[index_content] [space] .space_bot .space_bot_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: .85;
+  filter: alpha(opacity=85);
+}
+[index_content] [space] .space_bot ul {
+  position: relative;
+  height: 378px;
+}
+[index_content] [space] .space_bot ul li {
+  height: 100%;
+  color: #fff;
+  text-align: center;
+  float: left;
+  width: 600px;
+  padding-top: 56px;
+  transition: .5s all ease;
+}
+[index_content] [space] .space_bot ul li:hover {
+  background-color: #ea5433;
+}
+[index_content] [space] .space_bot ul li .space_tip {
+  display: inline-block;
+  width: 46px;
+  height: 71px;
+  background: url("../../images/index/location_sm.png") no-repeat;
+}
+[index_content] [space] .space_bot ul li .space_tip.company {
+  width: 64px;
+  background: url("../../images/index/home_sm.png") no-repeat;
+}
+[index_content] [space] .space_bot ul li h4 {
+  font-weight: normal;
+  font-size: 24px;
+  margin: 8px 0;
+}
+[index_content] [space] .space_bot ul li .look_more {
+  display: block;
+  margin: 25px auto 0;
+  color: #fff;
+  width: 160px;
+  height: 45px;
+  text-align: center;
+  line-height: 42px;
+  font-size: 16px;
+  border: 2px solid #fff;
+}
+[index_content] [neighbour] {
+  padding-bottom: 80px;
+}
+[index_content] [neighbour] .neigh_left {
+  width: 670px;
+  height: 400px;
+  margin-right: 30px;
+  position: relative;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab {
+  position: relative;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap {
+  color: #fff;
+  position: relative;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap:hover .neigh_mask {
+  opacity: .5;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap:hover .neigh_content {
+  opacity: 1;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap .person_bg_img {
+  height: 384px;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap .neigh_mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transition: .5s all ease;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap .neigh_content {
+  padding: 130px 0 0 75px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  transition: .5s all ease;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap .neigh_content .neight_icon {
+  width: 109px;
+  height: 109px;
+  margin-right: 20px;
+}
+[index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap .neigh_content .neight_per_wrap .person_detail {
+  width: 390px;
+}
+[index_content] [neighbour] .neigh_right {
+  width: 500px;
+}
+[index_content] [neighbour] .neigh_right .com_detail li {
+  width: 192px;
+  height: 192px;
+  color: #fff;
+  position: relative;
+  transition: .5s all ease;
+  float: left;
+  margin-right: 20px;
+}
+[index_content] [neighbour] .neigh_right .com_detail li:hover .com_detail_mask_wrap {
+  opacity: 1;
+}
+[index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: .5s all ease;
+  text-align: center;
+}
+[index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_mask {
+  width: 100%;
+  height: 100%;
+  background-color: #0f6fac;
+  opacity: .7;
+  filter: alpha(opacity=70);
+}
+[index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_cont {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 30px;
+}
+[index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_cont h4 {
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+[index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_cont p {
+  margin-bottom: 60px;
+}
+[index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_cont a {
+  color: #fff;
+  text-decoration: underline;
+}

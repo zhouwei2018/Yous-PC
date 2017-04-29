@@ -1,0 +1,396 @@
+@charset "utf-8";
+/* CSS Document */
+/*文字色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*默认主色调 特别用于强调的字、button和icon*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*登录背景深紫色 */
+/*辅助色*/
+/*用于搜索按钮*/
+/*用于各板块标题背景*/
+/*公共顶部背景色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*按钮划过颜色*/
+/*按钮划过颜色*/
+/*支付页首部背景色*/
+/*详情title背景色*/
+/*边线颜色*/
+/*小竖线*/
+/*小竖线*/
+/*默认主色调 特别用于强调的字、button和icon*/
+/*预订底部边框变色*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*提示边框值*/
+/*提示边框阴影值*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+/*重置*/
+html,
+body,
+div,
+form,
+th,
+td,
+input,
+button,
+textarea,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font: 14px/1.6 "microsoft yahei", tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+  color: #333;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+i,
+em {
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  color: #333;
+}
+.tc {
+  text-align: center;
+}
+a:hover {
+  color: #333;
+}
+a:focus {
+  outline: none;
+}
+a img {
+  border: none;
+}
+li {
+  list-style: none;
+}
+input {
+  webkit-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  border-radius: 1px;
+  outline: none;
+  border: 1px solid #eaeaea;
+  color: #333;
+  -webkit-padding: 0;
+}
+input::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #999;
+}
+input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #999;
+}
+input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #999;
+}
+input:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #999;
+}
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+.clearfix:after {
+  content: '.';
+  display: block;
+  /*加入的这个元素转换为块级元素。*/
+  clear: both;
+  /*清除左右两边浮动。*/
+  visibility: hidden;
+  /*可见度设为隐藏。仍然占据空间，只是看不到；*/
+  line-height: 0;
+  /*行高为0；*/
+  height: 0;
+}
+/*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
+.clearfix {
+  zoom: 1;
+}
+/*公共样式*/
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+.pf {
+  position: fixed;
+}
+.all {
+  min-width: 1200px;
+  overflow-x: hidden;
+}
+.contents {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/*适配*/
+@media (max-width: 1200px) {
+  .all {
+    min-width: 880px;
+  }
+  .contents {
+    max-width: 880px;
+  }
+  /*头部 */
+  [top-box] {
+    min-width: 880px;
+  }
+  [top-box] .topper {
+    width: 880px;
+    margin-left: -440px;
+  }
+  [top-box] .a_index i {
+    right: 8px;
+    border-width: 3px;
+  }
+  [top-other] {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  [nav_boxs] {
+    /*电话*/
+  }
+  [nav_boxs] .nav dd {
+    font-size: 14px;
+  }
+  [nav_boxs] .a_index i {
+    border-width: 5px;
+  }
+  [nav_boxs] .photo_top {
+    margin: 14px 20px 0 0;
+  }
+  [nav_boxs] .a_index .depart {
+    left: 70px;
+  }
+  [nav_index] {
+    min-width: 880px;
+  }
+  [nav_index] .logo {
+    width: 100px;
+    height: 33px;
+    background-size: 100% 100%;
+    margin-right: 50px;
+  }
+  [nav_index] .a_index i {
+    left: 60px;
+  }
+  [nav_index] .nav dd {
+    width: 88px;
+  }
+  [nav_index] .nav dd a.a_hotel,
+  [nav_index] .nav dd a.a_flight {
+    text-indent: 25px;
+  }
+  [nav_other] {
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
+  [nav_other] .logo {
+    width: 116px;
+    height: 38px;
+    background-size: 100% 100%;
+    margin-top: 19px;
+  }
+  [nav_other] .bg {
+    min-width: 880px;
+    height: 33px;
+    top: 103px;
+  }
+  [nav_other] .nav {
+    padding-top: 29px;
+  }
+  [nav_other] .drop {
+    margin-left: -30px;
+    padding-top: 14px;
+  }
+  [nav_other] .icon {
+    left: 38px;
+    top: 27px;
+  }
+  [nav_other] .a_index i {
+    top: 9px;
+    left: 60px;
+  }
+  [nav_other] .nav dd {
+    padding: 0 26px;
+  }
+  [nav_other] .nav dd.cur .a_index i {
+    top: 5px;
+  }
+  /*没有下拉样式*/
+  [nav_hide] {
+    padding-bottom: 0;
+  }
+  [nav_hide] .nav {
+    height: 37px;
+  }
+  [nav_hide] .logo {
+    margin-right: 10px;
+  }
+  /*底部*/
+  [bottom] .bottom_logo {
+    height: 26px;
+    background-size: 77px 26px;
+  }
+  [bottom] .bottom_nav i {
+    margin: 0px;
+  }
+  [bottom] .bottom_phone {
+    font-size: 18px;
+  }
+  [bottom] .bottom_phone i {
+    width: 24px;
+    height: 24px;
+    background-position: -189px -16px;
+  }
+  [bottom] .bottom_phone span {
+    line-height: 28px;
+  }
+}
+@media all and (orientation: portrait) {
+  .all {
+    min-width: 680px;
+  }
+  .contents {
+    max-width: 680px;
+  }
+  /*头部  begin*/
+  [top-box] {
+    min-width: 680px;
+  }
+  [top-box] .topper {
+    width: 680px;
+    margin-left: -340px;
+  }
+  [top-box] .top_left i {
+    padding: 0 5px;
+  }
+  [top-box] .top_left span {
+    padding-right: 10px;
+  }
+  [nav_boxs] {
+    /*电话*/
+  }
+  [nav_boxs] .nav dd {
+    font-size: 13px;
+  }
+  [nav_boxs] .photo_top {
+    margin: 14px 0 0 0;
+    background-size: 80px 20px;
+    font-size: 12px;
+    padding: 15px 0 0 17px;
+  }
+  [nav_boxs] .a_index .depart {
+    left: 56px;
+  }
+  [nav_other] .logo {
+    margin-right: 38px;
+  }
+  [nav_other] .bg {
+    min-width: 680px;
+  }
+  [nav_other] .icon {
+    left: 29px;
+  }
+  [nav_other] .nav dd {
+    padding: 0 16px;
+  }
+  [nav_other] .nav dd .a_index i {
+    top: 8px;
+    left: 46px;
+  }
+  [nav_other] .nav dd.cur .a_index i {
+    top: 2px;
+    right: 9px;
+  }
+  [nav_index] {
+    min-width: 680px;
+  }
+  [nav_index] .a_index i {
+    left: 44px;
+  }
+  [nav_index] .nav dd {
+    width: 70px;
+  }
+  [nav_index] .nav dd a.a_hotel,
+  [nav_index] .nav dd a.a_flight {
+    text-indent: 16px;
+  }
+  [nav_hide] .logo {
+    margin-right: 20px;
+  }
+  /*底部*/
+  [bottom] .bottom_logo {
+    height: 26px;
+    background-size: 77px 26px;
+  }
+  [bottom] .bottom_nav {
+    font-size: 11px;
+  }
+  [bottom] .bottom_copyright {
+    font-size: 10px;
+  }
+  [bottom] .bottom_phone {
+    font-size: 16px;
+  }
+  [bottom] .bottom_phone i {
+    width: 24px;
+    height: 24px;
+    background-position: -189px -16px;
+  }
+}
