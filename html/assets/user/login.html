@@ -27,7 +27,35 @@
 
     <div class="content_wrap login">
         <div class="login_bg">
+            <h3 class="tc">用户登录</h3>
+            <form id="signupForm" method="get" action="" novalidate="novalidate">
+                <!--登录-->
+                <div input-prompt inp_login>
+                    <div class="inp">
+                        <input autocomplete="off" class="public" id="phone" type="phone" name="phone" placeholder="请输入手机号码" required="" aria-required="true">
+                    </div>
+                    <div class="inp clearfix">
+                        <input class="public code" placeholder="请输入验证码"><a class="sms_verification ml10 white" href="javascript:;">获取验证码</a>
+                    </div>
+                    <div class="inp pt15">
+                        <input class="next btn1_hover submit" type="submit" value="立即登录" id="login"></a>
+                    </div>
+                </div>
+            </form>
+            <div class="status_switch">
+                <a href="javascript:;">注册幼狮账号</a>
+                <span class="line_vertical"></span>
+                <a href="javascript:;">忘记密码？</a>
+            </div>
 
+            <div class="login_mode">
+                <div class="login_mode_tab">
+                    <span></span>
+                    <i>其他方式登录</i>
+                    <span class="right"></span>
+                </div>
+                <a href="javascript:;" class="weixin_switch"></a>
+            </div>
         </div>
     </div>
 

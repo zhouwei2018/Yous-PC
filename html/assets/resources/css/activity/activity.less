@@ -1,0 +1,55 @@
+@import "../color";
+
+[activity] {
+  width: 990px;
+  margin: 0 auto;
+  padding-top: 50px;
+  h3 {
+    font-size: @font26;
+    font-weight: 600;
+    color: @cl_gray;
+    margin-bottom: 20px;
+  }
+
+  .act_wrap {
+    ul {
+      overflow: hidden;
+      margin-bottom: 20px;
+      li {
+        height: 210px;
+        position: relative;
+        margin-bottom: 20px;
+        img {
+          width: 384px;
+          height: 100%;
+        }
+
+        .act_text_wrap {
+          width: 606px;
+          height: 100%;
+          padding: 15px 30px 0 20px;
+          background-color: @bg_white;
+          h4 {
+            margin-bottom: 10px;
+          }
+          p{
+            line-height: 25px;
+          }
+          .sign_up_btn {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            width: 135px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: @cl_white;
+            background-color: @cl_orange;
+          }
+
+        }
+      }
+    }
+  }
+
+}
