@@ -1,14 +1,44 @@
-@import "color";
-
-[input-prompt] {
-label.error {
-    line-height: 18px;
-    font-size: @font12;
-    color: @cl_warn;
-    display: block;
-    margin: 10px 7px 0 4px;
+/*文字色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*登录背景深紫色 */
+/*辅助色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*棕色*/
+/*浅红色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+[input-prompt] label.error {
+  line-height: 18px;
+  font-size: 12px;
+  color: #fdb194;
+  display: block;
+  margin: 10px 7px 0 4px;
 }
-input.error {
-    border: 1px solid #f98647;
-}
+[input-prompt] input.error {
+  border: 1px solid #f98647;
 }
