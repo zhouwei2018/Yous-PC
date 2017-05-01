@@ -5,7 +5,8 @@
     <title>登录</title>
     <link rel="stylesheet" href="../resources/css/base.css"/>
     <link rel="stylesheet" href="../resources/css/head_foot.css"/>
-    <link rel="stylesheet" href="../resources/css/user/register.css"/>
+    <link rel="stylesheet" href="../resources/css/assembly.css"/>
+    <link rel="stylesheet" href="../resources/css/user/reg_log.css"/>
 </head>
 <body login>
 <!--遮罩-->
@@ -28,14 +29,19 @@
     <div class="content_wrap login">
         <div class="login_bg">
             <h3 class="tc">用户登录</h3>
-            <form id="signupForm" method="get" action="" novalidate="novalidate">
-                <!--登录-->
+            <!--登录-->
+            <form id="signinForm" method="get" action="" novalidate="novalidate">
                 <div input-prompt inp_login>
                     <div class="inp">
-                        <input autocomplete="off" class="public" id="phone" type="phone" name="phone" placeholder="请输入手机号码" required="" aria-required="true">
+                        <input autocomplete="off" value="" class="public" maxlength="11" id="phone" type="phone"
+                               name="phone"
+                               placeholder="请输入手机号码" required="">
+                        <label id="phone_error" class="error" style="display: none;">请输入11位手机号</label>
                     </div>
                     <div class="inp clearfix">
-                        <input class="public code" placeholder="请输入验证码"><a class="sms_verification ml10 white" href="javascript:;">获取验证码</a>
+                        <input class="public code" value="" placeholder="请输入验证码"><a class="sms_verification ml10 white"
+                                                                                    href="javascript:;">获取验证码</a>
+                        <label id="password_error" class="error" style="display: none;">请输入密码</label>
                     </div>
                     <div class="inp pt15">
                         <input class="next btn1_hover submit" type="submit" value="立即登录" id="login"></a>
@@ -43,7 +49,7 @@
                 </div>
             </form>
             <div class="status_switch">
-                <a href="javascript:;">注册幼狮账号</a>
+                <a href="./reg.html">注册幼狮账号</a>
                 <span class="line_vertical"></span>
                 <a href="javascript:;">忘记密码？</a>
             </div>
@@ -76,6 +82,8 @@
 </div>
 
 <script src="../resources/js/lib/jquery-1.10.2.min.js"></script>
+<script src="../resources/js/plugin/jquery.validate-1.13.1.js"></script>
+<script src="../resources/js/user/login.js"></script>
 
 </body>
 </html>
