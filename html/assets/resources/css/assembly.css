@@ -1,0 +1,14 @@
+@import "color";
+
+[input-prompt] {
+label.error {
+    line-height: 18px;
+    font-size: @font12;
+    color: @cl_warn;
+    display: block;
+    margin: 10px 7px 0 4px;
+}
+input.error {
+    border: 1px solid #f98647;
+}
+}
