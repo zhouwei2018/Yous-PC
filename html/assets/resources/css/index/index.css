@@ -1,7 +1,6 @@
 /*文字色*/
 /*特殊位置黑色*/
 /*默认文字灰色*/
-/*默认主色调 特别用于强调的字、button和icon*/
 /*用于辅助说明文字、次要文字信息*/
 /*用于次要辅助说明文字*/
 /*用于详情提示文字，引导词*/
@@ -10,33 +9,27 @@
 /* 特殊样式白色字体 */
 /*登录背景深紫色 */
 /*辅助色*/
-/*用于搜索按钮*/
-/*用于各板块标题背景*/
-/*公共顶部背景色*/
 /*背景颜色白色*/
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
-/*按钮划过颜色*/
-/*按钮划过颜色*/
-/*支付页首部背景色*/
-/*详情title背景色*/
+/*海蓝色*/
+/*棕色*/
+/*浅红色*/
 /*边线颜色*/
+/*小竖线白色*/
 /*小竖线*/
-/*小竖线*/
-/*默认主色调 特别用于强调的字、button和icon*/
-/*预订底部边框变色*/
 /* 灰色边框 */
 /*搜索背景色*/
 /*input边框线*/
-/*提示边框值*/
-/*提示边框阴影值*/
 /*字号*/
 /*用于板块标题显示*/
 /*用于导航栏标题*/
 /*用于footer 导航栏*/
 /*next  button按钮*/
+/*用于正文标题，重要文字信息*/
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
 /*index content*/
@@ -107,10 +100,10 @@
   height: 200px;
   line-height: 200px;
   font-size: 28px;
-  font-weight: normal;
   text-align: center;
 }
 [index_content] [one_state] {
+  background-color: #fff;
   padding-bottom: 87px;
 }
 [index_content] [one_state] ul li {
@@ -147,7 +140,6 @@
   background: url("../../images/index/communicate.png") no-repeat;
 }
 [index_content] [one_state] ul li h4 {
-  font-weight: normal;
   font-size: 22px;
   margin-bottom: 10px;
 }
@@ -236,7 +228,6 @@
   background: url("../../images/index/home_sm.png") no-repeat;
 }
 [index_content] [space] .space_bot ul li h4 {
-  font-weight: normal;
   font-size: 24px;
   margin: 8px 0;
 }
@@ -252,6 +243,7 @@
   border: 2px solid #fff;
 }
 [index_content] [neighbour] {
+  background-color: #fff;
   padding-bottom: 80px;
 }
 [index_content] [neighbour] .neigh_left {
@@ -344,7 +336,6 @@
   padding-top: 30px;
 }
 [index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_cont h4 {
-  font-weight: normal;
   font-size: 18px;
   margin-bottom: 5px;
 }

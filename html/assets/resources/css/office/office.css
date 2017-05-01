@@ -1,7 +1,6 @@
 /*文字色*/
 /*特殊位置黑色*/
 /*默认文字灰色*/
-/*默认主色调 特别用于强调的字、button和icon*/
 /*用于辅助说明文字、次要文字信息*/
 /*用于次要辅助说明文字*/
 /*用于详情提示文字，引导词*/
@@ -10,32 +9,205 @@
 /* 特殊样式白色字体 */
 /*登录背景深紫色 */
 /*辅助色*/
-/*用于搜索按钮*/
-/*用于各板块标题背景*/
-/*公共顶部背景色*/
 /*背景颜色白色*/
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
-/*按钮划过颜色*/
-/*按钮划过颜色*/
-/*支付页首部背景色*/
-/*详情title背景色*/
+/*海蓝色*/
+/*棕色*/
+/*浅红色*/
 /*边线颜色*/
+/*小竖线白色*/
 /*小竖线*/
-/*小竖线*/
-/*默认主色调 特别用于强调的字、button和icon*/
-/*预订底部边框变色*/
 /* 灰色边框 */
 /*搜索背景色*/
 /*input边框线*/
-/*提示边框值*/
-/*提示边框阴影值*/
 /*字号*/
 /*用于板块标题显示*/
 /*用于导航栏标题*/
 /*用于footer 导航栏*/
 /*next  button按钮*/
 /*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
+[office] h2 {
+  height: 109px;
+  line-height: 109px;
+}
+[office] .procedure {
+  height: 175px;
+  margin-bottom: 17px;
+  background-color: #fff;
+}
+[office] .procedure ul li {
+  float: left;
+  width: 300px;
+  height: 175px;
+  position: relative;
+}
+[office] .procedure ul li .office_num {
+  width: 39px;
+  height: 175px;
+  margin-left: 55px;
+}
+[office] .procedure ul li .office_num.one {
+  background: url("../../images/office/num1.png") left center no-repeat;
+}
+[office] .procedure ul li .office_num.two {
+  width: 60px;
+  background: url("../../images/office/num2.png") left center no-repeat;
+}
+[office] .procedure ul li .office_num.three {
+  width: 57px;
+  background: url("../../images/office/num3.png") left center no-repeat;
+}
+[office] .procedure ul li .office_num.four {
+  width: 57px;
+  background: url("../../images/office/num4.png") left center no-repeat;
+}
+[office] .procedure ul li .office_mid {
+  width: 140px;
+  padding-top: 38px;
+  text-align: center;
+}
+[office] .procedure ul li .office_mid span.office_icon {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+[office] .procedure ul li .office_mid span.office_icon.icon1 {
+  width: 59px;
+  height: 60px;
+  background: url("../../images/office/demand.png") no-repeat;
+}
+[office] .procedure ul li .office_mid span.office_icon.icon2 {
+  width: 62px;
+  height: 60px;
+  background: url("../../images/office/home_res.png") no-repeat;
+}
+[office] .procedure ul li .office_mid span.office_icon.icon3 {
+  width: 60px;
+  height: 60px;
+  background: url("../../images/office/living.png") no-repeat;
+}
+[office] .procedure ul li .office_mid span.office_icon.icon4 {
+  width: 48px;
+  height: 66px;
+  background: url("../../images/office/look_location.png") no-repeat;
+}
+[office] .procedure ul li .office_mid span.office_text {
+  font-size: 18px;
+  color: #333;
+}
+[office] .procedure ul li .office_arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -13px;
+  width: 17px;
+  height: 26px;
+  background: url("../../images/office/right_arrow.png") no-repeat;
+}
+[office] .center_trade .center_trade_head {
+  height: 86px;
+  line-height: 86px;
+}
+[office] .center_trade .center_trade_head > span {
+  font-size: 28px;
+  color: #333;
+  margin-right: 20px;
+}
+[office] .center_trade .center_trade_head a {
+  color: #666;
+  font-style: 17px;
+  margin: 0 20px;
+}
+[office] .center_trade .center_trade_head a.active {
+  color: #fb7530;
+}
+[office] .center_trade .center_list > ul {
+  margin-right: 20px;
+  width: 785px;
+  margin-bottom: 45px;
+}
+[office] .center_trade .center_list > ul > li {
+  height: 257px;
+  background-color: #fff;
+  margin-bottom: 18px;
+}
+[office] .center_trade .center_list > ul > li img {
+  width: 394px;
+  height: 258px;
+  margin-right: 28px;
+}
+[office] .center_trade .center_list > ul > li .center_detail {
+  padding-top: 30px;
+  max-width: 300px;
+}
+[office] .center_trade .center_list > ul > li .center_detail h3 {
+  margin-bottom: 10px;
+}
+[office] .center_trade .center_list > ul > li .center_detail span {
+  color: #999;
+}
+[office] .center_trade .center_list > ul > li .center_detail ul {
+  margin: 15px 0 30px;
+  color: #666;
+}
+[office] .center_trade .center_list > ul > li .center_detail ul .list_square {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: #666;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+[office] .center_trade .center_list > ul > li .apply_btn {
+  width: 135px;
+  height: 35px;
+  background-color: #fb7530;
+  text-align: center;
+  display: block;
+  line-height: 35px;
+  color: #fff;
+  font-size: 15px;
+}
+[office] .center_trade .center_list .trade_per {
+  width: 394px;
+  height: 483px;
+  text-align: center;
+  padding-top: 30px;
+  background: #fff;
+}
+[office] .center_trade .center_list .trade_per h3 {
+  font-size: 28px;
+}
+[office] .center_trade .center_list .trade_per .manager_wrap {
+  text-align: center;
+}
+[office] .center_trade .center_list .trade_per .manager_wrap .manager_portrait {
+  width: 126px;
+  height: 126px;
+  display: inline-block;
+}
+[office] .center_trade .center_list .trade_per .manager_wrap span {
+  display: block;
+}
+[office] .center_trade .center_list .trade_per .manager_wrap span.manager_name {
+  color: #fb7530;
+  font-size: 18px;
+}
+[office] .center_trade .center_list .trade_per .manage_attract {
+  position: relative;
+  padding: 20px 89px 0 75px;
+  text-align: left;
+}
+[office] .center_trade .center_list .trade_per .manage_attract .double_marks {
+  position: absolute;
+  left: 40px;
+  top: 0;
+  width: 26px;
+  height: 24px;
+  background: url("../../images/office/quotationMarks.png") no-repeat;
+}
