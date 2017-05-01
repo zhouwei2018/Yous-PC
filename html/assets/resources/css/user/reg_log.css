@@ -3,7 +3,6 @@
 /*文字色*/
 /*特殊位置黑色*/
 /*默认文字灰色*/
-/*默认主色调 特别用于强调的字、button和icon*/
 /*用于辅助说明文字、次要文字信息*/
 /*用于次要辅助说明文字*/
 /*用于详情提示文字，引导词*/
@@ -12,33 +11,27 @@
 /* 特殊样式白色字体 */
 /*登录背景深紫色 */
 /*辅助色*/
-/*用于搜索按钮*/
-/*用于各板块标题背景*/
-/*公共顶部背景色*/
 /*背景颜色白色*/
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
-/*按钮划过颜色*/
-/*按钮划过颜色*/
-/*支付页首部背景色*/
-/*详情title背景色*/
+/*海蓝色*/
+/*棕色*/
+/*浅红色*/
 /*边线颜色*/
+/*小竖线白色*/
 /*小竖线*/
-/*小竖线*/
-/*默认主色调 特别用于强调的字、button和icon*/
-/*预订底部边框变色*/
 /* 灰色边框 */
 /*搜索背景色*/
 /*input边框线*/
-/*提示边框值*/
-/*提示边框阴影值*/
 /*字号*/
 /*用于板块标题显示*/
 /*用于导航栏标题*/
 /*用于footer 导航栏*/
 /*next  button按钮*/
+/*用于正文标题，重要文字信息*/
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
 body {
@@ -104,9 +97,8 @@ body [top_box] .content_wrap .reg_bg {
   top: 80px;
   margin-left: -427px;
   width: 854px;
-  height: 576px;
   background-color: #fff;
-  padding-top: 50px;
+  padding: 50px 0;
 }
 body [top_box] .content_wrap .reg_bg .reg_wrap {
   margin-left: 135px;
@@ -115,39 +107,52 @@ body [top_box] .content_wrap .reg_bg .reg_wrap .reg_head {
   width: 340px;
   padding-bottom: 30px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap .reg_head h3 {
-  font-size: 24px;
-  font-weight: normal;
-}
 body [top_box] .content_wrap .reg_bg .reg_wrap .reg_head .login_tab {
   padding-top: 8px;
 }
 body [top_box] .content_wrap .reg_bg .reg_wrap .reg_head .login_switch {
   color: #09b8fa;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [input-prompt] input.public {
-  width: 280px;
-  padding: 10px 10px;
-  font-family: "microsoft yahei", Arial, sans-serif;
-  font-size: 14px;
+body [top_box] .content_wrap h3 {
+  font-size: 24px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] {
+body [top_box] .content_wrap [input-prompt] input.public {
+  width: 100%;
+  width: 280px;
+  padding: 15px 10px;
+}
+body [top_box] .content_wrap [inp_login] {
   padding-top: 30px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] input.public {
+body [top_box] .content_wrap [inp_login] input.public {
   width: 338px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] input:focus {
+body [top_box] .content_wrap [inp_login] input:focus {
   border: 1px solid #0f6fac;
   box-shadow: 1px 0px 1px #0f6fac;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp {
-  padding-bottom: 16px;
+body [top_box] .content_wrap [inp_login] .safe_level {
+  margin-right: 28px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .service_btn {
-  color: #09b8fa;
+body [top_box] .content_wrap [inp_login] .safe_level.passlow span.low {
+  background-color: #fec8ac;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .safe_level span {
+body [top_box] .content_wrap [inp_login] .safe_level.passmiddle span.low {
+  background-color: #fec8ac;
+}
+body [top_box] .content_wrap [inp_login] .safe_level.passmiddle span.middle {
+  background-color: #fe9e6e;
+}
+body [top_box] .content_wrap [inp_login] .safe_level.passhigh span.low {
+  background-color: #fec8ac;
+}
+body [top_box] .content_wrap [inp_login] .safe_level.passhigh span.middle {
+  background-color: #fe9e6e;
+}
+body [top_box] .content_wrap [inp_login] .safe_level.passhigh span.high {
+  background-color: #fd7530;
+}
+body [top_box] .content_wrap [inp_login] .safe_level span {
   display: inline-block;
   vertical-align: middle;
   width: 21px;
@@ -159,42 +164,98 @@ body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .safe_level span
   margin-right: 1px;
   background-color: #d7d3d4;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .code {
+body [top_box] .content_wrap [inp_login] .ml5 {
+  margin-left: 5px;
+}
+body [top_box] .content_wrap [inp_login] .ml10 {
+  margin-left: 10px;
+  color: #999;
+}
+body [top_box] .content_wrap [inp_login] .inp {
+  padding-bottom: 16px;
+}
+body [top_box] .content_wrap [inp_login] .inp .service_btn {
+  color: #09b8fa;
+}
+body [top_box] .content_wrap [inp_login] .inp .code {
   width: 198px;
   height: 50px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .sms_verification {
+body [top_box] .content_wrap [inp_login] .inp .sms_verification {
   display: inline-block;
   line-height: 50px;
   text-align: center;
   width: 130px;
   height: 50px;
   background-color: #edeef2;
-  color: #999;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .sms_verification.active {
+body [top_box] .content_wrap [inp_login] .inp .sms_verification.active {
   background-color: #0f6fac;
   color: #fff;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .ml5 {
-  margin-left: 5px;
+body [top_box] .content_wrap [inp_login] .inp .sms_verification.white {
+  background-color: #c9c9c9;
+  color: #fff;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .inp .ml10 {
-  margin-left: 10px;
-  color: #999;
-}
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .pt15 {
+body [top_box] .content_wrap [inp_login] .pt15 {
   padding-top: 15px;
 }
-body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .submit {
+body [top_box] .content_wrap [inp_login] .submit {
   width: 338px;
   background: #0f6fac;
   border: 0;
-  height: 40px;
+  height: 50px;
   color: #fff;
   cursor: pointer;
   border-radius: 2px;
   font-size: 14px;
+}
+body [top_box] .content_wrap .status_switch {
+  text-align: center;
+}
+body [top_box] .content_wrap .status_switch a {
+  color: #999;
+}
+body [top_box] .content_wrap .status_switch span {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1px;
+  height: 15px;
+  margin: -1px 3px 0;
+  background-color: #999;
+}
+body [top_box] .content_wrap .login_mode {
+  padding: 0 27px;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+body [top_box] .content_wrap .login_mode .login_mode_tab {
+  position: relative;
+}
+body [top_box] .content_wrap .login_mode .login_mode_tab span {
+  width: 125px;
+  height: 1px;
+  background-color: #dfdfdf;
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+body [top_box] .content_wrap .login_mode .login_mode_tab span.right {
+  left: auto;
+  right: 0;
+}
+body [top_box] .content_wrap .login_mode .login_mode_tab i {
+  color: #999;
+}
+body [top_box] .content_wrap .login_mode .weixin_switch {
+  display: inline-block;
+  margin: 10px 0;
+  width: 30px;
+  height: 30px;
+  background: url("../../../resources/images/login/weixin_gray.png") no-repeat;
 }
 @media only screen and (max-width: 1500px) {
   [top_box] .content_wrap.login {
@@ -207,6 +268,7 @@ body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .submit {
     position: absolute;
     right: 47px;
     top: 40px;
+    padding: 25px 27px 0;
   }
 }
 @media only screen and (min-width: 1500px) {
@@ -223,5 +285,6 @@ body [top_box] .content_wrap .reg_bg .reg_wrap [inp_login] .submit {
     position: absolute;
     right: 450px;
     top: 40px;
+    padding: 25px 27px 0;
   }
 }
