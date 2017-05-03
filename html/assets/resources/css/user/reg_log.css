@@ -91,6 +91,18 @@ body [top_box] .content_wrap {
   height: 695px;
   background-color: #0f6fac;
 }
+body [top_box] .content_wrap.login {
+  background: url("../../images/login/login_bg.png") no-repeat left center #321f3d;
+}
+body [top_box] .content_wrap .login_bg {
+  width: 395px;
+  height: 515px;
+  background-color: #fff;
+  position: absolute;
+  right: 47px;
+  top: 40px;
+  padding: 25px 27px 0;
+}
 body [top_box] .content_wrap .reg_bg {
   position: absolute;
   left: 50%;
@@ -182,7 +194,6 @@ body [top_box] .content_wrap [inp_login] .inp .code {
   height: 50px;
 }
 body [top_box] .content_wrap [inp_login] .inp .sms_verification {
-  display: inline-block;
   line-height: 50px;
   text-align: center;
   width: 130px;

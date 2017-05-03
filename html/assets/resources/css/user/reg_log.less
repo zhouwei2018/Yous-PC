@@ -68,6 +68,20 @@ body {
       height: 695px;
       background-color: @bg_blue;
 
+      &.login {
+        background: url("../../images/login/login_bg.png") no-repeat left center @cl_purple;
+      }
+
+      .login_bg {
+        width: 395px;
+        height: 515px;
+        background-color: @bg_white;
+        position: absolute;
+        right: 47px;
+        top: 40px;
+        padding: 25px 27px 0;
+      }
+
       .reg_bg {
         position: absolute;
         left: 50%;
@@ -176,7 +190,6 @@ body {
             height: 50px;
           }
           .sms_verification {
-            display: inline-block;
             line-height: 50px;
             text-align: center;
             width: 130px;
