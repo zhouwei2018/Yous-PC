@@ -37,6 +37,8 @@
   height: 88px;
   background-color: #fff;
   position: relative;
+  min-width: 1200px;
+  margin: 0 auto;
 }
 [header] .lion_text {
   text-indent: -9999em;
@@ -88,6 +90,8 @@
 }
 /* index footer */
 [footer] {
+  min-width: 1200px;
+  margin: 0 auto;
   height: 220px;
   color: #fff;
   background-color: #333;

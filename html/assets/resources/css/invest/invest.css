@@ -32,6 +32,10 @@
 /*用于正文标题，重要文字信息*/
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
+[invest] {
+  min-width: 1200px;
+  margin: 0 auto;
+}
 [invest] .invest_banner {
   height: 500px;
   text-align: center;

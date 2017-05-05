@@ -33,6 +33,10 @@
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
 /*index content*/
+[index_content] {
+  min-width: 1200px;
+  margin: 0 auto;
+}
 [index_content] .banner_wrap {
   position: relative;
   height: 668px;
