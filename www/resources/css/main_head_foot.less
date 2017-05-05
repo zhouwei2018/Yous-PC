@@ -1,0 +1,108 @@
+@import "color";
+
+/* index header */
+[header] {
+  height: 88px;
+  background-color: @bg_white;
+  position: relative;
+  min-width: 1200px;
+  margin: 0 auto;
+  .lion_text {
+    text-indent: -9999em;
+    height: 0;
+  }
+  .lion_logo {
+    margin-top: 20px;
+  }
+
+  [nav_boxs] {
+    height: 88px;
+    ul.nav {
+      height: 100%;
+      li {
+        height: 100%;
+        width: 115px;
+        text-align: center;
+        float: left;
+        font-size: @font16;
+        position: relative;
+        transition: .5s all ease;
+        a{
+          height: 100%;
+          padding-top: 35px;
+          display: block;
+        }
+
+        &.active {
+          .icon {
+            display: block;
+          }
+        }
+        &:hover {
+          background-color: @bg_blue;
+          .icon {
+            display: none;
+          }
+          a {
+            color: @cl_white;
+          }
+        }
+
+        .icon {
+          width: 92px;
+          height: 11px;
+          position: absolute;
+          left: 10px;
+          bottom: 0;
+          background: url(../images/header/nav_botline.png) no-repeat;
+          display: none;
+
+        }
+      }
+
+    }
+  }
+
+}
+
+/* index footer */
+[footer] {
+  min-width: 1200px;
+  margin: 0 auto;
+  height: 220px;
+  color: @cl_white;
+  background-color: @bg_black;
+
+  .foot_head {
+    height: 177px;
+    padding-top: 30px;
+    h3 {
+      font-size: @font18;
+      margin: 5px 0 20px;
+    }
+    .weixin_text {
+      display: block;
+      text-align: center;
+      font-size: @font14;
+    }
+  }
+
+  .foot_bot {
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    border-top: 1px solid @bdc_line_black;
+
+    span {
+      color: @cl_lightgray;
+      &.bottom_copyright {
+        margin-right: 60px;
+      }
+      a {
+        color: @cl_lightgray;
+      }
+    }
+
+  }
+
+}
