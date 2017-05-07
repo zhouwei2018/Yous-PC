@@ -18,7 +18,7 @@
                     <div class="reg_head">
                         <h3 class="fl">注册</h3>
 
-                        <div class="fr login_tab">已有账户？ <a href="login.html" class="login_switch">登录</a></div>
+                        <div class="fr login_tab">已有账户？ <rooter-link to="/login" class="login_switch">登录</rooter-link></div>
                     </div>
                     <form id="signupForm" method="get" action="" novalidate="novalidate">
                         <!--注册-->
