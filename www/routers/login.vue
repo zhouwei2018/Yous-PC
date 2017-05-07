@@ -1,6 +1,5 @@
-<style lang="less">
+<style scoped lang="less">
     @import "../resources/css/base.less";
-        @import "../resources/css/base.less";
     @import "../resources/css/register/register.less";
 </style>
 
