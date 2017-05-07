@@ -18,14 +18,30 @@
           </router-link>
           <div nav_boxs class="fr">
               <ul class="nav clearfix">
-                  <li class="active"><router-link to="/index">首页</router-link><span class="icon"></span></li>
-                  <li><router-link to="/office">办公空间</router-link><span class="icon"></span></li>
-                  <li><router-link to="/service">升级服务</router-link><span class="icon"></span></li>
-                  <li><router-link to="/collect">幼狮汇</router-link><span class="icon"></span></li>
-                  <li><router-link to="/invest">投融资</router-link><span class="icon"></span></li>
-                  <li><router-link to="/about">关于我们</router-link><span class="icon"></span></li>
-                  <li><router-link to="/score">积分商城</router-link><span class="icon"></span></li>
-                  <li><router-link to="/register">登录/注册</router-link><span class="icon"></span></li>
+                  <router-link to="/index" tag="li" active-class="active">
+                    <a href="javascript:;">首页</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/office" tag="li" active-class="active">
+                    <a href="javascript:;">办公空间</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/service" tag="li" active-class="active">
+                    <a href="javascript:;">升级服务</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/collect" tag="li" active-class="active">
+                    <a href="javascript:;">幼狮汇</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/invest" tag="li" active-class="active">
+                    <a href="javascript:;">投融资</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/about" tag="li" active-class="active">
+                    <a href="javascript:;">关于我们</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/score" tag="li" active-class="active">
+                    <a href="javascript:;">积分商城</a><span class="icon"></span>
+                  </router-link>
+                  <router-link to="/register" tag="li" active-class="active">
+                    <a href="javascript:;">登录/注册</a><span class="icon"></span>
+                  </router-link>
               </ul>
           </div>
       </div>
