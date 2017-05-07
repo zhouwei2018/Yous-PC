@@ -1,5 +1,6 @@
 <style lang="less">
     @import "../resources/css/base.less";
+        @import "../resources/css/base.less";
     @import "../resources/css/login/login.less";
 </style>
 

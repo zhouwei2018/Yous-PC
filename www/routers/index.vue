@@ -1,5 +1,6 @@
 <style lang="less">
     @import "../resources/css/index/index.less";
+      @import "../../src/styles/index.less";
 </style>
 <style scoped>
 </style>
@@ -14,15 +15,20 @@
         <!--banner start-->
         <div class="banner_wrap">
             <div class="banner_cont">
-                <img src="../resources/images/index/banner01.png" alt=""/>
-
-                <div class="ban_tip_bot">
-                    <div class="ban_tip">
-                        <span class="active"></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
+                    <Carousel autoplay v-model="value2">
+                        <Carousel-item>
+                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                        </Carousel-item>
+                        <Carousel-item>
+                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                        </Carousel-item>
+                        <Carousel-item>
+                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                        </Carousel-item>
+                        <Carousel-item>
+                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                        </Carousel-item>
+                    </Carousel>
             </div>
             <div class="banner_bot">
                 <div class="contents">
@@ -244,6 +250,11 @@
 import header1 from '../components/header.vue';
 import footer1 from '../components/footer.vue';
 export default {
-    components: { header1,footer1 }
+    components: { header1,footer1 },
+    data () {
+            return {
+                value2: 2
+            }
+        }
 }
 </script>

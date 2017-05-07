@@ -24,6 +24,10 @@ const router = new VueRouter({
     hashbang: false,
     routes: [
         {
+            path: '/',
+            component: require('./routers/index.vue')
+        },
+        {
             path: '/index',
             component: require('./routers/index.vue')
         },

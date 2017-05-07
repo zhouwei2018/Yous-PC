@@ -3,6 +3,7 @@
   @import "../resources/css/base.less";
   @import "../resources/css/head_foot.less";
   @import "../resources/css/main_head_foot.less";
+  @import "../../src/styles/index.less";
 </style>
 
 <!--header start-->
