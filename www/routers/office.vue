@@ -1,4 +1,4 @@
-<style lang="less">
+<style scoped lang="less">
     @import "../resources/css/office/office.less";
 </style>
 <style scoped>

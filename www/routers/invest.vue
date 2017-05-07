@@ -1,8 +1,7 @@
-<style lang="less">
+<style scoped lang="less">
     @import "../resources/css/invest/invest.less";
 </style>
-<style scoped>
-</style>
+
 
 <template>
     <div class="all">

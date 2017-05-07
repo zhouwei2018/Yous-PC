@@ -1,6 +1,5 @@
-<style lang="less">
-    @import "../resources/css/index/index.less";
-      @import "../../src/styles/index.less";
+<style  lang="less">
+    @import "../../src/styles/index.less";
 </style>
 <style scoped>
 </style>
