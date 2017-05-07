@@ -9,16 +9,16 @@
     <div top_box>
         <div header>
             <h2 class="lion_text">幼狮空间</h2>
-            <a href="../index.html"><img src="../resources/images/lion_logo.png" class="lion_logo pa"/></a>
+            <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo pa"/></router-link>
         </div>
 
         <div class="content_wrap">
             <div class="reg_bg">
                 <div class="reg_wrap">
                     <div class="reg_head">
-                        <h3 class="fl">注册</h3>
+                        <h3 class="fl" >注册</h3>
 
-                        <div class="fr login_tab">已有账户？ <rooter-link to="/login" class="login_switch">登录</rooter-link></div>
+                        <div class="fr login_tab">已有账户？ <router-link to="/login" class="login_switch">登录</router-link></div>
                     </div>
                     <form id="signupForm" method="get" action="" novalidate="novalidate">
                         <!--注册-->

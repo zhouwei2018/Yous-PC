@@ -10,7 +10,7 @@
           <div class="clearfix" header>
               <div class="fl">
                   <h2 class="lion_text">幼狮空间</h2>
-                  <a href="../index.html"><img src="../resources/images/lion_logo.png" class="lion_logo pa"/></a>
+                  <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo pa"/></router-link>
               </div>
           </div>
 
@@ -37,9 +37,9 @@
                       </div>
                   </form>
                   <div class="status_switch">
-                      <a href="./reg.html">注册幼狮账号</a>
+                      <router-link to="/register">注册幼狮账号</router-link>
                       <span class="line_vertical"></span>
-                      <a href="javascript:;">忘记密码？</a>
+                      <router-link to="/register">忘记密码？</router-link>
                   </div>
 
                   <div class="login_mode">

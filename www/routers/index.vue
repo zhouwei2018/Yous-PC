@@ -137,14 +137,14 @@
             <div class="space_bot">
                 <div class="space_bot_bg"></div>
                 <ul class="clearfix contents">
-                    <li>
+                    <li  @click="modal5 = true">
                         <span class="space_tip"></span>
-                        <h4>帮我找楼</h4>
+                        <h4 >帮我找楼</h4>
 
                         <p>专业、可靠、免费提供一对一全程找房服务</p>
                         <a href="javascript:;" class="look_more">了解更多></a>
                     </li>
-                    <li>
+                    <li @click="modal5 = true">
                         <span class="space_tip company"></span>
                         <h4>业主委托</h4>
 
@@ -153,6 +153,13 @@
                     </li>
                 </ul>
             </div>
+            <Modal
+               v-model="modal5"
+               title="自定义宽度"
+               width="300">
+               <p>自定义宽度，单位 px，默认 520px。</p>
+               <p>对话框的宽度是响应式的，当屏幕尺寸小于 768px 时，宽度会变为自动<code>auto</code>。</p>
+           </Modal>
         </div>
         <!--邻居-->
         <div neighbour>
@@ -252,7 +259,8 @@ export default {
     components: { header1,footer1 },
     data () {
             return {
-                value2: 2
+                value2: 1,
+                modal5: false
             }
         }
 }
