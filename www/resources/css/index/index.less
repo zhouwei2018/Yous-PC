@@ -4,12 +4,12 @@
 [index_content] {
   .banner_wrap {
     position: relative;
-    height: 668px;
+    height: 528px;
     .banner_cont {
       position: relative;
-      height: 560px;
+      height: 420px;
       img{
-        height: 560px;
+        height: 420px;
       }
       .ban_tip_bot {
         position: absolute;
@@ -54,6 +54,9 @@
           &:hover {
             background-color: @bg_orange;
           }
+          &.active{
+            background-color: @bg_orange;
+          }
           &:last-child {
             border-right: none;
           }
@@ -70,8 +73,8 @@
   }
 
   .content_tit {
-    height: 200px;
-    line-height: 200px;
+    height: 120px;
+    line-height: 120px;
     font-size: @font28;
     text-align: center;
 
@@ -79,7 +82,7 @@
 
   [one_state] {
     background-color: @bg_white;
-    padding-bottom: 87px;
+    padding-bottom: 60px;
     ul {
       li {
         width: 286px;
@@ -224,6 +227,10 @@
             margin: 8px 0;
           }
 
+          p{
+            font-size: @font15;
+          }
+
           .look_more {
             display: block;
             margin: 25px auto 0;
@@ -232,7 +239,7 @@
             height: 45px;
             text-align: center;
             line-height: 42px;
-            font-size: @font16;
+            font-size: @font15;
             border: 2px solid @cl_white;
           }
 

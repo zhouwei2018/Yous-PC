@@ -18,29 +18,29 @@
             </router-link>
             <div nav_boxs class="fr">
                 <ul class="nav clearfix">
-                    <router-link to="/index" tag="li" active-class="active" exact>
-                        <a href="javascript:;">首页</a><span class="icon"></span>
+                    <router-link to="/index" tag="li" active-class="active">
+                        <a href="javascript:;">首页</a>
                     </router-link>
                     <router-link to="/office" tag="li" active-class="active">
-                        <a href="javascript:;">办公空间</a><span class="icon"></span>
+                        <a href="javascript:;">办公空间</a>
                     </router-link>
                     <router-link to="/service" tag="li" active-class="active">
-                        <a href="javascript:;">升级服务</a><span class="icon"></span>
+                        <a href="javascript:;">升级服务</a>
                     </router-link>
                     <router-link to="/collect" tag="li" active-class="active">
-                        <a href="javascript:;">幼狮汇</a><span class="icon"></span>
+                        <a href="javascript:;">幼狮汇</a>
                     </router-link>
                     <router-link to="/invest" tag="li" active-class="active">
-                        <a href="javascript:;">投融资</a><span class="icon"></span>
+                        <a href="javascript:;">投融资</a>
                     </router-link>
                     <router-link to="/about" tag="li" active-class="active">
-                        <a href="javascript:;">关于我们</a><span class="icon"></span>
+                        <a href="javascript:;">关于我们</a>
                     </router-link>
                     <router-link to="/score" tag="li" active-class="active">
-                        <a href="javascript:;">积分商城</a><span class="icon"></span>
+                        <a href="javascript:;">积分商城</a>
                     </router-link>
                     <router-link to="/register" tag="li" active-class="active">
-                        <a href="javascript:;">登录/注册</a><span class="icon"></span>
+                        <a href="javascript:;">登录/注册</a>
                     </router-link>
                 </ul>
             </div>

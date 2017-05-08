@@ -32,7 +32,7 @@
             <div class="banner_bot">
                 <div class="contents">
                     <ul class="banner_introduce clearfix">
-                        <li>
+                        <li class="active">
                             <p>运营面积</p>
                             <span>140000㎡</span>
                         </li>

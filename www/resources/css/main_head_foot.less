@@ -37,31 +37,17 @@
           padding-top: 35px;
           display: block;
         }
-
-        &.active {
-          .icon {
-            display: block;
-          }
-        }
         &:hover {
           background-color: @bg_blue;
-          .icon {
-            display: none;
-          }
           a {
             color: @cl_white;
           }
         }
-
-        .icon {
-          width: 92px;
-          height: 11px;
-          position: absolute;
-          left: 10px;
-          bottom: 0;
-          background: url(../images/header/nav_botline.png) no-repeat;
-          display: none;
-
+        &.active {
+          background-color: @bg_blue;
+          a {
+            color: @cl_white;
+          }
         }
       }
 
