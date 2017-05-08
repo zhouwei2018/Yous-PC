@@ -8,8 +8,10 @@
     <!--topper  begin-->
     <div top_box>
         <div header>
-            <h2 class="lion_text">幼狮空间</h2>
-            <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo pa"/></router-link>
+            <div class="contents">
+                <h2 class="lion_text">幼狮空间</h2>
+                <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo"/></router-link>
+            </div>
         </div>
 
         <div class="content_wrap">
@@ -25,12 +27,12 @@
                         <div input-prompt inp_login>
                             <div class="inp">
                                 <input autocomplete="off" class="public" id="phone" type="phone" name="phone"
-                                       placeholder="请输入手机号码" required="" aria-required="true">
+                                placeholder="请输入手机号码" required="" aria-required="true">
                             </div>
                             <div class="clearfix">
                                 <div class="inp fl">
                                     <input autocomplete="off" class="public" id="password" type="password" name="password"
-                                           maxlength="20" placeholder="请输入登录密码" required="">
+                                    maxlength="20" placeholder="请输入登录密码" required="">
                                 </div>
                                 <div class="fl ml10 tright">
                                     <span>请输入6-20位密码，由数字和字母组成。</span>
@@ -39,18 +41,18 @@
                             </div>
                             <div class="inp">
                                 <input autocomplete="off" class="public" id="confirm_password" type="password"
-                                       name="confirm_password" maxlength="20" placeholder="请确认密码" required="">
+                                name="confirm_password" maxlength="20" placeholder="请确认密码" required="">
                             </div>
                             <div class="inp">
                                 <input class="public" placeholder="邀请码（选填）"><a class="ml10" href="javascript:;">请填写推荐人邀请码</a>
                             </div>
                             <div class="inp clearfix">
                                 <input class="public code fl" placeholder="请输入验证码"><a class="sms_verification fl ml10"
-                                                                                   href="javascript:;">获取验证码</a>
+                                href="javascript:;">获取验证码</a>
                             </div>
                             <div class="inp pt15">
                                 <input class="next btn1_hover submit" type="submit" value="同意协议并注册" id="register"><a
-                                    class="service_btn ml5" href="javascript:;">《用户服务协议》</a>
+                                class="service_btn ml5" href="javascript:;">《用户服务协议》</a>
                             </div>
                         </div>
                     </form>
@@ -58,7 +60,7 @@
             </div>
         </div>
 
-        <div footer>
+        <div footer add_reg>
             <div class="foot_wrap">
                 <p class="bottom_nav">
                     <span><a href="javascript:;">关于我们</a></span>
@@ -74,13 +76,13 @@
 
     </div>
 
-  </div>
+</div>
 </template>
 <script>
 
-import header1 from '../components/header.vue';
-import footer1 from '../components/footer.vue';
-export default {
-    components: { header1,footer1 }
-}
+    import header1 from '../components/header.vue';
+    import footer1 from '../components/footer.vue';
+    export default {
+        components: { header1,footer1 }
+    }
 </script>

@@ -7,10 +7,10 @@
     <div class="all">
       <!--topper  begin-->
       <div top_box white>
-          <div class="clearfix" header>
-              <div class="fl">
+          <div class="contents" header>
+              <div>
                   <h2 class="lion_text">幼狮空间</h2>
-                  <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo pa"/></router-link>
+                  <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo"/></router-link>
               </div>
           </div>
 
@@ -53,7 +53,7 @@
               </div>
           </div>
 
-          <div footer>
+          <div footer add_login>
               <div class="foot_wrap">
                   <p class="bottom_nav">
                       <span><a href="javascript:;">关于我们</a></span>

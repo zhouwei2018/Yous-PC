@@ -11,8 +11,13 @@
     text-indent: -9999em;
     height: 0;
   }
+
   .lion_logo {
-    margin-top: 20px;
+    position: absolute;
+    width: 270px;
+    height: 49px;
+    left: 0;
+    top: 20px;
   }
 
   [nav_boxs] {
@@ -72,6 +77,46 @@
   height: 220px;
   color: @cl_white;
   background-color: @bg_black;
+
+  .foot_wrap {  //针对login register 页
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 90px;
+    .bottom_nav {
+      padding-top: 13px;
+      a {
+        color: #fff;
+        font-size: @font16;
+      }
+      i {
+        height: 19px;
+        line-height: 19px;
+        display: inline-block;
+        vertical-align: top;
+        overflow: hidden;
+        color: @bdc_line_white;
+        margin: 1px 10px 0;
+      }
+    }
+
+    .bottom_copyright {
+      font-size: @font14;
+      color: @cl_lightgray;
+      padding-top: 7px;
+    }
+
+  }
+
+  &[add_reg]{
+    height: 200px;
+    background-color: @bg_blue;
+  }
+
+  &[add_login]{
+    height: 200px;
+    background-color: @bg_white;
+  }
 
   .foot_head {
     height: 177px;
