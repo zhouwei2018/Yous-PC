@@ -90,7 +90,7 @@
         <div space>
             <h3 class="content_tit">空间展示</h3>
 
-            <div class="space_top contents clearfix">
+            <div class="space_top contents clearfix" style="overflow:visible">
                 <div class="fl space_top_left">
                     <img src="../resources/images/index/space01.png" alt=""/>
                     <!--<div class="space_bg_wrap">-->
@@ -98,8 +98,8 @@
                     <!--<span>235243</span>-->
                     <!--</div>-->
                 </div>
-                <div class="fl clearfix space_top_right">
-                    <div class="spa_top clearfix">
+                <div class="fl clearfix space_top_right" style="overflow:visible">
+                    <div class="spa_top clearfix" style="overflow:visible">
                         <div class="spa_top_left fl">
                             <img src="../resources/images/index/space02.png" alt=""/>
                             <!--<div class="space_bg_wrap">-->
@@ -115,7 +115,7 @@
                             <!--</div></div>-->
                         </div>
                     </div>
-                    <div class="spa_bot">
+                    <div class="spa_bot clearfix" style="overflow:visible">
                         <div class="spa_bot_left fl">
                             <img src="../resources/images/index/space02.png" alt=""/>
                             <!--<div class="space_bg_wrap">-->
