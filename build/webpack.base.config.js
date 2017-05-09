@@ -1,6 +1,9 @@
 /**
  * 公共配置
  */
+
+var webpack=require('webpack');
+
 var path = require('path');
 function resolve (dir) {
     return path.join(__dirname, '..', dir)
@@ -57,6 +60,15 @@ module.exports = {
             { test: /\.(html|tpl)$/, loader: 'html-loader' }
         ]
     },
+
+    plugins: [
+		new webpack.optimize.CommonsChunkPlugin('common.js'),
+		new webpack.ProvidePlugin({
+		jQuery: "jquery",
+		$: "jquery"
+		})
+	],
+
     resolve: {
         extensions: ['.js', '.vue'],
         alias: {

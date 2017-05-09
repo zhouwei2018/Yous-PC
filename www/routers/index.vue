@@ -1,4 +1,4 @@
-<style  lang="less">
+﻿<style  lang="less">
     @import "../../src/styles/index.less";
 </style>
 <style scoped>
@@ -34,19 +34,19 @@
                     <ul class="banner_introduce clearfix">
                         <li class="active">
                             <p>运营面积</p>
-                            <span>140000㎡</span>
+                            <span><i id="bannerNum1">140000</i>㎡</span>
                         </li>
                         <li>
                             <p>入驻企业</p>
-                            <span>1000+</span>
+                            <span><i id="bannerNum2">1000</i>+</span>
                         </li>
                         <li>
                             <p>联合服务商</p>
-                            <span>2000+</span>
+                            <span><i id="bannerNum3">2000</i>+</span>
                         </li>
                         <li>
                             <p>管理团队</p>
-                            <span>410+</span>
+                            <span><i id="bannerNum4">410</i>+</span>
                         </li>
                     </ul>
                 </div>
@@ -262,6 +262,32 @@ export default {
                 value2: 1,
                 modal5: false
             }
-        }
+        },
+
+    methods:{
+        show_num:function (id,d){ 
+            //d 跳动到最后的数字
+            var time = 1500, //全部时间
+                outTime = 0, //实时时间
+                interTime = 30; //增长速率
+                var powertimer=null;
+            clearInterval(powertimer);
+            powertimer = setInterval(function () {
+                outTime += interTime;
+                if (outTime < time) {
+                    $(id).html(parseInt(d / time * outTime));
+                } else {
+                    $(id).html(d);
+                }
+            }, interTime);
+        } 
+    },
+
+    mounted:function(){
+        this.show_num('#bannerNum1',140000);
+        this.show_num('#bannerNum2',1000);
+        this.show_num('#bannerNum3',2000);
+        this.show_num('#bannerNum4',410);
+    }   
 }
 </script>
