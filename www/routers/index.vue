@@ -14,20 +14,20 @@
         <!--banner start-->
         <div class="banner_wrap">
             <div class="banner_cont">
-                    <Carousel autoplay v-model="value2">
-                        <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
-                        </Carousel-item>
-                        <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
-                        </Carousel-item>
-                        <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
-                        </Carousel-item>
-                        <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
-                        </Carousel-item>
-                    </Carousel>
+                <Carousel autoplay v-model="value2">
+                    <Carousel-item>
+                        <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    </Carousel-item>
+                    <Carousel-item>
+                        <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    </Carousel-item>
+                    <Carousel-item>
+                        <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    </Carousel-item>
+                    <Carousel-item>
+                        <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    </Carousel-item>
+                </Carousel>
             </div>
             <div class="banner_bot">
                 <div class="contents">
@@ -154,33 +154,46 @@
                 </ul>
             </div>
             <Modal
-               v-model="modal5"
-               title="自定义宽度"
-               width="300">
-               <p>自定义宽度，单位 px，默认 520px。</p>
-               <p>对话框的宽度是响应式的，当屏幕尺寸小于 768px 时，宽度会变为自动<code>auto</code>。</p>
-           </Modal>
-        </div>
-        <!--邻居-->
-        <div neighbour>
-            <h3 class="content_tit">他们将是你的邻居</h3>
+                v-model="modal5"
+                width="836">
+                <Form :model="formItem" :label-width="80">
+                <h3 style="font-size:36px; text-align:center;">安心委托,快速成交</h3>
+                <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
+                    <Form-item label="输入框">
+                        <Input v-model="formItem.input" placeholder="请输入"></Input>
+                    </Form-item>  
+                    <!-- <Form-item label="选择器">
+                        <Select v-model="formItem.select" placeholder="请选择">
+                            <Option value="beijing">北京市</Option>
+                            <Option value="shanghai">上海市</Option>
+                            <Option value="shenzhen">深圳市</Option>
+                        </Select>
+                    </Form-item> -->
+                    <p>您也可以拨打400-810-6698直接委托房源</p>
+                    <button>提交委托</button>
+                </Form>
+            </Modal>
+    </div>
+    <!--邻居-->
+    <div neighbour>
+        <h3 class="content_tit">他们将是你的邻居</h3>
 
-            <div class="contents">
-                <div class="clearfix">
-                    <div class="fl neigh_left">
-                        <div class="naight_left_tab">
-                            <div class="neight_mask_wrap">
-                                <img class="person_bg_img" src="../resources/images/index/company.png" alt=""/>
+        <div class="contents">
+            <div class="clearfix">
+                <div class="fl neigh_left">
+                    <div class="naight_left_tab">
+                        <div class="neight_mask_wrap">
+                            <img class="person_bg_img" src="../resources/images/index/company.png" alt=""/>
 
-                                <div class="neigh_mask"></div>
-                                <div class="neigh_content clearfix">
-                                    <img class="neight_icon fl" src="../resources/images/index/person.png" alt=""/>
+                            <div class="neigh_mask"></div>
+                            <div class="neigh_content clearfix">
+                                <img class="neight_icon fl" src="../resources/images/index/person.png" alt=""/>
 
-                                    <div class="fl neight_per_wrap">
-                                        <span>杜绍斐  <em>知乎知名作者</em></span>
+                                <div class="fl neight_per_wrap">
+                                    <span>杜绍斐  <em>知乎知名作者</em></span>
 
-                                        <p class="person_detail">
-                                            “随着团队的壮大，在我急需一个既独立又能满足我创业灵活工作时间的办公室时，幼狮空间出现了，我就拎了台电脑，真正体会到了什么叫拎包入驻！”</p>
+                                    <p class="person_detail">
+                                        “随着团队的壮大，在我急需一个既独立又能满足我创业灵活工作时间的办公室时，幼狮空间出现了，我就拎了台电脑，真正体会到了什么叫拎包入驻！”</p>
                                     </div>
                                 </div>
                             </div>
@@ -245,49 +258,71 @@
                 </div>
             </div>
         </div>
-      </div>
+    </div>
 
-      <!--footer-->
-      <footer1></footer1>
-  </div>
+    <!--footer-->
+    <footer1></footer1>
+</div>
 </template>
 <script>
 
-import header1 from '../components/header.vue';
-import footer1 from '../components/footer.vue';
-export default {
-    components: { header1,footer1 },
-    data () {
+    import header1 from '../components/header.vue';
+    import footer1 from '../components/footer.vue';
+    export default {
+        components: { header1,footer1 },
+        data () {
             return {
                 value2: 1,
-                modal5: false
+                modal5: false,
+
+                formItem: {
+                    input: '',
+                    select: ''
+                }
             }
         },
 
-    methods:{
-        show_num:function (id,d){ 
+        methods:{
+            show_num:function (id,d){ 
             //d 跳动到最后的数字
             var time = 1500, //全部时间
                 outTime = 0, //实时时间
                 interTime = 30; //增长速率
                 var powertimer=null;
-            clearInterval(powertimer);
-            powertimer = setInterval(function () {
-                outTime += interTime;
-                if (outTime < time) {
-                    $(id).html(parseInt(d / time * outTime));
-                } else {
-                    $(id).html(d);
-                }
-            }, interTime);
-        } 
-    },
+                clearInterval(powertimer);
+                powertimer = setInterval(function () {
+                    outTime += interTime;
+                    if (outTime < time) {
+                        $(id).html(parseInt(d / time * outTime));
+                    } else {
+                        $(id).html(d);
+                    }
+                }, interTime);
+            },
 
-    mounted:function(){
-        this.show_num('#bannerNum1',140000);
-        this.show_num('#bannerNum2',1000);
-        this.show_num('#bannerNum3',2000);
-        this.show_num('#bannerNum4',410);
-    }   
-}
+            handleSubmit(name) {
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.$Message.success('提交成功!');
+                    } else {
+                        this.$Message.error('表单验证失败!');
+                    }
+                })
+            } 
+        },
+
+        mounted:function(){
+            //数字滚动
+            this.show_num('#bannerNum1',140000);
+            this.show_num('#bannerNum2',1000);
+            this.show_num('#bannerNum3',2000);
+            this.show_num('#bannerNum4',410);
+        }   
+    }
 </script>
+
+<style>
+    .ivu-modal-footer{
+        display: none;
+    }
+</style>
