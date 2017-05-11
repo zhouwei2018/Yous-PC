@@ -1,0 +1,102 @@
+@import '../color';
+
+[popup]{
+	width:100%;
+	margin: 0 auto 20px;
+	text-align: center;
+	padding: 12px;
+	h3{
+		font-size:@font28;
+		margin-bottom: 10px;
+	}
+	p{
+		font-size: @font16;
+		margin-bottom: 25px;
+		&.help_tips{
+			text-align: left;
+			font-size: 14px;
+			color: @cl_default;
+		}
+		i{
+			color:@cl_mobile_red;
+		}
+	}
+	.popItem{
+		width: 100%;
+		height:50px;
+		position: relative;
+		margin-bottom: 20px;
+		.inp_icon{
+			position: absolute;
+			left: 1px;
+			top: 1px;
+			width: 48px;
+			height: 48px;
+			background-color: blue;
+		}
+		input{
+			width: 100%;
+			height:100%;
+			padding: 10px 0 10px 60px;
+			border:1px solid @bdc_input;
+			color: @cl_input;
+			font-size: @font16;
+			&:focus{
+				border:1px solid red;
+			}
+		}
+		.pop_sendcode_btn{
+			position: absolute;
+			right:1px;
+			top: 1px;
+			width: 150px;
+			height:48px;
+			color: #fff;
+			font-size: @font16;
+			text-align: center;
+			line-height: 50px;
+			background-color: @bg_skyblue;
+		}
+	}
+	.pop_subbtn{
+		width: 100%;
+		height:50px;
+		color: #fff;
+		text-align: center;
+		line-height: 50px;
+		background-color: @bg_skyblue;
+		font-size: @font16;
+		cursor: pointer;
+	}
+
+	.pop_list{
+		text-align: left;
+		position: relative;
+		display: inline-block;
+		height: 50px;
+		line-height: 50px;
+		width: 210px;
+		border:1px solid @cl_input;
+		margin-bottom: 20px;
+		padding: 0 20px;
+		i{
+			position: absolute;
+			right: 20px;
+			top: 0;
+		}
+
+		input{
+			border:none;
+			height:48px;
+			vertical-align: top;
+
+		}
+
+	}
+
+
+}
+
+.ivu-modal-footer{
+        display: none;
+    }

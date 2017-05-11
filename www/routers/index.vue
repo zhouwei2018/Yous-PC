@@ -1,7 +1,10 @@
 ﻿<style  lang="less">
     @import "../../src/styles/index.less";
+    @import "../resources/css/popup/popup.less";
 </style>
+
 <style scoped>
+
 </style>
 
 <template>
@@ -144,7 +147,7 @@
                         <p>专业、可靠、免费提供一对一全程找房服务</p>
                         <a href="javascript:;" class="look_more">了解更多></a>
                     </li>
-                    <li @click="modal5 = true">
+                    <li @click="modal6 = true">
                         <span class="space_tip company"></span>
                         <h4>业主委托</h4>
 
@@ -153,26 +156,77 @@
                     </li>
                 </ul>
             </div>
-            <Modal
-                v-model="modal5"
-                width="836">
-                <Form :model="formItem" :label-width="80">
-                <h3 style="font-size:36px; text-align:center;">安心委托,快速成交</h3>
-                <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
-                    <Form-item label="输入框">
-                        <Input v-model="formItem.input" placeholder="请输入"></Input>
-                    </Form-item>  
-                    <!-- <Form-item label="选择器">
-                        <Select v-model="formItem.select" placeholder="请选择">
-                            <Option value="beijing">北京市</Option>
-                            <Option value="shanghai">上海市</Option>
-                            <Option value="shenzhen">深圳市</Option>
-                        </Select>
-                    </Form-item> -->
-                    <p>您也可以拨打400-810-6698直接委托房源</p>
-                    <button>提交委托</button>
-                </Form>
+            <Modal v-model="modal5">
+                <div popup>
+                    <Form :model="formItem">
+                        <h3>安心委托,快速成交</h3>
+                        <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
+                        <div class="popItem">
+                            <span class="inp_icon"></span>
+                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
+                            <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
+                        </div>
+                        <div class="popItem">
+                            <span class="inp_icon"></span>
+                            <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
+                        </div>
+                        <p>您也可以拨打<i>400-810-6698</i>直接委托房源</p>
+                        <input type="submit" class="pop_subbtn" value="提交委托"></button>
+                    </Form>
+                </div>
             </Modal>
+
+            <Modal v-model="modal6">
+                <div popup>
+                    <Form :model="formItem">
+                        <h4>帮我找楼</h4>
+                        <div class="popItem">
+                            <span class="inp_icon"></span>
+                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
+                            <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
+                        </div>
+                        <div class="popItem">
+                            <span class="inp_icon"></span>
+                            <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
+                        </div>
+                        <p class="help_tips">*输入您的手机号码,以便优办提供更高效的服务</p>
+
+                        <div class="clearfix">
+                            <div class="pop_list fl">
+                                <span>区域</span>
+                                <i></i>
+                                <ul style="display:none;"><li>123</li></ul>
+                            </div>
+
+                            <div class="pop_list fr">
+                                <span>商圈</span>
+                                <i></i>
+                                <ul style="display:none;"><li>123</li></ul>
+                            </div>
+
+                            <div class="pop_list fl">
+                                <span>面积</span>
+                                <input type="text" id="area_text" value="" name="">
+                                <i>平米</i>
+                            </div>
+
+                            <div class="pop_list fr">
+                                <span>租金</span>
+                                <input type="text" id="rent_text" value="" name="">
+                                <i>元/月</i>
+                            </div>
+                        </div>  
+                        <textarea placeholder="请输入您的其他需求……">
+                            
+                        </textarea>
+
+                        <p>您也可以拨打<i>400-810-6698</i>直接委托需求给优办</p>    
+
+                        <input type="submit" class="pop_subbtn" value="确    认"></button>
+                    </Form>
+                </div>
+            </Modal>
+
     </div>
     <!--邻居-->
     <div neighbour>
@@ -274,6 +328,7 @@
             return {
                 value2: 1,
                 modal5: false,
+                modal6: false,
 
                 formItem: {
                     input: '',
@@ -320,9 +375,3 @@
         }   
     }
 </script>
-
-<style>
-    .ivu-modal-footer{
-        display: none;
-    }
-</style>
