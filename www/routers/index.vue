@@ -326,6 +326,7 @@
         components: { header1,footer1 },
         data () {
             return {
+                
                 value2: 1,
                 modal5: false,
                 modal6: false,
