@@ -1,102 +1,186 @@
 @import '../color';
 
-[popup]{
-	width:100%;
-	margin: 0 auto 20px;
-	text-align: center;
-	padding: 12px;
-	h3{
-		font-size:@font28;
-		margin-bottom: 10px;
-	}
-	p{
-		font-size: @font16;
-		margin-bottom: 25px;
-		&.help_tips{
-			text-align: left;
-			font-size: 14px;
-			color: @cl_default;
-		}
-		i{
-			color:@cl_mobile_red;
-		}
-	}
-	.popItem{
-		width: 100%;
-		height:50px;
-		position: relative;
-		margin-bottom: 20px;
-		.inp_icon{
-			position: absolute;
-			left: 1px;
-			top: 1px;
-			width: 48px;
-			height: 48px;
-			background-color: blue;
-		}
-		input{
-			width: 100%;
-			height:100%;
-			padding: 10px 0 10px 60px;
-			border:1px solid @bdc_input;
-			color: @cl_input;
-			font-size: @font16;
-			&:focus{
-				border:1px solid red;
-			}
-		}
-		.pop_sendcode_btn{
-			position: absolute;
-			right:1px;
-			top: 1px;
-			width: 150px;
-			height:48px;
-			color: #fff;
-			font-size: @font16;
-			text-align: center;
-			line-height: 50px;
-			background-color: @bg_skyblue;
-		}
-	}
-	.pop_subbtn{
-		width: 100%;
-		height:50px;
-		color: #fff;
-		text-align: center;
-		line-height: 50px;
-		background-color: @bg_skyblue;
-		font-size: @font16;
-		cursor: pointer;
-	}
+/*iview 默认样式重置start*/
 
-	.pop_list{
-		text-align: left;
-		position: relative;
-		display: inline-block;
-		height: 50px;
-		line-height: 50px;
-		width: 210px;
-		border:1px solid @cl_input;
-		margin-bottom: 20px;
-		padding: 0 20px;
-		i{
-			position: absolute;
-			right: 20px;
-			top: 0;
-		}
+.ivu-modal-close {
+  right: 22px;
+  top: 22px;
+}
 
-		input{
-			border:none;
-			height:48px;
-			vertical-align: top;
+.ivu-modal-close .ivu-icon.ivu-icon-ios-close-empty {
+  background-color: red;
+  width: 27px;
+  height: 26px;
+  background: url("../../images/popup/close.png") no-repeat;
+  background-size: 26px 26px;
+  &::before {
+    content: "";
+  }
+}
 
-		}
+.ivu-select {
+  width: 75%;
+}
 
-	}
+.ivu-select-selection {
+  border: none;
+}
 
+.ivu-form .ivu-form-item-label {
+  font-size: @font15;
+  color: @cl_lightgray;
+}
+
+.ivu-select-single .ivu-select-selection .ivu-select-placeholder,
+.ivu-select-single .ivu-select-selection .ivu-select-selected-value {
+  font-size: @font15;
+}
+
+/*iview 默认样式重置end*/
+
+[popup] {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px;
+  h3 {
+    font-size: @font28;
+    margin-bottom: 10px;
+  }
+  h4 {
+    text-align: left;
+    font-size: @font28;
+    margin-bottom: 30px;
+  }
+  p {
+    font-size: @font16;
+    margin-bottom: 25px;
+    &.help_tips {
+      text-align: left;
+      font-size: 14px;
+      color: @cl_default;
+    }
+    i {
+      color: @cl_mobile_red;
+    }
+  }
+  .popItem {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    margin-bottom: 20px;
+    .inp_icon {
+      position: absolute;
+      left: 1px;
+      top: 1px;
+      width: 50px;
+      height: 48px;
+      border-right: 1px solid @bdc_input;
+      &.phone {
+        background: url("../../images/popup/phone.png") no-repeat 15px 10px;
+        background-size: 19px 27px;
+      }
+      &.password {
+        background: url("../../images/popup/password.png") no-repeat 15px 10px;
+        background-size: 19px 27px;
+      }
+
+    }
+    input {
+      width: 100%;
+      height: 100%;
+      padding: 10px 0 10px 60px;
+      border: 1px solid @bdc_input;
+      color: @cl_input;
+      font-size: @font16;
+      &:focus {
+        border: 1px solid @bg_blue;
+        box-shadow: 1px 0px 1px @bg_blue;
+      }
+    }
+    .pop_sendcode_btn {
+      position: absolute;
+      right: 1px;
+      top: 1px;
+      width: 150px;
+      height: 48px;
+      color: #fff;
+      font-size: @font16;
+      text-align: center;
+      line-height: 50px;
+      background-color: @bg_skyblue;
+    }
+  }
+  .pop_subbtn {
+    width: 100%;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    background-color: @bg_skyblue;
+    font-size: @font16;
+    cursor: pointer;
+  }
+
+  .pop_textarea {
+    font-size: @font15;
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    margin-bottom: 25px;
+    &::-webkit-input-placeholder {
+      color: @cl_lightgray;
+    }
+    &:-ms-input-placeholder {
+      color: @cl_lightgray;
+    }
+    &::-moz-placeholder {
+      color: @cl_lightgray;
+    }
+    &:-moz-placeholder {
+      color: @cl_lightgray;
+    }
+
+  }
+
+  .pop_list {
+    text-align: left;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    width: 210px;
+    border: 1px solid @cl_input;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    font-size: @font15;
+    color: @cl_lightgray;
+    &.right_none {
+      padding-right: 0;
+      padding-top: 5px;
+    }
+    i.pop_list_text {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      color: @cl_default;
+    }
+
+    input {
+      position: absolute;
+      left: 70px;
+      top: 0;
+      border: none;
+      width: 84px;
+      height: 48px;
+      vertical-align: top;
+
+    }
+
+  }
 
 }
 
-.ivu-modal-footer{
-        display: none;
-    }
+.ivu-modal-footer {
+  display: none;
+}

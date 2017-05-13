@@ -1,0 +1,157 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*登录背景深紫色 */
+/*辅助色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*棕色*/
+/*浅红色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+/* index header */
+[header] {
+  height: 88px;
+  background-color: #fff;
+  position: relative;
+  min-width: 1200px;
+  margin: 0 auto;
+}
+[header] .lion_text {
+  text-indent: -9999em;
+  height: 0;
+}
+[header] .lion_logo {
+  position: absolute;
+  width: 270px;
+  height: 49px;
+  left: 0;
+  top: 20px;
+}
+[header] [nav_boxs] {
+  height: 88px;
+}
+[header] [nav_boxs] ul.nav {
+  height: 100%;
+}
+[header] [nav_boxs] ul.nav li {
+  height: 100%;
+  width: 115px;
+  text-align: center;
+  float: left;
+  font-size: 16px;
+  position: relative;
+  transition: .5s all ease;
+}
+[header] [nav_boxs] ul.nav li a {
+  height: 100%;
+  padding-top: 35px;
+  display: block;
+}
+[header] [nav_boxs] ul.nav li:hover {
+  background-color: #0f6fac;
+}
+[header] [nav_boxs] ul.nav li:hover a {
+  color: #fff;
+}
+[header] [nav_boxs] ul.nav li.active {
+  background-color: #0f6fac;
+}
+[header] [nav_boxs] ul.nav li.active a {
+  color: #fff;
+}
+/* index footer */
+[footer] {
+  min-width: 1200px;
+  margin: 0 auto;
+  height: 220px;
+  color: #fff;
+  background-color: #333;
+}
+[footer] .foot_wrap {
+  width: 400px;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 90px;
+}
+[footer] .foot_wrap .bottom_nav {
+  padding-top: 13px;
+}
+[footer] .foot_wrap .bottom_nav a {
+  color: #fff;
+  font-size: 16px;
+}
+[footer] .foot_wrap .bottom_nav i {
+  height: 19px;
+  line-height: 19px;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  color: #fff;
+  margin: 1px 10px 0;
+}
+[footer] .foot_wrap .bottom_copyright {
+  font-size: 14px;
+  color: #b0b0b0;
+  padding-top: 7px;
+}
+[footer][add_reg] {
+  height: 200px;
+  background-color: #0f6fac;
+}
+[footer][add_login] {
+  height: 200px;
+  background-color: #fff;
+}
+[footer] .foot_head {
+  height: 177px;
+  padding-top: 30px;
+}
+[footer] .foot_head h3 {
+  font-size: 18px;
+  margin: 5px 0 20px;
+}
+[footer] .foot_head .weixin_text {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+[footer] .foot_bot {
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #494949;
+}
+[footer] .foot_bot span {
+  color: #b0b0b0;
+}
+[footer] .foot_bot span.bottom_copyright {
+  margin-right: 60px;
+}
+[footer] .foot_bot span a {
+  color: #b0b0b0;
+}

@@ -162,15 +162,15 @@
                         <h3>安心委托,快速成交</h3>
                         <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
                         <div class="popItem">
-                            <span class="inp_icon"></span>
+                            <span class="inp_icon phone"></span>
                             <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
                             <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
                         </div>
                         <div class="popItem">
-                            <span class="inp_icon"></span>
+                            <span class="inp_icon password"></span>
                             <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
                         </div>
-                        <p>您也可以拨打<i>400-810-6698</i>直接委托房源</p>
+                        <p>您也可以拨打<i> 400-810-6698 </i>直接委托房源</p>
                         <input type="submit" class="pop_subbtn" value="提交委托"></button>
                     </Form>
                 </div>
@@ -181,46 +181,53 @@
                     <Form :model="formItem">
                         <h4>帮我找楼</h4>
                         <div class="popItem">
-                            <span class="inp_icon"></span>
+                            <span class="inp_icon phone"></span>
                             <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
                             <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
                         </div>
                         <div class="popItem">
-                            <span class="inp_icon"></span>
+                            <span class="inp_icon password"></span>
                             <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
                         </div>
                         <p class="help_tips">*输入您的手机号码,以便优办提供更高效的服务</p>
 
                         <div class="clearfix">
-                            <div class="pop_list fl">
-                                <span>区域</span>
-                                <i></i>
-                                <ul style="display:none;"><li>123</li></ul>
-                            </div>
 
-                            <div class="pop_list fr">
-                                <span>商圈</span>
-                                <i></i>
-                                <ul style="display:none;"><li>123</li></ul>
-                            </div>
+                            <Form-item label="区域" prop="city" class="pop_list fl right_none">
+                                <Select v-model="formValidate.city" placeholder="请选择城市">
+                                    <Option v-for="item in cityList"
+                                            :value="item.value"
+                                            :key="item">{{ item.label }}
+                                    </Option>
+                                </Select>
+                            </Form-item>
+
+                            <Form-item label="商圈" prop="trade_area" class="pop_list fr right_none">
+                                <Select v-model="formValidate.trade_area" placeholder="请选择商圈">
+                                    <Option v-for="item in trade_areaList"
+                                            :value="item.value"
+                                            :key="item">{{ item.label }}
+                                    </Option>
+                                </Select>
+                            </Form-item>
 
                             <div class="pop_list fl">
                                 <span>面积</span>
-                                <input type="text" id="area_text" value="" name="">
-                                <i>平米</i>
+                                <input type="text" maxlength="9" id="area_text" value="" name="">
+                                <i class="pop_list_text">平米</i>
                             </div>
 
                             <div class="pop_list fr">
                                 <span>租金</span>
                                 <input type="text" id="rent_text" value="" name="">
-                                <i>元/月</i>
+                                <i class="pop_list_text">元/月</i>
                             </div>
-                        </div>  
-                        <textarea placeholder="请输入您的其他需求……">
+                        </div>
+                        <textarea class="pop_textarea" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等" >
                             
                         </textarea>
 
-                        <p>您也可以拨打<i>400-810-6698</i>直接委托需求给优办</p>    
+                        <p>您也可以拨打<i> 400-810-6698 </i>直接委托需求给优办</p>
 
                         <input type="submit" class="pop_subbtn" value="确    认"></button>
                     </Form>
@@ -326,7 +333,7 @@
         components: { header1,footer1 },
         data () {
             return {
-                
+
                 value2: 1,
                 modal5: false,
                 modal6: false,
@@ -334,12 +341,49 @@
                 formItem: {
                     input: '',
                     select: ''
-                }
+                },
+
+                formValidate: {
+                    city: '',
+                    trade_area:''
+                },
+
+                //弹窗城市和商圈选择
+                cityList: [
+                    {
+                        value: 'beijing',
+                        label: '北京市'
+                    },
+                    {
+                        value: 'shanghai',
+                        label: '上海市'
+                    },
+                    {
+                        value: 'shenzhen',
+                        label: '深圳市'
+                    }
+                ],
+
+                trade_areaList: [
+                    {
+                        value: 'cbd',
+                        label: 'CBD商圈'
+                    },
+                    {
+                        value: 'wagfujing',
+                        label: '王府井商圈'
+                    },
+                    {
+                        value: 'sanlitun',
+                        label: '三里屯商圈'
+                    }
+                ],
+
             }
         },
 
         methods:{
-            show_num:function (id,d){ 
+            show_num:function (id,d){
             //d 跳动到最后的数字
             var time = 1500, //全部时间
                 outTime = 0, //实时时间
@@ -364,7 +408,7 @@
                         this.$Message.error('表单验证失败!');
                     }
                 })
-            } 
+            }
         },
 
         mounted:function(){
@@ -373,6 +417,6 @@
             this.show_num('#bannerNum2',1000);
             this.show_num('#bannerNum3',2000);
             this.show_num('#bannerNum4',410);
-        }   
+        }
     }
 </script>
