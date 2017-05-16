@@ -37,19 +37,19 @@
                     <ul class="banner_introduce clearfix">
                         <li class="active">
                             <p>运营面积</p>
-                            <span><i id="bannerNum1">140000</i>㎡</span>
+                            <span><i id="bannerNum1"></i>㎡</span>
                         </li>
                         <li>
                             <p>入驻企业</p>
-                            <span><i id="bannerNum2">1000</i>+</span>
+                            <span><i id="bannerNum2"></i>+</span>
                         </li>
                         <li>
                             <p>联合服务商</p>
-                            <span><i id="bannerNum3">2000</i>+</span>
+                            <span><i id="bannerNum3"></i>+</span>
                         </li>
                         <li>
                             <p>管理团队</p>
-                            <span><i id="bannerNum4">410</i>+</span>
+                            <span><i id="bannerNum4"></i>+</span>
                         </li>
                     </ul>
                 </div>
@@ -325,7 +325,7 @@
     <footer1></footer1>
 </div>
 </template>
-<script type="text/ecmascript-6">
+<script type="es6">
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
@@ -396,6 +396,7 @@
                         $(id).html(parseInt(d / time * outTime));
                     } else {
                         $(id).html(d);
+                        clearInterval(powertimer);
                     }
                 }, interTime);
             },
