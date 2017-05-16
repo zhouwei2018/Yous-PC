@@ -96,6 +96,23 @@
         &:hover {
           background-color: @bg_blue;
           color: @cl_white;
+          .one_tip{
+            &.location {
+              background-position: 5px -153px;
+            }
+
+            &.service {
+              background-position: -140px -154px;
+            }
+
+            &.update {
+              background-position: -290px -153px;
+            }
+
+            &.communicate {
+              background-position: -450px -153px;
+            }
+          }
         }
         &:last-child {
           margin-right: 0;
@@ -105,17 +122,23 @@
           width: 118px;
           height: 103px;
           margin-bottom: 60px;
-          background: url("../../images/index/location.png") no-repeat;
+          background: url("../../images/index/lion_state_tips.png") no-repeat;
+          background-size: 600px 285px;
+          transition: .7s all ease;
+          &.location {
+            background-position: 5px -10px;
+          }
           &.service {
-            background: url("../../images/index/service.png") no-repeat;
+            background-position: -140px -10px;
           }
 
           &.update {
-            background: url("../../images/index/update.png") no-repeat;
+            height: 108px;
+            background-position: -290px -10px;
           }
 
           &.communicate {
-            background: url("../../images/index/communicate.png") no-repeat;
+            background-position: -450px -10px;
           }
         }
 
@@ -142,6 +165,9 @@
 
     .space_top {
       margin-bottom: 40px;
+      .spa_item{
+        overflow: hidden;
+      }
       .space_top_left {
         width: 635px;
         height: 396px;

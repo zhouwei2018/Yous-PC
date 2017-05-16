@@ -93,24 +93,24 @@
         <div space>
             <h3 class="content_tit">空间展示</h3>
 
-            <div class="space_top contents clearfix" style="overflow:visible">
-                <div class="fl space_top_left">
+            <div class="space_top contents clearfix">
+                <div class="fl space_top_left spa_item">
                     <img src="../resources/images/index/space01.png" alt=""/>
                     <!--<div class="space_bg_wrap">-->
                     <!--<div class="space_bg"></div>-->
                     <!--<span>235243</span>-->
                     <!--</div>-->
                 </div>
-                <div class="fl clearfix space_top_right" style="overflow:visible">
-                    <div class="spa_top clearfix" style="overflow:visible">
-                        <div class="spa_top_left fl">
+                <div class="fl clearfix space_top_right" >
+                    <div class="spa_top clearfix">
+                        <div class="spa_top_left fl spa_item">
                             <img src="../resources/images/index/space02.png" alt=""/>
                             <!--<div class="space_bg_wrap">-->
                             <!--<div class="space_bg"></div>-->
                             <!--<span>235243</span>-->
                             <!--</div>-->
                         </div>
-                        <div class="spa_top_right fl">
+                        <div class="spa_top_right fl spa_item">
                             <img src="../resources/images/index/space03.png" alt=""/>
                             <!--<div class="space_bg_wrap">-->
                             <!--<div class="space_bg"></div>-->
@@ -118,15 +118,15 @@
                             <!--</div></div>-->
                         </div>
                     </div>
-                    <div class="spa_bot clearfix" style="overflow:visible">
-                        <div class="spa_bot_left fl">
+                    <div class="spa_bot clearfix" >
+                        <div class="spa_bot_left fl spa_item">
                             <img src="../resources/images/index/space02.png" alt=""/>
                             <!--<div class="space_bg_wrap">-->
                             <!--<div class="space_bg"></div>-->
                             <!--<span>235243</span>-->
                             <!--</div>-->
                         </div>
-                        <div class="spa_bot_right fl">
+                        <div class="spa_bot_right fl spa_item">
                             <img src="../resources/images/index/space03.png" alt=""/>
                             <!--<div class="space_bg_wrap">-->
                             <!--<div class="space_bg"></div>-->

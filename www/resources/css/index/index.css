@@ -124,6 +124,18 @@
   background-color: #0f6fac;
   color: #fff;
 }
+[index_content] [one_state] ul li:hover .one_tip.location {
+  background-position: 5px -153px;
+}
+[index_content] [one_state] ul li:hover .one_tip.service {
+  background-position: -140px -154px;
+}
+[index_content] [one_state] ul li:hover .one_tip.update {
+  background-position: -290px -153px;
+}
+[index_content] [one_state] ul li:hover .one_tip.communicate {
+  background-position: -450px -153px;
+}
 [index_content] [one_state] ul li:last-child {
   margin-right: 0;
 }
@@ -132,16 +144,22 @@
   width: 118px;
   height: 103px;
   margin-bottom: 60px;
-  background: url("../../images/index/location.png") no-repeat;
+  background: url("../../images/index/lion_state_tips.png") no-repeat;
+  background-size: 600px 285px;
+  transition: .7s all ease;
+}
+[index_content] [one_state] ul li .one_tip.location {
+  background-position: 5px -10px;
 }
 [index_content] [one_state] ul li .one_tip.service {
-  background: url("../../images/index/service.png") no-repeat;
+  background-position: -140px -10px;
 }
 [index_content] [one_state] ul li .one_tip.update {
-  background: url("../../images/index/update.png") no-repeat;
+  height: 108px;
+  background-position: -290px -10px;
 }
 [index_content] [one_state] ul li .one_tip.communicate {
-  background: url("../../images/index/communicate.png") no-repeat;
+  background-position: -450px -10px;
 }
 [index_content] [one_state] ul li h4 {
   font-size: 22px;
@@ -159,6 +177,9 @@
 }
 [index_content] [space] .space_top {
   margin-bottom: 40px;
+}
+[index_content] [space] .space_top .spa_item {
+  overflow: hidden;
 }
 [index_content] [space] .space_top .space_top_left {
   width: 635px;
