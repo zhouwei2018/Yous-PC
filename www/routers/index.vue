@@ -325,7 +325,7 @@
     <footer1></footer1>
 </div>
 </template>
-<script>
+<script type="text/ecmascript-6">
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';

@@ -22,32 +22,24 @@
 
   [nav_boxs] {
     height: 88px;
-    ul.nav {
+    .nav {
       height: 100%;
-      li {
+      a {
         height: 100%;
         width: 115px;
+        padding-top: 35px;
         text-align: center;
         float: left;
         font-size: @font16;
         position: relative;
         transition: .5s all ease;
-        a{
-          height: 100%;
-          padding-top: 35px;
-          display: block;
-        }
         &:hover {
           background-color: @bg_blue;
-          a {
-            color: @cl_white;
-          }
+          color: @cl_white;
         }
         &.active {
           background-color: @bg_blue;
-          a {
-            color: @cl_white;
-          }
+          color: @cl_white;
         }
       }
 
