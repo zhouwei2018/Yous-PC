@@ -17,6 +17,7 @@
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
 /*天蓝色*/
+/*深蓝色*/
 /*棕色*/
 /*浅红色*/
 /*边线颜色*/
@@ -243,7 +244,7 @@
 [index_content] [space] .space_bot {
   height: 378px;
   background: url("../../images/index/city_bg.png") no-repeat;
-  background-size: cover;
+  background-size: contain;
   position: relative;
 }
 [index_content] [space] .space_bot .space_bot_bg {

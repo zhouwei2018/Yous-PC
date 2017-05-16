@@ -6,9 +6,11 @@
   .invest_banner {
     height: 500px;
     text-align: center;
-    background-color: @bg_blue;
+    background: url("../../images/invest/invest_bg.png") no-repeat;
+    background-size: contain;
     color: @cl_white;
-    padding-top: 90px;
+    padding-top: 80px;
+
     h3 {
       font-size: @font34;
       font-weight: 600;
@@ -126,10 +128,10 @@
         color: @cl_white;
         font-size: @font18;
         background-color: @bg_seablue;
-        &:last-child{
+        &:last-child {
           margin-right: 0;
         }
-        &.brown{
+        &.brown {
           padding-top: 58px;
           background-color: @bg_brown;
           img {
@@ -137,7 +139,7 @@
             height: 80px;
           }
         }
-        &.red{
+        &.red {
           padding-top: 65px;
           background-color: @bg_lightred;
           img {

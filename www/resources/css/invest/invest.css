@@ -17,6 +17,7 @@
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
 /*天蓝色*/
+/*深蓝色*/
 /*棕色*/
 /*浅红色*/
 /*边线颜色*/
@@ -40,9 +41,10 @@
 [invest] .invest_banner {
   height: 500px;
   text-align: center;
-  background-color: #0f6fac;
+  background: url("../../images/invest/invest_bg.png") no-repeat;
+  background-size: contain;
   color: #fff;
-  padding-top: 90px;
+  padding-top: 80px;
 }
 [invest] .invest_banner h3 {
   font-size: 34px;
