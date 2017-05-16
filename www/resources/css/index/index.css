@@ -244,7 +244,7 @@
 [index_content] [space] .space_bot {
   height: 378px;
   background: url("../../images/index/city_bg.png") no-repeat;
-  background-size: contain;
+  background-size: 100% 100%;
   position: relative;
 }
 [index_content] [space] .space_bot .space_bot_bg {
