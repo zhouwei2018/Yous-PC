@@ -59,18 +59,6 @@
                   </li>
               </ul>
 
-              <!--分页 start-->
-              <div class="page_box">
-                  <span class="pg_pre"><i>&lt;</i>上一页</span>
-                  <a class="pg_link" href="javascript:;">1</a>
-                  <a class="pg_link" href="javascript:;">2</a>
-                  <a class="pg_link" href="javascript:;">3</a>
-                  <a class="pg_link" href="javascript:;">4</a>
-                  <a class="pg_link" href="javascript:;">…</a>
-                  <a class="pg_link" href="javascript:;">14</a>
-                  <span class="pg_next">下一页<i>&gt;</i></span>
-              </div>
-
           </div>
       </div>
 
