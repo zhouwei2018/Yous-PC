@@ -19,16 +19,16 @@
         <div class="banner_cont">
             <Carousel autoplay v-model="value2">
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner01.jpg" alt=""/></div>
                 </Carousel-item>
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner02.jpg" alt=""/></div>
                 </Carousel-item>
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner03.jpg" alt=""/></div>
                 </Carousel-item>
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner04.jpg" alt=""/></div>
                 </Carousel-item>
             </Carousel>
         </div>
