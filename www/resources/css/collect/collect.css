@@ -54,6 +54,7 @@
   min-height: 210px;
   position: relative;
   margin-bottom: 20px;
+  background-color: #fff;
 }
 [activity] .act_wrap ul li img {
   width: 384px;
@@ -63,7 +64,6 @@
   width: 606px;
   height: 100%;
   padding: 15px 30px 0 20px;
-  background-color: #fff;
 }
 [activity] .act_wrap ul li .act_text_wrap h4 {
   margin-bottom: 10px;
