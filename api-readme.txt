@@ -16,18 +16,19 @@ RequestJson： {"parameters":{},"foreEndType":2,"code":"10000001"}
 ResponseJson  {"success":true,"message":"ok","data":[],"code":null}
 
 
+
 模块-官网首页（20-开头）
 
 -----------------------------------------------------------------------------
 API名称 ：     获取区域
 APICode ：     20000001
-RequestJson： {"parameters":{"area_id":2},"foreEndType":2,"code":"20000001"}
+RequestJson： {"parameters":{"province_id":1},"foreEndType":2,"code":"20000001"}
 ResponseJson  {"success":true,"message":"ok","data":[],"code":null}
 -----------------------------------------------------------------------------
 
 API名称 ：     获取核心商圈
 APICode ：     20000002
-RequestJson： {"parameters":{"province_id":1},"foreEndType":2,"code":"20000002"}
+RequestJson： {"parameters":{"area_id":1},"foreEndType":2,"code":"20000002"}
 ResponseJson  {"success":true,"message":"ok","data":[],"code":null}
 
 -----------------------------------------------------------------------------
