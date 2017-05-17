@@ -63,7 +63,7 @@
                   <span class="fl">核心商圈</span>
 
                   <div class="fl">
-                      <a href="javascript:;" v-for='(item,index) in menueItems' v-text="item.name" :class="{active:item.iscur}" @click="setCur(index,item.areaId)"></a>
+                      <a href="javascript:;" v-for='(item,index) in areaItems' v-text="item.name" :class="{active:item.iscur}" @click="setCur(index,item.areaId)"></a>
                   </div>
               </div>
 
@@ -119,14 +119,11 @@ export default {
     data(){
   　　　return {
             areaItem:{},
-            menueItems:[
-              {"areaId":0,"name":"CBD区","iscur":true},
-              {"areaId":1,"name":"朝阳门","iscur":false},
-              {"areaId":2,"name":"建国门","iscur":false}
-            ],
             areaItems:[
               {
                 "areaId":0,
+                "name":"CBD区",
+                "iscur":true,
                 "areaHouse":[
                             {"name":"海淀大厦1","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
                             {"name":"海淀大厦2","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
@@ -135,6 +132,8 @@ export default {
              },
              {
                "areaId":1,
+               "name":"朝阳门",
+               "iscur":false,
                "areaHouse":[
                            {"name":"朝阳门SOHO1","address":"北京市朝阳区东二环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
                            {"name":"朝阳门SOHO2","address":"北京市朝阳区东二环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
@@ -143,6 +142,8 @@ export default {
             },
             {
               "areaId":2,
+              "name":"建国门",
+              "iscur":false,
               "areaHouse":[
                           {"name":"望京SOHO1","address":"北京市朝阳望京中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
                           {"name":"望京SOHO2","address":"北京市朝阳望京中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
@@ -154,16 +155,17 @@ export default {
        }
   　},
     mounted:function(){
-        this.areaItem=this.areaItems[0];
+        this.setAreaItem(0)
     },
     methods:{
         setCur: function (index,areaId) {
-        this.menueItems.map(function (v,i) {
-            i==index? v.iscur=true: v.iscur=false;
-        });
-        debugger;
-        this.areaItem=this.areaItems[index]
-
+          this.areaItems.map(function (v,i) {
+              i==index? v.iscur=true: v.iscur=false;
+          });
+          this.setAreaItem(index)
+       },
+       setAreaItem:function(index){
+          this.areaItem=this.areaItems[index]
        }
     }
 }
