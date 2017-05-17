@@ -138,7 +138,6 @@
             </div>
 
             <div class="space_bot">
-                <div class="space_bot_bg"></div>
                 <ul class="clearfix contents">
                     <li  @click="modal5 = true">
                         <span class="space_tip"></span>

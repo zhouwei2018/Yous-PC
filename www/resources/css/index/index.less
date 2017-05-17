@@ -35,7 +35,7 @@
     .banner_bot {
       width: 100%;
       height: 108px;
-      background-color: @bg_lightgray;
+      background-color: @bg_deepgray;
       position: absolute;
       left: 0;
       bottom: 0;
@@ -82,7 +82,7 @@
 
   [one_state] {
     background-color: @bg_white;
-    padding-bottom: 60px;
+    padding-bottom: 50px;
     ul {
       li {
         width: 286px;
@@ -96,6 +96,9 @@
         &:hover {
           background-color: @bg_blue;
           color: @cl_white;
+          p{
+            color: @cl_white;
+          }
           .one_tip{
             &.location {
               background-position: 5px -153px;
@@ -149,7 +152,8 @@
 
         p {
           text-align: left;
-          line-height: 24px;
+          line-height: 21px;
+          color: @cl_black;
         }
       }
     }
@@ -242,26 +246,14 @@
 	        }
           }
         }
-
       }
-
     }
 
     .space_bot {
       height: 378px;
-      background: url("../../images/index/city_bg.png") no-repeat;
+      background: url("../../images/index/city_bg.jpg") no-repeat;
       background-size: 100% 100%;
       position: relative;
-      .space_bot_bg {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: @bg_black;
-        opacity: .85;
-        filter: alpha(opacity=85);
-      }
       ul {
         position: relative;
         height: 378px;
@@ -317,7 +309,7 @@
 
   [neighbour] {
     background-color: @bg_white;
-    padding-bottom: 80px;
+    padding-bottom: 70px;
     .neigh_left {
       width: 670px;
       height: 400px;
@@ -331,7 +323,7 @@
           position: relative;
           &:hover {
             .neigh_mask {
-              opacity: .5;
+              opacity: .9;
             }
             .neigh_content {
               opacity: 1;
@@ -407,8 +399,8 @@
               width: 100%;
               height: 100%;
               background-color: @bg_blue;
-              opacity: .7;
-              filter:alpha(opacity=70);
+              opacity: .6;
+              filter:alpha(opacity=60);
 
             }
             .com_detail_cont{

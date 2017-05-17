@@ -13,6 +13,7 @@
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
 /*用于背景颜色深黑色*/
+/*用于背景颜色深灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
@@ -68,7 +69,7 @@
 [index_content] .banner_wrap .banner_bot {
   width: 100%;
   height: 108px;
-  background-color: #c9c9c9;
+  background-color: #959595;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -109,12 +110,12 @@
 }
 [index_content] [one_state] {
   background-color: #fff;
-  padding-bottom: 60px;
+  padding-bottom: 50px;
 }
 [index_content] [one_state] ul li {
   width: 286px;
   height: 443px;
-  border: 1px solid #dfdfdf;
+  border: 1px solid #e0e0e0;
   float: left;
   text-align: center;
   margin-right: 18px;
@@ -123,6 +124,9 @@
 }
 [index_content] [one_state] ul li:hover {
   background-color: #0f6fac;
+  color: #fff;
+}
+[index_content] [one_state] ul li:hover p {
   color: #fff;
 }
 [index_content] [one_state] ul li:hover .one_tip.location {
@@ -168,7 +172,8 @@
 }
 [index_content] [one_state] ul li p {
   text-align: left;
-  line-height: 24px;
+  line-height: 21px;
+  color: #959595;
 }
 [index_content] [space] h3 {
   background-color: #f5f5f5;
@@ -243,19 +248,9 @@
 }
 [index_content] [space] .space_bot {
   height: 378px;
-  background: url("../../images/index/city_bg.png") no-repeat;
+  background: url("../../images/index/city_bg.jpg") no-repeat;
   background-size: 100% 100%;
   position: relative;
-}
-[index_content] [space] .space_bot .space_bot_bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  opacity: .85;
-  filter: alpha(opacity=85);
 }
 [index_content] [space] .space_bot ul {
   position: relative;
@@ -304,7 +299,7 @@
 }
 [index_content] [neighbour] {
   background-color: #fff;
-  padding-bottom: 80px;
+  padding-bottom: 70px;
 }
 [index_content] [neighbour] .neigh_left {
   width: 670px;
@@ -320,7 +315,7 @@
   position: relative;
 }
 [index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap:hover .neigh_mask {
-  opacity: .5;
+  opacity: .9;
 }
 [index_content] [neighbour] .neigh_left .naight_left_tab .neight_mask_wrap:hover .neigh_content {
   opacity: 1;
@@ -384,8 +379,8 @@
   width: 100%;
   height: 100%;
   background-color: #0f6fac;
-  opacity: .7;
-  filter: alpha(opacity=70);
+  opacity: .6;
+  filter: alpha(opacity=60);
 }
 [index_content] [neighbour] .neigh_right .com_detail li .com_detail_mask_wrap .com_detail_cont {
   position: absolute;

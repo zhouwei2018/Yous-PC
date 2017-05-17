@@ -13,6 +13,7 @@
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
 /*用于背景颜色深黑色*/
+/*用于背景颜色深灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
@@ -69,7 +70,7 @@
   color: #999;
   padding-bottom: 10px;
   font-size: 27px;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #e0e0e0;
   margin-bottom: 50px;
 }
 [about_us] .about_right img {

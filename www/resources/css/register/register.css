@@ -15,6 +15,7 @@
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
 /*用于背景颜色深黑色*/
+/*用于背景颜色深灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
@@ -240,7 +241,7 @@ body [top_box] .content_wrap .login_mode .login_mode_tab {
 body [top_box] .content_wrap .login_mode .login_mode_tab span {
   width: 125px;
   height: 1px;
-  background-color: #dfdfdf;
+  background-color: #e0e0e0;
   position: absolute;
   left: 0;
   top: 10px;
