@@ -50,13 +50,13 @@
   margin-bottom: 20px;
 }
 [activity] .act_wrap ul li {
-  height: 210px;
+  min-height: 210px;
   position: relative;
   margin-bottom: 20px;
 }
 [activity] .act_wrap ul li img {
   width: 384px;
-  height: 100%;
+  height: 210px;
 }
 [activity] .act_wrap ul li .act_text_wrap {
   width: 606px;
@@ -66,6 +66,9 @@
 }
 [activity] .act_wrap ul li .act_text_wrap h4 {
   margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
 }
 [activity] .act_wrap ul li .act_text_wrap p {
   line-height: 25px;

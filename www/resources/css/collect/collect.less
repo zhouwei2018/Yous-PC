@@ -16,12 +16,12 @@
       overflow: hidden;
       margin-bottom: 20px;
       li {
-        height: 210px;
+        min-height: 210px;
         position: relative;
         margin-bottom: 20px;
         img {
           width: 384px;
-          height: 100%;
+          height: 210px;
         }
 
         .act_text_wrap {
@@ -31,6 +31,9 @@
           background-color: @bg_white;
           h4 {
             margin-bottom: 10px;
+            font-size: @font18;
+            font-weight: 600;
+            color: @cl_default;
           }
           p{
             line-height: 25px;
