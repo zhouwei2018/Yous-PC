@@ -19,16 +19,16 @@
         <div class="banner_cont">
             <Carousel autoplay v-model="value2">
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner01.jpg" alt=""/></div>
                 </Carousel-item>
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner02.jpg" alt=""/></div>
                 </Carousel-item>
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner03.jpg" alt=""/></div>
                 </Carousel-item>
                 <Carousel-item>
-                    <div class="demo-carousel"><img src="../resources/images/index/banner01.png" alt=""/></div>
+                    <div class="demo-carousel"><img src="../resources/images/index/banner04.jpg" alt=""/></div>
                 </Carousel-item>
             </Carousel>
         </div>
@@ -95,7 +95,7 @@
 
         <div class="space_top contents clearfix">
             <div class="fl space_top_left spa_item">
-                <img src="../resources/images/index/space01.png" alt=""/>
+                <img src="../resources/images/index/space01.jpg" alt=""/>
                 <!--<div class="space_bg_wrap">-->
                 <!--<div class="space_bg"></div>-->
                 <!--<span>235243</span>-->
@@ -104,14 +104,14 @@
             <div class="fl clearfix space_top_right" >
                 <div class="spa_top clearfix">
                     <div class="spa_top_left fl spa_item">
-                        <img src="../resources/images/index/space02.png" alt=""/>
+                        <img src="../resources/images/index/space02.jpg" alt=""/>
                         <!--<div class="space_bg_wrap">-->
                         <!--<div class="space_bg"></div>-->
                         <!--<span>235243</span>-->
                         <!--</div>-->
                     </div>
                     <div class="spa_top_right fl spa_item">
-                        <img src="../resources/images/index/space03.png" alt=""/>
+                        <img src="../resources/images/index/space03.jpg" alt=""/>
                         <!--<div class="space_bg_wrap">-->
                         <!--<div class="space_bg"></div>-->
                         <!--<span>235243</span>-->
@@ -120,14 +120,14 @@
                 </div>
                 <div class="spa_bot clearfix" >
                     <div class="spa_bot_left fl spa_item">
-                        <img src="../resources/images/index/space02.png" alt=""/>
+                        <img src="../resources/images/index/space04.jpg" alt=""/>
                         <!--<div class="space_bg_wrap">-->
                         <!--<div class="space_bg"></div>-->
                         <!--<span>235243</span>-->
                         <!--</div>-->
                     </div>
                     <div class="spa_bot_right fl spa_item">
-                        <img src="../resources/images/index/space03.png" alt=""/>
+                        <img src="../resources/images/index/space05.jpg" alt=""/>
                         <!--<div class="space_bg_wrap">-->
                         <!--<div class="space_bg"></div>-->
                         <!--<span>235243</span>-->
