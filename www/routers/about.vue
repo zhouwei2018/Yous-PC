@@ -17,9 +17,10 @@
           <div class="contents clearfix">
               <div class="about_left fl">
                   <ul>
-                      <li class="active">关于幼狮</li>
-                      <li>工作机会</li>
-                      <li>条款与隐私</li>
+                      <!-- <li class="active" @click="tab(0)">关于幼狮</li>
+                      <li @click="tab(1)">工作机会</li>
+                      <li @click="tab(2)">条款与隐私</li> -->
+                      <li v-for='item in menueItems' v-text="item.name" :class="{active:item.iscur}" @click="setCur(item.index)"></li>
                   </ul>
               </div>
               <div class="about_right fl">
@@ -34,7 +35,6 @@
       </div>
 
 
-
       <!--footer-->
       <footer1></footer1>
   </div>
@@ -44,6 +44,24 @@
 import header1 from '../components/header.vue';
 import footer1 from '../components/footer.vue';
 export default {
-    components: { header1,footer1 }
+  components: { header1,footer1 },
+  data(){
+　　　　　　return {
+              menueItems:[
+                {"index":0,"name":"关于幼狮","iscur":true},
+                {"index":1,"name":"工作机会","iscur":false},
+                {"index":2,"name":"条款与隐私","iscur":false}
+              ]
+　　　　　　}
+　},
+  methods:{
+      setCur: function (index) {
+                debugger;
+      this.menueItems.map(function (v,i) {
+        debugger;
+          i==index? v.iscur=true: v.iscur=false;
+      });
+     }
+  }
 }
 </script>

@@ -63,45 +63,17 @@
                   <span class="fl">核心商圈</span>
 
                   <div class="fl">
-                      <a href="javascript:;" class="active">CBD区</a>
-                      <a href="javascript:;">朝阳门</a>
-                      <a href="javascript:;">建国门</a>
+                      <a href="javascript:;" v-for='(item,index) in menueItems' v-text="item.name" :class="{active:item.iscur}" @click="setCur(index,item.areaId)"></a>
                   </div>
               </div>
 
               <div class="center_list clearfix">
                   <ul class="fl">
-                      <li class="clearfix">
+                      <li class="clearfix" v-for='item in areaItem.areaHouse' >
                           <img class="fl" src="../resources/images/office/tradeArea01.png" alt=""/>
                           <div class="fl center_detail">
-                              <h3>建外SOHO</h3>
-                              <span>北京市朝阳区东三环中路</span>
-                              <ul>
-                                  <li><span class="list_square"></span>共8000个工位，40独立办公室</li>
-                                  <li><span class="list_square"></span>返税优惠 | 装修定制 | 创业补贴</li>
-                                  <li><span class="list_square"></span>最新活动：创业分享会“网红经济”</li>
-                              </ul>
-                              <a href="javascript:;" class="apply_btn">申请入驻</a>
-                          </div>
-                      </li>
-                      <li class="clearfix">
-                          <img class="fl" src="../resources/images/office/tradeArea02.png" alt=""/>
-                          <div class="fl center_detail">
-                              <h3>建外SOHO</h3>
-                              <span>北京市朝阳区东三环中路</span>
-                              <ul>
-                                  <li><span class="list_square"></span>共8000个工位，40独立办公室</li>
-                                  <li><span class="list_square"></span>返税优惠 | 装修定制 | 创业补贴</li>
-                                  <li><span class="list_square"></span>最新活动：创业分享会“网红经济”</li>
-                              </ul>
-                              <a href="javascript:;" class="apply_btn">申请入驻</a>
-                          </div>
-                      </li>
-                      <li class="clearfix">
-                          <img class="fl" src="../resources/images/office/tradeArea02.png" alt=""/>
-                          <div class="fl center_detail">
-                              <h3>建外SOHO</h3>
-                              <span>北京市朝阳区东三环中路</span>
+                              <h3>{{item.name}}</h3>
+                              <span>{{item.address}}</span>
                               <ul>
                                   <li><span class="list_square"></span>共8000个工位，40独立办公室</li>
                                   <li><span class="list_square"></span>返税优惠 | 装修定制 | 创业补贴</li>
@@ -143,6 +115,56 @@
 import header1 from '../components/header.vue';
 import footer1 from '../components/footer.vue';
 export default {
-    components: { header1,footer1 }
+    components: { header1,footer1 },
+    data(){
+  　　　return {
+            areaItem:{},
+            menueItems:[
+              {"areaId":0,"name":"CBD区","iscur":true},
+              {"areaId":1,"name":"朝阳门","iscur":false},
+              {"areaId":2,"name":"建国门","iscur":false}
+            ],
+            areaItems:[
+              {
+                "areaId":0,
+                "areaHouse":[
+                            {"name":"海淀大厦1","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
+                            {"name":"海淀大厦2","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
+                            {"name":"海淀大厦3","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"}
+                          ]
+             },
+             {
+               "areaId":1,
+               "areaHouse":[
+                           {"name":"朝阳门SOHO1","address":"北京市朝阳区东二环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
+                           {"name":"朝阳门SOHO2","address":"北京市朝阳区东二环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
+                           {"name":"朝阳门SOHO3","address":"北京市朝阳区东二环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"}
+                         ]
+            },
+            {
+              "areaId":2,
+              "areaHouse":[
+                          {"name":"望京SOHO1","address":"北京市朝阳望京中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
+                          {"name":"望京SOHO2","address":"北京市朝阳望京中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
+                          {"name":"望京SOHO3","address":"北京市朝阳区东二环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"}
+                        ]
+           }
+
+  　　　　　]
+       }
+  　},
+    mounted:function(){
+        this.areaItem=this.areaItems[0];
+    },
+    methods:{
+        setCur: function (index,areaId) {
+        this.menueItems.map(function (v,i) {
+            i==index? v.iscur=true: v.iscur=false;
+        });
+        debugger;
+        this.areaItem=this.areaItems[index]
+
+       }
+    }
 }
 </script>
