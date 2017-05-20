@@ -2,14 +2,13 @@
 
 /*index content*/
 [index_content] {
+  margin-top: -55px;
   .banner_wrap {
-    position: relative;
-    height: 558px;
     .banner_cont {
       position: relative;
-      height: 450px;
+      height: 550px;
       img{
-        height: 450px;
+        height: 550px;
       }
       .ban_tip_bot {
         position: absolute;
@@ -30,43 +29,51 @@
           }
         }
       }
+      .banner_bot {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        .banner_introduce {
+          width: 960px;
+          height: 90px;
+          margin: 0 auto;
+          color: #fff;
+          > li {
+            float: left;
+            padding-top: 5px;
+            height: 100%;
+            width: 240px;
+            padding-left: 45px;
+            border-right: 1px solid @bdc_line_white;
+            transition: .5s all ease;
+            opacity: .85;
+            filter:alpha(opacity=85);
 
-    }
-    .banner_bot {
-      width: 100%;
-      height: 108px;
-      background-color: @bg_deepgray;
-      position: absolute;
-      left: 0;
-      bottom: 0;
-
-      .banner_introduce {
-        height: 108px;
-        color: #fff;
-        > li {
-          float: left;
-          padding-top: 10px;
-          height: 100%;
-          width: 285px;
-          padding-left: 45px;
-          border-right: 1px solid @bdc_line_white;
-          transition: .5s all ease;
-          &:hover {
-            background-color: @bg_orange;
-          }
-          &.active{
-            background-color: @bg_orange;
-          }
-          &:last-child {
-            border-right: none;
-          }
-          p {
-            font-size: @font17;
-          }
-          span {
-            font-size: @font36;
+            &.area01{
+              background-color: @bg_banner01;
+            }
+            &.area02{
+              background-color: @bg_banner02;
+            }
+            &.area03{
+              background-color: @bg_banner03;
+            }
+            &.area04{
+              background-color: @bg_banner04;
+            }
+            &:last-child {
+              border-right: none;
+            }
+            p {
+              font-size: @font17;
+            }
+            span {
+              font-size: @font36;
+            }
           }
         }
+
       }
 
     }
@@ -86,13 +93,12 @@
     ul {
       li {
         width: 286px;
-        height: 443px;
-        border: 1px solid @bdc_gray;
+        height: 340px;
         float: left;
         text-align: center;
         margin-right: 18px;
         padding: 50px 25px 0;
-        transition: .5s all ease;
+        transition: .2s all ease;
         &:hover {
           background-color: @bg_blue;
           color: @cl_white;
@@ -101,19 +107,19 @@
           }
           .one_tip{
             &.location {
-              background-position: 5px -153px;
+              background-position: 5px -135px;
             }
 
             &.service {
-              background-position: -140px -154px;
+              background-position: -140px -135px;
             }
 
             &.update {
-              background-position: -290px -153px;
+              background-position: -304px -135px;
             }
 
             &.communicate {
-              background-position: -450px -153px;
+              background-position: -464px -135px;
             }
           }
         }
@@ -122,26 +128,26 @@
         }
         .one_tip {
           display: inline-block;
-          width: 118px;
-          height: 103px;
-          margin-bottom: 60px;
+          width: 100px;
+          height: 95px;
+          margin-bottom: 20px;
           background: url("../../images/index/lion_state_tips.png") no-repeat;
-          background-size: 600px 285px;
+          background-size: 620px 270px;
           transition: .7s all ease;
           &.location {
             background-position: 5px -10px;
           }
           &.service {
-            background-position: -140px -10px;
+            background-position: -140px -11px;
           }
 
           &.update {
             height: 108px;
-            background-position: -290px -10px;
+            background-position: -304px -21px;
           }
 
           &.communicate {
-            background-position: -450px -10px;
+            background-position: -464px -12px;
           }
         }
 
@@ -172,10 +178,38 @@
       .spa_item{
         overflow: hidden;
       }
+
+      .space_bg_wrap{
+        position: absolute;
+        left: 0;
+        bottom: -60px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        width: 100%;
+        font-size: @font18;
+        color: @cl_white;
+        span{
+          position: relative;
+        }
+        .space_bg{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background-color: @bg_black;
+          opacity: .3;
+          filter:alpha(opacity=30);
+        }
+        
+      }
+
       .space_top_left {
         width: 635px;
         height: 396px;
         margin-right: 15px;
+        position: relative;
         img{
         	transition:.4s all ease;
         }
@@ -193,6 +227,7 @@
           .spa_top_left{
             width: 300px;
             height: 190px;
+            position: relative;
             margin-right: 16px;
             img{
         		transition:.4s all ease;
@@ -207,6 +242,7 @@
           .spa_top_right{
             width: 230px;
             height: 190px;
+            position: relative;
             img{
         		transition:.4s all ease;
 	        }
@@ -223,6 +259,7 @@
             width: 230px;
             height: 190px;
             margin-right: 16px;
+            position: relative;
             img{
         		transition:.4s all ease;
 	        }
@@ -236,6 +273,7 @@
           .spa_bot_right{
             width: 300px;
             height: 190px;
+            position: relative;
             img{
         		transition:.4s all ease;
 	        }

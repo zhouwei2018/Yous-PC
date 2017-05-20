@@ -2,11 +2,12 @@
 
 /* index header */
 [header] {
-  height: 88px;
-  background-color: @bg_white;
+  height: 55px;
+  background-color: @bg_black;
   position: relative;
   min-width: 1200px;
   margin: 0 auto;
+  z-index: 999;
   .lion_text {
     text-indent: -9999em;
     height: 0;
@@ -14,25 +15,27 @@
 
   .lion_logo {
     position: absolute;
-    width: 270px;
-    height: 49px;
+    width: 130px;
+    height: 40px;
     left: 0;
-    top: 20px;
+    top: 10px;
   }
 
   [nav_boxs] {
-    height: 88px;
+    height: 55px;
     .nav {
       height: 100%;
       a {
         height: 100%;
         width: 115px;
-        padding-top: 35px;
+        border-radius: 2px;
+        padding-top: 15px;
         text-align: center;
         float: left;
         font-size: @font16;
         position: relative;
         transition: .5s all ease;
+        color: @cl_white;
         &:hover {
           background-color: @bg_blue;
           color: @cl_white;

@@ -36,16 +36,15 @@
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
 /*index content*/
-[index_content] .banner_wrap {
-  position: relative;
-  height: 558px;
+[index_content] {
+  margin-top: -55px;
 }
 [index_content] .banner_wrap .banner_cont {
   position: relative;
-  height: 450px;
+  height: 550px;
 }
 [index_content] .banner_wrap .banner_cont img {
-  height: 450px;
+  height: 550px;
 }
 [index_content] .banner_wrap .banner_cont .ban_tip_bot {
   position: absolute;
@@ -66,40 +65,48 @@
 [index_content] .banner_wrap .banner_cont .ban_tip_bot .ban_tip span.active {
   background-color: #0f6fac;
 }
-[index_content] .banner_wrap .banner_bot {
+[index_content] .banner_wrap .banner_cont .banner_bot {
   width: 100%;
-  height: 108px;
-  background-color: #959595;
   position: absolute;
   left: 0;
   bottom: 0;
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce {
-  height: 108px;
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce {
+  width: 960px;
+  height: 90px;
+  margin: 0 auto;
   color: #fff;
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce > li {
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li {
   float: left;
-  padding-top: 10px;
+  padding-top: 5px;
   height: 100%;
-  width: 285px;
+  width: 240px;
   padding-left: 45px;
   border-right: 1px solid #fff;
   transition: .5s all ease;
+  opacity: .85;
+  filter: alpha(opacity=85);
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce > li:hover {
-  background-color: #ea5433;
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area01 {
+  background-color: #658d9e;
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce > li.active {
-  background-color: #ea5433;
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area02 {
+  background-color: #4179ba;
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce > li:last-child {
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area03 {
+  background-color: #74b048;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area04 {
+  background-color: #e87e3f;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li:last-child {
   border-right: none;
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce > li p {
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li p {
   font-size: 17px;
 }
-[index_content] .banner_wrap .banner_bot .banner_introduce > li span {
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li span {
   font-size: 36px;
 }
 [index_content] .content_tit {
@@ -114,13 +121,12 @@
 }
 [index_content] [one_state] ul li {
   width: 286px;
-  height: 443px;
-  border: 1px solid #e0e0e0;
+  height: 340px;
   float: left;
   text-align: center;
   margin-right: 18px;
   padding: 50px 25px 0;
-  transition: .5s all ease;
+  transition: .2s all ease;
 }
 [index_content] [one_state] ul li:hover {
   background-color: #0f6fac;
@@ -130,41 +136,41 @@
   color: #fff;
 }
 [index_content] [one_state] ul li:hover .one_tip.location {
-  background-position: 5px -153px;
+  background-position: 5px -135px;
 }
 [index_content] [one_state] ul li:hover .one_tip.service {
-  background-position: -140px -154px;
+  background-position: -140px -135px;
 }
 [index_content] [one_state] ul li:hover .one_tip.update {
-  background-position: -290px -153px;
+  background-position: -304px -135px;
 }
 [index_content] [one_state] ul li:hover .one_tip.communicate {
-  background-position: -450px -153px;
+  background-position: -464px -135px;
 }
 [index_content] [one_state] ul li:last-child {
   margin-right: 0;
 }
 [index_content] [one_state] ul li .one_tip {
   display: inline-block;
-  width: 118px;
-  height: 103px;
-  margin-bottom: 60px;
+  width: 100px;
+  height: 95px;
+  margin-bottom: 20px;
   background: url("../../images/index/lion_state_tips.png") no-repeat;
-  background-size: 600px 285px;
+  background-size: 620px 270px;
   transition: .7s all ease;
 }
 [index_content] [one_state] ul li .one_tip.location {
   background-position: 5px -10px;
 }
 [index_content] [one_state] ul li .one_tip.service {
-  background-position: -140px -10px;
+  background-position: -140px -11px;
 }
 [index_content] [one_state] ul li .one_tip.update {
   height: 108px;
-  background-position: -290px -10px;
+  background-position: -304px -21px;
 }
 [index_content] [one_state] ul li .one_tip.communicate {
-  background-position: -450px -10px;
+  background-position: -464px -12px;
 }
 [index_content] [one_state] ul li h4 {
   font-size: 22px;
@@ -187,10 +193,35 @@
 [index_content] [space] .space_top .spa_item {
   overflow: hidden;
 }
+[index_content] [space] .space_top .space_bg_wrap {
+  position: absolute;
+  left: 0;
+  bottom: -60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+}
+[index_content] [space] .space_top .space_bg_wrap span {
+  position: relative;
+}
+[index_content] [space] .space_top .space_bg_wrap .space_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: .3;
+  filter: alpha(opacity=30);
+}
 [index_content] [space] .space_top .space_top_left {
   width: 635px;
   height: 396px;
   margin-right: 15px;
+  position: relative;
 }
 [index_content] [space] .space_top .space_top_left img {
   transition: .4s all ease;
@@ -207,6 +238,7 @@
 [index_content] [space] .space_top .space_top_right .spa_top .spa_top_left {
   width: 300px;
   height: 190px;
+  position: relative;
   margin-right: 16px;
 }
 [index_content] [space] .space_top .space_top_right .spa_top .spa_top_left img {
@@ -218,6 +250,7 @@
 [index_content] [space] .space_top .space_top_right .spa_top .spa_top_right {
   width: 230px;
   height: 190px;
+  position: relative;
 }
 [index_content] [space] .space_top .space_top_right .spa_top .spa_top_right img {
   transition: .4s all ease;
@@ -229,6 +262,7 @@
   width: 230px;
   height: 190px;
   margin-right: 16px;
+  position: relative;
 }
 [index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_left img {
   transition: .4s all ease;
@@ -239,6 +273,7 @@
 [index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_right {
   width: 300px;
   height: 190px;
+  position: relative;
 }
 [index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_right img {
   transition: .4s all ease;
