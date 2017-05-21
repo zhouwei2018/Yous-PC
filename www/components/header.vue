@@ -8,7 +8,7 @@
 
 <!--header start-->
 <template>
-    <div header>
+    <div header id="lion_head">
         <div class="contents clearfix">
             <router-link to="/index">
                 <div class="fl">

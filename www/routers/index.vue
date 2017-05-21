@@ -12,7 +12,7 @@
     }
 
     /*回到顶部*/
-    .side-contact >a{
+    .side-contact > a {
         display: block;
         width: 50px;
         height: 50px;
@@ -25,11 +25,12 @@
         -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
     }
-    .baseIcon{
+
+    .baseIcon {
         background: url("../resources/images/index/base-icon.png");
     }
 
-    .baseIcon-tel{
+    .baseIcon-tel {
         background-position: 5px -248px;
     }
 
@@ -40,7 +41,7 @@
 </style>
 
 <template>
-    <div class="all">
+    <div class="all" style="overflow: hidden">
         <!--header-->
         <header1></header1>
 
@@ -348,12 +349,16 @@
                             <ul>
                                 <li>
                                     <h4><i></i>幼狮空间，传递爱的力量</h4>
-                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a href="javascript:;" class="look_detail fr">【查看详情】</a></p>
+
+                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a
+                                            href="javascript:;" class="look_detail fr">【查看详情】</a></p>
 
                                 </li>
                                 <li>
                                     <h4><i></i>幼狮空间，展现不一样的风采</h4>
-                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a href="javascript:;" class="look_detail fr">【查看详情】</a></p>
+
+                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a
+                                            href="javascript:;" class="look_detail fr">【查看详情】</a></p>
 
                                 </li>
                             </ul>
@@ -383,6 +388,7 @@
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
+
     export default {
         components: {header1, footer1},
         data () {
@@ -489,6 +495,28 @@
             this.show_num('#bannerNum2', 1000);
             this.show_num('#bannerNum3', 2000);
             this.show_num('#bannerNum4', 410);
+
+
+            var lion_head = $('#lion_head'),
+                lion_offset = lion_head.offset();
+            $(document).on('scroll', function () {
+                var win_scrollTop = $(document).scrollTop();
+                if (lion_offset.top < win_scrollTop) {
+                    lion_head.css({
+                        position: 'fixed',
+                        top: 0,
+                        backgroundColor: 'rgba(0,0,0,.5)',
+
+                    })
+                } else {
+                    lion_head.css({
+                        position: 'relative',
+                        top: 0,
+                        backgroundColor: 'transparent'
+                    })
+                }
+            })
+
         }
     }
 </script>
