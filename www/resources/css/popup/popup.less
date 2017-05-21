@@ -2,9 +2,17 @@
 
 /*iview 默认样式重置start*/
 
+.ivu-modal-body{
+  padding: 0;
+}
+
+.ivu-form.ivu-form-label-right{
+  padding: 15px 30px 30px;
+}
+
 .ivu-modal-close {
   right: 22px;
-  top: 22px;
+  top: 13px;
 }
 
 .ivu-modal-close .ivu-icon.ivu-icon-ios-close-empty {
@@ -19,7 +27,7 @@
 }
 
 .ivu-select {
-  width: 75%;
+  width: 70%;
 }
 
 .ivu-select-selection {
@@ -27,13 +35,13 @@
 }
 
 .ivu-form .ivu-form-item-label {
-  font-size: @font15;
+  font-size: @font14;
   color: @cl_lightgray;
 }
 
 .ivu-select-single .ivu-select-selection .ivu-select-placeholder,
 .ivu-select-single .ivu-select-selection .ivu-select-selected-value {
-  font-size: @font15;
+  font-size: @font14;
 }
 
 /*iview 默认样式重置end*/
@@ -42,22 +50,21 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  padding: 12px;
   h3 {
-    font-size: @font28;
+    font-size: @font18;
     margin-bottom: 10px;
   }
   h4 {
     text-align: left;
-    font-size: @font28;
-    margin-bottom: 30px;
+    font-size: @font18;
+    margin-bottom: 15px;
   }
   p {
-    font-size: @font16;
-    margin-bottom: 25px;
+    font-size: @font14;
+    margin-bottom: 20px;
     &.help_tips {
       text-align: left;
-      font-size: 14px;
+      font-size: @font14;
       color: @cl_default;
     }
     i {
@@ -68,7 +75,7 @@
     width: 100%;
     height: 50px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     .inp_icon {
       position: absolute;
       left: 1px;
@@ -91,8 +98,8 @@
       height: 100%;
       padding: 10px 0 10px 60px;
       border: 1px solid @bdc_input;
+      font-size: @font14;
       color: @cl_input;
-      font-size: @font16;
       &:focus {
         border: 1px solid @bg_blue;
         box-shadow: 1px 0px 1px @bg_blue;
@@ -123,11 +130,11 @@
   }
 
   .pop_textarea {
-    font-size: @font15;
+    font-size: @font14;
     width: 100%;
     min-height: 100px;
     padding: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     &::-webkit-input-placeholder {
       color: @cl_lightgray;
     }
@@ -149,11 +156,11 @@
     display: inline-block;
     height: 50px;
     line-height: 50px;
-    width: 210px;
+    width: 175px;
     border: 1px solid @cl_input;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 0 20px;
-    font-size: @font15;
+    font-size: @font14;
     color: @cl_lightgray;
     &.right_none {
       padding-right: 0;

@@ -11,6 +11,32 @@
         background-color: transparent;
     }
 
+    /*回到顶部*/
+    .side-contact >a{
+        display: block;
+        width: 50px;
+        height: 50px;
+        margin: 10px 0;
+        background-color: #fff;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
+        -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
+        box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
+    }
+    .baseIcon{
+        background: url("../resources/images/index/base-icon.png");
+    }
+
+    .baseIcon-tel{
+        background-position: 5px -248px;
+    }
+
+    .baseIcon-back {
+        background-position: 4px -321px;
+    }
+
 </style>
 
 <template>
@@ -184,7 +210,7 @@
 
                                 <div class="fl">
                                     <div class="help_wrap">
-                                        <a href="javascript:;" @click="modal5 = true">帮我找房</a>
+                                        <a href="javascript:;" @click="modal5 = true">帮我找楼</a>
                                     </div>
 
                                     <p>专业、可靠、免费提供一对一全程找房服务</p>
@@ -220,7 +246,7 @@
                     <!--</li>-->
                     <!--</ul>-->
                 </div>
-                <Modal v-model="modal5">
+                <Modal v-model="modal5" width="420">
                     <div popup>
                         <Form :model="formItem">
                             <h3>安心委托,快速成交</h3>
@@ -242,10 +268,10 @@
                     </div>
                 </Modal>
 
-                <Modal v-model="modal6">
+                <Modal v-model="modal6" :styles="{top: '50px'}" width="420">
                     <div popup>
                         <Form :model="formItem">
-                            <h4>帮我找楼</h4>
+                            <h4>业主委托</h4>
 
                             <div class="popItem">
                                 <span class="inp_icon phone"></span>
@@ -309,7 +335,7 @@
                 <div class="contents">
                     <div class="clearfix">
                         <div class="fl res_left">
-                            <img class="res_left_img" src="../resources/images/index/res01.jpg.png" alt=""/>
+                            <img class="res_left_img" src="../resources/images/index/res01.png" alt=""/>
 
                             <div class="res_wrap">
                                 <div class="res_bg"></div>
@@ -322,11 +348,16 @@
                             <ul>
                                 <li>
                                     <h4><i></i>幼狮空间，传递爱的力量</h4>
-                                    <p>如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！</p>
-                                    <a href="javascript:;">查看详情</a>
+                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a href="javascript:;" class="look_detail fr">【查看详情】</a></p>
+
                                 </li>
-                                <a href="javascript:;">查看更多</a>
+                                <li>
+                                    <h4><i></i>幼狮空间，展现不一样的风采</h4>
+                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a href="javascript:;" class="look_detail fr">【查看详情】</a></p>
+
+                                </li>
                             </ul>
+                            <a href="javascript:;" class="look_more">查看更多</a>
                         </div>
                     </div>
                 </div>
@@ -337,7 +368,16 @@
         <!--footer-->
         <footer1></footer1>
 
+        <!--回到顶部-->
+        <Back-top :height="100" :bottom="200">
+            <div class="side-contact">
+                <a class="baseIcon baseIcon-tel cur-pointer" id="sideTel" data-val="400-810-6698"></a>
+                <a class="baseIcon baseIcon-back"></a>
+            </div>
+        </Back-top>
+
     </div>
+
 </template>
 <script type="es6">
 
@@ -349,7 +389,6 @@
             return {
 
                 value2: 1,  //大轮播图
-                value3: 1,  //小轮播图
 
                 modal5: false, //弹窗1
                 modal6: false, //弹窗2
