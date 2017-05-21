@@ -41,7 +41,7 @@
 </style>
 
 <template>
-    <div class="all" style="overflow: hidden">
+    <div class="all">
         <!--header-->
         <header1></header1>
 

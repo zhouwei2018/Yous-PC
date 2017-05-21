@@ -186,7 +186,7 @@ select {
 }
 .all {
   min-width: 1200px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .contents {
   max-width: 1200px;
