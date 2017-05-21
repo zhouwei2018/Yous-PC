@@ -6,28 +6,32 @@
   .banner_wrap {
     .banner_cont {
       position: relative;
-      height: 550px;
-      img{
+      .banner_img {
         height: 550px;
+        &.banner01 {
+          background: url("../../images/index/banner01.jpg") no-repeat;
+          background-size: 100% 100%;
+        }
+        &.banner02 {
+          background: url("../../images/index/banner02.jpg") no-repeat;
+          background-size: 100% 100%;
+        }
+        &.banner03 {
+          background: url("../../images/index/banner03.jpg") no-repeat;
+          background-size: 100% 100%;
+        }
+        &.banner04 {
+          background: url("../../images/index/banner04.jpg") no-repeat;
+          background-size: 100% 100%;
+        }
+
       }
       .ban_tip_bot {
         position: absolute;
         left: 0;
         bottom: 20px;
         width: 100%;
-        .ban_tip {
-          text-align: center;
-          span {
-            display: inline-block;
-            width: 35px;
-            height: 3px;
-            background-color: @cl_white;
-            margin: 0 8px;
-            &.active {
-              background-color: @bg_blue;
-            }
-          }
-        }
+
       }
       .banner_bot {
         width: 100%;
@@ -48,18 +52,18 @@
             border-right: 1px solid @bdc_line_white;
             transition: .5s all ease;
             opacity: .85;
-            filter:alpha(opacity=85);
+            filter: alpha(opacity=85);
 
-            &.area01{
+            &.area01 {
               background-color: @bg_banner01;
             }
-            &.area02{
+            &.area02 {
               background-color: @bg_banner02;
             }
-            &.area03{
+            &.area03 {
               background-color: @bg_banner03;
             }
-            &.area04{
+            &.area04 {
               background-color: @bg_banner04;
             }
             &:last-child {
@@ -102,16 +106,16 @@
         &:hover {
           background-color: @bg_blue;
           color: @cl_white;
-          p{
+          p {
             color: @cl_white;
           }
-          .one_tip{
+          .one_tip {
             &.location {
-              background-position: 5px -135px;
+              background-position: 5px -137px;
             }
 
             &.service {
-              background-position: -140px -135px;
+              background-position: -150px -137px;
             }
 
             &.update {
@@ -119,7 +123,7 @@
             }
 
             &.communicate {
-              background-position: -464px -135px;
+              background-position: -464px -137px;
             }
           }
         }
@@ -138,7 +142,7 @@
             background-position: 5px -10px;
           }
           &.service {
-            background-position: -140px -11px;
+            background-position: -150px -11px;
           }
 
           &.update {
@@ -147,7 +151,7 @@
           }
 
           &.communicate {
-            background-position: -464px -12px;
+            background-position: -464px -13px;
           }
         }
 
@@ -166,20 +170,29 @@
   }
 
   [space] {
+
+    .ys_bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
     h3 {
       background-color: @bg_verygray;
     }
-    img{
+    img {
       height: 100%;
     }
 
     .space_top {
       margin-bottom: 40px;
-      .spa_item{
+      .spa_item {
         overflow: hidden;
       }
 
-      .space_bg_wrap{
+      .space_bg_wrap {
         position: absolute;
         left: 0;
         bottom: -60px;
@@ -189,10 +202,10 @@
         width: 100%;
         font-size: @font18;
         color: @cl_white;
-        span{
+        span {
           position: relative;
         }
-        .space_bg{
+        .space_bg {
           position: absolute;
           left: 0;
           top: 0;
@@ -200,9 +213,9 @@
           height: 100%;
           background-color: @bg_black;
           opacity: .3;
-          filter:alpha(opacity=30);
+          filter: alpha(opacity=30);
         }
-        
+
       }
 
       .space_top_left {
@@ -210,138 +223,187 @@
         height: 396px;
         margin-right: 15px;
         position: relative;
-        img{
-        	transition:.4s all ease;
+        img {
+          transition: .4s all ease;
         }
-        &:hover{
-        	img{
-        		transform:scale(1.1);
-        	}
+        &:hover {
+          img {
+            transform: scale(1.1);
+          }
         }
       }
 
       .space_top_right {
         width: 550px;
-        .spa_top{
+        .spa_top {
           margin-bottom: 16px;
-          .spa_top_left{
+          .spa_top_left {
             width: 300px;
             height: 190px;
             position: relative;
             margin-right: 16px;
-            img{
-        		transition:.4s all ease;
-	        }
-	        &:hover{
-	        	img{
-	        		transform:scale(1.2);
-	        	}
-	        }
+            img {
+              transition: .4s all ease;
+            }
+            &:hover {
+              img {
+                transform: scale(1.2);
+              }
+            }
           }
 
-          .spa_top_right{
+          .spa_top_right {
             width: 230px;
             height: 190px;
             position: relative;
-            img{
-        		transition:.4s all ease;
-	        }
-	        &:hover{
-	        	img{
-	        		transform:scale(1.2);
-	        	}
-	        }
+            img {
+              transition: .4s all ease;
+            }
+            &:hover {
+              img {
+                transform: scale(1.2);
+              }
+            }
           }
         }
 
-        .spa_bot{
-          .spa_bot_left{
+        .spa_bot {
+          .spa_bot_left {
             width: 230px;
             height: 190px;
             margin-right: 16px;
             position: relative;
-            img{
-        		transition:.4s all ease;
-	        }
-	        &:hover{
-	        	img{
-	        		transform:scale(1.2);
-	        	}
-	        }
+            img {
+              transition: .4s all ease;
+            }
+            &:hover {
+              img {
+                transform: scale(1.2);
+              }
+            }
           }
 
-          .spa_bot_right{
+          .spa_bot_right {
             width: 300px;
             height: 190px;
             position: relative;
-            img{
-        		transition:.4s all ease;
-	        }
-	        &:hover{
-	        	img{
-	        		transform:scale(1.2);
-	        	}
-	        }
+            img {
+              transition: .4s all ease;
+            }
+            &:hover {
+              img {
+                transform: scale(1.2);
+              }
+            }
           }
         }
       }
     }
 
     .space_bot {
-      height: 378px;
-      background: url("../../images/index/city_bg.jpg") no-repeat;
+      height: 380px;
+      background: url("../../images/index/city_bg.png") no-repeat;
       background-size: 100% 100%;
       position: relative;
-      ul {
-        position: relative;
-        height: 378px;
+      color: @cl_white;
+      h4 {
+        font-size: @font26;
+        padding: 30px 0;
 
+      }
+      ul {
         li {
-          cursor: pointer;
-          height: 100%;
-          color: @cl_white;
-          text-align: center;
-          float: left;
-          width: 600px;
-          padding-top: 56px;
-          transition: .5s all ease;
-          &:hover {
-            background-color: @bg_orange;
-          }
+          height: 120px;
           .space_tip {
             display: inline-block;
-            width: 46px;
-            height: 71px;
-            background: url("../../images/index/location_sm.png") no-repeat;
+            width: 54px;
+            height: 60px;
+            background: url("../../images/index/location_sm.png") no-repeat 5px;
+            background-size: 44px 56px;
             &.company {
-              width: 64px;
-              background: url("../../images/index/home_sm.png") no-repeat;
+              background: url("../../images/index/home_sm.png") no-repeat 2px;
+              background-size: 48px 54px;
             }
           }
+          > div {
+            margin-left: 40px;
+            .help_wrap {
+              height: 42px;
+              margin-bottom: 10px;
+              overflow: hidden;
+              a {
+                display: block;
+                font-size: @font18;
+                padding: 2px 6px;
+                width: 120px;
+                border-radius: 5px;
+                color: @cl_white;
+                text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8);
+                border: 5px solid transparent;
+                border-bottom-color: rgba(0, 0, 0, 0.35);
+                background-color: @bg_blue;
+                text-align: center;
 
-          h4 {
-            font-size: @font24;
-            margin: 8px 0;
+                &:hover {
+                  background: hsla(220, 100%, 60%, 1);
+                  margin-top: -1px;
+                  animation: none;
+                }
+              }
+            }
           }
-
-          p{
-            font-size: @font15;
-          }
-
-          .look_more {
-            display: block;
-            margin: 25px auto 0;
-            color: @cl_white;
-            width: 160px;
-            height: 45px;
-            text-align: center;
-            line-height: 42px;
-            font-size: @font15;
-            border: 2px solid @cl_white;
-          }
-
         }
       }
+      //ul {
+      //  position: relative;
+      //  height: 378px;
+      //
+      //  li {
+      //    cursor: pointer;
+      //    height: 100%;
+      //    color: @cl_white;
+      //    text-align: center;
+      //    float: left;
+      //    width: 600px;
+      //    padding-top: 56px;
+      //    transition: .5s all ease;
+      //    &:hover {
+      //      background-color: @bg_orange;
+      //    }
+      //    .space_tip {
+      //      display: inline-block;
+      //      width: 46px;
+      //      height: 71px;
+      //      background: url("../../images/index/location_sm.png") no-repeat;
+      //      &.company {
+      //        width: 64px;
+      //        background: url("../../images/index/home_sm.png") no-repeat;
+      //      }
+      //    }
+      //
+      //    h4 {
+      //      font-size: @font24;
+      //      margin: 8px 0;
+      //    }
+      //
+      //    p{
+      //      font-size: @font15;
+      //    }
+      //
+      //    .look_more {
+      //      display: block;
+      //      margin: 25px auto 0;
+      //      color: @cl_white;
+      //      width: 160px;
+      //      height: 45px;
+      //      text-align: center;
+      //      line-height: 42px;
+      //      font-size: @font15;
+      //      border: 2px solid @cl_white;
+      //    }
+      //
+      //  }
+      //}
     }
   }
 
@@ -367,7 +429,7 @@
               opacity: 1;
             }
           }
-          .person_bg_img{
+          .person_bg_img {
             height: 384px;
           }
           .neigh_mask {
@@ -411,16 +473,16 @@
     .neigh_right {
       width: 500px;
       .com_detail {
-        li{
+        li {
           width: 192px;
           height: 192px;
           color: @cl_white;
           position: relative;
           transition: .5s all ease;
           float: left;
-          margin-right:20px;
-          &:hover{
-            .com_detail_mask_wrap{
+          margin-right: 20px;
+          &:hover {
+            .com_detail_mask_wrap {
               opacity: 1;
             }
           }
@@ -433,15 +495,15 @@
             opacity: 0;
             transition: .5s all ease;
             text-align: center;
-            .com_detail_mask{
+            .com_detail_mask {
               width: 100%;
               height: 100%;
               background-color: @bg_blue;
               opacity: .6;
-              filter:alpha(opacity=60);
+              filter: alpha(opacity=60);
 
             }
-            .com_detail_cont{
+            .com_detail_cont {
               position: absolute;
               left: 0;
               top: 0;
@@ -449,14 +511,14 @@
               height: 100%;
               padding-top: 30px;
 
-              h4{
+              h4 {
                 font-size: @font18;
                 margin-bottom: 5px;
               }
-              p{
+              p {
                 margin-bottom: 60px;
               }
-              a{
+              a {
                 color: @cl_white;
                 text-decoration: underline;
               }

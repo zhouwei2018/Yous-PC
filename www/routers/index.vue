@@ -25,16 +25,32 @@
                 <div class="banner_cont">
                     <Carousel autoplay v-model="value2">
                         <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner01.jpg" alt=""/></div>
+                            <div class="demo-carousel">
+                                <a href="javascript:;">
+                                    <div class="banner_img banner01"></div>
+                                </a>
+                            </div>
                         </Carousel-item>
                         <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner02.jpg" alt=""/></div>
+                            <div class="demo-carousel">
+                                <a href="javascript:;">
+                                    <div class="banner_img  banner02"></div>
+                                </a>
+                            </div>
                         </Carousel-item>
                         <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner03.jpg" alt=""/></div>
+                            <div class="demo-carousel">
+                                <a href="javascript:;">
+                                    <div class="banner_img  banner03"></div>
+                                </a>
+                            </div>
                         </Carousel-item>
                         <Carousel-item>
-                            <div class="demo-carousel"><img src="../resources/images/index/banner04.jpg" alt=""/></div>
+                            <div class="demo-carousel">
+                                <a href="javascript:;">
+                                    <div class="banner_img  banner04"></div>
+                                </a>
+                            </div>
                         </Carousel-item>
                     </Carousel>
 
@@ -101,8 +117,11 @@
                 <h3 class="content_tit">空间展示</h3>
 
                 <div class="space_top contents clearfix">
-                    <div class="fl space_top_left spa_item" @mouseenter.stop="text_slideUp($event)" @mouseleave.stop="text_slideDown($event)">
+                    <div class="fl space_top_left spa_item" @mouseenter.stop="text_slideUp($event)"
+                         @mouseleave.stop="text_slideDown($event)">
                         <img src="../resources/images/index/space01.jpg" alt=""/>
+
+                        <div class="ys_bg"></div>
                         <div class="space_bg_wrap">
                             <div class="space_bg"></div>
                             <span>建外SOHO-时尚灵活风格</span>
@@ -110,15 +129,21 @@
                     </div>
                     <div class="fl clearfix space_top_right">
                         <div class="spa_top clearfix">
-                            <div class="spa_top_left fl spa_item" @mouseenter.stop="text_slideUp($event)" @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_top_left fl spa_item" @mouseenter.stop="text_slideUp($event)"
+                                 @mouseleave.stop="text_slideDown($event)">
                                 <img src="../resources/images/index/space02.jpg" alt=""/>
+
+                                <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
                                     <span>建外SOHO-时尚灵活风格</span>
                                 </div>
                             </div>
-                            <div class="spa_top_right fl spa_item" @mouseenter.stop="text_slideUp($event)" @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_top_right fl spa_item" @mouseenter.stop="text_slideUp($event)"
+                                 @mouseleave.stop="text_slideDown($event)">
                                 <img src="../resources/images/index/space03.jpg" alt=""/>
+
+                                <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
                                     <span>建外SOHO-时尚灵活风格</span>
@@ -126,15 +151,21 @@
                             </div>
                         </div>
                         <div class="spa_bot clearfix">
-                            <div class="spa_bot_left fl spa_item" @mouseenter.stop="text_slideUp($event)" @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_bot_left fl spa_item" @mouseenter.stop="text_slideUp($event)"
+                                 @mouseleave.stop="text_slideDown($event)">
                                 <img src="../resources/images/index/space04.jpg" alt=""/>
+
+                                <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
                                     <span>建外SOHO-时尚灵活风格</span>
                                 </div>
                             </div>
-                            <div class="spa_bot_right fl spa_item" @mouseenter.stop="text_slideUp($event)" @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_bot_right fl spa_item" @mouseenter.stop="text_slideUp($event)"
+                                 @mouseleave.stop="text_slideDown($event)">
                                 <img src="../resources/images/index/space05.jpg" alt=""/>
+
+                                <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
                                     <span>建外SOHO-时尚灵活风格</span>
@@ -145,22 +176,49 @@
                 </div>
 
                 <div class="space_bot">
-                    <ul class="clearfix contents">
-                        <li @click="modal5 = true">
-                            <span class="space_tip"></span>
-                            <h4>帮我找楼</h4>
+                    <div class="contents">
+                        <h4>一键导航 助您成功</h4>
+                        <ul>
+                            <li class="clearfix">
+                                <span class="space_tip fl"></span>
 
-                            <p>专业、可靠、免费提供一对一全程找房服务</p>
-                            <a href="javascript:;" class="look_more">了解更多></a>
-                        </li>
-                        <li @click="modal6 = true">
-                            <span class="space_tip company"></span>
-                            <h4>业主委托</h4>
+                                <div class="fl">
+                                    <div class="help_wrap">
+                                        <a href="javascript:;" @click="modal5 = true">帮我找房</a>
+                                    </div>
 
-                            <p>解决业主闲置房源提供在线托管平台</p>
-                            <a href="javascript:;" class="look_more">了解更多></a>
-                        </li>
-                    </ul>
+                                    <p>专业、可靠、免费提供一对一全程找房服务</p>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <span class="space_tip fl company"></span>
+
+                                <div class="fl">
+                                    <div class="help_wrap">
+                                        <a href="javascript:;" @click="modal6 = true">业主委托</a>
+                                    </div>
+
+                                    <p>解决业主闲置房源提供在线托管平台</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--<ul class="clearfix contents">-->
+                    <!--<li @click="modal5 = true">-->
+                    <!--<span class="space_tip"></span>-->
+                    <!--<h4>帮我找楼</h4>-->
+
+                    <!--<p>专业、可靠、免费提供一对一全程找房服务</p>-->
+                    <!--<a href="javascript:;" class="look_more">了解更多></a>-->
+                    <!--</li>-->
+                    <!--<li @click="modal6 = true">-->
+                    <!--<span class="space_tip company"></span>-->
+                    <!--<h4>业主委托</h4>-->
+
+                    <!--<p>解决业主闲置房源提供在线托管平台</p>-->
+                    <!--<a href="javascript:;" class="look_more">了解更多></a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
                 </div>
                 <Modal v-model="modal5">
                     <div popup>
@@ -467,17 +525,17 @@
             },
 
             text_slideUp(e){
-                var target=e.currentTarget;
+                var target = e.currentTarget;
                 $(target).find('.space_bg_wrap').animate({
-                    bottom:0
-                },200);
+                    bottom: 0
+                }, 200);
             },
 
             text_slideDown(e){
-                var target=e.currentTarget;
+                var target = e.currentTarget;
                 $(target).find('.space_bg_wrap').animate({
-                    bottom:'-60px'
-                },200);
+                    bottom: '-60px'
+                }, 200);
             }
         },
 
