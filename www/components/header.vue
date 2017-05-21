@@ -24,7 +24,7 @@
                     <router-link to="/collect" active-class="active">幼狮汇</router-link>
                     <router-link to="/invest" active-class="active">投融资</router-link>
                     <router-link to="/about" active-class="active">关于我们</router-link>
-                    <router-link to="/score" active-class="active">积分商城</router-link>
+                    <!--<router-link to="/score" active-class="active">积分商城</router-link>-->
                     <router-link to="/register" active-class="active">登录/注册</router-link>
                 </div>
             </div>

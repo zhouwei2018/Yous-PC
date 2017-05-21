@@ -56,7 +56,7 @@
 
                     <div class="banner_bot">
                         <ul class="banner_introduce clearfix">
-                            <li class="active area01">
+                            <li class="area01">
                                 <p>运营面积</p>
                                 <span><i id="bannerNum1"></i>㎡</span>
                             </li>
@@ -303,126 +303,29 @@
 
             </div>
             <!--邻居-->
-            <div neighbour>
-                <h3 class="content_tit">他们将是你的邻居</h3>
+            <div response>
+                <h3 class="content_tit">让幼狮空间陪您一起成长</h3>
 
                 <div class="contents">
                     <div class="clearfix">
-                        <div class="fl neigh_left">
-                            <div class="naight_left_tab">
-                                <!--<div class="neight_mask_wrap">-->
-                                <!--<img class="person_bg_img" src="../resources/images/index/company.jpg" alt=""/>-->
+                        <div class="fl res_left">
+                            <img class="res_left_img" src="../resources/images/index/res01.jpg.png" alt=""/>
 
-                                <!--<div class="neigh_mask"></div>-->
-                                <!--<div class="neigh_content clearfix">-->
-                                <!--<img class="neight_icon fl" src="../resources/images/index/person.png" alt=""/>-->
-
-                                <!--<div class="fl neight_per_wrap">-->
-                                <!--<span>杜绍斐  <em>知乎知名作者</em></span>-->
-                                <!--<p class="person_detail">“随着团队的壮大，在我急需一个既独立又能满足我创业灵活工作时间的办公室时，幼狮空间出现了，我就拎了台电脑，真正体会到了什么叫拎包入驻！”</p>-->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <!--</div>-->
-
-                                <Carousel autoplay v-model="value3">
-                                    <Carousel-item>
-                                        <div class="demo-carousel neight_mask_wrap">
-                                            <img class="person_bg_img" src="../resources/images/index/company.jpg"
-                                                 alt=""/>
-
-                                            <div class="neigh_mask"></div>
-                                            <div class="neigh_content clearfix">
-                                                <img class="neight_icon fl" src="../resources/images/index/person.png"
-                                                     alt=""/>
-
-                                                <div class="fl neight_per_wrap">
-                                                    <span>杜绍斐  <em>知乎知名作者</em></span>
-
-                                                    <p class="person_detail">
-                                                        “随着团队的壮大，在我急需一个既独立又能满足我创业灵活工作时间的办公室时，幼狮空间出现了，我就拎了台电脑，真正体会到了什么叫拎包入驻！”</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Carousel-item>
-                                    <Carousel-item>
-                                        <div class="demo-carousel neight_mask_wrap">
-                                            <img class="person_bg_img" src="../resources/images/index/company.jpg"
-                                                 alt=""/>
-
-                                            <div class="neigh_mask"></div>
-                                            <div class="neigh_content clearfix">
-                                                <img class="neight_icon fl" src="../resources/images/index/person.png"
-                                                     alt=""/>
-
-                                                <div class="fl neight_per_wrap">
-                                                    <span>杜绍斐  <em>知乎知名作者</em></span>
-
-                                                    <p class="person_detail">
-                                                        “随着团队的壮大，在我急需一个既独立又能满足我创业灵活工作时间的办公室时，幼狮空间出现了，我就拎了台电脑，真正体会到了什么叫拎包入驻！”</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Carousel-item>
-                                </Carousel>
-
+                            <div class="res_wrap">
+                                <div class="res_bg"></div>
+                                <span>责任即价值</span>
                             </div>
 
                         </div>
 
-                        <div class="fl neigh_right">
-                            <ul class="fl com_detail">
+                        <div class="fr res_right">
+                            <ul>
                                 <li>
-                                    <img class="com_detail_img" src="../resources/images/index/neighbour01.png" alt=""/>
-
-                                    <div class="com_detail_mask_wrap">
-                                        <div class="com_detail_mask"></div>
-                                        <div class="com_detail_cont">
-                                            <h4>职派</h4>
-
-                                            <p>已入驻超级工作室</p>
-                                            <a href="javascript:;">查看相似空间 &gt;</a>
-                                        </div>
-                                    </div>
+                                    <h4><i></i>幼狮空间，传递爱的力量</h4>
+                                    <p>如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！</p>
+                                    <a href="javascript:;">查看详情</a>
                                 </li>
-                                <li>
-                                    <img class="com_detail_img" src="../resources/images/index/neighbour01.png" alt=""/>
-
-                                    <div class="com_detail_mask_wrap">
-                                        <div class="com_detail_mask"></div>
-                                        <div class="com_detail_cont">
-                                            <h4>职派</h4>
-
-                                            <p>已入驻超级工作室</p>
-                                            <a href="javascript:;">查看相似空间 &gt;</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img class="com_detail_img" src="../resources/images/index/neighbour01.png" alt=""/>
-
-                                    <div class="com_detail_mask_wrap">
-                                        <div class="com_detail_mask"></div>
-                                        <div class="com_detail_cont">
-                                            <h4>职派</h4>
-
-                                            <p>已入驻超级工作室</p>
-                                            <a href="javascript:;">查看相似空间 &gt;</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img class="com_detail_img" src="../resources/images/index/neighbour01.png" alt=""/>
-
-                                    <div class="com_detail_mask_wrap">
-                                        <div class="com_detail_mask"></div>
-                                        <div class="com_detail_cont">
-                                            <h4>职派</h4>
-
-                                            <p>已入驻超级工作室</p>
-                                            <a href="javascript:;">查看相似空间 &gt;</a>
-                                        </div>
-                                    </div>
-                                </li>
+                                <a href="javascript:;">查看更多</a>
                             </ul>
                         </div>
                     </div>
@@ -514,6 +417,7 @@
                 }, interTime);
             },
 
+            //表单验证
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
@@ -524,6 +428,7 @@
                 })
             },
 
+            //空间展示
             text_slideUp(e){
                 var target = e.currentTarget;
                 $(target).find('.space_bg_wrap').animate({
