@@ -7,8 +7,8 @@
     <div class="all">
       <!--topper  begin-->
       <div top_box white>
-          <div class="contents" header>
-              <div>
+          <div header>
+              <div class="contents">
                   <h2 class="lion_text">幼狮空间</h2>
                   <router-link to="/index" class="login_switch"><img src="../resources/images/lion_logo.png" class="lion_logo"/></router-link>
               </div>
