@@ -13,6 +13,7 @@
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
 /*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
 /*用于背景颜色深灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
@@ -76,12 +77,10 @@
   color: #fff;
 }
 [header] [nav_boxs] .nav a:hover {
-  background-color: #0f6fac;
-  color: #fff;
+  text-decoration: underline;
 }
 [header] [nav_boxs] .nav a.active {
-  background-color: #0f6fac;
-  color: #fff;
+  text-decoration: underline;
 }
 /* index footer */
 [footer] {
@@ -89,7 +88,7 @@
   margin: 0 auto;
   height: 220px;
   color: #fff;
-  background-color: #333;
+  background-color: #191919;
 }
 [footer] .foot_wrap {
   width: 400px;
@@ -110,7 +109,7 @@
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
-  color: #fff;
+  color: #a0a0a0;
   margin: 1px 10px 0;
 }
 [footer] .foot_wrap .bottom_copyright {
@@ -128,11 +127,32 @@
 }
 [footer] .foot_head {
   height: 177px;
-  padding-top: 30px;
+  padding-top: 35px;
 }
 [footer] .foot_head h3 {
-  font-size: 18px;
-  margin: 5px 0 20px;
+  font-size: 16px;
+  margin: 5px 0 13px;
+}
+[footer] .foot_head .commerce_tel {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  background: url("../../resources/images/icons/commerce_tel.png") no-repeat;
+  margin-right: 8px;
+}
+[footer] .foot_head .commerce_email {
+  display: inline-block;
+  vertical-align: middle;
+  width: 21px;
+  height: 13px;
+  background: url("../../resources/images/icons/commerce_email.png") no-repeat;
+  margin: 0 8px 0 28px;
+}
+[footer] .foot_head .lion_address {
+  font-size: 13px;
+  color: #999;
+  margin-top: 10px;
 }
 [footer] .foot_head .weixin_text {
   display: block;
@@ -142,15 +162,18 @@
 [footer] .foot_bot {
   height: 43px;
   line-height: 43px;
-  text-align: center;
   border-top: 1px solid #494949;
+  font-size: 13px;
+}
+[footer] .foot_bot i {
+  color: #a0a0a0;
 }
 [footer] .foot_bot span {
-  color: #b0b0b0;
+  color: #666;
 }
 [footer] .foot_bot span.bottom_copyright {
   margin-right: 60px;
 }
 [footer] .foot_bot span a {
-  color: #b0b0b0;
+  color: #666;
 }

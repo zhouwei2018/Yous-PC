@@ -1,5 +1,6 @@
 ﻿<style lang="less">
     @import "../../src/styles/index.less";
+    @import "../resources/css/index/index.less";
     @import "../resources/css/popup/popup.less";
 
 </style>
@@ -144,8 +145,7 @@
                 <h3 class="content_tit">空间展示</h3>
 
                 <div class="space_top contents clearfix">
-                    <div class="fl space_top_left spa_item" @mouseenter.stop="text_slideUp($event)"
-                         @mouseleave.stop="text_slideDown($event)">
+                    <div class="fl space_top_left spa_item">
                         <img src="../resources/images/index/space01.jpg" alt=""/>
 
                         <div class="ys_bg"></div>
@@ -156,8 +156,7 @@
                     </div>
                     <div class="fl clearfix space_top_right">
                         <div class="spa_top clearfix">
-                            <div class="spa_top_left fl spa_item" @mouseenter.stop="text_slideUp($event)"
-                                 @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_top_left fl spa_item">
                                 <img src="../resources/images/index/space02.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
@@ -166,8 +165,7 @@
                                     <span>建外SOHO-时尚灵活风格</span>
                                 </div>
                             </div>
-                            <div class="spa_top_right fl spa_item" @mouseenter.stop="text_slideUp($event)"
-                                 @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_top_right fl spa_item">
                                 <img src="../resources/images/index/space03.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
@@ -178,8 +176,7 @@
                             </div>
                         </div>
                         <div class="spa_bot clearfix">
-                            <div class="spa_bot_left fl spa_item" @mouseenter.stop="text_slideUp($event)"
-                                 @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_bot_left fl spa_item">
                                 <img src="../resources/images/index/space04.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
@@ -188,8 +185,7 @@
                                     <span>建外SOHO-时尚灵活风格</span>
                                 </div>
                             </div>
-                            <div class="spa_bot_right fl spa_item" @mouseenter.stop="text_slideUp($event)"
-                                 @mouseleave.stop="text_slideDown($event)">
+                            <div class="spa_bot_right fl spa_item">
                                 <img src="../resources/images/index/space05.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
@@ -471,21 +467,6 @@
                         this.$Message.error('表单验证失败!');
                     }
                 })
-            },
-
-            //空间展示
-            text_slideUp(e){
-                var target = e.currentTarget;
-                $(target).find('.space_bg_wrap').animate({
-                    bottom: 0
-                }, 200);
-            },
-
-            text_slideDown(e){
-                var target = e.currentTarget;
-                $(target).find('.space_bg_wrap').animate({
-                    bottom: '-60px'
-                }, 200);
             }
         },
 

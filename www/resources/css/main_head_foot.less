@@ -38,12 +38,10 @@
         transition: .5s all ease;
         color: @cl_white;
         &:hover {
-          background-color: @bg_blue;
-          color: @cl_white;
+          text-decoration: underline;
         }
         &.active {
-          background-color: @bg_blue;
-          color: @cl_white;
+          text-decoration: underline;
         }
       }
 
@@ -58,9 +56,10 @@
   margin: 0 auto;
   height: 220px;
   color: @cl_white;
-  background-color: @bg_black;
+  background-color: @bg_greatblack;
 
-  .foot_wrap {  //针对login register 页
+  .foot_wrap {
+    //针对login office2 页
     width: 400px;
     text-align: center;
     margin: 0 auto;
@@ -90,22 +89,45 @@
 
   }
 
-  &[add_reg]{
+  &[add_reg] {
     height: 200px;
     background-color: @bg_blue;
   }
 
-  &[add_login]{
+  &[add_login] {
     height: 200px;
     background-color: @bg_white;
   }
 
   .foot_head {
     height: 177px;
-    padding-top: 30px;
+    padding-top: 35px;
     h3 {
-      font-size: @font18;
-      margin: 5px 0 20px;
+      font-size: @font16;
+      margin: 5px 0 13px;
+    }
+    .commerce_tel {
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      background: url("../../resources/images/icons/commerce_tel.png") no-repeat;
+      margin-right: 8px;
+    }
+
+    .commerce_email {
+      display: inline-block;
+      vertical-align: middle;
+      width: 21px;
+      height: 13px;
+      background: url("../../resources/images/icons/commerce_email.png") no-repeat;
+      margin: 0 8px 0 28px;
+    }
+
+    .lion_address {
+      font-size: @font13;
+      color: @cl_gray;
+      margin-top: 10px;
     }
     .weixin_text {
       display: block;
@@ -117,16 +139,18 @@
   .foot_bot {
     height: 43px;
     line-height: 43px;
-    text-align: center;
     border-top: 1px solid @bdc_line_black;
-
+    font-size: @font13;
+    i{
+      color: @bdc_line_white;
+    }
     span {
-      color: @cl_lightgray;
+      color: @cl_blockgray;
       &.bottom_copyright {
         margin-right: 60px;
       }
       a {
-        color: @cl_lightgray;
+        color: @cl_blockgray;
       }
     }
 

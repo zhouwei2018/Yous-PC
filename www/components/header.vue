@@ -1,7 +1,5 @@
 <style  lang="less">
-    @import "../resources/css/color.less";
     @import "../resources/css/base.less";
-    @import "../resources/css/index/index.less";
     @import "../resources/css/main_head_foot.less";
 
 </style>

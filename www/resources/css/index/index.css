@@ -13,6 +13,7 @@
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
 /*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
 /*用于背景颜色深灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
@@ -44,10 +45,10 @@
   position: relative;
 }
 [index_content] .banner_wrap .banner_cont .banner_img {
-  height: 550px;
+  height: 600px;
 }
 [index_content] .banner_wrap .banner_cont .banner_img.banner01 {
-  background: url("../../images/index/banner01.png") no-repeat;
+  background: url("../../images/index/banner01.jpg") no-repeat;
   background-size: 100% 100%;
 }
 [index_content] .banner_wrap .banner_cont .banner_img.banner02 {
@@ -214,7 +215,7 @@
 [index_content] [space] .space_top .space_bg_wrap {
   position: absolute;
   left: 0;
-  bottom: -60px;
+  bottom: 0;
   height: 60px;
   line-height: 60px;
   text-align: center;
@@ -232,8 +233,8 @@
   width: 100%;
   height: 100%;
   background-color: #333;
-  opacity: .3;
-  filter: alpha(opacity=30);
+  opacity: .6;
+  filter: alpha(opacity=60);
 }
 [index_content] [space] .space_top .space_top_left {
   width: 635px;
@@ -335,20 +336,16 @@
 [index_content] [space] .space_bot ul li > div .help_wrap a {
   display: block;
   font-size: 18px;
-  padding: 2px 6px;
   width: 120px;
+  height: 40px;
+  line-height: 40px;
   border-radius: 5px;
   color: #fff;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8);
-  border: 5px solid transparent;
-  border-bottom-color: rgba(0, 0, 0, 0.35);
   background-color: #0f6fac;
   text-align: center;
 }
 [index_content] [space] .space_bot ul li > div .help_wrap a:hover {
   background: #3377ff;
-  margin-top: -1px;
-  animation: none;
 }
 [index_content] [response] {
   background-color: #fff;
@@ -403,18 +400,17 @@
 }
 [index_content] [response] .res_right ul li h4 {
   font-size: 24px;
-  color: #09b8fa;
+  color: #0d6daa;
   margin-bottom: 10px;
 }
 [index_content] [response] .res_right ul li h4 i {
-  width: 40px;
-  height: 35px;
+  width: 30px;
+  height: 20px;
   display: inline-block;
   vertical-align: top;
-  margin-top: 8px;
   background: url("../../images/index/res_tip.png") no-repeat;
-  background-size: 40px 25px;
-  margin-right: 10px;
+  background-size: 30px 20px;
+  margin: 10px 10px 0 0;
 }
 [index_content] [response] .res_right ul li p {
   line-height: 24px;
