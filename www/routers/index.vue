@@ -486,7 +486,7 @@
                     lion_head.css({
                         position: 'fixed',
                         top: 0,
-                        backgroundColor: 'rgba(0,0,0,.5)',
+                        backgroundColor: '#333',
 
                     })
                 } else {

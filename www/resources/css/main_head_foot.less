@@ -26,9 +26,10 @@
     height: 55px;
     .nav {
       height: 100%;
+      position: relative;
       a {
         height: 100%;
-        width: 115px;
+        width: 100px;
         border-radius: 2px;
         padding-top: 15px;
         text-align: center;
@@ -37,12 +38,17 @@
         position: relative;
         transition: .5s all ease;
         color: @cl_white;
-        &:hover {
-          text-decoration: underline;
-        }
-        &.active {
-          text-decoration: underline;
-        }
+      }
+
+      .lion_nav_line {
+        position: absolute;
+        height: 3px;
+        width: 100px;
+        padding: 0;
+        background-color: @cl_white;
+        bottom: 0;
+        transition: all .3s cubic-bezier(.4, 0, .2, 1);
+        //transition: all .1s linear;
       }
 
     }
@@ -141,7 +147,7 @@
     line-height: 43px;
     border-top: 1px solid @bdc_line_black;
     font-size: @font13;
-    i{
+    i {
       color: @bdc_line_white;
     }
     span {

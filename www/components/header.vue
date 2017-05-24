@@ -24,14 +24,38 @@
                     <router-link to="/about" active-class="active">关于我们</router-link>
                     <!--<router-link to="/score" active-class="active">积分商城</router-link>-->
                     <router-link to="/register" active-class="active">登录/注册</router-link>
+                    <div class="lion_nav_line"></div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<script type="es6">
     export default {
+        methods:{
+            move_line(){
+                $('.nav a').hover(function(){
+                    var index=$(this).index();
+                    $('.lion_nav_line').animate({
+                        left:index*100
+                    },100);
+                },function(){
 
+                })
+
+                $('.nav a').click(function(){
+                    var index=$(this).index();
+                    $('.lion_nav_line').css({
+                        left:index*100
+                    });
+                })
+
+            }
+        },
+
+        mounted(){
+            this.move_line();
+        }
     }
 </script>

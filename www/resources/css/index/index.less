@@ -45,6 +45,7 @@
           color: #fff;
           overflow: visible;
           position: relative;
+          z-index: 1;
           bottom: 0;
           > li {
             position: absolute;
@@ -368,9 +369,9 @@
     .res_left {
       position: relative;
       overflow: hidden;
-      &:hover{
-        .res_wrap{
-          left:0
+      &:hover {
+        .res_wrap {
+          left: 0
         }
       }
       .res_left_img {
@@ -441,7 +442,7 @@
         display: block;
         text-align: right;
         color: @cl_blockgray;
-        &:hover{
+        &:hover {
           color: @cl_orange;
         }
       }
@@ -449,4 +450,17 @@
     }
   }
 
+}
+
+@media screen and (min-width: 1500px) {
+  //改变banner高度
+  [index_content] {
+    .banner_wrap {
+      .banner_cont {
+        .banner_img {
+          height: 850px;
+        }
+      }
+    }
+  }
 }

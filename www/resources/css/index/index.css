@@ -82,6 +82,7 @@
   color: #fff;
   overflow: visible;
   position: relative;
+  z-index: 1;
   bottom: 0;
 }
 [index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li {
@@ -425,4 +426,9 @@
 }
 [index_content] [response] .res_right .look_more:hover {
   color: #fb7530;
+}
+@media screen and (min-width: 1500px) {
+  [index_content] .banner_wrap .banner_cont .banner_img {
+    height: 850px;
+  }
 }

@@ -63,10 +63,11 @@
 }
 [header] [nav_boxs] .nav {
   height: 100%;
+  position: relative;
 }
 [header] [nav_boxs] .nav a {
   height: 100%;
-  width: 115px;
+  width: 100px;
   border-radius: 2px;
   padding-top: 15px;
   text-align: center;
@@ -76,11 +77,14 @@
   transition: .5s all ease;
   color: #fff;
 }
-[header] [nav_boxs] .nav a:hover {
-  text-decoration: underline;
-}
-[header] [nav_boxs] .nav a.active {
-  text-decoration: underline;
+[header] [nav_boxs] .nav .lion_nav_line {
+  position: absolute;
+  height: 3px;
+  width: 100px;
+  padding: 0;
+  background-color: #fff;
+  bottom: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* index footer */
 [footer] {
