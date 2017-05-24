@@ -86,9 +86,22 @@
   }
 
   .center_trade {
+
+    background-color: @bg_white;
     .center_trade_head {
-      height: 86px;
-      line-height: 86px;
+
+      border-bottom: 1px solid @bdc_bot_line;
+      >div{
+        margin-left: 20px;
+        margin-bottom: 8px;
+      }
+      .title{
+        font-size: @font28;
+        margin-bottom: 12px;
+        margin-left: 30px;
+        margin-top: 12px;
+      }
+
       > span {
         font-size: @font28;
         color: @cl_default;
@@ -96,50 +109,71 @@
       }
       a {
         color: @cl_blockgray;
-        font-style: @font17;
-        margin: 0 20px;
+        font-size: @font18;
+        text-align: center;
+        margin: 0 15px;
         &.active {
           color: @cl_orange;
         }
       }
     }
     .center_list {
+      margin-top: 35px;
+      margin-left: 20px;
+      background-color:@bg_white;
       > ul {
-        margin-right: 20px;
         width: 785px;
         margin-bottom: 45px;
         > li {
-          height: 257px;
+          height: 220px;
           background-color: @bg_white;
           margin-bottom: 18px;
           img {
-            width: 394px;
-            height: 258px;
-            margin-right: 28px;
+            width: 300px;
+            height: 200px;
+            margin-right: 28px
           }
 
           .center_detail {
-            padding-top: 30px;
-            max-width: 300px;
-
+            width: auto;
             h3 {
               margin-bottom: 10px;
             }
             span {
               color: @cl_gray;
+              margin: 5px 15px;
             }
             ul {
               margin: 15px 0 30px;
               color: @cl_blockgray;
               .list_square {
-                display: inline-block;
                 width: 4px;
                 height: 4px;
                 background-color: @cl_blockgray;
                 margin-right: 6px;
                 vertical-align: middle;
               }
+              li{
+                float: left;
+                height: 18px;
+                color: @bg_black;
+                background-color: @bg_lighblue;
+                margin-right: 12px
+              }
             }
+          }
+
+          .right_div{
+            >div{
+              text-align: right;
+              margin-bottom: 6px
+            }
+            em{
+              font-size: @font18;
+              color: @bg_lightred;
+              font-weight: bold;
+            }
+
           }
 
           .apply_btn {
@@ -151,6 +185,9 @@
             line-height: 35px;
             color: @cl_white;
             font-size: @font15;
+            right: 1px;
+            position: absolute;
+            bottom: 0;
           }
 
         }
@@ -159,7 +196,6 @@
         width: 394px;
         height: 483px;
         text-align: center;
-        padding-top: 30px;
         background: @bg_white;
         h3 {
           font-size: @font28;

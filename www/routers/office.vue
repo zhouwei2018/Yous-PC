@@ -60,8 +60,7 @@
 
           <div class="center_trade clearfix contents">
               <div class="center_trade_head clearfix">
-                  <span class="fl">核心商圈</span>
-
+                  <div class="title">热门商圈</div>
                   <div class="fl">
                       <a href="javascript:;" v-for='(item,index) in areaItems' v-text="item.name" :class="{active:item.iscur}" @click="setCur(index,item.areaId)"></a>
                   </div>
@@ -71,15 +70,28 @@
                   <ul class="fl">
                       <li class="clearfix" v-for='item in areaItem.areaHouse' >
                           <img class="fl" src="../resources/images/office/tradeArea01.png" alt=""/>
-                          <div class="fl center_detail">
-                              <h3>{{item.name}}</h3>
-                              <span>{{item.address}}</span>
-                              <ul>
-                                  <li><span class="list_square"></span>共8000个工位，40独立办公室</li>
-                                  <li><span class="list_square"></span>返税优惠 | 装修定制 | 创业补贴</li>
-                                  <li><span class="list_square"></span>最新活动：创业分享会“网红经济”</li>
-                              </ul>
-                              <a href="javascript:;" class="apply_btn">申请入驻</a>
+                          <div  style="height:200px;width:100%;position:relative">
+                              <div class="fl center_detail">
+                                  <h3>{{item.name}}</h3>
+                                  <span>{{item.address}}</span>
+                                  <ul>
+                                      <li><span>互联网</span></li>
+                                      <li><span>知名企业</span></li>
+                                      <li><span>地标建筑</span></li>
+                                  </ul>
+
+                              </div>
+                               <div class="fr right_div">
+                                  <div>
+                                    <em>6.5</em><span>元/㎡天</span>
+                                  </div>
+                                   <div>
+                                      <span>均价</span>
+                                    </div>
+                                    <div>
+                                         <a href="javascript:;" class="apply_btn">申请入驻</a>
+                                    </div>
+                               </div>
                           </div>
                       </li>
                   </ul>
@@ -122,12 +134,13 @@ export default {
             areaItems:[
               {
                 "areaId":0,
-                "name":"CBD区",
+                "name":"CBD",
                 "iscur":true,
                 "areaHouse":[
-                            {"name":"海淀大厦1","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
-                            {"name":"海淀大厦2","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"},
-                            {"name":"海淀大厦3","address":"北京市海淀区东三环中路","des":"共8000个工位，40独立办公室&返税优惠 | 装修定制 | 创业补贴"}
+                            {"name":"朝外MEN","address":"[朝阳门]-东直门朝外大街26号","labels":["地铁周边","知名物业"]},
+                            {"name":"泛利大厦","address":"[朝阳门]-东直门朝外大街22号","labels":["地铁周边","知名物业"]},
+                            {"name":"丰联广场","address":"[朝阳门]-东直门朝阳门外大街18号","labels":["地铁周边","知名物业"]},
+                            {"name":"丰联广场","address":"[朝阳门]-东直门朝阳门外大街12号","labels":["地铁周边","知名物业"]},
                           ]
              },
              {
