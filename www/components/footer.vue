@@ -14,14 +14,16 @@
               <span class="weixin_text">APP下载</span>
           </div>
       </div>
-      <div class="foot_bot contents">
-          <span class="bottom_copyright fl">北京幼狮科技有限公司 保留所有权利&nbsp;&nbsp;京ICP备20176444</span>
-          <div class="fr">
-              <span><a href="javascript:;">关于我们</a></span>
-              <i>|</i>
-              <span><a href="javascript:;">工作机会</a></span>
-              <i>|</i>
-              <span><a href="javascript:;">条款与隐私</a></span>
+      <div class="foot_bot">
+          <div class="contents">
+              <span class="bottom_copyright fl">北京幼狮科技有限公司 保留所有权利&nbsp;&nbsp;京ICP备20176444</span>
+              <div class="fr">
+                  <span><a href="javascript:;">关于我们</a></span>
+                  <i>|</i>
+                  <span><a href="javascript:;">工作机会</a></span>
+                  <i>|</i>
+                  <span><a href="javascript:;">条款与隐私</a></span>
+              </div>
           </div>
       </div>
   </div>

@@ -16,15 +16,18 @@
             </router-link>
             <div nav_boxs class="fr">
                 <div class="nav clearfix">
-                    <router-link to="/index" active-class="active">首页</router-link>
-                    <router-link to="/office" active-class="active">办公空间</router-link>
-                    <router-link to="/service" active-class="active">升级服务</router-link>
-                    <router-link to="/collect" active-class="active">幼狮汇</router-link>
-                    <router-link to="/invest" active-class="active">投融资</router-link>
-                    <router-link to="/about" active-class="active">关于我们</router-link>
+                    <router-link to="/index" active-class="active">首页<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/office" active-class="active">办公空间<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/service" active-class="active">升级服务<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/collect" active-class="active">幼狮汇<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/invest" active-class="active">投融资<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/about" active-class="active">关于我们<div class="lion_nav_line"></div></router-link>
                     <!--<router-link to="/score" active-class="active">积分商城</router-link>-->
-                    <router-link to="/register" active-class="active">登录/注册</router-link>
-                    <div class="lion_nav_line"></div>
+                    <div class="reg_log_wrap fl">
+                        <router-link to="/login" active-class="active">登录</router-link>
+                        <span>|</span>
+                        <router-link to="/register" active-class="active">注册</router-link>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,28 +37,28 @@
 <script type="es6">
     export default {
         methods:{
-            move_line(){
-                $('.nav a').hover(function(){
-                    var index=$(this).index();
-                    $('.lion_nav_line').animate({
-                        left:index*100
-                    },100);
-                },function(){
-
-                })
-
-                $('.nav a').click(function(){
-                    var index=$(this).index();
-                    $('.lion_nav_line').css({
-                        left:index*100
-                    });
-                })
-
-            }
+            //move_line(){
+            //    $('.nav a').hover(function(){
+            //        var index=$(this).index();
+            //        $('.lion_nav_line').animate({
+            //            left:index*100
+            //        },100);
+            //    },function(){
+            //
+            //    })
+            //
+            //    $('.nav a').click(function(){
+            //        var index=$(this).index();
+            //        $('.lion_nav_line').css({
+            //            left:index*100
+            //        });
+            //    })
+            //
+            //}
         },
 
         mounted(){
-            this.move_line();
+            //this.move_line();
         }
     }
 </script>

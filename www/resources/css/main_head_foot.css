@@ -19,7 +19,10 @@
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
 /*天蓝色*/
+/*index 业主委托亮蓝色*/
 /*深蓝色*/
+/*首页登录按钮背景蓝*/
+/*首页登录按钮border*/
 /*棕色*/
 /*浅红色*/
 /*边线颜色*/
@@ -53,38 +56,62 @@
 }
 [header] .lion_logo {
   position: absolute;
-  width: 130px;
-  height: 40px;
+  width: 120px;
+  height: 35px;
   left: 0;
-  top: 10px;
+  top: 12px;
 }
 [header] [nav_boxs] {
-  height: 55px;
+  height: 50px;
 }
 [header] [nav_boxs] .nav {
   height: 100%;
   position: relative;
 }
-[header] [nav_boxs] .nav a {
+[header] [nav_boxs] .nav > a {
   height: 100%;
-  width: 100px;
-  border-radius: 2px;
   padding-top: 15px;
-  text-align: center;
+  margin-left: 25px;
+  border-radius: 2px;
   float: left;
-  font-size: 16px;
   position: relative;
   transition: .5s all ease;
+  color: #fff;
+  font-size: 15px;
+}
+[header] [nav_boxs] .nav > a:hover .lion_nav_line {
+  bottom: 0;
+}
+[header] [nav_boxs] .nav > a.active .lion_nav_line {
+  bottom: 0;
+}
+[header] [nav_boxs] .nav .reg_log_wrap {
+  width: 84px;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #87b8dd;
+  background-color: #0068b7;
+  text-align: center;
+  margin: 12px 0 0 25px;
+  color: #fff;
+  font-size: 12px;
+}
+[header] [nav_boxs] .nav .reg_log_wrap span {
+  display: inline-block;
+  vertical-align: top;
+  margin: -1px 4px 0;
+}
+[header] [nav_boxs] .nav .reg_log_wrap a {
   color: #fff;
 }
 [header] [nav_boxs] .nav .lion_nav_line {
   position: absolute;
   height: 3px;
-  width: 100px;
+  width: 100%;
   padding: 0;
   background-color: #fff;
-  bottom: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  bottom: -3px;
+  transition: .3s all ease;
 }
 /* index footer */
 [footer] {
@@ -113,7 +140,7 @@
   display: inline-block;
   vertical-align: top;
   overflow: hidden;
-  color: #a0a0a0;
+  color: #797979;
   margin: 1px 10px 0;
 }
 [footer] .foot_wrap .bottom_copyright {
@@ -170,7 +197,7 @@
   font-size: 13px;
 }
 [footer] .foot_bot i {
-  color: #a0a0a0;
+  color: #797979;
 }
 [footer] .foot_bot span {
   color: #666;

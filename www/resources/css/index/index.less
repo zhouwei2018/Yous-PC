@@ -156,7 +156,6 @@
           }
 
           &.update {
-            height: 108px;
             background-position: -304px -21px;
           }
 
@@ -166,7 +165,7 @@
         }
 
         h4 {
-          font-size: @font22;
+          font-size: @font18;
           margin-bottom: 10px;
         }
 
@@ -174,6 +173,7 @@
           text-align: left;
           line-height: 21px;
           color: @cl_black;
+          font-size: @font13;
         }
       }
     }
@@ -353,7 +353,7 @@
                 text-align: center;
 
                 &:hover {
-                  background: hsla(220, 100%, 60%, 1);
+                  background-color: @bg_hoverblue;
                 }
               }
             }
@@ -369,18 +369,13 @@
     .res_left {
       position: relative;
       overflow: hidden;
-      &:hover {
-        .res_wrap {
-          left: 0
-        }
-      }
       .res_left_img {
         width: 620px;
         height: 360px;
       }
       .res_wrap {
         position: absolute;
-        left: 100%;
+        left: 0;
         top: 0;
         width: 100%;
         height: 100%;

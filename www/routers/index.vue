@@ -1,7 +1,8 @@
 ﻿<style lang="less">
     @import "../../src/styles/index.less";
     @import "../resources/css/index/index.less";
-    @import "../resources/css/popup/popup.less";
+    @import "../resources/css/popup/popup.less";   /*弹窗*/
+    @import "../resources/plugin/swiper/css/swiper.css";  /*swiper 轮播*/
 
 </style>
 
@@ -51,36 +52,36 @@
             <!--banner start-->
             <div class="banner_wrap">
                 <div class="banner_cont">
-                    <Carousel autoplay v-model="value2">
-                        <Carousel-item>
-                            <div class="demo-carousel">
+
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
                                 <a href="javascript:;">
                                     <div class="banner_img banner01"></div>
                                 </a>
                             </div>
-                        </Carousel-item>
-                        <Carousel-item>
-                            <div class="demo-carousel">
+                            <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img  banner02"></div>
+                                    <div class="banner_img banner02"></div>
                                 </a>
                             </div>
-                        </Carousel-item>
-                        <Carousel-item>
-                            <div class="demo-carousel">
+                            <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img  banner03"></div>
+                                    <div class="banner_img banner03"></div>
                                 </a>
                             </div>
-                        </Carousel-item>
-                        <Carousel-item>
-                            <div class="demo-carousel">
+                            <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img  banner04"></div>
+                                    <div class="banner_img banner04"></div>
                                 </a>
                             </div>
-                        </Carousel-item>
-                    </Carousel>
+                        </div>
+                        <!--左右按钮-->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                        <!-- 分页器 -->
+                        <div class="swiper-pagination"></div>
+                    </div>
 
                     <div class="banner_bot">
                         <ul class="banner_introduce clearfix">
@@ -385,6 +386,8 @@
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
 
+    import '../resources/plugin/swiper/js/swiper.min.js';
+
     export default {
         components: {header1, footer1},
         data () {
@@ -477,7 +480,7 @@
             this.show_num('#bannerNum3', 2000);
             this.show_num('#bannerNum4', 410);
 
-
+            //top固定
             var lion_head = $('#lion_head'),
                 lion_offset = lion_head.offset();
             $(document).on('scroll', function () {
@@ -496,6 +499,24 @@
                         backgroundColor: 'transparent'
                     })
                 }
+            })
+
+            //banner swiper
+            var mySwiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: '.swiper-pagination', //分页器
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                paginationClickable: true,  //分页可点
+                //spaceBetween: 30,  //无缝
+                centeredSlides: true,
+                autoplay: 3500,
+                //effect : 'fade', //切换效果(淡入淡出)
+                //fade: {
+                //    crossFade: false,
+                //},
+                autoplayDisableOnInteraction: true  //鼠标操作时关闭autopaly
+
             })
 
         }

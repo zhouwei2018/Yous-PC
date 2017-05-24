@@ -16,39 +16,69 @@
 
   .lion_logo {
     position: absolute;
-    width: 130px;
-    height: 40px;
+    width: 120px;
+    height: 35px;
     left: 0;
-    top: 10px;
+    top: 12px;
   }
 
   [nav_boxs] {
-    height: 55px;
+    height: 50px;
     .nav {
       height: 100%;
       position: relative;
-      a {
+      >a {
         height: 100%;
-        width: 100px;
-        border-radius: 2px;
         padding-top: 15px;
-        text-align: center;
+        margin-left: 25px;
+        border-radius: 2px;
         float: left;
-        font-size: @font16;
         position: relative;
         transition: .5s all ease;
         color: @cl_white;
+        font-size: @font15;
+        &:hover {
+          .lion_nav_line {
+            bottom: 0;
+          }
+        }
+        &.active {
+          .lion_nav_line {
+            bottom: 0;
+          }
+        }
+      }
+
+      .reg_log_wrap{
+        width: 84px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid @bg_login_lightblue;
+        background-color: @bg_login_blue;
+        text-align: center;
+        margin: 12px 0 0 25px;
+        color: @cl_white;
+        font-size: @font12;
+        span{
+          display: inline-block;
+          vertical-align: top;
+          margin: -1px 4px 0;
+        }
+        a{
+          color: @cl_white;
+        }
       }
 
       .lion_nav_line {
         position: absolute;
         height: 3px;
-        width: 100px;
+        width: 100%;
         padding: 0;
         background-color: @cl_white;
-        bottom: 0;
-        transition: all .3s cubic-bezier(.4, 0, .2, 1);
-        //transition: all .1s linear;
+        bottom: -3px;
+        transition: .3s all ease;
+        //transition: .3s all cubic-bezier(.4, 0, .2, 1);
+
       }
 
     }
