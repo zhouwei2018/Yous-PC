@@ -2,7 +2,7 @@
 
 /* index header */
 [header] {
-  height: 55px;
+  height: 50px;
   background-color: @bg_black;
   position: relative;
   width: 100%;
@@ -169,6 +169,7 @@
       display: block;
       text-align: center;
       font-size: @font14;
+      margin-top: 8px;
     }
   }
 
@@ -192,4 +193,21 @@
 
   }
 
+}
+
+@media screen and (min-width: 1500px) {
+  //nav 间隔
+  [header] {
+    [nav_boxs] {
+      .nav {
+        > a {
+          margin-left: 40px;
+        }
+
+        .reg_log_wrap{
+          margin: 12px 0 0 40px;
+        }
+      }
+    }
+  }
 }

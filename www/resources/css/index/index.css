@@ -369,14 +369,17 @@
   top: 0;
   width: 100%;
   height: 100%;
-  line-height: 360px;
   text-align: center;
   color: #fff;
   font-size: 26px;
   transition: .3s all ease;
 }
-[index_content] [response] .res_left .res_wrap span {
-  position: relative;
+[index_content] [response] .res_left .res_wrap .res_text_box {
+  position: absolute;
+  left: 0;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
 }
 [index_content] [response] .res_left .res_wrap .res_bg {
   position: absolute;
@@ -429,6 +432,6 @@
 }
 @media screen and (min-width: 1500px) {
   [index_content] .banner_wrap .banner_cont .banner_img {
-    height: 850px;
+    height: 800px;
   }
 }

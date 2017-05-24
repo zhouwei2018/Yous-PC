@@ -77,8 +77,8 @@
                             </div>
                         </div>
                         <!--左右按钮-->
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev swiper-button-white"></div>
+                        <div class="swiper-button-next swiper-button-white"></div>
                         <!-- 分页器 -->
                         <div class="swiper-pagination"></div>
                     </div>
@@ -337,7 +337,7 @@
 
                             <div class="res_wrap">
                                 <div class="res_bg"></div>
-                                <span>责任即价值</span>
+                                <div class="res_text_box"><span>责任即价值</span></div>
                             </div>
 
                         </div>

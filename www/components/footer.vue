@@ -11,7 +11,7 @@
           </div>
           <div class="fr">
               <img src="../resources/images/ys_weixin.png" alt="幼狮微信"/>
-              <span class="weixin_text">APP下载</span>
+              <span class="weixin_text">手机客户端</span>
           </div>
       </div>
       <div class="foot_bot">
