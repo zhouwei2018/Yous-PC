@@ -35,17 +35,20 @@
       padding-bottom: 10px;
       font-size: @font24;
       border-bottom: 1px solid @bdc_gray;
-      margin-bottom: 45px;
+      margin-bottom: 30px;
     }
-    img {
+    > img {
       width: 100%;
       height: 350px;
       margin-bottom: 35px;
+      &.height_auto {
+        height: auto;
+      }
       &.about_ys_02 {
         height: 500px;
       }
     }
-    p {
+    .about_ys_para {
       line-height: 28px;
       color: @cl_para_black;
       text-indent: 2em;
@@ -90,8 +93,8 @@
       .search_res_wrap {
         .search_category {
           border-bottom: 1px solid @bdc_ccc;
-          line-height:36px;
-          height:36px;
+          line-height: 36px;
+          height: 36px;
           overflow: hidden;
           .category_item {
             display: inline-block;
@@ -99,7 +102,7 @@
             margin-right: 30px;
             position: relative;
             color: @bg_greatblack;
-            &.active, &:hover{
+            &.active, &:hover {
               .cate_bot_line {
                 bottom: 1px;
               }
@@ -109,31 +112,102 @@
               bottom: -4px;
               left: 0;
               width: 100%;
-              height:4px;
+              height: 4px;
               background-color: @bg_skyblue;
               transition: .3s all ease;
             }
           }
         }
 
-        .search_res_ul{
-          >li{
-            padding-top: 25px;
+        .search_res_ul {
+          > li {
+            padding-top: 24px;
             border-bottom: 1px solid @bdc_ccc;
-            .items_left{
-              width:70%;
-              .job_name{
+            .items_left {
+              width: 70%;
+              .job_name {
                 color: @bg_skyblue;
               }
             }
-            .search_block{
+            .search_block {
               display: block;
-              margin: 6px 0;
+              margin: 6px 0 8px;
             }
           }
         }
       }
 
+    }
+
+    //ys_column
+
+    .column_img_wrap{
+      height:225px;
+      line-height: 225px;
+      background: url("../../images/about_us/ys_column01.png") no-repeat;
+      h4{
+        text-align: center;
+        font-size: @font48;
+        color: @cl_white;
+      }
+    }
+
+    [ys_column] {
+      padding: 25px 0 ;
+      overflow: hidden;
+      .ys_column_ul {
+        width:950px;
+        li {
+          width:284px;
+          float: left;
+          margin-right: 30px;
+          img {
+            width:100%;
+            height:160px;
+          }
+          .sport_cont{
+            padding: 15px 0 15px 15px;
+            background-color: @bg_verygray;
+            h5{
+              margin-bottom: 25px;
+              font-size: @font15;
+            }
+            span{
+              display: block;
+              color: @cl_gray;
+              font-size: @font13;
+              &.sport_date{
+                i{
+                  background: url("../../images/about_us/clock.png") no-repeat;
+                }
+              }
+              &.sport_address{
+                i{
+                  background: url("../../images/about_us/pointer.png") no-repeat;
+                }
+              }
+              i{
+                display: inline-block;
+                vertical-align: middle;
+                width:11px;
+                height:14px;
+                margin-right: 15px;
+              }
+            }
+          }
+
+        }
+      }
+    }
+
+    //contact_us
+    [contact_us]{
+      p{
+        line-height: 25px;
+      }
+      img{
+        margin-top: 10px;
+      }
     }
 
   }

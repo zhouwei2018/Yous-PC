@@ -39,6 +39,26 @@
                             <span class="search_block">发布时间：2017-05-10</span>
                         </div>
                     </li>
+                    <li class="clearfix">
+                        <div class="fl items_left">
+                            <span class="job_name">人事前台</span>
+                            <span class="search_block">部门：人力资源部</span>
+                        </div>
+                        <div class="fl items_right">
+                            <span>学历要求：大专及以上学历</span>
+                            <span class="search_block">发布时间：2017-05-10</span>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="fl items_left">
+                            <span class="job_name">人事前台</span>
+                            <span class="search_block">部门：人力资源部</span>
+                        </div>
+                        <div class="fl items_right">
+                            <span>学历要求：大专及以上学历</span>
+                            <span class="search_block">发布时间：2017-05-10</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div class="page_box fr">
