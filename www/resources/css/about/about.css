@@ -3,6 +3,7 @@
 /*默认文字灰色*/
 /*用于辅助说明文字、次要文字信息*/
 /*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
 /*用于详情提示文字，引导词*/
 /*用于价格显示、注意事项提醒文字*/
 /*底部文字浅灰*/
@@ -21,6 +22,7 @@
 /*天蓝色*/
 /*index 业主委托亮蓝色*/
 /*深蓝色*/
+/*浅蓝色*/
 /*首页登录按钮背景蓝*/
 /*首页登录按钮border*/
 /*棕色*/
@@ -49,7 +51,6 @@
 }
 [about_us] .about_left {
   width: 230px;
-  padding-top: 30px;
   background-color: #fff;
   margin-right: 20px;
 }
@@ -61,8 +62,8 @@
   font-size: 15px;
 }
 [about_us] .about_left ul li.active {
-  background-color: #efefef;
-  color: #fb7530;
+  background-color: #0f6fac;
+  color: #fff;
 }
 [about_us] .about_right {
   width: 940px;
@@ -71,22 +72,23 @@
   padding: 45px 48px 0;
 }
 [about_us] .about_right h3 {
-  font-weight: 600;
-  color: #999;
+  color: #555;
   padding-bottom: 10px;
-  font-size: 27px;
+  font-size: 24px;
   border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
 }
 [about_us] .about_right img {
   width: 100%;
-  height: 280px;
+  height: 350px;
   margin-bottom: 35px;
+}
+[about_us] .about_right img.about_ys_02 {
+  height: 500px;
 }
 [about_us] .about_right p {
   line-height: 28px;
-  color: #666;
-}
-[about_us] .about_right p.about_two_pra {
-  text-indent: 1em;
+  color: #2d2d2d;
+  text-indent: 2em;
+  margin-bottom: 30px;
 }

@@ -3,6 +3,7 @@
 /*默认文字灰色*/
 /*用于辅助说明文字、次要文字信息*/
 /*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
 /*用于详情提示文字，引导词*/
 /*用于价格显示、注意事项提醒文字*/
 /*底部文字浅灰*/
@@ -21,6 +22,7 @@
 /*天蓝色*/
 /*index 业主委托亮蓝色*/
 /*深蓝色*/
+/*浅蓝色*/
 /*首页登录按钮背景蓝*/
 /*首页登录按钮border*/
 /*棕色*/
@@ -117,9 +119,21 @@
   height: 26px;
   background: url("../../images/office/right_arrow.png") no-repeat;
 }
+[office] .center_trade {
+  background-color: #fff;
+}
 [office] .center_trade .center_trade_head {
-  height: 86px;
-  line-height: 86px;
+  border-bottom: 1px solid #b5b5b5;
+}
+[office] .center_trade .center_trade_head > div {
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+[office] .center_trade .center_trade_head .title {
+  font-size: 28px;
+  margin-bottom: 12px;
+  margin-left: 30px;
+  margin-top: 12px;
 }
 [office] .center_trade .center_trade_head > span {
   font-size: 28px;
@@ -128,48 +142,68 @@
 }
 [office] .center_trade .center_trade_head a {
   color: #666;
-  font-style: 17px;
-  margin: 0 20px;
+  font-size: 18px;
+  text-align: center;
+  margin: 0 15px;
 }
 [office] .center_trade .center_trade_head a.active {
   color: #fb7530;
 }
+[office] .center_trade .center_list {
+  margin-top: 35px;
+  margin-left: 20px;
+  background-color: #fff;
+}
 [office] .center_trade .center_list > ul {
-  margin-right: 20px;
   width: 785px;
   margin-bottom: 45px;
 }
 [office] .center_trade .center_list > ul > li {
-  height: 257px;
+  height: 220px;
   background-color: #fff;
   margin-bottom: 18px;
 }
 [office] .center_trade .center_list > ul > li img {
-  width: 394px;
-  height: 258px;
+  width: 300px;
+  height: 200px;
   margin-right: 28px;
 }
 [office] .center_trade .center_list > ul > li .center_detail {
-  padding-top: 30px;
-  max-width: 300px;
+  width: auto;
 }
 [office] .center_trade .center_list > ul > li .center_detail h3 {
   margin-bottom: 10px;
 }
 [office] .center_trade .center_list > ul > li .center_detail span {
   color: #999;
+  margin: 5px 15px;
 }
 [office] .center_trade .center_list > ul > li .center_detail ul {
   margin: 15px 0 30px;
   color: #666;
 }
 [office] .center_trade .center_list > ul > li .center_detail ul .list_square {
-  display: inline-block;
   width: 4px;
   height: 4px;
   background-color: #666;
   margin-right: 6px;
   vertical-align: middle;
+}
+[office] .center_trade .center_list > ul > li .center_detail ul li {
+  float: left;
+  height: 18px;
+  color: #333;
+  background-color: #f1f6fc;
+  margin-right: 12px;
+}
+[office] .center_trade .center_list > ul > li .right_div > div {
+  text-align: right;
+  margin-bottom: 6px;
+}
+[office] .center_trade .center_list > ul > li .right_div em {
+  font-size: 18px;
+  color: #e7745b;
+  font-weight: bold;
 }
 [office] .center_trade .center_list > ul > li .apply_btn {
   width: 135px;
@@ -180,12 +214,14 @@
   line-height: 35px;
   color: #fff;
   font-size: 15px;
+  right: 1px;
+  position: absolute;
+  bottom: 0;
 }
 [office] .center_trade .center_list .trade_per {
   width: 394px;
   height: 483px;
   text-align: center;
-  padding-top: 30px;
   background: #fff;
 }
 [office] .center_trade .center_list .trade_per h3 {

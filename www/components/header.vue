@@ -37,28 +37,11 @@
 <script type="es6">
     export default {
         methods:{
-            //move_line(){
-            //    $('.nav a').hover(function(){
-            //        var index=$(this).index();
-            //        $('.lion_nav_line').animate({
-            //            left:index*100
-            //        },100);
-            //    },function(){
-            //
-            //    })
-            //
-            //    $('.nav a').click(function(){
-            //        var index=$(this).index();
-            //        $('.lion_nav_line').css({
-            //            left:index*100
-            //        });
-            //    })
-            //
-            //}
+
         },
 
         mounted(){
-            //this.move_line();
+
         }
     }
 </script>
