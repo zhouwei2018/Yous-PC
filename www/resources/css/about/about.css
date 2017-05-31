@@ -52,6 +52,8 @@
   width: 230px;
   background-color: #fff;
   margin-right: 20px;
+  left: 0;
+  top: 0;
 }
 [about_us] .about_left ul li {
   cursor: pointer;

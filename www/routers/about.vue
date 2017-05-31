@@ -15,8 +15,8 @@
                 <i>&gt;</i>
                 <span class="nav_sub_item">关于我们</span>
             </div>
-            <div class="contents clearfix">
-                <div class="about_left fl">
+            <div class="contents clearfix" id="about_us_box">
+                <div class="about_left fl" id="about_us_menu">
                     <ul>
                         <!-- <li class="active" @click="tab(0)">关于幼狮</li>
                         <li @click="tab(1)">工作机会</li>
@@ -28,7 +28,7 @@
                         </li>
                     </ul>
                 </div>
-                <component :is="currentView"></component>
+                <component :is="currentView" class="fr"></component>
             </div>
         </div>
 
@@ -101,10 +101,39 @@
 //                    i == index ? v.iscur = true : v.iscur = false;
 //                });
 //            }
+            //tab
             toggle(i, v){
                 this.active = i;
                 this.currentView = v;
+                $(window).scrollTop(0);
+            },
+
+            //左侧菜单scroll 时固定
+            menuFix(){
+                $(window).scroll(function(){
+                    var scrollTop=$(window).scrollTop();
+                    console.log($('#about_us_box').offset().left);
+                    if(scrollTop >=90){
+                        var fixLeft=$('#about_us_box').offset().left;
+                        $('#about_us_menu').css({
+                            position:'fixed',
+                            left:fixLeft,
+                            top:0
+                        });
+                    }else if(scrollTop <90){
+                        $('#about_us_menu').css({
+                            position:'relative',
+                            left:0,
+                            top:0
+                        });
+                    }
+
+
+                });
             }
+        },
+        mounted(){
+            this.menuFix();
         }
     }
 </script>
