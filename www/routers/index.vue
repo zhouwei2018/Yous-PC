@@ -381,7 +381,7 @@
     </div>
 
 </template>
-<script type="es6">
+<script>
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
