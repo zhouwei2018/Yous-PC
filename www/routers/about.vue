@@ -1,5 +1,6 @@
 <style lang="less">
     @import "../resources/css/about/about.less";
+    @import "../resources/css/service/page.less";
 </style>
 
 <template>
