@@ -218,6 +218,9 @@
   height: 14px;
   margin-right: 15px;
 }
+[about_us] .about_right [contact_us] {
+  min-height: 400px;
+}
 [about_us] .about_right [contact_us] p {
   line-height: 25px;
 }

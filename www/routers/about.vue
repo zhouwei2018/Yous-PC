@@ -112,7 +112,6 @@
             menuFix(){
                 $(window).scroll(function(){
                     var scrollTop=$(window).scrollTop();
-                    console.log($('#about_us_box').offset().left);
                     if(scrollTop >=90){
                         var fixLeft=$('#about_us_box').offset().left;
                         $('#about_us_menu').css({
