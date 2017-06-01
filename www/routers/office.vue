@@ -216,7 +216,7 @@ export default {
        }
   　},
     mounted:function(){
-        this.setAreaItem(0)
+        this.setAreaItem(0);
     },
     methods:{
         setCur: function (index,areaId) {

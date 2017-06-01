@@ -68,7 +68,7 @@
 //                    {"index": 3, "name": "联系我们", "iscur": false},
 //                    {"index": 4, "name": "条款与隐私", "iscur": false}
 //                ],
-
+                scrollWatch: true,
                 active: 0, //初始index
                 currentView: 'about_ys',  //初始模板
                 tabs: [
@@ -110,29 +110,35 @@
 
             //左侧菜单scroll 时固定
             menuFix(){
-                $(window).scroll(function(){
-                    var scrollTop=$(window).scrollTop();
-                    if(scrollTop >=90){
-                        var fixLeft=$('#about_us_box').offset().left;
-                        $('#about_us_menu').css({
-                            position:'fixed',
-                            left:fixLeft,
-                            top:0
-                        });
-                    }else if(scrollTop <90){
-                        $('#about_us_menu').css({
-                            position:'relative',
-                            left:0,
-                            top:0
-                        });
+                var _this=this;
+                $(window).on('scroll', function(){
+                    if (_this.scrollWatch) {
+                        //your code here
+                        var scrollTop=$(window).scrollTop();
+                        if(scrollTop >=90){
+                            var fixLeft=$('#about_us_box').offset().left;
+                            $('#about_us_menu').css({
+                                position:'fixed',
+                                left:fixLeft,
+                                top:0
+                            });
+                        }else if(scrollTop <90){
+                            $('#about_us_menu').css({
+                                position:'relative',
+                                left:0,
+                                top:0
+                            });
+                        }
                     }
-
-
                 });
             }
         },
         mounted(){
+            $(window).scrollTop(0);
             this.menuFix();
+        },
+        destroyed () {
+            this.scrollWatch = false;
         }
     }
 </script>

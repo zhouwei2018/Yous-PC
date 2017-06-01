@@ -122,6 +122,7 @@
   min-width: 1200px;
   margin: 0 auto;
   height: 220px;
+  overflow: hidden;
   color: #fff;
   background-color: #191919;
 }

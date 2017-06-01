@@ -163,6 +163,9 @@
 import header1 from '../components/header.vue';
 import footer1 from '../components/footer.vue';
 export default {
-    components: { header1,footer1 }
+    components: { header1,footer1 },
+    mounted(){
+        $(window).scrollTop(0);
+    }
 }
 </script>

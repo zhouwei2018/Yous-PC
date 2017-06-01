@@ -1,8 +1,9 @@
 ﻿<style lang="less">
     @import "../../src/styles/index.less";
     @import "../resources/css/index/index.less";
-    @import "../resources/css/popup/popup.less";   /*弹窗*/
-    @import "../resources/plugin/swiper/css/swiper.css";  /*swiper 轮播*/
+    @import "../resources/css/popup/popup.less";
+    /*弹窗*/
+    @import "../resources/plugin/swiper/css/swiper.css"; /*swiper 轮播*/
 
 </style>
 
@@ -314,7 +315,7 @@
                                     <i class="pop_list_text">元/月</i>
                                 </div>
                             </div>
-                    <textarea class="pop_textarea" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等">
+                            <textarea class="pop_textarea" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等">
 
                     </textarea>
 
@@ -446,8 +447,8 @@
             show_num: function (id, d) {
                 //d 跳动到最后的数字
                 var time = 1500, //全部时间
-                        outTime = 0, //实时时间
-                        interTime = 30; //增长速率
+                    outTime = 0, //实时时间
+                    interTime = 30; //增长速率
                 var powertimer = null;
                 clearInterval(powertimer);
                 powertimer = setInterval(function () {
@@ -474,6 +475,7 @@
         },
 
         mounted: function () {
+            $(window).scrollTop(0);
             //数字滚动
             this.show_num('#bannerNum1', 140000);
             this.show_num('#bannerNum2', 1000);
