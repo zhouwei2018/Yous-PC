@@ -73,10 +73,10 @@
                           <div  style="height:200px;width:100%;position:relative">
                               <div class="fl center_detail">
                                   <h3>{{item.name}}</h3>
-                                  <span>[{{areaItem.category}}-{{areaItem.name}}]{{item.address}}</span>
+                                  <span><Icon type="ios-location-outline"></Icon><span>[{{areaItem.category}}-{{areaItem.name}}]  {{item.address}}</span></span>
                                   <ul>
                                       <li  v-for='label in item.labels'>
-                                        <span>{{label}}</span>
+                                        <span class="label">{{label}}</span>
                                       </li>
 
                                   </ul>
