@@ -75,9 +75,10 @@
                                   <h3>{{item.name}}</h3>
                                   <span>[{{areaItem.category}}-{{areaItem.name}}]{{item.address}}</span>
                                   <ul>
-                                      <li><span>互联网</span></li>
-                                      <li><span>知名企业</span></li>
-                                      <li><span>地标建筑</span></li>
+                                      <li  v-for='label in item.labels'>
+                                        <span>{{label}}</span>
+                                      </li>
+
                                   </ul>
 
                               </div>
