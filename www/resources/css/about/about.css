@@ -55,6 +55,8 @@
   margin-right: 20px;
   left: 0;
   top: 0;
+  border: 1px solid #eee;
+  box-shadow: 0 0 10px 0 #e6e6e6;
 }
 [about_us] .about_left ul li {
   cursor: pointer;
@@ -69,8 +71,11 @@
 }
 [about_us] .about_right {
   width: 940px;
+  margin-right: 2px;
   background-color: #fff;
   padding: 45px 35px 25px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 10px 0 #e6e6e6;
 }
 [about_us] .about_right h3 {
   color: #555;
@@ -104,30 +109,39 @@
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner01 {
   background: url("../../images/about_us/about_ys_banner/about_ys_01.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner02 {
   background: url("../../images/about_us/about_ys_banner/about_ys_02.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner03 {
   background: url("../../images/about_us/about_ys_banner/about_ys_03.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner04 {
   background: url("../../images/about_us/about_ys_banner/about_ys_04.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner05 {
   background: url("../../images/about_us/about_ys_banner/about_ys_05.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner06 {
   background: url("../../images/about_us/about_ys_banner/about_ys_06.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner07 {
   background: url("../../images/about_us/about_ys_banner/about_ys_07.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner08 {
   background: url("../../images/about_us/about_ys_banner/about_ys_08.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right .about_ys_banner .about_ys_banner_img.banner09 {
   background: url("../../images/about_us/about_ys_banner/about_ys_09.jpg") no-repeat;
+  background-size: 100% 100%;
 }
 [about_us] .about_right [join_us] .join_us_search {
   margin-bottom: 15px;
