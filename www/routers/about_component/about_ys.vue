@@ -1,4 +1,10 @@
-<style lang="less">
+<style lang="less" scoped>
+
+    .swiper-container-horizontal > .swiper-pagination-bullets {
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+    }
 
 </style>
 
@@ -32,13 +38,87 @@
             资、幼狮商学院、幼狮财、法、税平台等多家子公司及商业联盟，全面为企业升级服务保驾护航。航远控股现已成为北京市唯一的
             “商业地产投资＋办公空间运营＋企业升级服务”整合服务提供商，为企业创造全面的管家式服务体验。专注于满足企业进阶过程
             中的核心需求，致力打造高成长性企业生态圈，助力企业更省更快走向强大。</p>
-        <img class="about_ys_02" src="../../resources/images/about_us/about_ys02.jpg" alt=""/>
+        <div class="about_ys_banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner01"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner02"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner03"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner04"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner05"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner06"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner07"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner08"></div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="javascript:;">
+                            <div class="about_ys_banner_img banner09"></div>
+                        </a>
+                    </div>
+                </div>
+                <!--左右按钮-->
+                <div class="swiper-button-prev swiper-button-white"></div>
+                <div class="swiper-button-next swiper-button-white"></div>
+                <!-- 分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
     </div>
 
 </template>
 
 <script>
     export default {
+        mounted(){
+            //about_ys_banner swiper
+            var mySwiper = new Swiper('.swiper-container', {
+                loop: true,
+                pagination: '.swiper-pagination', //分页器
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                paginationClickable: true,  //分页可点
+                //spaceBetween: 30,  //无缝
+                centeredSlides: true,
+                autoplay: 3500,
+                //effect : 'fade', //切换效果(淡入淡出)
+                //fade: {
+                //    crossFade: false,
+                //},
+                autoplayDisableOnInteraction: true  //鼠标操作时关闭autopaly
 
+            })
+        }
     }
 </script>

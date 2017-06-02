@@ -95,6 +95,39 @@
   text-indent: 2em;
   margin-bottom: 30px;
 }
+[about_us] .about_right .about_ys_banner {
+  position: relative;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img {
+  height: 500px;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner01 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_01.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner02 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_02.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner03 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_03.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner04 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_04.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner05 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_05.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner06 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_06.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner07 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_07.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner08 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_08.jpg") no-repeat;
+}
+[about_us] .about_right .about_ys_banner .about_ys_banner_img.banner09 {
+  background: url("../../images/about_us/about_ys_banner/about_ys_09.jpg") no-repeat;
+}
 [about_us] .about_right [join_us] .join_us_search {
   margin-bottom: 15px;
 }
@@ -178,7 +211,7 @@
   color: #fff;
 }
 [about_us] .about_right [ys_column] {
-  padding: 25px 0 ;
+  padding: 25px 0;
   overflow: hidden;
 }
 [about_us] .about_right [ys_column] .ys_column_ul {

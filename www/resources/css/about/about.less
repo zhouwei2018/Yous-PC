@@ -10,7 +10,7 @@
     width: 230px;
     background-color: @bg_white;
     margin-right: 20px;
-    left:0;
+    left: 0;
     top: 0;
     ul {
       li {
@@ -55,6 +55,43 @@
       color: @cl_para_black;
       text-indent: 2em;
       margin-bottom: 30px;
+    }
+
+    //banner css
+    .about_ys_banner {
+      position: relative;
+      .about_ys_banner_img {
+        height: 500px;
+        //background-size: 100% 100%;
+        &.banner01{
+          background: url("../../images/about_us/about_ys_banner/about_ys_01.jpg") no-repeat;
+        }
+        &.banner02{
+          background: url("../../images/about_us/about_ys_banner/about_ys_02.jpg") no-repeat;
+        }
+        &.banner03{
+          background: url("../../images/about_us/about_ys_banner/about_ys_03.jpg") no-repeat;
+        }
+        &.banner04{
+          background: url("../../images/about_us/about_ys_banner/about_ys_04.jpg") no-repeat;
+        }
+        &.banner05{
+          background: url("../../images/about_us/about_ys_banner/about_ys_05.jpg") no-repeat;
+        }
+        &.banner06{
+          background: url("../../images/about_us/about_ys_banner/about_ys_06.jpg") no-repeat;
+        }
+        &.banner07{
+          background: url("../../images/about_us/about_ys_banner/about_ys_07.jpg") no-repeat;
+        }
+        &.banner08{
+          background: url("../../images/about_us/about_ys_banner/about_ys_08.jpg") no-repeat;
+        }
+        &.banner09{
+          background: url("../../images/about_us/about_ys_banner/about_ys_09.jpg") no-repeat;
+        }
+
+      }
     }
 
     //join us
@@ -143,12 +180,12 @@
 
     //ys_column
 
-    .column_img_wrap{
-      height:225px;
+    .column_img_wrap {
+      height: 225px;
       line-height: 225px;
       background: url("../../images/about_us/ys_column01.png") no-repeat;
       background-size: contain;
-      h4{
+      h4 {
         text-align: center;
         font-size: @font48;
         color: @cl_white;
@@ -156,44 +193,44 @@
     }
 
     [ys_column] {
-      padding: 25px 0 ;
+      padding: 25px 0;
       overflow: hidden;
       .ys_column_ul {
-        width:950px;
+        width: 950px;
         li {
-          width:270px;
+          width: 270px;
           float: left;
           margin-right: 30px;
           img {
-            width:100%;
-            height:160px;
+            width: 100%;
+            height: 160px;
           }
-          .sport_cont{
+          .sport_cont {
             padding: 15px 0 15px 15px;
             background-color: @bg_verygray;
-            h5{
+            h5 {
               margin-bottom: 25px;
               font-size: @font15;
             }
-            span{
+            span {
               display: block;
               color: @cl_gray;
               font-size: @font13;
-              &.sport_date{
-                i{
+              &.sport_date {
+                i {
                   background: url("../../images/about_us/clock.png") no-repeat;
                 }
               }
-              &.sport_address{
-                i{
+              &.sport_address {
+                i {
                   background: url("../../images/about_us/pointer.png") no-repeat;
                 }
               }
-              i{
+              i {
                 display: inline-block;
                 vertical-align: middle;
-                width:11px;
-                height:14px;
+                width: 11px;
+                height: 14px;
                 margin-right: 15px;
               }
             }
@@ -204,12 +241,12 @@
     }
 
     //contact_us
-    [contact_us]{
-      min-height:400px;
-      p{
+    [contact_us] {
+      min-height: 400px;
+      p {
         line-height: 25px;
       }
-      img{
+      img {
         margin-top: 10px;
       }
     }

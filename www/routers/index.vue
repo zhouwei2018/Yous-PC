@@ -394,8 +394,6 @@
         data () {
             return {
 
-                value2: 1,  //大轮播图
-
                 modal5: false, //弹窗1
                 modal6: false, //弹窗2
 
