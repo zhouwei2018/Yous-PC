@@ -79,7 +79,7 @@ body [loading] #preloader #status {
 }
 body [top_box] {
   height: 100%;
-  background-color: #0f6fac;
+  background-color: #fff;
 }
 body [top_box][white] {
   background-color: #fff;
@@ -101,17 +101,16 @@ body [top_box][white] .bottom_copyright {
 }
 body [top_box] .content_wrap {
   position: relative;
-  height: 695px;
-  background-color: #0f6fac;
+  height: 550px;
 }
 body [top_box] .content_wrap .reg_bg {
   position: absolute;
   left: 50%;
-  top: 80px;
+  top: 0;
   margin-left: -427px;
   width: 854px;
-  background-color: #fff;
   padding: 50px 0;
+  border-bottom: 1px solid #b5b5b5;
 }
 body [top_box] .content_wrap .reg_bg .reg_wrap {
   margin-left: 135px;

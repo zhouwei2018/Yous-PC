@@ -27,7 +27,7 @@
     .nav {
       height: 100%;
       position: relative;
-      >a {
+      > a {
         height: 100%;
         padding-top: 15px;
         margin-left: 25px;
@@ -49,7 +49,7 @@
         }
       }
 
-      .reg_log_wrap{
+      .reg_log_wrap {
         width: 84px;
         height: 30px;
         line-height: 30px;
@@ -59,12 +59,12 @@
         margin: 12px 0 0 25px;
         color: @cl_white;
         font-size: @font12;
-        span{
+        span {
           display: inline-block;
           vertical-align: top;
           margin: -1px 4px 0;
         }
-        a{
+        a {
           color: @cl_white;
         }
       }
@@ -128,7 +128,17 @@
 
   &[add_reg] {
     height: 200px;
-    background-color: @bg_blue;
+    background-color: @bg_white;
+    .foot_wrap {
+      .bottom_nav {
+        a {
+          color: @cl_default;
+        }
+      }
+      .bottom_copyright{
+        color: @cl_default;
+      }
+    }
   }
 
   &[add_login] {
@@ -205,7 +215,7 @@
           margin-left: 40px;
         }
 
-        .reg_log_wrap{
+        .reg_log_wrap {
           margin: 12px 0 0 40px;
         }
       }

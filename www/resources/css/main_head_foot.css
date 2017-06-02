@@ -156,7 +156,13 @@
 }
 [footer][add_reg] {
   height: 200px;
-  background-color: #0f6fac;
+  background-color: #fff;
+}
+[footer][add_reg] .foot_wrap .bottom_nav a {
+  color: #333;
+}
+[footer][add_reg] .foot_wrap .bottom_copyright {
+  color: #333;
 }
 [footer][add_login] {
   height: 200px;
