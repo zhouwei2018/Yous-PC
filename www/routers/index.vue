@@ -58,12 +58,12 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img banner01"></div>
+                                    <div class="banner_img banner02"></div>
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img banner02"></div>
+                                    <div class="banner_img banner01"></div>
                                 </a>
                             </div>
                             <div class="swiper-slide">
