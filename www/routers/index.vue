@@ -88,7 +88,7 @@
                         <ul class="banner_introduce clearfix">
                             <li class="area01">
                                 <p>运营面积</p>
-                                <span><i id="bannerNum1"></i>㎡</span>
+                                <span><i id="bannerNum1"></i>m²</span>
                             </li>
                             <li class="area02">
                                 <p>入驻企业</p>
@@ -110,7 +110,7 @@
             </div>
             <!--一站式-->
             <div one_state>
-                <h3 class="content_tit">领先的一站式创业服务重创空间</h3>
+                <h3 class="content_tit">领先的一站式创业服务众创空间</h3>
 
                 <div class="contents">
                     <ul class="clearfix">

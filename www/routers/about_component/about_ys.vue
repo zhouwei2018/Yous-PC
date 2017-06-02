@@ -1,5 +1,5 @@
 <style lang="less" scoped>
-
+    /*轮播图重置样式*/
     .swiper-container-horizontal > .swiper-pagination-bullets {
         bottom: 20px;
         left: 0;

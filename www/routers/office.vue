@@ -84,7 +84,7 @@
                               </div>
                                <div class="fr right_div">
                                   <div>
-                                    <em>{{item.price}}</em><span>元/㎡天</span>
+                                    <em>{{item.price}}</em><span>元/m²天</span>
                                   </div>
                                    <div>
                                       <span>均价</span>
