@@ -129,27 +129,29 @@
 }
 [office] .center_trade .center_trade_head > div {
   margin-left: 20px;
-  margin-bottom: 8px;
 }
 [office] .center_trade .center_trade_head .title {
   font-size: 28px;
   margin-bottom: 12px;
-  margin-left: 30px;
   margin-top: 12px;
 }
 [office] .center_trade .center_trade_head > span {
   font-size: 28px;
   color: #333;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 [office] .center_trade .center_trade_head a {
   color: #666;
   font-size: 18px;
+  display: inline-block;
+  float: left;
+  height: 35px;
+  width: 100px;
   text-align: center;
-  margin: 0 15px;
 }
 [office] .center_trade .center_trade_head a.active {
   color: #fb7530;
+  border-bottom: 5px solid #fb7530;
 }
 [office] .center_trade .center_list {
   margin-top: 35px;
@@ -173,12 +175,20 @@
 [office] .center_trade .center_list > ul > li .center_detail {
   width: auto;
 }
+[office] .center_trade .center_list > ul > li .center_detail .label {
+  font-size: 10px;
+  margin: 8px;
+}
+[office] .center_trade .center_list > ul > li .center_detail i {
+  margin-right: 8px;
+}
 [office] .center_trade .center_list > ul > li .center_detail h3 {
   margin-bottom: 10px;
+  font-weight: 280;
 }
 [office] .center_trade .center_list > ul > li .center_detail span {
   color: #999;
-  margin: 5px 15px;
+  margin: 5px 0px;
 }
 [office] .center_trade .center_list > ul > li .center_detail ul {
   margin: 15px 0 30px;
@@ -193,7 +203,9 @@
 }
 [office] .center_trade .center_list > ul > li .center_detail ul li {
   float: left;
-  height: 18px;
+  height: 22px;
+  vertical-align: middle;
+  text-align: center;
   color: #333;
   background-color: #f1f6fc;
   margin-right: 12px;
@@ -203,9 +215,9 @@
   margin-bottom: 6px;
 }
 [office] .center_trade .center_list > ul > li .right_div em {
-  font-size: 18px;
+  font-size: 24px;
   color: #e7745b;
-  font-weight: bold;
+  font-weight: bolder;
 }
 [office] .center_trade .center_list > ul > li .apply_btn {
   width: 135px;

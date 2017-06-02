@@ -69,7 +69,7 @@
 [about_us] .about_right {
   width: 940px;
   background-color: #fff;
-  padding: 45px 48px 25px;
+  padding: 45px 35px 25px;
 }
 [about_us] .about_right h3 {
   color: #555;
@@ -170,6 +170,7 @@
   height: 225px;
   line-height: 225px;
   background: url("../../images/about_us/ys_column01.png") no-repeat;
+  background-size: contain;
 }
 [about_us] .about_right .column_img_wrap h4 {
   text-align: center;
@@ -184,7 +185,7 @@
   width: 950px;
 }
 [about_us] .about_right [ys_column] .ys_column_ul li {
-  width: 284px;
+  width: 270px;
   float: left;
   margin-right: 30px;
 }

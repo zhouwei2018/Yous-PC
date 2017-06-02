@@ -18,14 +18,14 @@
             <div class="search_res_wrap">
                 <div class="search_category">
                     <a href="javascript:;" class="category_item active">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
-                    <a href="javascript:;" class="category_item">全部<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">人力类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">行政类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">服务类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">数据类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">运营类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">市场类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">技术类<span class="cate_bot_line"></span></a>
+                    <a href="javascript:;" class="category_item">设计类<span class="cate_bot_line"></span></a>
 
                 </div>
                 <ul class="search_res_ul">
