@@ -64,7 +64,7 @@
   width: 120px;
   height: 35px;
   left: 0;
-  top: 12px;
+  top: 9px;
 }
 [header] [nav_boxs] {
   height: 50px;
@@ -154,14 +154,17 @@
   color: #b0b0b0;
   padding-top: 7px;
 }
-[footer][add_reg] {
+[footer][add_reg],
+[footer][add_login] {
   height: 200px;
   background-color: #fff;
 }
-[footer][add_reg] .foot_wrap .bottom_nav a {
+[footer][add_reg] .foot_wrap .bottom_nav a,
+[footer][add_login] .foot_wrap .bottom_nav a {
   color: #333;
 }
-[footer][add_reg] .foot_wrap .bottom_copyright {
+[footer][add_reg] .foot_wrap .bottom_copyright,
+[footer][add_login] .foot_wrap .bottom_copyright {
   color: #333;
 }
 [footer][add_login] {

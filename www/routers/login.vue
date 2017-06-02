@@ -6,7 +6,7 @@
 <template>
     <div class="all">
       <!--topper  begin-->
-      <div top_box white>
+      <div top_box>
           <div header>
               <div class="contents">
                   <h2 class="lion_text">幼狮空间</h2>
@@ -14,41 +14,45 @@
               </div>
           </div>
 
-          <div class="content_wrap login">
-              <div class="login_bg">
-                  <h3 class="tc">用户登录</h3>
-                  <!--登录-->
-                  <form id="signinForm" method="get" action="" novalidate="novalidate">
-                      <div input-prompt inp_login>
-                          <div class="inp">
-                              <input autocomplete="off" value="" class="public" maxlength="11" id="phone" type="phone"
-                                     name="phone"
-                                     placeholder="请输入手机号码" required="">
-                              <label id="phone_error" class="error" style="display: none;">请输入11位手机号</label>
+          <div class="user_content login">
+              <div class="user_main">
+                  <div class="content_wrap login fr">
+                      <div class="login_bg">
+                          <h3 class="tc">用户登录</h3>
+                          <!--登录-->
+                          <form id="signinForm" method="get" action="" novalidate="novalidate">
+                              <div input-prompt inp_login>
+                                  <div class="inp">
+                                      <input autocomplete="off" value="" class="public" maxlength="11" id="phone" type="phone"
+                                             name="phone"
+                                             placeholder="请输入手机号码" required="">
+                                      <label id="phone_error" class="error" style="display: none;">请输入11位手机号</label>
+                                  </div>
+                                  <div class="inp clearfix">
+                                      <input class="public code fl" value="" placeholder="请输入验证码"><a class="sms_verification ml10 white fl"
+                                                                                                     href="javascript:;">获取验证码</a>
+                                      <label id="password_error" class="error" style="display: none;">请输入密码</label>
+                                  </div>
+                                  <div class="inp pt15">
+                                      <input class="next btn1_hover submit" type="submit" value="立即登录" id="login"></a>
+                                  </div>
+                              </div>
+                          </form>
+                          <div class="status_switch">
+                              <router-link to="/register">注册幼狮账号</router-link>
+                              <span class="line_vertical"></span>
+                              <router-link to="/register">忘记密码？</router-link>
                           </div>
-                          <div class="inp clearfix">
-                              <input class="public code fl" value="" placeholder="请输入验证码"><a class="sms_verification ml10 white fl"
-                                                                                          href="javascript:;">获取验证码</a>
-                              <label id="password_error" class="error" style="display: none;">请输入密码</label>
-                          </div>
-                          <div class="inp pt15">
-                              <input class="next btn1_hover submit" type="submit" value="立即登录" id="login"></a>
-                          </div>
-                      </div>
-                  </form>
-                  <div class="status_switch">
-                      <router-link to="/register">注册幼狮账号</router-link>
-                      <span class="line_vertical"></span>
-                      <router-link to="/register">忘记密码？</router-link>
-                  </div>
 
-                  <div class="login_mode">
-                      <div class="login_mode_tab">
-                          <span></span>
-                          <i>其他方式登录</i>
-                          <span class="right"></span>
+                          <div class="login_mode">
+                              <div class="login_mode_tab">
+                                  <span></span>
+                                  <i>其他方式登录</i>
+                                  <span class="right"></span>
+                              </div>
+                              <a href="javascript:;" class="weixin_switch"></a>
+                          </div>
                       </div>
-                      <a href="javascript:;" class="weixin_switch"></a>
                   </div>
               </div>
           </div>

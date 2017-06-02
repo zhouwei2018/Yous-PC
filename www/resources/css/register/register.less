@@ -2,307 +2,227 @@
 /* CSS Document */
 @import '../color';
 
-body {
-  background-color: @bg_blue;
+[top_box] {
+  height: 100%;
 
-  &[login] {
-    background-color: @bg_white;
+  .user_content {
+    height:550px;
+    &.login {
+      height: 760px;
+      background: url("../../images/login/login_bg.png") no-repeat center 200px;
+      background-size: 100% 80%;
+    }
+
+    .user_main {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      width: 1200px;
+      margin-left: -600px;
+      padding: 0 80px;
+
+      .content_wrap {
+        position: relative;
+
+        &.login {
+          margin-top: 80px;
+          .login_bg {
+            width: 360px;
+            padding: 27px 30px 0;
+            box-shadow: 0px 2px 10px 0px @bdc_blur;
+            z-index: 31;
+            background-color: @bg_white;
+          }
+        }
+
+      }
+    }
   }
 
-  [loading] {
-    #preloader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: @bg_black;
-      opacity: 0.3;
-      filter: alpha(opacity=30);
-      z-index: 99999;
+  .reg_bg {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -427px;
+    width: 854px;
+    padding: 50px 0;
+    border-bottom: 1px solid @bdc_bot_line;
 
-      #status {
-        z-index: 99999;
-        width: 250px;
-        height: 250px;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        background-image: url(../../images/loading.gif);
-        background-size: 64px 64px;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: -125px 0 0 -125px;
+    .reg_wrap {
+      margin-left: 135px;
+
+      .reg_head {
+        width: 300px;
+        padding-bottom: 20px;
+
+        .login_tab {
+          padding-top: 8px;
+        }
+        .login_switch {
+          color: @cl_blue;
+        }
       }
+    }
+  }
+
+  h3 {
+    font-size: @font24;
+    &.tc{
+      margin-bottom: 20px;
+    }
+
+  }
+
+  [input-prompt] {
+    input.public {
+      width: 300px;
+      padding: 15px 10px;
+    }
+
+    input:focus {
+      border: 1px solid @bg_blue;
+      box-shadow: 1px 0px 1px @bg_blue;
+    }
+
+    .safe_level {
+      margin-right: 28px;
+      &.passlow {
+        span.low {
+          background-color: @pass_low;
+        }
+
+      }
+
+      &.passmiddle {
+        span.low {
+          background-color: @pass_low;
+        }
+        span.middle {
+          background-color: @pass_middle;
+        }
+      }
+
+      &.passhigh {
+        span.low {
+          background-color: @pass_low;
+        }
+        span.middle {
+          background-color: @pass_middle;
+        }
+        span.high {
+          background-color: @pass_high;
+        }
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
+        width: 21px;
+        height: 15px;
+        text-align: center;
+        line-height: 15px;
+        color: @cl_white;
+        font-size: @font12;
+        margin-right: 1px;
+        background-color: @bg_button_middlegray;
+      }
+    }
+
+    .ml5 {
+      margin-left: 5px;
+    }
+    .ml10 {
+      margin-left: 10px;
+      color: @cl_gray;
+    }
+    .inp {
+      padding-bottom: 16px;
+      .service_btn {
+        color: @cl_blue;
+      }
+
+      .code {
+        width: 160px;
+        height: 50px;
+      }
+      .sms_verification {
+        display: inline-block;
+        line-height: 50px;
+        text-align: center;
+        width: 130px;
+        height: 50px;
+        background-color: @bg_button_lightgray;
+        &.active {
+          background-color: @bg_blue;
+          color: @cl_white;
+        }
+        &.white {
+          background-color: @bg_lightgray;
+          color: @cl_white;
+        }
+      }
+    }
+
+    .pt15 {
+      padding-top: 15px;
+    }
+
+    .submit {
+      width: 300px;
+      background: @bg_blue;
+      border: 0;
+      height: 50px;
+      color: #fff;
+      cursor: pointer;
+      border-radius: 2px;
+      font-size: @font14;
+    }
+  }
+
+  .status_switch {
+    text-align: center;
+    margin-bottom: 40px;
+    a {
+      color: @cl_gray;
+    }
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      width: 1px;
+      height: 15px;
+      margin: -1px 3px 0;
+      background-color: @cl_gray;
 
     }
   }
 
-  [top_box] {
-    height: 100%;
-    background-color: @bg_white;
-
-    &[white] {
-      background-color: @bg_white;
-      .bottom_nav {
-        a {
-          color: @cl_default;
-        }
-        i {
-          height: 19px;
-          line-height: 19px;
-          display: inline-block;
-          vertical-align: top;
-          overflow: hidden;
-          color: @bdc_line_black;
-          margin: 3px 10px 0;
-        }
-      }
-      .bottom_copyright {
-        color: @cl_default;
-      }
-    }
-
-    .content_wrap {
+  .login_mode {
+    text-align: center;
+    .login_mode_tab {
       position: relative;
-      height: 550px;
-
-      .reg_bg {
-        position: absolute;
-        left: 50%;
-        top: 0;
-        margin-left: -427px;
-        width: 854px;
-        padding: 50px 0;
-        border-bottom: 1px solid @bdc_bot_line;
-
-        .reg_wrap {
-          margin-left: 135px;
-
-          .reg_head {
-            width: 340px;
-            padding-bottom: 30px;
-
-            .login_tab {
-              padding-top: 8px;
-            }
-            .login_switch {
-              color: @cl_blue;
-            }
-          }
-        }
-      }
-
-      h3 {
-        font-size: @font24;
-      }
-
-      [input-prompt] {
-        input.public {
-          width: 100%;
-          width: 280px;
-          padding: 15px 10px;
-        }
-      }
-
-      [inp_login] {
-        padding-top: 30px;
-        input.public {
-          width: 338px;
-        }
-        input:focus {
-          border: 1px solid @bg_blue;
-          box-shadow: 1px 0px 1px @bg_blue;
-        }
-
-        .safe_level {
-          margin-right: 28px;
-          &.passlow {
-            span.low {
-              background-color: @pass_low;
-            }
-
-          }
-
-          &.passmiddle {
-            span.low {
-              background-color: @pass_low;
-            }
-            span.middle {
-              background-color: @pass_middle;
-            }
-          }
-
-          &.passhigh {
-            span.low {
-              background-color: @pass_low;
-            }
-            span.middle {
-              background-color: @pass_middle;
-            }
-            span.high {
-              background-color: @pass_high;
-            }
-          }
-          span {
-            display: inline-block;
-            vertical-align: middle;
-            width: 21px;
-            height: 15px;
-            text-align: center;
-            line-height: 15px;
-            color: @cl_white;
-            font-size: @font12;
-            margin-right: 1px;
-            background-color: @bg_button_middlegray;
-          }
-        }
-        .ml5 {
-          margin-left: 5px;
-        }
-        .ml10 {
-          margin-left: 10px;
-          color: @cl_gray;
-        }
-        .inp {
-          padding-bottom: 16px;
-          .service_btn {
-            color: @cl_blue;
-          }
-
-          .code {
-            width: 198px;
-            height: 50px;
-          }
-          .sms_verification {
-            display: inline-block;
-            line-height: 50px;
-            text-align: center;
-            width: 130px;
-            height: 50px;
-            background-color: @bg_button_lightgray;
-            &.active {
-              background-color: @bg_blue;
-              color: @cl_white;
-            }
-            &.white {
-              background-color: @bg_lightgray;
-              color: @cl_white;
-            }
-          }
-        }
-
-        .pt15 {
-          padding-top: 15px;
-        }
-
-        .submit {
-          width: 338px;
-          background: @bg_blue;
-          border: 0;
-          height: 50px;
-          color: #fff;
-          cursor: pointer;
-          border-radius: 2px;
-          font-size: @font14;
-        }
-
-      }
-
-      .status_switch {
-        text-align: center;
-        a{
-          color: @cl_gray;
-        }
-        span {
-          display: inline-block;
-          vertical-align: middle;
-          width: 1px;
-          height: 15px;
-          margin: -1px 3px 0;
-          background-color: @cl_gray;
-
-        }
-      }
-      .login_mode {
-        padding: 0 27px;
-        text-align: center;
+      span {
+        width: 100px;
+        height: 1px;
+        background-color: @bdc_gray;
         position: absolute;
         left: 0;
-        bottom: 0;
-        width: 100%;
-        .login_mode_tab {
-          position: relative;
-          span {
-            width: 125px;
-            height: 1px;
-            background-color: @bdc_gray;
-            position: absolute;
-            left: 0;
-            top: 10px;
-            &.right {
-              left: auto;
-              right: 0;
-            }
-          }
-          i {
-            color: @cl_gray;
-          }
-        }
-        .weixin_switch {
-          display: inline-block;
-          margin: 10px 0;
-          width: 30px;
-          height: 30px;
-          background: url("../../../resources/images/login/weixin_gray.png") no-repeat;
-
+        top: 10px;
+        &.right {
+          left: auto;
+          right: 0;
         }
       }
-
+      i {
+        color: @cl_gray;
+      }
     }
-
-  }
-
-}
-
-@media only screen and (max-width: 1500px) {
-  [top_box] {
-    .content_wrap {
-      &.login {
-        background: url("../../images/login/login_bg.png") no-repeat left center;
-      }
-
-      .login_bg {
-        width: 395px;
-        height: 515px;
-        background-color: @bg_white;
-        position: absolute;
-        right: 47px;
-        top: 40px;
-        padding: 25px 27px 0;
-      }
+    .weixin_switch {
+      display: inline-block;
+      margin: 10px 0;
+      width: 30px;
+      height: 30px;
+      background: url("../../../resources/images/login/weixin.png") no-repeat;
     }
   }
 
-}
-
-@media only screen and (min-width: 1500px) {
-  [top_box] {
-    .content_wrap {
-      &.login {
-        background: url("../../images/login/login_bg.png") no-repeat;
-      }
-
-      .login_bg {
-        width: 395px;
-        height: 515px;
-        background-color: @bg_white;
-        position: absolute;
-        right: 450px;
-        top: 40px;
-        padding: 25px 27px 0;
-      }
-    }
-  }
 }
 

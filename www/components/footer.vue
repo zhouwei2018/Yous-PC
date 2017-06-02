@@ -5,7 +5,7 @@
           <div class="fl">
               <h3>北京幼狮科技有限公司</h3>
 
-              <p><i class="commerce_tel"></i>400-078-8800<i class="commerce_email"></i>youshispace@163.com</p>
+              <p><i class="commerce_tel"></i>400-078-8800</p>
 
               <p class="lion_address">地址：北京市朝阳区东三环中路39号建外SOHO东区A座2503</p>
           </div>
