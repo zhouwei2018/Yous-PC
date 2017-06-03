@@ -30,6 +30,7 @@
 /*棕色*/
 /*浅红色*/
 /*hover 浅灰色*/
+/*hover 浅lv色*/
 /*边线颜色*/
 /*小竖线白色*/
 /*小竖线*/
@@ -50,3 +51,405 @@
 /*用于正文标题，重要文字信息*/
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
+[detail] {
+  /*common css start*/
+  /*common css end*/
+  /* 轮播 */
+  /* 全景图 */
+}
+[detail] .detail-icon {
+  position: relative;
+  top: 8px;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+  background: url("../../images/icons/detail-icon-bg.png") no-repeat;
+  /* background-color: #f1f5f6; */
+}
+[detail] .breadcrumb-search {
+  width: 1200px;
+  height: 40px;
+  line-height: 40px;
+  margin: 15px auto 0;
+}
+[detail] .breadcrumb-search .breadcrumb > li:first-child {
+  padding-left: 0;
+}
+[detail] .breadcrumb-search .breadcrumb > li {
+  float: left;
+  color: #666;
+  font-size: 12px;
+  padding-left: 10px;
+}
+[detail] .breadcrumb-search .breadcrumb > li a {
+  color: #666;
+  margin-right: 10px;
+}
+[detail] .breadcrumb-search .breadcrumb > li a .detail-icon {
+  width: 10px;
+  background-position: -31px -302px;
+}
+[detail] .breadcrumb-search .search-box {
+  float: right;
+  height: 40px;
+}
+[detail] .breadcrumb-search .search-box > input {
+  float: left;
+  width: 429px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 13px;
+  padding-right: 13px;
+  color: #999;
+  border: 1px solid #ccc;
+}
+[detail] .breadcrumb-search .search-box .search-btn {
+  width: 86px;
+  height: 40px;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #476cba;
+  border: none;
+  cursor: pointer;
+}
+[detail] .building-label {
+  width: 1200px;
+  height: 69px;
+  margin: 9px auto 0;
+}
+[detail] .building-label > img {
+  width: 69px;
+  height: 69px;
+  margin-right: 16px;
+}
+[detail] .building-label .building-tag {
+  float: left;
+  margin-top: 3px;
+}
+[detail] .building-label .building-tag > h1,
+[detail] .building-label .building-tag p {
+  margin-bottom: 14px;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+}
+[detail] .building-label .building-tag .tag-item li {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  padding-right: 7px;
+  padding-left: 7px;
+  margin-right: 10px;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+  background-color: #f1f5f8;
+}
+[detail] .nav-consulting {
+  width: 1200px;
+  height: 43px;
+  line-height: 43px;
+  margin: 20px auto 0;
+  border-bottom: 1px solid #e5e5e6;
+}
+[detail] .nav-consulting .nav-building > li {
+  float: left;
+  font-size: 16px;
+}
+[detail] .nav-consulting .nav-building > li a {
+  padding: 0 22px 9px;
+}
+[detail] .nav-consulting .nav-building > li.active a {
+  color: #476cba;
+  border-bottom: 4px solid #476cba;
+}
+[detail] .navfixed-box {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+[detail] .navfixed-box .navfixed {
+  position: fixed;
+  top: 0;
+  width: 1200px;
+  height: 43px;
+  line-height: 43px;
+  background-color: #fff;
+  z-index: 3;
+  border-bottom: 1px solid #e5e5e6;
+}
+[detail] .navfixed-box .navfixed .nav-building > li {
+  float: left;
+  font-size: 16px;
+}
+[detail] .navfixed-box .navfixed .nav-building > li.active a {
+  color: #476cba;
+  border-bottom: 4px solid #476cba;
+}
+[detail] .navfixed-box .navfixed .nav-building > li > a {
+  padding: 0 22px 9px;
+}
+[detail] .navfixed-box .navfixed .consulting {
+  float: right;
+}
+[detail] .navfixed-box .navfixed .consulting.none {
+  display: none;
+}
+[detail] .navfixed-box .navfixed .consulting > div {
+  float: left;
+}
+[detail] .navfixed-box .navfixed .consulting > div.quick {
+  font-size: 14px;
+}
+[detail] .navfixed-box .navfixed .consulting > div.quick .detail-icon {
+  background-position: -56px -305px;
+}
+[detail] .navfixed-box .navfixed .consulting > div.quick .tel {
+  float: right;
+  line-height: 44px;
+  color: #476cba;
+}
+[detail] .navfixed-box .navfixed .consulting > div.online {
+  margin-left: 16px;
+}
+[detail] .navfixed-box .navfixed .consulting > div.online .detail-icon {
+  background-position: -153px -306px;
+}
+[detail] .navfixed-box .navfixed .consulting > div .text {
+  color: #476CBA;
+  font-size: 14px;
+}
+[detail] .common-info {
+  width: 1200px;
+  margin: 29px auto 30px;
+}
+[detail] .carousel-wrapper {
+  float: left;
+  width: 510px;
+  height: 412px;
+}
+[detail] .carousel-box {
+  position: relative;
+  width: 510px;
+  height: 412px;
+  overflow: hidden;
+}
+[detail] .carousel-box .carousel-big {
+  position: relative;
+  width: 510px;
+  height: 340px;
+  overflow: hidden;
+}
+[detail] .carousel-box .carousel-big ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+[detail] .carousel-box .carousel-big ul li {
+  float: left;
+}
+[detail] .occupancy .occupancy-info {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  margin-top: -58px;
+  color: #FFF;
+  text-align: center;
+}
+[detail] .occupancy-info .consulting-detail {
+  display: block;
+  width: 90px;
+  line-height: 1em;
+  margin: 17px auto 0;
+  padding: 8px 13px;
+  color: #FFF;
+  font-size: 16px;
+  background-color: #476CBA;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+[detail] .carousel-small-box {
+  float: right;
+  position: relative;
+  width: 406px;
+  height: 62px;
+  margin-top: 10px;
+}
+[detail] .carousel-small-box .toggle-button {
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+[detail] .toggle-button.carousel-small-prev {
+  left: 0;
+}
+[detail] .toggle-button.carousel-small-next {
+  right: 0;
+}
+[detail] .carousel-small-box:hover .toggle-button {
+  display: block;
+}
+[detail] .carousel-small-box .carousel-small {
+  position: absolute;
+  width: 100%;
+  height: 62px;
+  overflow: hidden;
+}
+[detail] .carousel-small ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+[detail] .carousel-small ul li {
+  float: left;
+  height: 62px;
+  margin-right: 10px;
+}
+[detail] .carousel-small ul li:last-child {
+  margin-right: 0;
+}
+[detail] .small-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #302F35;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+}
+[detail] .carousel-wrapper .carousel-mask {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  z-index: 35;
+}
+[detail] .pop-carousel-box {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 1000px;
+  height: 500px;
+  margin-left: -480px;
+  margin-top: -250px;
+  background-color: #FFF;
+  z-index: 99;
+}
+[detail] .pop-carousel-box .pop-carousel-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+[detail] .pop-carousel-box .pop-carousel-prev,
+[detail] .pop-carousel-box .pop-carousel-next {
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 45px;
+  margin-top: -23px;
+  z-index: 9;
+  cursor: pointer;
+}
+[detail] .pop-carousel-box .pop-carousel-prev {
+  left: -40px;
+}
+[detail] .pop-carousel-box .pop-carousel-next {
+  right: -40px;
+}
+[detail] .pop-carousel-box .pop-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+[detail] .pop-carousel-box .pop-carousel ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+[detail] .pop-carousel ul li {
+  float: left;
+  width: 1000px;
+  height: auto;
+}
+[detail] .panorama {
+  float: left;
+  position: relative;
+  width: 94px;
+  height: 62px;
+  margin-top: 10px;
+}
+[detail] .panorama-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 500px;
+  margin: -250px -500px;
+  z-index: 36;
+}
+[detail] .panorama-box .panorama-close {
+  position: absolute;
+  top: 0;
+  right: -48px;
+  cursor: pointer;
+}
+[detail] .panorama-box .panorama-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+[detail] .panorama-box .panorama-area-list {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+[detail] .panorama-box .panorama-area-list li {
+  width: 70px;
+  height: 24px;
+  line-height: 24px;
+  margin-top: 10px;
+  color: #FFF;
+  font-size: 12px;
+  text-align: center;
+  background: rgba(48, 47, 53, 0.7);
+  cursor: pointer;
+}
+[detail] .panorama-box .panorama-area-list li:first-child {
+  margin-top: 0;
+}
+[detail] .panorama-box .panorama-area-list li.on {
+  background: #302f35;
+}
+[detail] .panorama-box .loadbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px;
+}
+[detail] .panorama-box .tip-mouse {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -42px;
+  color: #FFF;
+  text-align: center;
+}

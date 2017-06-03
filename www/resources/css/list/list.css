@@ -30,6 +30,7 @@
 /*棕色*/
 /*浅红色*/
 /*hover 浅灰色*/
+/*hover 浅lv色*/
 /*边线颜色*/
 /*小竖线白色*/
 /*小竖线*/
@@ -100,7 +101,7 @@
   line-height: 40px;
   font-size: 16px;
   color: #FFF;
-  background-color: #476CBA;
+  background-color: #476cba;
   box-sizing: border-box;
 }
 [list] .address_tit h1 {

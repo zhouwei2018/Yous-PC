@@ -537,13 +537,13 @@
                                 </div>
                             </div>
                             <div class="app_download mt20">
-                                <p>随时随地查阅最新房源，<br>即刻下载优办APP</p>
+                                <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
                                 <div class="mh25">
                                     <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
                                     <img src="../resources/images/ys_weixin.png" class="ml25 weixin_img"
-                                         alt="扫描二维码下载APP">
+                                         alt="扫描二维码关注">
                                 </div>
-                                <p>扫描右侧二维码下载</p>
+                                <p>扫描二维码关注</p>
                             </div>
                         </div>
                     </div>

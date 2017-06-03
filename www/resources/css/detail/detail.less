@@ -1,5 +1,439 @@
 @import "../color";
 
-[detail]{
+[detail] {
+
+  /*common css start*/
+  .detail-icon {
+    position: relative;
+    top: 8px;
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+    background: url("../../images/icons/detail-icon-bg.png") no-repeat;
+    /* background-color: #f1f5f6; */
+  }
+
+  /*common css end*/
+
+  .breadcrumb-search {
+    width: 1200px;
+    height: 40px;
+    line-height: 40px;
+    margin: 15px auto 0;
+    .breadcrumb {
+      > li:first-child {
+        padding-left: 0;
+      }
+      > li {
+        float: left;
+        color: @cl_blockgray;
+        font-size: 12px;
+        padding-left: 10px;
+        a {
+          color: @cl_blockgray;
+          margin-right: 10px;
+          .detail-icon {
+            width: 10px;
+            background-position: -31px -302px;
+          }
+        }
+      }
+    }
+
+    .search-box {
+      float: right;
+      height: 40px;
+      > input {
+        float: left;
+        width: 429px;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 13px;
+        padding-right: 13px;
+        color: #999;
+        border: 1px solid @bdc_ccc;
+      }
+      .search-btn {
+        width: 86px;
+        height: 40px;
+        margin-left: 10px;
+        color: #fff;
+        font-size: 16px;
+        background-color: @bg_search_blue;
+        border: none;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  //detail logo
+  .building-label {
+    width: 1200px;
+    height: 69px;
+    margin: 9px auto 0;
+    > img {
+      width: 69px;
+      height: 69px;
+      margin-right:16px;
+    }
+    .building-tag {
+      float: left;
+      margin-top: 3px;
+      > h1, p {
+        margin-bottom: 14px;
+        font-size: 30px;
+        line-height: 1;
+        font-weight: 700;
+      }
+      .tag-item {
+        li {
+          float: left;
+          height: 20px;
+          line-height: 20px;
+          padding-right: 7px;
+          padding-left: 7px;
+          margin-right: 10px;
+          color: #666;
+          font-size: 12px;
+          text-align: center;
+          background-color: @bg_lightgreen;
+        }
+      }
+    }
+  }
+
+  //楼盘 tab
+
+  .nav-consulting {
+    width: 1200px;
+    height: 43px;
+    line-height: 43px;
+    margin: 20px auto 0;
+    border-bottom: 1px solid #e5e5e6;
+    .nav-building{
+      > li {
+        float: left;
+        font-size: 16px;
+        a{
+          padding: 0 22px 9px;
+        }
+        &.active{
+          a{
+            color: @bg_search_blue;
+            border-bottom: 4px solid @bg_search_blue;
+          }
+        }
+      }
+    }
+
+  }
+
+  //scroll nav
+  .navfixed-box {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    .navfixed {
+      position: fixed;
+      top: 0;
+      width: 1200px;
+      height: 43px;
+      line-height: 43px;
+      background-color: @bg_white;
+      z-index: 3;
+      border-bottom: 1px solid @bdc_bot_lightline;
+
+      .nav-building{
+        > li {
+          float: left;
+          font-size: 16px;
+          &.active{
+            a{
+              color: @bg_search_blue;
+              border-bottom: 4px solid @bg_search_blue;
+            }
+          }
+          > a {
+            padding: 0 22px 9px;
+          }
+        }
+      }
+
+      .consulting {
+        float: right;
+        &.none{
+          display: none;
+        }
+        > div {
+          float: left;
+
+          &.quick {
+            font-size: 14px;
+            .detail-icon {
+              background-position: -56px -305px;
+            }
+            .tel {
+              float: right;
+              line-height: 44px;
+              color: @bg_search_blue;
+            }
+          }
+          &.online {
+            margin-left: 16px;
+            .detail-icon {
+              background-position: -153px -306px;
+            }
+          }
+          .text {
+            color: #476CBA;
+            font-size: 14px;
+          }
+        }
+
+      }
+
+    }
+  }
+
+  //detail img
+  .common-info {
+    width: 1200px;
+    margin: 29px auto 30px;
+  }
+
+  /* 轮播 */
+  .carousel-wrapper {
+    float: left;
+    width: 510px;
+    height: 412px;
+  }
+  .carousel-box {
+    position: relative;
+    width: 510px;
+    height: 412px;
+    overflow: hidden;
+  }
+  .carousel-box .carousel-big {
+    position: relative;
+    width: 510px;
+    height: 340px;
+    overflow: hidden;
+  }
+  .carousel-box .carousel-big ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .carousel-box .carousel-big ul li {
+    float: left;
+  }
+  .occupancy .occupancy-info {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: -58px;
+    color: #FFF;
+    text-align: center;
+  }
+  .occupancy-info .consulting-detail {
+    display: block;
+    width: 90px;
+    line-height: 1em;
+    margin: 17px auto 0;
+    padding: 8px 13px;
+    color: #FFF;
+    font-size: 16px;
+    background-color: #476CBA;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .carousel-small-box {
+    float: right;
+    position: relative;
+    width: 406px;
+    height: 62px;
+    margin-top: 10px;
+  }
+  .carousel-small-box .toggle-button {
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    cursor: pointer;
+  }
+  .toggle-button.carousel-small-prev {
+    left: 0;
+  }
+  .toggle-button.carousel-small-next {
+    right: 0;
+  }
+  .carousel-small-box:hover .toggle-button {
+    display: block;
+  }
+
+  .carousel-small-box .carousel-small {
+    position: absolute;
+    width: 100%;
+    height: 62px;
+    overflow: hidden;
+  }
+  .carousel-small ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .carousel-small ul li {
+    float: left;
+    height: 62px;
+    margin-right: 10px;
+  }
+  .carousel-small ul li:last-child {
+    margin-right: 0;
+  }
+  .small-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #302F35;
+    opacity: 0.7;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    filter: alpha(opacity=70);
+  }
+
+  .carousel-wrapper .carousel-mask {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(Opacity=50);
+    z-index: 35;
+  }
+  .pop-carousel-box {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 1000px;
+    height: 500px;
+    margin-left: -480px;
+    margin-top: -250px;
+    background-color: #FFF;
+    z-index: 99;
+  }
+  .pop-carousel-box .pop-carousel-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+  }
+  .pop-carousel-box .pop-carousel-prev, .pop-carousel-box .pop-carousel-next {
+    position: absolute;
+    top: 50%;
+    width: 25px;
+    height: 45px;
+    margin-top: -23px;
+    z-index: 9;
+    cursor: pointer;
+  }
+  .pop-carousel-box .pop-carousel-prev {
+    left: -40px;
+  }
+  .pop-carousel-box .pop-carousel-next {
+    right: -40px;
+  }
+  .pop-carousel-box .pop-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .pop-carousel-box .pop-carousel ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .pop-carousel ul li {
+    float: left;
+    width: 1000px;
+    height: auto;
+  }
+
+  /* 全景图 */
+  .panorama {
+    float: left;
+    position: relative;
+    width: 94px;
+    height: 62px;
+    margin-top: 10px;
+  }
+  .panorama-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 1000px;
+    height: 500px;
+    margin: -250px -500px;
+    z-index: 36;
+  }
+  .panorama-box .panorama-close {
+    position: absolute;
+    top: 0;
+    right: -48px;
+    cursor: pointer;
+  }
+  .panorama-box .panorama-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+  .panorama-box .panorama-area-list {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+  .panorama-box .panorama-area-list li {
+    width: 70px;
+    height: 24px;
+    line-height: 24px;
+    margin-top: 10px;
+    color: #FFF;
+    font-size: 12px;
+    text-align: center;
+    background: rgba(48, 47, 53, 0.70);
+    cursor: pointer;
+  }
+  .panorama-box .panorama-area-list li:first-child {
+    margin-top: 0;
+  }
+  .panorama-box .panorama-area-list li.on {
+    background: rgba(48, 47, 53, 1);
+  }
+  .panorama-box .loadbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -50px;
+  }
+  .panorama-box .tip-mouse {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -42px;
+    color: #FFF;
+    text-align: center;
+  }
 
 }
