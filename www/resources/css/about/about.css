@@ -86,7 +86,7 @@
 }
 [about_us] .about_right > img {
   width: 100%;
-  height: 350px;
+  height: 300px;
   margin-bottom: 35px;
 }
 [about_us] .about_right > img.height_auto {
@@ -143,76 +143,41 @@
   background: url("../../images/about_us/about_ys_banner/about_ys_09.jpg") no-repeat;
   background-size: 100% 100%;
 }
-[about_us] .about_right [join_us] .join_us_search {
+[about_us] .about_right [join_us] .join_us_wrap {
   margin-bottom: 15px;
 }
-[about_us] .about_right [join_us] .join_us_search h4 {
-  font-size: 18px;
-  margin-right: 40px;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_left {
+  width: 80px;
+  text-align: center;
 }
-[about_us] .about_right [join_us] .join_us_search h4 .ys_logo {
+[about_us] .about_right [join_us] .join_us_wrap .join_us_left .ys_logo {
   width: 50px;
   height: 50px;
-  margin-right: 20px;
   display: inline-block;
   vertical-align: middle;
   background: url("../../images/lion_logo2.png") no-repeat;
 }
-[about_us] .about_right [join_us] .join_us_search .sear_wrap {
-  height: 40px;
-  line-hegiht: 40px;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_right > h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
-[about_us] .about_right [join_us] .join_us_search .sear_wrap .search_inp {
-  width: 450px;
-  padding: 8px;
-  background-color: #e5e3e3;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_right > h4.job_position_title {
+  margin: 10px 0;
 }
-[about_us] .about_right [join_us] .join_us_search .sear_wrap .search_job_btn {
-  width: 140px;
-  background-color: #0f6fac;
-  color: #fff;
-  line-height: 40px;
-  text-align: center;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_right > p {
+  color: #666;
 }
-[about_us] .about_right [join_us] .search_res_wrap .search_category {
-  border-bottom: 1px solid #ccc;
-  line-height: 36px;
-  height: 36px;
-  overflow: hidden;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_right .pos_specific h5 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 5px 0;
 }
-[about_us] .about_right [join_us] .search_res_wrap .search_category .category_item {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 30px;
-  position: relative;
-  color: #191919;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_right .pos_specific .pos_res {
+  margin-bottom: 15px;
 }
-[about_us] .about_right [join_us] .search_res_wrap .search_category .category_item.active .cate_bot_line,
-[about_us] .about_right [join_us] .search_res_wrap .search_category .category_item:hover .cate_bot_line {
-  bottom: 1px;
-}
-[about_us] .about_right [join_us] .search_res_wrap .search_category .category_item .cate_bot_line {
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: #3f91d9;
-  transition: .3s all ease;
-}
-[about_us] .about_right [join_us] .search_res_wrap .search_res_ul > li {
-  padding-top: 24px;
-  border-bottom: 1px solid #ccc;
-}
-[about_us] .about_right [join_us] .search_res_wrap .search_res_ul > li .items_left {
-  width: 70%;
-}
-[about_us] .about_right [join_us] .search_res_wrap .search_res_ul > li .items_left .job_name {
-  color: #3f91d9;
-}
-[about_us] .about_right [join_us] .search_res_wrap .search_res_ul > li .search_block {
-  display: block;
-  margin: 6px 0 8px;
+[about_us] .about_right [join_us] .join_us_wrap .join_us_right .pos_specific .pos_res p {
+  line-height: 27px;
 }
 [about_us] .about_right .column_img_wrap {
   height: 225px;
