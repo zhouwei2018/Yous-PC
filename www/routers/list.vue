@@ -137,8 +137,10 @@
                             <a href="javascript:;"><span class="font_num">3</span>-<span class="font_num">5</span>元</a>
                             <a href="javascript:;"><span class="font_num">5</span>-<span class="font_num">8</span>元</a>
                             <a href="javascript:;"><span class="font_num">8</span>-<span class="font_num">10</span>元</a>
-                            <a href="javascript:;"><span class="font_num">10</span>-<span class="font_num">20</span>元</a>
-                            <a href="javascript:;"><span class="font_num">20</span>-<span class="font_num">30</span>元</a>
+                            <a href="javascript:;"><span class="font_num">10</span>-<span
+                                    class="font_num">20</span>元</a>
+                            <a href="javascript:;"><span class="font_num">20</span>-<span
+                                    class="font_num">30</span>元</a>
                             <a href="javascript:;">&gt;<span class="font_num">30</span>元</a>
                             <div class="price_wrap pr">
                                 <div class="interval pr">
@@ -179,9 +181,12 @@
                             <a href="javascript:;"><span class="font_num">1</span>-<span class="font_num">3</span>万元</a>
                             <a href="javascript:;"><span class="font_num">3</span>-<span class="font_num">5</span>万元</a>
                             <a href="javascript:;"><span class="font_num">5</span>-<span class="font_num">8</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">8</span>-<span class="font_num">10</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">10</span>-<span class="font_num">20</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">20</span>-<span class="font_num">30</span>万元</a>
+                            <a href="javascript:;"><span class="font_num">8</span>-<span
+                                    class="font_num">10</span>万元</a>
+                            <a href="javascript:;"><span class="font_num">10</span>-<span
+                                    class="font_num">20</span>万元</a>
+                            <a href="javascript:;"><span class="font_num">20</span>-<span
+                                    class="font_num">30</span>万元</a>
                             <a href="javascript:;">&gt;<span class="font_num">30</span>万元</a>
                             <div class="price_wrap pr">
                                 <div class="interval pr">
@@ -239,7 +244,8 @@
                     <div class="office_list pt20">
                         <div class="conditions_result_box clearfix tj_box">
                             <div class="fl mt07">
-                                <i class="sem_icon"></i><em class="result_conts_txt">为您找到 <span class="font-num">2580</span>   栋写字楼</em>
+                                <i class="sem_icon"></i><em class="result_conts_txt">为您找到 <span
+                                    class="font-num">2580</span> 栋写字楼</em>
                             </div>
                         </div>
 
@@ -254,10 +260,12 @@
                         <div class="office_list_item">
                             <a href="javascript:;" class="db pr clearfix">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320" alt="望京SOHO">
+                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
+                                         alt="望京SOHO">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span class="font-num">m²</span>·天</span>
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                            class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
@@ -265,11 +273,16 @@
                                         <b class="fl">望京SOHO</b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口</dd>
+                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                    </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积  <span class="text-black fb">0-4576</span><span class="font-num"> m²</span>, 待租办公室&nbsp;<span class="font-num text-black fb">2380</span>&nbsp;套</dd>
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                    </dd>
                                     <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b class="hover">27</b> 位用户咨询过</span>
+                                        <span><i class="sem_icon item_see"></i>近7天有 <b
+                                                class="hover">27</b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -286,10 +299,12 @@
                         <div class="office_list_item">
                             <a href="javascript:;" class="db pr clearfix">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320" alt="望京SOHO">
+                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
+                                         alt="望京SOHO">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span class="font-num">m²</span>·天</span>
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                            class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
@@ -297,11 +312,16 @@
                                         <b class="fl">望京SOHO</b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口</dd>
+                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                    </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积  <span class="text-black fb">0-4576</span><span class="font-num"> m²</span>, 待租办公室&nbsp;<span class="font-num text-black fb">2380</span>&nbsp;套</dd>
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                    </dd>
                                     <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b class="hover">27</b> 位用户咨询过</span>
+                                        <span><i class="sem_icon item_see"></i>近7天有 <b
+                                                class="hover">27</b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -318,10 +338,12 @@
                         <div class="office_list_item">
                             <a href="javascript:;" class="db pr clearfix">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320" alt="望京SOHO">
+                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
+                                         alt="望京SOHO">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span class="font-num">m²</span>·天</span>
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                            class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
@@ -329,11 +351,16 @@
                                         <b class="fl">望京SOHO</b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口</dd>
+                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                    </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积  <span class="text-black fb">0-4576</span><span class="font-num"> m²</span>, 待租办公室&nbsp;<span class="font-num text-black fb">2380</span>&nbsp;套</dd>
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                    </dd>
                                     <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b class="hover">27</b> 位用户咨询过</span>
+                                        <span><i class="sem_icon item_see"></i>近7天有 <b
+                                                class="hover">27</b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -350,10 +377,12 @@
                         <div class="office_list_item">
                             <a href="javascript:;" class="db pr clearfix">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320" alt="望京SOHO">
+                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
+                                         alt="望京SOHO">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span class="font-num">m²</span>·天</span>
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                            class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
@@ -361,11 +390,16 @@
                                         <b class="fl">望京SOHO</b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口</dd>
+                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                    </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积  <span class="text-black fb">0-4576</span><span class="font-num"> m²</span>, 待租办公室&nbsp;<span class="font-num text-black fb">2380</span>&nbsp;套</dd>
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                    </dd>
                                     <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b class="hover">27</b> 位用户咨询过</span>
+                                        <span><i class="sem_icon item_see"></i>近7天有 <b
+                                                class="hover">27</b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -382,10 +416,12 @@
                         <div class="office_list_item">
                             <a href="javascript:;" class="db pr clearfix">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320" alt="望京SOHO">
+                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
+                                         alt="望京SOHO">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span class="font-num">m²</span>·天</span>
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                            class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
@@ -393,11 +429,16 @@
                                         <b class="fl">望京SOHO</b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口</dd>
+                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                    </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积  <span class="text-black fb">0-4576</span><span class="font-num"> m²</span>, 待租办公室&nbsp;<span class="font-num text-black fb">2380</span>&nbsp;套</dd>
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                    </dd>
                                     <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b class="hover">27</b> 位用户咨询过</span>
+                                        <span><i class="sem_icon item_see"></i>近7天有 <b
+                                                class="hover">27</b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -414,10 +455,12 @@
                         <div class="office_list_item">
                             <a href="javascript:;" class="db pr clearfix">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320" alt="望京SOHO">
+                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
+                                         alt="望京SOHO">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span class="font-num">m²</span>·天</span>
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                            class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
@@ -425,11 +468,16 @@
                                         <b class="fl">望京SOHO</b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口</dd>
+                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                    </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积  <span class="text-black fb">0-4576</span><span class="font-num"> m²</span>, 待租办公室&nbsp;<span class="font-num text-black fb">2380</span>&nbsp;套</dd>
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                    </dd>
                                     <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b class="hover">27</b> 位用户咨询过</span>
+                                        <span><i class="sem_icon item_see"></i>近7天有 <b
+                                                class="hover">27</b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -462,15 +510,24 @@
                     <!--右侧栏-->
                     <div class="sidebar_box">
                         <div class="sidebar_main" id="sidebar_fix">
-                            <div class="booking_house">
+                            <div class="map_house">
+                                <img src="../resources/images/list/maps.png" alt="">
+                                <a class="map_find_btn">地图找房</a>
+                            </div>
+                            <div class="booking_house mt20">
                                 <div class="booking_house_mes">
                                     <h2>快速找房</h2>
                                     <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
                                         <input type="hidden" name="flag" value="5">
                                         <input name="searchengine" type="hidden" value="">
-                                        <input name="phone" class="form_control form_telphone" type="text" placeholder="手机号" maxlength="11" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')" aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
+                                        <input name="phone" class="form_control form_telphone" type="text"
+                                               placeholder="手机号" maxlength="11"
+                                               onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
+                                               aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
                                         <span class="db text-left mt05" id="msg-phone"></span>
-                                        <div class="form_control form_btn mt10 cur_pointer" id="list_yijianyuyue">一键咨询</div>
+                                        <div class="form_control form_btn mt10 cur_pointer" id="list_yijianyuyue">一键咨询
+                                        </div>
                                     </form>
 
                                     <p class="nearby">客服将在10分钟内联系您</p>
@@ -482,8 +539,9 @@
                             <div class="app_download mt20">
                                 <p>随时随地查阅最新房源，<br>即刻下载优办APP</p>
                                 <div class="mh25">
-                                    <img src="http://img2.static.uban.com/www/images/appicon72.png"  alt="幼狮APP">
-                                    <img src="../resources/images/ys_weixin.png" class="ml25 weixin_img" alt="扫描二维码下载APP">
+                                    <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
+                                    <img src="../resources/images/ys_weixin.png" class="ml25 weixin_img"
+                                         alt="扫描二维码下载APP">
                                 </div>
                                 <p>扫描右侧二维码下载</p>
                             </div>
@@ -510,34 +568,34 @@
 
         data(){
             return {
-                list_scroll:true
+                list_scroll: true
             }
         },
         mounted: function () {
-            var _this=this;
+            var _this = this;
             //右侧栏 跟随滑动
-            $(window).on("scroll",function(){
-                if(_this.list_scroll){
+            $(window).on("scroll", function () {
+                if (_this.list_scroll) {
                     var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
                     var standard_line = $('.office_list').offset().top;
                     var standard_line_wrap = $('.office_list').height();
                     var fixed_self = $('#sidebar_fix').height();
-                    if(scroll_top > (standard_line)){
+                    if (scroll_top > (standard_line)) {
                         $('#sidebar_fix').addClass('right_fixed');
-                        $('.sidebar_box').css('bottom','auto');
-                    }else {
+                        $('.sidebar_box').css('bottom', 'auto');
+                    } else {
                         $('#sidebar_fix').removeClass('right_fixed');
-                        $('.sidebar_box').css('bottom','auto');
+                        $('.sidebar_box').css('bottom', 'auto');
                     }
 
-                    if(scroll_top > (standard_line + standard_line_wrap -75 - fixed_self ) ){
+                    if (scroll_top > (standard_line + standard_line_wrap - 75 - fixed_self )) {
                         $('#sidebar_fix').removeClass('right_fixed');
-                        $('.sidebar_box').css({'bottom':'73px'});
+                        $('.sidebar_box').css({'bottom': '73px'});
                     }
 
-                    if(fixed_self > standard_line_wrap) {
+                    if (fixed_self > standard_line_wrap) {
                         $('#sidebar_fix').removeClass('right_fixed');
-                        $('.sidebar_box').css({'bottom':'auto'});
+                        $('.sidebar_box').css({'bottom': 'auto'});
                     }
                 }
 
@@ -546,7 +604,7 @@
         methods: {},
 
         destroyed(){
-            this.list_scroll=false;
+            this.list_scroll = false;
         }
     }
 </script>
