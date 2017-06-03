@@ -47,16 +47,16 @@
 /*用于正文标题，重要文字信息*/
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
-[top_box] {
-  height: 100%;
-}
 [top_box] .user_content {
-  height: 550px;
+  height: 600px;
 }
 [top_box] .user_content.login {
   height: 760px;
   background: url("../../images/login/login_bg.png") no-repeat center 200px;
-  background-size: 100% 80%;
+  background-size: 100% 562px;
+}
+[top_box] .user_content.login .user_main {
+  border-bottom: none;
 }
 [top_box] .user_content .user_main {
   position: absolute;
@@ -64,20 +64,35 @@
   left: 50%;
   width: 1200px;
   margin-left: -600px;
-  padding: 0 80px;
+  border-bottom: 1px solid #b5b5b5;
+}
+[top_box] .user_content .user_main .lion_slogan_wrap {
+  position: absolute;
+  left: 100px;
+  top: 66px;
+  width: 420px;
+}
+[top_box] .user_content .user_main .lion_slogan_wrap .lion_slogan {
+  font-size: 42px;
+  color: #3f91d9;
+}
+[top_box] .user_content .user_main .lion_slogan_wrap .lion_slogan.tr {
+  text-align: right;
 }
 [top_box] .user_content .user_main .content_wrap {
   position: relative;
+  height: 600px;
+  overflow: hidden;
 }
 [top_box] .user_content .user_main .content_wrap.login {
+  height: 450px;
   margin-top: 80px;
+  box-shadow: 0px 0px 10px 3px #e6e6e6;
+  background-color: #fff;
 }
 [top_box] .user_content .user_main .content_wrap.login .login_bg {
   width: 360px;
-  padding: 27px 30px 0;
-  box-shadow: 0px 2px 10px 0px #e6e6e6;
-  z-index: 31;
-  background-color: #fff;
+  padding: 28px 28px 0;
 }
 [top_box] .reg_bg {
   position: absolute;
@@ -86,7 +101,6 @@
   margin-left: -427px;
   width: 854px;
   padding: 50px 0;
-  border-bottom: 1px solid #b5b5b5;
 }
 [top_box] .reg_bg .reg_wrap {
   margin-left: 135px;
@@ -200,6 +214,9 @@
 }
 [top_box] .status_switch a {
   color: #999;
+}
+[top_box] .status_switch a:hover {
+  color: #09b8fa;
 }
 [top_box] .status_switch span {
   display: inline-block;

@@ -95,55 +95,38 @@
   color: @cl_white;
   background-color: @bg_greatblack;
 
-  .foot_wrap {
-    //针对login office2 页
-    width: 400px;
-    text-align: center;
-    margin: 0 auto;
-    padding-top: 90px;
-    .bottom_nav {
-      padding-top: 13px;
-      a {
-        color: #fff;
-        font-size: @font16;
-      }
-      i {
-        height: 19px;
-        line-height: 19px;
-        display: inline-block;
-        vertical-align: top;
-        overflow: hidden;
-        color: @bdc_line_white;
-        margin: 1px 10px 0;
-      }
-    }
-
-    .bottom_copyright {
-      font-size: @font14;
-      color: @cl_lightgray;
-      padding-top: 7px;
-    }
-
-  }
-
   &[add_reg],&[add_login] {
-    height: 200px;
+    height: 160px;
     background-color: @bg_white;
+
     .foot_wrap {
+      //针对login 页
+      width: 400px;
+      text-align: center;
+      margin: 0 auto;
+      padding-top: 20px;
       .bottom_nav {
+        padding-top: 13px;
         a {
           color: @cl_default;
+          font-size: @font16;
+        }
+        i {
+          height: 19px;
+          line-height: 19px;
+          display: inline-block;
+          vertical-align: top;
+          overflow: hidden;
+          color: @bdc_line_white;
+          margin: 1px 10px 0;
         }
       }
-      .bottom_copyright{
+      .bottom_copyright {
+        font-size: @font14;
         color: @cl_default;
+        padding-top: 7px;
       }
     }
-  }
-
-  &[add_login] {
-    height: 200px;
-    background-color: @bg_white;
   }
 
   .foot_head {

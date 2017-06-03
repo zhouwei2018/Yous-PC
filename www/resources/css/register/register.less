@@ -3,14 +3,15 @@
 @import '../color';
 
 [top_box] {
-  height: 100%;
-
   .user_content {
-    height:550px;
+    height: 600px;
     &.login {
       height: 760px;
       background: url("../../images/login/login_bg.png") no-repeat center 200px;
-      background-size: 100% 80%;
+      background-size: 100% 562px;
+      .user_main {
+        border-bottom: none;
+      }
     }
 
     .user_main {
@@ -19,19 +20,34 @@
       left: 50%;
       width: 1200px;
       margin-left: -600px;
-      padding: 0 80px;
+      border-bottom: 1px solid @bdc_bot_line;
+
+      .lion_slogan_wrap {
+        position: absolute;
+        left: 100px;
+        top: 66px;
+        width: 420px;
+        .lion_slogan {
+          font-size: @font42;
+          color: @bg_skyblue;
+          &.tr {
+            text-align: right;
+          }
+        }
+      }
 
       .content_wrap {
         position: relative;
-
+        height: 600px;
+        overflow: hidden;
         &.login {
+          height: 450px;
           margin-top: 80px;
+          box-shadow: 0px 0px 10px 3px @bdc_blur;
+          background-color: @bg_white;
           .login_bg {
             width: 360px;
-            padding: 27px 30px 0;
-            box-shadow: 0px 2px 10px 0px @bdc_blur;
-            z-index: 31;
-            background-color: @bg_white;
+            padding: 28px 28px 0;
           }
         }
 
@@ -46,7 +62,6 @@
     margin-left: -427px;
     width: 854px;
     padding: 50px 0;
-    border-bottom: 1px solid @bdc_bot_line;
 
     .reg_wrap {
       margin-left: 135px;
@@ -67,7 +82,7 @@
 
   h3 {
     font-size: @font24;
-    &.tc{
+    &.tc {
       margin-bottom: 20px;
     }
 
@@ -183,6 +198,9 @@
     margin-bottom: 40px;
     a {
       color: @cl_gray;
+      &:hover {
+        color: @cl_blue;
+      }
     }
     span {
       display: inline-block;

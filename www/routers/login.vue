@@ -16,6 +16,10 @@
 
           <div class="user_content login">
               <div class="user_main">
+                  <div class="lion_slogan_wrap">
+                      <p class="lion_slogan">更近的距离</p>
+                      <p class="lion_slogan tr">更好的服务</p>
+                  </div>
                   <div class="content_wrap login fr">
                       <div class="login_bg">
                           <h3 class="tc">用户登录</h3>
@@ -29,8 +33,8 @@
                                       <label id="phone_error" class="error" style="display: none;">请输入11位手机号</label>
                                   </div>
                                   <div class="inp clearfix">
-                                      <input class="public code fl" value="" placeholder="请输入验证码"><a class="sms_verification ml10 white fl"
-                                                                                                     href="javascript:;">获取验证码</a>
+                                      <input class="public code fl" value="" placeholder="请输入验证码">
+                                      <a class="sms_verification ml10 white fl" href="javascript:;">获取验证码</a>
                                       <label id="password_error" class="error" style="display: none;">请输入密码</label>
                                   </div>
                                   <div class="inp pt15">
