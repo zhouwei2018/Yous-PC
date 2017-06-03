@@ -57,6 +57,14 @@ const router = new VueRouter({
             component: require('./routers/login.vue')
         },
         {
+            path: '/list',
+            component: require('./routers/list.vue')
+        },
+        {
+            path: '/detail',
+            component: require('./routers/detail.vue')
+        },
+        {
             path: '*',
             redirect: '/index'
         }

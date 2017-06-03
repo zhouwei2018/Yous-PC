@@ -2,6 +2,7 @@
 /* CSS Document */
 /*文字色*/
 /*特殊位置黑色*/
+/*特殊位置黑色*/
 /*默认文字灰色*/
 /*用于辅助说明文字、次要文字信息*/
 /*用于次要辅助说明文字*/
@@ -12,6 +13,8 @@
 /* 特殊样式白色字体 */
 /*辅助色*/
 /*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
 /*用于背景颜色蓝色*/
 /*用于背景颜色黑色*/
 /*用于背景颜色深黑色*/
@@ -37,8 +40,10 @@
 /*input边框线*/
 /*inp 浅灰色*/
 /*深灰底线*/
+/*浅灰底线*/
 /*经典底线*/
 /*底线*/
+/*超浅灰底线*/
 /*字号*/
 /*用于板块标题显示*/
 /*用于导航栏标题*/
@@ -131,7 +136,7 @@ input {
   -ms-appearance: none;
   border-radius: 1px;
   outline: none;
-  border: 1px solid #ddd;
+  border: 1px solid #cdcdcd;
   color: #333;
   -webkit-padding: 0;
 }
@@ -175,7 +180,6 @@ select {
 /*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
 .clearfix {
   zoom: 1;
-  overflow: hidden;
 }
 /*公共样式*/
 .fl {
@@ -185,13 +189,13 @@ select {
   float: right;
 }
 .pr {
-  position: relative;
+  position: relative !important;
 }
 .pa {
-  position: absolute;
+  position: absolute !important;
 }
 .pf {
-  position: fixed;
+  position: fixed !important;
 }
 .all {
   min-width: 1200px;
@@ -202,219 +206,112 @@ select {
   margin: 0 auto;
   position: relative;
 }
-/*适配*/
-@media (max-width: 1200px) {
-  .all {
-    min-width: 880px;
-  }
-  .contents {
-    max-width: 880px;
-    min-width: 1200px;
-  }
-  /*头部 */
-  [top-box] {
-    min-width: 880px;
-  }
-  [top-box] .topper {
-    width: 880px;
-    margin-left: -440px;
-  }
-  [top-box] .a_index i {
-    right: 8px;
-    border-width: 3px;
-  }
-  [top-other] {
-    border-bottom: 1px solid #e5e5e5;
-  }
-  [nav_boxs] {
-    /*电话*/
-  }
-  [nav_boxs] .nav dd {
-    font-size: 14px;
-  }
-  [nav_boxs] .a_index i {
-    border-width: 5px;
-  }
-  [nav_boxs] .photo_top {
-    margin: 14px 20px 0 0;
-  }
-  [nav_boxs] .a_index .depart {
-    left: 70px;
-  }
-  [nav_index] {
-    min-width: 880px;
-  }
-  [nav_index] .logo {
-    width: 100px;
-    height: 33px;
-    background-size: 100% 100%;
-    margin-right: 50px;
-  }
-  [nav_index] .a_index i {
-    left: 60px;
-  }
-  [nav_index] .nav dd {
-    width: 88px;
-  }
-  [nav_index] .nav dd a.a_hotel,
-  [nav_index] .nav dd a.a_flight {
-    text-indent: 25px;
-  }
-  [nav_other] {
-    padding-top: 5px;
-    padding-bottom: 10px;
-  }
-  [nav_other] .logo {
-    width: 116px;
-    height: 38px;
-    background-size: 100% 100%;
-    margin-top: 19px;
-  }
-  [nav_other] .bg {
-    min-width: 880px;
-    height: 33px;
-    top: 103px;
-  }
-  [nav_other] .nav {
-    padding-top: 29px;
-  }
-  [nav_other] .drop {
-    margin-left: -30px;
-    padding-top: 14px;
-  }
-  [nav_other] .icon {
-    left: 38px;
-    top: 27px;
-  }
-  [nav_other] .a_index i {
-    top: 9px;
-    left: 60px;
-  }
-  [nav_other] .nav dd {
-    padding: 0 26px;
-  }
-  [nav_other] .nav dd.cur .a_index i {
-    top: 5px;
-  }
-  /*没有下拉样式*/
-  [nav_hide] {
-    padding-bottom: 0;
-  }
-  [nav_hide] .nav {
-    height: 37px;
-  }
-  [nav_hide] .logo {
-    margin-right: 10px;
-  }
-  /*底部*/
-  [bottom] .bottom_logo {
-    height: 26px;
-    background-size: 77px 26px;
-  }
-  [bottom] .bottom_nav i {
-    margin: 0px;
-  }
-  [bottom] .bottom_phone {
-    font-size: 18px;
-  }
-  [bottom] .bottom_phone i {
-    width: 24px;
-    height: 24px;
-    background-position: -189px -16px;
-  }
-  [bottom] .bottom_phone span {
-    line-height: 28px;
-  }
+/*针对特殊网站样式start*/
+.pv20 {
+  padding-left: 20px !important;
 }
-@media all and (orientation: portrait) {
-  .all {
-    min-width: 680px;
-  }
-  .contents {
-    max-width: 680px;
-  }
-  /*头部  begin*/
-  [top-box] {
-    min-width: 680px;
-  }
-  [top-box] .topper {
-    width: 680px;
-    margin-left: -340px;
-  }
-  [top-box] .top_left i {
-    padding: 0 5px;
-  }
-  [top-box] .top_left span {
-    padding-right: 10px;
-  }
-  [nav_boxs] {
-    /*电话*/
-  }
-  [nav_boxs] .nav dd {
-    font-size: 13px;
-  }
-  [nav_boxs] .photo_top {
-    margin: 14px 0 0 0;
-    background-size: 80px 20px;
-    font-size: 12px;
-    padding: 15px 0 0 17px;
-  }
-  [nav_boxs] .a_index .depart {
-    left: 56px;
-  }
-  [nav_other] .logo {
-    margin-right: 38px;
-  }
-  [nav_other] .bg {
-    min-width: 680px;
-  }
-  [nav_other] .icon {
-    left: 29px;
-  }
-  [nav_other] .nav dd {
-    padding: 0 16px;
-  }
-  [nav_other] .nav dd .a_index i {
-    top: 8px;
-    left: 46px;
-  }
-  [nav_other] .nav dd.cur .a_index i {
-    top: 2px;
-    right: 9px;
-  }
-  [nav_index] {
-    min-width: 680px;
-  }
-  [nav_index] .a_index i {
-    left: 44px;
-  }
-  [nav_index] .nav dd {
-    width: 70px;
-  }
-  [nav_index] .nav dd a.a_hotel,
-  [nav_index] .nav dd a.a_flight {
-    text-indent: 16px;
-  }
-  [nav_hide] .logo {
-    margin-right: 20px;
-  }
-  /*底部*/
-  [bottom] .bottom_logo {
-    height: 26px;
-    background-size: 77px 26px;
-  }
-  [bottom] .bottom_nav {
-    font-size: 11px;
-  }
-  [bottom] .bottom_copyright {
-    font-size: 10px;
-  }
-  [bottom] .bottom_phone {
-    font-size: 16px;
-  }
-  [bottom] .bottom_phone i {
-    width: 24px;
-    height: 24px;
-    background-position: -189px -16px;
-  }
+.mt20,
+.mh20,
+.ma20 {
+  margin-top: 20px !important;
 }
+.mr15,
+.mv15,
+.ma15 {
+  margin-right: 15px !important;
+}
+.ml15,
+.mv15,
+.ma15 {
+  margin-left: 15px !important;
+}
+.mb25,
+.mh25,
+.ma25 {
+  margin-bottom: 25px !important;
+}
+.mb25,
+.mh25,
+.ma25 {
+  margin-bottom: 25px !important;
+}
+.mt25,
+.mh25,
+.ma25 {
+  margin-top: 25px !important;
+}
+.ml25,
+.mv25,
+.ma25 {
+  margin-left: 25px !important;
+}
+.ml05,
+.mv05,
+.ma05 {
+  margin-left: 5px !important;
+}
+.mb0,
+.mh0,
+.ma0 {
+  margin-bottom: 0px !important;
+}
+.mb40,
+.mh40,
+.ma40 {
+  margin-bottom: 40px !important;
+}
+.pt20,
+.ph20,
+.pa20 {
+  padding-top: 20px !important;
+}
+.mt10,
+.mh10,
+.ma10 {
+  margin-top: 10px !important;
+}
+.pb20,
+.ph20,
+.pa20 {
+  padding-bottom: 20px !important;
+}
+.mt20,
+.mh20,
+.ma20 {
+  margin-top: 20px !important;
+}
+hr {
+  border-style: solid;
+  border-width: 1px 0 0 0;
+}
+a {
+  color: #302F35;
+}
+.text_gray6 {
+  color: #666 !important;
+}
+.text_gray9 {
+  color: #999 !important;
+}
+.db {
+  display: block;
+}
+.font_num {
+  font-family: tahoma !important;
+}
+.font12 {
+  font-size: 12px;
+}
+.font26 {
+  font-size: 26px;
+}
+.text_pink_app {
+  color: #ff5254 !important;
+}
+.fb {
+  font-weight: 700 !important;
+}
+.cur_pointer {
+  cursor: pointer;
+}
+/*针对特殊网站样式end*/

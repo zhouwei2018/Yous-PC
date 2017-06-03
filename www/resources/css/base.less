@@ -8,7 +8,7 @@ html, body, div, form, th, td, input, button, textarea, ul, ol, li, dl, dt, dd, 
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
 }
 
@@ -22,7 +22,7 @@ body {
   background-color: @bg_verygray;
 }
 
-img{
+img {
   display: block;
   width: 100%;
   height: auto;
@@ -38,15 +38,15 @@ a {
   color: @cl_default;
 }
 
-.tc{
+.tc {
   text-align: center;
 }
 
-.tl{
+.tl {
   text-align: left;
 }
 
-.tright{
+.tright {
   text-align: right;
 }
 
@@ -117,7 +117,6 @@ input, button, textarea, select {
 /*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
 .clearfix {
   zoom: 1;
-  overflow: hidden;
 }
 
 /*公共样式*/
@@ -130,15 +129,15 @@ input, button, textarea, select {
 }
 
 .pr {
-  position: relative;
+  position: relative !important;
 }
 
 .pa {
-  position: absolute;
+  position: absolute !important;
 }
 
 .pf {
-  position: fixed;
+  position: fixed !important;
 }
 
 .all {
@@ -152,243 +151,113 @@ input, button, textarea, select {
   position: relative;
 }
 
-/*适配*/
-@media (max-width: 1200px) {
-  .all {
-    min-width: 880px;
-  }
-
-  .contents {
-    max-width: 880px;
-    min-width: 1200px;
-  }
-
-  /*头部 */
-  [top-box] {
-    min-width: 880px;
-    .topper {
-      width: 880px;
-      margin-left: -440px;
-    }
-    .a_index i {
-      right: 8px;
-      border-width: 3px;
-    }
-  }
-
-  [top-other] {
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  [nav_boxs] {
-    .nav dd {
-      font-size: 14px;
-    }
-    .a_index i {
-      border-width: 5px;
-    }
-    /*电话*/
-    .photo_top {
-      margin: 14px 20px 0 0;
-    }
-    .a_index .depart {
-      left: 70px;
-    }
-  }
-
-  [nav_index] {
-    min-width: 880px;
-    .logo {
-      width: 100px;
-      height: 33px;
-      background-size: 100% 100%;
-      margin-right: 50px;
-    }
-    .a_index i {
-      left: 60px;
-    }
-    .nav dd {
-      width: 88px;
-    }
-    .nav dd a.a_hotel, .nav dd a.a_flight {
-      text-indent: 25px;
-    }
-  }
-
-  [nav_other] {
-    padding-top: 5px;
-    padding-bottom: 10px;
-    .logo {
-      width: 116px;
-      height: 38px;
-      background-size: 100% 100%;
-      margin-top: 19px;
-    }
-    .bg {
-      min-width: 880px;
-      height: 33px;
-      top: 103px;
-    }
-    .nav {
-      padding-top: 29px;
-    }
-    .drop {
-      margin-left: -30px;
-      padding-top: 14px;
-    }
-    .icon {
-      left: 38px;
-      top: 27px;
-    }
-    .a_index i {
-      top: 9px;
-      left: 60px;
-    }
-    .nav dd {
-      padding: 0 26px;
-    }
-    .nav dd.cur .a_index i {
-      top: 5px;
-    }
-  }
-
-  /*没有下拉样式*/
-  [nav_hide] {
-    padding-bottom: 0;
-    .nav {
-      height: 37px;
-    }
-    .logo {
-      margin-right: 10px;
-    }
-  }
-
-  /*底部*/
-  [bottom] {
-    .bottom_logo {
-      height: 26px;
-      background-size: 77px 26px;
-    }
-    .bottom_nav i {
-      margin: 0px;
-    }
-    .bottom_phone {
-      font-size: 18px;
-    }
-    .bottom_phone i {
-      width: 24px;
-      height: 24px;
-      background-position: -189px -16px;
-    }
-    .bottom_phone span {
-      line-height: 28px;
-    }
-  }
+/*针对特殊网站样式start*/
+.pv20 {
+  padding-left: 20px !important;
 }
 
-@media all and (orientation: portrait) {
-  .all {
-    min-width: 680px;
-  }
-
-  .contents {
-    max-width: 680px;
-  }
-
-  /*头部  begin*/
-  [top-box] {
-    min-width: 680px;
-    .topper {
-      width: 680px;
-      margin-left: -340px;
-    }
-    .top_left i {
-      padding: 0 5px;
-    }
-    .top_left span {
-      padding-right: 10px;
-    }
-  }
-
-  [nav_boxs] {
-    .nav dd {
-      font-size: 13px;
-    }
-    /*电话*/
-    .photo_top {
-      margin: 14px 0 0 0;
-      background-size: 80px 20px;
-      font-size: 12px;
-      padding: 15px 0 0 17px;
-    }
-    .a_index .depart {
-      left: 56px;
-    }
-  }
-
-  [nav_other] {
-    .logo {
-      margin-right: 38px;
-    }
-    .bg {
-      min-width: 680px;
-    }
-    .icon {
-      left: 29px;
-    }
-    .nav dd {
-      padding: 0 16px;
-    }
-    .nav dd .a_index i {
-      top: 8px;
-      left: 46px;
-    }
-    .nav dd.cur .a_index i {
-      top: 2px;
-      right: 9px;
-    }
-  }
-
-  [nav_index] {
-    min-width: 680px;
-    .a_index i {
-      left: 44px;
-    }
-    .nav dd {
-      width: 70px;
-    }
-    .nav dd a.a_hotel, .nav dd a.a_flight {
-      text-indent: 16px;
-    }
-  }
-
-  [nav_hide] {
-    .logo {
-      margin-right: 20px;
-    }
-  }
-
-  /*底部*/
-  [bottom] {
-    .bottom_logo {
-      height: 26px;
-      background-size: 77px 26px;
-    }
-    .bottom_nav {
-      font-size: 11px;
-    }
-    .bottom_copyright {
-      font-size: 10px;
-    }
-    .bottom_phone {
-      font-size: 16px;
-    }
-    .bottom_phone i {
-      width: 24px;
-      height: 24px;
-      background-position: -189px -16px;
-    }
-  }
+.mt20, .mh20, .ma20 {
+  margin-top: 20px !important;
 }
+
+.mr15, .mv15, .ma15 {
+  margin-right: 15px !important;
+}
+
+.ml15, .mv15, .ma15 {
+  margin-left: 15px !important;
+}
+
+.mb25, .mh25, .ma25 {
+  margin-bottom: 25px !important;
+}
+
+.mb25, .mh25, .ma25 {
+  margin-bottom: 25px !important;
+}
+
+.mt25, .mh25, .ma25 {
+  margin-top: 25px !important;
+}
+
+.ml25, .mv25, .ma25 {
+  margin-left: 25px !important;
+}
+
+.ml05, .mv05, .ma05 {
+  margin-left: 5px !important;
+}
+
+.mb0, .mh0, .ma0 {
+  margin-bottom: 0px !important;
+}
+
+.mb40, .mh40, .ma40 {
+  margin-bottom: 40px !important;
+}
+
+.pt20, .ph20, .pa20 {
+  padding-top: 20px !important;
+}
+.mt10, .mh10, .ma10 {
+  margin-top: 10px !important;
+}
+
+.pb20, .ph20, .pa20 {
+  padding-bottom: 20px !important;
+}
+
+.mt20, .mh20, .ma20 {
+  margin-top: 20px !important;
+}
+
+hr {
+  border-style: solid;
+  border-width: 1px 0 0 0;
+}
+
+a {
+  color: @cl_class_black;
+}
+
+.text_gray6 {
+  color: @cl_blockgray !important;
+}
+
+.text_gray9 {
+  color: @cl_gray !important;
+}
+
+.db {
+  display: block;
+}
+
+.font_num {
+  font-family: tahoma !important;
+}
+
+.font12{
+  font-size: @font12;
+}
+
+.font26{
+  font-size: @font26;
+}
+
+.text_pink_app {
+  color: @cl_mobile_red !important;
+}
+
+.fb {
+  font-weight: 700 !important;
+}
+.cur_pointer{
+  cursor: pointer;
+}
+
+/*针对特殊网站样式end*/
+
+
+
 
 
