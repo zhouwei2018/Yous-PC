@@ -53,32 +53,6 @@
 /*用于正文标题，重要文字信息*/
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
-/*重置*/
-html,
-body,
-div,
-form,
-th,
-td,
-input,
-button,
-textarea,
-ul,
-ol,
-li,
-dl,
-dt,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  padding: 0;
-  margin: 0;
-}
 h1,
 h2,
 h3,
@@ -108,6 +82,10 @@ a {
   text-decoration: none;
   outline: none;
   color: #333;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 .tc {
   text-align: center;
@@ -314,5 +292,138 @@ a {
 }
 .cur_pointer {
   cursor: pointer;
+}
+/*针对特殊网站样式end*/
+/*针对特殊网站样式start*/
+.none {
+  display: none;
+}
+.pv20 {
+  padding-left: 20px !important;
+}
+.mt20,
+.mh20,
+.ma20 {
+  margin-top: 20px !important;
+}
+.mr20,
+.mv20,
+.ma20 {
+  margin-right: 20px !important;
+}
+.mr15,
+.mv15,
+.ma15 {
+  margin-right: 15px !important;
+}
+.ml15,
+.mv15,
+.ma15 {
+  margin-left: 15px !important;
+}
+.mb25,
+.mh25,
+.ma25 {
+  margin-bottom: 25px !important;
+}
+.mb25,
+.mh25,
+.ma25 {
+  margin-bottom: 25px !important;
+}
+.mt25,
+.mh25,
+.ma25 {
+  margin-top: 25px !important;
+}
+.ml25,
+.mv25,
+.ma25 {
+  margin-left: 25px !important;
+}
+.ml05,
+.mv05,
+.ma05 {
+  margin-left: 5px !important;
+}
+.mb0,
+.mh0,
+.ma0 {
+  margin-bottom: 0px !important;
+}
+.mb40,
+.mh40,
+.ma40 {
+  margin-bottom: 40px !important;
+}
+.pt20,
+.ph20,
+.pa20 {
+  padding-top: 20px !important;
+}
+.mt10,
+.mh10,
+.ma10 {
+  margin-top: 10px !important;
+}
+.pt10,
+.ph10,
+.pa10 {
+  padding-top: 10px !important;
+}
+.pb10,
+.ph10,
+.pa10 {
+  padding-bottom: 10px !important;
+}
+.pb20,
+.ph20,
+.pa20 {
+  padding-bottom: 20px !important;
+}
+.mt20,
+.mh20,
+.ma20 {
+  margin-top: 20px !important;
+}
+hr {
+  border-style: solid;
+  border-width: 1px 0 0 0;
+}
+a {
+  color: #302F35;
+}
+.text_gray6 {
+  color: #666 !important;
+}
+.text_gray9 {
+  color: #999 !important;
+}
+.db {
+  display: block;
+}
+.font_num {
+  font-family: tahoma !important;
+}
+.font12 {
+  font-size: 12px;
+}
+.font20 {
+  font-size: 20px !important;
+}
+.font26 {
+  font-size: 26px;
+}
+.text_pink_app {
+  color: #ff5254 !important;
+}
+.fb {
+  font-weight: 700 !important;
+}
+.cur_pointer {
+  cursor: pointer;
+}
+.text-blue {
+  color: #476cba !important;
 }
 /*针对特殊网站样式end*/

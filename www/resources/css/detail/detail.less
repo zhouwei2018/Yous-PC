@@ -13,7 +13,9 @@
     background: url("../../images/icons/detail-icon-bg.png") no-repeat;
     /* background-color: #f1f5f6; */
   }
-
+  .font-num {
+    font-family: Tahoma;
+  }
   /*common css end*/
 
   .breadcrumb-search {
@@ -76,7 +78,7 @@
     > img {
       width: 69px;
       height: 69px;
-      margin-right:16px;
+      margin-right: 16px;
     }
     .building-tag {
       float: left;
@@ -112,15 +114,15 @@
     line-height: 43px;
     margin: 20px auto 0;
     border-bottom: 1px solid #e5e5e6;
-    .nav-building{
+    .nav-building {
       > li {
         float: left;
         font-size: 16px;
-        a{
+        a {
           padding: 0 22px 9px;
         }
-        &.active{
-          a{
+        &.active {
+          a {
             color: @bg_search_blue;
             border-bottom: 4px solid @bg_search_blue;
           }
@@ -145,12 +147,12 @@
       z-index: 3;
       border-bottom: 1px solid @bdc_bot_lightline;
 
-      .nav-building{
+      .nav-building {
         > li {
           float: left;
           font-size: 16px;
-          &.active{
-            a{
+          &.active {
+            a {
               color: @bg_search_blue;
               border-bottom: 4px solid @bg_search_blue;
             }
@@ -163,9 +165,6 @@
 
       .consulting {
         float: right;
-        &.none{
-          display: none;
-        }
         > div {
           float: left;
 
@@ -201,7 +200,460 @@
   .common-info {
     width: 1200px;
     margin: 29px auto 30px;
+    .building-message {
+      float: right;
+      position: relative;
+      width: 660px;
+      height: 412px;
+      > h2 {
+        line-height: 1em;
+        font-size: 18px;
+        color: #302F35;
+        font-weight: 700;
+      }
+      .price-box {
+        margin-top: -7px;
+        margin-bottom: 21px;
+        .building-price {
+          float: left;
+          position: relative;
+          margin-right: 11px;
+          > strong {
+            font-size: 48px;
+            line-height: 1;
+            color: #FF4859;
+            font-family: tahoma;
+          }
+        }
+      }
+
+      .building-address {
+        margin-top: 1px;
+        line-height: 20px;
+        .detail-icon {
+          background-position: -28px -271px;
+          top: 0;
+          width: 20px;
+          height: 20px;
+          margin-right: 4px;
+        }
+        > span {
+          float: left;
+          display: block;
+        }
+        .show-map {
+          margin-left: 10px;
+          color: #999;
+        }
+      }
+
+      .building-consult {
+        margin: 15px 0;
+        line-height: 20px;
+        .detail-icon {
+          background-position: -57px -271px;
+          top: 0;
+          width: 20px;
+          height: 20px;
+          margin-right: 4px;
+        }
+      }
+
+      .around-circle {
+        margin-top: 14px;
+        line-height: 24px;
+        .detail-icon {
+          float: left;
+          top: 0;
+          width: 26px;
+          height: 26px;
+          margin-right: 9px;
+          &.minute {
+            margin-right: 0;
+            background-position: -201px -268px;
+          }
+          &.subway {
+            background-position: -28px -148px;
+          }
+          &.bank {
+            background-position: -148px -148px;
+          }
+          &.restaurant {
+            background-position: -228px -148px;
+          }
+          &.hotel {
+            background-position: -188px -148px;
+          }
+          &.bodybuilding {
+            background-position: -108px -148px;
+          }
+        }
+
+        ul {
+          margin-left: 23px;
+          li {
+            float: left;
+            margin-right: 20px;
+            line-height: 24px;
+          }
+        }
+
+      }
+
+      .rental-info {
+        margin-top: 17px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        border-top: 1px solid #E5E5E6;
+        border-bottom: 1px solid #E5E5E6;
+        dd {
+          float: left;
+          width: 210px;
+          margin-right: 15px;
+          line-height: 1;
+          &:last-child {
+            margin-right: 0;
+          }
+          > span {
+            display: block;
+            margin-bottom: 10px;
+          }
+          > p {
+            font-size: 22px;
+            > a {
+              margin-left: 10px;
+              font-size: 14px;
+              color: #999;
+            }
+          }
+        }
+      }
+
+      .building-message {
+        margin-top: 15px;
+        .expert-title {
+          margin-bottom: 12px;
+          .detail-icon {
+            background-position: -175px -272px;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            margin-right: 7px;
+          }
+        }
+      }
+
+    }
   }
+
+  //building msg 分类start
+  .category-message-box {
+    position: relative;
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .category-message {
+    float: left;
+    width: 890px;
+    min-height: 575px;
+  }
+
+  .category-item-title-first {
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    h2, h1 {
+      font-size: 20px;
+    }
+    .detail-icon {
+      float: left;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      &.rent {
+        background-position: -148px -220px;
+      }
+    }
+    .show-link {
+      float: right;
+      color: @cl_h2;
+    }
+  }
+
+  .screening-range {
+    border-top: 1px solid @bdc_bot_lightline;
+    border-bottom: 1px solid @bdc_bot_lightline;
+  }
+
+  .inp-pop {
+    position: absolute;
+    left: 0;
+    top: -8px;
+    padding: 7px 10px;
+    white-space: nowrap;
+    background-color: #FFF;
+    border: 1px solid #D8D8D8;
+    -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+    -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+    box-sizing: border-box;
+    z-index: 2;
+    a {
+      display: inline-block;
+      padding: 0 16px;
+      margin-right: 0;
+      margin-left: 19px;
+      font-size: 13px;
+      color: #FFF !important;
+      line-height: 26px;
+      background-color: #476CBA;
+    }
+  }
+
+  .screening-range-list {
+    position: relative;
+    padding: 8px 0;
+    span {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      display: block;
+      line-height: 26px;
+      color: #666;
+      font-weight: 700;
+    }
+    ul {
+      margin-left: 47px;
+      li {
+        float: left;
+        line-height: 26px;
+        font-size: 14px;
+        color: #666;
+        cursor: pointer;
+        margin-left: 15px;
+        .price-wrap {
+          height: 26px;
+          border: 1px solid #302F35;
+          a {
+            float: left;
+            display: block;
+            padding: 0 16px;
+            line-height: 24px;
+            font-size: 13px;
+            &.active {
+              background-color: #302F35;
+              color: #FFF;
+            }
+          }
+        }
+        &:first-child {
+          margin-left: 0;
+        }
+        a {
+          color: #666;
+          &.on {
+            color: #476CBA;
+          }
+        }
+
+        input {
+          display: inline-block;
+          width: 70px;
+          height: 26px;
+          text-align: center;
+          background: #FFFFFF;
+          border: 1px solid #E5E5E6;
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+      }
+    }
+  }
+
+  //结果分类
+  .sort-list {
+    a {
+      float: left;
+      display: block;
+      width: 70px;
+      padding: 16px 0 14px 0;
+      font-size: 13px;
+      line-height: 13px;
+      color: #666;
+      text-align: center;
+      &.tag {
+        color: #302F35;
+        font-weight: 700;
+        border-bottom: 4px solid #302F35;
+      }
+    }
+  }
+
+  .sort-meet-result {
+    margin-top: 17px;
+    line-height: 14px;
+  }
+
+  //结果列表
+  .detail-office-list {
+    background-color: #FFF;
+    li {
+      height: 100px;
+      padding: 20px 21px 20px 0;
+      background-color: #FFF;
+      border-top: 1px solid #E5E5E6;
+      cursor: pointer;
+      box-sizing: content-box;
+      a {
+        color: #302F35;
+        .list-img {
+          float: left;
+          position: relative;
+          width: 160px;
+          height: 100px;
+          margin-right: 20px;
+          > img {
+            width: 160px;
+            height: 100px;
+          }
+        }
+        .list-introduce {
+          float: left;
+          width: 689px;
+
+          .introduce-primary {
+            line-height: 21px;
+            > span {
+              float: left;
+            }
+            div {
+              position: relative;
+              float: right;
+              span {
+                > em {
+                  position: relative;
+                  top: 3px;
+                  margin: 0 5px 0 8px;
+                  color: #FF4859;
+                  font-size: 26px;
+                  font-weight: 700;
+                }
+              }
+              > div {
+                position: absolute;
+                top: 41px;
+                right: 0;
+                color: #2A2A2A;
+                white-space: nowrap;
+              }
+            }
+
+          }
+
+          .introduce-second {
+            margin: 15px 0 5px;
+            > span {
+              display: inline-block;
+              line-height: 21px;
+              color: #000017;
+            }
+          }
+
+          .introduce-time-btn {
+            float: right;
+            width: 100%;
+            > span {
+              float: left;
+              display: block;
+              margin-top: 15px;
+              font-size: 12px;
+              color: #999;
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  //楼盘介绍
+  .building-information {
+
+    .category-item-title {
+      height: 30px;
+      line-height: 30px;
+      padding-top: 27px;
+      margin-bottom: 15px;
+      border-top: 1px solid #e5e5e6;
+      box-sizing: content-box;
+      h2 {
+        font-size: @font20;
+      }
+      .detail-icon {
+        float: left;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        &.introduce {
+          background-position: -27px -220px;
+        }
+      }
+      .show-link {
+        float: right;
+        color: #848587;
+      }
+    }
+
+    table {
+      margin-top: 22px;
+      margin-bottom: 27px;
+      td {
+        width: 200px;
+        line-height: 1em;
+        padding: 10px;
+        color: #999;
+        span {
+          color: #000017;
+        }
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   /* 轮播 */
   .carousel-wrapper {
@@ -228,6 +680,11 @@
   }
   .carousel-box .carousel-big ul li {
     float: left;
+  }
+
+  .carousel-box .carousel-big ul li a img {
+    width:510px;
+    height:340px;
   }
   .occupancy .occupancy-info {
     position: absolute;
