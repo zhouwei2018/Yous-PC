@@ -22,7 +22,7 @@ Vue.prototype.$resouceUrl = "http://localhost:8081/"  //资源文件地址
 Vue.config.debug = true;
 
 // 路由配置
-const router = new VueRouter({
+var router = new VueRouter({
     mode: "history",
     hashbang: false,
     routes: [

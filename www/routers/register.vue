@@ -46,7 +46,7 @@
                                                      <Input  value=""  type="password" v-model="formInline.password" placeholder="请输入登录密码"  size="large"></Input>
                                                  </Form-item>
                                             </div>
-                                            <div class="fl" >
+                                            <div class="fl" style="margin-left:12px" >
                                                 <span>请输入6-20位密码，由数字和字母组成。</span>
                                                 <p class="safe_level">安全程度：
                                                   <span class="low">低</span>
@@ -89,7 +89,7 @@
                                            </Form-item>
                                          </div>
                                           <div class="fl tright">
-                                              <a class="service_btn" href="javascript:;">《用户服务协议》</a>
+                                              <a class="service_btn regesit_readme" href="javascript:;">《用户服务协议》</a>
                                          </div>
 
                                         </div>

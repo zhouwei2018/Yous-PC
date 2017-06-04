@@ -90,7 +90,7 @@
                                       <span>均价</span>
                                     </div>
                                     <div>
-                                         <a href="javascript:;" class="apply_btn">申请入驻</a>
+                                       <router-link :to="{ path: '/detail'}" class="apply_btn">申请入驻</router-link>
                                     </div>
                                </div>
                           </div>
@@ -227,6 +227,12 @@ export default {
        },
        setAreaItem:function(index){
           this.areaItem=this.areaItems[index]
+       },
+       asyBtnCheckIn:function(id){
+
+         this.$router.go({path:"list"});
+         //this.$route.router.go({name:"detail"});
+
        }
     }
 }
