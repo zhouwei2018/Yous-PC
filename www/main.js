@@ -3,6 +3,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueResource from 'vue-resource';
 import $ from 'jquery';
 import App from './app.vue';
 import iView from '../src/index';
@@ -10,6 +11,7 @@ import iView from '../src/index';
 import locale from '../src/locale/lang/zh-CN';
 
 Vue.use(VueRouter);
+Vue.use(VueResource);
 Vue.use(iView, {locale});
 
 //const变量
