@@ -31,45 +31,67 @@
                                         <router-link to="/login" class="login_switch">登录</router-link>
                                     </div>
                                 </div>
-                                <form id="signupForm" method="get" action="" novalidate="novalidate">
+                                <Form  ref="formInline" :model="formInline" :rules="ruleInline">
+
                                     <!--注册-->
                                     <div input-prompt>
                                         <div class="inp">
-                                            <input autocomplete="off" class="public" id="phone" type="phone"
-                                                   name="phone"
-                                                   placeholder="请输入手机号码" required="" aria-required="true">
+                                          <Form-item prop="user" >
+                                              <Input  value="" style="width: 300px" type="text" v-model="formInline.user" placeholder="请输入手机号码"  size="large"></Input>
+                                          </Form-item>
                                         </div>
-                                        <div class="clearfix">
-                                            <div class="inp fl">
-                                                <input autocomplete="off" class="public" id="password" type="password"
-                                                       name="password"
-                                                       maxlength="20" placeholder="请输入登录密码" required="">
+                                        <div class="clearfix inp">
+                                            <div class=" fl">
+                                                 <Form-item prop="password" style="width: 300px" >
+                                                     <Input  value=""  type="password" v-model="formInline.password" placeholder="请输入登录密码"  size="large"></Input>
+                                                 </Form-item>
                                             </div>
-                                            <div class="fl ml10 tright">
+                                            <div class="fl" >
                                                 <span>请输入6-20位密码，由数字和字母组成。</span>
-                                                <p class="safe_level">安全程度：<span class="low">低</span><span
-                                                        class="middle">中</span><span class="high">高</span></p>
+                                                <p class="safe_level">安全程度：
+                                                  <span class="low">低</span>
+                                                  <span class="middle">中</span><span class="high">高</span>
+                                                </p>
                                             </div>
                                         </div>
                                         <div class="inp">
-                                            <input autocomplete="off" class="public" id="confirm_password"
-                                                   type="password"
-                                                   name="confirm_password" maxlength="20" placeholder="请确认密码"
-                                                   required="">
+                                          <Form-item prop="passwdCheck" style="width: 300px" >
+                                              <Input  value="" type="password" v-model="formInline.passwdCheck" placeholder="请输入确认密码"  size="large"></Input>
+                                          </Form-item>
+
                                         </div>
-                                        <div class="inp">
-                                            <input class="public" placeholder="邀请码（选填）"><a class="ml10"
-                                                                                           href="javascript:;">请填写推荐人邀请码</a>
+                                        <div class="clearfix inp">
+                                          <div class="fl">
+                                            <Form-item  style="width: 300px">
+                                                <Input  value=""  type="text"  placeholder="邀请码（选填）"  size="large"></Input>
+                                            </Form-item>
+                                          </div>
+                                          <div class="fl tright" >
+                                              <a class="ml10" href="javascript:;">请填写推荐人邀请码</a>
+                                          </div>
                                         </div>
-                                        <div class="inp clearfix">
-                                            <input class="public code fl" placeholder="请输入验证码"><a
-                                                class="sms_verification fl ml10"
-                                                href="javascript:;">获取验证码</a>
+                                        <div class="clearfix inp">
+                                          <div class="fl">
+                                            <Form-item prop="code"  style="width: 200px">
+                                              <Input  value="" style="width: 200px" type="text" v-model="formInline.code" placeholder="请输入验证码"  size="large"></Input>
+                                            </Form-item>
+                                          </div>
+                                          <div class="fl tright" >
+                                              <Button style="width:90px;height:54px" >获取验证码</Button>
+                                          </div>
                                         </div>
-                                        <div class="inp pt15">
-                                            <input class="next btn1_hover submit" type="submit" value="同意协议并注册"
-                                                   id="register"><a
-                                                class="service_btn ml5" href="javascript:;">《用户服务协议》</a>
+                                        <div class="clearfix inp">
+                                          <div class="fl">
+                                            <Form-item  style="width: 300px">
+                                              <Button size="large" class="next  btnSubmit" :loading="loading" type="primary" @click="handleSubmit('formInline')">
+                                                <span v-if="!loading">同意协议并注册</span>
+                                                <span v-else>Loading...</span></Button>
+                                           </Form-item>
+                                         </div>
+                                          <div class="fl tright">
+                                              <a class="service_btn" href="javascript:;">《用户服务协议》</a>
+                                         </div>
+
                                         </div>
                                     </div>
                                 </form>
@@ -78,8 +100,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div footer add_reg>
                 <div class="foot_wrap">
                     <p class="bottom_nav">
@@ -103,6 +123,73 @@
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
     export default {
-        components: {header1, footer1}
+        components: { header1,footer1 },
+        data () {
+              const validatePassCheck = (rule, value, callback) => {
+                   if (value === '') {
+                       callback(new Error('请再次输入密码'));
+                   } else if (value !== this.formInline.password) {
+                       callback(new Error('两次输入密码不一致!'));
+                   } else {
+                       callback();
+                   }
+               };
+                return {
+                    loading: false,
+                    formInline: {
+                        user: '',
+                        password: '',
+                        passwdCheck: '',
+                        code:""
+                    },
+                    ruleInline: {
+                        user: [
+                            { required: true, message: '请填写用户名', trigger: 'blur' }
+                        ],
+                        password: [
+                            { required: true, message: '请填写密码', trigger: 'blur' },
+                            { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+                        ],
+                        passwdCheck: [
+                          { validator: validatePassCheck, trigger: 'blur' }
+                       ],
+                       code:[
+                           { required: true, message: '请填验证码', trigger: 'blur' }
+                       ],
+                    }
+                }
+            },
+            methods: {
+                handleSubmit(name) {
+                    //this.$Message.success('正在提交，请稍等!');
+                    this.$refs[name].validate((valid) => {
+                        if (valid) {
+                          this.loading = true;
+                          this.$http.post(
+                                  this.$api,
+                                  {
+                                      parameters:{
+
+                                      },
+                                      foreEndType:"1",
+                                      code:"10000001"
+                                  }
+                          ).then(function(response) {
+                                      var  reslute=JSON.parse(response.data);
+                                      if(reslute.success){
+                                          this.$route.router.go({name:"main"})
+                                      }else{
+                                          this.$Message.error(reslute.message);
+                                      }
+                        }, function(response) {
+                              this.$Message.error('API接口报错-网络错误!');
+                              this.loading = false;
+                        });
+                        } else {
+                            this.$Message.error('表单验证失败!');
+                        }
+                    })
+                }
+            }
     }
 </script>

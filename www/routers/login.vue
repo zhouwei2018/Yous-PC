@@ -16,31 +16,24 @@
 
           <div class="user_content login">
               <div class="user_main">
-                  <div class="lion_slogan_wrap">
-                      <p class="lion_slogan">更近的距离</p>
-                      <p class="lion_slogan tr">更好的服务</p>
-                  </div>
                   <div class="content_wrap login fr">
                       <div class="login_bg">
                           <h3 class="tc">用户登录</h3>
                           <!--登录-->
-                          <form id="signinForm" method="get" action="" novalidate="novalidate">
-                              <div input-prompt inp_login>
-                                  <div class="inp">
-                                      <input autocomplete="off" value="" class="public" maxlength="11" id="phone" type="phone"
-                                             name="phone"
-                                             placeholder="请输入手机号码" required="">
-                                      <label id="phone_error" class="error" style="display: none;">请输入11位手机号</label>
-                                  </div>
-                                  <div class="inp clearfix">
-                                      <input class="public code fl" value="" placeholder="请输入验证码">
-                                      <a class="sms_verification ml10 white fl" href="javascript:;">获取验证码</a>
-                                      <label id="password_error" class="error" style="display: none;">请输入密码</label>
-                                  </div>
-                                  <div class="inp pt15">
-                                      <input class="next btn1_hover submit" type="submit" value="立即登录" id="login"></a>
-                                  </div>
-                              </div>
+                        <Form  ref="formInline" :model="formInline" :rules="ruleInline">
+                                <Form-item prop="user" >
+                                    <Input  value="" style="width: 100%" type="text" v-model="formInline.user" placeholder="请输入手机号码"  size="large"></Input>
+                                </Form-item>
+
+                                 <Form-item prop="password" >
+                                    <Input value="" style="width: 100%"  type="password" placeholder="请输入密码" v-model="formInline.password" size="large"></Input>
+                                 </Form-item>
+
+                                 <Form-item >
+                                   <Button size="large" class="next  btnSubmit" :loading="loading" type="primary" @click="handleSubmit('formInline')">
+                                     <span v-if="!loading">立即登录</span>
+                                     <span v-else>Loading...</span></Button>
+                                </Form-item>
                           </form>
                           <div class="status_switch">
                               <router-link to="/register">注册幼狮账号</router-link>
@@ -70,7 +63,6 @@
                       <i>|</i>
                       <span><a href="javascript:;">条款与隐私</a></span>
                   </p>
-
                   <p class="bottom_copyright">北京幼狮空间有限公司 保留所有权利 京ICP备20176444</p>
               </div>
           </div>
@@ -82,6 +74,57 @@
 import header1 from '../components/header.vue';
 import footer1 from '../components/footer.vue';
 export default {
-    components: { header1,footer1 }
+    components: { header1,footer1 },
+    data () {
+            return {
+                loading: false,
+                formInline: {
+                    user: '',
+                    password: ''
+                },
+                ruleInline: {
+                    user: [
+                        { required: true, message: '请填写用户名', trigger: 'blur' }
+                    ],
+                    password: [
+                        { required: true, message: '请填写密码', trigger: 'blur' },
+                        { type: 'string', min: 6, message: '密码长度不能小于6位', trigger: 'blur' }
+                    ]
+                }
+            }
+        },
+        methods: {
+            handleSubmit(name) {
+                //this.$Message.success('正在提交，请稍等!');
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                      this.loading = true;
+                      this.$http.post(
+                              this.$api,
+                              {
+                                  parameters:{
+                                      "phone":this.user,
+                                      "pwd":this.password
+                                  },
+                                  foreEndType:"2",
+                                  code:"10000001"
+                              }
+                      ).then(function(response) {
+                                  var  reslute=JSON.parse(response.data);
+                                  if(reslute.success){
+                                      this.$route.router.go({name:"main"})
+                                  }else{
+                                      this.$Message.error(reslute.message);
+                                  }
+                    }, function(response) {
+                          this.$Message.error('API接口报错-网络错误!');
+                          this.loading = false;
+                    });
+                    } else {
+                        this.$Message.error('表单验证失败!');
+                    }
+                })
+            }
+        }
 }
 </script>
