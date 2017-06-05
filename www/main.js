@@ -67,6 +67,10 @@ var router = new VueRouter({
             component: require('./routers/detail.vue')
         },
         {
+            path: '/admin',
+            component: require('./routers/admin/main.vue')
+        },
+        {
             path: '*',
             redirect: '/index'
         }
