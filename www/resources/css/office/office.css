@@ -166,6 +166,7 @@
 [office] .center_trade .center_list > ul {
   width: 785px;
   margin-bottom: 45px;
+  margin-top: 25px;
 }
 [office] .center_trade .center_list > ul > li {
   background-color: #fff;
@@ -242,6 +243,7 @@
 [office] .center_trade .center_list .trade_per {
   width: 394px;
   height: 483px;
+  margin-top: 40px;
   text-align: center;
   background: #fff;
 }

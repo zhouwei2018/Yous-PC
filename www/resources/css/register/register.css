@@ -121,98 +121,31 @@
 [top_box] .reg_bg .reg_wrap .reg_head .login_switch {
   color: #09b8fa;
 }
+[top_box] .regesit_readme {
+  color: #09b8fa;
+}
+[top_box] .tright {
+  margin-left: 12px;
+  line-height: 54px;
+}
+[top_box] .tright a {
+  color: #999;
+}
+[top_box] .low {
+  background-color: #fec8ac;
+}
 [top_box] h3 {
   font-size: 24px;
 }
 [top_box] h3.tc {
   margin-bottom: 20px;
 }
-[top_box] [input-prompt] input.public {
-  width: 300px;
-  padding: 15px 10px;
+[top_box] .ivu-input {
+  padding: 15px;
 }
-[top_box] [input-prompt] input:focus {
-  border: 1px solid #0f6fac;
-  box-shadow: 1px 0px 1px #0f6fac;
-}
-[top_box] [input-prompt] .safe_level {
-  margin-right: 28px;
-}
-[top_box] [input-prompt] .safe_level.passlow span.low {
-  background-color: #fec8ac;
-}
-[top_box] [input-prompt] .safe_level.passmiddle span.low {
-  background-color: #fec8ac;
-}
-[top_box] [input-prompt] .safe_level.passmiddle span.middle {
-  background-color: #fe9e6e;
-}
-[top_box] [input-prompt] .safe_level.passhigh span.low {
-  background-color: #fec8ac;
-}
-[top_box] [input-prompt] .safe_level.passhigh span.middle {
-  background-color: #fe9e6e;
-}
-[top_box] [input-prompt] .safe_level.passhigh span.high {
-  background-color: #fd7530;
-}
-[top_box] [input-prompt] .safe_level span {
-  display: inline-block;
-  vertical-align: middle;
-  width: 21px;
-  height: 15px;
-  text-align: center;
-  line-height: 15px;
-  color: #fff;
-  font-size: 12px;
-  margin-right: 1px;
-  background-color: #d7d3d4;
-}
-[top_box] [input-prompt] .ml5 {
-  margin-left: 5px;
-}
-[top_box] [input-prompt] .ml10 {
-  margin-left: 10px;
-  color: #999;
-}
-[top_box] [input-prompt] .inp {
-  padding-bottom: 16px;
-}
-[top_box] [input-prompt] .inp .service_btn {
-  color: #09b8fa;
-}
-[top_box] [input-prompt] .inp .code {
-  width: 160px;
+[top_box] .btnSubmit {
+  width: 100%;
   height: 50px;
-}
-[top_box] [input-prompt] .inp .sms_verification {
-  display: inline-block;
-  line-height: 50px;
-  text-align: center;
-  width: 130px;
-  height: 50px;
-  background-color: #edeef2;
-}
-[top_box] [input-prompt] .inp .sms_verification.active {
-  background-color: #0f6fac;
-  color: #fff;
-}
-[top_box] [input-prompt] .inp .sms_verification.white {
-  background-color: #c9c9c9;
-  color: #fff;
-}
-[top_box] [input-prompt] .pt15 {
-  padding-top: 15px;
-}
-[top_box] [input-prompt] .submit {
-  width: 300px;
-  background: #0f6fac;
-  border: 0;
-  height: 50px;
-  color: #fff;
-  cursor: pointer;
-  border-radius: 2px;
-  font-size: 14px;
 }
 [top_box] .status_switch {
   text-align: center;
