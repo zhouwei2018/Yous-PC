@@ -1,5 +1,6 @@
 <style scoped lang="less">
     @import "../resources/css/list/list.less";
+    @import "../resources/css/right_column/right_column.less";
     @import "../resources/css/service/page.less";
 </style>
 <style scoped>

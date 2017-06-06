@@ -1,0 +1,151 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*辅助色*/
+/*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
+/*用于背景颜色深灰*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*index 业主委托亮蓝色*/
+/*深蓝色*/
+/*浅蓝色*/
+/*首页登录按钮背景蓝*/
+/*首页登录按钮border*/
+/*棕色*/
+/*浅红色*/
+/*hover 浅灰色*/
+/*hover 浅lv色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*inp 浅灰色*/
+/*深灰底线*/
+/*浅灰底线*/
+/*经典底线*/
+/*底线*/
+/*超浅灰底线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+.sidebar_box {
+  position: absolute;
+  width: 290px;
+  right: 0;
+  padding-top: 20px;
+}
+.sidebar_box .sidebar_main {
+  width: 290px;
+}
+.sidebar_box .sidebar_main .map_house {
+  height: 210px;
+  width: 290px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  padding: 0 20px;
+  text-align: center;
+}
+.sidebar_box .sidebar_main .map_house img {
+  width: 90px;
+  height: 55px;
+  display: inline-block;
+  margin: 50px 0 30px;
+}
+.sidebar_box .sidebar_main .map_house .map_find_btn {
+  display: block;
+  width: 100%;
+  height: 48px;
+  line-height: 46px;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  color: #fff;
+  background-color: #608ceb;
+}
+.sidebar_box .sidebar_main .booking_house {
+  width: 290px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.sidebar_box .sidebar_main .booking_house .booking_house_mes {
+  padding: 22px 20px 24px;
+  color: #999;
+  text-align: center;
+  border-bottom: 1px solid #e8e8e8;
+}
+.sidebar_box .sidebar_main .booking_house .booking_house_mes .form_control {
+  width: 100%;
+  height: 48px;
+  line-height: 46px;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  box-sizing: border-box;
+}
+.sidebar_box .sidebar_main .booking_house .booking_house_mes .form_control.form_btn {
+  color: #fff;
+  background-color: #608ceb;
+}
+.sidebar_box .sidebar_main .booking_house .booking_house_mes .form_control.form_telphone {
+  margin-top: 17px;
+  color: #999;
+  background-color: #f7f7f7;
+  border: 1px solid #efefef;
+}
+.sidebar_box .sidebar_main .booking_house .booking_house_mes > h2 {
+  font-size: 16px;
+  line-height: 1em;
+  color: #848587;
+}
+.sidebar_box .sidebar_main .booking_house .booking_house_mes .nearby {
+  line-height: 1em;
+  margin-top: 18px;
+}
+.sidebar_box .sidebar_main .app_download {
+  width: 290px;
+  height: 226px;
+  padding: 20px 12px 17px;
+  color: #999;
+  text-align: center;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.sidebar_box .sidebar_main .app_download img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 72px;
+  height: 72px;
+}
+.sidebar_box .sidebar_main .app_download img.weixin_img {
+  width: 80px;
+  height: 80px;
+}

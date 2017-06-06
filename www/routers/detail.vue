@@ -1,9 +1,12 @@
 <style scoped lang="less">
     @import "../resources/css/detail/detail.less";
+    @import "../resources/css/right_column/right_column.less";
     @import "../resources/css/service/page.less";
 </style>
-<style scoped>
-
+<style>
+    .anchorBL{
+        display:none !important;
+    }
 </style>
 
 <template>
@@ -18,8 +21,6 @@
             <div class="breadcrumb-search clearfix">
                 <ul class="breadcrumb fl clearfix">
                     <li><a href="javascript:;"><i class="detail-icon"></i>幼狮空间</a>&gt;</li>
-                    <li><a href="javascript:;">写字楼出租</a>&gt;</li>
-                    <li><a href="javascript:;">朝阳办公室</a>&gt;</li>
                     <li><a href="javascript:;">望京办公楼</a>&gt;</li>
                     <li>望京SOHO</li>
                 </ul>
@@ -478,7 +479,41 @@
                 </div>
 
                 <!--右侧悬浮box start-->
+                <div class="sidebar_box">
+                    <div class="sidebar_main" id="sidebar_fix">
+                        <div class="booking_house mt20">
+                            <div class="booking_house_mes">
+                                <h2>快速找房</h2>
+                                <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
+                                    <input type="hidden" name="flag" value="5">
+                                    <input name="searchengine" type="hidden" value="">
+                                    <input name="phone" class="form_control form_telphone" type="text"
+                                           placeholder="手机号" maxlength="11"
+                                           onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                           onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
+                                           aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
+                                    <span class="db text-left mt05" id="msg-phone"></span>
+                                    <div class="form_control form_btn mt10 cur_pointer" id="list_yijianyuyue">一键咨询
+                                    </div>
+                                </form>
 
+                                <p class="nearby">客服将在10分钟内联系您</p>
+                            </div>
+                            <div class="ph20 tc text_gray9">
+                                咨询热线：<b class="text_pink_app">400-810-6698</b>
+                            </div>
+                        </div>
+                        <div class="app_download mt20">
+                            <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
+                            <div class="mh25">
+                                <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
+                                <img src="../resources/images/ys_weixin.png" class="ml25 weixin_img"
+                                     alt="扫描二维码关注">
+                            </div>
+                            <p>扫描二维码关注</p>
+                        </div>
+                    </div>
+                </div>
                 <!--右侧悬浮box end-->
             </div>
             <!--building 信息分类end-->
@@ -486,10 +521,10 @@
             <!--分类信息-->
             <div class="category-message-box mt35 clearfix mb40">
                 <div class="category-item-title-first mb15 pt05">
-                    <h2 class="fl"><i class="detail-icon supporting"></i>中关村SOHO周边配套</h2>
+                    <h2 class="fl"><i class="detail-icon supporting"></i>望京SOHO周边配套</h2>
                 </div>
                 <div class="clearfix">
-                    <div class="map-container" id="mapContainer" data-mapx="116.316451" data-mapy="39.989617" data-cnname="中关村SOHO" style="overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;"><div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: url(&quot;http://api0.map.bdimg.com/images/openhand.cur&quot;) 8 8, default;"><div class="BMap_mask" style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 800px; height: 420px;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;"><span class="BMap_Marker BMap_noprint" unselectable="on" "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api0.map.bdimg.com/images/blank.gif&quot;); width: 24px; height: 32px; left: 391px; top: 166px; z-index: -7997922;" title=""></span><span class="BMap_Marker BMap_noprint" unselectable="on" "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api0.map.bdimg.com/images/blank.gif&quot;); width: 24px; height: 32px; left: 480px; top: 166px; z-index: -7997990; user-select: none;" title=""></span></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;"><span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 391px; top: 166px; z-index: -7997922;"><div style="position: absolute; margin: 0px; padding: 0px; width: 24px; height: 32px; overflow: hidden;"><img src="http://img2.static.uban.com/www/map/images/local.png" style="display: block; border:none;margin-left:0px; margin-top:0px; ; width:24px; height:32px;"></div></span><span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 480px; top: 166px; z-index: -7997990;"><div style="position: absolute; margin: 0px; padding: 0px; width: 24px; height: 32px; overflow: hidden;"><img src="http://img2.static.uban.com/www/map/images/marker2.png" style="display: block; border:none;margin-left:0px; margin-top:0px; ; width:24px; height:32px;"></div><label class="BMapLabel" unselectable="on" style="position: absolute; display: inline; cursor: inherit; background-color: transparent; border: none; padding: 1px; white-space: nowrap; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: 23px; font-family: arial, sans-serif; z-index: 80; color: rgb(255, 255, 255); width: 21px; height: 23px; text-align: center; user-select: none; left: 0px; top: 1px;">1</label></span></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"><span unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 20px; height: 11px; left: 394px; top: 199px;"><div style="position: absolute; margin: 0px; padding: 0px; width: 20px; height: 11px; overflow: hidden;"><img src="http://api0.map.bdimg.com/images/marker_red_sprite.png" style="display: block; border:none;margin-left:-19px; margin-top:-13px; "></div></span><span unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 20px; height: 11px; left: 486px; top: 193px;"><div style="position: absolute; margin: 0px; padding: 0px; width: 20px; height: 11px; overflow: hidden;"><img src="http://api0.map.bdimg.com/images/marker_red_sprite.png" style="display: block; border:none;margin-left:-19px; margin-top:-13px; "></div></span></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 201;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"><svg version="1.1" type="system" x="1800px" y="1420px" viewBox="-500 -500 1800 1420" style="position: absolute; top: -500px; left: -500px; width: 1800px; height: 1420px;"><path stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" stroke="#3a6bdb" stroke-width="1" stroke-dasharray="none" fill="#608CEB" stroke-opacity="0.2" fill-opacity="0.2" style="cursor: pointer; user-select: none;" d="M 400 48 L 374 50 350 55 326 65 304 79 285 95 268 114 255 136 245 160 239 185 237 210 239 235 245 260 255 284 268 306 285 325 304 341 326 355 350 365 374 370 400 372 426 370 450 365 474 355 496 341 515 325 532 306 545 284 555 260 561 235 563 210 561 185 555 160 545 136 532 114 515 95 496 79 474 65 450 55 426 50 400 48"></path></svg></div></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;"><div style="position: absolute; overflow: visible; z-index: -100; left: 400px; top: 210px; display: block; transform: translate3d(0px, 0px, 0px);"><img src="http://online3.map.bdimg.com/tile/?qt=tile&amp;x=6322&amp;y=2361&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -121px; top: -82px; max-width: none; opacity: 1;"><img src="http://online2.map.bdimg.com/tile/?qt=tile&amp;x=6321&amp;y=2361&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -377px; top: -82px; max-width: none; opacity: 1;"><img src="http://online4.map.bdimg.com/tile/?qt=tile&amp;x=6323&amp;y=2361&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: 135px; top: -82px; max-width: none; opacity: 1;"><img src="http://online2.map.bdimg.com/tile/?qt=tile&amp;x=6322&amp;y=2360&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -121px; top: 174px; max-width: none; opacity: 1;"><img src="http://online4.map.bdimg.com/tile/?qt=tile&amp;x=6322&amp;y=2362&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -121px; top: -338px; max-width: none; opacity: 1;"><img src="http://online0.map.bdimg.com/tile/?qt=tile&amp;x=6324&amp;y=2361&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: 391px; top: -82px; max-width: none; opacity: 1;"><img src="http://online1.map.bdimg.com/tile/?qt=tile&amp;x=6320&amp;y=2361&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -633px; top: -82px; max-width: none; opacity: 1;"><img src="http://online1.map.bdimg.com/tile/?qt=tile&amp;x=6321&amp;y=2360&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -377px; top: 174px; max-width: none; opacity: 1;"><img src="http://online3.map.bdimg.com/tile/?qt=tile&amp;x=6323&amp;y=2360&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: 135px; top: 174px; max-width: none; opacity: 1;"><img src="http://online3.map.bdimg.com/tile/?qt=tile&amp;x=6321&amp;y=2362&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -377px; top: -338px; max-width: none; opacity: 1;"><img src="http://online0.map.bdimg.com/tile/?qt=tile&amp;x=6323&amp;y=2362&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: 135px; top: -338px; max-width: none; opacity: 1;"><img src="http://online0.map.bdimg.com/tile/?qt=tile&amp;x=6320&amp;y=2360&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -633px; top: 174px; max-width: none; opacity: 1;"><img src="http://online4.map.bdimg.com/tile/?qt=tile&amp;x=6324&amp;y=2360&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: 391px; top: 174px; max-width: none; opacity: 1;"><img src="http://online2.map.bdimg.com/tile/?qt=tile&amp;x=6320&amp;y=2362&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: -633px; top: -338px; max-width: none; opacity: 1;"><img src="http://online1.map.bdimg.com/tile/?qt=tile&amp;x=6324&amp;y=2362&amp;z=15&amp;styles=pl&amp;scaler=1&amp;udt=20170428" style="position: absolute; border: none; width: 256px; height: 256px; left: 391px; top: -338px; max-width: none; opacity: 1;"></div></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 2; display: none;"><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 0; display: none;"></div></div><div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 3;"></div></div><div class="pano_close" title="退出全景" style="z-index: 1201; display: none;"></div><a class="pano_pc_indoor_exit" title="退出室内景" style="z-index: 1201; display: none;"><span style="float:right;margin-right:12px;">出口</span></a><ul class="navbtns BMap_noprint anchorBR" style="position: absolute; z-index: 10; text-size-adjust: none; bottom: 25px; right: 20px; top: auto; left: auto;"><li class="navbtn-item item-panorama" id="panoramabtn" data-type="jj"></li><li class="navbtn-item item-hybrid" data-type="wx"></li><li class="navbtn-item item-normal active" data-type="pmt"></li></ul><div class=" anchorBL" style="height: 32px; position: absolute; z-index: 30; text-size-adjust: none; bottom: 20px; right: auto; top: auto; left: 1px;"><a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1" style="outline: none;"><img style="border:none;width:77px;height:32px" src="http://api0.map.bdimg.com/images/copyright_logo.png"></a></div><div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api0.map.bdimg.com/images/openhand.cur) 8 8,default"><div class="BMap_zoomer" style="top:0;left:0;"></div><div class="BMap_zoomer" style="top:0;right:0;"></div><div class="BMap_zoomer" style="bottom:0;left:0;"></div><div class="BMap_zoomer" style="bottom:0;right:0;"></div></div><div unselectable="on" class=" BMap_stdMpCtrl BMap_stdMpType0 BMap_noprint anchorTL" style="width: 62px; height: 138px; bottom: auto; right: auto; top: 18px; left: 18px; position: absolute; z-index: 1100; text-size-adjust: none;"><div class="BMap_stdMpPan"><div class="BMap_button BMap_panN" title="向上平移"></div><div class="BMap_button BMap_panW" title="向左平移"></div><div class="BMap_button BMap_panE" title="向右平移"></div><div class="BMap_button BMap_panS" title="向下平移"></div><div class="BMap_stdMpPanBg BMap_smcbg"></div></div><div class="BMap_stdMpZoom" style="height: 93px; width: 62px;"><div class="BMap_button BMap_stdMpZoomIn" title="放大一级"><div class="BMap_smcbg"></div></div><div class="BMap_button BMap_stdMpZoomOut" title="缩小一级" style="top: 72px;"><div class="BMap_smcbg"></div></div><div class="BMap_stdMpSlider" style="height: 54px;"><div class="BMap_stdMpSliderBgTop" style="height: 54px;"><div class="BMap_smcbg"></div></div><div class="BMap_stdMpSliderBgBot" style="top: 19px; height: 39px;"></div><div class="BMap_stdMpSliderMask" title="放置到此级别"></div><div class="BMap_stdMpSliderBar" title="拖动缩放" style="cursor: url(&quot;http://api0.map.bdimg.com/images/openhand.cur&quot;) 8 8, default; top: 19px;"><div class="BMap_smcbg"></div></div></div><div class="BMap_zlHolder"><div class="BMap_zlSt"><div class="BMap_smcbg"></div></div><div class="BMap_zlCity"><div class="BMap_smcbg"></div></div><div class="BMap_zlProv"><div class="BMap_smcbg"></div></div><div class="BMap_zlCountry"><div class="BMap_smcbg"></div></div></div></div><div class="BMap_stdMpGeolocation" style="position: initial; display: none; margin-top: 43px; margin-left: 10px;"><div class="BMap_geolocationContainer" style="position: initial; width: 24px; height: 24px; overflow: hidden; margin: 0px; box-sizing: border-box;"><div class="BMap_geolocationIconBackground" style="width: 24px; height: 24px; background-image: url(http://api0.map.bdimg.com/images/navigation-control/geolocation-control/pc/bg-20x20.png); background-size: 20px 20px; background-position: 3px 3px; background-repeat: no-repeat;"><div class="BMap_geolocationIcon" style="position: initial; width: 24px; height: 24px; cursor: pointer; background-image: url('http://api0.map.bdimg.com/images/navigation-control/geolocation-control/pc/success-10x10.png'); background-size: 10px 10px; background-repeat: no-repeat; background-position: center;"></div></div></div></div></div><div unselectable="on" class=" BMap_cpyCtrl BMap_noprint anchorBL" style="cursor: default; white-space: nowrap; color: black; background: none; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 2px; position: absolute; z-index: 10; text-size-adjust: none;"><span _cid="1" style="display: inline;"><span style="background: rgba(255, 255, 255, 0.701961);padding: 0px 1px;line-height: 16px;display: inline;height: 16px;">©&nbsp;2017 Baidu - GS(2016)2089号&nbsp;- Data © 长地万方</span></span></div></div>
+                    <div class="map-container" id="mapContainer" data-mapx="116.316451" data-mapy="39.989617" data-cnname="中关村SOHO"></div>
                     <div class="map-conts">
                         <ul id="mapTypeNav" class="map-type-nav">
                             <li class="map-type-item on" data-w="交通" data-key="地铁,公交,停车场,加油站"><i class="detail-icon jt"></i>交通</li>
@@ -548,6 +583,13 @@
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
             });
+
+            // 地图
+            var map = new BMap.Map("mapContainer");    // 创建Map实例
+            map.centerAndZoom(new BMap.Point(116.316451, 39.989617), 15);  // 初始化地图,设置中心点坐标和地图级别
+            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
         },
         methods: {}

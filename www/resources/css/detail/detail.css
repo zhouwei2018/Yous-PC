@@ -624,6 +624,124 @@
   line-height: 30px;
   margin-bottom: 10px;
 }
+[detail] .category-item-title-first .detail-icon {
+  float: left;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+[detail] .category-item-title-first .detail-icon.supporting {
+  background-position: -106px -220px;
+}
+[detail] .map-container {
+  float: left;
+  width: 800px;
+  height: 420px;
+}
+[detail] .map-conts {
+  float: right;
+  width: 380px;
+  height: 420px;
+  border: 1px solid #EEE;
+  box-sizing: border-box;
+}
+[detail] .map-type-nav {
+  height: 56px;
+  border-bottom: 1px solid #EEE;
+}
+[detail] .map-type-nav .map-type-item {
+  float: left;
+  width: 20%;
+  height: 100%;
+  line-height: 21px;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+}
+[detail] .map-type-nav .map-type-item.on {
+  color: #FFF;
+  background-color: #302F35;
+}
+[detail] .map-type-nav .map-type-item.on .detail-icon.jt {
+  background-position: -27px -117px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon {
+  top: 7px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 4px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.jt {
+  background-position: -27px -148px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.ct {
+  background-position: -228px -147px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.jd {
+  background-position: -188px -146px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.js {
+  background-position: -108px -147px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.yh {
+  background-position: -148px -146px;
+}
+[detail] .type-item-sel {
+  height: 44px;
+  border-bottom: 1px solid #EEE;
+}
+[detail] .type-item-sel li {
+  float: left;
+  min-width: 70px;
+  height: 44px;
+  line-height: 18px;
+  padding: 14px 10px 13px;
+  font-size: 13px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+[detail] .type-item-sel li.currenttype {
+  border-bottom: 3px solid #302F35;
+}
+[detail] .results-panel {
+  height: 316px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+[detail] .results-panel li {
+  height: 20px;
+  line-height: 20px;
+  padding: 10px 20px 10px 15px;
+  font-size: 13px;
+  cursor: pointer;
+}
+[detail] .results-panel li i {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+  color: #FFF;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #302F35;
+}
+[detail] .results-panel li p {
+  float: left;
+  width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+[detail] .results-panel li span {
+  float: right;
+}
+[detail] .anchorBL {
+  display: none !important;
+}
 [detail] .carousel-wrapper {
   float: left;
   width: 510px;
