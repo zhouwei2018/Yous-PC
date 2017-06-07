@@ -1,11 +1,6 @@
 <style scoped lang="less">
     @import "../resources/css/collect/collect.less";
 </style>
-<style>
-    body{
-        background-color: #f5f5f5 !important;
-    }
-</style>
 
 <template>
     <div class="all">

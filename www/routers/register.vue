@@ -3,12 +3,6 @@
     @import "../resources/css/register/register.less";
 </style>
 
-<style>
-    body {
-        background-color: #fff;
-    }
-</style>
-
 <template>
     <div class="all">
         <!--topper  begin-->
@@ -190,6 +184,13 @@
                         }
                     })
                 }
-            }
+            },
+    created(){
+        document.body.style.backgroundColor='#fff';
+    },
+    beforeDestroy(){
+        document.body.style.backgroundColor='#f5f5f5';
+    }
+
     }
 </script>
