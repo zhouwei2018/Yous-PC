@@ -533,8 +533,10 @@
                             <li class="map-type-item" data-w="健身" data-key="体育场馆,极限运动场所,健身中心"><i class="detail-icon js"></i>健身</li>
                             <li class="map-type-item" data-w="金融" data-key="银行,ATM,投资理财"><i class="detail-icon yh"></i>金融</li>
                         </ul>
-                        <ul id="typeNavSel" class="type-item-sel"><li class="currenttype">地铁</li><li>公交</li><li>停车场</li><li>加油站</li></ul>
-                        <ul id="resultsPanel" class="results-panel"><li title="中关村（地铁4号线大兴线）"><i>1</i><p>中关村（地铁4号线大兴线）</p><span>565米</span></li></ul>
+                        <ul id="typeNavSel" class="type-item-sel"></ul>
+                        <ul id="resultsPanel" class="results-panel">
+                            <li title="眉州东坡酒楼(中关村店)（北京市海淀区中关村大街27号中关村大厦二层）"><i>1</i><p>眉州东坡酒楼(中关村店)（北京市海淀区中关村大街27号中关村大厦二层）</p><span>882米</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -546,12 +548,14 @@
         <footer1></footer1>
     </div>
 </template>
-<script>
+<script type="es6">
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
 
     import '../resources/plugin/pic_tab/pic_tab.js';
+    import '../resources/js/infoBox.min.js';
+    import '../resources/js/Map.js';
 
     export default {
         components: {header1, footer1},
@@ -585,11 +589,18 @@
             });
 
             // 地图
-            var map = new BMap.Map("mapContainer");    // 创建Map实例
-            map.centerAndZoom(new BMap.Point(116.316451, 39.989617), 15);  // 初始化地图,设置中心点坐标和地图级别
-            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
-            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+            //var map = new BMap.Map("mapContainer");    // 创建Map实例
+//            map.centerAndZoom(new BMap.Point(116.316451, 39.989617), 15);  // 初始化地图,设置中心点坐标和地图级别
+//            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+//            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+//            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+            // 地图
+            var x = $('#mapContainer').attr('data-mapX'),
+                y = $('#mapContainer').attr('data-mapY'),
+                cnName = $('#mapContainer').attr('data-cnName');
+            Map.init(x,  y, 15, 1, cnName);
+
 
         },
         methods: {}

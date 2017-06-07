@@ -333,12 +333,12 @@
   display: inline-block;
   width: 54px;
   height: 60px;
-  background: url("../../images/index/location_sm.png") no-repeat 5px;
-  background-size: 44px 56px;
+  background: url("../../images/index/location_sm.png") no-repeat;
+  background-size: 54px 60px;
 }
 [index_content] [space] .space_bot ul li .space_tip.company {
-  background: url("../../images/index/home_sm.png") no-repeat 2px;
-  background-size: 48px 54px;
+  background: url("../../images/index/home_sm.png") no-repeat;
+  background-size: 54px 60px;
 }
 [index_content] [space] .space_bot ul li > div {
   margin-left: 40px;

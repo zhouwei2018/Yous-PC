@@ -717,6 +717,7 @@
   padding: 10px 20px 10px 15px;
   font-size: 13px;
   cursor: pointer;
+  box-sizing: content-box;
 }
 [detail] .results-panel li i {
   display: block;
