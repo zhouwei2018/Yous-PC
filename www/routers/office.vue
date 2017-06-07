@@ -32,7 +32,7 @@
                       <div class="fl office_mid">
                           <span class="office_icon icon2"></span>
 
-                          <p class="office_text">确定需求</p>
+                          <p class="office_text">匹配房源</p>
                       </div>
                       <span class="office_arrow"></span>
                   </li>
@@ -42,7 +42,7 @@
                       <div class="fl office_mid">
                           <span class="office_icon icon3"></span>
 
-                          <p class="office_text">确定需求</p>
+                          <p class="office_text">实地看房</p>
                       </div>
                       <span class="office_arrow"></span>
                   </li>
@@ -52,7 +52,7 @@
                       <div class="fl office_mid">
                           <span class="office_icon icon4"></span>
 
-                          <p class="office_text">确定需求</p>
+                          <p class="office_text">拎包入住</p>
                       </div>
                   </li>
               </ul>
@@ -96,18 +96,15 @@
                           </div>
                       </li>
                   </ul>
-                  <div class="fl trade_per">
+                  <div class="fr trade_per">
                       <h3>与我们的团队取得联系</h3>
-                      <span class="tel_number">联系电话：400-800-8888</span>
                       <div class="manager_wrap">
                           <img src="../resources/images/office/trade_person.png" alt="" class="manager_portrait" />
                           <span class="manager_name">常春雷</span>
-                          <span>社区经理</span>
+                          <span class="manage_pos">社区经理</span>
                       </div>
-                      <div class="manage_attract">
-                          <i class="double_marks"></i>
-                          <p>这里是一个有趣的空间，办公、运动、社交、美食...我们终陷红尘之中，但是总会有人仰望星空。</p>
-                      </div>
+                      <span class="tel_number">联系电话：400-800-8888</span>
+                      <a href="javascript:;" class="help_me_building">帮我找楼</a>
                   </div>
               </div>
 
