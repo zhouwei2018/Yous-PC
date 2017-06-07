@@ -163,16 +163,16 @@
   color: #fff;
 }
 [index_content] [one_state] ul li:hover .one_tip.location {
-  background-position: 5px -137px;
+  background-position: 5px -138px;
 }
 [index_content] [one_state] ul li:hover .one_tip.service {
-  background-position: -150px -137px;
+  background-position: -150px -138px;
 }
 [index_content] [one_state] ul li:hover .one_tip.update {
-  background-position: -304px -135px;
+  background-position: -304px -138px;
 }
 [index_content] [one_state] ul li:hover .one_tip.communicate {
-  background-position: -464px -137px;
+  background-position: -464px -138px;
 }
 [index_content] [one_state] ul li:last-child {
   margin-right: 0;
@@ -187,16 +187,16 @@
   transition: .7s all ease;
 }
 [index_content] [one_state] ul li .one_tip.location {
-  background-position: 5px -10px;
+  background-position: 5px -15px;
 }
 [index_content] [one_state] ul li .one_tip.service {
-  background-position: -150px -11px;
+  background-position: -150px -16px;
 }
 [index_content] [one_state] ul li .one_tip.update {
-  background-position: -304px -21px;
+  background-position: -304px -16px;
 }
 [index_content] [one_state] ul li .one_tip.communicate {
-  background-position: -464px -13px;
+  background-position: -464px -15px;
 }
 [index_content] [one_state] ul li h4 {
   font-size: 18px;

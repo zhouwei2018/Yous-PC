@@ -33,7 +33,7 @@
 
             <!--logo-->
             <div class="building-label clearfix">
-                <img class="fl" src="../resources/images/ys_weixin.png" alt="望京SOHO二维码">
+                <img class="fl" src="../resources/images/ys_weixin.jpg" alt="望京SOHO二维码">
                 <div class="building-tag">
                     <h1>望京SOHO</h1>
                     <ul class="tag-item">
@@ -568,7 +568,7 @@
                             <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
                             <div class="mh25">
                                 <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
-                                <img src="../resources/images/ys_weixin.png" class="ml25 weixin_img"
+                                <img src="../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
                                      alt="扫描二维码关注">
                             </div>
                             <p>扫描二维码关注</p>

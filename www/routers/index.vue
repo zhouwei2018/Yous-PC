@@ -245,7 +245,7 @@
                     <!--</li>-->
                     <!--</ul>-->
                 </div>
-                <Modal v-model="modal5" width="420">
+                <Modal v-model="modal6" width="420">
                     <div popup>
                         <Form :model="formItem">
                             <h3>安心委托,快速成交</h3>
@@ -261,16 +261,16 @@
                                 <span class="inp_icon password"></span>
                                 <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
                             </div>
-                            <p>您也可以拨打<i> 400-810-6698 </i>直接委托房源</p>
-                            <input type="submit" class="pop_subbtn" value="提交委托"></button>
+                            <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
+                            <input type="submit" class="pop_subbtn" value="提交委托">
                         </Form>
                     </div>
                 </Modal>
 
-                <Modal v-model="modal6" :styles="{top: '50px'}" width="420">
+                <Modal v-model="modal5" :styles="{top: '50px'}" width="420">
                     <div popup>
                         <Form :model="formItem">
-                            <h4>业主委托</h4>
+                            <h4>帮我找楼</h4>
 
                             <div class="popItem">
                                 <span class="inp_icon phone"></span>
@@ -281,7 +281,7 @@
                                 <span class="inp_icon password"></span>
                                 <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
                             </div>
-                            <p class="help_tips">*输入您的手机号码,以便优办提供更高效的服务</p>
+                            <p class="help_tips">*输入您的手机号码,以便幼狮提供更高效的服务</p>
 
                             <div class="clearfix">
 
@@ -319,9 +319,9 @@
 
                     </textarea>
 
-                            <p>您也可以拨打<i> 400-810-6698 </i>直接委托需求给优办</p>
+                            <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
 
-                            <input type="submit" class="pop_subbtn" value="确    认"></button>
+                            <input type="submit" class="pop_subbtn" value="确    认">
                         </Form>
                     </div>
                 </Modal>
@@ -374,7 +374,7 @@
         <!--回到顶部-->
         <Back-top :height="100" :bottom="200">
             <div class="side-contact">
-                <a class="baseIcon baseIcon-tel cur-pointer" id="sideTel" data-val="400-810-6698"></a>
+                <a class="baseIcon baseIcon-tel cur-pointer" id="sideTel" data-val="400-078-8800"></a>
                 <a class="baseIcon baseIcon-back"></a>
             </div>
         </Back-top>
