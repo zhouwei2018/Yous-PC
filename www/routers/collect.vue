@@ -1,7 +1,10 @@
 <style scoped lang="less">
     @import "../resources/css/collect/collect.less";
 </style>
-<style scoped>
+<style>
+    body{
+        background-color: #f5f5f5 !important;
+    }
 </style>
 
 <template>
@@ -16,7 +19,7 @@
           <div class="act_wrap">
               <ul>
                   <li class="clearfix">
-                      <img class="fl" src="../resources/images/activity/activity01.png" alt=""/>
+                      <img class="fl" src="../resources/images/activity/activity01.jpg" alt=""/>
 
                       <div class="fl act_text_wrap">
                           <h4>幼狮空间送你三重创业大礼包（报名中...）</h4>
@@ -30,7 +33,7 @@
                       </div>
                   </li>
                   <li class="clearfix">
-                      <img class="fl" src="../resources/images/activity/activity01.png" alt=""/>
+                      <img class="fl" src="../resources/images/activity/activity02.jpg" alt=""/>
 
                       <div class="fl act_text_wrap">
                           <h4>幼狮空间送你三重创业大礼包（报名中...）</h4>
@@ -44,7 +47,7 @@
                       </div>
                   </li>
                   <li class="clearfix">
-                      <img class="fl" src="../resources/images/activity/activity01.png" alt=""/>
+                      <img class="fl" src="../resources/images/activity/activity03.jpg" alt=""/>
 
                       <div class="fl act_text_wrap">
                           <h4>幼狮空间送你三重创业大礼包（报名中...）</h4>
