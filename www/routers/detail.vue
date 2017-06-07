@@ -4,8 +4,8 @@
     @import "../resources/css/service/page.less";
 </style>
 <style>
-    .anchorBL{
-        display:none !important;
+    .anchorBL {
+        display: none !important;
     }
 </style>
 
@@ -72,10 +72,12 @@
                     </ul>
                     <div class="consulting">
                         <div class="quick">
-                            <i class="detail-icon"></i><div class="tel">
-                            <em>400-810-6698</em></div>
+                            <i class="detail-icon"></i>
+                            <div class="tel">
+                                <em>400-810-6698</em></div>
                         </div>
-                        <div class="online cur-pointer detail-head-consultation" data-id="184"><i class="detail-icon"></i><span class="text">在线咨询</span></div>
+                        <div class="online cur-pointer detail-head-consultation" data-id="184"><i
+                                class="detail-icon"></i><span class="text">在线咨询</span></div>
                     </div>
                 </div>
             </div>
@@ -112,35 +114,65 @@
                             </ul>
                         </div>
                         <div class="panorama">
-                            <img src="../resources/images/detail/panorama.png" id="panorama_btn" class="cur-pointer" width="94" height="62" alt="720°全景">
+                            <img src="../resources/images/detail/panorama.png" id="panorama_btn" class="cur-pointer"
+                                 width="94" height="62" alt="720°全景">
                         </div>
                         <div class="carousel-small-box">
                             <div class="carousel-small-prev toggle-button" id="carousel_small_prev">
-                                <img src="http://img2.static.uban.com/www/images/small-prev.png" width="20" height="62" alt="望京SOHO优办写字楼">
+                                <img src="http://img2.static.uban.com/www/images/small-prev.png" width="20" height="62"
+                                     alt="望京SOHO优办写字楼">
                             </div>
                             <div class="carousel-small clearfix" id="carousel_small">
                                 <ul>
-                                    <li class="on"><a class="pr db cur-pointer"><div class="small-mask" style="display: block;"></div><img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62" alt="望京SOHO优办写字楼"></a></li>
-                                    <li><a class="pr db cur-pointer"><div class="small-mask" style="display: block;"></div><img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62" alt="望京SOHO优办写字楼"></a></li>
-                                    <li><a class="pr db cur-pointer"><div class="small-mask" style="display: block;"></div><img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62" alt="望京SOHO优办写字楼"></a></li>
-                                    <li><a class="pr db cur-pointer"><div class="small-mask" style="display: block;"></div><img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62" alt="望京SOHO优办写字楼"></a></li>
-                                    <li><a class="pr db cur-pointer"><div class="small-mask" style="display: block;"></div><img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62" alt="望京SOHO优办写字楼"></a></li>
-                                    <li><a class="pr db cur-pointer"><div class="small-mask" style="display: block;"></div><img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62" alt="望京SOHO优办写字楼"></a></li>
+                                    <li class="on"><a class="pr db cur-pointer">
+                                        <div class="small-mask" style="display: block;"></div>
+                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                             alt="望京SOHO优办写字楼"></a></li>
+                                    <li><a class="pr db cur-pointer">
+                                        <div class="small-mask" style="display: block;"></div>
+                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                             alt="望京SOHO优办写字楼"></a></li>
+                                    <li><a class="pr db cur-pointer">
+                                        <div class="small-mask" style="display: block;"></div>
+                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                             alt="望京SOHO优办写字楼"></a></li>
+                                    <li><a class="pr db cur-pointer">
+                                        <div class="small-mask" style="display: block;"></div>
+                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                             alt="望京SOHO优办写字楼"></a></li>
+                                    <li><a class="pr db cur-pointer">
+                                        <div class="small-mask" style="display: block;"></div>
+                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                             alt="望京SOHO优办写字楼"></a></li>
+                                    <li><a class="pr db cur-pointer">
+                                        <div class="small-mask" style="display: block;"></div>
+                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                             alt="望京SOHO优办写字楼"></a></li>
                                 </ul>
                             </div>
-                            <div class="carousel-small-next toggle-button" id="carousel_small_next"><img src="http://img2.static.uban.com/www/images/small-next.png" width="20" height="62" alt="保利国际广场优办写字楼"></div>
+                            <div class="carousel-small-next toggle-button" id="carousel_small_next"><img
+                                    src="http://img2.static.uban.com/www/images/small-next.png" width="20" height="62"
+                                    alt="保利国际广场优办写字楼"></div>
                         </div>
                     </div>
                     <div class="carousel-mask"></div>
                     <div class="pop-carousel-box" id="pop_carousel_box">
-                        <div class="pop-carousel-close"><img src="http://img2.static.uban.com/www/images/swiper-close.png" width="35" height="35" alt="关闭"></div>
+                        <div class="pop-carousel-close"><img
+                                src="http://img2.static.uban.com/www/images/swiper-close.png" width="35" height="35"
+                                alt="关闭"></div>
                         <div class="pop-carousel" id="pop_carousel">
                             <ul style="width: 11000px;">
-                                <li><a class="cur-pointer"><img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-w1000x500" alt="望京SOHO优办写字楼" width="1000" height="500"></a></li>
+                                <li><a class="cur-pointer"><img
+                                        src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-w1000x500"
+                                        alt="望京SOHO优办写字楼" width="1000" height="500"></a></li>
                             </ul>
                         </div>
-                        <div class="pop-carousel-prev" id="pop_carousel_prev"><img src="http://img2.static.uban.com/www/images/zuoanniu.png" width="25" height="45" alt="上一页"></div>
-                        <div class="pop-carousel-next" id="pop_carousel_next"><img src="http://img2.static.uban.com/www/images/youanniu.png" width="25" height="45" alt="下一页"></div>
+                        <div class="pop-carousel-prev" id="pop_carousel_prev"><img
+                                src="http://img2.static.uban.com/www/images/zuoanniu.png" width="25" height="45"
+                                alt="上一页"></div>
+                        <div class="pop-carousel-next" id="pop_carousel_next"><img
+                                src="http://img2.static.uban.com/www/images/youanniu.png" width="25" height="45"
+                                alt="下一页"></div>
                     </div>
                 </div>
                 <!--轮播图 end-->
@@ -161,7 +193,8 @@
                     <div class="around-circle clearfix">
                         <span class="fl"><i class="detail-icon minute"></i>10分钟生活圈</span>
                         <ul class="fl">
-                            <li class="subway-cnt"><i class="detail-icon subway"></i>地铁 <em class="text-black">1</em></li>
+                            <li class="subway-cnt"><i class="detail-icon subway"></i>地铁 <em class="text-black">1</em>
+                            </li>
                             <li><i class="detail-icon restaurant"></i>餐厅 <em class="text-black">33</em></li>
                             <li><i class="detail-icon hotel"></i>酒店 <em class="text-black">25</em></li>
                             <li><i class="detail-icon bodybuilding"></i>健身 <em class="text-black">4</em></li>
@@ -193,7 +226,8 @@
 
                     <div id="detail-infomation">
                         <div class="category-item-title-first">
-                            <h2 class="fl"><i class="detail-icon rent"></i>望京SOHO共有&nbsp;<strong class="text-blue">2380</strong>&nbsp;套房源待租</h2>
+                            <h2 class="fl"><i class="detail-icon rent"></i>望京SOHO共有&nbsp;<strong
+                                    class="text-blue">2380</strong>&nbsp;套房源待租</h2>
                             <a class="show-link mr20" href="/detail/houses-184.html" target="_blank">查看全部</a>
                         </div>
                         <div class="screening-range ph10">
@@ -207,25 +241,32 @@
                                         <a href="/detail-184/a1.html#detail-infomation">0-100<i class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a2.html#detail-infomation">100-200<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a2.html#detail-infomation">100-200<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a3.html#detail-infomation">200-300<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a3.html#detail-infomation">200-300<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a4.html#detail-infomation">300-500<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a4.html#detail-infomation">300-500<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a5.html#detail-infomation">500-1000<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a5.html#detail-infomation">500-1000<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a6.html#detail-infomation">1000-2000<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a6.html#detail-infomation">1000-2000<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a7.html#detail-infomation">2000-3000<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a7.html#detail-infomation">2000-3000<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                     <li>
-                                        <a href="/detail-184/a8.html#detail-infomation">&gt;3000<i class="font-num">m²</i></a>
+                                        <a href="/detail-184/a8.html#detail-infomation">&gt;3000<i
+                                                class="font-num">m²</i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -321,16 +362,24 @@
                                     <li><a class=" fb">面积</a></li>
                                     <li class="area-wrap clearfix pr">
                                         <div>
-                                            <input name="temp-beginArea" maxlength="6" value="" type="text" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <input name="temp-beginArea" maxlength="6" value="" type="text"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="mv05 text-grayC">-</i>
-                                            <input name="temp-endArea" maxlength="6" value="" type="text" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <input name="temp-endArea" maxlength="6" value="" type="text"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="font-num text-black ml05">m²</i>
                                         </div>
                                         <div class="inp-pop none">
                                             <form action="/detail-184.html#detail-infomation" class="fl" id="areaForm">
-                                                <input name="beginArea" maxlength="6" value="" type="text" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                                <input name="beginArea" maxlength="6" value="" type="text"
+                                                       onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                                 <i class="mv05 text-grayC">-</i>
-                                                <input name="endArea" maxlength="6" value="" type="text" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                                <input name="endArea" maxlength="6" value="" type="text"
+                                                       onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                                 <i class="font-num text-black ml05">m²</i>
                                                 <a class="confrim-btn cur-pointer ml05 none" id="areaConfirm">确定</a>
                                             </form>
@@ -342,17 +391,25 @@
                                     </li>
                                     <li class="price-inp-wrap pr">
                                         <div>
-                                            <input type="text" name="temp-startprice" value="" maxlength="2" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <input type="text" name="temp-startprice" value="" maxlength="2"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="mv05 text-grayC">-</i>
-                                            <input type="text" name="temp-endprice" value="" class="mr05" maxlength="2" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                            <input type="text" name="temp-endprice" value="" class="mr05" maxlength="2"
+                                                   onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                   onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="text-black">元</i>
                                         </div>
                                         <div class="inp-pop none">
                                             <form action="/detail-184.html#detail-infomation" class="fl" id="priceForm">
 
-                                                <input type="text" name="startprice" value="" maxlength="2" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                                <input type="text" name="startprice" value="" maxlength="2"
+                                                       onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                                 <i class="mv05 text-grayC">-</i>
-                                                <input type="text" name="endprice" value="" class="mr05" maxlength="2" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
+                                                <input type="text" name="endprice" value="" class="mr05" maxlength="2"
+                                                       onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
+                                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                                 <i class="text-black">元</i>
 
                                                 <input type="hidden" name="priceFlag" value="1">
@@ -387,7 +444,9 @@
                                             <span class="font20">173<em class="font-num">m²</em>·精装</span>
                                             <div>
                                                 <span class="text-gray6"><em class="font-num">3.7</em> 万元/月</span>
-                                                <div><b class="font-num text-black">7</b> 元/<span class="font-num">m²</span>·天</div>
+                                                <div><b class="font-num text-black">7</b> 元/<span
+                                                        class="font-num">m²</span>·天
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="introduce-second">
@@ -409,7 +468,9 @@
                                             <span class="font20">173<em class="font-num">m²</em>·精装</span>
                                             <div>
                                                 <span class="text-gray6"><em class="font-num">3.7</em> 万元/月</span>
-                                                <div><b class="font-num text-black">7</b> 元/<span class="font-num">m²</span>·天</div>
+                                                <div><b class="font-num text-black">7</b> 元/<span
+                                                        class="font-num">m²</span>·天
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="introduce-second">
@@ -524,18 +585,29 @@
                     <h2 class="fl"><i class="detail-icon supporting"></i>望京SOHO周边配套</h2>
                 </div>
                 <div class="clearfix">
-                    <div class="map-container" id="mapContainer" data-mapx="116.316451" data-mapy="39.989617" data-cnname="中关村SOHO"></div>
+                    <div class="map-container" id="mapContainer" data-mapx="116.316451" data-mapy="39.989617"
+                         data-cnname="中关村SOHO"></div>
                     <div class="map-conts">
                         <ul id="mapTypeNav" class="map-type-nav">
-                            <li class="map-type-item on" data-w="交通" data-key="地铁,公交,停车场,加油站"><i class="detail-icon jt"></i>交通</li>
-                            <li class="map-type-item" data-w="餐饮" data-key="中餐,西餐,快餐,咖啡厅,茶座"><i class="detail-icon ct"></i>餐饮</li>
-                            <li class="map-type-item" data-w="酒店" data-key="星级酒店,快捷酒店,公寓式酒店"><i class="detail-icon jd"></i>酒店</li>
-                            <li class="map-type-item" data-w="健身" data-key="体育场馆,极限运动场所,健身中心"><i class="detail-icon js"></i>健身</li>
-                            <li class="map-type-item" data-w="金融" data-key="银行,ATM,投资理财"><i class="detail-icon yh"></i>金融</li>
+                            <li class="map-type-item on" data-w="交通" data-key="地铁,公交,停车场,加油站"><i
+                                    class="detail-icon jt"></i>交通
+                            </li>
+                            <li class="map-type-item" data-w="餐饮" data-key="中餐,西餐,快餐,咖啡厅,茶座"><i
+                                    class="detail-icon ct"></i>餐饮
+                            </li>
+                            <li class="map-type-item" data-w="酒店" data-key="星级酒店,快捷酒店,公寓式酒店"><i
+                                    class="detail-icon jd"></i>酒店
+                            </li>
+                            <li class="map-type-item" data-w="健身" data-key="体育场馆,极限运动场所,健身中心"><i
+                                    class="detail-icon js"></i>健身
+                            </li>
+                            <li class="map-type-item" data-w="金融" data-key="银行,ATM,投资理财"><i class="detail-icon yh"></i>金融
+                            </li>
                         </ul>
                         <ul id="typeNavSel" class="type-item-sel"></ul>
                         <ul id="resultsPanel" class="results-panel">
-                            <li title="眉州东坡酒楼(中关村店)（北京市海淀区中关村大街27号中关村大厦二层）"><i>1</i><p>眉州东坡酒楼(中关村店)（北京市海淀区中关村大街27号中关村大厦二层）</p><span>882米</span></li>
+                            <li title="眉州东坡酒楼(中关村店)（北京市海淀区中关村大街27号中关村大厦二层）"><i>1</i>
+                                <p>眉州东坡酒楼(中关村店)（北京市海淀区中关村大街27号中关村大厦二层）</p><span>882米</span></li>
                         </ul>
                     </div>
                 </div>
@@ -548,14 +620,12 @@
         <footer1></footer1>
     </div>
 </template>
-<script type="es6">
+<script>
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
 
     import '../resources/plugin/pic_tab/pic_tab.js';
-    import '../resources/js/infoBox.min.js';
-    import '../resources/js/Map.js';
 
     export default {
         components: {header1, footer1},
@@ -589,20 +659,17 @@
             });
 
             // 地图
-            //var map = new BMap.Map("mapContainer");    // 创建Map实例
-//            map.centerAndZoom(new BMap.Point(116.316451, 39.989617), 15);  // 初始化地图,设置中心点坐标和地图级别
-//            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
-//            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-//            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-
-            // 地图
-            var x = $('#mapContainer').attr('data-mapX'),
-                y = $('#mapContainer').attr('data-mapY'),
-                cnName = $('#mapContainer').attr('data-cnName');
-            Map.init(x,  y, 15, 1, cnName);
+            var map = new BMap.Map("mapContainer");    // 创建Map实例
+            map.centerAndZoom(new BMap.Point(116.316451, 39.989617), 15);  // 初始化地图,设置中心点坐标和地图级别
+            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
 
         },
         methods: {}
     }
+
 </script>
+
+
