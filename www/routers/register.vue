@@ -46,7 +46,7 @@
                                                      <Input  value=""  type="password" v-model="formInline.password" placeholder="请输入登录密码"  size="large"></Input>
                                                  </Form-item>
                                             </div>
-                                            <div class="fl" style="margin-left:12px" >
+                                            <div class="fl" >
                                                 <span>请输入6-20位密码，由数字和字母组成。</span>
                                                 <p class="safe_level">安全程度：
                                                   <span class="low">低</span>
@@ -77,7 +77,8 @@
                                             </Form-item>
                                           </div>
                                           <div class="fl tright" >
-                                              <Button style="width:90px;height:54px" >获取验证码</Button>
+                                              <TimerBtn ref="timerbtn" class="btn btn-default"  v-on:run="sendCode" style="width: 90px; height: 54px;"
+                                               second="60"></TimerBtn>
                                           </div>
                                         </div>
                                         <div class="clearfix inp">
@@ -89,7 +90,7 @@
                                            </Form-item>
                                          </div>
                                           <div class="fl tright">
-                                              <a class="service_btn regesit_readme" href="javascript:;">《用户服务协议》</a>
+                                              <a class="service_btn" href="javascript:;">《用户服务协议》</a>
                                          </div>
 
                                         </div>
@@ -122,6 +123,8 @@
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
+
+
     export default {
         components: { header1,footer1 },
         data () {
@@ -189,7 +192,32 @@
                             this.$Message.error('表单验证失败!');
                         }
                     })
-                }
-            }
+                },
+                sendCode:function(){
+                   this.$refs.timerbtn.start(); //启动倒计时
+                   this.$http.post(
+                           this.$api,
+                           {
+                               parameters:{
+                                   "smsTpye":1,
+                                    "telephone": this.formInline.user
+                               },
+                               foreEndType:"1",
+                               code:"90000002"
+                           }
+                   ).then(function(response) {
+                               var  reslute=JSON.parse(response.data);
+                               if(reslute.success){
+                                   this.$route.router.go({name:"main"})
+                               }else{
+                                   this.$Message.error(reslute.message);
+                               }
+                 }, function(response) {
+                       this.$Message.error('API接口报错-网络错误!');
+                       this.loading = false;
+                 });
+
+                 }
+               }
     }
 </script>

@@ -37,6 +37,7 @@ import Table from './components/table';
 import Tabs from './components/tabs';
 import Tag from './components/tag';
 import Timeline from './components/timeline';
+import TimerBtn from './components/timerBtn';
 import TimePicker from './components/time-picker';
 import Tooltip from './components/tooltip';
 import Transfer from './components/transfer';
@@ -45,6 +46,9 @@ import Upload from './components/upload';
 import { Row, Col } from './components/grid';
 import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale';
+
+
+
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -124,7 +128,8 @@ const iview = {
     Tree,
     Upload,
     Header,
-    Footer
+    Footer，
+    TimerBtn
 };
 
 const install = function (Vue, opts = {}) {

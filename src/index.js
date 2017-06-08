@@ -45,6 +45,8 @@ import Upload from './components/upload';
 import { Row, Col } from './components/grid';
 import { Select, Option, OptionGroup } from './components/select';
 import locale from './locale';
+import TimerBtn from './components/timerBtn';
+
 
 const iview = {
     Affix,
@@ -117,7 +119,8 @@ const iview = {
     Tooltip,
     Transfer,
     Tree,
-    Upload
+    Upload,
+    TimerBtn
 };
 
 const install = function (Vue, opts = {}) {
