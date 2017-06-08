@@ -245,29 +245,8 @@
                     <!--</li>-->
                     <!--</ul>-->
                 </div>
-                <Modal v-model="modal6" width="420">
-                    <div popup>
-                        <Form :model="formItem">
-                            <h3>安心委托,快速成交</h3>
 
-                            <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
-
-                            <div class="popItem">
-                                <span class="inp_icon phone"></span>
-                                <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
-                                <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
-                            </div>
-                            <div class="popItem">
-                                <span class="inp_icon password"></span>
-                                <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
-                            </div>
-                            <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
-                            <input type="submit" class="pop_subbtn" value="提交委托">
-                        </Form>
-                    </div>
-                </Modal>
-
-                <Modal v-model="modal5" :styles="{top: '50px'}" width="420">
+                <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
                         <Form :model="formItem">
                             <h4>帮我找楼</h4>
@@ -322,6 +301,28 @@
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
 
                             <input type="submit" class="pop_subbtn" value="确    认">
+                        </Form>
+                    </div>
+                </Modal>
+
+                <Modal v-model="modal6" width="420" scrollable="false">
+                    <div popup>
+                        <Form :model="formItem">
+                            <h3>安心委托,快速成交</h3>
+
+                            <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
+
+                            <div class="popItem">
+                                <span class="inp_icon phone"></span>
+                                <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
+                                <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
+                            </div>
+                            <div class="popItem">
+                                <span class="inp_icon password"></span>
+                                <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
+                            </div>
+                            <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
+                            <input type="submit" class="pop_subbtn" value="提交委托">
                         </Form>
                     </div>
                 </Modal>
