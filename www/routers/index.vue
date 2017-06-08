@@ -246,7 +246,7 @@
                     <!--</ul>-->
                 </div>
 
-                <Modal v-model="modal5" :styles="{top: '50px'}" scrollable=false width="420">
+                <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
                         <Form :model="formItem">
                             <h4>帮我找楼</h4>
@@ -305,7 +305,7 @@
                     </div>
                 </Modal>
 
-                <Modal v-model="modal6" width="420" scrollable=false>
+                <Modal v-model="modal6" width="420" scrollable="false">
                     <div popup>
                         <Form :model="formItem">
                             <h3>安心委托,快速成交</h3>
