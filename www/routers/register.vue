@@ -193,11 +193,11 @@
                            this.$api,
                            {
                                parameters:{
-                                   "smsTpye":1,
-                                    "telephone": this.formInline.user
+                                   "VerifiationCCodeType":1,
+                                    "Mobile": this.formInline.user
                                },
                                foreEndType:"1",
-                               code:"90000002"
+                               code:"90000101"
                            }
                    ).then(function(response) {
                                var  reslute=JSON.parse(response.data);
