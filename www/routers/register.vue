@@ -174,9 +174,13 @@
                         this.$http.post(
                             this.$api,
                             {
-                                parameters: {},
+                                parameters: {
+                                   "Col_telephone":this.formInline.user,
+                                   "Col_password":this.formInline.password,
+                                   "InputCode":this.formInline.code
+                                },
                                 foreEndType: "1",
-                                code: "10000001"
+                                code: "10000002"
                             }
                         ).then(function (response) {
                             var reslute = JSON.parse(response.data);

@@ -103,8 +103,8 @@ export default {
                               this.$api,
                               {
                                   parameters:{
-                                      "username":this.formInline.user,
-                                      "password":this.formInline.password
+                                      "Col_telephone":this.formInline.user,
+                                      "Col_password":this.formInline.password
                                   },
                                   foreEndType:"1",
                                   code:"10000001"
