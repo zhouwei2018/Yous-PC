@@ -201,10 +201,10 @@
                     {
                         parameters: {
                             "VerifiationCCodeType": 1,
-                            "Mobile": this.formInline.user
+                            "Col_telephone": this.formInline.user
                         },
                         foreEndType: "1",
-                        code: "90000101"
+                        code: "90000102"
                     }
                 ).then(function (response) {
                     var reslute = JSON.parse(response.data);
