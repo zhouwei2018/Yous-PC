@@ -3,12 +3,6 @@
     @import "../resources/css/register/register.less";
 </style>
 
-<style>
-    body {
-        background-color: #fff;
-    }
-</style>
-
 <template>
     <div class="all">
         <!--topper  begin-->
@@ -46,7 +40,7 @@
                                                      <Input  value=""  type="password" v-model="formInline.password" placeholder="请输入登录密码"  size="large"></Input>
                                                  </Form-item>
                                             </div>
-                                            <div class="fl" >
+                                            <div class="fl" style="margin-left:12px" >
                                                 <span>请输入6-20位密码，由数字和字母组成。</span>
                                                 <p class="safe_level">安全程度：
                                                   <span class="low">低</span>
@@ -77,6 +71,7 @@
                                             </Form-item>
                                           </div>
                                           <div class="fl tright" >
+
                                               <TimerBtn ref="timerbtn" class="btn btn-default"  v-on:run="sendCode" style="width: 90px; height: 54px;"
                                                second="60"></TimerBtn>
                                           </div>
@@ -90,7 +85,6 @@
                                            </Form-item>
                                          </div>
                                           <div class="fl tright">
-                                              <a class="service_btn" href="javascript:;">《用户服务协议》</a>
                                          </div>
 
                                         </div>
@@ -220,4 +214,5 @@
                  }
                }
     }
+
 </script>
