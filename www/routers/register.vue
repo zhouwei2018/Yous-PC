@@ -175,6 +175,7 @@
                             this.$api,
                             {
                                 parameters: {
+                                   "VerifiationCCodeType":1
                                    "Col_telephone":this.formInline.user,
                                    "Col_password":this.formInline.password,
                                    "InputCode":this.formInline.code
