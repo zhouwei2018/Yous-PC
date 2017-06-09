@@ -110,7 +110,8 @@ export default {
                                   code:"10000001"
                               }
                       ).then(function(response) {
-                                  var  reslute=JSON.parse(response.data);
+
+                                  var  reslute=JSON.parse(response);
                                   if(reslute.success){
                                       this.$route.router.go({name:"main"})
                                   }else{

@@ -175,7 +175,7 @@
                             this.$api,
                             {
                                 parameters: {
-                                   "VerifiationCCodeType":1
+                                   "VerifiationCCodeType":1,
                                    "Col_telephone":this.formInline.user,
                                    "Col_password":this.formInline.password,
                                    "InputCode":this.formInline.code
@@ -184,7 +184,7 @@
                                 code: "10000002"
                             }
                         ).then(function (response) {
-                            var reslute = JSON.parse(response.data);
+    debugger;
                             if (reslute.success) {
                                 this.$route.router.go({name: "main"})
                             } else {
