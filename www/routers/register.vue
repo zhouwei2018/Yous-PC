@@ -184,9 +184,9 @@
                                 code: "10000002"
                             }
                         ).then(function (response) {
-    debugger;
+                            var reslute = JSON.parse(response.bodyText);
                             if (reslute.success) {
-                                this.$route.router.go({name: "main"})
+                                  this.$router.push({ path: 'login' })
                             } else {
                                 this.$Message.error(reslute.message);
                             }

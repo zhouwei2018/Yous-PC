@@ -110,13 +110,15 @@ export default {
                                   code:"10000001"
                               }
                       ).then(function(response) {
-
-                                  var  reslute=JSON.parse(response);
+                                  var  reslute=JSON.parse(response.bodyText);
                                   if(reslute.success){
-                                      this.$route.router.go({name:"main"})
+                                      this.$router.push({ path: 'admin' })
+
                                   }else{
                                       this.$Message.error(reslute.message);
                                   }
+                                  this.loading = false;
+
                     }, function(response) {
                           this.$Message.error('API接口报错-网络错误!');
                           this.loading = false;
