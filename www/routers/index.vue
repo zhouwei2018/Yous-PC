@@ -254,7 +254,9 @@
                             <div class="popItem">
                                 <span class="inp_icon phone"></span>
                                 <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
-                                <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
+                                <TimerBtn ref="timerbtn0" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode0"
+                                          style="width: 140px; height: 50px;"
+                                          second="60"></TimerBtn>
                             </div>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
@@ -315,7 +317,9 @@
                             <div class="popItem">
                                 <span class="inp_icon phone"></span>
                                 <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
-                                <a href="javascript:;" class="pop_sendcode_btn">发送验证码</a>
+                                <TimerBtn ref="timerbtn" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode"
+                                          style="width: 140px; height: 50px;"
+                                          second="60"></TimerBtn>
                             </div>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
@@ -443,6 +447,12 @@
         },
 
         methods: {
+          sendCode0: function () {
+              this.$refs.timerbtn0.start(); //启动倒计时
+            },
+          sendCode: function () {
+              this.$refs.timerbtn.start(); //启动倒计时
+            },
             handleSubmit1(name) {
               this.$Message.error('需求单提交成功!');
 
