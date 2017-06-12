@@ -16,6 +16,10 @@
 
           <div class="user_content login">
               <div class="user_main">
+                  <div class="lion_slogan_wrap">
+                      <p class="lion_slogan">更近的距离</p>
+                      <p class="lion_slogan tr">更好的服务</p>
+                  </div>
                   <div class="content_wrap login fr">
                       <div class="login_bg">
                           <h3 class="tc">用户登录</h3>
