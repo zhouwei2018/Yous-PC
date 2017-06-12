@@ -22,8 +22,8 @@
         padding: 25px 30px;
         background-color: @bg_white;
         img {
-          width: 384px;
-          height: 220px;
+          width: 400px;
+          height: 260px;
         }
 
         .act_text_wrap {
@@ -48,7 +48,13 @@
             line-height: 35px;
             text-align: center;
             color: @cl_white;
-            background-color: @cl_orange;
+            border-radius: 5px;
+            background-color: @bg_bdc;
+            font-size: @font15;
+            &.active{
+              background-color: @cl_orange;
+            }
+
           }
 
         }

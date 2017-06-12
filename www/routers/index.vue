@@ -1,8 +1,7 @@
 ﻿<style lang="less">
     @import "../../src/styles/index.less";
     @import "../resources/css/index/index.less";
-    @import "../resources/css/popup/popup.less";
-    /*弹窗*/
+    @import "../resources/css/popup/popup.less"; /*弹窗*/
     @import "../resources/plugin/swiper/css/swiper.css"; /*swiper 轮播*/
 
 </style>
@@ -14,7 +13,7 @@
         background-color: transparent;
     }
 
-    /*回到顶部*/
+    /*回到顶部start*/
     .side-contact > a {
         display: block;
         width: 50px;
@@ -65,6 +64,8 @@
     .baseIcon-back {
         background-position: 3px -347px;
     }
+
+    /*回到顶部 end*/
 
 </style>
 

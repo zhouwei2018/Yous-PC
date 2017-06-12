@@ -18,6 +18,7 @@
 /*用于背景颜色深黑色*/
 /*用于背景颜色超级黑色*/
 /*用于背景颜色深灰*/
+/*用于背景颜色灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
@@ -142,7 +143,7 @@
   margin-left: 20px;
 }
 [office] .center_trade .center_trade_head .title {
-  font-size: 28px;
+  font-size: 21px;
   margin-bottom: 12px;
   margin-top: 12px;
 }
@@ -245,8 +246,8 @@
 }
 [office] .center_trade .center_list .trade_per {
   width: 300px;
-  height: 380px;
-  margin-top: 30px;
+  height: 315px;
+  margin: 30px 30px 0 0;
   text-align: center;
   background: #fff;
   border: 1px solid #eee;

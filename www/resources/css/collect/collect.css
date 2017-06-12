@@ -18,6 +18,7 @@
 /*用于背景颜色深黑色*/
 /*用于背景颜色超级黑色*/
 /*用于背景颜色深灰*/
+/*用于背景颜色灰*/
 /*用于背景颜色浅灰*/
 /*用于背景颜色浅浅灰*/
 /*海蓝色*/
@@ -74,8 +75,8 @@
   background-color: #fff;
 }
 [activity] .act_wrap ul li img {
-  width: 384px;
-  height: 220px;
+  width: 400px;
+  height: 260px;
 }
 [activity] .act_wrap ul li .act_text_wrap {
   width: 520px;
@@ -100,5 +101,10 @@
   line-height: 35px;
   text-align: center;
   color: #fff;
+  border-radius: 5px;
+  background-color: #bdbcbc;
+  font-size: 15px;
+}
+[activity] .act_wrap ul li .act_text_wrap .sign_up_btn.active {
   background-color: #fb7530;
 }
