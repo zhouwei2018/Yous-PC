@@ -1,7 +1,8 @@
 ﻿<style lang="less">
     @import "../../src/styles/index.less";
     @import "../resources/css/index/index.less";
-    @import "../resources/css/popup/popup.less"; /*弹窗*/
+    @import "../resources/css/popup/popup.less";
+    /*弹窗*/
     @import "../resources/plugin/swiper/css/swiper.css"; /*swiper 轮播*/
 
 </style>
@@ -26,7 +27,6 @@
         -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
         -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
-        transition: .3s all ease;
     }
 
     #sideTop:hover {
@@ -34,22 +34,16 @@
         background-position: 3px -300px;
     }
 
-    #sideTel:hover {
-        background-color: #0d6daa;
-    }
-
-    #sideTel:hover .tel_hover {
-        display: block;
-    }
-
-    .tel_hover {
-        height: 50px;
+    .side-contact > a.active {
         width: 185px;
-        position: absolute;
-        right: 0;
-        top: 0;
-        display: none;
-        transition: .3s all ease;
+        line-height: 50px;
+        padding-left: 15px;
+        color: #fff;
+        font-size: 18px;
+        text-align: left;
+        border-radius: 0 50px 50px 0;
+        background: url("../resources/images/index/base-icon.png") no-repeat #0d6daa;
+        background-position: 138px -191px;
     }
 
     .baseIcon {
@@ -57,7 +51,7 @@
     }
 
     .baseIcon-tel {
-        background-position: 5px -244px;
+        background-position: 4px -244px;
         position: relative;
     }
 
@@ -405,11 +399,12 @@
 
         <!--回到顶部-->
         <Back-top :height="100" :bottom="200">
-            <div class="side-contact">
-                <a class="baseIcon baseIcon-tel cur-pointer" id="sideTel" data-val="400-078-8800">
-                    <img class="tel_hover" src="../resources/images/index/tel_hover.png" alt="">
+            <div class="side-contact clearfix" style="width: 50px;">
+                <a class="baseIcon baseIcon-tel cur-pointer fr" id="sideTel" @mouseenter="telShow($event)" @mouseleave="telHide($event)"
+                   data-val="400-078-8800">
+                    <!--<img class="tel_hover" src="../resources/images/index/tel_hover.png" alt="">-->
                 </a>
-                <a class="baseIcon baseIcon-back" id="sideTop"></a>
+                <a class="baseIcon baseIcon-back fr" id="sideTop"></a>
             </div>
         </Back-top>
 
@@ -476,6 +471,14 @@
         },
 
         methods: {
+            telShow(e){
+                $(e.target).addClass('active').html('400-078-8800');
+            },
+
+            telHide(e){
+                $(e.target).removeClass('active').html('');
+            },
+
             sendCode0: function () {
                 this.$refs.timerbtn0.start(); //启动倒计时
             },
