@@ -72,6 +72,10 @@ var router = new VueRouter({
             component: require('./routers/admin/main.vue')
         },
         {
+            path: '/love',
+            component: require('./routers/love_power.vue')
+        },
+        {
             path: '*',
             redirect: '/index'
         }

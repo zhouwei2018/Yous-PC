@@ -212,9 +212,17 @@ select {
   margin: 0 auto;
   position: relative;
 }
+.content980 {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+}
 /*针对特殊网站样式start*/
 .none {
   display: none;
+}
+.bg_white {
+  background-color: #fff;
 }
 .text_indent1 {
   text-indent: 1.2em;
