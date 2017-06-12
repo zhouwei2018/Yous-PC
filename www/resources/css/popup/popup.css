@@ -55,34 +55,34 @@
 .ivu-modal-body {
   padding: 0;
 }
-.ivu-form.ivu-form-label-right {
+.ivu-modal-body .ivu-form.ivu-form-label-right {
   padding: 15px 30px 30px;
 }
-.ivu-modal-close {
+.ivu-modal-body .ivu-modal-close {
   right: 22px;
   top: 13px;
 }
-.ivu-modal-close .ivu-icon.ivu-icon-ios-close-empty {
+.ivu-modal-body .ivu-modal-close .ivu-icon.ivu-icon-ios-close-empty {
   background-color: red;
   width: 27px;
   height: 26px;
   background: url("../../images/popup/close.png") no-repeat;
   background-size: 26px 26px;
 }
-.ivu-modal-close .ivu-icon.ivu-icon-ios-close-empty::before {
+.ivu-modal-body .ivu-modal-close .ivu-icon.ivu-icon-ios-close-empty::before {
   content: "";
 }
-.ivu-select {
+.ivu-modal-body .ivu-select {
   width: 70%;
 }
-.ivu-select-selection {
+.ivu-modal-body .ivu-select-selection {
   border: none;
 }
-.ivu-form .ivu-form-item-label {
+.ivu-modal-body .ivu-form .ivu-form-item-label {
   font-size: 14px;
   color: #b0b0b0;
 }
-.ivu-select-single .ivu-select-selection .ivu-select-placeholder,
+.ivu-modal-body .ivu-select-single .ivu-select-selection .ivu-select-placeholder,
 .ivu-select-single .ivu-select-selection .ivu-select-selected-value {
   font-size: 14px;
 }
@@ -149,14 +149,14 @@
 }
 [popup] .popItem .pop_sendcode_btn {
   position: absolute;
-  right: 1px;
-  top: 1px;
+  right: 0px;
+  top: 0px;
   width: 150px;
   height: 48px;
   color: #fff;
   font-size: 16px;
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
   background-color: #3f91d9;
 }
 [popup] .pop_subbtn {
