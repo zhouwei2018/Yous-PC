@@ -374,8 +374,9 @@
                                 <li>
                                     <h4><i></i>幼狮空间，传递爱的力量</h4>
 
-                                    <p class="clearfix">“母亲”一个伟大的称呼。一个你无论如何宣泄情绪都是那么包容你的人。<a
-                                            href="javascript:;" class="look_detail fr">【查看详情】</a></p>
+                                    <p class="clearfix">“母亲”一个伟大的称呼。一个你无论如何宣泄情绪都是那么包容你的人。
+                                        <router-link :to="{path:'/love'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>
+                                        </p>
 
                                 </li>
                                 <li>

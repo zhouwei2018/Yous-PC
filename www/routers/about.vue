@@ -135,6 +135,9 @@
         mounted(){
             $(window).scrollTop(0);
             this.menuFix();
+            //跳转记录参数
+            this.active=this.$route.query.name;
+            this.toggle(this.active,this.tabs[this.active].view);
         },
         destroyed () {
             this.scrollWatch = false;
