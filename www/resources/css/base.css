@@ -215,6 +215,9 @@ select {
 .none {
   display: none;
 }
+.text_indent1 {
+  text-indent: 1.2em;
+}
 .pv20 {
   padding-left: 20px !important;
 }

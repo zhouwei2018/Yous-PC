@@ -18,11 +18,17 @@
           <div class="contents">
               <span class="bottom_copyright fl">北京幼狮科技有限公司 保留所有权利&nbsp;&nbsp;京ICP备20176444</span>
               <div class="fr">
-                  <span><a href="javascript:;">关于我们</a></span>
+                  <span>
+                      <router-link :to="{ path: '/about'}">关于我们</router-link>
+                  </span>
                   <i>|</i>
-                  <span><a href="javascript:;">工作机会</a></span>
+                  <span>
+                      <router-link :to="{ path: '/about'}">工作机会</router-link>
+                  </span>
                   <i>|</i>
-                  <span><a href="javascript:;">条款与隐私</a></span>
+                  <span>
+                      <router-link :to="{ path: '/about'}">条款与隐私</router-link>
+                  </span>
               </div>
           </div>
       </div>
