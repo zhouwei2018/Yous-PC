@@ -106,10 +106,10 @@
                         <h3>与我们的团队取得联系</h3>
                         <div class="manager_wrap">
                             <img src="../resources/images/office/trade_person.png" alt="" class="manager_portrait"/>
-                            <span class="manager_name">常春雷</span>
+                            <span class="manager_name">赵东伟</span>
                             <span class="manage_pos">社区经理</span>
                         </div>
-                        <span class="tel_number">联系电话：400-800-8888</span>
+                        <span class="tel_number">联系电话：13810419384</span>
                     </div>
 
                     <Modal v-model="modal5" :styles="{top: '50px'}" width="420">
