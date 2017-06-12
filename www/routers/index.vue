@@ -27,6 +27,30 @@
         -webkit-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
         -moz-box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, .18);
+        transition: .3s all ease;
+    }
+
+    #sideTop:hover {
+        background-color: #0d6daa;
+        background-position: 3px -300px;
+    }
+
+    #sideTel:hover {
+        background-color: #0d6daa;
+    }
+
+    #sideTel:hover .tel_hover {
+        display: block;
+    }
+
+    .tel_hover {
+        height: 50px;
+        width: 185px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: none;
+        transition: .3s all ease;
     }
 
     .baseIcon {
@@ -34,11 +58,12 @@
     }
 
     .baseIcon-tel {
-        background-position: 5px -248px;
+        background-position: 5px -244px;
+        position: relative;
     }
 
     .baseIcon-back {
-        background-position: 4px -321px;
+        background-position: 3px -347px;
     }
 
 </style>
@@ -248,7 +273,7 @@
 
                 <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
-                        <Form ref="formInline1" :model="formItem1"  >
+                        <Form ref="formInline1" :model="formItem1">
                             <h4>帮我找楼</h4>
 
                             <div class="popItem">
@@ -302,14 +327,15 @@
 
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
 
-                            <input type="submit" class="pop_subbtn" value="确    认"  @click="handleSubmit1('formInline1')">
+                            <input type="submit" class="pop_subbtn" value="确    认"
+                                   @click="handleSubmit1('formInline1')">
                         </Form>
                     </div>
                 </Modal>
 
                 <Modal v-model="modal6" width="420" scrollable="false">
                     <div popup>
-                        <Form ref="formInline2" :model="formItem2" >
+                        <Form ref="formInline2" :model="formItem2">
                             <h3>安心委托,快速成交</h3>
 
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
@@ -379,8 +405,10 @@
         <!--回到顶部-->
         <Back-top :height="100" :bottom="200">
             <div class="side-contact">
-                <a class="baseIcon baseIcon-tel cur-pointer" id="sideTel" data-val="400-078-8800"></a>
-                <a class="baseIcon baseIcon-back"></a>
+                <a class="baseIcon baseIcon-tel cur-pointer" id="sideTel" data-val="400-078-8800">
+                    <img class="tel_hover" src="../resources/images/index/tel_hover.png" alt="">
+                </a>
+                <a class="baseIcon baseIcon-back" id="sideTop"></a>
             </div>
         </Back-top>
 
@@ -447,18 +475,18 @@
         },
 
         methods: {
-          sendCode0: function () {
-              this.$refs.timerbtn0.start(); //启动倒计时
+            sendCode0: function () {
+                this.$refs.timerbtn0.start(); //启动倒计时
             },
-          sendCode: function () {
-              this.$refs.timerbtn.start(); //启动倒计时
+            sendCode: function () {
+                this.$refs.timerbtn.start(); //启动倒计时
             },
             handleSubmit1(name) {
-              this.$Message.error('需求单提交成功!');
+                this.$Message.error('需求单提交成功!');
 
             },
             handleSubmit2(name) {
-              this.$Message.error('委托单提交成功!');
+                this.$Message.error('委托单提交成功!');
             },
 
             show_num: function (id, d) {
