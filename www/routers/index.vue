@@ -379,7 +379,7 @@
                                 <li>
                                     <h4><i></i>幼狮空间，传递爱的力量</h4>
 
-                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a
+                                    <p class="clearfix">“母亲”一个伟大的称呼。一个你无论如何宣泄情绪都是那么包容你的人。<a
                                             href="javascript:;" class="look_detail fr">【查看详情】</a></p>
 
                                 </li>

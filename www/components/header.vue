@@ -20,7 +20,7 @@
                     <router-link to="/office" active-class="active">办公空间<div class="lion_nav_line"></div></router-link>
                     <router-link to="/service" active-class="active">升级服务<div class="lion_nav_line"></div></router-link>
                     <router-link to="/collect" active-class="active">幼狮汇<div class="lion_nav_line"></div></router-link>
-                    <router-link to="/invest" active-class="active">投融资<div class="lion_nav_line"></div></router-link>
+                    <!--<router-link to="/invest" active-class="active">投融资<div class="lion_nav_line"></div></router-link>-->
                     <router-link to="/about" active-class="active">关于我们<div class="lion_nav_line"></div></router-link>
                     <!--<router-link to="/score" active-class="active">积分商城</router-link>-->
                     <div class="reg_log_wrap fl">

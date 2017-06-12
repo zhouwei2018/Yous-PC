@@ -224,6 +224,9 @@
 [footer] .foot_bot span a {
   color: #666;
 }
+[footer] .foot_bot span a:hover {
+  color: #fff;
+}
 @media screen and (min-width: 1500px) {
   [header] [nav_boxs] .nav > a {
     margin-left: 40px;

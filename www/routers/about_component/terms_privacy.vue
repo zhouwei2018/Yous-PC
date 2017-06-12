@@ -1,5 +1,5 @@
 <style lang="less">
-p{
+[ys_terms_privacy] p{
     line-height:28px;
     color: #1d1d1d;
 }
