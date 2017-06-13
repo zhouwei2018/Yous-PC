@@ -21,8 +21,9 @@
                         <li @click="tab(1)">工作机会</li>
                         <li @click="tab(2)">条款与隐私</li> -->
                         <!--<li v-for='item in menueItems' v-text="item.name" :class="{active:item.iscur}"-->
-                            <!--@click="setCur(item.index)"></li>-->
-                        <li @click="toggle(index ,tab.view)" v-for="(tab,index) in tabs" :class="{active:active===index}">
+                        <!--@click="setCur(item.index)"></li>-->
+                        <li @click="toggle(index ,tab.view)" v-for="(tab,index) in tabs"
+                            :class="{active:active===index}">
                             {{tab.type}}
                         </li>
                     </ul>
@@ -109,23 +110,23 @@
 
             //左侧菜单scroll 时固定
             menuFix(){
-                var _this=this;
-                $(window).on('scroll', function(){
+                var _this = this;
+                $(window).on('scroll', function () {
                     if (_this.scrollWatch) {
                         //your code here
-                        var scrollTop=$(window).scrollTop();
-                        if(scrollTop >=90){
-                            var fixLeft=$('#about_us_box').offset().left;
+                        var scrollTop = $(window).scrollTop();
+                        if (scrollTop >= 90) {
+                            var fixLeft = $('#about_us_box').offset().left;
                             $('#about_us_menu').css({
-                                position:'fixed',
-                                left:fixLeft,
-                                top:0
+                                position: 'fixed',
+                                left: fixLeft,
+                                top: 0
                             });
-                        }else if(scrollTop <90){
+                        } else if (scrollTop < 90) {
                             $('#about_us_menu').css({
-                                position:'relative',
-                                left:0,
-                                top:0
+                                position: 'relative',
+                                left: 0,
+                                top: 0
                             });
                         }
                     }
@@ -136,8 +137,8 @@
             $(window).scrollTop(0);
             this.menuFix();
             //跳转记录参数
-            this.active=this.$route.query.name;
-            this.toggle(this.active,this.tabs[this.active].view);
+            this.active = this.$route.query.name == undefined ? 0 : this.$route.query.name;
+            this.toggle(this.active, this.tabs[this.active].view);
         },
         destroyed () {
             this.scrollWatch = false;
