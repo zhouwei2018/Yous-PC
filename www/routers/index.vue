@@ -427,7 +427,12 @@
                 modal5: false, //弹窗1
                 modal6: false, //弹窗2
 
-                formItem: {
+                formItem1:{
+                    input: '',
+                    select: ''
+                },
+
+                formItem2: {
                     input: '',
                     select: ''
                 },

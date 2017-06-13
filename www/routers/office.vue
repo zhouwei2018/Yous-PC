@@ -116,7 +116,7 @@
 
                     <Modal v-model="modal5" :styles="{top: '50px'}" width="420">
                         <div popup>
-                            <Form ref="formInline1" :model="formItem1">
+                            <Form ref="formInline1" :model="formItem">
                                 <h4>帮我找楼</h4>
 
                                 <div class="popItem">
@@ -368,6 +368,25 @@
                 office_scroll:true  //offce页面滚动boolean
             }
         },
+        methods: {
+            setCur: function (index, areaId) {
+                this.areaItems.map(function (v, i) {
+                    i == index ? v.iscur = true : v.iscur = false;
+                });
+                this.setAreaItem(index)
+            },
+            setAreaItem: function (index) {
+                this.areaItem = this.areaItems[index]
+            },
+            asyBtnCheckIn: function (id) {
+                this.$router.go({path: "list"});
+                //this.$route.router.go({name:"detail"});
+            },
+            sendCode0: function () {
+                this.$refs.timerbtn0.start(); //启动倒计时
+            },
+        },
+
         mounted: function () {
             var _this=this;
             this.setAreaItem(0);
@@ -387,24 +406,6 @@
                     }
                 }
             });
-
-        },
-        methods: {
-            setCur: function (index, areaId) {
-                this.areaItems.map(function (v, i) {
-                    i == index ? v.iscur = true : v.iscur = false;
-                });
-                this.setAreaItem(index)
-            },
-            setAreaItem: function (index) {
-                this.areaItem = this.areaItems[index]
-            },
-            asyBtnCheckIn: function (id) {
-
-                this.$router.go({path: "list"});
-                //this.$route.router.go({name:"detail"});
-
-            }
         },
 
         destroyed(){
