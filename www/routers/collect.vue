@@ -7,7 +7,7 @@
         <!--header-->
         <header1></header1>
 
-        publicityvity start-->
+        <!--activity start-->
         <div activity>
             <h3 class="contents act_head">创业活动</h3>
 
@@ -17,7 +17,7 @@
                         <img class="fl" src="../resources/images/activity/activity01.jpg" alt=""/>
 
                         <div class="fl act_text_wrap">
-                            <h4>幼狮未来公开课第二期  助企业成为独角兽</h4>
+                            <h4>幼狮未来公开课第二期<span class="pub_ver_line"></span>助企业成为独角兽</h4>
                             <p>主办单位：北京幼狮科技有限公司</p>
                             <p>活动时间：2017/5/20  13:30-16:00</p>
                             <p>活动类型：讲座/公开课</p>
@@ -31,7 +31,7 @@
                         <img class="fl" src="../resources/images/activity/activity02.jpg" alt=""/>
 
                         <div class="fl act_text_wrap">
-                            <h4>幼狮企业服务沙龙第一期  战略定位给企业做瘦身</h4>
+                            <h4>幼狮企业服务沙龙第一期<span class="pub_ver_line"></span>战略定位给企业做瘦身</h4>
                             <p>主办单位：北京幼狮科技有限公司</p>
                             <p>活动时间：2017/4/15 13:30-16:00</p>
                             <p>活动类型：讲座/公开课</p>
@@ -45,7 +45,7 @@
                         <img class="fl" src="../resources/images/activity/activity03.jpg" alt=""/>
 
                         <div class="fl act_text_wrap">
-                            <h4>幼狮未来公开课第一期  HR人才战略</h4>
+                            <h4>幼狮未来公开课第一期<span class="pub_ver_line"></span>HR人才战略</h4>
                             <p>主办单位：北京幼狮科技有限公司</p>
                             <p>活动时间：2017/3/15  13:30-16:00</p>
                             <p>活动类型：讲座/公开课</p>

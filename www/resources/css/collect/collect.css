@@ -29,6 +29,7 @@
 /*首页登录按钮背景蓝*/
 /*首页登录按钮border*/
 /*棕色*/
+/*deep棕色*/
 /*浅红色*/
 /*hover 浅灰色*/
 /*hover 浅lv色*/
@@ -88,6 +89,14 @@
   font-size: 18px;
   font-weight: 600;
   color: #333;
+}
+[activity] .act_wrap ul li .act_text_wrap h4 .pub_ver_line {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -2px 8px 0;
+  width: 2px;
+  height: 20px;
+  background-color: #d6971d;
 }
 [activity] .act_wrap ul li .act_text_wrap p {
   line-height: 25px;
