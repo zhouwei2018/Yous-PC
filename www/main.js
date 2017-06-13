@@ -76,6 +76,18 @@ var router = new VueRouter({
             component: require('./routers/love_power.vue')
         },
         {
+            path: '/sport',
+            component: require('./routers/sport.vue')
+        },
+        {
+            path: '/sport_pre',
+            component: require('./routers/sport_pre.vue')
+        },
+        {
+            path: '/annual_meeting',
+            component: require('./routers/annual_meeting.vue')
+        },
+        {
             path: '*',
             redirect: '/index'
         }

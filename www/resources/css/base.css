@@ -222,6 +222,9 @@ select {
 .none {
   display: none;
 }
+.cursor {
+  cursor: pointer;
+}
 .bg_white {
   background-color: #fff;
 }
