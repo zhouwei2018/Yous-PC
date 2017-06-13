@@ -125,6 +125,7 @@
     }
     .center_list {
       background-color: @bg_white;
+      position: relative;
       > ul {
         width: 785px;
         margin-bottom: 45px;
@@ -208,55 +209,66 @@
 
         }
       }
-      .trade_per {
-        width: 300px;
-        height: 315px;
-        margin: 30px 30px 0 0;
-        text-align: center;
-        background: @bg_white;
-        border: 1px solid @bdc_eee;
-        box-shadow: 0 0 10px 0 @bdc_blur;
-
-        h3 {
-          padding: 15px 0 10px;
-          font-size: @font26;
-        }
-        .manager_wrap {
+      .office_side{
+        position: absolute;
+        right:30px;
+        width:300px;
+        bottom: auto;
+        .trade_per {
+          width: 300px;
+          height: 315px;
+          margin: 30px 30px 0 0;
           text-align: center;
-          .manager_portrait {
-            width: 126px;
-            height: 126px;
-            display: inline-block;
+          background: @bg_white;
+          border: 1px solid @bdc_eee;
+          box-shadow: 0 0 10px 0 @bdc_blur;
+          &.right_fixed{
+            position: fixed;
+            top:0;
           }
-          span {
+
+          h3 {
+            padding: 15px 0 10px;
+            font-size: @font26;
+          }
+          .manager_wrap {
+            text-align: center;
+            .manager_portrait {
+              width: 126px;
+              height: 126px;
+              display: inline-block;
+            }
+            span {
+              display: block;
+              &.manager_name {
+                color: @cl_orange;
+                font-size: @font18;
+              }
+              &.manage_pos{
+                margin: 5px 0;
+              }
+            }
+          }
+
+          .tel_number {
+            color: @cl_orange;
+          }
+
+          .help_me_building {
             display: block;
-            &.manager_name {
-              color: @cl_orange;
-              font-size: @font18;
-            }
-            &.manage_pos{
-              margin: 5px 0;
-            }
+            text-align: center;
+            color: @cl_white;
+            width: 120px;
+            margin: 20px auto 0;
+            line-height: 40px;
+            height: 40px;
+            background-color: @cl_orange;
+            font-size: @font16;
           }
-        }
 
-        .tel_number {
-          color: @cl_orange;
         }
-
-        .help_me_building {
-          display: block;
-          text-align: center;
-          color: @cl_white;
-          width: 120px;
-          margin: 20px auto 0;
-          line-height: 40px;
-          height: 40px;
-          background-color: @cl_orange;
-          font-size: @font16;
-        }
-
       }
+
     }
   }
 }

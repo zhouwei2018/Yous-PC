@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="center_list clearfix">
-                    <ul class="fl">
+                    <ul class="fl center_left_ul">
                         <li class="clearfix" v-for='item in areaItem.areaHouse'>
                             <img class="fl" src="../resources/images/office/tradeArea01.png" alt=""/>
                             <div style="height:200px;width:100%;position:relative">
@@ -102,14 +102,16 @@
                             </div>
                         </li>
                     </ul>
-                    <div class="fr trade_per">
-                        <h3>与我们的团队取得联系</h3>
-                        <div class="manager_wrap">
-                            <img src="../resources/images/office/trade_person.png" alt="" class="manager_portrait"/>
-                            <span class="manager_name">赵东伟</span>
-                            <span class="manage_pos">社区经理</span>
+                    <div class="office_side">
+                        <div id="trade_man_fix" class="trade_per">
+                            <h3>与我们的团队取得联系</h3>
+                            <div class="manager_wrap">
+                                <img src="../resources/images/office/trade_person.png" alt="" class="manager_portrait"/>
+                                <span class="manager_name">赵东伟</span>
+                                <span class="manage_pos">社区经理</span>
+                            </div>
+                            <span class="tel_number">联系电话：13810419384</span>
                         </div>
-                        <span class="tel_number">联系电话：13810419384</span>
                     </div>
 
                     <Modal v-model="modal5" :styles="{top: '50px'}" width="420">
@@ -361,11 +363,31 @@
                         ]
                     }
 
-                ]
+                ],
+
+                office_scroll:true  //offce页面滚动boolean
             }
         },
         mounted: function () {
+            var _this=this;
             this.setAreaItem(0);
+
+            //scroll
+            $(window).scroll(function(){
+                if(_this.office_scroll){
+                    var scroll_top=$(window).scrollTop();
+                    var standard_line = $('.center_left_ul').offset().top;
+                    var standard_line_wrap = $('.center_left_ul').height();
+                    var fixed_self = $('#trade_man_fix').height();
+
+                    if (scroll_top > (standard_line)) {
+                        $('#trade_man_fix').addClass('right_fixed');
+                    } else {
+                        $('#trade_man_fix').removeClass('right_fixed');
+                    }
+                }
+            });
+
         },
         methods: {
             setCur: function (index, areaId) {
@@ -383,6 +405,10 @@
                 //this.$route.router.go({name:"detail"});
 
             }
+        },
+
+        destroyed(){
+            this.office_scroll=false;
         }
     }
 </script>

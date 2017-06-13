@@ -168,6 +168,7 @@
 }
 [office] .center_trade .center_list {
   background-color: #fff;
+  position: relative;
 }
 [office] .center_trade .center_list > ul {
   width: 785px;
@@ -245,7 +246,13 @@
   position: absolute;
   bottom: 0;
 }
-[office] .center_trade .center_list .trade_per {
+[office] .center_trade .center_list .office_side {
+  position: absolute;
+  right: 30px;
+  width: 300px;
+  bottom: auto;
+}
+[office] .center_trade .center_list .office_side .trade_per {
   width: 300px;
   height: 315px;
   margin: 30px 30px 0 0;
@@ -254,32 +261,36 @@
   border: 1px solid #eee;
   box-shadow: 0 0 10px 0 #e6e6e6;
 }
-[office] .center_trade .center_list .trade_per h3 {
+[office] .center_trade .center_list .office_side .trade_per.right_fixed {
+  position: fixed;
+  top: 0;
+}
+[office] .center_trade .center_list .office_side .trade_per h3 {
   padding: 15px 0 10px;
   font-size: 26px;
 }
-[office] .center_trade .center_list .trade_per .manager_wrap {
+[office] .center_trade .center_list .office_side .trade_per .manager_wrap {
   text-align: center;
 }
-[office] .center_trade .center_list .trade_per .manager_wrap .manager_portrait {
+[office] .center_trade .center_list .office_side .trade_per .manager_wrap .manager_portrait {
   width: 126px;
   height: 126px;
   display: inline-block;
 }
-[office] .center_trade .center_list .trade_per .manager_wrap span {
+[office] .center_trade .center_list .office_side .trade_per .manager_wrap span {
   display: block;
 }
-[office] .center_trade .center_list .trade_per .manager_wrap span.manager_name {
+[office] .center_trade .center_list .office_side .trade_per .manager_wrap span.manager_name {
   color: #fb7530;
   font-size: 18px;
 }
-[office] .center_trade .center_list .trade_per .manager_wrap span.manage_pos {
+[office] .center_trade .center_list .office_side .trade_per .manager_wrap span.manage_pos {
   margin: 5px 0;
 }
-[office] .center_trade .center_list .trade_per .tel_number {
+[office] .center_trade .center_list .office_side .trade_per .tel_number {
   color: #fb7530;
 }
-[office] .center_trade .center_list .trade_per .help_me_building {
+[office] .center_trade .center_list .office_side .trade_per .help_me_building {
   display: block;
   text-align: center;
   color: #fff;
