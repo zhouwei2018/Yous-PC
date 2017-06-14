@@ -502,7 +502,7 @@
                              "Col_telephone": this.formInline1.telephone
                            },
                            foreEndType: "1",
-                           code: "10000002"
+                           code: "90000102"
                        }
                    ).then(function (response) {
                        var reslute = JSON.parse(response.bodyText);
