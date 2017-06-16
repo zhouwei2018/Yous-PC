@@ -76,6 +76,10 @@ var router = new VueRouter({
             component: require('./routers/love_power.vue')
         },
         {
+            path: '/room_sale',
+            component: require('./routers/room_sale.vue')
+        },
+        {
             path: '/sport',
             component: require('./routers/sport.vue')
         },
