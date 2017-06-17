@@ -60,6 +60,10 @@ var router = new VueRouter({
             component: require('./routers/login.vue')
         },
         {
+            path: '/find_pass',
+            component: require('./routers/find_pass.vue')
+        },
+        {
             path: '/list',
             component: require('./routers/list.vue')
         },

@@ -42,7 +42,7 @@
                           <div class="status_switch">
                               <router-link to="/register">注册幼狮账号</router-link>
                               <span class="line_vertical"></span>
-                              <router-link to="/register">忘记密码？</router-link>
+                              <router-link to="/find_pass">忘记密码？</router-link>
                           </div>
 
                           <div class="login_mode">
@@ -75,10 +75,7 @@
 </template>
 <script>
 
-import header1 from '../components/header.vue';
-import footer1 from '../components/footer.vue';
 export default {
-    components: { header1,footer1 },
     data () {
             return {
                 loading: false,
