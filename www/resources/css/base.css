@@ -365,6 +365,9 @@ a {
 .text_pink_app {
   color: #ff5254 !important;
 }
+.bg_orange {
+  background-color: #fb7530 !important;
+}
 .fb {
   font-weight: 700 !important;
 }
