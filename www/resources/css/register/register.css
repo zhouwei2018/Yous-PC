@@ -28,7 +28,6 @@
 /*index 业主委托亮蓝色*/
 /*深蓝色*/
 /*浅蓝色*/
-/*首页登录按钮背景蓝*/
 /*首页登录按钮border*/
 /*棕色*/
 /*deep棕色*/
@@ -82,7 +81,7 @@
 }
 [top_box] .user_content .user_main .lion_slogan_wrap .lion_slogan {
   font-size: 42px;
-  color: #3f91d9;
+  color: #0f6fac;
 }
 [top_box] .user_content .user_main .lion_slogan_wrap .lion_slogan.tr {
   text-align: right;
@@ -121,7 +120,7 @@
   padding-top: 8px;
 }
 [top_box] .reg_bg .reg_wrap .reg_head .login_switch {
-  color: #09b8fa;
+  color: #0f6fac;
 }
 [top_box] .regesit_readme {
   color: #09b8fa;
@@ -160,7 +159,7 @@
   color: #999;
 }
 [top_box] .status_switch a:hover {
-  color: #09b8fa;
+  color: #0f6fac;
 }
 [top_box] .status_switch span {
   display: inline-block;
