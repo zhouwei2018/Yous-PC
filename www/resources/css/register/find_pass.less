@@ -25,14 +25,14 @@
     box-sizing: content-box;
     &.mod-sub-list1 {
       width: 175px;
-      &.list1-active {
+      &.active {
         background: url("../../images/login/pass_status.png") no-repeat 0 0;
         color: #2e82ff;
       }
     }
     &.mod-sub-list2 {
       width: 163px;
-      &.list2-active {
+      &.active {
         background: url("../../images/login/pass_status2.png") no-repeat 0 0;
         color: #2e82ff;
         margin-left: -12px;
@@ -40,7 +40,7 @@
       }
     }
     &.mod-sub-list3 {
-      &.list3-active {
+      &.active {
         background: url("../../images/login/pass_status3.png") no-repeat 0 0;
         color: #2e82ff;
         margin-left: -12px;
@@ -54,7 +54,25 @@
 
 .new_pass_wrap {
   .pass_input{
-    width:400px !important;
+    width:400px;
+  }
+  .identify_img_wrap{
+    .identify_img{
+      display: inline-block;
+      width:80px;
+      height:54px;
+      margin-right: 20px;
+      border: 1px solid @bdc_input;
+    }
+
+    .change_identify{
+      display: inline-block;
+      vertical-align: top;
+      height:54px;
+      line-height: 54px;
+      cursor: pointer;
+    }
+
   }
   label {
     width: 108px;

@@ -20,8 +20,8 @@
                 <div class="mod-forgot">
                     <div class="find_pass_title">找回密码</div>
                     <ul class="mod-sub-nav clearfix">
-                        <li class="mod-sub-list1 list1-active">确认帐号</li>
-                        <li class="mod-sub-list2">安全验证</li>
+                        <li class="mod-sub-list1 active">确认帐号</li>
+                        <li class="mod-sub-list2 ">安全验证</li>
                         <li class="mod-sub-list3">重置密码</li>
                     </ul>
 
@@ -37,14 +37,21 @@
                                            placeholder="请输入手机号码" size="large"></Input>
                                 </Form-item>
                             </div>
-
-                            <div class="user_item clearfix">
-                                <Form-item prop="password" class="fl">
-                                    <Input value="" class="pass_input" id="identify_code" type="password"
-                                           placeholder="请输入验证码"
-                                           v-model="formInline.password" size="large"></Input>
-                                </Form-item>
+                            <div class="clearfix">
+                                <div class="user_item clearfix fl">
+                                    <Form-item prop="password">
+                                        <Input value="" class="pass_input w240 mr10"
+                                               id="identify_code" type="password"
+                                               placeholder="请输入验证码"
+                                               v-model="formInline.password" size="large"></Input>
+                                    </Form-item>
+                                </div>
+                                <div class="fl identify_img_wrap">
+                                    <i class="identify_img"></i>
+                                    <span class="change_identify">换一张</span>
+                                </div>
                             </div>
+
                             <div class="user_item clearfix mt25">
                                 <Form-item>
                                     <Button size="large" class="next pass_input btnSubmit" :loading="loading"
@@ -56,7 +63,49 @@
                             </div>
                         </Form>
                     </div>
+
                     <!--安全验证-->
+                    <div class="new_pass_wrap none">
+                        <div class="mb15">为了您的账号安全,请完成身份验证</div>
+                        <Form ref="formInline" :model="formInline" :rules="ruleInline">
+
+                            <div class="user_item clearfix">
+                                <Form-item prop="user" class="fl">
+                                    <Input value="" class="pass_input"  type="text"
+                                           v-model="formInline.user"
+                                           placeholder="187……1234" size="large"></Input>
+                                </Form-item>
+                            </div>
+
+                            <div class="clearfix">
+                                <div class="user_item clearfix fl">
+                                    <Form-item prop="password">
+                                        <Input value="" class="pass_input w280 mr10" type="password"
+                                               placeholder="请输入验证码"
+                                               v-model="formInline.password" size="large"></Input>
+                                    </Form-item>
+                                </div>
+                                <div class="fl tright">
+
+                                    <TimerBtn ref="timerbtn" class="btn btn-default" v-on:run="sendCode"
+                                              style="width: 100px; height: 54px;"
+                                              second="60"></TimerBtn>
+                                </div>
+                            </div>
+
+
+                            <div class="user_item clearfix mt25">
+                                <Form-item>
+                                    <Button size="large" class="next pass_input btnSubmit" :loading="loading"
+                                            type="primary">
+                                        <span v-if="!loading">下一步</span>
+                                        <span v-else>Loading...</span></Button>
+                                </Form-item>
+                            </div>
+                        </Form>
+                    </div>
+
+                    <!--重置密码-->
                     <div class="new_pass_wrap none">
                         <Form ref="formInline" :model="formInline" :rules="ruleInline">
 
@@ -80,11 +129,11 @@
                             <div class="user_item clearfix mt25">
                                 <label for="new_password_sure"></label>
                                 <Form-item>
-                                <Button size="large" class="next pass_input btnSubmit" :loading="loading"
-                                        type="primary"
-                                        @click="handleSubmit('formInline')">
-                                    <span v-if="!loading">立即登录</span>
-                                    <span v-else>Loading...</span></Button>
+                                    <Button size="large" class="next pass_input btnSubmit" :loading="loading"
+                                            type="primary"
+                                            @click="handleSubmit('formInline')">
+                                        <span v-if="!loading">确  定</span>
+                                        <span v-else>Loading...</span></Button>
                                 </Form-item>
                             </div>
                         </Form>

@@ -78,20 +78,20 @@
 .mod-sub-nav li.mod-sub-list1 {
   width: 175px;
 }
-.mod-sub-nav li.mod-sub-list1.list1-active {
+.mod-sub-nav li.mod-sub-list1.active {
   background: url("../../images/login/pass_status.png") no-repeat 0 0;
   color: #2e82ff;
 }
 .mod-sub-nav li.mod-sub-list2 {
   width: 163px;
 }
-.mod-sub-nav li.mod-sub-list2.list2-active {
+.mod-sub-nav li.mod-sub-list2.active {
   background: url("../../images/login/pass_status2.png") no-repeat 0 0;
   color: #2e82ff;
   margin-left: -12px;
   padding-left: 78px;
 }
-.mod-sub-nav li.mod-sub-list3.list3-active {
+.mod-sub-nav li.mod-sub-list3.active {
   background: url("../../images/login/pass_status3.png") no-repeat 0 0;
   color: #2e82ff;
   margin-left: -12px;
@@ -99,7 +99,21 @@
   width: 163px;
 }
 .new_pass_wrap .pass_input {
-  width: 400px !important;
+  width: 400px;
+}
+.new_pass_wrap .identify_img_wrap .identify_img {
+  display: inline-block;
+  width: 80px;
+  height: 54px;
+  margin-right: 20px;
+  border: 1px solid #cdcdcd;
+}
+.new_pass_wrap .identify_img_wrap .change_identify {
+  display: inline-block;
+  vertical-align: top;
+  height: 54px;
+  line-height: 54px;
+  cursor: pointer;
 }
 .new_pass_wrap label {
   width: 108px;
