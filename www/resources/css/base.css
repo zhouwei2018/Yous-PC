@@ -308,6 +308,9 @@ select {
 .ma10 {
   margin-top: 10px !important;
 }
+.mb {
+  margin-bottom: 10px;
+}
 .pt10,
 .ph10,
 .pa10 {

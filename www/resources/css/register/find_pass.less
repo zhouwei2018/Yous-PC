@@ -1,0 +1,66 @@
+@import "../color";
+
+.find_pass{
+  border-bottom: 1px solid @bdc_bot_line;
+}
+
+.mod-forgot{
+  width:700px;
+  margin: 100px auto;
+}
+
+.find_pass_title{
+  font-size: @font18;
+}
+.mod-sub-nav {
+  height: 40px;
+  background: url("../../images/login/mod_sub_nav.png") no-repeat 0 0;
+  margin: 20px 0;
+  line-height: 34px;
+  color: #666;
+  font-size: 16px;
+  li {
+    float: left;
+    padding-left: 66px;
+    box-sizing: content-box;
+    &.mod-sub-list1 {
+      width: 175px;
+      &.list1-active {
+        background: url("../../images/login/pass_status.png") no-repeat 0 0;
+        color: #2e82ff;
+      }
+    }
+    &.mod-sub-list2 {
+      width: 163px;
+      &.list2-active {
+        background: url("../../images/login/pass_status2.png") no-repeat 0 0;
+        color: #2e82ff;
+        margin-left: -12px;
+        padding-left: 78px;
+      }
+    }
+    &.mod-sub-list3 {
+      &.list3-active {
+        background: url("../../images/login/pass_status3.png") no-repeat 0 0;
+        color: #2e82ff;
+        margin-left: -12px;
+        padding-left: 78px;
+        width: 163px;
+      }
+    }
+
+  }
+}
+
+.new_pass_wrap {
+  .pass_input{
+    width:400px !important;
+  }
+  label {
+    width: 108px;
+    float: left;
+    margin-top: 16px;
+    font-size: @font15;
+    text-align: center;
+  }
+}
