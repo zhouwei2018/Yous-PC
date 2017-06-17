@@ -36,8 +36,8 @@ var router = new VueRouter({
             component: require('./routers/office.vue')
         },
         {
-            path: '/service',
-            component: require('./routers/service.vue')
+            path: '/update',
+            component: require('./routers/update.vue')
         },
         {
             path: '/collect',

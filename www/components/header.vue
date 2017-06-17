@@ -18,7 +18,7 @@
                 <div class="nav clearfix">
                     <router-link to="/index" active-class="active">首页<div class="lion_nav_line"></div></router-link>
                     <router-link to="/office" active-class="active">办公空间<div class="lion_nav_line"></div></router-link>
-                    <router-link to="/service" active-class="active">升级服务<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/update" active-class="active">升级服务<div class="lion_nav_line"></div></router-link>
                     <router-link to="/collect" active-class="active">幼狮汇<div class="lion_nav_line"></div></router-link>
                     <!--<router-link to="/invest" active-class="active">投融资<div class="lion_nav_line"></div></router-link>-->
                     <router-link to="/about" active-class="active">关于我们<div class="lion_nav_line"></div></router-link>
