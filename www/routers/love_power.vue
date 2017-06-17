@@ -17,10 +17,10 @@
                 <div class="love_head_wrap">
                     <div class="love_head">
                         <h4>幼狮空间，传递爱的力量</h4>
-                        <div>
+                        <div class="author_wrap">
                             <span class="create_ori">原创</span>
                             <span class="author_msg">作者：幼狮空间</span>
-                            <span>发表于：2017-01-10</span>
+                            <span class="export_time">发表于：2017-01-10</span>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     <li>
                         <p class="love_tit">“母亲”一个伟大的称呼。一个你无论如何宣泄情绪都是那么包容你的人。
                             母亲十月怀胎，这期间的不易，她最能体会。他期盼着这个小生命的到来。</p>
-                        <img src="../resources/images/love_power/love01.jpg" alt="">
+                        <img class="mb20" src="../resources/images/love_power/love01.jpg" alt="">
                         <p class="love_tit">发达的医疗帮住母亲提前知道了宝宝的发育情况，任何结果都是母亲需要承受的。在所有的宝
                             宝中总有些不幸的宝宝出生，他们是顽强的战士，拼了命的想要来到这个世界。对于他们我们
                             是幸运的，我们要把我们的幸运和爱带给他们。</p>
