@@ -297,10 +297,8 @@
 
                                 <Form-item label="商圈" prop="trade_area" class="pop_list fr right_none">
                                     <Select v-model="formValidate.trade_area" placeholder="请选择商圈">
-                                        <Option v-for="item in trade_areaList"
-                                                :value="item.value"
-                                                :key="item">{{ item.label }}
-                                        </Option>
+  
+                                         <Option v-for="item in trade_areaList" :value="item.value" :key="item">{{ item.label }}</Option>
                                     </Select>
                                 </Form-item>
 
@@ -456,29 +454,25 @@
                     {
                         value: 'beijing',
                         label: '北京市'
-                    },
-                    {
-                        value: 'shanghai',
-                        label: '上海市'
-                    },
-                    {
-                        value: 'shenzhen',
-                        label: '深圳市'
                     }
                 ],
 
                 trade_areaList: [
                     {
-                        value: 'cbd',
-                        label: 'CBD商圈'
+                        value: '0',
+                        label: 'CBD'
                     },
                     {
-                        value: 'wagfujing',
-                        label: '王府井商圈'
+                        value: '1',
+                        label: '朝阳门'
                     },
                     {
-                        value: 'sanlitun',
-                        label: '三里屯商圈'
+                        value: '2',
+                        label: '大望路'
+                    },
+                    {
+                        value: '3',
+                        label: '三里屯'
                     }
                 ],
 
@@ -554,7 +548,7 @@
              ).then(function (response) {
                  var reslute = JSON.parse(response.bodyText);
                  if (reslute.success) {
-                       this.$Message.error('需求单提交成功!');
+                       this.$Message.success('需求单提交成功!');
                  } else {
                      this.$Message.error(reslute.message);
                  }
@@ -577,7 +571,7 @@
                   ).then(function (response) {
                       var reslute = JSON.parse(response.bodyText);
                       if (reslute.success) {
-                            this.$router.push({ path: 'login' })
+                          this.$Message.success('委托单提交成功!');
                       } else {
                           this.$Message.error(reslute.message);
                       }

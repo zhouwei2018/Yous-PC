@@ -207,9 +207,7 @@
                     }
                 ).then(function (response) {
                     var reslute = JSON.parse(response.data);
-                    if (reslute.success) {
-                        this.$route.router.go({name: "main"})
-                    } else {
+                    if (!reslute.success) {
                         this.$Message.error(reslute.message);
                     }
                 }, function (response) {
