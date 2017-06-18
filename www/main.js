@@ -36,8 +36,8 @@ var router = new VueRouter({
             component: require('./routers/office.vue')
         },
         {
-            path: '/service',
-            component: require('./routers/service.vue')
+            path: '/update',
+            component: require('./routers/update.vue')
         },
         {
             path: '/collect',
@@ -60,6 +60,10 @@ var router = new VueRouter({
             component: require('./routers/login.vue')
         },
         {
+            path: '/find_pass',
+            component: require('./routers/find_pass.vue')
+        },
+        {
             path: '/list',
             component: require('./routers/list.vue')
         },
@@ -74,6 +78,22 @@ var router = new VueRouter({
         {
             path: '/love',
             component: require('./routers/love_power.vue')
+        },
+        {
+            path: '/room_sale',
+            component: require('./routers/room_sale.vue')
+        },
+        {
+            path: '/sport',
+            component: require('./routers/sport.vue')
+        },
+        {
+            path: '/sport_pre',
+            component: require('./routers/sport_pre.vue')
+        },
+        {
+            path: '/annual_meeting',
+            component: require('./routers/annual_meeting.vue')
         },
         {
             path: '*',

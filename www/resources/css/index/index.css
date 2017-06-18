@@ -26,7 +26,6 @@
 /*index 业主委托亮蓝色*/
 /*深蓝色*/
 /*浅蓝色*/
-/*首页登录按钮背景蓝*/
 /*首页登录按钮border*/
 /*棕色*/
 /*deep棕色*/
@@ -120,7 +119,7 @@
   left: 0;
 }
 [index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area02 {
-  background-color: #4179ba;
+  background-color: #0f6fac;
   left: 25%;
 }
 [index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area03 {
@@ -421,7 +420,7 @@
 }
 [index_content] [response] .res_right ul li h4 {
   font-size: 24px;
-  color: #0d6daa;
+  color: #0f6fac;
   margin-bottom: 10px;
 }
 [index_content] [response] .res_right ul li h4 i {
