@@ -381,9 +381,11 @@
                                 </li>
                                 <li>
                                     <h4><i></i>幼狮空间，展现不一样的风采</h4>
-
-                                    <p class="clearfix">如果你爱父母，妻子孩子，就主动的多打电话，多陪陪他们，因为再不陪，父母真的就老去了，孩子就长大了！<a
-                                            href="javascript:;" class="look_detail fr">【查看详情】</a></p>
+                                    <p class="clearfix" style="text-indent: 1em">持该卡，您将享受以下福利：
+                                        1、此卡的面值金额，可用作抵扣房租使用
+                                        2、享有基础项免费服务，包括：协助陪同注册、代开发票、布局设计、灯具维修、
+                                        门窗门锁维修<router-link :to="{path:'/room_sale'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>>
+                                    </p>
 
                                 </li>
                             </ul>

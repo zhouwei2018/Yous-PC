@@ -28,7 +28,6 @@
 /*index 业主委托亮蓝色*/
 /*深蓝色*/
 /*浅蓝色*/
-/*首页登录按钮背景蓝*/
 /*首页登录按钮border*/
 /*棕色*/
 /*deep棕色*/
@@ -222,6 +221,9 @@ select {
 .none {
   display: none;
 }
+.cursor {
+  cursor: pointer;
+}
 .bg_white {
   background-color: #fff;
 }
@@ -306,6 +308,12 @@ select {
 .ma10 {
   margin-top: 10px !important;
 }
+.mr10 {
+  margin-right: 10px;
+}
+.mb {
+  margin-bottom: 10px;
+}
 .pt10,
 .ph10,
 .pa10 {
@@ -362,6 +370,9 @@ a {
 .text_pink_app {
   color: #ff5254 !important;
 }
+.bg_orange {
+  background-color: #fb7530 !important;
+}
 .fb {
   font-weight: 700 !important;
 }
@@ -370,5 +381,11 @@ a {
 }
 .text-blue {
   color: #476cba !important;
+}
+.w240 {
+  width: 240px !important;
+}
+.w280 {
+  width: 280px !important;
 }
 /*针对特殊网站样式end*/

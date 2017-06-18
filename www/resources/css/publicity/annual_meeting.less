@@ -1,0 +1,35 @@
+@import '../color';
+
+[annual_meeting] {
+  .meeting_content {
+    width: 665px;
+    margin: 30px auto 160px;
+    color: @bg_greatblack;
+    img{
+      margin-bottom: 10px;
+    }
+    p{
+      line-height: 30px;
+    }
+    h2{
+      font-size: @font16;
+      margin: 20px 0 10px;
+      font-weight: bold;
+    }
+    ul{
+      width:685px;
+      li{
+        float: left;
+        img{
+          width:330px;
+          height:220px;
+          margin-right: 10px;
+          &.cooperator{
+            width:665px;
+            height:358px;
+          }
+        }
+      }
+    }
+  }
+}

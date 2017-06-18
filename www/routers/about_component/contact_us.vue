@@ -1,5 +1,7 @@
-<style lang="less">
-
+<style lang="less" scoped>
+[contact_us]{
+    margin-bottom: 90px;
+}
 </style>
 
 <!--header start-->

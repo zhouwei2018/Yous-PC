@@ -122,7 +122,7 @@
                                 <div class="popItem">
                                     <span class="inp_icon phone"></span>
                                     <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
-                                    <TimerBtn ref="timerbtn0" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode0"
+                                    <TimerBtn ref="timerbtn0" class="btn btn-default pop_sendcode_btn bg_orange" v-on:run="sendCode0"
                                               style="width: 140px; height: 50px;"
                                               second="60"></TimerBtn>
                                 </div>
@@ -164,13 +164,11 @@
                                         <i class="pop_list_text">元/月</i>
                                     </div>
                                 </div>
-                                <textarea class="pop_textarea" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等">
-
-                    </textarea>
+                                <textarea class="pop_textarea" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等"></textarea>
 
                                 <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
 
-                                <input type="submit" class="pop_subbtn" value="确    认"
+                                <input type="submit" class="pop_subbtn bg_orange" value="确    认"
                                        @click="handleSubmit1('formInline1')">
                             </Form>
                         </div>
