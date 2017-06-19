@@ -16,7 +16,6 @@
 
         <!--list  start-->
         <div detail>
-
             <!--搜索 start-->
             <div class="breadcrumb-search clearfix">
                 <ul class="breadcrumb fl clearfix">
@@ -87,7 +86,6 @@
 
             <!--img detail-->
             <div class="common-info clearfix">
-
                 <!--轮播图 start-->
                 <div class="carousel-wrapper">
                     <div class="carousel-box" id="carousel_building">
@@ -580,7 +578,7 @@
             <!--building 信息分类end-->
 
             <!--分类信息-->
-            <div class="category-message-box mt35 clearfix mb40">
+            <!--<div class="category-message-box mt35 clearfix mb40">
                 <div class="category-item-title-first mb15 pt05">
                     <h2 class="fl"><i class="detail-icon supporting"></i>望京SOHO周边配套</h2>
                 </div>
@@ -611,7 +609,9 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>-->
+            <!--地图-->
+            <map-part></map-part>
 
         </div>
 
@@ -624,12 +624,12 @@
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
+    import mapPart from '../components/map-part.vue';
 
     import '../resources/plugin/pic_tab/pic_tab.js';
 
     export default {
-        components: {header1, footer1},
-
+         components: {header1, footer1,mapPart},
         data(){
             return {}
         },
@@ -657,15 +657,6 @@
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
             });
-
-            // 地图
-            var map = new BMap.Map("mapContainer");    // 创建Map实例
-            map.centerAndZoom(new BMap.Point(116.316451, 39.989617), 15);  // 初始化地图,设置中心点坐标和地图级别
-            map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
-            map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-            map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-
-
         },
         methods: {}
     }
