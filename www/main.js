@@ -10,9 +10,20 @@ import iView from '../src/index';
 // import locale from '../src/locale/lang/en-US';
 import locale from '../src/locale/lang/zh-CN';
 
+//懒加载lazyload
+import VueLazyload from 'vue-lazyload';
+
+
 Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(iView, {locale});
+
+//懒加载lazyload use
+Vue.use(VueLazyload, {
+    error: 'http://116.62.71.76/7b8ab774d94d7a1ded741501dd5fcfbf.png',
+    loading: 'http://116.62.71.76/7b8ab774d94d7a1ded741501dd5fcfbf.png',
+    try: 3 // default 1
+})
 
 //const变量
 Vue.prototype.$api = "http://116.62.71.76:8001/api/GetServiceApiResult" //api地址
