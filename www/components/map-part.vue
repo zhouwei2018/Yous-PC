@@ -8,7 +8,7 @@
                     <li v-for="(item, index) in serviceItems" @click="searchHandler(index, item.dis)" :data-code="item.code" :data-key="item.dis" class="map-type-item" :class="{on:item.isActive }"><i></i>{{ item.title }}</li>
                 </ul>
                 <ul class="result-ul">
-                    <li class="result-item" v-for="(item, index) in mapData.resultArray"><i>{{ index+1 }}</i><p>{{ item.address }}</p><span>{{ item.distances }}</span></li>
+                    <li class="result-item" v-for="(item, index) in mapData.results"><i>{{ index+1 }}</i><p>{{ item.title }}{{item.content}}</p><span>{{ item.distance }}</span></li>
                 </ul>
             </div>
         </div>
@@ -16,19 +16,23 @@
     </div>
 </template>
 <script>
+    import '../resources/plugin/infoBox.min.js';
     export default {
-        name: 'Map',
+        name: 'Ymap',
         data(){
             return {
                 mapData:{
-                    map:null,
-                    localSearch:null,
-                    pointGT:null,
+                    markerico:null,
+                    markerico2:null,
+                    local:null,
+                    map: null,
                     point:null,
-                    resultArray :[],
-                    markersArrey:[]
+                    circle: null,
+                    defaultcenterdpoint: null,
+                    results: [],
+                    markers:[],
+                    currentinfobox: null,
                 },
-
                 buildName:"望京SOHO周边配套",
                 serviceItems:[
                     {code:"jt", dis:"地铁,公交,停车场,加油站", title:"交通", isActive:1},
@@ -37,152 +41,143 @@
                     {code:"js", dis:"体育场馆,极限运动场所,健身中心", title:"健身", isActive:0},
                     {code:"jr", dis:"银行,ATM,投资理财", title:"金融", active:0},
                 ],
-            }
+            };
         },
         mounted: function () {
-               this.getPosition();
+               this.init();
         },
         methods: {
-             getPosition:function(){
-                var point=null,pointGT={lng:"",lat:""}, map =null, app_=this;
-                var geolocation = new BMap.Geolocation();
+            init:function(){
+                var geolocation = new BMap.Geolocation(), this_=this;
                 geolocation.getCurrentPosition(function(r){
                     if(this.getStatus() == BMAP_STATUS_SUCCESS){
-                        pointGT['lng'] = r.point.lng;
-                        pointGT['lat'] = r.point.lat;
-                        point =  new BMap.Point( pointGT['lng'],pointGT['lat']);
-                        app_.pointGT = pointGT;
-                        app_.point = point;
-                        app_.initMap();
+                        this_.initMap(r.point.lng,r.point.lat, 15, "您在此处");
                     }
                     else {
-                        alert('failed'+this.getStatus());
+                        alert('请开启浏览器定位'+this.getStatus());
                     }
-                },{enableHighAccuracy: true})
-                //状态码
-                //BMAP_STATUS_SUCCESS	检索成功。对应数值“0”。
-                //BMAP_STATUS_CITY_LIST	城市列表。对应数值“1”。
-                //BMAP_STATUS_UNKNOWN_LOCATION	位置结果未知。对应数值“2”。
-                //BMAP_STATUS_UNKNOWN_ROUTE	导航结果未知。对应数值“3”。
-                //BMAP_STATUS_SERVICE_UNAVAILABLE	服务不可用。对应数值“7”。(自 1.1 新增)
-                //BMAP_STATUS_TIMEOUT	超时。对应数值“8”。(自 1.1 新增)
+                },{enableHighAccuracy: true});
             },
-             initMap:function () {
-                 var app_=this;
-                this.map=new BMap.Map("mapId");
-                 console.log("ttt1")
-                this.map.centerAndZoom(this.point, 13);
-                var myIcon = new BMap.Icon('http://img2.static.uban.com/www/map/images/local.png', new BMap.Size(24, 32), {anchor: new BMap.Size(9, 44), imageSize: new BMap.Size(24,32)});
-                var markerico2=new BMap.Icon('http://img2.static.uban.com/www/map/images/marker2.png', new BMap.Size(24, 32),{anchor: new BMap.Size(12, 38), imageSize: new BMap.Size(24,32)});
-                var mk = new BMap.Marker(this.point, {icon: myIcon});
-                this.map.addOverlay(mk);
-                //this.map.panTo(this.point);
+            initMap: function(x, y, z, title){
+                var map = {},this_=this, point={}, markerico=null,markerico2=null;
+                markerico =new BMap.Icon('http://img2.static.uban.com/www/map/images/local.png', new BMap.Size(24, 32), {anchor: new BMap.Size(9, 44), imageSize: new BMap.Size(24,32)});
+                markerico2 = new BMap.Icon('http://img2.static.uban.com/www/map/images/marker2.png', new BMap.Size(24, 32),{anchor: new BMap.Size(12, 38), imageSize: new BMap.Size(24,32)});
+                this.mapData.markerico = markerico;
+                this.mapData.markerico2 = markerico2;
+                map = new BMap.Map('mapId', {enableMapClick: false});
+                point = new BMap.Point(x, y);
+                this.mapData.point = point;
+                map.centerAndZoom(point, z);
+                this.mapData.map = map;
+                this.addcontrol();	//添加平移缩放控件
+                map.panTo({lng:x,lat:y});
+                map.enableScrollWheelZoom();// 启用滚轮放大缩小
+                map.setMinZoom(11);
+                map.setMaxZoom(18);
 
-                 var circle = new BMap.Circle(this.point,1000,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});
-                 var options = {
-                    renderOptions: {
-                        map: this.map
-                    },
-                    onSearchComplete: function(results,a,b) {
-                        var resultData = [];
-                        if (app_.local.getStatus() == BMAP_STATUS_SUCCESS){
-                            var s = [];
-                            for (var i = 0; i < results.getCurrentNumPois(); i ++){
-                                 var temp = results.getPoi(i);
-                                 var distances = ( app_.map.getDistance(app_.point,results.getPoi(i).point).toFixed(0)+'米')
-                                 resultData.push({x:temp.point.lng,y:temp.point.lat,title:temp.title,address:temp.address,distances:distances});
-                            }
-                            app_.mapData.resultArray = resultData;
-                            //先清除
-                            clearmarkers(app_);
-                            //再添加
-                            addmarkers(app_);
-                        }
-                    }
-                };
-
-                 this.map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-                 this.map.addOverlay(circle);
-                 //默认搜索
-                 app_.local = new BMap.LocalSearch(this.map, options);
-                 this.searchHandler(0,"交通");
-
-                 function addmarkers (enr){
-                     for (var i = 0; i < enr.mapData.resultArray.length; i++) {
-                         var x =  enr.mapData.resultArray[i].x,
-                             y =  enr.mapData.resultArray[i].y;
-                         var p = new BMap.Point(x, y);
-                         var marker = getmarker(p, enr.mapData.resultArray[i],i);
-                         enr.map.addOverlay(marker);
-                         enr.mapData.markersArrey.push(marker);
-                         addclickhandler(marker, enr);
-                     }
-                 }
-
-                 function addclickhandler (marker,enr) {
-                     marker.addEventListener("mouseover", function (e) {
-                             var p = e.target;
-                            /* var infobox = new BMapLib.InfoBox(enr.map, content, {
-                                 closeIconUrl: 'http://img2.static.uban.com/www/images/map/close.png',
-                                 closeIconMargin: '20px 16px auto auto'
-                             });
-                             infobox.addEventListener("open", function (e) {
-                                 if (window.Map.currentinfobox != null) {
-                                     window.Map.currentinfobox.close();
-                                 }
-                                 window.Map.currentinfobox = e.target;
-                             });
-                             infobox.addEventListener("close", function (e) {
-                                 window.Map.currentinfobox = null;
-                             });
-                             infobox.enableAutoPan();
-                             infobox.open(marker);*/
-                         }
-                     );
-                 }
-
-
-                 function getmarker(pt, data,index){		// 创建标注
-                     var marker = new BMap.Marker(pt, {icon: markerico2});
-                     marker.setIcon(markerico2);
-                     marker.title = data.title;
-                     var label = new BMap.Label(index+1,{offset:new BMap.Size(0,1)});
-                     label.setStyle({
-                         backgroundColor: 'transparent',
-                         color: '#fff',
-                         border: 'none',
-                         width: '21px',
-                         height: '23px',
-                         lineHeight:'23px',
-                         textAlign: 'center'
-                     });
-                     marker.setLabel(label);
-                     return marker;
-                 }
-
-                 function clearmarkers (enr){
-                     for (var i = 0; i <  enr.mapData.markersArrey.length; i++){
-                         enr.map.removeOverlay( enr.mapData.markersArrey[i]);
-                     }
-                     enr.mapData.markersArrey = [];
-                 }
-
-                 function openInfo(content,e,enr){
-                     var p = e.target;
-                     var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
-                     var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
-                     enr.map.openInfoWindow(infoWindow,point); //开启信息窗口
-                 }
+                var pt = new BMap.Point(x,y);
+                this.defaultcenterdpoint = pt;
+                var markerCenter = this.getmarker(this,pt, {'x': x, 'y': y, 'title': title, ico: 1});
+                var circle = new BMap.Circle(point,1000,{fillColor:'blue', strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});
+                map.addOverlay(circle);
+                map.addOverlay(markerCenter);
+                this.addclickhandler(markerCenter);
+                this.searchHandler(0);
 
             },
-             searchHandler:function(index,dis){
+            addcontrol: function(){		// 添加平移缩放控件
+                var navigationControl = new BMap.NavigationControl({
+                    // 设置位置
+                    anchor: BMAP_ANCHOR_TOP_LEFT,
+                    // 设置地图类型
+                    type: BMAP_NAVIGATION_CONTROL_LARGE,
+                    // 偏移量
+                    offset: new BMap.Size(18,18)
+                });
+                this.mapData.map.addControl(navigationControl);
+            },
+            addmarkers: function(data,enr){ // 添加
+                for (var i = 0; i < data.length; i++) {
+                    var x = data[i].x,
+                        y = data[i].y;
+                    var pt = new BMap.Point(x, y);
+                    var marker = enr.getmarker(enr,pt, data[i],i);
+                    enr.mapData.map.addOverlay(marker);
+                    enr.addclickhandler(marker);
+                    enr.mapData.markers.push(marker);
+                }
+            },
+            getmarker: function(enr,pt, data,index){
+                var marker= {};
+                if(data.ico){
+                    marker = new BMap.Marker(pt,{icon:enr.mapData.markerico});
+                }else {
+                    marker = new BMap.Marker(pt,{icon:enr.mapData.markerico2});
+                    var label = new BMap.Label(index+1,{offset:new BMap.Size(0,1)});
+                    label.setStyle({
+                        backgroundColor: 'transparent',
+                        color: '#fff',
+                        border: 'none',
+                        width: '21px',
+                        height: '23px',
+                        lineHeight:'23px',
+                        textAlign: 'center'
+                    });
+                    marker.setLabel(label);
+                }
+                marker.title= data['title'];
+                marker.address= data['content'];
+                return marker;
+            },
+            addclickhandler: function (marker) {
+                var this_= this;
+                marker.addEventListener("mouseover", function (e) {
+                    var opts = {
+                        width : 200,     // 信息窗口宽度
+                        height: 100,     // 信息窗口高度
+                        title :marker['title'] , // 信息窗口标题
+                        enableMessage:true,//设置允许信息窗发送短息
+                        message:''
+                    }
+                    var infoWindow = new BMap.InfoWindow(marker['address'], opts);
+                    var p = marker.getPosition();
+                    var point = new BMap.Point(p['lng'],p['lat']);
+                    this_.mapData.map.openInfoWindow(infoWindow,point); //开启信息窗口
+                    }
+                );
+            },
+            clearmarkers: function(enr){
+                for (var i = 0; i < enr.mapData.markers.length; i++){
+                    enr.mapData.map.removeOverlay( enr.mapData.markers[i]);
+                }
+                enr.mapData.markers = [];
+            },
+            searchHandler:function(index){
+                var this_ = this;
                 for(var  i=0,len=this.serviceItems.length;i<len;i++){
                     this.serviceItems[i].isActive=0;
                 }
                 this.serviceItems[index].isActive=1;
-                 console.log(this.serviceItems[index].title)
-                this.local.searchNearby(this.serviceItems[index].title, this.point,1000);
+                if (this.mapData.local != null) {
+                    this.mapData.local.clearResults();
+                } else {
+                    this.mapData.local = new BMap.LocalSearch(this.mapData.map, {});
+                }
 
+                this.mapData.local.searchNearby(this.serviceItems[index].title, this.mapData.point, 1000);
+                this.mapData.local.setSearchCompleteCallback(function (r) {
+                    var s = [];
+                    for (var i = 0; i < r.getCurrentNumPois(); i++) {
+                        var temp = r.getPoi(i);
+                        var distances = ( this_.mapData.map.getDistance(this_.mapData.point, r.getPoi(i).point).toFixed(0) + '米');
+                        s.push({
+                            'title': temp.title, 'content': temp.address, 'x': temp.point.lng, 'y': temp.point.lat, 'distance': distances
+                        });
+                    }
+                    this_.mapData.results = s;
+                    this_.clearmarkers(this_);
+                    this_.addmarkers(s,this_);
+                });
             }
         }
     }
@@ -251,7 +246,7 @@
                    }
                    li:nth-child(1){
                        i{
-                           background-position: -27px -117px;
+                           background-position: -27px -148px;
                        }
                    }
                    li.on:nth-child(1){
@@ -261,7 +256,7 @@
                    }
                    li:nth-child(2){
                        i{
-                           background-position: -228px -116px;
+                           background-position: -228px -147px;
                        }
                    }
                    li.on:nth-child(2){
