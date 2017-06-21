@@ -1,9 +1,19 @@
 <style scoped lang="less">
-    @import "../resources/css/popup/popup.less"; /*弹窗*/
+    @import "../resources/css/popup/popup.less";
+    /*弹窗*/
     @import "../resources/css/office/office.less";
 
-</style>
-<style scoped>
+    img[lazy=loading] {
+        
+    }
+
+    img[lazy=error] {
+        
+    }
+
+    img[lazy=loaded] {
+        
+    }
 
 </style>
 
@@ -73,7 +83,8 @@
                 <div class="center_list clearfix">
                     <ul class="fl center_left_ul">
                         <li class="clearfix" v-for='item in areaItem.areaHouse'>
-                            <img class="fl" src="../resources/images/office/tradeArea01.png" alt=""/>
+                            <!--<img class="fl" src="../resources/images/office/tradeArea01.png" alt=""/>-->
+                            <img class="fl" v-lazy="item.imgUrl"/>
                             <div style="height:200px;width:100%;position:relative">
                                 <div class="fl center_detail">
                                     <h3>{{item.name}}</h3>
@@ -121,14 +132,17 @@
 
                                 <div class="popItem">
                                     <span class="inp_icon phone"></span>
-                                    <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码">
-                                    <TimerBtn ref="timerbtn0" class="btn btn-default pop_sendcode_btn bg_orange" v-on:run="sendCode0"
+                                    <input type="num" maxlength="11" required="" value="" name=""
+                                           placeholder="请输入您的手机号码">
+                                    <TimerBtn ref="timerbtn0" class="btn btn-default pop_sendcode_btn bg_orange"
+                                              v-on:run="sendCode0"
                                               style="width: 140px; height: 50px;"
                                               second="60"></TimerBtn>
                                 </div>
                                 <div class="popItem">
                                     <span class="inp_icon password"></span>
-                                    <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
+                                    <input type="num" value="" maxlength="6" required="" name=""
+                                           placeholder="请输入您收到的验证码">
                                 </div>
                                 <p class="help_tips">*输入您的手机号码,以便幼狮提供更高效的服务</p>
 
@@ -243,22 +257,83 @@
                         "name": "南CBD核心",
                         "iscur": true,
                         "areaHouse": [
-                            {"name": "华腾北搪商务大厦", "address": "朝阳区劲松桥东", "labels": ["名企开发商"], "price": "4.5"},
-                            {"name": "富力双子座", "address": "北京市朝阳区东三环中路辅路55号", "labels": ["知名物业", "5A写字楼"], "price": "7"},
-                            {"name": "苹果社区", "address": "百子湾路32号", "labels": ["知名物业", "联合办公"], "price": "3.7"},
-                            {"name": "首城国际", "address": "广渠路36号院5号楼", "labels": ["互联网", "5A写字楼"], "price": "3.4"},
-                            {"name": "新世界中心", "address": "崇门外大街3号", "labels": ["地铁周边", "地标建筑"], "price": "6.8"},
-                            {"name": "新城文化", "address": "崇文崇外大街11号", "labels": ["地铁周边", "联合办公"], "price": "6"},
+                            {
+                                "name": "华腾北搪商务大厦",
+                                "address": "朝阳区劲松桥东",
+                                "labels": ["名企开发商"],
+                                "price": "4.5",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "富力双子座",
+                                "address": "北京市朝阳区东三环中路辅路55号",
+                                "labels": ["知名物业", "5A写字楼"],
+                                "price": "7",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "苹果社区",
+                                "address": "百子湾路32号",
+                                "labels": ["知名物业", "联合办公"],
+                                "price": "3.7",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "首城国际",
+                                "address": "广渠路36号院5号楼",
+                                "labels": ["互联网", "5A写字楼"],
+                                "price": "3.4",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "新世界中心",
+                                "address": "崇门外大街3号",
+                                "labels": ["地铁周边", "地标建筑"],
+                                "price": "6.8",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "新城文化",
+                                "address": "崇文崇外大街11号",
+                                "labels": ["地铁周边", "联合办公"],
+                                "price": "6",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
                             {
                                 "name": "搜宝崇文大厦",
                                 "address": "北京市东城区磁器口东北角崇文门新世界旁",
                                 "labels": ["地铁周边", "地标建筑"],
-                                "price": "5.5"
+                                "price": "5.5",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
                             },
-                            {"name": "领行国际中心", "address": "崇文区广渠门南小街1号", "labels": ["地铁周边"], "price": "2.9"},
-                            {"name": "冠城名敦道", "address": "广渠门外南小街", "labels": ["地铁周边", "纳什空间", "联合办公"], "price": "4.5"},
-                            {"name": "新裕商务大厦", "address": "广渠门内大街90", "labels": ["联合办公"], "price": "5.5"},
-                            {"name": "便宜坊大厦", "address": "东城区崇文门外大街16号", "labels": ["联合办公"], "price": "6.8"}
+                            {
+                                "name": "领行国际中心",
+                                "address": "崇文区广渠门南小街1号",
+                                "labels": ["地铁周边"],
+                                "price": "2.9",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "冠城名敦道",
+                                "address": "广渠门外南小街",
+                                "labels": ["地铁周边", "纳什空间", "联合办公"],
+                                "price": "4.5",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "新裕商务大厦",
+                                "address": "广渠门内大街90",
+                                "labels": ["联合办公"],
+                                "price": "5.5",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            },
+                            {
+                                "name": "便宜坊大厦",
+                                "address": "东城区崇文门外大街16号",
+                                "labels": ["联合办公"],
+                                "price": "6.8",
+                                "imgUrl": "http://116.62.71.76/2e1f18bbe48351f684e0c641e6db2963.jpg"
+                            }
                         ]
                     },
                     {
@@ -284,8 +359,7 @@
                             {"name": "佳汇中心", "address": "朝阳门外吉庆里14号楼", "labels": ["地标建筑", "5A写字楼"], "price": "5.6"},
                             {"name": "蓝筹名座", "address": "吉祥里10", "labels": ["名企开发商"], "price": "4.5"}
                         ]
-                    }
-                    ,
+                    },
                     {
                         "areaId": 2,
                         "category": "大望路",
@@ -363,7 +437,7 @@
 
                 ],
 
-                office_scroll:true  //offce页面滚动boolean
+                office_scroll: true  //offce页面滚动boolean
             }
         },
         methods: {
@@ -386,13 +460,13 @@
         },
 
         mounted: function () {
-            var _this=this;
+            var _this = this;
             this.setAreaItem(0);
 
             //scroll
-            $(window).scroll(function(){
-                if(_this.office_scroll){
-                    var scroll_top=$(window).scrollTop();
+            $(window).scroll(function () {
+                if (_this.office_scroll) {
+                    var scroll_top = $(window).scrollTop();
                     var standard_line = $('.center_left_ul').offset().top;
                     var standard_line_wrap = $('.center_left_ul').height();
                     var fixed_self = $('#trade_man_fix').height();
@@ -407,7 +481,7 @@
         },
 
         destroyed(){
-            this.office_scroll=false;
+            this.office_scroll = false;
         }
     }
 </script>
