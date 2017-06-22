@@ -1,6 +1,5 @@
 <template>
     <div map-part>
-        <h1 class="build-name">{{buildName}}</h1>
         <div class="map-out clear">
             <div id="mapId"></div>
             <div class="search-part">
@@ -33,7 +32,6 @@
                     markers:[],
                     currentinfobox: null,
                 },
-                buildName:"望京SOHO周边配套",
                 serviceItems:[
                     {code:"jt", dis:"地铁,公交,停车场,加油站", title:"交通", isActive:1},
                     {code:"cy", dis:"中餐,西餐,快餐,咖啡厅,茶座", title:"餐饮", isActive:0},

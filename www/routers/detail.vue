@@ -101,7 +101,7 @@
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
-//    import mapPart from '../components/map-part.vue';
+    //    import mapPart from '../components/map-part.vue';
 
     //引入五个tab组件 start
 
@@ -116,43 +116,43 @@
     //import '../resources/plugin/pic_tab/pic_tab.js';
 
     export default {
-         components: {
-             header1,
-             footer1,
+        components: {
+            header1,
+            footer1,
 //             mapPart,
 
-             //五大组件tab
-             build_index,
-             build_rent,
-             surrounds,
-             build_det,
-             price_history
-         },
+            //五大组件tab
+            build_index,
+            build_rent,
+            surrounds,
+            build_det,
+            price_history
+        },
         data(){
             return {
                 //五大组件tab切换
-                active:0,  //初始化tab index
-                currentView:'build_index', //默认展示楼盘首页
-                tabs:[
+                active: 0,  //初始化tab index
+                currentView: 'build_index', //默认展示楼盘首页
+                tabs: [
                     {
-                        type:'楼盘首页', //选项卡名字
-                        view:'build_index'  //对应展示组件内容
+                        type: '楼盘首页', //选项卡名字
+                        view: 'build_index'  //对应展示组件内容
                     },
                     {
-                        type:'待租房源',
-                        view:'build_rent'
+                        type: '待租房源',
+                        view: 'build_rent'
                     },
                     {
-                        type:'周边配套',
-                        view:'surrounds'
+                        type: '周边配套',
+                        view: 'surrounds'
                     },
                     {
-                        type:'楼盘详情',
-                        view:'build_det'
+                        type: '楼盘详情',
+                        view: 'build_det'
                     },
                     {
-                        type:'历史价格',
-                        view:'price_history'
+                        type: '历史价格',
+                        view: 'price_history'
                     }
 
                 ]
@@ -190,6 +190,13 @@
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
             });
+        },
+
+        created(){
+            document.body.style.backgroundColor = "#fff";
+        },
+        beforeDestroy(){
+            document.body.style.backgroundColor = "#f5f5f5";
         }
 
     }

@@ -53,6 +53,7 @@
 /*用于正文标题，重要文字信息*/
 /*用于补充说明文字、次要文字*/
 [detail] {
+  padding-bottom: 40px;
   /*common css start*/
   /*common css end*/
   /* 轮播 */
