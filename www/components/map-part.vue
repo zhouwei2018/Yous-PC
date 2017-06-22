@@ -122,8 +122,7 @@
                  function addclickhandler (marker,enr) {
                      marker.addEventListener("mouseover", function (e) {
                              var p = e.target;
-                             content = self.getinfoboxhtml(marker.title);
-                             var infobox = new BMapLib.InfoBox(enr.map, content, {
+                            /* var infobox = new BMapLib.InfoBox(enr.map, content, {
                                  closeIconUrl: 'http://img2.static.uban.com/www/images/map/close.png',
                                  closeIconMargin: '20px 16px auto auto'
                              });
@@ -137,7 +136,7 @@
                                  window.Map.currentinfobox = null;
                              });
                              infobox.enableAutoPan();
-                             infobox.open(marker);
+                             infobox.open(marker);*/
                          }
                      );
                  }
