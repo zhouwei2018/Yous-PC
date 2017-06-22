@@ -20,8 +20,8 @@ Vue.use(iView, {locale});
 
 //懒加载lazyload use
 Vue.use(VueLazyload, {
-    error: 'http://116.62.71.76/7b8ab774d94d7a1ded741501dd5fcfbf.png',
-    loading: 'http://116.62.71.76/7b8ab774d94d7a1ded741501dd5fcfbf.png',
+    error: 'http://www.atrip.com/resources/images/hotelDetailerrorpic.png',
+    loading: 'http://www.atrip.com/resources/images/hotelDetailerrorpic.png',
     try: 3 // default 1
 })
 

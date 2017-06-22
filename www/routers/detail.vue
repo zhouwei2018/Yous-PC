@@ -105,11 +105,11 @@
 
     //引入五个tab组件 start
 
-    import build_index from './office_component/build_index.vue';
-    import build_rent from './office_component/build_rent.vue';
-    import surrounds from './office_component/surrounds.vue';
-    import build_det from './office_component/build_det.vue';
-    import price_history from './office_component/price_history.vue';
+    import build_index from './detail_component/build_index.vue';
+    import build_rent from './detail_component/build_rent.vue';
+    import surrounds from './detail_component/surrounds.vue';
+    import build_det from './detail_component/build_det.vue';
+    import price_history from './detail_component/price_history.vue';
 
     //引入五个tab组件 end
 
