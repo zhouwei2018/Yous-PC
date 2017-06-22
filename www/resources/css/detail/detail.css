@@ -615,6 +615,19 @@
 [detail] .building-information table td span {
   color: #000017;
 }
+[detail] .building-information hr {
+  border-color: #e5e5e6;
+}
+[detail] .building-information .message {
+  line-height: 26px;
+}
+[detail] .building-information .message > p {
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+}
 [detail] .category-message-box {
   position: relative;
   width: 1200px;
@@ -635,6 +648,9 @@
 }
 [detail] .category-item-title-first .detail-icon.supporting {
   background-position: -106px -220px;
+}
+[detail] .category-item-title-first .detail-icon.introduce {
+  background-position: -27px -220px;
 }
 [detail] .map-container {
   float: left;

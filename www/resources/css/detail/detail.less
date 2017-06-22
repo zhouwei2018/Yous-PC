@@ -626,6 +626,19 @@
         }
       }
     }
+    hr{
+      border-color: @bdc_bot_lightline;
+    }
+    .message {
+      line-height: 26px;
+      > p {
+        margin-bottom: 25px;
+        letter-spacing: -0.5px;
+        text-align: justify;
+        -ms-text-justify: inter-ideograph;
+        text-justify: inter-ideograph;
+      }
+    }
   }
 
   //周边配套
@@ -648,6 +661,9 @@
       margin-right: 10px;
       &.supporting {
         background-position: -106px -220px;
+      }
+      &.introduce {
+        background-position: -27px -220px;
       }
     }
   }

@@ -248,6 +248,16 @@ select {
 .ma15 {
   margin-right: 15px !important;
 }
+.ml10,
+.mv10,
+.ma10 {
+  margin-left: 10px !important;
+}
+.mb10,
+.mh10,
+.ma10 {
+  margin-bottom: 10px !important;
+}
 .ml15,
 .mv15,
 .ma15 {
@@ -273,6 +283,11 @@ select {
 .ma25 {
   margin-top: 25px !important;
 }
+.ml20,
+.mv20,
+.ma20 {
+  margin-left: 20px !important;
+}
 .ml25,
 .mv25,
 .ma25 {
@@ -287,6 +302,11 @@ select {
 .mh0,
 .ma0 {
   margin-bottom: 0px !important;
+}
+.mt30,
+.mh30,
+.ma30 {
+  margin-top: 30px !important;
 }
 .mt35,
 .mh35,
@@ -361,6 +381,9 @@ a {
 .font12 {
   font-size: 12px;
 }
+.font16 {
+  font-size: 16px !important;
+}
 .font20 {
   font-size: 20px !important;
 }
@@ -387,5 +410,8 @@ a {
 }
 .w280 {
   width: 280px !important;
+}
+.text-gray6 {
+  color: #666 !important;
 }
 /*针对特殊网站样式end*/
