@@ -25,7 +25,8 @@
                     localSearch:null,
                     pointGT:null,
                     point:null,
-                    resultArray :[]
+                    resultArray :[],
+                    markersArrey:[]
                 },
 
                 buildName:"望京SOHO周边配套",
@@ -89,16 +90,13 @@
                             for (var i = 0; i < results.getCurrentNumPois(); i ++){
                                  var temp = results.getPoi(i);
                                  var distances = ( app_.map.getDistance(app_.point,results.getPoi(i).point).toFixed(0)+'米')
-                                 resultData.push({lng:temp.point.lng,lat:temp.point.lat,title:temp.title,address:temp.address,distances:distances})
+                                 resultData.push({x:temp.point.lng,y:temp.point.lat,title:temp.title,address:temp.address,distances:distances});
                             }
                             app_.mapData.resultArray = resultData;
-
-                            help(app_,resultData)
-                            addInfoBox(app_,resultData)
-                            //清除所有标记
-                            app_.map.clearOverlays();
-                            mk.show();
-                            circle.show();
+                            //先清除
+                            clearmarkers(app_);
+                            //再添加
+                            addmarkers(app_);
                         }
                     }
                 };
@@ -109,34 +107,67 @@
                  app_.local = new BMap.LocalSearch(this.map, options);
                  this.searchHandler(0,"交通");
 
-                 function addInfoBox(enr, data_info){
-                     for(var i=0;i<data_info.length;i++){
-                         var marker = new BMap.Marker(new BMap.Point(data_info['lng'],data_info['lat']),{icon: markerico2});  // 创建标注
-                         var content = data_info['title'];
-                         enr.map.addOverlay(marker);               // 将标注添加到地图中
-                         addClickHandler(content,marker);
+                 function addmarkers (enr){
+                     for (var i = 0; i < enr.mapData.resultArray.length; i++) {
+                         var x =  enr.mapData.resultArray[i].x,
+                             y =  enr.mapData.resultArray[i].y;
+                         var p = new BMap.Point(x, y);
+                         var marker = getmarker(p, enr.mapData.resultArray[i],i);
+                         enr.map.addOverlay(marker);
+                         enr.mapData.markersArrey.push(marker);
+                         addclickhandler(marker, enr);
                      }
-
                  }
-                 function help(enr,data_info){
-                    var opts = {
-                        width : 250,     // 信息窗口宽度
-                        height: 80,     // 信息窗口高度
-                        title : "信息窗口" , // 信息窗口标题
-                        enableMessage:true//设置允许信息窗发送短息
-                    };
-                    for(var i=0;i<data_info.length;i++){
-                        var marker = new BMap.Marker(new BMap.Point(data_info['lng'],data_info['lat']),{icon: markerico2});  // 创建标注
-                        var content = data_info['title'];
-                        enr.map.addOverlay(marker);               // 将标注添加到地图中
-                        addClickHandler(content,marker,enr);
-                    }
-                }
-                 function addClickHandler(content,marker,enr){
-                     marker.addEventListener("click",function(e){
-                         openInfo(content,e,enr)}
+
+                 function addclickhandler (marker,enr) {
+                     marker.addEventListener("mouseover", function (e) {
+                             var p = e.target;
+                             content = self.getinfoboxhtml(marker.title);
+                             var infobox = new BMapLib.InfoBox(enr.map, content, {
+                                 closeIconUrl: 'http://img2.static.uban.com/www/images/map/close.png',
+                                 closeIconMargin: '20px 16px auto auto'
+                             });
+                             infobox.addEventListener("open", function (e) {
+                                 if (window.Map.currentinfobox != null) {
+                                     window.Map.currentinfobox.close();
+                                 }
+                                 window.Map.currentinfobox = e.target;
+                             });
+                             infobox.addEventListener("close", function (e) {
+                                 window.Map.currentinfobox = null;
+                             });
+                             infobox.enableAutoPan();
+                             infobox.open(marker);
+                         }
                      );
                  }
+
+
+                 function getmarker(pt, data,index){		// 创建标注
+                     var marker = new BMap.Marker(pt, {icon: markerico2});
+                     marker.setIcon(markerico2);
+                     marker.title = data.title;
+                     var label = new BMap.Label(index+1,{offset:new BMap.Size(0,1)});
+                     label.setStyle({
+                         backgroundColor: 'transparent',
+                         color: '#fff',
+                         border: 'none',
+                         width: '21px',
+                         height: '23px',
+                         lineHeight:'23px',
+                         textAlign: 'center'
+                     });
+                     marker.setLabel(label);
+                     return marker;
+                 }
+
+                 function clearmarkers (enr){
+                     for (var i = 0; i <  enr.mapData.markersArrey.length; i++){
+                         enr.map.removeOverlay( enr.mapData.markersArrey[i]);
+                     }
+                     enr.mapData.markersArrey = [];
+                 }
+
                  function openInfo(content,e,enr){
                      var p = e.target;
                      var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
