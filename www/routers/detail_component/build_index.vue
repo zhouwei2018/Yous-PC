@@ -500,11 +500,8 @@
 
     <!--周边配套信息-->
     <div class="category-message-box clearfix ">
-        <div class="category-item-title-first mb15 pt05">
-            <h2 class="fl"><i class="detail-icon supporting"></i>望京SOHO周边配套</h2>
-        </div>
         <!--地图-->
-        <map-part></map-part>
+        <map-part  :building-name="buildingName"></map-part>
     </div>
 
 </div>
@@ -517,6 +514,11 @@
     import '../../resources/plugin/pic_tab/pic_tab.js';
 
     export default {
+        data(){
+             return {
+                 buildingName:'望京SOHO周边配套'
+             }
+        },
         components:{
             mapPart
         },
