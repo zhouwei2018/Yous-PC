@@ -20,10 +20,13 @@
 </template>
 <script>
     import '../resources/plugin/infoBox.min.js';
+    import axios from 'axios';
+    import qs from 'qs';
     export default {
         name: 'Ymap',
         data(){
             return {
+                remoteData: {},
                 mapData:{
                     markerico:null,
                     markerico2:null,
@@ -49,10 +52,147 @@
                 ],
             };
         },
+        created() {
+            var data = qs.stringify({
+                currentPage: "0",
+                pageSize: "10",
+                type: "1",
+            });
+
+            axios.post('/sockjs-node/info?id12345',data).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            });
+
+             /*  第一种调用方式
+               // 执行一个GET request 直接传参式
+            axios.get('/sockjs-node/info?id12345',{
+                params: {
+                    ID: 45678
+                }
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                    console.log(error);
+                });
+          // 执行一个GET request 写入对象式
+            axios.get('/sockjs-node/info',{
+                params: {
+                    ID: 45678
+                }
+            }).then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            // 执行一个POST request
+            axios.post('/sockjs-node/info', {
+                firstName: 'Fred',
+                lastName: 'Flintstone'
+            }).then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+            // 执行多个并发请求
+            function getUserAccount() {
+                return axios.get('/sockjs-node/info?id12345',{
+                    params: {
+                        ID: 'test1'
+                    }
+                });
+            }
+
+            function getUserPermissions() {
+                return axios.get('/sockjs-node/info?id12345',{
+                    params: {
+                        ID: 'test2'
+                    }
+                });
+            }
+            axios.all([getUserAccount(), getUserPermissions()])
+                .then(axios.spread(function (acct, perms) {
+                    // Both requests are now complete
+                    console.log("并发完成")
+                    console.log(acct)
+                    console.log(perms);
+                }));*/
+
+            //第二种
+            // 通过写入实例参数的方式配置axios
+            /*     axios({
+                method: 'post',
+                url: '/sockjs-node/info',
+                data: {
+                    firstName: 'Fred',
+                    lastName: 'Flintstone'
+                }
+            }).then(function(response) {
+                response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
+            });
+
+            // GET request for remote image
+            axios({
+                method:'get',
+                url:'/sockjs-node/info',
+                params: {
+                    id: '55555',
+                },
+                responseType:'stream'
+            })
+                .then(function(response) {
+                    console.log(response)
+                });
+*/
+
+            //第三种：调用别名方法
+            //
+            // axios.request(config)
+/*
+            axios.get(url[, config])
+
+            axios.delete(url[, config])
+
+            axios.head(url[, config])
+
+            axios.options(url[, config])
+
+            axios.post(url[, data[, config]])
+
+            axios.put(url[, data[, config]])
+
+            axios.patch(url[, data[, config]])*/
+            //
+            //
+            // (感觉和第一种类似，不过要注意别名调用可以不用在配置项里写url, method, and data properties ，).
+            //axios.get('/sockjs-node/info',{params:{id:22222}}).then(function(response) {
+              //  console.log(response)
+          //  });
+
+            //axios.all(iterable) 处理并发1
+           // axios.spread(callback) // 处理并发2
+
+
+            //第四种方法，自己定义创建一个axios的实例（前几种都没有在axios实例上动手脚）
+           /* var instance = axios.create({
+                baseURL: location.origin,
+                url: '/sockjs-node/info',
+                timeout: 1000,
+                headers: {'X-Custom-Header': 'foobar'}
+            });
+          */
+
+        },
         mounted: function () {
             this.init();
         },
         methods: {
+
             init:function(){
                 var geolocation = new BMap.Geolocation(), this_=this;
                 geolocation.getCurrentPosition(function(r){
@@ -191,9 +331,7 @@
             },
         }
     }
-
 </script>
-
 <style scoped lang="less">
     .clear{
         clear: both;

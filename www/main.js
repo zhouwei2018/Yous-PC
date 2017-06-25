@@ -3,6 +3,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import Vuex from 'vuex';
 import VueResource from 'vue-resource';
 import $ from 'jquery';
 import App from './app.vue';
@@ -15,6 +16,7 @@ import VueLazyload from 'vue-lazyload';
 
 
 Vue.use(VueRouter);
+Vue.use(Vuex);
 Vue.use(VueResource);
 Vue.use(iView, {locale});
 
