@@ -258,240 +258,42 @@
                         <hr class="sort_box_line">
 
                         <!--搜索结果list start-->
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
+
+                        <div class="office_list_item" v-for="(item,index) in buildList">
+                            <a href="javascript:;" class="db pr clearfix" :id="item.id">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
+                                    <img :src="item.imgPath" :alt="item.imgAlt">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app" v-text="item.price"></em> 元/<span
                                             class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
                                     <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
+                                        <b class="fl" v-text="item.buildingName"></b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                        <i class="sem_icon item_address"></i><span v-text="item.address"></span>
                                     </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb" v-text="'0-'+item.rentArea"></span><span
                                             class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                            class="font-num text-black fb" v-text="item.leaseNums"></span>&nbsp;套
                                     </dd>
                                     <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
+                                                class="hover" v-text="item.inquiriesNums"></b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
+                                            <!--<span v-for="perlabel in item.label" v-text="perlabel"></span>-->
                                         </div>
                                     </dd>
                                 </dl>
                             </a>
                         </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
+
                         <!--搜索结果list end-->
 
                         <div class="page_box">
@@ -569,7 +371,73 @@
 
         data(){
             return {
-                list_scroll: true
+                list_scroll: true,
+                buildList: [], //楼盘列表
+            }
+        },
+        methods: {
+            getList(){
+                var _this = this;
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {},
+                        foreEndType: "1",
+                        code: "10000001"
+                    }
+                ).then(function (response) {
+                    //var result = JSON.parse(response.bodyText);
+//                    if (result.success) {
+//
+//                    } else {
+//                        this.$Message.error(reslult.message);
+//                    }
+
+                    _this.buildList = [{
+                        "id": 3002,
+                        "label": ["互联网","地标建筑"],
+                        "buildingName": "望京SOHO",
+                        "address": "望京街与阜安西路交叉路口",
+                        "imgAlt": null,
+                        "imgPath": "upload/default.jpg",
+                        "price": 0.0,
+                        "rentArea": "0",
+                        "leaseNums": 0,
+                        "inquiriesNums": 0,
+                        "district": "朝阳",
+                        "business": "望京"
+                    }, {
+                        "id": 3003,
+                        "label": ["互联网","地标建筑"],
+                        "buildingName": "建外SOHO",
+                        "address": "朝阳区建国门外大街4号（国贸中心对面）",
+                        "imgAlt": null,
+                        "imgPath": "upload/default.jpg",
+                        "price": 0.0,
+                        "rentArea": "0",
+                        "leaseNums": 475,
+                        "inquiriesNums": 0,
+                        "district": "朝阳",
+                        "business": "CBD"
+                    }, {
+                        "id": 3004,
+                        "label": ["互联网","地标建筑"],
+                        "buildingName": "SK大厦",
+                        "address": "建国门外大街甲6号",
+                        "imgAlt": null,
+                        "imgPath": "upload/default.jpg",
+                        "price": 0.0,
+                        "rentArea": "0",
+                        "leaseNums": 0,
+                        "inquiriesNums": 0,
+                        "district": "朝阳",
+                        "business": "CBD"
+                    }];
+
+
+                }, function (response) {
+                    this.$Message.error('获取楼盘列表失败');
+                });
             }
         },
         mounted: function () {
@@ -601,8 +469,9 @@
                 }
 
             });
+
+            this.getList(); //获取楼盘列表
         },
-        methods: {},
 
         destroyed(){
             this.list_scroll = false;
