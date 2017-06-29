@@ -127,7 +127,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <!--价格选择窗 end-->
+                                <!--面积选择窗 end-->
                             </div>
 
                         </div>
@@ -169,7 +169,7 @@
                                             <em class="text-black ml05">元</em>
                                             <input type="hidden" name="type" value="1">
 
-                                            <a class="cur-pointer priceConfirm" id="areaConfirm2" style="display: none;">确定</a>
+                                            <a class="cur-pointer priceConfirm" id="priceConfirm" style="display: none;">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -217,7 +217,7 @@
                                             <input type="hidden" name="type" value="2">
 
                                             <em class="text-black ml05">万元</em>
-                                            <a class="cur-pointer priceConfirm_tot" style="display: none;">确定</a>
+                                            <a class="cur-pointer priceConfirm" id="priceConfirm_tot" style="display: none;">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -516,16 +516,16 @@
 
             $('input[name="startprice"]').on("input propertychange", function(){
                 if(_this.bNum && _this.eNum){
-                    $('#areaConfirm2').show();
+                    $('#priceConfirm').show();
                 }else{
-                    $('#areaConfirm2').hide();
+                    $('#priceConfirm').hide();
                 }
             });
             $('input[name="endprice"]').on("input propertychange", function(){
                 if(_this.bNum && _this.eNum){
-                    $('#areaConfirm2').show();
+                    $('#priceConfirm').show();
                 }else{
-                    $('#areaConfirm2').hide();
+                    $('#priceConfirm').hide();
                 }
             });
 
@@ -533,16 +533,16 @@
             //总价
             $('input[name="startprice_tot"]').on("input propertychange", function(){
                 if(_this.bNum_tot && _this.eNum_tot){
-                    $('#areaConfirm_tot').show();
+                    $('#priceConfirm_tot').show();
                 }else{
-                    $('#areaConfirm_tot').hide();
+                    $('#priceConfirm_tot').hide();
                 }
             });
             $('input[name="endprice_tot"]').on("input propertychange", function(){
                 if(_this.bNum_tot && _this.eNum_tot){
-                    $('#areaConfirm_tot').show();
+                    $('#priceConfirm_tot').show();
                 }else{
-                    $('#areaConfirm_tot').hide();
+                    $('#priceConfirm_tot').hide();
                 }
             });
 
