@@ -6,7 +6,7 @@
 <template>
     <div class="common-info">
         <!--周边配套信息-->
-        <map-part></map-part>
+        <map-part  :building-name="buildingName"></map-part>
     </div>
 </template>
 
@@ -16,6 +16,11 @@
     import '../../resources/plugin/pic_tab/pic_tab.js';
 
     export default {
+        data(){
+            return {
+                buildingName:'望京SOHO周边配套'
+            }
+        },
         components: {
             mapPart
         },

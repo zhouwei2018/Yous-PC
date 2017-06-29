@@ -101,25 +101,18 @@
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
-    //    import mapPart from '../components/map-part.vue';
 
-    //引入五个tab组件 start
-
+    //引入五个tab组件
     import build_index from './detail_component/build_index.vue';
     import build_rent from './detail_component/build_rent.vue';
     import surrounds from './detail_component/surrounds.vue';
     import build_det from './detail_component/build_det.vue';
     import price_history from './detail_component/price_history.vue';
 
-    //引入五个tab组件 end
-
-    //import '../resources/plugin/pic_tab/pic_tab.js';
-
     export default {
         components: {
             header1,
             footer1,
-//             mapPart,
 
             //五大组件tab
             build_index,
@@ -158,6 +151,7 @@
                 ]
             }
         },
+
         methods: {
             //tab
             toggle(i, v){
