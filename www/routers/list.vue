@@ -434,7 +434,7 @@
         },
         methods: {
 
-            //tab
+            //区域和地铁tab
             toggle(i, v){
                 this.active = i;
                 this.currentView = v;
@@ -520,7 +520,6 @@
                 this.getList(); //排序后的列表
             },
 
-            //
         },
         mounted: function () {
             var _this = this;
