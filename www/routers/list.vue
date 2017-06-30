@@ -1,10 +1,7 @@
-<style scoped lang="less">
+<style lang="less">
     @import "../resources/css/list/list.less";
     @import "../resources/css/right_column/right_column.less";
     @import "../resources/css/update/page.less";
-</style>
-<style scoped>
-
 </style>
 
 <template>
@@ -44,26 +41,21 @@
 
                     <div class="screening_item">
                         <div class="screening_conts tj_box" id="care_nav">
-                            <a href="javascript:;" class="active"><i class="sem_icon quyu"></i>区域</a>
-                            <a href="javascript:;"><i class="sem_icon ditie"></i>地铁</a>
+                            <a href="javascript:;"
+                               v-for="(section,index) in sections"
+                               v-html="section.name"
+                               :class="{active:active==index}"
+                               @click="toggle(index,section.view)">
+
+                            </a>
+                            <!--<a href="javascript:;" class="active"><i class="sem_icon quyu"></i>区域</a>-->
+                            <!--<a href="javascript:;"><i class="sem_icon ditie"></i>地铁</a>-->
+                            <router-link target="_blank" :to="{path:'/map_search'}"><i class="sem_icon ditu"></i>地图
+                            </router-link>
                         </div>
 
-                        <div class="screening_conts_detail pv20">
-                            <div class="screening_conts_list weizhi clearfix tj_box_1">
-                                <span class="screening_title mr15">位置:</span>
-                                <a class="active" href="javascript:;">全部</a>
-                                <a href="javascript:;">朝阳</a>
-                                <a href="javascript:;">海淀</a>
-                                <a href="javascript:;">西城</a>
-                                <a href="javascript:;">东城</a>
-                                <a href="javascript:;">丰台</a>
-                                <a href="javascript:;">昌平</a>
-                                <a href="javascript:;">大兴</a>
-                                <a href="javascript:;">石景山</a>
-                                <a href="javascript:;">通州</a>
-                                <a href="javascript:;">顺义</a>
-                            </div>
-                        </div>
+                        <component :is="currentView"></component>
+
                     </div>
 
                     <div class="screening_conts_detail pv20">
@@ -101,9 +93,11 @@
                             <a href="javascript:;">
                                 &gt;<span class="font_num">3000</span><span class="font_num">m²</span>
                             </a>
-                            <div class="area_wrap pr" @mouseenter="areaShowFlag = true" @mouseleave="areaShowFlag = false">
+                            <div class="area_wrap pr" @mouseenter="areaShowFlag = true"
+                                 @mouseleave="areaShowFlag = false">
                                 <div class="interval pr">
-                                    <input type="text" autocomplete="off" name="temp-beginArea" value="" v-model="bArea">
+                                    <input type="text" autocomplete="off" name="temp-beginArea" value=""
+                                           v-model="bArea">
                                     <samp>-</samp>
                                     <input type="text" autocomplete="off" name="temp-endArea" value="" v-model="eArea">
                                     <em class="ml05 font_num">m²</em>
@@ -113,7 +107,8 @@
                                 <div class="interval_pop clearfix" style="display: none" v-show="areaShowFlag">
                                     <div class="interval ma0">
                                         <form style="display:inline-block" id="areaForm">
-                                            <input type="text" autocomplete="off" name="beginArea" maxlength="5" value=""
+                                            <input type="text" autocomplete="off" name="beginArea" maxlength="5"
+                                                   value=""
                                                    v-model="bArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
@@ -147,7 +142,8 @@
                             <a href="javascript:;"><span class="font_num">20</span>-<span
                                     class="font_num">30</span>元</a>
                             <a href="javascript:;">&gt;<span class="font_num">30</span>元</a>
-                            <div class="price_wrap pr" @mouseenter="priceShowFlag = true" @mouseleave="priceShowFlag = false">
+                            <div class="price_wrap pr" @mouseenter="priceShowFlag = true"
+                                 @mouseleave="priceShowFlag = false">
                                 <div class="interval pr">
                                     <input name="temp-startprice" type="text" autocomplete="off" v-model="bNum">
                                     <samp>-</samp>
@@ -157,19 +153,22 @@
                                 <div class="interval_pop clearfix" style="display: none;" v-show="priceShowFlag">
                                     <div class="interval ma0">
                                         <form action="">
-                                            <input type="text" autocomplete="off" id="beginPrice4Day" name="startprice" maxlength="5"
+                                            <input type="text" autocomplete="off" id="beginPrice4Day" name="startprice"
+                                                   maxlength="5"
                                                    v-model="bNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <samp>-</samp>
-                                            <input type="text" autocomplete="off" id="endPrice4Day" name="endprice" maxlength="5"
+                                            <input type="text" autocomplete="off" id="endPrice4Day" name="endprice"
+                                                   maxlength="5"
                                                    v-model="eNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <em class="text-black ml05">元</em>
                                             <input type="hidden" name="type" value="1">
 
-                                            <a class="cur-pointer priceConfirm" id="priceConfirm" style="display: none;">确定</a>
+                                            <a class="cur-pointer priceConfirm" id="priceConfirm"
+                                               style="display: none;">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -195,7 +194,8 @@
                             <a href="javascript:;"><span class="font_num">20</span>-<span
                                     class="font_num">30</span>万元</a>
                             <a href="javascript:;">&gt;<span class="font_num">30</span>万元</a>
-                            <div class="price_wrap pr" @mouseenter="priceShowFlag_tot = true" @mouseleave="priceShowFlag_tot = false">
+                            <div class="price_wrap pr" @mouseenter="priceShowFlag_tot = true"
+                                 @mouseleave="priceShowFlag_tot = false">
                                 <div class="interval pr">
                                     <input type="text" autocomplete="off" name="temp-startprice" v-model="bNum_tot">
                                     <samp>-</samp>
@@ -217,7 +217,8 @@
                                             <input type="hidden" name="type" value="2">
 
                                             <em class="text-black ml05">万元</em>
-                                            <a class="cur-pointer priceConfirm" id="priceConfirm_tot" style="display: none;">确定</a>
+                                            <a class="cur-pointer priceConfirm" id="priceConfirm_tot"
+                                               style="display: none;">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -261,15 +262,18 @@
 
                         <div class="sort_box" @click="buildSort($event)">
                             <a href="javascript:;" class="on">默认</a>
-                            <a href="javascript:;" class="pr">面积<i class="sem_icon up"></i><p class="bubble">点击按面积从小到大排序</p></a>
-                            <a href="javascript:;" class="pr">价格<i class="sem_icon"></i><p class="bubble">点击按价格从低到高排序</p></a>
+                            <a href="javascript:;" class="pr">面积<i class="sem_icon up"></i>
+                                <p class="bubble">点击按面积从小到大排序</p></a>
+                            <a href="javascript:;" class="pr">价格<i class="sem_icon"></i>
+                                <p class="bubble">点击按价格从低到高排序</p></a>
                         </div>
                         <hr class="sort_box_line">
 
                         <!--搜索结果list start-->
 
                         <div class="office_list_item" v-for="(item,index) in buildList">
-                            <router-link :to="{path:'/detail',query:{houseid:item.id}}" class="db pr clearfix" :id="item.id">
+                            <router-link :to="{path:'/detail',query:{houseid:item.id}}" class="db pr clearfix"
+                                         :id="item.id">
                                 <div class="fl pr">
                                     <img :src="item.imgPath" :alt="item.imgAlt">
                                 </div>
@@ -334,7 +338,8 @@
                                     <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
                                         <input type="hidden" name="flag" value="5">
                                         <input name="searchengine" type="hidden" value="">
-                                        <input name="phone" class="form_control form_telphone" type="text" autocomplete="off"
+                                        <input name="phone" class="form_control form_telphone" type="text"
+                                               autocomplete="off"
                                                placeholder="手机号" maxlength="11"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
@@ -377,31 +382,63 @@
 
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
+
+
+    import field from './list_component/field.vue'
+    import subway from './list_component/subway.vue'
+
     export default {
-        components: {header1, footer1},
+        components: {
+            header1,
+            footer1,
+            field,
+            subway
+        },
 
         data(){
             return {
-                list_scroll: true,
-                buildList: [], //楼盘列表
+                list_scroll: true, //屏幕滚动
+
+                //五大组件tab切换
+                active: 0,  //初始化tab index
+                currentView: 'field', //默认展示楼盘首页
+                sections: [
+                    {
+                        name: '<i class="sem_icon quyu"></i>区域',
+                        view: 'field'  //对应展示组件内容
+                    },
+                    {
+                        name: '<i class="sem_icon ditie"></i>地铁',
+                        view: 'subway'
+                    }
+                ],
+
+
+                buildList: [], //楼盘列表，搜索结果
 
                 areaShowFlag: false, //默认面积窗不显示
-                bArea:"", //起始面积
-                eArea:"", //结束面积
+                bArea: "", //起始面积
+                eArea: "", //结束面积
 
                 //单价
                 priceShowFlag: false, //默认价格窗不显示
-                bNum:"", //起始价格
-                eNum:"", //结束价格
+                bNum: "", //起始价格
+                eNum: "", //结束价格
 
                 //总价
                 priceShowFlag_tot: false, //默认价格窗不显示
-                bNum_tot:"", //起始价格
-                eNum_tot:"", //结束价格
+                bNum_tot: "", //起始价格
+                eNum_tot: "", //结束价格
 
             }
         },
         methods: {
+
+            //tab
+            toggle(i, v){
+                this.active = i;
+                this.currentView = v;
+            },
 
             //楼盘列表
             getList(){
@@ -471,17 +508,19 @@
             //排序
             buildSort(e){
                 $(e.target).addClass('on').siblings().removeClass('on');
-                if($(e.target).find('.sem_icon').length>0){
+                if ($(e.target).find('.sem_icon').length > 0) {
                     $(e.target).siblings().find('.sem_icon').hide();
-                    $(e.target).find('.sem_icon').css('display','inline-block');
-                    if($(e.target).find('.sem_icon').hasClass('up')){
+                    $(e.target).find('.sem_icon').css('display', 'inline-block');
+                    if ($(e.target).find('.sem_icon').hasClass('up')) {
                         $(e.target).find('.sem_icon').removeClass('up');
-                    }else{
+                    } else {
                         $(e.target).find('.sem_icon').addClass('up');
                     }
                 }
                 this.getList(); //排序后的列表
-            }
+            },
+
+            //
         },
         mounted: function () {
             var _this = this;
@@ -514,56 +553,56 @@
             });
 
             //input propertchange事件
-            $('input[name="beginArea"]').on("input propertychange", function(){
-                if(_this.bArea && _this.eArea){
+            $('input[name="beginArea"]').on("input propertychange", function () {
+                if (_this.bArea && _this.eArea) {
                     $('#areaConfirm').show();
-                }else{
+                } else {
                     $('#areaConfirm').hide();
                 }
             });
-            $('input[name="endArea"]').on("input propertychange", function(){
-                if(_this.bArea && _this.eArea){
+            $('input[name="endArea"]').on("input propertychange", function () {
+                if (_this.bArea && _this.eArea) {
                     $('#areaConfirm').show();
-                }else{
+                } else {
                     $('#areaConfirm').hide();
                 }
             });
 
-            $('input[name="startprice"]').on("input propertychange", function(){
-                if(_this.bNum && _this.eNum){
+            $('input[name="startprice"]').on("input propertychange", function () {
+                if (_this.bNum && _this.eNum) {
                     $('#priceConfirm').show();
-                }else{
+                } else {
                     $('#priceConfirm').hide();
                 }
             });
-            $('input[name="endprice"]').on("input propertychange", function(){
-                if(_this.bNum && _this.eNum){
+            $('input[name="endprice"]').on("input propertychange", function () {
+                if (_this.bNum && _this.eNum) {
                     $('#priceConfirm').show();
-                }else{
+                } else {
                     $('#priceConfirm').hide();
                 }
             });
 
 
             //总价
-            $('input[name="startprice_tot"]').on("input propertychange", function(){
-                if(_this.bNum_tot && _this.eNum_tot){
+            $('input[name="startprice_tot"]').on("input propertychange", function () {
+                if (_this.bNum_tot && _this.eNum_tot) {
                     $('#priceConfirm_tot').show();
-                }else{
+                } else {
                     $('#priceConfirm_tot').hide();
                 }
             });
-            $('input[name="endprice_tot"]').on("input propertychange", function(){
-                if(_this.bNum_tot && _this.eNum_tot){
+            $('input[name="endprice_tot"]').on("input propertychange", function () {
+                if (_this.bNum_tot && _this.eNum_tot) {
                     $('#priceConfirm_tot').show();
-                }else{
+                } else {
                     $('#priceConfirm_tot').hide();
                 }
             });
 
 
             //单价总价切换
-            $('.conts_option').click(function(){
+            $('.conts_option').click(function () {
                 $('#price-list').children('div').toggleClass('none');
             });
 

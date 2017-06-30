@@ -121,6 +121,20 @@
   background-color: #fff;
   border: 1px solid #eee;
 }
+[list] .screening_conditions .weizhi a {
+  position: relative;
+}
+[list] .screening_conditions .weizhi a.active:after {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  margin-left: -4px;
+  content: '';
+  display: block;
+  width: 7px;
+  height: 5px;
+  background: url(http://img2.static.uban.com/www/images/weizhi.png) no-repeat center center;
+}
 [list] .screening_conditions .screening_conts a {
   display: inline-block;
   width: 96px;
@@ -140,12 +154,30 @@
 [list] .screening_conditions .screening_conts a .sem_icon.ditie {
   background-position: -49px -18px;
 }
+[list] .screening_conditions .screening_conts a .sem_icon.ditu {
+  background-position: -78px -17px;
+}
 [list] .screening_conditions .screening_conts a.active {
   color: #fff;
   background-color: #302F35;
 }
 [list] .screening_conditions .screening_conts a.active .sem_icon {
   background-position-y: -45px;
+}
+[list] .screening_conditions .screening_conts_detail p {
+  margin-right: 20px;
+  padding: 15px 0 15px 16px;
+  border: 1px solid #F1F1F1;
+}
+[list] .screening_conditions .screening_conts_detail a {
+  display: block;
+  float: left;
+  margin-right: 16px;
+  line-height: 26px;
+  color: #666;
+}
+[list] .screening_conditions .screening_conts_detail a.active {
+  color: #0f6fac;
 }
 [list] .screening_conditions .screening_conts_detail .screening_conts_list {
   padding: 15px 0;
@@ -158,16 +190,6 @@
   line-height: 26px;
   font-weight: 700;
   float: left;
-}
-[list] .screening_conditions .screening_conts_detail .screening_conts_list a {
-  display: block;
-  float: left;
-  margin-right: 16px;
-  line-height: 26px;
-  color: #666;
-}
-[list] .screening_conditions .screening_conts_detail .screening_conts_list a.active {
-  color: #0f6fac;
 }
 [list] .screening_conditions .screening_conts_detail .screening_conts_list .area_wrap,
 [list] .screening_conditions .screening_conts_detail .screening_conts_list .price_wrap {
