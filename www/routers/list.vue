@@ -259,10 +259,10 @@
                             </div>
                         </div>
 
-                        <div class="sort_box">
+                        <div class="sort_box" @click="buildSort($event)">
                             <a href="javascript:;" class="on">默认</a>
-                            <a href="javascript:;" class="pr">面积<p class="bubble">点击按面积从小到大排序</p></a>
-                            <a href="javascript:;" class="pr">价格<p class="bubble">点击按价格从低到高排序</p></a>
+                            <a href="javascript:;" class="pr">面积<i class="sem_icon up"></i><p class="bubble">点击按面积从小到大排序</p></a>
+                            <a href="javascript:;" class="pr">价格<i class="sem_icon"></i><p class="bubble">点击按价格从低到高排序</p></a>
                         </div>
                         <hr class="sort_box_line">
 
@@ -467,6 +467,21 @@
                     this.$Message.error('获取楼盘列表失败');
                 });
             },
+
+            //排序
+            buildSort(e){
+                $(e.target).addClass('on').siblings().removeClass('on');
+                if($(e.target).find('.sem_icon').length>0){
+                    $(e.target).siblings().find('.sem_icon').hide();
+                    $(e.target).find('.sem_icon').css('display','inline-block');
+                    if($(e.target).find('.sem_icon').hasClass('up')){
+                        $(e.target).find('.sem_icon').removeClass('up');
+                    }else{
+                        $(e.target).find('.sem_icon').addClass('up');
+                    }
+                }
+                this.getList(); //排序后的列表
+            }
         },
         mounted: function () {
             var _this = this;

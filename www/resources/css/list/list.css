@@ -281,6 +281,17 @@
   -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
 }
+[list] .list_result .office_list .sort_box a .sem_icon {
+  display: none;
+  width: 8px;
+  height: 12px;
+  margin-bottom: -2px;
+  margin-left: 5px;
+  background-position: -25px -128px;
+}
+[list] .list_result .office_list .sort_box a .sem_icon.up {
+  background-position: -52px -128px;
+}
 [list] .list_result .office_list .sort_box a:hover p {
   display: block;
 }
