@@ -269,7 +269,7 @@
                         <!--搜索结果list start-->
 
                         <div class="office_list_item" v-for="(item,index) in buildList">
-                            <a href="javascript:;" class="db pr clearfix" :id="item.id">
+                            <router-link :to="{path:'/detail',query:{houseid:item.id}}" class="db pr clearfix" :id="item.id">
                                 <div class="fl pr">
                                     <img :src="item.imgPath" :alt="item.imgAlt">
                                 </div>
@@ -302,7 +302,7 @@
                                         </div>
                                     </dd>
                                 </dl>
-                            </a>
+                            </router-link>
                         </div>
 
                         <!--搜索结果list end-->
