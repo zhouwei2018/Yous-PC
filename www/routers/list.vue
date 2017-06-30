@@ -19,7 +19,7 @@
                 <div class="contents clearfix">
                     <div class="list_search fl">
                         <div class="fl">
-                            <input type="text" placeholder="请输入写字楼名称或商圈" maxlength="30">
+                            <input type="text" autocomplete="off" placeholder="请输入写字楼名称或商圈" maxlength="30">
                             <div class="search-3">
                                 <div class="s-result sem-search" id="association" style="display: none;">智能提示</div>
                             </div>
@@ -41,6 +41,7 @@
             <div class="contents">
                 <!-- 筛选区域 start  -->
                 <div class="screening_conditions mt15">
+
                     <div class="screening_item">
                         <div class="screening_conts tj_box" id="care_nav">
                             <a href="javascript:;" class="active"><i class="sem_icon quyu"></i>区域</a>
@@ -100,23 +101,25 @@
                             <a href="javascript:;">
                                 &gt;<span class="font_num">3000</span><span class="font_num">m²</span>
                             </a>
-                            <div class="area_wrap pr">
-                                <div class="interval pr" style="display: block">
-                                    <input type="text" name="temp-beginArea" value="">
+                            <div class="area_wrap pr" @mouseenter="areaShowFlag = true" @mouseleave="areaShowFlag = false">
+                                <div class="interval pr">
+                                    <input type="text" autocomplete="off" name="temp-beginArea" value="" v-model="bArea">
                                     <samp>-</samp>
-                                    <input type="text" name="temp-endArea" value="">
+                                    <input type="text" autocomplete="off" name="temp-endArea" value="" v-model="eArea">
                                     <em class="ml05 font_num">m²</em>
                                 </div>
 
-                                <!--价格选择窗 默认隐藏 start-->
-                                <div class="interval_pop clearfix" style="display: none;">
+                                <!--面积选择窗 默认隐藏 start-->
+                                <div class="interval_pop clearfix" style="display: none" v-show="areaShowFlag">
                                     <div class="interval ma0">
-                                        <form style="display:inline-block" id="areaForm" action="/searchlist/">
-                                            <input type="text" name="beginArea" maxlength="5" value=""
+                                        <form style="display:inline-block" id="areaForm">
+                                            <input type="text" autocomplete="off" name="beginArea" maxlength="5" value=""
+                                                   v-model="bArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <samp>—</samp>
-                                            <input type="text" name="endArea" maxlength="5" value=""
+                                            <input type="text" autocomplete="off" name="endArea" maxlength="5" value=""
+                                                   v-model="eArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <a class="confrim-btn cur-pointer" style="display: none;" id="areaConfirm">确定</a>
@@ -124,11 +127,12 @@
                                         </form>
                                     </div>
                                 </div>
-                                <!--价格选择窗 end-->
+                                <!--面积选择窗 end-->
                             </div>
 
                         </div>
                     </div>
+
                     <div class="screening_conts_detail clearfix pv20" id="price-list">
                         <div class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">价格:</span>
@@ -143,27 +147,29 @@
                             <a href="javascript:;"><span class="font_num">20</span>-<span
                                     class="font_num">30</span>元</a>
                             <a href="javascript:;">&gt;<span class="font_num">30</span>元</a>
-                            <div class="price_wrap pr">
+                            <div class="price_wrap pr" @mouseenter="priceShowFlag = true" @mouseleave="priceShowFlag = false">
                                 <div class="interval pr">
-                                    <input name="temp-startprice" type="text">
+                                    <input name="temp-startprice" type="text" autocomplete="off" v-model="bNum">
                                     <samp>-</samp>
-                                    <input name="temp-endprice" type="text">
+                                    <input name="temp-endprice" type="text" autocomplete="off" v-model="eNum">
                                     <em class="text-black ml05">元</em>
                                 </div>
-                                <div class="interval_pop clearfix" style="display: none;">
+                                <div class="interval_pop clearfix" style="display: none;" v-show="priceShowFlag">
                                     <div class="interval ma0">
-                                        <form action="/searchlist/">
-                                            <input type="text" id="beginPrice4Day" name="startprice" maxlength="5"
+                                        <form action="">
+                                            <input type="text" autocomplete="off" id="beginPrice4Day" name="startprice" maxlength="5"
+                                                   v-model="bNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <samp>-</samp>
-                                            <input type="text" id="endPrice4Day" name="endprice" maxlength="5"
+                                            <input type="text" autocomplete="off" id="endPrice4Day" name="endprice" maxlength="5"
+                                                   v-model="eNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <em class="text-black ml05">元</em>
                                             <input type="hidden" name="type" value="1">
 
-                                            <a class="cur-pointer priceConfirm" style="display: none;">确定</a>
+                                            <a class="cur-pointer priceConfirm" id="priceConfirm" style="display: none;">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -177,7 +183,7 @@
                         <div class="tj_box_1 screening_conts_list clearfix none">
                             <span class="screening_title mr15">价格:</span>
 
-                            <a class="active" href="/searchlist/">全部</a>
+                            <a class="active" href="">全部</a>
                             <a href="javascript:;"><span class="font_num">0</span>-<span class="font_num">1</span>万元</a>
                             <a href="javascript:;"><span class="font_num">1</span>-<span class="font_num">3</span>万元</a>
                             <a href="javascript:;"><span class="font_num">3</span>-<span class="font_num">5</span>万元</a>
@@ -189,27 +195,29 @@
                             <a href="javascript:;"><span class="font_num">20</span>-<span
                                     class="font_num">30</span>万元</a>
                             <a href="javascript:;">&gt;<span class="font_num">30</span>万元</a>
-                            <div class="price_wrap pr">
+                            <div class="price_wrap pr" @mouseenter="priceShowFlag_tot = true" @mouseleave="priceShowFlag_tot = false">
                                 <div class="interval pr">
-                                    <input type="text" name="temp-startprice">
+                                    <input type="text" autocomplete="off" name="temp-startprice" v-model="bNum_tot">
                                     <samp>-</samp>
-                                    <input type="text" name="temp-endprice">
+                                    <input type="text" autocomplete="off" name="temp-endprice" v-model="eNum_tot">
                                     <em class="text-black ml05">万元</em>
                                 </div>
-                                <div class="interval_pop clearfix">
+                                <div class="interval_pop clearfix" v-show="priceShowFlag_tot">
                                     <div class="interval ma0">
                                         <form action="">
-                                            <input type="text" name="startprice" maxlength="5"
+                                            <input type="text" autocomplete="off" name="startprice_tot" maxlength="5"
+                                                   v-model="bNum_tot"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <samp>-</samp>
-                                            <input type="text" name="endprice" maxlength="5"
+                                            <input type="text" autocomplete="off" name="endprice_tot" maxlength="5"
+                                                   v-model="eNum_tot"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <input type="hidden" name="type" value="2">
 
                                             <em class="text-black ml05">万元</em>
-                                            <a class="cur-pointer priceConfirm" style="display: none;">确定</a>
+                                            <a class="cur-pointer priceConfirm" id="priceConfirm_tot" style="display: none;">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -220,6 +228,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="screening_conts_detail clearfix pv20">
                         <div class="screening_conts_list clearfix">
                             <span class="screening_title mr15">特色:</span>
@@ -258,240 +267,44 @@
                         <hr class="sort_box_line">
 
                         <!--搜索结果list start-->
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
+
+                        <div class="office_list_item" v-for="(item,index) in buildList">
+                            <a href="javascript:;" class="db pr clearfix" :id="item.id">
                                 <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
+                                    <img :src="item.imgPath" :alt="item.imgAlt">
                                 </div>
                                 <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
+                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app"
+                                                                    v-text="item.price"></em> 元/<span
                                             class="font-num">m²</span>·天</span>
                                     <span class="db text_gray9 font12 mt10">均价</span>
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
                                     <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
+                                        <b class="fl" v-text="item.buildingName"></b>
                                     </dt>
                                     <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
+                                        <i class="sem_icon item_address"></i><span v-text="item.address"></span>
                                     </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
+                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb"
+                                                                                     v-text="'0-'+item.rentArea"></span><span
                                             class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
+                                            class="font-num text-black fb" v-text="item.leaseNums"></span>&nbsp;套
                                     </dd>
                                     <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
+                                                class="hover" v-text="item.inquiriesNums"></b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
+                                            <!--<span v-for="perlabel in item.label" v-text="perlabel"></span>-->
                                         </div>
                                     </dd>
                                 </dl>
                             </a>
                         </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
-                        <div class="office_list_item">
-                            <a href="javascript:;" class="db pr clearfix">
-                                <div class="fl pr">
-                                    <img src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-wh480x320"
-                                         alt="望京SOHO">
-                                </div>
-                                <div class="price_box tright">
-                                    <span class="db text_gray6"><em class="font26 font_num fb text_pink_app">6.5</em> 元/<span
-                                            class="font-num">m²</span>·天</span>
-                                    <span class="db text_gray9 font12 mt10">均价</span>
-                                </div>
-                                <dl class="office_building_cont pr clearfix">
-                                    <dt class="mb25 clearfix">
-                                        <b class="fl">望京SOHO</b>
-                                    </dt>
-                                    <dd>
-                                        <i class="sem_icon item_address"></i>[朝阳-望京] 望京街与阜安西路交叉路口
-                                    </dd>
-                                    <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb">0-4576</span><span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb">2380</span>&nbsp;套
-                                    </dd>
-                                    <dd>
-                                        <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover">27</b> 位用户咨询过</span>
-                                    </dd>
-                                    <dd class="last_fix_bottom">
-                                        <div class="fl building_tag">
-                                            <span>互联网</span>
-                                            <span>LEED认证</span>
-                                            <span>地标建筑</span>
-                                            <span>名企开发商</span>
-                                            <span>知名物业</span>
-                                        </div>
-                                    </dd>
-                                </dl>
-                            </a>
-                        </div>
+
                         <!--搜索结果list end-->
 
                         <div class="page_box">
@@ -521,7 +334,7 @@
                                     <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
                                         <input type="hidden" name="flag" value="5">
                                         <input name="searchengine" type="hidden" value="">
-                                        <input name="phone" class="form_control form_telphone" type="text"
+                                        <input name="phone" class="form_control form_telphone" type="text" autocomplete="off"
                                                placeholder="手机号" maxlength="11"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
@@ -569,8 +382,91 @@
 
         data(){
             return {
-                list_scroll: true
+                list_scroll: true,
+                buildList: [], //楼盘列表
+
+                areaShowFlag: false, //默认面积窗不显示
+                bArea:"", //起始面积
+                eArea:"", //结束面积
+
+                //单价
+                priceShowFlag: false, //默认价格窗不显示
+                bNum:"", //起始价格
+                eNum:"", //结束价格
+
+                //总价
+                priceShowFlag_tot: false, //默认价格窗不显示
+                bNum_tot:"", //起始价格
+                eNum_tot:"", //结束价格
+
             }
+        },
+        methods: {
+
+            //楼盘列表
+            getList(){
+                var _this = this;
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {},
+                        foreEndType: "1",
+                        code: "10000001"
+                    }
+                ).then(function (response) {
+                    //var result = JSON.parse(response.bodyText);
+//                    if (result.success) {
+//
+//                    } else {
+//                        this.$Message.error(reslult.message);
+//                    }
+
+                    _this.buildList = [{
+                        "id": 3002,
+                        "label": ["互联网", "地标建筑"],
+                        "buildingName": "望京SOHO",
+                        "address": "望京街与阜安西路交叉路口",
+                        "imgAlt": null,
+                        "imgPath": "upload/default.jpg",
+                        "price": 0.0,
+                        "rentArea": "0",
+                        "leaseNums": 0,
+                        "inquiriesNums": 0,
+                        "district": "朝阳",
+                        "business": "望京"
+                    }, {
+                        "id": 3003,
+                        "label": ["互联网", "地标建筑"],
+                        "buildingName": "建外SOHO",
+                        "address": "朝阳区建国门外大街4号（国贸中心对面）",
+                        "imgAlt": null,
+                        "imgPath": "upload/default.jpg",
+                        "price": 0.0,
+                        "rentArea": "0",
+                        "leaseNums": 475,
+                        "inquiriesNums": 0,
+                        "district": "朝阳",
+                        "business": "CBD"
+                    }, {
+                        "id": 3004,
+                        "label": ["互联网", "地标建筑"],
+                        "buildingName": "SK大厦",
+                        "address": "建国门外大街甲6号",
+                        "imgAlt": null,
+                        "imgPath": "upload/default.jpg",
+                        "price": 0.0,
+                        "rentArea": "0",
+                        "leaseNums": 0,
+                        "inquiriesNums": 0,
+                        "district": "朝阳",
+                        "business": "CBD"
+                    }];
+
+
+                }, function (response) {
+                    this.$Message.error('获取楼盘列表失败');
+                });
+            },
         },
         mounted: function () {
             var _this = this;
@@ -601,8 +497,71 @@
                 }
 
             });
+
+            //input propertchange事件
+            $('input[name="beginArea"]').on("input propertychange", function(){
+                if(_this.bArea && _this.eArea){
+                    $('#areaConfirm').show();
+                }else{
+                    $('#areaConfirm').hide();
+                }
+            });
+            $('input[name="endArea"]').on("input propertychange", function(){
+                if(_this.bArea && _this.eArea){
+                    $('#areaConfirm').show();
+                }else{
+                    $('#areaConfirm').hide();
+                }
+            });
+
+            $('input[name="startprice"]').on("input propertychange", function(){
+                if(_this.bNum && _this.eNum){
+                    $('#priceConfirm').show();
+                }else{
+                    $('#priceConfirm').hide();
+                }
+            });
+            $('input[name="endprice"]').on("input propertychange", function(){
+                if(_this.bNum && _this.eNum){
+                    $('#priceConfirm').show();
+                }else{
+                    $('#priceConfirm').hide();
+                }
+            });
+
+
+            //总价
+            $('input[name="startprice_tot"]').on("input propertychange", function(){
+                if(_this.bNum_tot && _this.eNum_tot){
+                    $('#priceConfirm_tot').show();
+                }else{
+                    $('#priceConfirm_tot').hide();
+                }
+            });
+            $('input[name="endprice_tot"]').on("input propertychange", function(){
+                if(_this.bNum_tot && _this.eNum_tot){
+                    $('#priceConfirm_tot').show();
+                }else{
+                    $('#priceConfirm_tot').hide();
+                }
+            });
+
+
+            //单价总价切换
+            $('.conts_option').click(function(){
+                $('#price-list').children('div').toggleClass('none');
+            });
+
+
+            this.getList(); //获取楼盘列表
         },
-        methods: {},
+
+        created(){
+            document.body.style.backgroundColor = "#fff";
+        },
+        beforeDestroy(){
+            document.body.style.backgroundColor = "#f5f5f5";
+        },
 
         destroyed(){
             this.list_scroll = false;
