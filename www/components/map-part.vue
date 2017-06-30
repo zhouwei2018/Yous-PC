@@ -19,7 +19,7 @@
     </div>
 </template>
 <script>
-    import '../resources/plugin/infoBox.min.js';
+    import '../resources/js/map_lib/infoBox.js';
     import axios from 'axios';
     //import qs from 'qs';
     export default {
@@ -28,6 +28,7 @@
         data(){
             return {
                 remoteData: {},
+                currentinfobox: null,
                 mapData:{
                     markerico:null,
                     markerico2:null,
@@ -40,8 +41,7 @@
                     subTypes: [],
                     mainIndex:0,
                     subIndex:0,
-                    markers:[],
-                    currentinfobox: null,
+                    markers:[]
                 },
                 serviceItems:[
                     {code:"jt", dis:"地铁,公交,停车场,加油站", title:"交通"},
@@ -54,14 +54,14 @@
         },
         created() {
             axios.get('/sockjs-node/info',{params:{t:6666666}})
-                 .then(function (response) {
-                  if(1){
-                      this.remoteData = response.data;
-                  }
-            })
+                .then(function (response) {
+                    if(1){
+                        this.remoteData = response.data;
+                    }
+                })
                 .catch(function (error) {
-                console.log(error);
-            });
+                    console.log(error);
+                });
         },
         mounted: function () {
             this.init();
@@ -98,7 +98,7 @@
 
                 var pt = new BMap.Point(x,y);
                 this.defaultcenterdpoint = pt;
-                var markerCenter = this.getmarker(this,pt, {'x': x, 'y': y, 'title': title, ico: 1});
+                var markerCenter = this.getmarker(this,pt, {'x': x, 'y': y, 'title': title, 'content': '', ico: 1});
                 var circle = new BMap.Circle(point,1000,{fillColor:'blue', strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});
                 map.addOverlay(circle);
                 map.addOverlay(markerCenter);
@@ -146,24 +146,45 @@
                     });
                     marker.setLabel(label);
                 }
-                marker.title= data['title'];
-                marker.address= data['content'];
+                marker.title = data.title;
+                marker.content = data.content;
+                marker.id = data.id;
+                marker.cb = data.callback;
                 return marker;
             },
+            getinfoboxhtml: function (title, content, id, cb) {
+                if (cb) {
+                    title = '<a target="_bank" href="' + cb + '" class="maplink">' + title + '</a>';
+                    content = '符合查询条件' + content + '套</br>';
+                }
+                return '<img src="http://img2.static.uban.com/www/images/map/box_top.png" width="228" height="16">' +
+                    '<div style="width:228px; background:url(http://img2.static.uban.com/www/images/map/box_content.png) repeat-y; background-size:228px 100%; margin:-1px 0 -2px; padding:5px 0;" >' +
+                    '<p style="margin:auto; width:185px; font-size:18px; color:#555; font-weight:700;">' + title +'</p>' +
+                    '<p style="margin:auto; width:181px; font-size:14px; color:$999; line-height:20px; margin-top:5px; word-break:break-all; white-space:normal; overflow:auto;">' + content + '</p>' +
+                    '</div>' +
+                    '<img src="http://img2.static.uban.com/www/images/map/box_bottom.png" width="228" height="22">';
+            },
             addclickhandler: function (marker) {
-                var this_= this;
+                var this_ = this;
                 marker.addEventListener("mouseover", function (e) {
-                        var opts = {
-                            width : 200,     // 信息窗口宽度
-                            height: 100,     // 信息窗口高度
-                            title :marker['title'] , // 信息窗口标题
-                            enableMessage:true,//设置允许信息窗发送短息
-                            message:''
-                        }
-                        var infoWindow = new BMap.InfoWindow(marker['address'], opts);
-                        var p = marker.getPosition();
-                        var point = new BMap.Point(p['lng'],p['lat']);
-                        this_.mapData.map.openInfoWindow(infoWindow,point); //开启信息窗口
+                        var p = e.target;
+                        var content = this_.getinfoboxhtml(marker.title, marker.content, marker.id, marker.cb);
+                        var infobox = new BMapLib.InfoBox(this_.mapData.map, content, {
+                            closeIconUrl: 'http://img2.static.uban.com/www/images/map/close.png',
+                            closeIconMargin: '20px 16px auto auto',
+                            closeIconClass: 'close'
+                        });
+                        infobox.addEventListener("open", function (e) {
+                            if (this_.currentinfobox != null) {
+                                this_.currentinfobox.close();
+                            }
+                            this_.currentinfobox = e.target;
+                        });
+                        infobox.addEventListener("close", function (e) {
+                            this_.currentinfobox = null;
+                        });
+                        infobox.enableAutoPan();
+                        infobox.open(marker);
                     }
                 );
             },
@@ -208,6 +229,12 @@
     }
 </script>
 <style scoped lang="less">
+    .close{
+        width: 16px;
+        height:16px;
+        right:0;
+        top:0;
+    }
     .clear{
         clear: both;
         &:after{

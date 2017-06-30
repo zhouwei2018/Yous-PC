@@ -107,6 +107,10 @@ var router = new VueRouter({
             component: require('./routers/annual_meeting.vue')
         },
         {
+            path: '/map_search',
+            component: require('./routers/map_search.vue')
+        },
+        {
             path: '*',
             redirect: '/index'
         }

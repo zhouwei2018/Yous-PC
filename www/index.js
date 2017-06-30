@@ -128,7 +128,7 @@ const iview = {
     Tree,
     Upload,
     Header,
-    Footer，
+    Footer,
     TimerBtn
 };
 
