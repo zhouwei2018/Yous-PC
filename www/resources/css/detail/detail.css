@@ -90,6 +90,7 @@
 [detail] .breadcrumb-search .breadcrumb > li a {
   color: #666;
   margin-right: 10px;
+  display: inline-block;
 }
 [detail] .breadcrumb-search .breadcrumb > li a .detail-icon {
   width: 10px;

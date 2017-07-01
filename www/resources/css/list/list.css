@@ -115,6 +115,7 @@
   background-position: -24px -106px;
 }
 [list] .address_tit a {
+  display: inline-block;
   font-size: 13px;
 }
 [list] .screening_conditions {
