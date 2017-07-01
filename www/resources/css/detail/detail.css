@@ -846,6 +846,7 @@
 }
 [detail] .carousel-small ul li {
   float: left;
+  width: 92px;
   height: 62px;
   margin-right: 10px;
 }
