@@ -54,7 +54,7 @@
                             </router-link>
                         </div>
 
-                        <component :is="currentView"></component>
+                        <component :is="currentView" @refreshbizlines="selList"></component>
 
                     </div>
 
@@ -430,6 +430,9 @@
                 bNum_tot: "", //起始价格
                 eNum_tot: "", //结束价格
 
+                //筛选条件
+                district:"",
+
             }
         },
         methods: {
@@ -440,15 +443,34 @@
                 this.currentView = v;
             },
 
-            //楼盘列表
+            //改变筛选条件
+            selList(district){
+                this.district=district;
+                this.getList();
+            },
+
+            //获取楼盘列表
             getList(){
                 var _this = this;
                 this.$http.post(
                     this.$api,
                     {
-                        parameters: {},
-                        foreEndType: "1",
-                        code: "10000001"
+                        "parameters": {
+                            "search_keywork": "",
+                            "district": this.district, //区域
+                            "business": "",
+                            "line_id": "",
+                            "station_id": "",
+                            "area": "",
+                            "price_dj": '',
+                            "price_zj": "",
+                            "label": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "5"
+                        },
+                        "foreEndType": 2,
+                        "code": "30000001"
                     }
                 ).then(function (response) {
                     //var result = JSON.parse(response.bodyText);

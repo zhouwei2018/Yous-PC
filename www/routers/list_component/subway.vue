@@ -20,6 +20,7 @@
                :class="{active:sub_active == index}"
                class="pt05"
                :id="item1.id"
+               @click="getHouseList($event)"
             >{{item1.name}}</a>
         </p>
     </div>
@@ -94,6 +95,9 @@
                     $(e.target).parent().removeClass('tj_box_1');
                 }
             },
+            getHouseList(e){
+                this.$emit('refreshbizlines',$(e.target).attr('id'));
+            }
         },
 
         mounted(){
