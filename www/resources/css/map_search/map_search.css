@@ -1,4 +1,19 @@
-html,body{height:100%;overflow:hidden;}
+@charset "utf-8";
+*{-webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    box-sizing:border-box; }
+html, body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dd, dt, menu, table, caption, colgroup, col, thead, tbody, tfoot, tr, th, td, menu, blockquote, hr, pre, q, address, iframe, map, area, b, i, del, ins, span, a, em, strong, form, legend, fieldset, input, button, label, select, optgroup, option, textarea, object, param, var, article, aside, audio, bdi, canvas, command, datalist, details, embed, fiqure, fiqcaption, header, footer, hgroup, keyqen, mark, meter, nav, output, progress, rp, rt, ruby, section, source, summary, time, track, video{margin:0;padding:0;outline: 0;}
+body{font: 12px 微软雅黑;-webkit-text-size-adjust:100%;width:100%;}
+ul,li{ list-style:none;}
+a{color:#000;display:block;text-decoration:none;}
+a,a:hover{ text-decoration:none;cursor:pointer;}
+a img{ border:none;}
+.hide{display:none;}
+.textleft{text-align:left;}
+.textcenter{text-align:center;}
+.textright{text-align:right;}
 .mapbg{ overflow:hidden;height:100%;width:100%;}
 .header{position: relative;bottom:0;top:0;left:0;right:0;background:#fff;}
 .header_menu{width:100%; height:59px;border-bottom:2px solid #8c91ff;}

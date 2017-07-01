@@ -1,5 +1,5 @@
-<style >
-    @import "../resources/css/map_search/reset.css";
+<style scoped lang="less">
+    @import "../resources/css/base.less";
     @import "../resources/css/map_search/map_search.css";
 </style>
 <style lang="less">
@@ -39,9 +39,21 @@
           }
       }
       .contnav ul.topnav li img {
-          margin: 4px 14px 0 23px;
+          margin: 4px 14px 0 52px;
           width: 10px;
           height: 6px;
+      }
+      .fang_type .typelist ul li a {
+          overflow: hidden;
+          background: #66d0fa;
+          color: #ffffff;
+          font-size: 14px;
+      }
+      .fang_type .typelist ul li a img {
+          float: left;
+          margin-top: 11px;
+          width: 19px;
+          height:18px;
       }
 
   }
@@ -98,7 +110,7 @@
                             </div>
                             <div class="menu fl" id="menu_nav">
                                 <ul>
-                                    <li><a href="" target="_blank">首页</a></li>
+                                    <li><a href="/index" target="_blank">首页</a></li>
                                     <li><a href="javascript:void(0);" id="two2" class="up">地图找房</a></li>
                                     <!--
                                         <li><a href="/subway" id="two3" target="_blank">地铁找房</a></li>
@@ -119,10 +131,10 @@
                             <div class="typelist">
                                 <ul>
                                     <li key="exchange">
-                                        <a href="javascript:void(0);"><div class="bottomstyle"><img src="images/icon_fang.png" width="19" height="18"><span >二手房</span></div></a>
+                                        <a href="javascript:void(0);"><div class="bottomstyle"><img src="../resources/images/map_search/icon_fang.png"><span >二手房</span></div></a>
                                     </li>
                                     <li key="rent">
-                                        <a href="javascript:void(0);"><div class="bottomstyle last"><img src="images/icon_fang.png" width="19" height="18"><span >租房</span></div></a>
+                                        <a href="javascript:void(0);"><div class="bottomstyle last"><img src="../resources/images/map_search/icon_fang.png"><span >租房</span></div></a>
                                     </li>
                                 </ul>
                             </div>
@@ -470,6 +482,7 @@
         mounted: function () {
               this.getDisData();
               this.init();
+              this.temHelper();
         },
 
         created(){
@@ -493,6 +506,136 @@
                 if($(e.target).closest("close").length>0){
 
                 }
+
+            },
+            temHelper:function(){
+                //显示2秒隐藏
+                $('.tsinfosty').slideDown(1000).delay(1500).slideUp(1000); //一个点击此处的提示
+
+                //左边浮动层（周边配套）-->
+                $('.zengleft').css('display', 'none'); //暂时隐藏
+                $('.zengleft').on('click', function(){
+                    if($('.zengleft').css('left') != '0px') {
+                        $('.main_zhoubian').animate({left:'-185px'},500);
+                        $('.zengleft').animate({left:'0'},500);
+                    }else {
+                        if($('.main_zhoubian').html() == '') {
+                            $.ajax({
+                                url: controller + '/leftAroundPlace',
+                                type: 'GET',
+                                dataType: 'html',
+                                success: function(data) {
+                                    $('.main_zhoubian').html(data);
+                                },
+                                error: function() {
+                                    alert('附近未找到房源，请重新选择！');
+                                }
+                            });
+                        }
+                        $('.main_zhoubian').css('display', 'block');
+                        $('.main_zhoubian').animate({left:'0'},500);
+                        $('.zengleft').animate({left:'183px'},500);
+                        $('.bar').css('background-position','0px 0px');
+                    }
+                });
+                //左边浮动层（周边配套）结尾-->
+
+                /**
+                 * 地图房源类型选择
+                 */
+                $('.fangtypebtn').on('click', function(){
+                    $('.typelist').slideToggle('slow');
+                });
+                /**
+                 * 地图城市选择
+                 */
+                $('.header_city a').on('click', function(){
+                    $('.cityslist').slideToggle('slow');
+                });
+                /**
+                 * 地图右侧小区周边配套切换
+                 */
+                $('.tabPanel .clearfixes li').on('click', function(){
+                    $('.liebiao').hide(); //隐藏房源列表页
+                    $(this).addClass('hit').siblings().removeClass('hit');
+                    $('.tabCon>div:eq('+$(this).index()+')').show().siblings().hide();
+                });
+
+                /**
+                 * 右侧弹出层关闭效果,关闭房源列表页
+                 */
+                $('.qqserver_arrow').on('click', function(){
+                    $('.qqserver').removeClass('unfold');
+                    $('.qqserver001').removeClass('unfold001');
+                    $('#fanhui').click(); //返回小区
+                });
+
+                $(document).on('click', '.qqserver_arrow001', function(){
+                    $('.qqserver001').removeClass('unfold001');
+                });
+
+                /**
+                 * 房源详情页
+                 */
+                $(document).on('click', '.fanglistinfo .xianshiflod', function(){
+                    if($(this).hasClass('exchange')) {
+                        var type='exchange';
+                    }else {
+                        var type='rent';
+                    }
+                    $.ajax({
+                        url: controller + '/rightHousesDetail',
+                        type: 'GET',
+                        dataType: 'html',
+                        data:{'houseType':type, 'houseid':$(this).attr('id')},
+                        beforeSend:function(XMLHttpRequest){
+                            addHouseDetailLoading(); //地图加载中
+                        },
+                        success: function(data) {
+                            $('.qqserver001').addClass('unfold001');
+                            $('.qqserver001').html(data);
+                        },
+                        complete:function(XMLHttpRequest) {
+                            removeHouseDetailLoading(); //移除地图加载中
+                        },
+                        error: function() {
+                            alert('附近未找到房源，请重新选择！');
+                        }
+                    });
+                });
+
+                $(document).on('mouseover', '.xianshiflod', function(){
+                    $(this).children('li').css('background', '#f7f7f7');
+                    $(this).children('li').css('overflow', 'hidden');
+                });
+
+                $(document).on('mouseout', '.xianshiflod', function(){
+                    $(this).children('li').css('background', '');
+                });
+
+                /**
+                 * 房源列表页鼠标移过房源添加阴影
+                 */
+                $(document).on('mouseover mouseout', '.houses_list > li', function(event){
+                    if(event.type == 'mouseover') {
+                        $(this).addClass('active');
+                    }else if(event.type == 'mouseout') {
+                        $(this).removeClass('active');
+                    }
+                });
+
+
+                /**
+                 * “列表找房”房源列表页跳转
+                 */
+                $('.r_listbtn').on('click', function(){
+                    if(house_type == 'rent') {
+                        var url='/' + house_type;
+                    } else {
+                        var url='/exchange';
+                    }
+                    window.open(url);
+                })
 
             },
             init:function(){
