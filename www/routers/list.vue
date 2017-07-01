@@ -273,7 +273,7 @@
 
                         <div class="office_list_item" v-for="(item,index) in buildList">
                             <router-link :to="{path:'/detail',query:{houseid:item.id}}" class="db pr clearfix"
-                                         :id="item.id">
+                                         :id="item.id" target="_blank">
                                 <div class="fl pr">
                                     <img :src="item.imgPath" :alt="item.imgAlt">
                                 </div>

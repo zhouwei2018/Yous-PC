@@ -176,6 +176,7 @@
   margin-right: 16px;
   line-height: 26px;
   color: #666;
+  font-size: 14px;
 }
 [list] .screening_conditions .screening_conts_detail a.active {
   color: #0f6fac;
@@ -288,6 +289,7 @@
   padding: 0 30px;
   color: #666;
   text-align: center;
+  font-size: 14px;
 }
 [list] .list_result .office_list .sort_box a p {
   display: none;
@@ -374,6 +376,7 @@
 [list] .list_result .office_list .office_list_item .office_building_cont dd {
   margin-bottom: 20px;
   line-height: 14px;
+  font-size: 14px;
 }
 [list] .list_result .office_list .office_list_item .office_building_cont dd.last_fix_bottom {
   position: absolute;
