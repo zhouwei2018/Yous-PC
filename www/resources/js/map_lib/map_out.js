@@ -140,6 +140,7 @@ myMap.prototype.addNavigation = function(){
 myMap.prototype.getBoundary = function(name, vueobj) {
     var ply = new BMap.Polygon(vueobj.boundary_location[name]); //建立多边形覆盖物
     ply.setStrokeColor('#ffa08a');
+    ply.setStrokeWeight(6);
     ply.setFillColor('#43dfff');
     ply.setFillOpacity(0.2);
     ply.enableMassClear();
@@ -184,18 +185,18 @@ myMap.prototype.addPageEvent = function(vueobj) {
     });
 
     //小区标注点事件
-    $(document).on('click', '.map_pop_community', function(){
+  /*  $(document).on('click', '.map_pop_community', function(){
         $('.qqserver').addClass('unfold');
         $('.qqserver001').removeClass('unfold001');
         $('.shareshow').css('display', 'none'); //默认关闭分享
-        this.community.id = $(this).attr('communityid');
+        self.community.id = $(this).attr('communityid');
         $('.liebiao').html(''); //加载前先清空上次的数据
         var data = {
-            t:house_type,
-            s_p:s_price,
-            s_a:s_area,
-            s_r:s_room,
-            s_t:s_tag,
+            t:vueobj.house_type,
+            s_p:vueobj.s_price,
+            s_a:vueobj.s_area,
+            s_r:vueobj.s_room,
+            s_t:vueobj.s_tag,
             'communityId':self.community.id
         }
         $.ajax({
@@ -204,11 +205,9 @@ myMap.prototype.addPageEvent = function(vueobj) {
             dataType: 'html',
             data:data,
             beforeSend:function(XMLHttpRequest){
-                //setTimeout(function() { removeHouseLoading() }, 300);
                 vueobj.addHouseLoading(); //地图加载中
             },
             success: function(data) {
-                vueobj.removeHouseLoading(); //移除地图加载中
                 $('.liebiao').css('display', 'block');
                 $('.liebiao').html(data);
                 loadScrollbar(); //滚动条
@@ -228,7 +227,7 @@ myMap.prototype.addPageEvent = function(vueobj) {
         });
         $(this).siblings().removeClass('map_pop_community_cur lock');
         $(this).addClass('map_pop_community_cur fixed lock');
-    });
+    });*/
 
     $(document).on('mouseover', '.map_pop_sublocation', function(){ //子区域鼠标滑入颜色
         var popObj = $(this);
@@ -384,10 +383,10 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
         div.appendChild(label);
         numText = parseInt(this._value.countNumber) + '套';
         //numText = parseInt(this._value.exchangeNumber) + parseInt(this._value.rentNumber) + '套';
-        if(this._price && house_type != 'rent') {
+        /*if(this._price && house_type != 'rent') {
             var price = parseInt(this._price) / 10000;
             newspan.appendChild(document.createTextNode(price.toFixed(1) + '万'));
-        }
+        }*/
         span.appendChild(document.createTextNode(numText));
         label.appendChild(document.createTextNode(this._title));
         label.appendChild(newspan);

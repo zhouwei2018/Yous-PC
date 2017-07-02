@@ -76,9 +76,7 @@ a img{ border:none;}
 .contnav ul.topnav li img{margin:4px 14px 0 23px;}
 .contnav ul.topnav li span.subhover{background-position:center bottom;cursor:pointer;}
 .contnav ul.topnav li ul.subnav{list-style:none;position:absolute;z-index:2;left:0;top:41px;background:#ffffff;margin:0;padding:4px 0;display:none;float:left;width:90px;-moz-border-radius-bottomleft:5px;-moz-border-radius-bottomright:5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;box-shadow:0 4px 10px #ccc;-webkit-box-shadow: 0 4px 10px #ccc;-moz-box-shadow: 0 4px 10px #ccc;max-height: 500px;overflow: auto;}
-.contnav ul.topnav li ul.subnav li{clear:both;width:90px;height:28px;border:0;overflow:hidden;}
-.contnav ul.topnav li ul.subnav li a{clear:both;float:left;width:90px;text-indent:18px;margin:0;height:28px;line-height:28px;}
-.contnav ul.topnav li ul.subnav li a:hover{color:#ffffff;background:#64cff9;border:none;width:90px;}
+
 .contright .contfr_liulan{ position:relative;}
 .contright .contfr_liulan #liulannumber{background:#64cff9;}
 .contfr_liulan a{height:41px;}

@@ -24,7 +24,6 @@
     "dist:dev": "webpack --config build/webpack.dist.dev.config.js",
     "dist:prod": "webpack --config build/webpack.dist.prod.config.js",
     "dist": "npm run dist:style && npm run dist:dev && npm run dist:prod",
-    "lint": "eslint --fix --ext .js,.vue src",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run lint && npm run unit",
     "prepublish": "npm run dist"
@@ -62,8 +61,6 @@
     "chai": "^3.5.0",
     "cross-env": "^3.1.4",
     "css-loader": "^0.23.1",
-    "eslint": "^3.12.2",
-    "eslint-plugin-html": "^1.7.0",
     "extract-text-webpack-plugin": "^2.0.0",
     "file-loader": "^0.8.5",
     "friendly-errors-webpack-plugin": "^1.6.1",
