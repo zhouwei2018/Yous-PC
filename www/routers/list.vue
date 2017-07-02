@@ -34,6 +34,10 @@
         padding-top: 50px;
     }
 
+    .ivu-modal-confirm {
+        padding: 20px;
+    }
+
 
 </style>
 
@@ -95,37 +99,18 @@
                         <div class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">面积:</span>
 
-                            <a class="active">全部</a>
-                            <a href="javascript:;">
-                                <span class="font_num">0</span>-<span class="font_num">100</span><span class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                <span class="font_num">100</span>-<span class="font_num">200</span><span
-                                    class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                <span class="font_num">200</span>-<span class="font_num">300</span><span
-                                    class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                <span class="font_num">300</span>-<span class="font_num">500</span><span
-                                    class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                <span class="font_num">500</span>-<span class="font_num">1000</span><span
-                                    class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                <span class="font_num">1000</span>-<span class="font_num">2000</span><span
-                                    class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                <span class="font_num">2000</span>-<span class="font_num">3000</span><span
-                                    class="font_num">m²</span>
-                            </a>
-                            <a href="javascript:;">
-                                &gt;<span class="font_num">3000</span><span class="font_num">m²</span>
-                            </a>
+                            <a v-for="(item1,index) in area_arr" v-if="index == 0"
+                            :class="{active:active == index}"
+                            >全部</a>
+                            <template v-else>
+                                <a v-if="index == area_arr.length-1" :class="{active:active == index}"
+                                ><span class="font_num">{{item1.startNum}}</span><span class="font_num">m²</span></a>
+                                <a v-else href="javascript:;" :class="{active:active == index}">
+                                    <span class="font_num">{{item1.startNum}}</span>-<span
+                                        class="font_num">{{item1.endNum}}</span><span class="font_num">m²</span>
+                                </a>
+                            </template>
+
                             <div class="area_wrap pr" @mouseenter="areaShowFlag = true"
                                  @mouseleave="areaShowFlag = false">
                                 <div class="interval pr">
@@ -165,16 +150,18 @@
                         <div class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">价格:</span>
 
-                            <a class="active" href="javascript:;">全部</a>
-                            <a href="javascript:;"><span class="font_num">1</span>-<span class="font_num">3</span>元</a>
-                            <a href="javascript:;"><span class="font_num">3</span>-<span class="font_num">5</span>元</a>
-                            <a href="javascript:;"><span class="font_num">5</span>-<span class="font_num">8</span>元</a>
-                            <a href="javascript:;"><span class="font_num">8</span>-<span class="font_num">10</span>元</a>
-                            <a href="javascript:;"><span class="font_num">10</span>-<span
-                                    class="font_num">20</span>元</a>
-                            <a href="javascript:;"><span class="font_num">20</span>-<span
-                                    class="font_num">30</span>元</a>
-                            <a href="javascript:;">&gt;<span class="font_num">30</span>元</a>
+                            <a v-for="(item2,index) in price_arr" v-if="index == 0"
+                               :class="{active:active == index}"
+                            >全部</a>
+                            <template v-else>
+                                <a v-if="index == price_arr.length-1" :class="{active:active == index}"
+                                ><span class="font_num">{{item2.startNum}}</span><span class="font_num">元</span></a>
+                                <a v-else href="javascript:;" :class="{active:active == index}">
+                                    <span class="font_num">{{item2.startNum}}</span>-<span
+                                        class="font_num">{{item2.endNum}}</span><span class="font_num">元</span>
+                                </a>
+                            </template>
+
                             <div class="price_wrap pr" @mouseenter="priceShowFlag = true"
                                  @mouseleave="priceShowFlag = false">
                                 <div class="interval pr">
@@ -350,7 +337,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -363,22 +350,23 @@
                         <div class="sidebar_main" id="sidebar_fix">
                             <div class="map_house">
                                 <img src="../resources/images/list/maps.png" alt="">
-                                <a class="map_find_btn">地图找房</a>
+                                <router-link target="_blank" class="map_find_btn" :to="{path:'/map_search'}">地图找房
+                                </router-link>
                             </div>
                             <div class="booking_house mt20">
                                 <div class="booking_house_mes">
                                     <h2>快速找房</h2>
-                                    <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
-                                        <input type="hidden" name="flag" value="5">
-                                        <input name="searchengine" type="hidden" value="">
-                                        <input name="phone" class="form_control form_telphone" type="text"
+                                    <form id="freeLookForm" class="nice-validator n-default">
+                                        <input id="freeLook_inp" name="phone" class="form_control form_telphone"
+                                               type="text"
                                                autocomplete="off"
                                                placeholder="手机号" maxlength="11"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
-                                               aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
+                                               onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <span class="db text-left mt05" id="msg-phone"></span>
-                                        <div class="form_control form_btn mt10 cur_pointer" id="list_yijianyuyue">一键咨询
+                                        <div class="form_control form_btn mt10 cur_pointer"
+                                             id="list_yijianyuyue"
+                                             @click="instance('success')">一键咨询
                                         </div>
                                     </form>
 
@@ -446,7 +434,6 @@
                     }
                 ],
 
-
                 buildList: [], //楼盘列表，搜索结果
 
                 areaShowFlag: false, //默认面积窗不显示
@@ -470,8 +457,98 @@
                 pageSize: 10, //每页个数
                 curPage: 1, //当前页数
 
-                loadingFlag:true,
-                pageFlag:false,
+                loadingFlag: true, //loading是否显示
+                pageFlag: false, //页码是否显示
+
+                //面积筛选数组
+                area_arr: [
+                    {
+                        startNum:'全部'
+                    },
+                    {
+                        startNum: 0,
+                        endNum: 100,
+                    },
+                    {
+                        startNum: 100,
+                        endNum: 200,
+                    },
+                    {
+                        startNum: 200,
+                        endNum: 300,
+                    },
+                    {
+                        startNum: 300,
+                        endNum: 500,
+                    },
+                    {
+                        startNum: 500,
+                        endNum: 1000,
+                    },
+                    {
+                        startNum: 1000,
+                        endNum: 2000,
+                    },
+                    {
+                        startNum: 2000,
+                        endNum: 3000,
+                    },
+                    {
+                        startNum: '>3000',
+                    }
+                ],
+
+                //价格筛选数组
+                price_arr:[
+                    {
+                        startNum:'全部'
+                    },
+                    {
+                        startNum: 1,
+                        endNum: 3,
+                    },
+                    {
+                        startNum: 3,
+                        endNum: 5,
+                    },
+                    {
+                        startNum: 5,
+                        endNum: 8,
+                    },
+                    {
+                        startNum: 8,
+                        endNum: 10,
+                    },
+                    {
+                        startNum: 10,
+                        endNum: 20,
+                    },
+                    {
+                        startNum: 20,
+                        endNum: 30,
+                    },
+                    {
+                        startNum: '>30',
+                    }
+                ],
+
+
+                //特色数组
+                feature_arr: [
+                    '全部',
+                    '地铁周边',
+                    '互联网',
+                    '金融精英',
+                    '健康空气',
+                    'LEED',
+                    '新楼',
+                    '地标建筑',
+                    '创意园区',
+                    '名企开发商',
+                    '知名物业',
+                    '5A写字楼',
+                    '纳什空间'
+                ]
 
             }
         },
@@ -528,7 +605,7 @@
 //                    }
 
                     _this.buildList = [{
-                        "id": 3002,
+                        "id": 1,
                         "label": ["互联网", "地标建筑"],
                         "buildingName": "望京SOHO",
                         "address": "望京街与阜安西路交叉路口",
@@ -541,7 +618,7 @@
                         "district": "朝阳",
                         "business": "望京"
                     }, {
-                        "id": 3003,
+                        "id": 2,
                         "label": ["互联网", "地标建筑"],
                         "buildingName": "建外SOHO",
                         "address": "朝阳区建国门外大街4号（国贸中心对面）",
@@ -554,7 +631,7 @@
                         "district": "朝阳",
                         "business": "CBD"
                     }, {
-                        "id": 3004,
+                        "id": 3,
                         "label": ["互联网", "地标建筑"],
                         "buildingName": "SK大厦",
                         "address": "建国门外大街甲6号",
@@ -596,6 +673,24 @@
             change(page){
                 this.curPage = page;
                 this.getList(); //获取楼盘列表
+                $(window).scrollTop(0);
+            },
+
+            //一键咨询
+            instance (type) {
+                $('#freeLook_inp').focus();
+                const title = '提交成功';
+                const content = '<p>客服将在10分钟内联系您，和您沟通找房需求</p>';
+                switch (type) {
+                    case 'success':
+                        this.$Modal.success({
+                            title: title,
+                            content: content
+                        });
+                        break;
+                    default:
+                        ;
+                }
             }
 
         },
@@ -685,6 +780,7 @@
 
 
             this.getList(); //获取楼盘列表
+
         },
 
         created(){
