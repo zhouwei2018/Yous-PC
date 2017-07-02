@@ -272,10 +272,10 @@
                     <div class="screening_conts_detail clearfix pv20">
                         <div class="screening_conts_list clearfix selected_item">
                             <span class="screening_title mr15">已选:</span>
-                            <a href="/searchlist/a2-g3/">海淀<i class="sem_icon hover"></i></a>
-                            <a href="/searchlist-d105034/a2/">互联网<i class="sem_icon hover"></i></a>
-                            <a href="/searchlist-d105034/g3/">100-200m²<i class="sem_icon hover"></i></a>
-                            <a href="/searchlist/" class="del-all "><i class="sem_icon"></i>全部清除</a>
+                            <a href="javascript:;">海淀<i class="sem_icon hover"></i></a>
+                            <a href="javascript:;">互联网<i class="sem_icon hover"></i></a>
+                            <a href="javascript:;">100-200m²<i class="sem_icon hover"></i></a>
+                            <a href="javascript:;" class="del_all "><i class="sem_icon"></i>全部清除</a>
                         </div>
                     </div>
 

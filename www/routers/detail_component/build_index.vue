@@ -1,5 +1,9 @@
 <style lang="less" scoped>
-
+.page_det_box{
+    padding: 30px 0;
+    margin: 0 auto;
+    width:400px;
+}
 </style>
 
 
@@ -382,15 +386,9 @@
                     </li>
                 </ul>
 
-                <div class="page_box">
-                    <span class="pg_pre"><i>&lt;</i>上一页</span>
-                    <a class="pg_link" href="javascript:;">1</a>
-                    <a class="pg_link" href="javascript:;">2</a>
-                    <a class="pg_link" href="javascript:;">3</a>
-                    <a class="pg_link" href="javascript:;">4</a>
-                    <a class="pg_link" href="javascript:;">…</a>
-                    <a class="pg_link" href="javascript:;">14</a>
-                    <span class="pg_next">下一页<i>&gt;</i></span>
+                <!--page-->
+                <div class="page_det_box" v-show="pageFlag">
+                    <Page :total="100" @on-change="change"></Page>
                 </div>
 
             </div>
@@ -495,13 +493,21 @@
     export default {
         data(){
              return {
-                 buildingName:'望京SOHO周边配套'
+                 buildingName:'望京SOHO周边配套',
+                 pageFlag: true, //页码是否显示
              }
         },
         components:{
             mapPart
         },
-        methods: {},
+        methods: {
+            //分页
+            change(page){
+                this.curPage = page;
+                this.getList(); //获取楼盘列表
+                $(window).scrollTop(0);
+            },
+        },
 
         mounted(){
             //首屏轮播

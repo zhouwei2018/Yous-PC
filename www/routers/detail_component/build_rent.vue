@@ -1,5 +1,11 @@
 <style lang="less">
-
+    /*分页*/
+    .page_wrap {
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
+        padding-top: 50px;
+    }
 </style>
 
 
@@ -270,15 +276,9 @@
                         </li>
                     </ul>
 
-                    <div class="page_box">
-                        <span class="pg_pre"><i>&lt;</i>上一页</span>
-                        <a class="pg_link" href="javascript:;">1</a>
-                        <a class="pg_link" href="javascript:;">2</a>
-                        <a class="pg_link" href="javascript:;">3</a>
-                        <a class="pg_link" href="javascript:;">4</a>
-                        <a class="pg_link" href="javascript:;">…</a>
-                        <a class="pg_link" href="javascript:;">14</a>
-                        <span class="pg_next">下一页<i>&gt;</i></span>
+                    <!--page-->
+                    <div class="page_wrap" v-show="pageFlag">
+                        <Page :total="100" @on-change="change"></Page>
                     </div>
 
                 </div>
@@ -329,7 +329,19 @@
 
 <script>
     export default {
-        methods: {},
+        data(){
+            return {
+                pageFlag: true, //页码是否显示
+            }
+        },
+        methods: {
+            //分页
+            change(page){
+                this.curPage = page;
+                this.getList(); //获取楼盘列表
+                $(window).scrollTop(0);
+            },
+        },
 
         mounted(){
 

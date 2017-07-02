@@ -6,6 +6,7 @@
     .anchorBL {
         display: none !important;
     }
+
 </style>
 
 <template>

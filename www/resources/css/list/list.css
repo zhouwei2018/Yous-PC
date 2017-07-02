@@ -274,6 +274,12 @@
 [list] .selected_item a:hover .sem_icon {
   background-position: -80px -151px;
 }
+[list] .selected_item .del_all .sem_icon {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px -3px 0;
+  background-position: -50px -149px;
+}
 [list] .list_result {
   min-height: 530px;
 }
