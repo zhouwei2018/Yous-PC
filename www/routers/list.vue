@@ -100,12 +100,18 @@
                             <span class="screening_title mr15">面积:</span>
 
                             <a v-for="(item1,index) in area_arr" v-if="index == 0"
-                            :class="{active:active == index}"
+                               href="javascript:;"
+                               :class="{active:areaActive == index}"
+                               @click="sel_area_list($event)"
                             >全部</a>
                             <template v-else>
-                                <a v-if="index == area_arr.length-1" :class="{active:active == index}"
+                                <a v-if="index == area_arr.length-1" href="javascript:;"
+                                   :class="{active:areaActive == index}"
+                                   class="last"
+                                   @click="sel_area_list($event)"
                                 ><span class="font_num">{{item1.startNum}}</span><span class="font_num">m²</span></a>
-                                <a v-else href="javascript:;" :class="{active:active == index}">
+                                <a v-else href="javascript:;" :class="{active:areaActive == index}"
+                                   @click="sel_area_list($event)">
                                     <span class="font_num">{{item1.startNum}}</span>-<span
                                         class="font_num">{{item1.endNum}}</span><span class="font_num">m²</span>
                                 </a>
@@ -151,12 +157,14 @@
                             <span class="screening_title mr15">价格:</span>
 
                             <a v-for="(item2,index) in price_arr" v-if="index == 0"
-                               :class="{active:active == index}"
+                               :class="{active:perPriceActive == index}"
+                               @click="sel_price_list($event)"
                             >全部</a>
                             <template v-else>
-                                <a v-if="index == price_arr.length-1" :class="{active:active == index}"
+                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}" class="last"
+                                   @click="sel_price_list($event)"
                                 ><span class="font_num">{{item2.startNum}}</span><span class="font_num">元</span></a>
-                                <a v-else href="javascript:;" :class="{active:active == index}">
+                                <a v-else href="javascript:;" :class="{active:perPriceActive == index}" @click="sel_price_list($event)">
                                     <span class="font_num">{{item2.startNum}}</span>-<span
                                         class="font_num">{{item2.endNum}}</span><span class="font_num">元</span>
                                 </a>
@@ -253,21 +261,24 @@
                     <div class="screening_conts_detail clearfix pv20">
                         <div class="screening_conts_list clearfix">
                             <span class="screening_title mr15">特色:</span>
-                            <a href="javascript:;" class="active">全部</a>
-                            <a href="javascript:;">地铁周边</a>
-                            <a href="javascript:;">互联网</a>
-                            <a href="javascript:;">金融精英</a>
-                            <a href="javascript:;">健康空气</a>
-                            <a href="javascript:;">LEED</a>
-                            <a href="javascript:;">新楼</a>
-                            <a href="javascript:;">地标建筑</a>
-                            <a href="javascript:;">创意园区</a>
-                            <a href="javascript:;">名企开发商</a>
-                            <a href="javascript:;">知名物业</a>
-                            <a href="javascript:;">5A写字楼</a>
-                            <a href="javascript:;">纳什空间</a>
+                            <a href="javascript:;" v-for="(item4,index) in feature_arr"
+                               :class="{active:featureActive == index}"
+                                @click="sel_feature_list($event)"
+                               v-text="item4"
+                            ></a>
                         </div>
                     </div>
+
+                    <div class="screening_conts_detail clearfix pv20">
+                        <div class="screening_conts_list clearfix selected_item">
+                            <span class="screening_title mr15">已选:</span>
+                            <a href="/searchlist/a2-g3/">海淀<i class="sem_icon hover"></i></a>
+                            <a href="/searchlist-d105034/a2/">互联网<i class="sem_icon hover"></i></a>
+                            <a href="/searchlist-d105034/g3/">100-200m²<i class="sem_icon hover"></i></a>
+                            <a href="/searchlist/" class="del-all "><i class="sem_icon"></i>全部清除</a>
+                        </div>
+                    </div>
+
                 </div>
                 <!-- 筛选区域 end  -->
 
@@ -337,7 +348,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -434,6 +445,11 @@
                     }
                 ],
 
+                areaActive:0,
+                perPriceActive:0,
+                totPriceActive:0,
+                featureActive:0,
+
                 buildList: [], //楼盘列表，搜索结果
 
                 areaShowFlag: false, //默认面积窗不显示
@@ -450,8 +466,6 @@
                 bNum_tot: "", //起始价格
                 eNum_tot: "", //结束价格
 
-                //筛选条件
-                district: "",
 
                 //分页
                 pageSize: 10, //每页个数
@@ -463,7 +477,7 @@
                 //面积筛选数组
                 area_arr: [
                     {
-                        startNum:'全部'
+                        startNum: '全部'
                     },
                     {
                         startNum: 0,
@@ -499,9 +513,9 @@
                 ],
 
                 //价格筛选数组
-                price_arr:[
+                price_arr: [
                     {
-                        startNum:'全部'
+                        startNum: '全部'
                     },
                     {
                         startNum: 1,
@@ -548,7 +562,17 @@
                     '知名物业',
                     '5A写字楼',
                     '纳什空间'
-                ]
+                ],
+
+
+                //筛选条件全局参数
+                search_keywork:"", //模糊查询
+                district: "", //区域
+                business:"", //商圈
+                area:"", //面积
+                price_dj:"",
+                price_zj:"",
+                label:"",
 
             }
         },
@@ -559,12 +583,6 @@
             toggle(i, v){
                 this.active = i;
                 this.currentView = v;
-            },
-
-            //改变筛选条件
-            selList(district){
-                this.district = district;
-                this.getList();
             },
 
             //获取楼盘列表
@@ -580,16 +598,16 @@
                     this.$api,
                     {
                         "parameters": {
-                            "search_keywork": "",
+                            "search_keywork": "", //楼盘/商圈描述search
                             "district": this.district, //区域
-                            "business": "",
-                            "line_id": "",
-                            "station_id": "",
-                            "area": "",
-                            "price_dj": '',
-                            "price_zj": "",
-                            "label": "",
-                            "orderby": "",
+                            "business": this.business, //商圈
+                            "line_id": "", //地铁线路ID
+                            "station_id": "", //地铁站点ID
+                            "area": this.area, //面积
+                            "price_dj": this.price_dj, //价格（[30,100]）单价
+                            "price_zj": this.price_zj, //价格（[30,100]）总价
+                            "label": this.label, //特色标签
+                            "orderby": "", //排序(默认:D，面积:A，价格:P)
                             "curr_page": this.curPage,
                             "items_perpage": this.pageSize
                         },
@@ -652,6 +670,71 @@
                 }, function (response) {
                     this.$Message.error('获取楼盘列表失败');
                 });
+            },
+
+            //改变区域筛选
+            selList(district){
+                this.district = district;
+                this.getList();
+            },
+
+            //改变面积筛选
+            sel_area_list(e){
+                $(e.currentTarget).addClass('active').siblings().removeClass('active');
+                if ($(e.currentTarget).html() == '全部') {
+                    this.area="";
+                } else if ($(e.currentTarget).hasClass('last')) {
+                    this.area=[];
+                    this.area.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)[0]));
+                    this.area.push("");
+                } else {
+                    this.area=[];
+                    this.area.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
+                    this.area.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                }
+                this.getList();
+
+            },
+
+            //改变单价筛选
+            sel_price_list(e){
+                $(e.currentTarget).addClass('active').siblings().removeClass('active');
+                if ($(e.currentTarget).html() == '全部') {
+                    this.price_dj="";
+                } else if ($(e.currentTarget).hasClass('last')) {
+                    this.price_dj=[];
+                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
+                    this.price_dj.push("");
+                } else {
+                    this.price_dj=[];
+                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
+                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                }
+                this.getList();
+            },
+
+            //改变总价筛选
+            sel_tot_price_list(e){
+                $(e.currentTarget).addClass('active').siblings().removeClass('active');
+                if ($(e.currentTarget).html() == '全部') {
+                    this.price_dj="";
+                } else if ($(e.currentTarget).hasClass('last')) {
+                    this.price_dj=[];
+                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
+                    this.price_dj.push("");
+                } else {
+                    this.price_dj=[];
+                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
+                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                }
+                this.getList();
+            },
+
+            //改变特色筛选
+            sel_feature_list(e){
+                $(e.currentTarget).addClass('active').siblings().removeClass('active');
+                this.label=$(e.currentTarget).html();
+                this.getList();
             },
 
             //排序

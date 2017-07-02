@@ -252,6 +252,28 @@
   line-height: 26px;
   background-color: #476CBA;
 }
+[list] .selected_item a {
+  height: 26px;
+  line-height: 26px;
+  padding: 0 5px;
+  color: #999;
+  border: 1px solid #E5E5E6;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[list] .selected_item a .sem_icon {
+  width: 10px;
+  height: 10px;
+  margin-left: 5px;
+  background-position: -80px -130px;
+}
+[list] .selected_item a:hover {
+  border-color: #476cba;
+}
+[list] .selected_item a:hover .sem_icon {
+  background-position: -80px -151px;
+}
 [list] .list_result {
   min-height: 530px;
 }

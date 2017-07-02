@@ -10,14 +10,14 @@
             <span class="screening_title mr15">位置:</span>
             <a href="javascript:;"
                v-for="(item,index) in district"
-               :class="{active:active == index}"
+               :class="{active:line_active == index}"
                :id="item.id"
             >{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" v-show="sub_show_flag">
             <a href="javascript:;"
                v-for="(item1,index) in sub_district"
-               :class="{active:sub_active == index}"
+               :class="{active:sub_line_active == index}"
                class="pt05"
                :id="item1.id"
                @click="getHouseList($event)"
@@ -69,8 +69,8 @@
                     }
                 ],
 
-                active: 0,
-                sub_active: 0,
+                line_active: 0,
+                sub_line_active:0,
 
                 sub_show_flag:false, //默认二级区域不显示
             }
@@ -96,6 +96,7 @@
                 }
             },
             getHouseList(e){
+                $(e.target).addClass('active').siblings().removeClass('active');
                 this.$emit('refreshbizlines',$(e.target).attr('id'));
             }
         },
