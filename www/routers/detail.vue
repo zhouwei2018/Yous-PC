@@ -1,7 +1,6 @@
 <style lang="less">
     @import "../resources/css/detail/detail.less";
     @import "../resources/css/right_column/right_column.less";
-    @import "../resources/css/update/page.less";
 </style>
 <style>
     .anchorBL {

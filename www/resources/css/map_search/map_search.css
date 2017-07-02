@@ -46,7 +46,7 @@ a img{ border:none;}
 .mapmenuleft .menu ul li{height:13px;float:left;line-height:13px;margin:22px 0;padding:0 22px;border-left:1px solid #ebebeb;font-size:14px;}
 .mapmenuleft .menu ul li a{text-align:center;}
 .mapmenuleft .menu ul li a:hover{color:#8c91ff;}
-..mapmenuright{ overflow:hidden;height:57px;}
+.mapmenuright{ overflow:hidden;height:57px;}
 .mapmenuright a.loginsty,.mapmenuright a.closesty {line-height:57px;display:block;margin-right:50px;padding-right:10px;}
 .mapmenuright a.loginsty span,.mapmenuright a.closesty span,.loginname{line-height:57px;display:block;float:left;font-size:14px;padding-right:10px;}
 .mapmenuright a.loginsty:hover,.mapmenuright a.closesty:hover{color:#8c91ff;}

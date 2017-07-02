@@ -1,7 +1,40 @@
 <style lang="less">
     @import "../resources/css/list/list.less";
     @import "../resources/css/right_column/right_column.less";
-    @import "../resources/css/update/page.less";
+
+    //加载中
+    .demo-spin-icon-load {
+        animation: ani-demo-spin 1s linear infinite;
+    }
+
+    @keyframes ani-demo-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .loading_wrap {
+        width: 100px;
+        height: 60px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    //分页
+    .page_wrap {
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
+        padding-top: 50px;
+    }
+
+
 </style>
 
 <template>
@@ -310,16 +343,16 @@
                         </div>
 
                         <!--搜索结果list end-->
+                        <div class="page_wrap" v-show="pageFlag">
+                            <Page :total="200" @on-change="change"></Page>
+                        </div>
 
-                        <div class="page_box">
-                            <span class="pg_pre"><i>&lt;</i>上一页</span>
-                            <a class="pg_link" href="javascript:;">1</a>
-                            <a class="pg_link" href="javascript:;">2</a>
-                            <a class="pg_link" href="javascript:;">3</a>
-                            <a class="pg_link" href="javascript:;">4</a>
-                            <a class="pg_link" href="javascript:;">…</a>
-                            <a class="pg_link" href="javascript:;">14</a>
-                            <span class="pg_next">下一页<i>&gt;</i></span>
+                        <!--加载中-->
+                        <div class="loading_wrap" v-show="loadingFlag">
+                            <Spin fix>
+                                <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
+                                <div>加载中……</div>
+                            </Spin>
                         </div>
 
 
@@ -431,10 +464,18 @@
                 eNum_tot: "", //结束价格
 
                 //筛选条件
-                district:"",
+                district: "",
+
+                //分页
+                pageSize: 10, //每页个数
+                curPage: 1, //当前页数
+
+                loadingFlag:true,
+                pageFlag:false,
 
             }
         },
+
         methods: {
 
             //区域和地铁tab
@@ -445,13 +486,19 @@
 
             //改变筛选条件
             selList(district){
-                this.district=district;
+                this.district = district;
                 this.getList();
             },
 
             //获取楼盘列表
             getList(){
                 var _this = this;
+
+                this.buildList = [];
+
+                this.loadingFlag = true;
+                this.pageFlag = false;
+
                 this.$http.post(
                     this.$api,
                     {
@@ -466,8 +513,8 @@
                             "price_zj": "",
                             "label": "",
                             "orderby": "",
-                            "curr_page": "1",
-                            "items_perpage": "5"
+                            "curr_page": this.curPage,
+                            "items_perpage": this.pageSize
                         },
                         "foreEndType": 2,
                         "code": "30000001"
@@ -521,6 +568,9 @@
                         "business": "CBD"
                     }];
 
+                    _this.loadingFlag = false;
+                    _this.pageFlag = true;
+
 
                 }, function (response) {
                     this.$Message.error('获取楼盘列表失败');
@@ -541,6 +591,12 @@
                 }
                 this.getList(); //排序后的列表
             },
+
+            //分页
+            change(page){
+                this.curPage = page;
+                this.getList(); //获取楼盘列表
+            }
 
         },
         mounted: function () {
