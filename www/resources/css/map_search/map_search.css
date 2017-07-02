@@ -5,7 +5,7 @@
     -ms-box-sizing:border-box;
     box-sizing:border-box; }
 html, body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dd, dt, menu, table, caption, colgroup, col, thead, tbody, tfoot, tr, th, td, menu, blockquote, hr, pre, q, address, iframe, map, area, b, i, del, ins, span, a, em, strong, form, legend, fieldset, input, button, label, select, optgroup, option, textarea, object, param, var, article, aside, audio, bdi, canvas, command, datalist, details, embed, fiqure, fiqcaption, header, footer, hgroup, keyqen, mark, meter, nav, output, progress, rp, rt, ruby, section, source, summary, time, track, video{margin:0;padding:0;outline: 0;}
-body{font: 12px 微软雅黑;-webkit-text-size-adjust:100%;width:100%;}
+/*body{font: 12px 微软雅黑;-webkit-text-size-adjust:100%;width:100%;}*/
 ul,li{ list-style:none;}
 a{color:#000;display:block;text-decoration:none;}
 a,a:hover{ text-decoration:none;cursor:pointer;}
