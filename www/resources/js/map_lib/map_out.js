@@ -138,7 +138,7 @@ myMap.prototype.addNavigation = function(){
  * 区域边界
  */
 myMap.prototype.getBoundary = function(name, vueobj) {
-    var ply = new BMap.Polygon(vueobj.boundary_location[name]); //建立多边形覆盖物
+    var ply = new BMap.Polygon(vueobj.boundary_location[name]);//行政区勾勒
     ply.setStrokeColor('#ffa08a');
     ply.setStrokeWeight(6);
     ply.setFillColor('#43dfff');
@@ -156,6 +156,7 @@ myMap.prototype.addPageEvent = function(vueobj) {
     var self = this;
     //区域标注点事件 start
     $(document).on('click', '.map_pop_location', function(){
+        alert("点击了一个行政区域，将获得该区域内商圈房源概况")
         if ($(this).attr('domain') != '') {//城市图标
            // window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
         } else {//城区图标
@@ -171,6 +172,7 @@ myMap.prototype.addPageEvent = function(vueobj) {
 
     //商圈标注点事件 start
     $(document).on('click', '.map_pop_sublocation', function(){
+        alert("点击了一个商圈，将获得该区域内商圈房源概况")
         if ($(this).attr('domain') != '') {//城市图标
             //window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
         } else {
@@ -185,12 +187,13 @@ myMap.prototype.addPageEvent = function(vueobj) {
     });
 
     //小区标注点事件
-  /*  $(document).on('click', '.map_pop_community', function(){
+    $(document).on('click', '.map_pop_community', function(){
+        alert("点击了一个楼盘，将在右侧显示该楼盘内的房源列表（详细）")
         $('.qqserver').addClass('unfold');
         $('.qqserver001').removeClass('unfold001');
         $('.shareshow').css('display', 'none'); //默认关闭分享
         self.community.id = $(this).attr('communityid');
-        $('.liebiao').html(''); //加载前先清空上次的数据
+       // $('.liebiao').html(''); //加载前先清空上次的数据
         var data = {
             t:vueobj.house_type,
             s_p:vueobj.s_price,
@@ -200,7 +203,7 @@ myMap.prototype.addPageEvent = function(vueobj) {
             'communityId':self.community.id
         }
         $.ajax({
-            url:'/bJ_Map/rightHousesList',
+            url:vueobj.domainRoot+'/bJ_Map/rightHousesList',
             type: 'GET',
             dataType: 'html',
             data:data,
@@ -208,26 +211,24 @@ myMap.prototype.addPageEvent = function(vueobj) {
                 vueobj.addHouseLoading(); //地图加载中
             },
             success: function(data) {
-                $('.liebiao').css('display', 'block');
-                $('.liebiao').html(data);
-                loadScrollbar(); //滚动条
+                //$('.liebiao').css('display', 'block');
+               // $('.liebiao').html(data);
+                vueobj.loadScrollbar(); //滚动条
             },
             complete:function(XMLHttpRequest) {
                 vueobj.removeHouseLoading(); //移除地图加载中
             },
             error: function() {
+              /*  var data=""
+                $('.liebiao').html(data);*/
+                //$('.liebiao').css('display', 'block');
                 vueobj.removeHouseLoading(); //移除地图加载中
-                //alert('附近未找到房源，请重新选择！');
-                var data="测试获得具体房屋后的品抽标签"
-                vueobj.removeHouseLoading(); //移除地图加载中
-                $('.liebiao').css('display', 'block');
-                $('.liebiao').html(data);
                 vueobj.loadScrollbar(); //滚动条
             }
         });
         $(this).siblings().removeClass('map_pop_community_cur lock');
         $(this).addClass('map_pop_community_cur fixed lock');
-    });*/
+    });
 
     $(document).on('mouseover', '.map_pop_sublocation', function(){ //子区域鼠标滑入颜色
         var popObj = $(this);

@@ -203,8 +203,8 @@
                             <a href="javascript:void(0);"></a>
                         </div>
                         <!--右边浮动层开始-->
-                        <div class="qqserver unfold" style="background:#ddd;">
-                            <div class="qqserver-body" style="display:none;">
+                        <div class="qqserver" style="background:#ddd;">
+                            <div class="qqserver-body">
                                 <div class="qqserver-header">
                                     <div class="xiaoqushow fl" id="xiaoqushow">
                                         <span class="icon_xqshow"></span>小区展示
@@ -277,7 +277,7 @@
                                     <div class="adress"><span></span>南开西里</div>
                                     <div class="fanginfo">
                                         <a href="/community/8867" target="_blank">南开西里</a>
-                                        <img style="border:none;width:390px;height:106px" src="/themes/new2015/common/images/mapcity/bj.jpg">
+                                        <img style="border:none;width:390px;height:106px" src="../resources/images/map_search/bj.jpg">
                                         <span class="fuceng"> </span>
                                     </div>
                                     <!--内容-->
@@ -540,7 +540,7 @@
                 district:[],
                 YSMap:null,
                 autoSearchMaker:'',
-                domainRoot: '5i5j.com/map/',
+                domainRoot: 'http:/www.ys.com/map/',
                 circleNum: 0, //圆内标示加载次数的标识, 当为1的时候不再重复加载
                 autoSearchVal:'', //定位搜索的值
                 my_radius:1000, //默认周边圆的单位(米)
@@ -592,6 +592,7 @@
             },
             temHelper:function(){
                 //显示2秒隐藏
+                var this_=this;
                 $('.tsinfosty').slideDown(1000).delay(1500).slideUp(1000); //一个点击此处的提示
 
                 //左边浮动层（周边配套）-->
@@ -603,7 +604,7 @@
                     }else {
                         if($('.main_zhoubian').html() == '') {
                             $.ajax({
-                                url: controller + '/leftAroundPlace',
+                                url: this_.domainRoot + '/leftAroundPlace',
                                 type: 'GET',
                                 dataType: 'html',
                                 success: function(data) {
@@ -671,7 +672,7 @@
                         var type='rent';
                     }
                     $.ajax({
-                        url: controller + '/rightHousesDetail',
+                        url: this_.domainRoot + '/rightHousesDetail',
                         type: 'GET',
                         dataType: 'html',
                         data:{'houseType':type, 'houseid':$(this).attr('id')},
@@ -773,6 +774,35 @@
                 $('#t_L').html(htm);
                 $('#t_L').show();
             },
+             removeHouseLoading:function() {
+              $('#h_L').css('display', 'none');
+              $('#h_L').empty();
+          },
+             loadScrollbar:function() {
+
+        var $section = $(".scrollbox");
+        var $frame = $section,
+            $ul = $frame.find('ul').eq(0);
+        var $scrollbar = $section.find('.scrollbar');
+
+        $section.find(".slyWrap").each(function(i,e){
+            var cont = $(this),
+                frame = cont.find(".sly"),
+                slidee = $section.find("ul"),
+                scrollbar = cont.find(".scrollbar"),
+                options = frame.data("options");
+
+            options = $.extend({},options,{
+                scrollBar: scrollbar
+            });
+            frame.sly(options);
+        });
+    },
+            addHouseLoading:function() {
+             var htm='<div ><div class="houseloadings"><div class="circle"></div><div class="housesloadcontents">正在加载房源，请稍候...</div></div></div>'; //房源列表
+             $('#h_L').html(htm);
+             $('#h_L').show();
+              },
             loadArea:function(){
                 var data = {
                     t: this.house_type,
@@ -805,8 +835,8 @@
                     error: function() {
                         // alert('附近未找到房源，请重新选择！');
                         //本地测试
-                        var testData = {"houses":[{"exchangeNumber":7720,"rentNumber":1841,"countNumber":9561,"title":"\u671d\u9633","point":"116.49674|39.93258","isOpen":0,"icon":"w:20,h:29","type":2,"id":"6"},{"exchangeNumber":4239,"rentNumber":1045,"countNumber":5284,"title":"\u6d77\u6dc0","point":"116.32949|39.99316","isOpen":0,"icon":"w:20,h:29","type":2,"id":"5"},{"exchangeNumber":3340,"rentNumber":781,"countNumber":4121,"title":"\u4e30\u53f0","point":"116.30185|39.84615","isOpen":0,"icon":"w:20,h:29","type":2,"id":"7"},{"exchangeNumber":1319,"rentNumber":632,"countNumber":1951,"title":"\u4e1c\u57ce","point":"116.41493|39.9272","isOpen":0,"icon":"w:20,h:29","type":2,"id":"1"},{"exchangeNumber":2194,"rentNumber":742,"countNumber":2936,"title":"\u897f\u57ce","point":"116.37855|39.91649","isOpen":0,"icon":"w:20,h:29","type":2,"id":"2"},{"exchangeNumber":759,"rentNumber":59,"countNumber":818,"title":"\u77f3\u666f\u5c71","point":"116.22789|39.90617","isOpen":0,"icon":"w:20,h:29","type":2,"id":"8"},{"exchangeNumber":1946,"rentNumber":681,"countNumber":2627,"title":"\u5927\u5174","point":"116.35355|39.73293","isOpen":0,"icon":"w:20,h:29","type":2,"id":"990"},{"exchangeNumber":1805,"rentNumber":699,"countNumber":2504,"title":"\u901a\u5dde","point":"116.66406|39.91199","isOpen":0,"icon":"w:20,h:29","type":2,"id":"970"},{"exchangeNumber":1011,"rentNumber":367,"countNumber":1378,"title":"\u987a\u4e49","point":"116.65839|40.13294","isOpen":0,"icon":"w:20,h:29","type":2,"id":"1010"},{"exchangeNumber":2331,"rentNumber":529,"countNumber":2860,"title":"\u660c\u5e73","point":"116.2405|40.22647","isOpen":0,"icon":"w:20,h:29","type":2,"id":"21"},{"exchangeNumber":2598,"rentNumber":650,"countNumber":3248,"title":"\u623f\u5c71","point":"116.15337|39.74106","isOpen":0,"icon":"w:20,h:29","type":2,"id":"1030"}],"zoom":"12"};
-                        var data = testData;
+                         var testData = {"houses":[{"exchangeNumber":7730,"rentNumber":1844,"countNumber":9574,"title":"\u671d\u9633","point":"116.49674|39.93258","isOpen":0,"icon":"w:20,h:29","type":2,"id":"6"},{"exchangeNumber":4240,"rentNumber":1047,"countNumber":5287,"title":"\u6d77\u6dc0","point":"116.32949|39.99316","isOpen":0,"icon":"w:20,h:29","type":2,"id":"5"},{"exchangeNumber":3348,"rentNumber":780,"countNumber":4128,"title":"\u4e30\u53f0","point":"116.30185|39.84615","isOpen":0,"icon":"w:20,h:29","type":2,"id":"7"},{"exchangeNumber":1322,"rentNumber":636,"countNumber":1958,"title":"\u4e1c\u57ce","point":"116.41493|39.9272","isOpen":0,"icon":"w:20,h:29","type":2,"id":"1"},{"exchangeNumber":2197,"rentNumber":743,"countNumber":2940,"title":"\u897f\u57ce","point":"116.37855|39.91649","isOpen":0,"icon":"w:20,h:29","type":2,"id":"2"},{"exchangeNumber":760,"rentNumber":59,"countNumber":819,"title":"\u77f3\u666f\u5c71","point":"116.22789|39.90617","isOpen":0,"icon":"w:20,h:29","type":2,"id":"8"},{"exchangeNumber":1950,"rentNumber":680,"countNumber":2630,"title":"\u5927\u5174","point":"116.35355|39.73293","isOpen":0,"icon":"w:20,h:29","type":2,"id":"990"},{"exchangeNumber":1805,"rentNumber":700,"countNumber":2505,"title":"\u901a\u5dde","point":"116.66406|39.91199","isOpen":0,"icon":"w:20,h:29","type":2,"id":"970"},{"exchangeNumber":1012,"rentNumber":367,"countNumber":1379,"title":"\u987a\u4e49","point":"116.65839|40.13294","isOpen":0,"icon":"w:20,h:29","type":2,"id":"1010"},{"exchangeNumber":2334,"rentNumber":529,"countNumber":2863,"title":"\u660c\u5e73","point":"116.2405|40.22647","isOpen":0,"icon":"w:20,h:29","type":2,"id":"21"},{"exchangeNumber":2607,"rentNumber":659,"countNumber":3266,"title":"\u623f\u5c71","point":"116.15337|39.74106","isOpen":0,"icon":"w:20,h:29","type":2,"id":"1030"}],"zoom":"12"};
+                           var data = testData;
                         this_.district = data.houses;
                         if (data.houses.length > 0) {
                             this_.YSMap.mapObj.clearOverlays();
@@ -853,8 +883,8 @@
             },
             error: function() {
                 //alert('附近未找到房源，请重新选择！');
-                var testData = {"houses":[{"exchangeNumber":234,"rentNumber":63,"countNumber":297,"title":"\u65b9\u5e84","point":"116.43414|39.867541","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36957"},{"exchangeNumber":117,"rentNumber":12,"countNumber":129,"title":"\u6210\u5bff\u5bfa","point":"116.443454|39.858761","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36959"},{"exchangeNumber":88,"rentNumber":20,"countNumber":108,"title":"\u84b2\u9ec4\u6986","point":"116.428185|39.871699","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36960"},{"exchangeNumber":63,"rentNumber":7,"countNumber":70,"title":"\u897f\u7f57\u56ed","point":"116.398369|39.868645","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36963"},{"exchangeNumber":65,"rentNumber":2,"countNumber":67,"title":"\u6d0b\u6865","point":"116.393302|39.863335","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36964"},{"exchangeNumber":381,"rentNumber":97,"countNumber":478,"title":"\u9a6c\u5bb6\u5821","point":"116.377878|39.859199","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36965"},{"exchangeNumber":13,"rentNumber":0,"countNumber":13,"title":"\u5357\u82d1","point":"116.400917|39.810895","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36966"},{"exchangeNumber":55,"rentNumber":3,"countNumber":58,"title":"\u548c\u4e49","point":"116.408352|39.816195","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36967"},{"exchangeNumber":108,"rentNumber":28,"countNumber":136,"title":"\u7389\u6cc9\u8425","point":"116.349532|39.853168","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36970"},{"exchangeNumber":10,"rentNumber":3,"countNumber":13,"title":"\u4e3d\u6cfd\u6865","point":"116.319014|39.873359","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36974"},{"exchangeNumber":24,"rentNumber":0,"countNumber":24,"title":"\u4e30\u76ca\u6865","point":"116.323437|39.863868","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36975"},{"exchangeNumber":83,"rentNumber":6,"countNumber":89,"title":"\u65b0\u53d1\u5730","point":"116.348435|39.821223","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36977"},{"exchangeNumber":24,"rentNumber":8,"countNumber":32,"title":"\u4e94\u91cc\u5e97","point":"116.26175|39.865961","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36980"},{"exchangeNumber":36,"rentNumber":4,"countNumber":40,"title":"\u5cb3\u5404\u5e84","point":"116.2846|39.885107","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36983"},{"exchangeNumber":191,"rentNumber":45,"countNumber":236,"title":"\u516d\u91cc\u6865","point":"116.30961|39.886428","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36992"},{"exchangeNumber":214,"rentNumber":20,"countNumber":234,"title":"\u9752\u5854","point":"116.274958|39.899409","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36993"},{"exchangeNumber":117,"rentNumber":62,"countNumber":179,"title":"\u5362\u6c9f\u6865","point":"116.223778|39.855568","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37091"},{"exchangeNumber":112,"rentNumber":11,"countNumber":123,"title":"\u8d75\u516c\u53e3","point":"116.420244|39.862975","isOpen":0,"icon":"w:20,h:29","type":2,"id":"43230"},{"exchangeNumber":133,"rentNumber":18,"countNumber":151,"title":"\u5218\u5bb6\u7a91","point":"116.428565|39.863697","isOpen":0,"icon":"w:20,h:29","type":2,"id":"43234"},{"exchangeNumber":84,"rentNumber":28,"countNumber":112,"title":"\u89d2\u95e8","point":"116.387305|39.852866","isOpen":0,"icon":"w:20,h:29","type":2,"id":"45661"},{"exchangeNumber":191,"rentNumber":20,"countNumber":211,"title":"\u53f3\u5b89\u95e8\u5916","point":"116.371142|39.869214","isOpen":0,"icon":"w:20,h:29","type":2,"id":"45683"},{"exchangeNumber":60,"rentNumber":23,"countNumber":83,"title":"\u83dc\u6237\u8425","point":"116.351963|39.874474","isOpen":0,"icon":"w:20,h:29","type":2,"id":"45684"},{"exchangeNumber":79,"rentNumber":29,"countNumber":108,"title":"\u8349\u6865","point":"116.359241|39.851597","isOpen":0,"icon":"w:20,h:29","type":2,"id":"48834"},{"exchangeNumber":96,"rentNumber":3,"countNumber":99,"title":"\u5b8b\u5bb6\u5e84","point":"116.434919|39.852041","isOpen":0,"icon":"w:20,h:29","type":2,"id":"48931"},{"exchangeNumber":62,"rentNumber":15,"countNumber":77,"title":"\u5317\u5927\u5730","point":"116.289322|39.860101","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000015"},{"exchangeNumber":11,"rentNumber":9,"countNumber":20,"title":"\u5317\u4eac\u897f\u7ad9","point":"116.327869|39.901822","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000019"},{"exchangeNumber":123,"rentNumber":2,"countNumber":125,"title":"\u5927\u7ea2\u95e8","point":"116.408045|39.848906","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000029"},{"exchangeNumber":5,"rentNumber":0,"countNumber":5,"title":"\u4e1c\u9ad8\u5730","point":"116.424542|39.810154","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000032"},{"exchangeNumber":118,"rentNumber":123,"countNumber":241,"title":"\u4e30\u53f0\u79d1\u6280\u56ed","point":"116.303639|39.831449","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000041"},{"exchangeNumber":27,"rentNumber":1,"countNumber":28,"title":"\u4e30\u53f0\u4f53\u80b2\u9986","point":"116.284979|39.873608","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000042"},{"exchangeNumber":22,"rentNumber":18,"countNumber":40,"title":"\u82b1\u4e61","point":"116.336932|39.838062","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000056"},{"exchangeNumber":107,"rentNumber":74,"countNumber":181,"title":"\u770b\u4e39\u6865","point":"116.292607|39.846968","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000070"},{"exchangeNumber":107,"rentNumber":7,"countNumber":114,"title":"\u6728\u6a28\u56ed","point":"116.411266|39.864287","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000087"},{"exchangeNumber":50,"rentNumber":5,"countNumber":55,"title":"\u4e03\u91cc\u5e84","point":"116.300779|39.873436","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000092"},{"exchangeNumber":15,"rentNumber":1,"countNumber":16,"title":"\u957f\u8f9b\u5e97","point":"116.216374|39.832426","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000150"},{"exchangeNumber":115,"rentNumber":13,"countNumber":128,"title":"\u5de6\u5b89\u95e8","point":"116.44852|39.87563","isOpen":0,"icon":"w:20,h:29","type":2,"id":"100000596"}],"zoom":"15"}
-                var data=testData;
+                var testData={"houses":[{"exchangeNumber":162,"rentNumber":30,"countNumber":192,"title":"\u5c0f\u897f\u5929","point":"116.368076|39.95832","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36822"},{"exchangeNumber":131,"rentNumber":16,"countNumber":147,"title":"\u7261\u4e39\u56ed","point":"116.377519|39.984108","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36829"},{"exchangeNumber":46,"rentNumber":11,"countNumber":57,"title":"\u9b4f\u516c\u6751","point":"116.329874|39.963457","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36831"},{"exchangeNumber":7,"rentNumber":0,"countNumber":7,"title":"\u5927\u949f\u5bfa","point":"116.35182|39.972034","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36832"},{"exchangeNumber":140,"rentNumber":12,"countNumber":152,"title":"\u53cc\u6986\u6811","point":"116.332532|39.975438","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36835"},{"exchangeNumber":53,"rentNumber":28,"countNumber":81,"title":"\u84df\u95e8\u6865","point":"116.360616|39.97343","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36836"},{"exchangeNumber":114,"rentNumber":99,"countNumber":213,"title":"\u77e5\u6625\u8def","point":"116.347619|39.982065","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36837"},{"exchangeNumber":155,"rentNumber":29,"countNumber":184,"title":"\u4e94\u9053\u53e3","point":"116.344434|39.998568","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36839"},{"exchangeNumber":16,"rentNumber":11,"countNumber":27,"title":"\u6e05\u534e\u5927\u5b66","point":"116.328215|40.002743","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36844"},{"exchangeNumber":260,"rentNumber":47,"countNumber":307,"title":"\u4e2d\u5173\u6751","point":"116.323066|39.989956","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36845"},{"exchangeNumber":9,"rentNumber":3,"countNumber":12,"title":"\u5706\u660e\u56ed","point":"116.315938|40.005466","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36847"},{"exchangeNumber":84,"rentNumber":33,"countNumber":117,"title":"\u9a6c\u8fde\u6d3c","point":"116.293821|40.037015","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36853"},{"exchangeNumber":161,"rentNumber":64,"countNumber":225,"title":"\u4e0a\u5730","point":"116.326836|40.038699","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36854"},{"exchangeNumber":81,"rentNumber":30,"countNumber":111,"title":"\u897f\u4e8c\u65d7","point":"116.312615|40.058922","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36857"},{"exchangeNumber":443,"rentNumber":161,"countNumber":604,"title":"\u6e05\u6cb3","point":"116.352635|40.037695","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36858"},{"exchangeNumber":328,"rentNumber":51,"countNumber":379,"title":"\u897f\u4e09\u65d7","point":"116.350151|40.064627","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36859"},{"exchangeNumber":95,"rentNumber":21,"countNumber":116,"title":"\u519b\u535a","point":"116.327535|39.916877","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36986"},{"exchangeNumber":14,"rentNumber":13,"countNumber":27,"title":"\u589e\u5149\u8def","point":"116.325905|39.933925","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36988"},{"exchangeNumber":159,"rentNumber":21,"countNumber":180,"title":"\u516c\u4e3b\u575f","point":"116.316785|39.913508","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36991"},{"exchangeNumber":140,"rentNumber":15,"countNumber":155,"title":"\u4e94\u68f5\u677e","point":"116.280423|39.913833","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36994"},{"exchangeNumber":21,"rentNumber":1,"countNumber":22,"title":"\u4e07\u5bff\u8def","point":"116.30155|39.91371","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36996"},{"exchangeNumber":148,"rentNumber":17,"countNumber":165,"title":"\u5b9a\u6167\u5bfa","point":"116.285343|39.930302","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36997"},{"exchangeNumber":152,"rentNumber":39,"countNumber":191,"title":"\u7d2b\u7af9\u6865","point":"116.316575|39.948253","isOpen":0,"icon":"w:20,h:29","type":2,"id":"36999"},{"exchangeNumber":22,"rentNumber":16,"countNumber":38,"title":"\u5382\u6d3c","point":"116.310421|39.96023","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37000"},{"exchangeNumber":3,"rentNumber":2,"countNumber":5,"title":"\u9890\u548c\u56ed","point":"116.276887|39.999496","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37003"},{"exchangeNumber":2,"rentNumber":0,"countNumber":2,"title":"\u9999\u5c71","point":"116.212226|39.999167","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37005"},{"exchangeNumber":14,"rentNumber":0,"countNumber":14,"title":"\u897f\u5317\u65fa","point":"116.2675|40.05182","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37007"},{"exchangeNumber":19,"rentNumber":8,"countNumber":27,"title":"\u7530\u6751","point":"116.265205|39.935633","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37031"},{"exchangeNumber":127,"rentNumber":14,"countNumber":141,"title":"\u7389\u6cc9\u8def","point":"116.25947|39.913501","isOpen":0,"icon":"w:20,h:29","type":2,"id":"37093"},{"exchangeNumber":82,"rentNumber":33,"countNumber":115,"title":"\u4e8c\u91cc\u5e84","point":"116.371336|40.005488","isOpen":0,"icon":"w:20,h:29","type":2,"id":"42731"},{"exchangeNumber":45,"rentNumber":7,"countNumber":52,"title":"\u767d\u77f3\u6865","point":"116.332443|39.95194","isOpen":0,"icon":"w:20,h:29","type":2,"id":"42770"},{"exchangeNumber":135,"rentNumber":15,"countNumber":150,"title":"\u5b66\u9662\u8def","point":"116.359952|39.994998","isOpen":0,"icon":"w:20,h:29","type":2,"id":"43130"},{"exchangeNumber":45,"rentNumber":25,"countNumber":70,"title":"\u822a\u5929\u6865","point":"116.316613|39.930025","isOpen":0,"icon":"w:20,h:29","type":2,"id":"45297"},{"exchangeNumber":75,"rentNumber":14,"countNumber":89,"title":"\u4e16\u7eaa\u57ce","point":"116.291111|39.965386","isOpen":0,"icon":"w:20,h:29","type":2,"id":"45308"},{"exchangeNumber":16,"rentNumber":0,"countNumber":16,"title":"\u8f66\u9053\u6c9f","point":"116.300274|39.954895","isOpen":0,"icon":"w:20,h:29","type":2,"id":"45323"},{"exchangeNumber":76,"rentNumber":21,"countNumber":97,"title":"\u82cf\u5dde\u6865","point":"116.314851|39.967431","isOpen":0,"icon":"w:20,h:29","type":2,"id":"48533"},{"exchangeNumber":33,"rentNumber":3,"countNumber":36,"title":"\u82b1\u56ed\u6865","point":"116.317559|39.938382","isOpen":0,"icon":"w:20,h:29","type":2,"id":"48551"},{"exchangeNumber":54,"rentNumber":5,"countNumber":59,"title":"\u7682\u541b\u5e99","point":"116.3453|39.965785","isOpen":0,"icon":"w:20,h:29","type":2,"id":"48871"},{"exchangeNumber":69,"rentNumber":8,"countNumber":77,"title":"\u6c38\u5b9a\u8def","point":"116.271122|39.919568","isOpen":0,"icon":"w:20,h:29","type":2,"id":"49031"},{"exchangeNumber":6,"rentNumber":1,"countNumber":7,"title":"\u5317\u4eac\u5927\u5b66","point":"116.316176|39.997741","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000018"},{"exchangeNumber":58,"rentNumber":10,"countNumber":68,"title":"\u5317\u592a\u5e73\u5e84","point":"116.375658|39.97332","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000020"},{"exchangeNumber":9,"rentNumber":7,"countNumber":16,"title":"\u4eba\u6c11\u5927\u5b66","point":"116.321716|39.976119","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000095"},{"exchangeNumber":99,"rentNumber":27,"countNumber":126,"title":"\u56db\u5b63\u9752","point":"116.273605|39.954912","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000109"},{"exchangeNumber":16,"rentNumber":3,"countNumber":19,"title":"\u82cf\u5dde\u8857","point":"116.312768|39.981704","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000110"},{"exchangeNumber":54,"rentNumber":41,"countNumber":95,"title":"\u4e07\u67f3","point":"116.305662|39.972746","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000116"},{"exchangeNumber":101,"rentNumber":16,"countNumber":117,"title":"\u4e07\u6cc9\u6cb3","point":"116.307151|39.991264","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000117"},{"exchangeNumber":6,"rentNumber":0,"countNumber":6,"title":"\u897f\u5c71","point":"116.143568|39.964431","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000123"},{"exchangeNumber":91,"rentNumber":16,"countNumber":107,"title":"\u897f\u76f4\u95e8\u5916","point":"116.361442|39.946436","isOpen":0,"icon":"w:20,h:29","type":2,"id":"10000126"},{"exchangeNumber":21,"rentNumber":0,"countNumber":21,"title":"\u5b66\u9662\u5357\u8def","point":"1163.77382|39.96403","isOpen":0,"icon":"w:20,h:29","type":2,"id":"100000047"},{"exchangeNumber":43,"rentNumber":3,"countNumber":46,"title":"\u5927\u6167\u5bfa","point":"116.33419|39.9575","isOpen":0,"icon":"w:20,h:29","type":2,"id":"100000594"}],"zoom":"15"}
+                 var data=testData;
                 this_.YSMap.area.id=''; //重置区域id
                 if (data.houses.length > 0) {
                     this_.YSMap.mapObj.clearOverlays();
@@ -910,301 +940,7 @@
             },
             error: function() {
                 //alert('附近未找到房源，请重新选择！');
-                //alert('附近未找到房源，请重新选择！');
-                alert("获得测试数据：测试视图内的小区")
-                var testData = {
-                    "houses": [
-                        {
-                            "exchangeNumber": 1,
-                            "rentNumber": 3,
-                            "countNumber": 4,
-                            "title": "丰台南路130号楼132号楼",
-                            "price": 53529,
-                            "point": "116.29349|39.84569",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 235240
-                        },
-                        {
-                            "exchangeNumber": 1,
-                            "rentNumber": 0,
-                            "countNumber": 1,
-                            "title": "丰台南路103号",
-                            "price": 62761,
-                            "point": "116.29961|39.84812",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 187340
-                        },
-                        {
-                            "exchangeNumber": 1,
-                            "rentNumber": 0,
-                            "countNumber": 1,
-                            "title": "西陆名门",
-                            "price": 52777,
-                            "point": "116.30654|39.84844",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 187001
-                        },
-                        {
-                            "exchangeNumber": 7,
-                            "rentNumber": 8,
-                            "countNumber": 15,
-                            "title": "新华街三里",
-                            "price": 60961,
-                            "point": "116.2983|39.85017",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 178800
-                        },
-                        {
-                            "exchangeNumber": 2,
-                            "rentNumber": 4,
-                            "countNumber": 6,
-                            "title": "南开地",
-                            "price": 67961,
-                            "point": "116.28962|39.84776",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 176160
-                        },
-                        {
-                            "exchangeNumber": 7,
-                            "rentNumber": 3,
-                            "countNumber": 10,
-                            "title": "新华街六里",
-                            "price": 61099,
-                            "point": "116.29716|39.84862",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 52188
-                        },
-                        {
-                            "exchangeNumber": 2,
-                            "rentNumber": 3,
-                            "countNumber": 5,
-                            "title": "新华街二里",
-                            "price": 61261,
-                            "point": "116.30128|39.85007",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 51712
-                        },
-                        {
-                            "exchangeNumber": 11,
-                            "rentNumber": 4,
-                            "countNumber": 15,
-                            "title": "新华街五里",
-                            "price": 61986,
-                            "point": "116.29561|39.85011",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 51360
-                        },
-                        {
-                            "exchangeNumber": 2,
-                            "rentNumber": 2,
-                            "countNumber": 4,
-                            "title": "新华街八里",
-                            "price": 57697,
-                            "point": "116.29448|39.84799",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 50999
-                        },
-                        {
-                            "exchangeNumber": 5,
-                            "rentNumber": 1,
-                            "countNumber": 6,
-                            "title": "丰台南路116号院",
-                            "price": 55149,
-                            "point": "116.29677|39.84716",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 47376
-                        },
-                        {
-                            "exchangeNumber": 3,
-                            "rentNumber": 5,
-                            "countNumber": 8,
-                            "title": "新华街四里",
-                            "price": 61291,
-                            "point": "116.29716|39.84861",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 47173
-                        },
-                        {
-                            "exchangeNumber": 6,
-                            "rentNumber": 3,
-                            "countNumber": 9,
-                            "title": "新华街七里",
-                            "price": 64404,
-                            "point": "116.29409|39.84869",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 45965
-                        },
-                        {
-                            "exchangeNumber": 3,
-                            "rentNumber": 5,
-                            "countNumber": 8,
-                            "title": "造甲街南里",
-                            "price": 66704,
-                            "point": "116.30502|39.84779",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 13542
-                        },
-                        {
-                            "exchangeNumber": 3,
-                            "rentNumber": 3,
-                            "countNumber": 6,
-                            "title": "新村一里",
-                            "price": 61553,
-                            "point": "116.30811|39.84733",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 12025
-                        },
-                        {
-                            "exchangeNumber": 7,
-                            "rentNumber": 1,
-                            "countNumber": 8,
-                            "title": "南开西里",
-                            "price": 62522,
-                            "point": "116.2871|39.84661",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 8867
-                        },
-                        {
-                            "exchangeNumber": 2,
-                            "rentNumber": 0,
-                            "countNumber": 2,
-                            "title": "看丹路6号院",
-                            "price": 60123,
-                            "point": "116.29016|39.8458",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 6889
-                        },
-                        {
-                            "exchangeNumber": 1,
-                            "rentNumber": 1,
-                            "countNumber": 2,
-                            "title": "看丹路4号院",
-                            "price": 65303,
-                            "point": "116.29102|39.8457",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 6888
-                        },
-                        {
-                            "exchangeNumber": 1,
-                            "rentNumber": 1,
-                            "countNumber": 2,
-                            "title": "看丹路10号院",
-                            "price": 67398,
-                            "point": "116.28686|39.84523",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 6887
-                        },
-                        {
-                            "exchangeNumber": 1,
-                            "rentNumber": 2,
-                            "countNumber": 3,
-                            "title": "华林家园",
-                            "price": 61217,
-                            "point": "116.30079|39.84733",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 4837
-                        },
-                        {
-                            "exchangeNumber": 2,
-                            "rentNumber": 4,
-                            "countNumber": 6,
-                            "title": "恒富花园",
-                            "price": 60971,
-                            "point": "116.30195|39.84321",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 4393
-                        },
-                        {
-                            "exchangeNumber": 8,
-                            "rentNumber": 4,
-                            "countNumber": 12,
-                            "title": "富丰园",
-                            "price": 59673,
-                            "point": "116.29006|39.84332",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 3067
-                        },
-                        {
-                            "exchangeNumber": 2,
-                            "rentNumber": 2,
-                            "countNumber": 4,
-                            "title": "丰台南路108号院",
-                            "price": 62941,
-                            "point": "116.30179|39.84739",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 2869
-                        },
-                        {
-                            "exchangeNumber": 5,
-                            "rentNumber": 5,
-                            "countNumber": 10,
-                            "title": "彩虹街区",
-                            "price": 73274,
-                            "point": "116.30854|39.84746",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 1065
-                        },
-                        {
-                            "exchangeNumber": 0,
-                            "rentNumber": 1,
-                            "countNumber": 1,
-                            "title": "造甲街",
-                            "price": 70381,
-                            "point": "116.30464|39.84882",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
-                            "id": 13540
-                        }
-                    ],
-                    "zoom": "17"
-                };
+                var testData = {"houses":[{"exchangeNumber":2,"rentNumber":1,"countNumber":3,"title":"\u4e94\u9053\u53e3\u5609\u56ed","price":84860,"point":"116.34597|39.99573","isOpen":0,"icon":"w:20,h:29","type":2,"id":235540},{"exchangeNumber":8,"rentNumber":14,"countNumber":22,"title":"\u5510\u5b81ONE","price":118454,"point":"116.34181|39.99431","isOpen":0,"icon":"w:20,h:29","type":2,"id":111480},{"exchangeNumber":13,"rentNumber":0,"countNumber":13,"title":"\u6d77\u6dc0\u8def\u5c0f\u533a","price":104479,"point":"116.3192|39.99197","isOpen":0,"icon":"w:20,h:29","type":2,"id":50886},{"exchangeNumber":2,"rentNumber":0,"countNumber":2,"title":"\u71d5\u5f52\u56ed","price":133045,"point":"116.33816|39.99534","isOpen":0,"icon":"w:20,h:29","type":2,"id":12556},{"exchangeNumber":11,"rentNumber":0,"countNumber":11,"title":"\u79d1\u6c47\u5c0f\u533a","price":128458,"point":"116.3344|39.99305","isOpen":0,"icon":"w:20,h:29","type":2,"id":6978},{"exchangeNumber":4,"rentNumber":0,"countNumber":4,"title":"\u8d22\u667a\u5927\u53a6","price":48623,"point":"116.34047|39.99378","isOpen":0,"icon":"w:20,h:29","type":2,"id":1052},{"exchangeNumber":0,"rentNumber":1,"countNumber":1,"title":"\u4e2d\u6210\u5927\u53a6","price":46620,"point":"116.31712|39.9922","isOpen":0,"icon":"w:20,h:29","type":2,"id":50667}],"zoom":"17"}
                 var data = testData;
                 if (data.houses != null) {
                     this_.YSMap.mapObj.clearOverlays();
