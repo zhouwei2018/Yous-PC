@@ -161,10 +161,12 @@
                                @click="sel_price_list($event)"
                             >全部</a>
                             <template v-else>
-                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}" class="last"
+                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}"
+                                   class="last"
                                    @click="sel_price_list($event)"
                                 ><span class="font_num">{{item2.startNum}}</span><span class="font_num">元</span></a>
-                                <a v-else href="javascript:;" :class="{active:perPriceActive == index}" @click="sel_price_list($event)">
+                                <a v-else href="javascript:;" :class="{active:perPriceActive == index}"
+                                   @click="sel_price_list($event)">
                                     <span class="font_num">{{item2.startNum}}</span>-<span
                                         class="font_num">{{item2.endNum}}</span><span class="font_num">元</span>
                                 </a>
@@ -215,10 +217,12 @@
                                @click="sel_tot_price_list($event)"
                             >全部</a>
                             <template v-else>
-                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}" class="last"
+                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}"
+                                   class="last"
                                    @click="sel_tot_price_list($event)"
                                 ><span class="font_num">{{item3.startNum}}</span><span class="font_num">万元</span></a>
-                                <a v-else href="javascript:;" :class="{active:totPriceActive == index}" @click="sel_tot_price_list($event)">
+                                <a v-else href="javascript:;" :class="{active:totPriceActive == index}"
+                                   @click="sel_tot_price_list($event)">
                                     <span class="font_num">{{item3.startNum}}</span>-<span
                                         class="font_num">{{item3.endNum}}</span><span class="font_num">万元</span>
                                 </a>
@@ -265,13 +269,13 @@
                             <span class="screening_title mr15">特色:</span>
                             <a href="javascript:;" v-for="(item4,index) in feature_arr"
                                :class="{active:featureActive == index}"
-                                @click="sel_feature_list($event)"
+                               @click="sel_feature_list($event)"
                                v-text="item4"
                             ></a>
                         </div>
                     </div>
 
-                    <div class="screening_conts_detail clearfix pv20">
+                    <div class="screening_conts_detail clearfix pv20" v-show="chosenFlag">
                         <div class="screening_conts_list clearfix selected_item">
                             <span class="screening_title mr15">已选:</span>
                             <a href="javascript:;">海淀<i class="sem_icon hover"></i></a>
@@ -289,7 +293,7 @@
                         <div class="conditions_result_box clearfix tj_box">
                             <div class="fl mt07">
                                 <i class="sem_icon"></i><em class="result_conts_txt">为您找到 <span
-                                    class="font-num">2580</span> 栋写字楼</em>
+                                    class="font-num" v-text="buildList.length"></span> 栋写字楼</em>
                             </div>
                         </div>
 
@@ -350,7 +354,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -447,10 +451,10 @@
                     }
                 ],
 
-                areaActive:0,
-                perPriceActive:0,
-                totPriceActive:0,
-                featureActive:0,
+                areaActive: 0,
+                perPriceActive: 0,
+                totPriceActive: 0,
+                featureActive: 0,
 
                 buildList: [], //楼盘列表，搜索结果
 
@@ -467,6 +471,10 @@
                 priceShowFlag_tot: false, //默认价格窗不显示
                 bNum_tot: "", //起始价格
                 eNum_tot: "", //结束价格
+
+                //已选择条件是否显示
+                chosenFlag: false,
+                chosenArr: [], //已选择条件arr
 
 
                 //分页
@@ -548,7 +556,7 @@
                     }
                 ],
 
-                price_tot_arr:[
+                price_tot_arr: [
                     {
                         startNum: '全部'
                     },
@@ -605,13 +613,13 @@
 
 
                 //筛选条件全局参数
-                search_keywork:"", //模糊查询
+                search_keywork: "", //模糊查询
                 district: "", //区域
-                business:"", //商圈
-                area:"", //面积
-                price_dj:"",
-                price_zj:"",
-                label:"",
+                business: "", //商圈
+                area: "", //面积
+                price_dj: "",
+                price_zj: "",
+                label: "",
 
             }
         },
@@ -721,16 +729,20 @@
             sel_area_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
                 if ($(e.currentTarget).html() == '全部') {
-                    this.area="";
+                    this.area = "";
                 } else if ($(e.currentTarget).hasClass('last')) {
-                    this.area=[];
+                    this.area = [];
                     this.area.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)[0]));
                     this.area.push("");
                 } else {
-                    this.area=[];
+                    this.area = [];
                     this.area.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
                     this.area.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
                 }
+
+                //添加已筛选
+                this.chosenArr.push();
+
                 this.getList();
 
             },
@@ -739,13 +751,13 @@
             sel_price_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
                 if ($(e.currentTarget).html() == '全部') {
-                    this.price_dj="";
+                    this.price_dj = "";
                 } else if ($(e.currentTarget).hasClass('last')) {
-                    this.price_dj=[];
+                    this.price_dj = [];
                     this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
                     this.price_dj.push("");
                 } else {
-                    this.price_dj=[];
+                    this.price_dj = [];
                     this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
                     this.price_dj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
                 }
@@ -756,13 +768,13 @@
             sel_tot_price_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
                 if ($(e.currentTarget).html() == '全部') {
-                    this.price_zj="";
+                    this.price_zj = "";
                 } else if ($(e.currentTarget).hasClass('last')) {
-                    this.price_zj=[];
+                    this.price_zj = [];
                     this.price_zj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
                     this.price_zj.push("");
                 } else {
-                    this.price_zj=[];
+                    this.price_zj = [];
                     this.price_zj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
                     this.price_zj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
                 }
@@ -772,7 +784,7 @@
             //改变特色筛选
             sel_feature_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
-                this.label=$(e.currentTarget).html();
+                this.label = $(e.currentTarget).html();
                 this.getList();
             },
 
