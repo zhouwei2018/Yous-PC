@@ -210,18 +210,20 @@
                         <div class="tj_box_1 screening_conts_list clearfix none">
                             <span class="screening_title mr15">价格:</span>
 
-                            <a class="active" href="">全部</a>
-                            <a href="javascript:;"><span class="font_num">0</span>-<span class="font_num">1</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">1</span>-<span class="font_num">3</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">3</span>-<span class="font_num">5</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">5</span>-<span class="font_num">8</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">8</span>-<span
-                                    class="font_num">10</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">10</span>-<span
-                                    class="font_num">20</span>万元</a>
-                            <a href="javascript:;"><span class="font_num">20</span>-<span
-                                    class="font_num">30</span>万元</a>
-                            <a href="javascript:;">&gt;<span class="font_num">30</span>万元</a>
+                            <a v-for="(item3,index) in price_tot_arr" v-if="index == 0"
+                               :class="{active:totPriceActive == index}"
+                               @click="sel_tot_price_list($event)"
+                            >全部</a>
+                            <template v-else>
+                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}" class="last"
+                                   @click="sel_tot_price_list($event)"
+                                ><span class="font_num">{{item3.startNum}}</span><span class="font_num">万元</span></a>
+                                <a v-else href="javascript:;" :class="{active:totPriceActive == index}" @click="sel_tot_price_list($event)">
+                                    <span class="font_num">{{item3.startNum}}</span>-<span
+                                        class="font_num">{{item3.endNum}}</span><span class="font_num">万元</span>
+                                </a>
+                            </template>
+
                             <div class="price_wrap pr" @mouseenter="priceShowFlag_tot = true"
                                  @mouseleave="priceShowFlag_tot = false">
                                 <div class="interval pr">
@@ -546,6 +548,43 @@
                     }
                 ],
 
+                price_tot_arr:[
+                    {
+                        startNum: '全部'
+                    },
+                    {
+                        startNum: 0,
+                        endNum: 1,
+                    },
+                    {
+                        startNum: 1,
+                        endNum: 3,
+                    },
+                    {
+                        startNum: 3,
+                        endNum: 5,
+                    },
+                    {
+                        startNum: 5,
+                        endNum: 8,
+                    },
+                    {
+                        startNum: 8,
+                        endNum: 10,
+                    },
+                    {
+                        startNum: 10,
+                        endNum: 20,
+                    },
+                    {
+                        startNum: 20,
+                        endNum: 30,
+                    },
+                    {
+                        startNum: '>30',
+                    }
+                ],
+
 
                 //特色数组
                 feature_arr: [
@@ -717,15 +756,15 @@
             sel_tot_price_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
                 if ($(e.currentTarget).html() == '全部') {
-                    this.price_dj="";
+                    this.price_zj="";
                 } else if ($(e.currentTarget).hasClass('last')) {
-                    this.price_dj=[];
-                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
-                    this.price_dj.push("");
+                    this.price_zj=[];
+                    this.price_zj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
+                    this.price_zj.push("");
                 } else {
-                    this.price_dj=[];
-                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
-                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                    this.price_zj=[];
+                    this.price_zj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
+                    this.price_zj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
                 }
                 this.getList();
             },
