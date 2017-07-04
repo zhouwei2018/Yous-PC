@@ -8,7 +8,6 @@
     <div class="screening_conts_detail pv20">
         <div class="screening_conts_list weizhi clearfix tj_box_1">
             <span class="screening_title mr15">位置:</span>
-
             <a href="javascript:;" @click="getSubDistrict($event)"
                v-for="(item,index) in district"
                :class="{active:positon_active == index}"
@@ -16,9 +15,6 @@
             >{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" id="sub_district" v-show="sub_show_flag">
-            <a href="javascript:;" class="pt05" id="sub_all"
-               @click="getHouseList($event)"
-            >全部</a>
             <a href="javascript:;"
                v-for="(item1,index) in sub_district"
                :class="{active:sub_pos_active == index}"
@@ -80,6 +76,11 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         _this.district = result.data.districts;
+                        var all_district={
+                            code:"",
+                            name:"全部"
+                        }
+                        _this.district.unshift(all_district);
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -93,6 +94,8 @@
                 var _this = this;
 
                 $(e.target).addClass('active').siblings().removeClass('active');
+
+                this.$emit("refreshbizlines", $(e.target).attr('id'));
 
                 if ($(e.target).attr('id') == 'all') {
                     this.sub_show_flag = false;
@@ -117,6 +120,12 @@
                         if (result.success) {
                             _this.sub_show_flag = true;
                             _this.sub_district = result.data;
+                            var all_sub_district={
+                                code:"",
+                                name:"全部"
+                            }
+                            _this.sub_district.unshift(all_sub_district);
+
                             $(e.target).parent().removeClass('tj_box_1');
                         } else {
                             this.$Message.error(result.message);
@@ -130,7 +139,7 @@
             //点击获取结果列表
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                this.$emit("refreshbizlines", $(e.target).attr('id'))
+                this.$emit("refreshbizlines", $(e.target).attr('id'));
             },
 
         },

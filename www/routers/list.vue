@@ -164,11 +164,13 @@
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
                                    @click="sel_price_list($event)"
-                                ><span class="font_num">{{item2.minnum}}</span><span class="font_num" v-text="item2.unit"></span></a>
+                                ><span class="font_num">{{item2.minnum}}</span><span class="font_num"
+                                                                                     v-text="item2.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:perPriceActive == index}"
                                    @click="sel_price_list($event)">
                                     <span class="font_num">{{item2.minnum}}</span>-<span
-                                        class="font_num">{{item2.maxnum}}</span><span class="font_num" v-text="item2.unit"></span>
+                                        class="font_num">{{item2.maxnum}}</span><span class="font_num"
+                                                                                      v-text="item2.unit"></span>
                                 </a>
                             </template>
 
@@ -178,7 +180,7 @@
                                     <input name="temp-startprice" type="text" autocomplete="off" v-model="bNum">
                                     <samp>-</samp>
                                     <input name="temp-endprice" type="text" autocomplete="off" v-model="eNum">
-                                    <em class="text-black ml05" >元</em>
+                                    <em class="text-black ml05">元</em>
                                 </div>
                                 <div class="interval_pop clearfix" style="display: none;" v-show="priceShowFlag">
                                     <div class="interval ma0">
@@ -220,11 +222,13 @@
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
                                    @click="sel_tot_price_list($event)"
-                                ><span class="font_num">{{item3.minnum}}</span><span class="font_num" v-text="item3.unit"></span></a>
+                                ><span class="font_num">{{item3.minnum}}</span><span class="font_num"
+                                                                                     v-text="item3.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:totPriceActive == index}"
                                    @click="sel_tot_price_list($event)">
                                     <span class="font_num">{{item3.minnum}}</span>-<span
-                                        class="font_num">{{item3.maxnum}}</span><span class="font_num" v-text="item3.unit"></span>
+                                        class="font_num">{{item3.maxnum}}</span><span class="font_num"
+                                                                                      v-text="item3.unit"></span>
                                 </a>
                             </template>
 
@@ -313,7 +317,7 @@
                             <router-link :to="{path:'/detail',query:{houseid:item.id}}" class="db pr clearfix"
                                          :id="item.id" target="_blank">
                                 <div class="fl pr">
-                                    <img :src="item.imgPath" :alt="item.imgAlt">
+                                    <img :src="item.img_path" :alt="item.img_alt">
                                 </div>
                                 <div class="price_box tright">
                                     <span class="db text_gray6"><em class="font26 font_num fb text_pink_app"
@@ -323,20 +327,20 @@
                                 </div>
                                 <dl class="office_building_cont pr clearfix">
                                     <dt class="mb25 clearfix">
-                                        <b class="fl" v-text="item.buildingName"></b>
+                                        <b class="fl" v-text="item.building_name"></b>
                                     </dt>
                                     <dd>
                                         <i class="sem_icon item_address"></i><span v-text="item.address"></span>
                                     </dd>
                                     <dd>
                                         <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb"
-                                                                                     v-text="'0-'+item.rentArea"></span><span
+                                                                                     v-text="item.min_areas+'-'+item.max_areas"></span><span
                                             class="font-num"> m²</span>, 待租办公室&nbsp;<span
-                                            class="font-num text-black fb" v-text="item.leaseNums"></span>&nbsp;套
+                                            class="font-num text-black fb" v-text="item.lease_nums"></span>&nbsp;套
                                     </dd>
                                     <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
-                                                class="hover" v-text="item.inquiriesNums"></b> 位用户咨询过</span>
+                                                class="hover" v-text="item.inquiries_nums"></b> 位用户咨询过</span>
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
@@ -355,10 +359,13 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20    class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
+
+                        <!--暂无结果-->
+                        <h3 class="no_result" v-show="buildingShowFlag">暂无待出租写字楼 !</h3>
 
 
                     </div>
@@ -487,24 +494,24 @@
 
                 //面积筛选数组
                 area_arr: [
-                    {
-                        minnum: '全部'
-                    },
-                    {
-                        minnum: 0,
-                        maxnum: 100,
-                    },
+//                    {
+//                        minnum: '全部'
+//                    },
+//                    {
+//                        minnum: 0,
+//                        maxnum: 100,
+//                    },
                 ],
 
                 //价格筛选数组
                 range_unit_prices: [
-                    {
-                        minnum: '全部'
-                    },
-                    {
-                        minnum: 1,
-                        maxnum: 3,
-                    },
+//                    {
+//                        minnum: '全部'
+//                    },
+//                    {
+//                        minnum: 1,
+//                        maxnum: 3,
+//                    },
                 ],
 
                 range_total_prices: [
@@ -534,6 +541,8 @@
                     '5A写字楼',
                     '纳什空间'
                 ],
+
+                buildingShowFlag: false,
 
 
                 //筛选条件全局参数
@@ -571,9 +580,39 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         _this.area_arr = result.data.range_areas; //面积arr
+
+                        var all_area = {
+                            code: "",
+                            name: "全部"
+                        };
+                        _this.area_arr.unshift(all_area);
+
                         _this.range_unit_prices = result.data.range_unit_prices; //单价
+
+
+                        var all_range_unit = {
+                            code: "",
+                            name: "全部"
+                        };
+                        _this.range_unit_prices.unshift(all_range_unit);
+
                         _this.range_total_prices = result.data.range_total_prices; //总价
+
+                        var all_range_total = {
+                            code: "",
+                            name: "全部"
+                        };
+                        _this.range_total_prices.unshift(all_range_total);
+
                         _this.labels = result.data.labels; //特色
+
+                        var all_labels = {
+                            code: "",
+                            name: "全部"
+                        };
+                        _this.labels.unshift(all_labels);
+
+
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -590,6 +629,8 @@
 
                 this.loadingFlag = true;
                 this.pageFlag = false;
+
+                this.buildingShowFlag=false;
 
                 this.$http.post(
                     this.$api,
@@ -611,60 +652,23 @@
                         "foreEndType": 2,
                         "code": "30000001"
                     }
-                ).then(function (response) {
-                    //var result = JSON.parse(response.bodyText);
-//                    if (result.success) {
-//
-//                    } else {
-//                        this.$Message.error(reslult.message);
-//                    }
-
-                    _this.buildList = [{
-                        "id": 1,
-                        "label": ["互联网", "地标建筑"],
-                        "buildingName": "望京SOHO",
-                        "address": "望京街与阜安西路交叉路口",
-                        "imgAlt": null,
-                        "imgPath": "upload/default.jpg",
-                        "price": 0.0,
-                        "rentArea": "0",
-                        "leaseNums": 0,
-                        "inquiriesNums": 0,
-                        "district": "朝阳",
-                        "business": "望京"
-                    }, {
-                        "id": 2,
-                        "label": ["互联网", "地标建筑"],
-                        "buildingName": "建外SOHO",
-                        "address": "朝阳区建国门外大街4号（国贸中心对面）",
-                        "imgAlt": null,
-                        "imgPath": "upload/default.jpg",
-                        "price": 0.0,
-                        "rentArea": "0",
-                        "leaseNums": 475,
-                        "inquiriesNums": 0,
-                        "district": "朝阳",
-                        "business": "CBD"
-                    }, {
-                        "id": 3,
-                        "label": ["互联网", "地标建筑"],
-                        "buildingName": "SK大厦",
-                        "address": "建国门外大街甲6号",
-                        "imgAlt": null,
-                        "imgPath": "upload/default.jpg",
-                        "price": 0.0,
-                        "rentArea": "0",
-                        "leaseNums": 0,
-                        "inquiriesNums": 0,
-                        "district": "朝阳",
-                        "business": "CBD"
-                    }];
-
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
-                    _this.pageFlag = true;
+                    if (result.success) {
+                        if (result.data) {
+                            _this.buildList = result.data.buildings;
+                            _this.pageFlag = true;
 
+                        } else {
+                            _this.pageFlag = false;
+                        }
 
-                }, function (response) {
+                    } else {
+                        _this.buildingShowFlag = true;
+                    }
+
+                }, function (res) {
                     this.$Message.error('获取楼盘列表失败');
                 });
             },

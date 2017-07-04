@@ -76,6 +76,11 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         _this.lines = result.data.lines;
+                        var all_lines={
+                            code:"",
+                            name:"全部"
+                        }
+                        _this.lines.unshift(all_lines);
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -114,6 +119,12 @@
                         if (result.success) {
                             _this.station_show_flag = true;
                             _this.station_arr = result.data;
+                            var all_station={
+                                code:"",
+                                name:"全部"
+                            }
+                            _this.station_arr.unshift(all_station);
+
                             $(e.target).parent().removeClass('tj_box_1');
                         } else {
                             this.$Message.error(result.message);

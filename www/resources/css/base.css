@@ -414,4 +414,8 @@ a {
 .text-gray6 {
   color: #666 !important;
 }
+.no_result {
+  padding-top: 30px;
+  text-align: center;
+}
 /*针对特殊网站样式end*/
