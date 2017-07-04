@@ -12,6 +12,7 @@
                v-for="(item,index) in district"
                :class="[{active:positon_active == index},item.class]"
                :id="item.code"
+               :data-sortType="'sort_reg_dis_'+index"
             >{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" id="sub_district" v-show="sub_show_flag">
@@ -20,6 +21,7 @@
                :class="{active:sub_pos_active == index}"
                class="pt05"
                :id="item1.code"
+               :data-sortType="'sort_reg_bus_'+index"
                @click="getHouseList($event)"
             >{{item1.name}}</a>
         </p>
@@ -58,10 +60,10 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         _this.district = result.data.districts;
-                        var all_district={
-                            code:"",
-                            name:"全部",
-                            class:"noArrow"
+                        var all_district = {
+                            code: "",
+                            name: "全部",
+                            class: "noArrow"
                         }
                         _this.district.unshift(all_district);
                     } else {
@@ -78,10 +80,11 @@
 
                 $(e.target).addClass('active').siblings().removeClass('active');
 
-                var emitObj={
-                    id:$(e.target).attr('id'),
-                    name:$(e.target).text()
-                    };
+                var emitObj = {
+                    id: $(e.target).attr('id'),
+                    name: $(e.target).text(),
+                    sortType:$(e.target).attr('data-sortType')
+                };
                 this.$emit("refreshbizlines", emitObj);
 
                 if ($(e.target).attr('id') == '') {
@@ -96,20 +99,20 @@
                     this.$http.post(
                         this.$api,
                         {
-                            "parameters":{
-                                "city_code":$(e.target).attr('id')
+                            "parameters": {
+                                "city_code": $(e.target).attr('id')
                             },
-                            "foreEndType":2,
-                            "code":"90000302"
+                            "foreEndType": 2,
+                            "code": "90000302"
                         }
                     ).then(function (res) {
                         var result = JSON.parse(res.bodyText);
                         if (result.success) {
                             _this.sub_show_flag = true;
                             _this.sub_district = result.data;
-                            var all_sub_district={
-                                code:"",
-                                name:"全部"
+                            var all_sub_district = {
+                                code: "",
+                                name: "全部"
                             }
                             _this.sub_district.unshift(all_sub_district);
 
@@ -127,9 +130,10 @@
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
 
-                var emitObj2={
-                    id:$(e.target).attr('id'),
-                    name:$(e.target).text()
+                var emitObj2 = {
+                    id: $(e.target).attr('id'),
+                    name: $(e.target).text(),
+                    sortType:$(e.target).attr('data-sortType')
                 };
 
                 this.$emit("refreshbizlines2", emitObj2);
