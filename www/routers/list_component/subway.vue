@@ -61,7 +61,7 @@
                     if (result.success) {
                         _this.lines = result.data.lines;
                         var all_lines = {
-                            code: "",
+                            code: "line_all",
                             name: "全部",
                             class:"noArrow"
                         }
@@ -89,7 +89,7 @@
                 this.$emit("refreshbizlines3", emitObj);
 
 
-                if ($(e.target).attr('id') == '') {
+                if ($(e.target).attr('id') == 'line_all') {
                     this.sub_show_flag = false;
                     if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
@@ -113,7 +113,7 @@
                             _this.station_show_flag = true;
                             _this.station_arr = result.data;
                             var all_station = {
-                                code: "",
+                                code: "line_sta_all",
                                 name: "全部",
                             }
                             _this.station_arr.unshift(all_station);

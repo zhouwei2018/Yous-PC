@@ -61,7 +61,7 @@
                     if (result.success) {
                         _this.district = result.data.districts;
                         var all_district = {
-                            code: "",
+                            code: "district_all",
                             name: "全部",
                             class: "noArrow"
                         }
@@ -74,6 +74,10 @@
                 });
             },
 
+            show(){
+                $('.weizhi a').removeClass('active');
+            },
+
             //点击获取各区二级模块
             getSubDistrict(e){
                 var _this = this;
@@ -83,11 +87,11 @@
                 var emitObj = {
                     id: $(e.target).attr('id'),
                     name: $(e.target).text(),
-                    sortType:$(e.target).attr('data-sortType')
+                    sortType: $(e.target).attr('data-sortType')
                 };
                 this.$emit("refreshbizlines", emitObj);
 
-                if ($(e.target).attr('id') == '') {
+                if ($(e.target).attr('id') == 'district_all') {
                     this.sub_show_flag = false;
                     if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
@@ -111,7 +115,7 @@
                             _this.sub_show_flag = true;
                             _this.sub_district = result.data;
                             var all_sub_district = {
-                                code: "",
+                                code: "dis_sta_all",
                                 name: "全部"
                             }
                             _this.sub_district.unshift(all_sub_district);
@@ -133,7 +137,7 @@
                 var emitObj2 = {
                     id: $(e.target).attr('id'),
                     name: $(e.target).text(),
-                    sortType:$(e.target).attr('data-sortType')
+                    sortType: $(e.target).attr('data-sortType')
                 };
 
                 this.$emit("refreshbizlines2", emitObj2);
