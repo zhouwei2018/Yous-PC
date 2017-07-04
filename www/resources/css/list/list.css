@@ -136,6 +136,9 @@
   height: 5px;
   background: url(http://img2.static.uban.com/www/images/weizhi.png) no-repeat center center;
 }
+[list] .screening_conditions .weizhi a.noArrow:after {
+  display: none;
+}
 [list] .screening_conditions .screening_conts a {
   display: inline-block;
   width: 96px;
@@ -286,6 +289,7 @@
 [list] .list_result .office_list {
   float: left;
   width: 891px;
+  min-height: 800px;
 }
 [list] .list_result .office_list .conditions_result_box {
   width: 890px;

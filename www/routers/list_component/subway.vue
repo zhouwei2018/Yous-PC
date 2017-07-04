@@ -10,16 +10,15 @@
             <span class="screening_title mr15">位置:</span>
             <a href="javascript:;"
                v-for="(item,index) in lines"
-               :class="{active:line_active == index}"
-               :id="item.code"
-            >{{item.name}}</a>
+               :class="[{active:line_active == index},item.class]"
+               :id="item.code">{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" v-show="station_show_flag">
             <a href="javascript:;"
                v-for="(item1,index) in station_arr"
                :class="{active:station_active == index}"
                class="pt05"
-               :id="item1.id"
+               :id="item1.code"
                @click="getHouseList($event)"
             >{{item1.name}}</a>
         </p>
@@ -32,31 +31,13 @@
 
         data (){
             return {
-                lines: [
-//                    {
-//                        name: '全部',
-//                        id: 'all'
-//                    },
-//                    {
-//                        name: '1号线',
-//                        id: 'one_line'
-//                    }
-                ],
-                station_arr: [
-//                    {
-//                        name: '全部',
-//                        id: 'sub_all'
-//                    },
-//                    {
-//                        name: '苹果园',
-//                        id: 'sub_pg'
-//                    }
-                ],
+                lines: [],
+                station_arr: [],
 
                 line_active: 0,
-                station_active:0,
+                station_active: 0,
 
-                station_show_flag:false, //默认电站不显示
+                station_show_flag: false, //默认电站不显示
             }
         },
         methods: {
@@ -76,9 +57,10 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         _this.lines = result.data.lines;
-                        var all_lines={
-                            code:"",
-                            name:"全部"
+                        var all_lines = {
+                            code: "",
+                            name: "全部",
+                            class:"noArrow"
                         }
                         _this.lines.unshift(all_lines);
                     } else {
@@ -95,7 +77,10 @@
 
                 $(e.target).addClass('active').siblings().removeClass('active');
 
-                if ($(e.target).attr('id') == 'all') {
+                this.$emit("refreshbizlines3", $(e.target).attr('id'));
+
+
+                if ($(e.target).attr('id') == '') {
                     this.sub_show_flag = false;
                     if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
@@ -107,21 +92,20 @@
                     this.$http.post(
                         this.$api,
                         {
-                            "parameters":{
-                                "line":$(e.target).attr('id')
+                            "parameters": {
+                                "line": $(e.target).attr('id')
                             },
-                            "foreEndType":2,
-                            "code":"90000303"
+                            "foreEndType": 2,
+                            "code": "90000303"
                         }
-
                     ).then(function (res) {
                         var result = JSON.parse(res.bodyText);
                         if (result.success) {
                             _this.station_show_flag = true;
                             _this.station_arr = result.data;
-                            var all_station={
-                                code:"",
-                                name:"全部"
+                            var all_station = {
+                                code: "",
+                                name: "全部",
                             }
                             _this.station_arr.unshift(all_station);
 
@@ -137,7 +121,7 @@
             },
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                this.$emit('refreshbizlines',$(e.target).attr('id'));
+                this.$emit('refreshbizlines4', $(e.target).attr('id'));
             }
         },
 

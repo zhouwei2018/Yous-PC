@@ -10,7 +10,7 @@
             <span class="screening_title mr15">位置:</span>
             <a href="javascript:;" @click="getSubDistrict($event)"
                v-for="(item,index) in district"
-               :class="{active:positon_active == index}"
+               :class="[{active:positon_active == index},item.class]"
                :id="item.code"
             >{{item.name}}</a>
         </div>
@@ -19,7 +19,7 @@
                v-for="(item1,index) in sub_district"
                :class="{active:sub_pos_active == index}"
                class="pt05"
-               :id="item1.id"
+               :id="item1.code"
                @click="getHouseList($event)"
             >{{item1.name}}</a>
         </p>
@@ -32,26 +32,8 @@
 
         data (){
             return {
-                district: [
-//                    {
-//                        name: '全部',
-//                        id: 'all'
-//                    },
-//                    {
-//                        name: '朝阳',
-//                        code: '10011'
-//                    }
-                ],
-                sub_district: [
-//                    {
-//                        name: '全部',
-//                        id: 'sub_all'
-//                    },
-//                    {
-//                        name: '望京',
-//                        code: '110105'
-//                    }
-                ],
+                district: [],
+                sub_district: [],
 
                 positon_active: 0,
                 sub_pos_active: 0,
@@ -78,7 +60,8 @@
                         _this.district = result.data.districts;
                         var all_district={
                             code:"",
-                            name:"全部"
+                            name:"全部",
+                            class:"noArrow"
                         }
                         _this.district.unshift(all_district);
                     } else {
@@ -95,9 +78,13 @@
 
                 $(e.target).addClass('active').siblings().removeClass('active');
 
-                this.$emit("refreshbizlines", $(e.target).attr('id'));
+                var emitObj={
+                    id:$(e.target).attr('id'),
+                    name:$(e.target).text()
+                    };
+                this.$emit("refreshbizlines", emitObj);
 
-                if ($(e.target).attr('id') == 'all') {
+                if ($(e.target).attr('id') == '') {
                     this.sub_show_flag = false;
                     if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
@@ -139,7 +126,13 @@
             //点击获取结果列表
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                this.$emit("refreshbizlines", $(e.target).attr('id'));
+
+                var emitObj2={
+                    id:$(e.target).attr('id'),
+                    name:$(e.target).text()
+                };
+
+                this.$emit("refreshbizlines2", emitObj2);
             },
 
         },

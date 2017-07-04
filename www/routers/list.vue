@@ -91,7 +91,12 @@
                             </router-link>
                         </div>
 
-                        <component :is="currentView" @refreshbizlines="selList"></component>
+                        <component :is="currentView"
+                                   @refreshbizlines="selList"
+                                   @refreshbizlines2="selList_business"
+                                   @refreshbizlines3="selList_lines"
+                                   @refreshbizlines4="selList_station"
+                        ></component>
 
                     </div>
 
@@ -158,8 +163,7 @@
 
                             <a v-for="(item2,index) in range_unit_prices" v-if="index == 0"
                                :class="{active:perPriceActive == index}"
-                               @click="sel_price_list($event)"
-                            >全部</a>
+                               @click="sel_price_list($event)">全部</a>
                             <template v-else>
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
@@ -216,8 +220,7 @@
 
                             <a v-for="(item3,index) in range_total_prices" v-if="index == 0"
                                :class="{active:totPriceActive == index}"
-                               @click="sel_tot_price_list($event)"
-                            >全部</a>
+                               @click="sel_tot_price_list($event)">全部</a>
                             <template v-else>
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
@@ -283,10 +286,12 @@
                     <div class="screening_conts_detail clearfix pv20" v-show="chosenFlag">
                         <div class="screening_conts_list clearfix selected_item">
                             <span class="screening_title mr15">已选:</span>
-                            <a href="javascript:;">海淀<i class="sem_icon hover"></i></a>
-                            <a href="javascript:;">互联网<i class="sem_icon hover"></i></a>
-                            <a href="javascript:;">100-200m²<i class="sem_icon hover"></i></a>
-                            <a href="javascript:;" class="del_all "><i class="sem_icon"></i>全部清除</a>
+
+                            <a href="javascript:;" v-for="cho_item in chosenArr">{{cho_item.name}}<i
+                                    class="sem_icon hover"></i></a>
+                            <!--<a href="javascript:;">互联网<i class="sem_icon hover"></i></a>-->
+                            <!--<a href="javascript:;">100-200m²<i class="sem_icon hover"></i></a>-->
+                            <a href="javascript:;" class="del_all" @click="del_all()"><i class="sem_icon"></i>全部清除</a>
                         </div>
                     </div>
 
@@ -298,13 +303,13 @@
                         <div class="conditions_result_box clearfix tj_box">
                             <div class="fl mt07">
                                 <i class="sem_icon"></i><em class="result_conts_txt">为您找到 <span
-                                    class="font-num" v-text="buildList.length"></span> 栋写字楼</em>
+                                    class="font-num" v-text="total_items"></span> 栋写字楼</em>
                             </div>
                         </div>
 
                         <div class="sort_box" @click="buildSort($event)">
                             <a href="javascript:;" class="on">默认</a>
-                            <a href="javascript:;" class="pr">面积<i class="sem_icon up"></i>
+                            <a href="javascript:;" class="pr">面积<i class="sem_icon"></i>
                                 <p class="bubble">点击按面积从小到大排序</p></a>
                             <a href="javascript:;" class="pr">价格<i class="sem_icon"></i>
                                 <p class="bubble">点击按价格从低到高排序</p></a>
@@ -317,7 +322,8 @@
                             <router-link :to="{path:'/detail',query:{houseid:item.id}}" class="db pr clearfix"
                                          :id="item.id" target="_blank">
                                 <div class="fl pr">
-                                    <img :src="item.img_path" :alt="item.img_alt">
+                                    <!--<img :src="item.img_path" :alt="item.img_alt">-->
+                                    <img src="http://116.62.71.76:81/default-youshi.png" :alt="item.img_alt">
                                 </div>
                                 <div class="price_box tright">
                                     <span class="db text_gray6"><em class="font26 font_num fb text_pink_app"
@@ -353,13 +359,13 @@
 
                         <!--搜索结果list end-->
                         <div class="page_wrap" v-show="pageFlag">
-                            <Page :total="200" @on-change="change"></Page>
+                            <Page :total="total_pages" @on-change="change"></Page>
                         </div>
 
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20    class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -404,7 +410,7 @@
                             <div class="app_download mt20">
                                 <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
                                 <div class="mh25">
-                                    <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
+                                    <img src="../resources/images/ys_weixin.jpg" alt="幼狮APP">
                                     <img src="../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
                                          alt="扫描二维码关注">
                                 </div>
@@ -465,6 +471,8 @@
                 featureActive: 0,
 
                 buildList: [], //楼盘列表，搜索结果
+                total_items: 0, //结果总数
+                total_pages: 0, //总页数
 
                 areaShowFlag: false, //默认面积窗不显示
                 bArea: "", //起始面积
@@ -493,62 +501,24 @@
                 pageFlag: false, //页码是否显示
 
                 //面积筛选数组
-                area_arr: [
-//                    {
-//                        minnum: '全部'
-//                    },
-//                    {
-//                        minnum: 0,
-//                        maxnum: 100,
-//                    },
-                ],
+                area_arr: [],
 
                 //价格筛选数组
-                range_unit_prices: [
-//                    {
-//                        minnum: '全部'
-//                    },
-//                    {
-//                        minnum: 1,
-//                        maxnum: 3,
-//                    },
-                ],
+                range_unit_prices: [],
 
-                range_total_prices: [
-                    {
-                        minnum: '全部'
-                    },
-                    {
-                        minnum: 0,
-                        maxnum: 1,
-                    },
-                ],
-
+                range_total_prices: [],
 
                 //特色数组
-                labels: [
-                    '全部',
-                    '地铁周边',
-                    '互联网',
-                    '金融精英',
-                    '健康空气',
-                    'LEED',
-                    '新楼',
-                    '地标建筑',
-                    '创意园区',
-                    '名企开发商',
-                    '知名物业',
-                    '5A写字楼',
-                    '纳什空间'
-                ],
+                labels: [],
 
-                buildingShowFlag: false,
-
+                buildingShowFlag: false, //暂无楼盘显示与否
 
                 //筛选条件全局参数
                 search_keywork: "", //模糊查询
                 district: "", //区域
                 business: "", //商圈
+                line_id: "", //线路
+                station_id: "",//车站
                 area: "", //面积
                 price_dj: "",
                 price_zj: "",
@@ -558,6 +528,29 @@
         },
 
         methods: {
+
+            //清除条件
+            del_all(){
+                this.chosenArr = [];
+                this.chosenFlag = false;
+
+                //清空条件
+                this.search_keywork = ""; //模糊查询
+                this.district = [];//区域
+                this.business = [];//商圈
+                this.line_id = [];//地铁线路ID
+                this.station_id = [];//地铁站点ID
+                this.area = [];//面积
+                this.price_dj = [];//价格（[30,100]）单价
+                this.price_zj = [];//价格（[30,100]）总价
+                this.label = [];////特色标签
+                this.curPage = 1;//区域
+
+                //查询
+                this.getList();
+
+
+            },
 
             //区域和地铁tab
             toggle(i, v){
@@ -630,17 +623,17 @@
                 this.loadingFlag = true;
                 this.pageFlag = false;
 
-                this.buildingShowFlag=false;
+                this.buildingShowFlag = false;
 
                 this.$http.post(
                     this.$api,
                     {
                         "parameters": {
-                            "search_keywork": "", //楼盘/商圈描述search
+                            "search_keywork": this.search_keywork, //楼盘/商圈描述search
                             "district": this.district, //区域
                             "business": this.business, //商圈
-                            "line_id": "", //地铁线路ID
-                            "station_id": "", //地铁站点ID
+                            "line_id": this.line_id, //地铁线路ID
+                            "station_id": this.station_id, //地铁站点ID
                             "area": this.area, //面积
                             "price_dj": this.price_dj, //价格（[30,100]）单价
                             "price_zj": this.price_zj, //价格（[30,100]）总价
@@ -658,6 +651,8 @@
                     if (result.success) {
                         if (result.data) {
                             _this.buildList = result.data.buildings;
+                            _this.total_items = result.data.total_items;
+                            _this.total_pages = result.data.total_pages;
                             _this.pageFlag = true;
 
                         } else {
@@ -674,8 +669,40 @@
             },
 
             //改变区域筛选
-            selList(district){
-                this.district = district;
+            selList(obj){
+                this.district = obj.id;
+
+                this.chosenArr.push({
+                    name: obj.name
+                });
+                //显示已选择条件
+                this.chosenFlag = true;
+
+                this.getList();
+            },
+
+            //改变商圈
+            selList_business(obj){
+                this.business = obj.id;
+                this.chosenArr.push({
+                    name: obj.name
+                });
+                //显示已选择条件
+                this.chosenFlag = true;
+                //alert(JSON.stringify(this.chosenArr));
+
+                this.getList();
+            },
+
+            //改变地铁线路
+            selList_lines(line_id){
+                this.line_id = line_id;
+                this.getList();
+            },
+
+            //改变车站
+            selList_station(station_id){
+                this.station_id = station_id;
                 this.getList();
             },
 
@@ -744,24 +771,37 @@
 
             //排序
             buildSort(e){
-                $(e.target).addClass('on').siblings().removeClass('on');
-                if ($(e.target).find('.sem_icon').length > 0) {
-                    $(e.target).siblings().find('.sem_icon').hide();
-                    $(e.target).find('.sem_icon').css('display', 'inline-block');
-                    if ($(e.target).find('.sem_icon').hasClass('up')) {
-                        $(e.target).find('.sem_icon').removeClass('up');
-                    } else {
-                        $(e.target).find('.sem_icon').addClass('up');
-                    }
+                var target = null;
+                if ($(e.target).parent()[0].tagName == 'A') {
+                    target = $(e.target).parent();
+                } else if ($(e.target)[0].tagName == 'A') {
+                    target = $(e.target);
                 }
-                this.getList(); //排序后的列表
+                if (target) {
+                    target.addClass('on').siblings().removeClass('on');
+                    if (target.find('.sem_icon').length > 0) {
+                        target.siblings().find('.sem_icon').hide();
+                        target.find('.sem_icon').css('display', 'inline-block');
+                        if (target.find('.sem_icon').hasClass('up')) {
+                            target.find('.sem_icon').removeClass('up');
+                            if (target.attr('id') == 'areaSort') {
+
+                            }
+                        } else {
+                            target.find('.sem_icon').addClass('up');
+                        }
+
+
+                    }
+                    this.getList(); //排序后的列表
+                }
             },
 
             //分页
             change(page){
                 this.curPage = page;
                 this.getList(); //获取楼盘列表
-                $(window).scrollTop(0);
+                $(window).scrollTop(400);
             },
 
             //一键咨询
