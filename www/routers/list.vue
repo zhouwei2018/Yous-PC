@@ -109,11 +109,11 @@
                                    :class="{active:areaActive == index}"
                                    class="last"
                                    @click="sel_area_list($event)"
-                                ><span class="font_num">{{item1.startNum}}</span><span class="font_num">m²</span></a>
+                                ><span class="font_num">{{item1.minnum}}</span><span class="font_num">m²</span></a>
                                 <a v-else href="javascript:;" :class="{active:areaActive == index}"
                                    @click="sel_area_list($event)">
-                                    <span class="font_num">{{item1.startNum}}</span>-<span
-                                        class="font_num">{{item1.endNum}}</span><span class="font_num">m²</span>
+                                    <span class="font_num">{{item1.minnum}}</span>-<span
+                                        class="font_num">{{item1.maxnum}}</span><span class="font_num">m²</span>
                                 </a>
                             </template>
 
@@ -156,19 +156,19 @@
                         <div class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">价格:</span>
 
-                            <a v-for="(item2,index) in price_arr" v-if="index == 0"
+                            <a v-for="(item2,index) in range_unit_prices" v-if="index == 0"
                                :class="{active:perPriceActive == index}"
                                @click="sel_price_list($event)"
                             >全部</a>
                             <template v-else>
-                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}"
+                                <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
                                    @click="sel_price_list($event)"
-                                ><span class="font_num">{{item2.startNum}}</span><span class="font_num">元</span></a>
+                                ><span class="font_num">{{item2.minnum}}</span><span class="font_num" v-text="item2.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:perPriceActive == index}"
                                    @click="sel_price_list($event)">
-                                    <span class="font_num">{{item2.startNum}}</span>-<span
-                                        class="font_num">{{item2.endNum}}</span><span class="font_num">元</span>
+                                    <span class="font_num">{{item2.minnum}}</span>-<span
+                                        class="font_num">{{item2.maxnum}}</span><span class="font_num" v-text="item2.unit"></span>
                                 </a>
                             </template>
 
@@ -178,7 +178,7 @@
                                     <input name="temp-startprice" type="text" autocomplete="off" v-model="bNum">
                                     <samp>-</samp>
                                     <input name="temp-endprice" type="text" autocomplete="off" v-model="eNum">
-                                    <em class="text-black ml05">元</em>
+                                    <em class="text-black ml05" >元</em>
                                 </div>
                                 <div class="interval_pop clearfix" style="display: none;" v-show="priceShowFlag">
                                     <div class="interval ma0">
@@ -212,19 +212,19 @@
                         <div class="tj_box_1 screening_conts_list clearfix none">
                             <span class="screening_title mr15">价格:</span>
 
-                            <a v-for="(item3,index) in price_tot_arr" v-if="index == 0"
+                            <a v-for="(item3,index) in range_total_prices" v-if="index == 0"
                                :class="{active:totPriceActive == index}"
                                @click="sel_tot_price_list($event)"
                             >全部</a>
                             <template v-else>
-                                <a v-if="index == price_arr.length-1" :class="{active:perPriceActive == index}"
+                                <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
                                    @click="sel_tot_price_list($event)"
-                                ><span class="font_num">{{item3.startNum}}</span><span class="font_num">万元</span></a>
+                                ><span class="font_num">{{item3.minnum}}</span><span class="font_num" v-text="item3.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:totPriceActive == index}"
                                    @click="sel_tot_price_list($event)">
-                                    <span class="font_num">{{item3.startNum}}</span>-<span
-                                        class="font_num">{{item3.endNum}}</span><span class="font_num">万元</span>
+                                    <span class="font_num">{{item3.minnum}}</span>-<span
+                                        class="font_num">{{item3.maxnum}}</span><span class="font_num" v-text="item3.unit"></span>
                                 </a>
                             </template>
 
@@ -267,10 +267,11 @@
                     <div class="screening_conts_detail clearfix pv20">
                         <div class="screening_conts_list clearfix">
                             <span class="screening_title mr15">特色:</span>
-                            <a href="javascript:;" v-for="(item4,index) in feature_arr"
+                            <a href="javascript:;" v-for="(item4,index) in labels"
+                               :id="item4.code"
                                :class="{active:featureActive == index}"
                                @click="sel_feature_list($event)"
-                               v-text="item4"
+                               v-text="item4.name"
                             ></a>
                         </div>
                     </div>
@@ -487,115 +488,38 @@
                 //面积筛选数组
                 area_arr: [
                     {
-                        startNum: '全部'
+                        minnum: '全部'
                     },
                     {
-                        startNum: 0,
-                        endNum: 100,
+                        minnum: 0,
+                        maxnum: 100,
                     },
-                    {
-                        startNum: 100,
-                        endNum: 200,
-                    },
-                    {
-                        startNum: 200,
-                        endNum: 300,
-                    },
-                    {
-                        startNum: 300,
-                        endNum: 500,
-                    },
-                    {
-                        startNum: 500,
-                        endNum: 1000,
-                    },
-                    {
-                        startNum: 1000,
-                        endNum: 2000,
-                    },
-                    {
-                        startNum: 2000,
-                        endNum: 3000,
-                    },
-                    {
-                        startNum: '>3000',
-                    }
                 ],
 
                 //价格筛选数组
-                price_arr: [
+                range_unit_prices: [
                     {
-                        startNum: '全部'
+                        minnum: '全部'
                     },
                     {
-                        startNum: 1,
-                        endNum: 3,
+                        minnum: 1,
+                        maxnum: 3,
                     },
-                    {
-                        startNum: 3,
-                        endNum: 5,
-                    },
-                    {
-                        startNum: 5,
-                        endNum: 8,
-                    },
-                    {
-                        startNum: 8,
-                        endNum: 10,
-                    },
-                    {
-                        startNum: 10,
-                        endNum: 20,
-                    },
-                    {
-                        startNum: 20,
-                        endNum: 30,
-                    },
-                    {
-                        startNum: '>30',
-                    }
                 ],
 
-                price_tot_arr: [
+                range_total_prices: [
                     {
-                        startNum: '全部'
+                        minnum: '全部'
                     },
                     {
-                        startNum: 0,
-                        endNum: 1,
+                        minnum: 0,
+                        maxnum: 1,
                     },
-                    {
-                        startNum: 1,
-                        endNum: 3,
-                    },
-                    {
-                        startNum: 3,
-                        endNum: 5,
-                    },
-                    {
-                        startNum: 5,
-                        endNum: 8,
-                    },
-                    {
-                        startNum: 8,
-                        endNum: 10,
-                    },
-                    {
-                        startNum: 10,
-                        endNum: 20,
-                    },
-                    {
-                        startNum: 20,
-                        endNum: 30,
-                    },
-                    {
-                        startNum: '>30',
-                    }
                 ],
 
 
                 //特色数组
-                feature_arr: [
+                labels: [
                     '全部',
                     '地铁周边',
                     '互联网',
@@ -630,6 +554,32 @@
             toggle(i, v){
                 this.active = i;
                 this.currentView = v;
+            },
+
+            //获取筛选条件
+            getSortList(){
+                var _this = this;
+                //调用区域查询接口，更新数据
+                this.$http.post(
+                    this.$api,
+                    {
+                        "parameters": {},
+                        "foreEndType": 2,
+                        "code": "90000301"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.area_arr = result.data.range_areas; //面积arr
+                        _this.range_unit_prices = result.data.range_unit_prices; //单价
+                        _this.range_total_prices = result.data.range_total_prices; //总价
+                        _this.labels = result.data.labels; //特色
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取区域失败');
+                });
             },
 
             //获取楼盘列表
@@ -913,6 +863,7 @@
             });
 
 
+            this.getSortList(); //获取筛选条件
             this.getList(); //获取楼盘列表
 
         },

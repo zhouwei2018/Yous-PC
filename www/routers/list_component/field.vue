@@ -6,16 +6,19 @@
 <template>
 
     <div class="screening_conts_detail pv20">
-        <div class="screening_conts_list weizhi clearfix tj_box_1" @click="getDistrict($event)">
+        <div class="screening_conts_list weizhi clearfix tj_box_1">
             <span class="screening_title mr15">位置:</span>
 
-            <a href="javascript:;"
+            <a href="javascript:;" @click="getSubDistrict($event)"
                v-for="(item,index) in district"
                :class="{active:positon_active == index}"
-               :id="item.id"
+               :id="item.code"
             >{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" id="sub_district" v-show="sub_show_flag">
+            <a href="javascript:;" class="pt05" id="sub_all"
+               @click="getHouseList($event)"
+            >全部</a>
             <a href="javascript:;"
                v-for="(item1,index) in sub_district"
                :class="{active:sub_pos_active == index}"
@@ -34,83 +37,106 @@
         data (){
             return {
                 district: [
-                    {
-                        name: '全部',
-                        id: 'all'
-                    },
-                    {
-                        name: '朝阳',
-                        id: 'cy'
-                    },
-                    {
-                        name: '海淀',
-                        id: 'hd'
-                    },
-                    {
-                        name: '西城',
-                        id: 'xc'
-                    },
-                    {
-                        name: '东城',
-                        id: 'dc'
-                    }
+//                    {
+//                        name: '全部',
+//                        id: 'all'
+//                    },
+//                    {
+//                        name: '朝阳',
+//                        code: '10011'
+//                    }
                 ],
                 sub_district: [
-                    {
-                        name: '全部',
-                        id: 'sub_all'
-                    },
-                    {
-                        name: '望京',
-                        id: 'sub_wj'
-                    },
-                    {
-                        name: '燕莎',
-                        id: 'sub_ys'
-                    },
-                    {
-                        name: 'CBD',
-                        id: 'sub_cbd'
-                    }
+//                    {
+//                        name: '全部',
+//                        id: 'sub_all'
+//                    },
+//                    {
+//                        name: '望京',
+//                        code: '110105'
+//                    }
                 ],
 
                 positon_active: 0,
                 sub_pos_active: 0,
 
-                sub_show_flag:false, //默认二级区域不显示
+                sub_show_flag: false, //默认二级区域不显示
             }
         },
         methods: {
 
             //获取北京各区名称
-            getDistrict(e){
+            getDistrict(){
+                var _this = this;
+                //调用区域查询接口，更新数据
+                this.$http.post(
+                    this.$api,
+                    {
+                        "parameters": {},
+                        "foreEndType": 2,
+                        "code": "90000301"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.district = result.data.districts;
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取区域失败');
+                });
+            },
+
+            //点击获取各区二级模块
+            getSubDistrict(e){
+                var _this = this;
+
                 $(e.target).addClass('active').siblings().removeClass('active');
 
                 if ($(e.target).attr('id') == 'all') {
-                    this.sub_show_flag=false;
-                    if(!$(e.target).hasClass('tj_box_1')){
+                    this.sub_show_flag = false;
+                    if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
                     }
 
                 } else {
                     //调用子级区域查询接口，更新数据
 
-
-                    this.sub_show_flag=true;
-                    $(e.target).parent().removeClass('tj_box_1');
+                    this.$http.post(
+                        this.$api,
+                        {
+                            "parameters":{
+                                "city_code":$(e.target).attr('id')
+                            },
+                            "foreEndType":2,
+                            "code":"90000302"
+                        }
+                    ).then(function (res) {
+                        var result = JSON.parse(res.bodyText);
+                        if (result.success) {
+                            _this.sub_show_flag = true;
+                            _this.sub_district = result.data;
+                            $(e.target).parent().removeClass('tj_box_1');
+                        } else {
+                            this.$Message.error(result.message);
+                        }
+                    }, function (res) {
+                        this.$Message.error('获取区域失败');
+                    });
                 }
             },
 
             //点击获取结果列表
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                this.$emit("refreshbizlines",$(e.target).attr('id'))
+                this.$emit("refreshbizlines", $(e.target).attr('id'))
             },
 
         },
 
         mounted(){
-
+            this.getDistrict();
         }
     }
 </script>
