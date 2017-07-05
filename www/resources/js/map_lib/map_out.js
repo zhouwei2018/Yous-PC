@@ -156,7 +156,6 @@ YMap.prototype.addPageEvent = function(vueobj) {
     var self = this;
     //区域标注点事件 start
     $(document).on('click', '.map_pop_location', function(){
-        alert("点击了一个行政区域，将获得该区域内的各个'商圈' 的房源概况")
         if ($(this).attr('domain') != '') {//城市图标
            // window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
         } else {//城区图标
@@ -172,7 +171,6 @@ YMap.prototype.addPageEvent = function(vueobj) {
 
     //商圈标注点事件 start
     $(document).on('click', '.map_pop_sublocation', function(){
-        alert("点击了一个商圈，将获得该商圈内的各个'楼盘'的房源概况")
         if ($(this).attr('domain') != '') {//城市图标
             //window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
         } else {
@@ -188,12 +186,10 @@ YMap.prototype.addPageEvent = function(vueobj) {
 
     //樓棟注点事件
     $(document).on('click', '.map_pop_community', function(){
-        alert("点击了一个楼盘，将获得该楼盘的各个具体的房源概况[右侧显示该楼盘内的房源列表（详细信息）]");
         $('.qqserver').addClass('unfold');
         $('.qqserver001').removeClass('unfold001');
         $('.shareshow').css('display', 'none'); //默认关闭分享
         self.community.id = $(this).attr('communityid');
-       // $('.liebiao').html(''); //加载前先清空上次的数据
         var paraObj = {
             type: "all", //返回房源类型 "rent":出租房源 ，“exchange”：二手房 , "all":去全部
             priceClass: 1, //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
@@ -211,6 +207,43 @@ YMap.prototype.addPageEvent = function(vueobj) {
         };
         var errorCb = function(data){
             vueobj.removeHouseLoading(); //移除地图加载中
+            this_.detailLists = {
+                address:"石景山古城地铁站东南口向东100米", //楼栋地址
+                title:"长安家园", //楼栋名称
+                area:"石景山", //楼栋所屬行政區域
+                pic :"http://bj.5i5j.com/themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
+                houses:[
+                    {
+                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+                        totalPrice:"335", //总价
+                        perPrice:"50758",  //单价每平米
+                        condition:"2室1聼", //房源佈局
+                        size:"56", //房源面积 56平
+                        direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
+                        houseId:333 //房源Id
+                    },
+                    {
+                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+                        totalPrice:"335万", //总价
+                        perPrice:"50758",  //单价每平米
+                        condition:"2室1聼", //房源佈局
+                        size:"56", //房源面积 56平
+                        direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
+                        houseId:333 //房源Id
+                    },
+                    {
+                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+                        totalPrice:"335万", //总价
+                        perPrice:"50758",  //单价每平米
+                        condition:"2室1聼", //房源佈局
+                        size:"56", //房源面积 56平
+                        direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
+                        houseId:333 //房源Id
+                    },
+
+                ]
+            }
+            this_.rightPannel= true;
         };
         vueobj.addHouseLoading(); //地图加载中
         vueobj.remoteData(paraObj, successCb ,errorCb);

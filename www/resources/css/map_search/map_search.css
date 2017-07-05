@@ -102,7 +102,7 @@ a img{ border:none;}
 /**html .main_zhoubian{position:absolute;top:expression(eval(document.documentElement.scrollTop));margin-top:320px;}*/
 .main_zhoubian .main2{width:183px;}
 /* .main_zhoubian .bar{width:30px;height:100px;position:absolute;right:-30px;top:315px;background:url(../images/leftclickbtn.jpg) no-repeat;display:block;} */
-.zengleft{position:absolute;width:30px;height:100px;z-index:5;left:0px;top:315px;}
+.zengleft{display:none;position:absolute;width:30px;height:100px;z-index:5;left:0px;top:315px;}
 .bar{width:30px;height:100px;left:-30px;top:315px;background:url(../../images/map_search/leftclickbtn.jpg) no-repeat;}
 
 .main2 .zhoubianinfo{margin:0px 24px 24px 18px;}
@@ -166,7 +166,7 @@ a img{ border:none;}
 .qqserver .qqserver-body{
     position:absolute;
     right: -400px;
-    top:57px;
+    top:50px;
     bottom:0;
     width:390px;
     height:100%;

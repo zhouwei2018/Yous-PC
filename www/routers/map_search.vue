@@ -87,6 +87,13 @@
                 display: block;
             }
         }
+        .house-location{
+            background-image: url(../resources/images/map_search/fangzhi.png);
+            width: 18px;
+            height: 22px;
+            margin: 15px 0 13px -31px;
+            position: absolute;
+        }
     }
 </style>
 
@@ -148,7 +155,7 @@
                                     <a href="javascript:void(0);"><span id="chv">{{areaTitle}}</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul class="subnav">
-                                        <li class="result-item" v-for="(item, index) in district" areaid="item.id"
+                                        <li class="result-item" v-for="(item, index) in areaDatas" areaid="item.id"
                                             :x="item.point.toString().split('|')[0]"
                                             :y="item.point.toString().split('|')[1]"
                                             @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
@@ -157,22 +164,34 @@
                                 <li class="price-class">
                                     <a href="javascript:void(0);"><span style="color:#CCC;">价格</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav"></ul>
+                                    <ul style="display:none;" class="subnav">
+                                        <li class="result-item" v-for="(item, index) in priceArray" :value="item.value"
+                                            @click="searchFilter(item.value, item)"><a>{{item.title}}</a></li>
+                                    </ul>
                                 </li>
                                 <li class="size-class">
                                     <a href="javascript:void(0);"><span style="color:#CCC;">面积</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav"></ul>
+                                    <ul style="display:none;" class="subnav">
+                                        <li class="result-item" v-for="(item, index) in areaArray" :value="item.id"
+                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
+                                    </ul>
                                 </li>
                                 <li class="room-type">
                                     <a href="javascript:void(0);"><span style="color:#CCC;">户型</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav"></ul>
+                                    <ul style="display:none;" class="subnav">
+                                        <li class="result-item" v-for="(item, index) in roomArray" :value="item.id"
+                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
+                                    </ul>
                                 </li>
                                 <li class="last feature-type" style="width: 110px;">
                                     <a href="javascript:void(0);"><span style="color:#CCC;">特色</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav"></ul>
+                                    <ul style="display:none;" class="subnav">
+                                        <li class="result-item" v-for="(item, index) in featureArray" :value="item.id"
+                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -188,11 +207,11 @@
                         </div>
                         <div class="main_zhoubian" style="display:none;"></div>
                         <div class="r_listbtn qqserver_fold">
-                            <a href="javascript:void(0);"></a>
+                            <router-link target="_blank" :to="{path:'/list'}"></router-link>
                         </div>
                         <!--右边浮动层开始-->
-                        <div class="qqserver">
-                            <div class="qqserver-body">
+                        <div class="qqserver" :class="{ unfold: rightPannel }"  @click="rightHandler_($event)">
+                            <div class="qqserver-body" style="display:block;">
                                 <div class="qqserver-header">
                                     <div class="xiaoqushow fl" id="xiaoqushow">
                                         <span class="icon_xqshow"></span>小区展示
@@ -201,7 +220,7 @@
                                         <a href="javascript:void(0);"><label class="icon_fanhui"></label>返回</a>
                                     </div>
                                     <div class="fenxiangshow fl" style="margin-left: 147px;"><span></span></div>
-                                    <!--分享的弹出层 str-->
+                        <!--            &lt;!&ndash;分享的弹出层 str&ndash;&gt;
                                     <div class="shareshow" style="display:none;">
                                         <p class="fxdao">分享到</p>
                                         <div class="fxlist">
@@ -219,9 +238,7 @@
                                                     <a class="sharetext tx_sharetext">腾讯微博</a>
                                                 </li>
                                                 <li class="wxbtn" style="background-position: 100% 0%">
-                                                    <div class="bdsharebuttonbox"><a href="javascript:void(0);"
-                                                                                     class="share wx_share xq"
-                                                                                     data-cmd="weixin"></a></div>
+                                                    <div class="bdsharebuttonbox"><a href="javascript:void(0);" class="share wx_share xq" data-cmd="weixin"></a></div>
                                                     <a class="sharetext wx_sharetext">微信分享</a>
                                                 </li>
                                                 <li style="background-position:0% 175% ">
@@ -231,10 +248,11 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <!--分享的弹出层 end-->
+                                    &lt;!&ndash;分享的弹出层 end&ndash;&gt;
+                                  -->
                                     <div class="close qqserver_arrow fl"><span></span></div>
                                 </div>
-                                <div class="tabPanel">
+                               <!-- <div class="tabPanel">
                                     <div class="tabList">
                                     </div>
                                     <div class="tabCon leftAround">
@@ -248,15 +266,9 @@
                                                     </p>
                                                     <div class="vertical scrollbox clearfix">
                                                         <div class="slyWrap example1">
-                                                            <div class="scrollbar">
-                                                                <div class="handle"
-                                                                     style="position: absolute; top: 0px;"></div>
-                                                            </div>
-                                                            <div class="sly"
-                                                                 data-options="{ &quot;itemNav&quot;: &quot;smart&quot;, &quot;dragContent&quot;: 1, &quot;startAt&quot;: 1, &quot;scrollBy&quot;: 1, &quot;elasticBounds&quot;: 1 }"
-                                                                 style="padding-bottom: 606px; overflow: hidden; position: relative;">
-                                                                <ul class="big cfix gongjiaoload"
-                                                                    style="position: absolute; top: 0px; height: 0px;">
+                                                            <div class="scrollbar"><div class="handle" style="position: absolute; top: 0px;"></div></div>
+                                                            <div class="sly" data-options="{ &quot;itemNav&quot;: &quot;smart&quot;, &quot;dragContent&quot;: 1, &quot;startAt&quot;: 1, &quot;scrollBy&quot;: 1, &quot;elasticBounds&quot;: 1 }" style="overflow: hidden; position: relative;">
+                                                                <ul class="big cfix gongjiaoload" style="position: absolute; top: 0px; height: 0px;">
                                                                     <li class="zhoubians active">
                                                                         <ul class="luxianadress"></ul>
                                                                     </li>
@@ -268,274 +280,44 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="liebiao">
-                                    <div class="fangyuanlist">
-                                        <div class="adress"><span></span>{{detailLists.address}}</div>
-                                        <div class="fanginfo">
-                                            <a href="" target="_blank">{{detailLists.title}}</a>
-                                            <img style="border:none;width:390px;height:106px" src="../resources/images/map_search/bj.jpg">
-                                            <span class="fuceng"> </span>
-                                        </div>
-                                        <!--内容-->
-                                        <div class="vertical scrollbox clearfix">
-                                            <div class="slyWrap example1">
-                                                <div class="scrollbar">
-                                                    <div class="handle"
-                                                         style="position: absolute; top: 0px; height: 60px;"></div>
-                                                </div>
-                                                <div class="sly"  style="padding-bottom: 606px; overflow: hidden; position: relative;">
-                                                    <ul class="big cfix houses_list"
-                                                        style="position: absolute; top: 0; height: 1088px;">
-                                                        <li class="waiclisty active">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li v-for="(item, index) in detailLists.houses" :id="item.code">
-
-
-
-                                                                    </li>
-
-
-                                                                    <li id="160908917" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3809/38095917/shinei/cplbjckh9299d042.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>290万/<span>58000元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">2室1厅丨50平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="155604986" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3722/37228498/shinei/dhjgjcji66c2c571.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>340万/<span>64151元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">2室1厅丨53平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="153019567" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3734/37341636/shinei/dggdidgabe34740c.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>295万/<span>70238元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">1室1厅丨42平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="153877071" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3743/37436754/shinei/djbfinjbfc2d67b5.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>280万/<span>66667元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">1室1厅丨42平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="159965512" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3795/37952237/shinei/odkopbep4baf1036.JPG.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>383万/<span>58030元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">2室1厅丨66平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="160895236" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3770/37708926/shinei/iklpojjid2a0e4d2.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>315万/<span>58333元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">2室1厅丨54平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="156782441" class="xianshiflod rent">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3645/36458879/shinei/mpihhdko26f42bc7.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>3800元/月</dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">2室1厅丨55平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                        <li class="waiclisty">
-                                                            <div class="fanglistinfo">
-                                                                <ul>
-                                                                    <li id="158780299" class="xianshiflod exchange">
-                                                                        <p>
-                                                                            <img src="http://image.5i5j.com/picture/slpic/l/house/3763/37638934/shinei/boejfgof7c5ebac4.jpg.jpg?4690f38164d22ccb0e30efafa9c0619d"
-                                                                                 border="0" width="160" height="120"
-                                                                                 onerror="defaultimgerror(this);">
-                                                                        </p>
-                                                                        <dl>
-                                                                            <dt>340万/<span>64151元/m²</span></dt>
-                                                                            <dd class="fangcontent hpcolor"
-                                                                                style="overflow: hidden;">
-                                                                                <span>南开西里</span>（丰台）
-                                                                            </dd>
-                                                                            <dd class="fangcontent">2室1厅丨53平米丨南北</dd>
-                                                                            <dd>
-                                                                                <div class="fangbtn">
-                                                                                    <!--
-                                                                                    <span class="gybtn"></span>
-                                                                                                                                            <span class="mwbtn"></span>
-                                                                                                                                            <span class="cdbtn"></span>
-                                                                                    -->                        </div>
-                                                                            </dd>
-                                                                        </dl>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </li><!-- </a> -->
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--内容结束-->
+                                </div>-->
+                                <div class="liebiao"><div class="fangyuanlist">
+                                    <div class="adress"><span class="house-location"></span>{{detailLists.address}}</div>
+                                    <div class="fanginfo">
+                                        <a href=":;" target="_blank">{{detailLists.title}}</a>
+                                        <img style="border:none;width:390px;height:106px" :src="detailLists.pic">
+                                        <span class="fuceng"> </span>
                                     </div>
+                                    <!--内容-->
+                                    <div class="vertical scrollbox clearfix">
+                                        <div class="slyWrap example1">
+                                            <div class="scrollbar">
+                                                <div class="handle"></div>
+                                            </div>
+                                            <div class="sly">
+                                                <ul class="big cfix houses_list">
+                                                    <li class="waiclisty" v-for="(item, index) in detailLists.houses">
+                                                        <div class="fanglistinfo"><ul>
+                                                            <li :id="item.houseId" class="xianshiflod">
+                                                                <p>
+                                                                    <img :src="item.img" border="0" width="160" height="120" class="house-img">
+                                                                </p>
+                                                                <dl>
+                                                                    <dt>{{item.totalPrice}}万/<span>{{item.perPrice}}元/m²</span></dt>
+                                                                    <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>{{detailLists.title}}</span>（{{detailLists.area}}）</dd>
+                                                                    <dd class="fangcontent">{{item.condition}}丨{{item.size}}平米丨{{item.direction}}</dd>
+                                                                    <dd><div class="fangbtn"></div></dd>
+                                                                </dl>
+                                                            </li></ul>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div></div></div>
+                                    <!--内容结束-->
+                                </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="qqserver001"></div>
                         <!--右边浮动层结尾-->
                     </div>
                 </div>
@@ -545,11 +327,7 @@
             <div id="h_L"></div>
             <div id="ht_L"></div>
         </div>
-
-        <!--footer start-->
-        <footer1></footer1>
-        <!--footer end-->
-
+       <!-- <footer1></footer1>-->
     </div>
 </template>
 <script>
@@ -567,6 +345,7 @@
             return {
                 areaTitle: "区域",
                 boundary_location: [],
+                areaDatas: [],
                 district: [],
                 YSMap: null,
                 autoSearchMaker: "",
@@ -586,23 +365,23 @@
                 sizeType: 0, //面积
                 roomType: 0, //居室
                 featureType: 0,//特色
-                detailLists:{
-                    address:"石景山古城地铁站东南口向东100米", //楼栋地址
-                    title:"长安家园", //楼栋名称
-                    pic :".../themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
-                    houses:[
-                        {
-                            img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                            totalPrice:"335万", //总价
-                            perPrice:"50758",  //单价每平米
-                            tAddress:"長安家園", //房源所屬樓棟
-                            area:"石景山", //房源所屬行政區域
-                            condition:"2室1聼", //房源佈局
-                            size:"56", //房源面积 56平
-                            direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
-                            houseId:333 //房源Id
-                        }
-                    ]
+                areaArray:[],
+                rightPannel:false,
+                priceArray: [
+                    {value: 1, title: "不限"},
+                    {value: 2, title: "1500-3000元"},
+                    {value: 3, title: "3000-6000元"},
+                    {value: 4, title: "3000-6000元"},
+                ], //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
+                sizeArray: [], //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
+                roomArray: [], //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
+                featureArray: [], //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
+                detailLists: {
+                    address:"", //楼栋地址
+                    title:"", //楼栋名称
+                    area:"", //楼栋所屬行政區域
+                    pic :"", //楼栋封面图片
+                    houses:[]
                 }
             }
         },
@@ -632,6 +411,16 @@
                 boundary_location['大兴区'] = "116.427216, 39.506168;116.423565, 39.498397;116.443715, 39.494768;116.454391, 39.483755;116.461077, 39.459314;116.45876, 39.453338;116.449037, 39.447444;116.438896, 39.446875;116.425962, 39.453909;116.395975, 39.458828;116.380362, 39.458267;116.367919, 39.45421;116.349994, 39.455207;116.33155, 39.469752;116.315295, 39.489351;116.26345, 39.508095;116.25317, 39.522674;116.25263, 39.550753;116.244258, 39.558461;116.242085, 39.56721;116.235353, 39.571404;116.227572, 39.584595;116.233384, 39.59841;116.224637, 39.614871;116.226499, 39.625056;116.223342, 39.645452;116.234695, 39.694268;116.231818, 39.69929;116.235744, 39.703929;116.234718, 39.711761;116.248602, 39.729755;116.251188, 39.750128;116.258462, 39.759385;116.257286, 39.80278;116.267216, 39.801391;116.267818, 39.798164;116.292667, 39.805447;116.312091, 39.778858;116.317014, 39.779695;116.322283, 39.787592;116.328555, 39.803713;116.33624, 39.807402;116.343224, 39.806204;116.3509, 39.812772;116.362271, 39.812077;116.362034, 39.807632;116.375155, 39.806154;116.377241, 39.800682;116.372007, 39.799629;116.3739, 39.791265;116.389653, 39.792451;116.388854, 39.784992;116.396231, 39.78638;116.397547, 39.771661;116.404635, 39.772487;116.401967, 39.793073;116.426115, 39.794037;116.428014, 39.799523;116.435754, 39.800831;116.435673, 39.807688;116.429704, 39.815781;116.423126, 39.817379;116.39805, 39.818163;116.39671, 39.813978;116.386657, 39.811599;116.385893, 39.815124;116.396854, 39.821619;116.394945, 39.823853;116.401249, 39.827913;116.409247, 39.829142;116.419025, 39.821758;116.423854, 39.826679;116.42045, 39.831203;116.422147, 39.835304;116.441988, 39.835735;116.449989, 39.832692;116.451859, 39.826392;116.461995, 39.827179;116.482208, 39.816099;116.492298, 39.819204;116.492618, 39.822996;116.497099, 39.822436;116.497187, 39.824714;116.501791, 39.822277;116.516185, 39.822545;116.52113, 39.834944;116.532722, 39.836217;116.53327, 39.833242;116.541787, 39.831745;116.540724, 39.8274;116.545125, 39.823029;116.544521, 39.81838;116.537773, 39.815432;116.545082, 39.803831;116.538842, 39.801309;116.5415, 39.787374;116.539025, 39.782994;116.548153, 39.769151;116.536851, 39.768045;116.53086, 39.770538;116.529582, 39.759332;116.539093, 39.756959;116.536205, 39.753605;116.537508, 39.747107;116.547707, 39.74058;116.548511, 39.720988;116.575042, 39.719699;116.583947, 39.716756;116.59247, 39.720194;116.600666, 39.718041;116.625752, 39.732241;116.64571, 39.731588;116.646979, 39.718259;116.649882, 39.717074;116.653928, 39.701268;116.656828, 39.700981;116.658064, 39.69417;116.672184, 39.689929;116.672332, 39.68225;116.675679, 39.679729;116.692673, 39.681594;116.709526, 39.678326;116.711689, 39.673409;116.707545, 39.655711;116.714984, 39.648844;116.726844, 39.643817;116.732378, 39.622566;116.714438, 39.620189;116.71637, 39.613995;116.728086, 39.609701;116.710468, 39.599876;116.701745, 39.60451;116.673363, 39.609935;116.63644, 39.606442;116.618944, 39.628629;116.585652, 39.627478;116.577529, 39.621966;116.57452, 39.609939;116.565197, 39.60494;116.554845, 39.603896;116.547581, 39.608086;116.536942, 39.603461;116.531734, 39.587893;116.533441, 39.580088;116.514741, 39.561168;116.507235, 39.562618;116.48695, 39.555863;116.4821, 39.543784;116.469509, 39.538592;116.450737, 39.535575;116.44157, 39.521807;116.433045, 39.523335;116.4275, 39.528935;116.418117, 39.527631;116.411754, 39.520478;116.427216, 39.506168";
                 this.boundary_location = boundary_location;
             },
+            rightHandler_:function(e){
+                if($(e.target).closest('.close').length>0){
+                    $('.qqserver').removeClass('unfold');
+                    //$('.qqserver001').removeClass('unfold001');
+                    //$('#fanhui').click(); //返回小区
+                }else if($(e.target).hasClass("house-img" )){
+                    alert("去详情页")
+                }
+
+            },
             temHelper: function () {
                 //显示2秒隐藏
                 var this_ = this;
@@ -643,67 +432,9 @@
                 $('.fangtypebtn').on('click', function () {
                     $('.typelist').slideToggle('slow');
                 });
-                /**
-                 * 地图城市选择
-                 */
-                $('.header_city a').on('click', function () {
-                    $('.cityslist').slideToggle('slow');
-                });
-
-
-                $('.subnav a').on('click', function () {
-                    $('#chv').html($(this).html());
-                });
-                /**
-                 * 地图右侧小区周边配套切换
-                 */
-                $('.tabPanel .clearfixes li').on('click', function () {
-                    $('.liebiao').hide(); //隐藏房源列表页
-                    $(this).addClass('hit').siblings().removeClass('hit');
-                    $('.tabCon>div:eq(' + $(this).index() + ')').show().siblings().hide();
-                });
-
-                /**
-                 * 右侧弹出层关闭效果,关闭房源列表页
-                 */
-                $('.qqserver_arrow').on('click', function () {
-                    $('.qqserver').removeClass('unfold');
-                    $('.qqserver001').removeClass('unfold001');
-                    $('#fanhui').click(); //返回小区
-                });
 
                 $(document).on('click', '.qqserver_arrow001', function () {
                     $('.qqserver001').removeClass('unfold001');
-                });
-
-                /**
-                 * 房源详情页
-                 */
-                $(document).on('click', '.fanglistinfo .xianshiflod', function () {
-                    if ($(this).hasClass('exchange')) {
-                        var type = 'exchange';
-                    } else {
-                        var type = 'rent';
-                    }
-                    $.ajax({
-                        url: this_.domainRoot + '/rightHousesDetail',
-                        type: 'GET',
-                        dataType: 'html',
-                        data: {'houseType': type, 'houseid': $(this).attr('id')},
-                        beforeSend: function (XMLHttpRequest) {
-                            addHouseDetailLoading(); //地图加载中
-                        },
-                        success: function (data) {
-                            $('.qqserver001').addClass('unfold001');
-                            $('.qqserver001').html(data);
-                        },
-                        complete: function (XMLHttpRequest) {
-                            removeHouseDetailLoading(); //移除地图加载中
-                        },
-                        error: function () {
-                            alert('附近未找到房源，请重新选择！');
-                        }
-                    });
                 });
 
                 $(document).on('mouseover', '.xianshiflod', function () {
@@ -726,19 +457,6 @@
                     }
                 });
 
-
-                /**
-                 * “列表找房”房源列表页跳转
-                 */
-                $('.r_listbtn').on('click', function () {
-                    if (house_type == 'rent') {
-                        var url = '/' + house_type;
-                    } else {
-                        var url = '/exchange';
-                    }
-                    window.open(url);
-                })
-
             },
             init: function () {
                 let options = {
@@ -754,6 +472,7 @@
             },
             searchDistrict: function (ele, index, e) {
                 this.areaTitle = index.title;
+                this.rightPannel = false;
                 this.YSMap.mapObj.setZoom(15);
                 this.YSMap.mapObj.clearOverlays(); //清除地图上所有标注
                 this.YSMap.area.id = $(this).attr('areaid');//选中的区域
@@ -953,7 +672,7 @@
                         }], "zoom": "12"
                     };
                     var data = testData;
-                    this_.district = data.houses;
+                    this_.areaDatas = data.houses;
                     if (data.houses.length > 0) {
                         this_.YSMap.mapObj.clearOverlays();
                         this_.YSMap.addOverlay(data.houses, data.zoom); //绑定点击事件
@@ -1077,7 +796,7 @@
                         }], "zoom": "12"
                     };
                     var data = testData;
-                    this_.district = data.houses;
+                    this_.areaDatas = data.houses;
                     if (data.houses.length > 0) {
                         this_.YSMap.mapObj.clearOverlays();
                         this_.YSMap.addOverlay(data.houses, data.zoom); //绑定点击事件

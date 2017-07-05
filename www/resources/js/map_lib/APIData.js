@@ -113,21 +113,19 @@ var paraObj = {
 
 //返回的數據:某一个商圈下的
 var result ={
-         address:"石景山古城地铁站东南口向东100米", //楼栋地址
-         title:"长安家园", //楼栋名称
-         pic :".../themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
-         houses:[
-             {
-                 img:"",
-                 totalPrice:"335万", //总价
-                 perPrice:"50758",  //单价每平米
-                 tAddress:"長安家園", //房源所屬樓棟
-                 area:"石景山", //房源所屬行政區域
-                 condition:"2室1聼", //房源佈局
-                 size:"56", //房源面积 56平
-                 direction:"1" //房源朝向 1东西， 2.南北  3.其他
-
-             }
-         ]
-
+    address:"石景山古城地铁站东南口向东100米", //楼栋地址
+        title:"长安家园", //楼栋名称
+        area:"石景山", //楼栋所屬行政區域
+        pic :".../themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
+        houses:[
+        {
+            img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+            totalPrice:"335万", //总价
+            perPrice:"50758",  //单价每平米
+            condition:"2室1聼", //房源佈局
+            size:"56", //房源面积 56平
+            direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
+            houseId:333 //房源Id
+        }
+    ]
 };
