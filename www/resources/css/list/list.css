@@ -181,6 +181,7 @@
   color: #666;
   font-size: 14px;
 }
+[list] .screening_conditions .screening_conts_detail a:hover,
 [list] .screening_conditions .screening_conts_detail a.active {
   color: #0f6fac;
 }

@@ -101,7 +101,7 @@
 
 
                 if ($(e.target).attr('id') == 'line_all') {
-                    this.sub_show_flag = false;
+                    this.station_show_flag = false;
                     if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
                     }
