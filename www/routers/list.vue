@@ -395,7 +395,7 @@
 
                         <!--搜索结果list end-->
                         <div class="page_wrap" v-show="pageFlag">
-                            <Page :total="total_pages" @on-change="change"></Page>
+                            <Page :total="total_pages*10" @on-change="change"></Page>
                         </div>
 
                         <!--加载中-->
