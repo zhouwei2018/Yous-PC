@@ -1,4 +1,4 @@
-function myMap(options) { //地图实例的依附对象的构造函数
+function YMap(options) { //地图实例的依附对象的构造函数
     this.loadDataAjax = null;
     this.mapStatu = 'area'; //记录当前地图的状态
     this.operate = { loadList:false };
@@ -40,16 +40,16 @@ function myMap(options) { //地图实例的依附对象的构造函数
         data: '', //当前小区的json格式信息
         key: '', //当前小区的本地搜索关键词
         index: 0,
-        keys: new Array(),
+        keys: [],
         localSearchResult: null,
         infoList: null
-    }
+    };
 
 
     this.subWay = {//地铁搜索参数
         isSubWay: false,
         line: ''
-    }
+    };
     this.mapObj = null;
     if (options) {
         if (options.x) {
@@ -72,7 +72,7 @@ function myMap(options) { //地图实例的依附对象的构造函数
         }
     }
 }
-myMap.prototype.loadMap = function(YSMap, vueobj) {
+YMap.prototype.loadMap = function(YSMap, vueobj) {
     var self = YSMap;
     //加载页面交互事件(如鼠标移动到标注上等操作)
     this.addPageEvent(vueobj);
@@ -96,14 +96,14 @@ myMap.prototype.loadMap = function(YSMap, vueobj) {
  * 地图比例尺
  * @returns {undefined}
  */
-myMap.prototype.addScale = function(){
+YMap.prototype.addScale = function(){
     if(this.is_scale) {
         var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
         this.mapObj.addControl(ctrl_sca);
     }
 };
 
-myMap.prototype.addOverlay = function(data, lv) {
+YMap.prototype.addOverlay = function(data, lv) {
 
     var self = this;
     var div;
@@ -117,7 +117,7 @@ myMap.prototype.addOverlay = function(data, lv) {
  * 地图“百度地图标识”
  * @returns {undefined}
  */
-myMap.prototype.addBaiduImage = function(){
+YMap.prototype.addBaiduImage = function(){
     if(!this.is_baidu) {
         $('.zuoleftimg').css('display', 'none');
         $('.zuoleftbiao').css('display', 'none');
@@ -128,7 +128,7 @@ myMap.prototype.addBaiduImage = function(){
  * 地图平移控件
  * @returns {undefined}
  */
-myMap.prototype.addNavigation = function(){
+YMap.prototype.addNavigation = function(){
     if(this.is_navigation) {
         this.mapObj.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT}));
     }
@@ -137,7 +137,7 @@ myMap.prototype.addNavigation = function(){
 /**
  * 区域边界
  */
-myMap.prototype.getBoundary = function(name, vueobj) {
+YMap.prototype.getBoundary = function(name, vueobj) {
     var ply = new BMap.Polygon(vueobj.boundary_location[name]);//行政区勾勒
     ply.setStrokeColor('#ffa08a');
     ply.setStrokeWeight(6);
@@ -152,11 +152,11 @@ myMap.prototype.getBoundary = function(name, vueobj) {
 /**
  * 城区标注点绑定鼠标事件
  */
-myMap.prototype.addPageEvent = function(vueobj) {
+YMap.prototype.addPageEvent = function(vueobj) {
     var self = this;
     //区域标注点事件 start
     $(document).on('click', '.map_pop_location', function(){
-        alert("点击了一个行政区域，将获得该区域内商圈房源概况")
+        alert("点击了一个行政区域，将获得该区域内的各个'商圈' 的房源概况")
         if ($(this).attr('domain') != '') {//城市图标
            // window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
         } else {//城区图标
@@ -172,7 +172,7 @@ myMap.prototype.addPageEvent = function(vueobj) {
 
     //商圈标注点事件 start
     $(document).on('click', '.map_pop_sublocation', function(){
-        alert("点击了一个商圈，将获得该区域内商圈房源概况")
+        alert("点击了一个商圈，将获得该商圈内的各个'楼盘'的房源概况")
         if ($(this).attr('domain') != '') {//城市图标
             //window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
         } else {
@@ -186,46 +186,35 @@ myMap.prototype.addPageEvent = function(vueobj) {
         return false;
     });
 
-    //小区标注点事件
+    //樓棟注点事件
     $(document).on('click', '.map_pop_community', function(){
-        alert("点击了一个楼盘，将在右侧显示该楼盘内的房源列表（详细）")
+        alert("点击了一个楼盘，将获得该楼盘的各个具体的房源概况[右侧显示该楼盘内的房源列表（详细信息）]");
         $('.qqserver').addClass('unfold');
         $('.qqserver001').removeClass('unfold001');
         $('.shareshow').css('display', 'none'); //默认关闭分享
         self.community.id = $(this).attr('communityid');
        // $('.liebiao').html(''); //加载前先清空上次的数据
-        var data = {
-            t:vueobj.house_type,
-            s_p:vueobj.s_price,
-            s_a:vueobj.s_area,
-            s_r:vueobj.s_room,
-            s_t:vueobj.s_tag,
-            'communityId':self.community.id
+        var paraObj = {
+            type: "all", //返回房源类型 "rent":出租房源 ，“exchange”：二手房 , "all":去全部
+            priceClass: 1, //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
+            sizeClass: 1, //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
+            roomType: 0, //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
+            featureType: 0, //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
+            communityId:118440 //楼栋的id
         }
-        $.ajax({
-            url:vueobj.domainRoot+'/bJ_Map/rightHousesList',
-            type: 'GET',
-            dataType: 'html',
-            data:data,
-            beforeSend:function(XMLHttpRequest){
-                vueobj.addHouseLoading(); //地图加载中
-            },
-            success: function(data) {
-                //$('.liebiao').css('display', 'block');
-               // $('.liebiao').html(data);
-                vueobj.loadScrollbar(); //滚动条
-            },
-            complete:function(XMLHttpRequest) {
-                vueobj.removeHouseLoading(); //移除地图加载中
-            },
-            error: function() {
-              /*  var data=""
-                $('.liebiao').html(data);*/
-                //$('.liebiao').css('display', 'block');
-                vueobj.removeHouseLoading(); //移除地图加载中
-                vueobj.loadScrollbar(); //滚动条
-            }
-        });
+        var this_ = vueobj;
+        //vueobj.YSMap.resetCondition();
+        var successCb = function(data){
+            vueobj.removeHouseLoading(); //移除地图加载中
+            vueobj.loadScrollbar(); //滚动条
+
+        };
+        var errorCb = function(data){
+            vueobj.removeHouseLoading(); //移除地图加载中
+        };
+        vueobj.addHouseLoading(); //地图加载中
+        vueobj.remoteData(paraObj, successCb ,errorCb);
+
         $(this).siblings().removeClass('map_pop_community_cur lock');
         $(this).addClass('map_pop_community_cur fixed lock');
     });
@@ -285,7 +274,7 @@ myMap.prototype.addPageEvent = function(vueobj) {
 /**
  * 重置地图信息
  */
-myMap.prototype.resetCondition = function() {
+YMap.prototype.resetCondition = function() {
     console.log('重置地图信息');
     this.condition.zoom = this.mapObj.getZoom();
     this.condition.center = this.mapObj.getCenter(); //中心点
@@ -333,7 +322,7 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
         div.appendChild(span);
         div.appendChild(label);
         var title = this._title;
-        if (title.substring(title.length - 1) == '区') {
+        if (title.substring(title.length - 1) === '区') {
             title = title.substring(0, title.length - 1);
         }
         var numText = parseInt(this._value.countNumber) + '套';
@@ -353,20 +342,18 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
         div.appendChild(span);
         div.appendChild(label);
         var title = this._title;
-        if (title.substring(title.length - 1) == '区') {
+        if (title.substring(title.length - 1) === '区') {
             title = title.substring(0, title.length - 1);
         }
         var numText = parseInt(this._value.countNumber) + '套';
-        //numText = parseInt(this._value.exchangeNumber) + parseInt(this._value.rentNumber) + '套';
         span.appendChild(document.createTextNode(title));
         label.appendChild(document.createTextNode(numText));
         div.setAttribute('x', this._x);
         div.setAttribute('y', this._y);
     } else {
-        console.log('载入小区');
+        console.log('樓棟标识');
         div.id = 'map_pop_community_lv2_' + this._value.id;
         div.setAttribute('communityId', this._value.id);
-
         var adds = '';
         if(this._self.community.data.address != '') {
             adds = this._self.community.data.address;
@@ -383,11 +370,6 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
         div.appendChild(span);
         div.appendChild(label);
         numText = parseInt(this._value.countNumber) + '套';
-        //numText = parseInt(this._value.exchangeNumber) + parseInt(this._value.rentNumber) + '套';
-        /*if(this._price && house_type != 'rent') {
-            var price = parseInt(this._price) / 10000;
-            newspan.appendChild(document.createTextNode(price.toFixed(1) + '万'));
-        }*/
         span.appendChild(document.createTextNode(numText));
         label.appendChild(document.createTextNode(this._title));
         label.appendChild(newspan);
@@ -418,8 +400,8 @@ ComplexCustomOverlay.prototype.initialize = function(map) {
 ComplexCustomOverlay.prototype.draw = function() {
     var map = this._map;
     var pixel = map.pointToOverlayPixel(this._point);
-    this._div.style.left = pixel.x - parseInt(this._arrow.style.left) - 0 + "px";
+    this._div.style.left = (pixel.x - parseInt(this._arrow.style.left)) + "px";
     this._div.style.top = pixel.y - 40 + "px";
 };
 
-export {ComplexCustomOverlay, myMap};
+export {ComplexCustomOverlay, YMap};
