@@ -103,7 +103,7 @@
                     </div>
 
                     <!--面积筛选-->
-                    <div class="screening_conts_detail pv20">
+                    <div class="screening_conts_detail pv20" v-show="initFlag">
                         <div id="areaSort_wrap" class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">面积:</span>
 
@@ -166,7 +166,7 @@
                     </div>
 
                     <!--价格筛选-->
-                    <div class="screening_conts_detail clearfix pv20" id="price-list">
+                    <div class="screening_conts_detail clearfix pv20" v-show="initFlag" id="price-list">
                         <div class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">价格:</span>
 
@@ -390,7 +390,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20    class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -489,6 +489,8 @@
                         view: 'subway'
                     }
                 ],
+
+                initFlag: false,
 
                 areaActive: 0,
                 perPriceActive: 0,
@@ -751,6 +753,8 @@
                             name: "全部"
                         };
                         _this.labels.unshift(all_labels);
+
+                        _this.initFlag = true;
 
 
                     } else {
@@ -1081,7 +1085,8 @@
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_pri') != -1) {
                             _this.chosenArr.splice(i, 1);
-                        };
+                        }
+                        ;
                     });
 
                     //显示已选择条件
