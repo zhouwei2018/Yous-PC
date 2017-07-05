@@ -119,6 +119,9 @@
 [top_box] .reg_bg .reg_wrap .reg_head .login_tab {
   padding-top: 8px;
 }
+[top_box] .reg_bg .reg_wrap .reg_head .login_tab a {
+  display: inline-block;
+}
 [top_box] .reg_bg .reg_wrap .reg_head .login_switch {
   color: #0f6fac;
 }
@@ -156,6 +159,7 @@
   margin-bottom: 40px;
 }
 [top_box] .status_switch a {
+  display: inline-block;
   color: #999;
 }
 [top_box] .status_switch a:hover {
@@ -196,4 +200,7 @@
   width: 30px;
   height: 30px;
   background: url("../../../resources/images/login/weixin.png") no-repeat;
+}
+[top_box] .bottom_nav a {
+  display: inline-block;
 }
