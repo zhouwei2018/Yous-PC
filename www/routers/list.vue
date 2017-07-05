@@ -75,8 +75,9 @@
             <!--sem-main-->
             <div class="contents">
                 <!-- 筛选区域 start  -->
-                <div class="screening_conditions mt15">
+                <div class="screening_conditions mt15 pr">
 
+                    <!--区域地铁切换-->
                     <div class="screening_item">
                         <div class="screening_conts tj_box" id="care_nav">
                             <a href="javascript:;"
@@ -84,7 +85,6 @@
                                v-html="section.name"
                                :class="{active:active==index}"
                                @click="toggle(index,section.view)">
-
                             </a>
                             <!--<a href="javascript:;" class="active"><i class="sem_icon quyu"></i>区域</a>-->
                             <!--<a href="javascript:;"><i class="sem_icon ditie"></i>地铁</a>-->
@@ -102,12 +102,14 @@
 
                     </div>
 
+                    <!--面积筛选-->
                     <div class="screening_conts_detail pv20">
-                        <div class="tj_box_1 screening_conts_list clearfix">
+                        <div id="areaSort_wrap" class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">面积:</span>
 
                             <a v-for="(item1,index) in area_arr" v-if="index == 0"
                                href="javascript:;"
+                               :id="item1.code"
                                :class="{active:areaActive == index}"
                                :data-sortType="'sort_are_'+index"
                                @click="sel_area_list($event)"
@@ -163,20 +165,25 @@
                         </div>
                     </div>
 
+                    <!--价格筛选-->
                     <div class="screening_conts_detail clearfix pv20" id="price-list">
                         <div class="tj_box_1 screening_conts_list clearfix">
                             <span class="screening_title mr15">价格:</span>
 
                             <a v-for="(item2,index) in range_unit_prices" v-if="index == 0"
                                :class="{active:perPriceActive == index}"
+                               :data-sortType="'sort_pri_per'+index"
+                               :id="item2.code"
                                @click="sel_price_list($event)">全部</a>
                             <template v-else>
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
+                                   :data-sortType="'sort_pri_per'+index"
                                    @click="sel_price_list($event)"
                                 ><span class="font_num">>{{item2.minnum}}</span><span class="font_num"
                                                                                       v-text="item2.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:perPriceActive == index}"
+                                   :data-sortType="'sort_pri_per'+index"
                                    @click="sel_price_list($event)">
                                     <span class="font_num">{{item2.minnum}}</span>-<span class="font_num">{{item2.maxnum}}</span><span
                                         class="font_num" v-text="item2.unit"></span>
@@ -225,14 +232,17 @@
 
                             <a v-for="(item3,index) in range_total_prices" v-if="index == 0"
                                :class="{active:totPriceActive == index}"
+                               :data-sortType="'sort_pri_tot'+index"
                                @click="sel_tot_price_list($event)">全部</a>
                             <template v-else>
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
+                                   :data-sortType="'sort_pri_tot'+index"
                                    @click="sel_tot_price_list($event)"
                                 ><span class="font_num">>{{item3.minnum}}</span><span class="font_num"
                                                                                       v-text="item3.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:totPriceActive == index}"
+                                   :data-sortType="'sort_pri_tot'+index"
                                    @click="sel_tot_price_list($event)">
                                     <span class="font_num">{{item3.minnum}}</span>-<span
                                         class="font_num">{{item3.maxnum}}</span><span class="font_num"
@@ -276,6 +286,7 @@
                         </div>
                     </div>
 
+                    <!--特色label-->
                     <div class="screening_conts_detail clearfix pv20">
                         <div class="screening_conts_list clearfix">
                             <span class="screening_title mr15">特色:</span>
@@ -296,11 +307,16 @@
 
                             <a href="javascript:;" v-for="sort_item in chosenArr"
                                :data-sortType="sort_item.sortType"
-                               :class="sort_item.class"
-                            >{{sort_item.name}}<i class="sem_icon hover" @click="del_one($event)"></i></a>
-                            <!--<a href="javascript:;">互联网<i class="sem_icon hover"></i></a>-->
-                            <!--<a href="javascript:;">100-200m²<i class="sem_icon hover"></i></a>-->
+                               v-if="sort_item.sort_two == 1">{{sort_item.min + '-' + sort_item.max + sort_item.unit}}<i
+                                    class="sem_icon hover" @click="del_one($event)"></i>
+                            </a>
+                            <a href="javascript:;" v-else
+                               :data-sortType="sort_item.sortType"
+                               :class="sort_item.class">{{sort_item.name}}<i class="sem_icon hover"
+                                                                             @click="del_one($event)"></i></a>
+
                             <a href="javascript:;" class="del_all" @click="del_all()"><i class="sem_icon"></i>全部清除</a>
+
                         </div>
                     </div>
 
@@ -374,7 +390,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -541,9 +557,10 @@
 
             //删除一条
             del_one(e){
-                var _this = this;
-                var del_tip = $(e.target).parent().attr('data-sortType');
 
+                var _this = this;
+                var del_tip = $(e.currentTarget).parent().attr('data-sortType');
+                alert(del_tip);
                 if (del_tip.indexOf('sort_reg_dis') != -1) { //点击的是删除区域
 
                     this.chosenArr.forEach(function (val, i) {
@@ -586,7 +603,7 @@
                     this.line_id = ""; //线路置空
                     this.station_id = ""; //车站置空
 
-                } else if (del_tip.indexOf('sort_sub_sta') != -1) { //点击的是删除商圈
+                } else if (del_tip.indexOf('sort_sub_sta') != -1) { //点击的是删除车站
 
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType == del_tip) {
@@ -596,7 +613,7 @@
                     this.$refs.selectdis.stationInit(del_tip);
                     this.station_id = ""; //车站置空
 
-                } else if (del_tip.indexOf('sort_lab') != -1) { //点击的是删除area
+                } else if (del_tip.indexOf('sort_lab') != -1) { //点击的是删除label
 
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType == del_tip) {
@@ -604,6 +621,24 @@
                         }
                     });
                     this.label = ""; //特色标签置空
+
+                } else if (del_tip.indexOf('sort_are') != -1) { //点击的是删除面积100-300m2
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                    });
+                    this.area = ""; //面积置空
+                } else if (del_tip.indexOf('sort_pri') != -1) { //点击的是删除价格
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                    });
+                    this.price_dj = ""; //单价置空
+                    this.price_zj = ""; //总价置空
                 }
 
                 //查询
@@ -621,7 +656,6 @@
             del_all(){
                 this.chosenArr = [];
                 this.chosenFlag = false;
-                console.log(this.$refs.selectdis);
 
                 if (this.$refs.selectdis.districtHide) {
                     this.$refs.selectdis.districtHide(); //区域子组件联动
@@ -630,6 +664,18 @@
                 if (this.$refs.selectdis.lineHide) {
                     this.$refs.selectdis.lineHide(); //地铁子组件联动
                 }
+
+                $('#sub_line').hide();
+
+                $('#areaSort_wrap a').removeClass('active');  //面积回到全部
+                $('#area_all').addClass('active');
+
+                $('#price-list a').removeClass('active');  //价格回到全部
+                $('#range_pri_per_all').addClass('active');
+                $('#range_pri_tot_all').addClass('active');
+
+                $('#label_all').parent().find('>a').removeClass('active');
+                $('#label_all').addClass('active');
 
                 //清空条件
                 this.search_keywork = ""; //模糊查询
@@ -644,6 +690,7 @@
                 this.curPage = 1;//区域
                 this.orderby = "D";//区域
 
+                //升序降序
                 $('.sort_box a:first-child').addClass('on').siblings().removeClass('on');
 
                 //查询
@@ -684,7 +731,7 @@
 
 
                         var all_range_unit = {
-                            code: "",
+                            code: "range_pri_per_all",
                             name: "全部"
                         };
                         _this.range_unit_prices.unshift(all_range_unit);
@@ -692,7 +739,7 @@
                         _this.range_total_prices = result.data.range_total_prices; //总价
 
                         var all_range_total = {
-                            code: "",
+                            code: "range_pri_tot_all",
                             name: "全部"
                         };
                         _this.range_total_prices.unshift(all_range_total);
@@ -700,7 +747,7 @@
                         _this.labels = result.data.labels; //特色
 
                         var all_labels = {
-                            code: "",
+                            code: "label_all",
                             name: "全部"
                         };
                         _this.labels.unshift(all_labels);
@@ -811,7 +858,8 @@
                     arr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_reg') != -1) {
                             arr.splice(i, 1);
-                        };
+                        }
+                        ;
                     });
 
                     this.district = ""; //区域
@@ -894,55 +942,223 @@
             //改变面积
             sel_area_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
+                var min = 0, max = 0;
                 if ($(e.currentTarget).html() == '全部') {
                     this.area = "";
                 } else if ($(e.currentTarget).hasClass('last')) {
                     this.area = [];
-                    this.area.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)[0]));
-                    this.area.push("");
+                    min = Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)[0]);
+                    max = "";
+                    this.area.push(min);
+                    this.area.push(max);
                 } else {
                     this.area = [];
-                    this.area.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
-                    this.area.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                    min = Math.floor($(e.currentTarget).find('span:first-child').html());
+                    max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
+                    this.area.push(min);
+                    this.area.push(max);
                 }
 
                 //添加已筛选
-                this.chosenArr.push();
-
-                this.getList();
-
+                //this.chosenArr.push();
+                var comObj = {
+                    id: $(e.currentTarget).attr('id'),
+                    name: $(e.currentTarget).text(),
+                    sortType: $(e.currentTarget).attr('data-sortType'),
+                    min: min,
+                    max: max,
+                    unit: $(e.currentTarget).find('span:last-child').text(),
+                    sort_two: 1 //两组min-max标记
+                };
+                this.compareStr3(comObj, this.chosenArr);
             },
+
+            //比较条件是否已存在（面积）
+            compareStr3(obj, arr){
+
+                var findStr = obj.sortType.substring(0, 8);
+                var n = 0,
+                    curr_index = 0;
+                if (arr.length > 0) {
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf(findStr) != -1) {
+                            n++;
+                            curr_index = i;
+                        }
+                        ;
+                    });
+
+                    if (n > 0) {
+                        arr.splice(curr_index, 1);
+                    }
+                }
+
+                arr.push({
+                    name: obj.name,
+                    id: obj.id,
+                    sortType: obj.sortType,
+                    min: obj.min,
+                    max: obj.max,
+                    unit: obj.unit,
+                    sort_two: 1 //两组min-max标记
+                });
+
+                //显示已选择条件
+                if (arr.length <= 0) {
+                    this.chosenFlag = false;
+                } else {
+                    this.chosenFlag = true;
+                }
+                this.getList();
+            },
+
 
             //改变单价筛选
             sel_price_list(e){
+                var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
+
+                var min = 0, max = 0;
+
                 if ($(e.currentTarget).html() == '全部') {
                     this.price_dj = "";
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_pri') != -1) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                        ;
+                    });
+
+                    //显示已选择条件
+                    if (this.chosenArr.length <= 0) {
+                        this.chosenFlag = false;
+                    } else {
+                        this.chosenFlag = true;
+                    }
+                    this.getList();
+
+                    return;
+
                 } else if ($(e.currentTarget).hasClass('last')) {
+                    min = Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g));
+                    max = "";
                     this.price_dj = [];
-                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
-                    this.price_dj.push("");
+                    this.price_dj.push(min);
+                    this.price_dj.push(max);
                 } else {
+                    min = Math.floor($(e.currentTarget).find('span:first-child').html());
+                    max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
                     this.price_dj = [];
-                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
-                    this.price_dj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                    this.price_dj.push(min);
+                    this.price_dj.push(max);
                 }
-                this.getList();
+                this.price_zj = ""; //总价置空
+
+                //添加已筛选
+                var comObj = {
+                    id: $(e.currentTarget).attr('id'),
+                    name: $(e.currentTarget).text(),
+                    sortType: $(e.currentTarget).attr('data-sortType'),
+                    min: min,
+                    max: max,
+                    unit: $(e.currentTarget).find('span:last-child').text(),
+                    sort_two: 1 //两组min-max标记
+                };
+                this.compareStr4(comObj, this.chosenArr);
             },
 
             //改变总价筛选
             sel_tot_price_list(e){
+                var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
+
+                var min = 0, max = 0;
+
                 if ($(e.currentTarget).html() == '全部') {
                     this.price_zj = "";
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_pri') != -1) {
+                            _this.chosenArr.splice(i, 1);
+                        };
+                    });
+
+                    //显示已选择条件
+                    if (this.chosenArr.length <= 0) {
+                        this.chosenFlag = false;
+                    } else {
+                        this.chosenFlag = true;
+                    }
+                    this.getList();
+
+                    return;
+
                 } else if ($(e.currentTarget).hasClass('last')) {
                     this.price_zj = [];
-                    this.price_zj.push(Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)));
-                    this.price_zj.push("");
+                    min = Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g));
+                    max = "";
+                    this.price_zj.push(min);
+                    this.price_zj.push(max);
                 } else {
                     this.price_zj = [];
-                    this.price_zj.push(Math.floor($(e.currentTarget).find('span:first-child').html()));
-                    this.price_zj.push(Math.floor($(e.currentTarget).find('span:nth-child(2)').html()));
+                    min = Math.floor($(e.currentTarget).find('span:first-child').html());
+                    max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
+                    this.price_zj.push(min);
+                    this.price_zj.push(max);
+                }
+
+                this.price_dj = ""; //单价置空
+
+                //添加已筛选
+                var comObj = {
+                    id: $(e.currentTarget).attr('id'),
+                    name: $(e.currentTarget).text(),
+                    sortType: $(e.currentTarget).attr('data-sortType'),
+                    min: min,
+                    max: max,
+                    unit: $(e.currentTarget).find('span:last-child').text(),
+                    sort_two: 1 //两组min-max标记
+                };
+                this.compareStr4(comObj, this.chosenArr);
+
+            },
+
+            //比较条件是否已存在（价格）
+            compareStr4(obj, arr){
+
+                var findStr = obj.sortType.substring(0, 8);
+                var n = 0,
+                    curr_index = 0;
+                if (arr.length > 0) {
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf(findStr) != -1) {
+                            n++;
+                            curr_index = i;
+                        }
+                        ;
+                    });
+
+                    if (n > 0) {
+                        arr.splice(curr_index, 1);
+                    }
+                }
+
+                arr.push({
+                    name: obj.name,
+                    id: obj.id,
+                    sortType: obj.sortType,
+                    min: obj.min,
+                    max: obj.max,
+                    unit: obj.unit,
+                    sort_two: 1 //两组min-max标记
+                });
+
+                //显示已选择条件
+                if (arr.length <= 0) {
+                    this.chosenFlag = false;
+                } else {
+                    this.chosenFlag = true;
                 }
                 this.getList();
             },
@@ -957,7 +1173,7 @@
                     name: $(e.target).text(),
                     sortType: $(e.target).attr('data-sortType')
                 };
-                this.compareStr2(comObj,this.chosenArr);
+                this.compareStr2(comObj, this.chosenArr);
             },
 
             //比较条件是否已存在2
