@@ -97,7 +97,7 @@
                                    @refreshbizlines2="selList_business"
                                    @refreshbizlines3="selList_lines"
                                    @refreshbizlines4="selList_station"
-                                   ref="selectfood"
+                                   ref="selectdis"
                         ></component>
 
                     </div>
@@ -109,15 +109,19 @@
                             <a v-for="(item1,index) in area_arr" v-if="index == 0"
                                href="javascript:;"
                                :class="{active:areaActive == index}"
+                               :data-sortType="'sort_are_'+index"
                                @click="sel_area_list($event)"
                             >全部</a>
                             <template v-else>
                                 <a v-if="index == area_arr.length-1" href="javascript:;"
                                    :class="{active:areaActive == index}"
                                    class="last"
+                                   :data-sortType="'sort_are_'+index"
                                    @click="sel_area_list($event)"
-                                ><span class="font_num">{{item1.minnum}}</span><span class="font_num">m²</span></a>
-                                <a v-else href="javascript:;" :class="{active:areaActive == index}"
+                                ><span class="font_num">>{{item1.minnum}}</span><span class="font_num">m²</span></a>
+                                <a v-else href="javascript:;"
+                                   :class="{active:areaActive == index}"
+                                   :data-sortType="'sort_are_'+index"
                                    @click="sel_area_list($event)">
                                     <span class="font_num">{{item1.minnum}}</span>-<span
                                         class="font_num">{{item1.maxnum}}</span><span class="font_num">m²</span>
@@ -170,13 +174,12 @@
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
                                    @click="sel_price_list($event)"
-                                ><span class="font_num">{{item2.minnum}}</span><span class="font_num"
-                                                                                     v-text="item2.unit"></span></a>
+                                ><span class="font_num">>{{item2.minnum}}</span><span class="font_num"
+                                                                                      v-text="item2.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:perPriceActive == index}"
                                    @click="sel_price_list($event)">
-                                    <span class="font_num">{{item2.minnum}}</span>-<span
-                                        class="font_num">{{item2.maxnum}}</span><span class="font_num"
-                                                                                      v-text="item2.unit"></span>
+                                    <span class="font_num">{{item2.minnum}}</span>-<span class="font_num">{{item2.maxnum}}</span><span
+                                        class="font_num" v-text="item2.unit"></span>
                                 </a>
                             </template>
 
@@ -227,8 +230,8 @@
                                 <a v-if="index == range_unit_prices.length-1" :class="{active:perPriceActive == index}"
                                    class="last"
                                    @click="sel_tot_price_list($event)"
-                                ><span class="font_num">{{item3.minnum}}</span><span class="font_num"
-                                                                                     v-text="item3.unit"></span></a>
+                                ><span class="font_num">>{{item3.minnum}}</span><span class="font_num"
+                                                                                      v-text="item3.unit"></span></a>
                                 <a v-else href="javascript:;" :class="{active:totPriceActive == index}"
                                    @click="sel_tot_price_list($event)">
                                     <span class="font_num">{{item3.minnum}}</span>-<span
@@ -279,12 +282,14 @@
                             <a href="javascript:;" v-for="(item4,index) in labels"
                                :id="item4.code"
                                :class="{active:featureActive == index}"
+                               :data-sortType="'sort_lab_'+index"
                                @click="sel_feature_list($event)"
                                v-text="item4.name"
                             ></a>
                         </div>
                     </div>
 
+                    <!--已选择条件-->
                     <div class="screening_conts_detail clearfix pv20" v-show="chosenFlag">
                         <div class="screening_conts_list clearfix selected_item">
                             <span class="screening_title mr15">已选:</span>
@@ -292,7 +297,7 @@
                             <a href="javascript:;" v-for="sort_item in chosenArr"
                                :data-sortType="sort_item.sortType"
                                :class="sort_item.class"
-                            >{{sort_item.name}}<i class="sem_icon hover"  @click="del_one($event)"></i></a>
+                            >{{sort_item.name}}<i class="sem_icon hover" @click="del_one($event)"></i></a>
                             <!--<a href="javascript:;">互联网<i class="sem_icon hover"></i></a>-->
                             <!--<a href="javascript:;">100-200m²<i class="sem_icon hover"></i></a>-->
                             <a href="javascript:;" class="del_all" @click="del_all()"><i class="sem_icon"></i>全部清除</a>
@@ -369,7 +374,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20 class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -536,18 +541,96 @@
 
             //删除一条
             del_one(e){
-               var del_tip=$(e.target).parent().attr('data-sortType');
-               if(del_tip.indexOf('sort_reg_dis')!=-1){
-                   for(var i=0;i<this.district;i++){
-                       this.$refs.selectfood.show(del_tip);
-                   }
-               }
+                var _this = this;
+                var del_tip = $(e.target).parent().attr('data-sortType');
+
+                if (del_tip.indexOf('sort_reg_dis') != -1) { //点击的是删除区域
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+
+                        if (del_tip.indexOf(val.sortType.substring(0, 8)) != -1) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+
+                    });
+
+                    this.$refs.selectdis.districtHide(del_tip); //子组件联动
+                    this.district = ""; //区域置空
+                    this.business = ""; //商圈置空
+
+                } else if (del_tip.indexOf('sort_reg_bus') != -1) { //点击的是删除商圈
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                    });
+                    this.$refs.selectdis.businessInit(del_tip);
+                    this.business = ""; //商圈置空
+
+                } else if (del_tip.indexOf('sort_sub_lin') != -1) { //点击的是删除地铁线路
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                        if (del_tip.indexOf(val.sortType.substring(0, 8)) != -1) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                    });
+
+                    this.$refs.selectdis.lineHide(del_tip);
+                    this.line_id = ""; //线路置空
+                    this.station_id = ""; //车站置空
+
+                } else if (del_tip.indexOf('sort_sub_sta') != -1) { //点击的是删除商圈
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                    });
+                    this.$refs.selectdis.stationInit(del_tip);
+                    this.station_id = ""; //车站置空
+
+                } else if (del_tip.indexOf('sort_lab') != -1) { //点击的是删除area
+
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType == del_tip) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                    });
+                    this.label = ""; //特色标签置空
+                }
+
+                //查询
+                this.getList();
+
+
+                if (this.chosenArr.length < 1) {
+                    this.chosenFlag = false;
+                    this.del_all();
+                }
+
             },
 
             //清除条件
             del_all(){
+                alert(3);
                 this.chosenArr = [];
                 this.chosenFlag = false;
+                console.log(this.$refs.selectdis);
+
+                if (this.$refs.selectdis.districtHide) {
+                    this.$refs.selectdis.districtHide(); //区域子组件联动
+                }
+
+                if (this.$refs.selectdis.lineHide) {
+                    this.$refs.selectdis.lineHide(); //地铁子组件联动
+                }
 
                 //清空条件
                 this.search_keywork = ""; //模糊查询
@@ -566,7 +649,6 @@
 
                 //查询
                 this.getList();
-
 
             },
 
@@ -594,7 +676,7 @@
                         _this.area_arr = result.data.range_areas; //面积arr
 
                         var all_area = {
-                            code: "",
+                            code: "area_all",
                             name: "全部"
                         };
                         _this.area_arr.unshift(all_area);
@@ -669,11 +751,11 @@
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {
-                            for(var i=0;i<result.data.buildings.length; i++){
-                                if(result.data.buildings[i].label){
-                                    result.data.buildings[i].tags=result.data.buildings[i].label.split(',');
-                                }else{
-                                    result.data.buildings[i].tags=[];
+                            for (var i = 0; i < result.data.buildings.length; i++) {
+                                if (result.data.buildings[i].label) {
+                                    result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
+                                } else {
+                                    result.data.buildings[i].tags = [];
                                 }
 
                             }
@@ -688,6 +770,7 @@
 
                     } else {
                         _this.buildingShowFlag = true;
+                        _this.total_items = 0;
                     }
 
                 }, function (res) {
@@ -709,7 +792,8 @@
                             n++;
                             curr_index = i;
                             obj.class = "";
-                        };
+                        }
+                        ;
                     });
 
                     if (n > 0) {
@@ -722,7 +806,6 @@
                         this.business = ""; //商圈跟着删
                     }
                 }
-
 
                 if (obj.id == 'district_all') {
 
@@ -745,12 +828,13 @@
                     });
                     this.business = ""; //商圈
 
-                }else if (obj.id == 'line_all') {
+                } else if (obj.id == 'line_all') {
 
                     arr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_sub') != -1) {
                             arr.splice(i, 1);
-                        };
+                        }
+                        ;
                     });
 
                     this.line_id = ""; //线路
@@ -761,7 +845,8 @@
                     arr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_sub_sta') != -1) {
                             arr.splice(i, 1);
-                        };
+                        }
+                        ;
                     });
                     this.station_id = ""; //车站
 
@@ -807,7 +892,7 @@
                 this.compareStr(obj, this.chosenArr);
             },
 
-            //改变面积筛选
+            //改变面积
             sel_area_list(e){
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
                 if ($(e.currentTarget).html() == '全部') {
@@ -863,12 +948,53 @@
                 this.getList();
             },
 
-            //改变特色筛选
+            //改变label特色筛选
             sel_feature_list(e){
-                $(e.currentTarget).addClass('active').siblings().removeClass('active');
-                this.label = $(e.currentTarget).html();
+                $(e.target).addClass('active').siblings().removeClass('active');
+                this.label = $(e.target).html();
+
+                var comObj = {
+                    id: $(e.target).attr('id'),
+                    name: $(e.target).text(),
+                    sortType: $(e.target).attr('data-sortType')
+                };
+                this.compareStr2(comObj,this.chosenArr);
+            },
+
+            //比较条件是否已存在2
+            compareStr2(obj, arr){
+                var findStr = obj.sortType.substring(0, 8);
+                var n = 0,
+                    curr_index = 0;
+                if (arr.length > 0) {
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf(findStr) != -1) {
+                            n++;
+                            curr_index = i;
+                        }
+                        ;
+                    });
+
+                    if (n > 0) {
+                        arr.splice(curr_index, 1);
+                    }
+                }
+
+                arr.push({
+                    name: obj.name,
+                    id: obj.id,
+                    sortType: obj.sortType
+                });
+
+                //显示已选择条件
+                if (arr.length <= 0) {
+                    this.chosenFlag = false;
+                } else {
+                    this.chosenFlag = true;
+                }
                 this.getList();
             },
+
 
             //排序筛选 默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
             buildSort(e){

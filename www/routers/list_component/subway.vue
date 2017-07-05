@@ -15,7 +15,7 @@
                :data-sortType="'sort_sub_lin_'+index"
             >{{item.name}}</a>
         </div>
-        <p class="tj_box_1 clearfix" v-show="station_show_flag">
+        <p id="sub_line" class="tj_box_1 clearfix" v-show="station_show_flag">
             <a href="javascript:;"
                v-for="(item1,index) in station_arr"
                :class="{active:station_active == index}"
@@ -44,6 +44,17 @@
             }
         },
         methods: {
+
+            lineHide(){
+                this.sub_show_flag=false; //二级车站隐藏
+                $('.weizhi a').removeClass('active');
+                $('#district_all').addClass('active');
+            },
+
+            stationInit(){
+                $('#sub_line a').removeClass('active');
+                $('#sub_line a:first-child').addClass('active');
+            },
 
             //获取地铁线路
             getLine(){
@@ -128,6 +139,7 @@
 
                 }
             },
+
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
 

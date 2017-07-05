@@ -74,8 +74,19 @@
                 });
             },
 
-            show(){
+            //重置区域
+            districtHide(){
+                this.sub_show_flag=false; //二级商圈隐藏
                 $('.weizhi a').removeClass('active');
+                $('#district_all').addClass('active');
+
+            },
+
+            //重置商圈
+            businessInit(){
+                $('#sub_district a').removeClass('active');
+                $('#sub_district a:first-child').addClass('active');
+
             },
 
             //点击获取各区二级模块
