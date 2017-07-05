@@ -619,7 +619,6 @@
 
             //清除条件
             del_all(){
-                alert(3);
                 this.chosenArr = [];
                 this.chosenFlag = false;
                 console.log(this.$refs.selectdis);
