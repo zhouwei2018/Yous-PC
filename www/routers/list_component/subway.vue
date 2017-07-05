@@ -11,7 +11,9 @@
             <a href="javascript:;"
                v-for="(item,index) in lines"
                :class="[{active:line_active == index},item.class]"
-               :id="item.code">{{item.name}}</a>
+               :id="item.code"
+               :data-sortType="'sort_sub_lin_'+index"
+            >{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" v-show="station_show_flag">
             <a href="javascript:;"
@@ -19,6 +21,7 @@
                :class="{active:station_active == index}"
                class="pt05"
                :id="item1.code"
+               :data-sortType="'sort_sub_sta_'+index"
                @click="getHouseList($event)"
             >{{item1.name}}</a>
         </p>
@@ -58,7 +61,7 @@
                     if (result.success) {
                         _this.lines = result.data.lines;
                         var all_lines = {
-                            code: "",
+                            code: "line_all",
                             name: "全部",
                             class:"noArrow"
                         }
@@ -77,10 +80,16 @@
 
                 $(e.target).addClass('active').siblings().removeClass('active');
 
-                this.$emit("refreshbizlines3", $(e.target).attr('id'));
+
+                var emitObj = {
+                    id: $(e.target).attr('id'),
+                    name: $(e.target).text(),
+                    sortType:$(e.target).attr('data-sortType')
+                };
+                this.$emit("refreshbizlines3", emitObj);
 
 
-                if ($(e.target).attr('id') == '') {
+                if ($(e.target).attr('id') == 'line_all') {
                     this.sub_show_flag = false;
                     if (!$(e.target).hasClass('tj_box_1')) {
                         $(e.target).parent().addClass('tj_box_1');
@@ -104,7 +113,7 @@
                             _this.station_show_flag = true;
                             _this.station_arr = result.data;
                             var all_station = {
-                                code: "",
+                                code: "line_sta_all",
                                 name: "全部",
                             }
                             _this.station_arr.unshift(all_station);
@@ -121,7 +130,13 @@
             },
             getHouseList(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                this.$emit('refreshbizlines4', $(e.target).attr('id'));
+
+                var emitObj2 = {
+                    id: $(e.target).attr('id'),
+                    name: $(e.target).text(),
+                    sortType:$(e.target).attr('data-sortType')
+                };
+                this.$emit("refreshbizlines4", emitObj2);
             }
         },
 

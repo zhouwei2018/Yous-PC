@@ -29,7 +29,7 @@
     //分页
     .page_wrap {
         text-align: center;
-        width: 400px;
+        width: 410px;
         margin: 0 auto;
         padding-top: 50px;
     }
@@ -53,7 +53,8 @@
                 <div class="contents clearfix">
                     <div class="list_search fl">
                         <div class="fl">
-                            <input type="text" autocomplete="off" placeholder="请输入写字楼名称或商圈" maxlength="30">
+                            <input type="text" autocomplete="off" v-model="search_keywork" placeholder="请输入写字楼名称或商圈"
+                                   maxlength="30">
                             <div class="search-3">
                                 <div class="s-result sem-search" id="association" style="display: none;">智能提示</div>
                             </div>
@@ -96,6 +97,7 @@
                                    @refreshbizlines2="selList_business"
                                    @refreshbizlines3="selList_lines"
                                    @refreshbizlines4="selList_station"
+                                   ref="selectfood"
                         ></component>
 
                     </div>
@@ -287,8 +289,10 @@
                         <div class="screening_conts_list clearfix selected_item">
                             <span class="screening_title mr15">已选:</span>
 
-                            <a href="javascript:;" v-for="cho_item in chosenArr">{{cho_item.name}}<i
-                                    class="sem_icon hover"></i></a>
+                            <a href="javascript:;" v-for="sort_item in chosenArr"
+                               :data-sortType="sort_item.sortType"
+                               :class="sort_item.class"
+                            >{{sort_item.name}}<i class="sem_icon hover"  @click="del_one($event)"></i></a>
                             <!--<a href="javascript:;">互联网<i class="sem_icon hover"></i></a>-->
                             <!--<a href="javascript:;">100-200m²<i class="sem_icon hover"></i></a>-->
                             <a href="javascript:;" class="del_all" @click="del_all()"><i class="sem_icon"></i>全部清除</a>
@@ -309,9 +313,9 @@
 
                         <div class="sort_box" @click="buildSort($event)">
                             <a href="javascript:;" class="on">默认</a>
-                            <a href="javascript:;" class="pr">面积<i class="sem_icon"></i>
+                            <a href="javascript:;" id="areaSort" class="pr">面积<i class="sem_icon"></i>
                                 <p class="bubble">点击按面积从小到大排序</p></a>
-                            <a href="javascript:;" class="pr">价格<i class="sem_icon"></i>
+                            <a href="javascript:;" id="priceSort" class="pr">价格<i class="sem_icon"></i>
                                 <p class="bubble">点击按价格从低到高排序</p></a>
                         </div>
                         <hr class="sort_box_line">
@@ -350,7 +354,7 @@
                                     </dd>
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
-                                            <!--<span v-for="perlabel in item.label" v-text="perlabel"></span>-->
+                                            <span v-for="perlabel in item.tags" v-text="perlabel"></span>
                                         </div>
                                     </dd>
                                 </dl>
@@ -365,7 +369,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20 class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -523,11 +527,22 @@
                 price_dj: "",
                 price_zj: "",
                 label: "",
+                orderby: "D",
 
             }
         },
 
         methods: {
+
+            //删除一条
+            del_one(e){
+               var del_tip=$(e.target).parent().attr('data-sortType');
+               if(del_tip.indexOf('sort_reg_dis')!=-1){
+                   for(var i=0;i<this.district;i++){
+                       this.$refs.selectfood.show(del_tip);
+                   }
+               }
+            },
 
             //清除条件
             del_all(){
@@ -536,15 +551,18 @@
 
                 //清空条件
                 this.search_keywork = ""; //模糊查询
-                this.district = [];//区域
-                this.business = [];//商圈
-                this.line_id = [];//地铁线路ID
-                this.station_id = [];//地铁站点ID
-                this.area = [];//面积
-                this.price_dj = [];//价格（[30,100]）单价
-                this.price_zj = [];//价格（[30,100]）总价
-                this.label = [];////特色标签
+                this.district = "";//区域
+                this.business = "";//商圈
+                this.line_id = "";//地铁线路ID
+                this.station_id = "";//地铁站点ID
+                this.area = "";//面积
+                this.price_dj = "";//价格（[30,100]）单价
+                this.price_zj = "";//价格（[30,100]）总价
+                this.label = "";////特色标签
                 this.curPage = 1;//区域
+                this.orderby = "D";//区域
+
+                $('.sort_box a:first-child').addClass('on').siblings().removeClass('on');
 
                 //查询
                 this.getList();
@@ -556,6 +574,7 @@
             toggle(i, v){
                 this.active = i;
                 this.currentView = v;
+                this.del_all();
             },
 
             //获取筛选条件
@@ -638,7 +657,7 @@
                             "price_dj": this.price_dj, //价格（[30,100]）单价
                             "price_zj": this.price_zj, //价格（[30,100]）总价
                             "label": this.label, //特色标签
-                            "orderby": "", //排序(默认:D，面积:A，价格:P)
+                            "orderby": this.orderby, //排序默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
                             "curr_page": this.curPage,
                             "items_perpage": this.pageSize
                         },
@@ -650,6 +669,14 @@
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {
+                            for(var i=0;i<result.data.buildings.length; i++){
+                                if(result.data.buildings[i].label){
+                                    result.data.buildings[i].tags=result.data.buildings[i].label.split(',');
+                                }else{
+                                    result.data.buildings[i].tags=[];
+                                }
+
+                            }
                             _this.buildList = result.data.buildings;
                             _this.total_items = result.data.total_items;
                             _this.total_pages = result.data.total_pages;
@@ -668,42 +695,116 @@
                 });
             },
 
+            //比较条件是否已存在
+            compareStr(obj, arr){
+                var findStr = obj.sortType.substring(0, 12),
+                    findStr2 = obj.sortType.substring(0, 8);
+                var n = 0,
+                    curr_index = 0;
+                if (arr.length > 0) {
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf(findStr2) != -1 && val.sortType.indexOf(findStr) == -1) {
+                            obj.class = "rem_together";
+                        } else if (val.sortType.indexOf(findStr2) != -1) {
+                            n++;
+                            curr_index = i;
+                            obj.class = "";
+                        };
+                    });
+
+                    if (n > 0) {
+                        arr.splice(curr_index, 1);
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr[i].class == 'rem_together') {
+                                arr.splice(arr[i]);
+                            }
+                        }
+                        this.business = ""; //商圈跟着删
+                    }
+                }
+
+
+                if (obj.id == 'district_all') {
+
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_reg') != -1) {
+                            arr.splice(i, 1);
+                        };
+                    });
+
+                    this.district = ""; //区域
+                    this.business = ""; //商圈
+
+                } else if (obj.id == 'dis_sta_all') {
+
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_reg_bus') != -1) {
+                            arr.splice(i, 1);
+                        }
+                        ;
+                    });
+                    this.business = ""; //商圈
+
+                }else if (obj.id == 'line_all') {
+
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_sub') != -1) {
+                            arr.splice(i, 1);
+                        };
+                    });
+
+                    this.line_id = ""; //线路
+                    this.station_id = ""; //车站
+
+                } else if (obj.id == 'line_sta_all') {
+
+                    arr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_sub_sta') != -1) {
+                            arr.splice(i, 1);
+                        };
+                    });
+                    this.station_id = ""; //车站
+
+                } else {
+                    arr.push({
+                        name: obj.name,
+                        id: obj.id,
+                        sortType: obj.sortType,
+                        class: obj.class
+                    });
+
+                }
+                //显示已选择条件
+                if (arr.length <= 0) {
+                    this.chosenFlag = false;
+                } else {
+                    this.chosenFlag = true;
+                }
+                this.getList();
+            },
+
             //改变区域筛选
             selList(obj){
                 this.district = obj.id;
-
-                this.chosenArr.push({
-                    name: obj.name
-                });
-                //显示已选择条件
-                this.chosenFlag = true;
-
-                this.getList();
+                this.compareStr(obj, this.chosenArr);
             },
 
             //改变商圈
             selList_business(obj){
                 this.business = obj.id;
-                this.chosenArr.push({
-                    name: obj.name
-                });
-                //显示已选择条件
-                this.chosenFlag = true;
-                //alert(JSON.stringify(this.chosenArr));
-
-                this.getList();
+                this.compareStr(obj, this.chosenArr);
             },
 
             //改变地铁线路
-            selList_lines(line_id){
-                this.line_id = line_id;
-                this.getList();
+            selList_lines(obj){
+                this.line_id = obj.id;
+                this.compareStr(obj, this.chosenArr);
             },
 
             //改变车站
-            selList_station(station_id){
-                this.station_id = station_id;
-                this.getList();
+            selList_station(obj){
+                this.station_id = obj.id;
+                this.compareStr(obj, this.chosenArr);
             },
 
             //改变面积筛选
@@ -769,7 +870,7 @@
                 this.getList();
             },
 
-            //排序
+            //排序筛选 默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
             buildSort(e){
                 var target = null;
                 if ($(e.target).parent()[0].tagName == 'A') {
@@ -785,13 +886,20 @@
                         if (target.find('.sem_icon').hasClass('up')) {
                             target.find('.sem_icon').removeClass('up');
                             if (target.attr('id') == 'areaSort') {
-
+                                this.orderby = 'AD'; //面积降序：AD
+                            } else if (target.attr('id') == 'priceSort') {
+                                this.orderby = 'AD'; //价格降序：PD
                             }
                         } else {
                             target.find('.sem_icon').addClass('up');
+                            if (target.attr('id') == 'areaSort') {
+                                this.orderby = 'AA'; //面积升序：AA
+                            } else if (target.attr('id') == 'priceSort') {
+                                this.orderby = 'AD'; //价格升序：PA
+                            }
                         }
-
-
+                    } else {
+                        this.orderby = 'D'; //默认排序D
                     }
                     this.getList(); //排序后的列表
                 }
@@ -822,6 +930,7 @@
             }
 
         },
+
         mounted: function () {
             var _this = this;
             //右侧栏 跟随滑动
@@ -905,7 +1014,6 @@
             $('.conts_option').click(function () {
                 $('#price-list').children('div').toggleClass('none');
             });
-
 
             this.getSortList(); //获取筛选条件
             this.getList(); //获取楼盘列表
