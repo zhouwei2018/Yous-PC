@@ -573,7 +573,6 @@
 
                 var _this = this;
                 var del_tip = $(e.currentTarget).parent().attr('data-sortType');
-                alert(del_tip);
                 if (del_tip.indexOf('sort_reg_dis') != -1) { //点击的是删除区域
 
                     this.chosenArr.forEach(function (val, i) {
@@ -1064,7 +1063,6 @@
                 this.getList();
             },
 
-
             //改变单价筛选
             sel_price_list(e){
                 var _this = this;
@@ -1320,8 +1318,7 @@
                             content: content
                         });
                         break;
-                    default:
-                        ;
+                    default:;
                 }
             }
 

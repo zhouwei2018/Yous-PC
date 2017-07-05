@@ -20,8 +20,8 @@
             <div class="breadcrumb-search clearfix">
                 <ul class="breadcrumb fl clearfix">
                     <li><a href="javascript:;"><i class="detail-icon"></i>幼狮空间</a>&gt;</li>
-                    <li><a href="javascript:;">望京办公楼</a>&gt;</li>
-                    <li>望京SOHO</li>
+                    <li><a href="javascript:;">办公楼</a>&gt;</li>
+                    <li v-text="building_name"></li>
                 </ul>
                 <div class="search-box">
                     <input type="text" placeholder="请输入写字楼名称或商圈" maxlength="30" id="detail-search-keyword">
@@ -34,7 +34,7 @@
             <div class="building-label clearfix">
                 <img class="fl" src="../resources/images/ys_weixin.jpg" alt="望京SOHO二维码">
                 <div class="building-tag">
-                    <h1>望京SOHO</h1>
+                    <h1 v-text="building_name"></h1>
                     <ul class="tag-item">
                         <li>互联网</li>
                         <li>LEED认证</li>
@@ -148,7 +148,10 @@
                         view: 'price_history'
                     }
 
-                ]
+                ],
+
+                //楼盘名称
+                building_name:""
             }
         },
 
@@ -158,10 +161,48 @@
                 this.active = i;
                 this.currentView = v;
                 $(window).scrollTop(0);
-            }
+            },
+
+            //获取楼盘详情
+            getDetail(){
+                var _this = this;
+
+                this.loadingFlag = true;
+
+                this.$http.post(
+                    this.$api,
+                    {
+                        "parameters": {
+                            "building_id": "3003",
+                            "area": "",
+                            "price_dj": "[0,500]",
+                            "price_zj": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "5"
+                        },
+                        "foreEndType": 2,
+                        "code": "30000002"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    _this.loadingFlag = false;
+                    if (result.success) {
+                        if (result.data) {
+                            _this.building_name = result.data.building_name;
+
+                        }
+                    }
+
+                }, function (res) {
+                    this.$Message.error('获取楼盘详情失败');
+                });
+            },
+
+
         },
         mounted: function () {
-
+            this.getDetail(); //获取楼盘详情
         },
 
         created(){
