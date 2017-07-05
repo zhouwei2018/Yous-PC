@@ -154,7 +154,8 @@
                                                    v-model="eArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
-                                            <a class="confrim-btn cur-pointer" style="display: none;" id="areaConfirm">确定</a>
+                                            <a class="confrim-btn cur-pointer" style="display: none;"
+                                               @click="self_area($event)" id="areaConfirm">确定</a>
                                             <em class="ml05 font-num">m²</em>
                                         </form>
                                     </div>
@@ -216,7 +217,7 @@
                                             <input type="hidden" name="type" value="1">
 
                                             <a class="cur-pointer priceConfirm" id="priceConfirm"
-                                               style="display: none;">确定</a>
+                                               style="display: none;" @click="self_price_per($event)">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -274,7 +275,7 @@
 
                                             <em class="text-black ml05">万元</em>
                                             <a class="cur-pointer priceConfirm" id="priceConfirm_tot"
-                                               style="display: none;">确定</a>
+                                               style="display: none;" @click="self_price_tot($event)">确定</a>
                                         </form>
                                     </div>
                                 </div>
@@ -310,10 +311,20 @@
                                v-if="sort_item.sort_two == 1">{{sort_item.min + '-' + sort_item.max + sort_item.unit}}<i
                                     class="sem_icon hover" @click="del_one($event)"></i>
                             </a>
-                            <a href="javascript:;" v-else
-                               :data-sortType="sort_item.sortType"
-                               :class="sort_item.class">{{sort_item.name}}<i class="sem_icon hover"
-                                                                             @click="del_one($event)"></i></a>
+                            <template v-else>
+                                <a href="javascript:;" v-if="sort_item.sort_two == 2"
+                                   :data-sortType="sort_item.sortType"
+                                   :class="sort_item.class">{{'>' + sort_item.min + sort_item.unit}}<i
+                                        class="sem_icon hover"
+                                        @click="del_one($event)"></i>
+                                </a>
+                                <a href="javascript:;" v-else
+                                   :data-sortType="sort_item.sortType"
+                                   :class="sort_item.class">{{sort_item.name}}<i class="sem_icon hover"
+                                                                                 @click="del_one($event)"></i>
+                                </a>
+                            </template>
+
 
                             <a href="javascript:;" class="del_all" @click="del_all()"><i class="sem_icon"></i>全部清除</a>
 
@@ -390,7 +401,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20    class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -945,16 +956,35 @@
 
             //改变面积
             sel_area_list(e){
+                var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
-                var min = 0, max = 0;
+                var min = 0, max = 0, sort_two_single = 1;
                 if ($(e.currentTarget).html() == '全部') {
                     this.area = "";
+                    this.chosenArr.forEach(function (val, i) {
+                        if (val.sortType.indexOf('sort_are') != -1) {
+                            _this.chosenArr.splice(i, 1);
+                        }
+                        ;
+                    });
+
+                    //显示已选择条件
+                    if (this.chosenArr.length <= 0) {
+                        this.chosenFlag = false;
+                    } else {
+                        this.chosenFlag = true;
+                    }
+                    this.getList();
+
+                    return;
+
                 } else if ($(e.currentTarget).hasClass('last')) {
                     this.area = [];
                     min = Math.floor($(e.currentTarget).find('span:first-child').html().match(/\d+/g)[0]);
                     max = "";
                     this.area.push(min);
                     this.area.push(max);
+                    sort_two_single = 2;
                 } else {
                     this.area = [];
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
@@ -972,7 +1002,7 @@
                     min: min,
                     max: max,
                     unit: $(e.currentTarget).find('span:last-child').text(),
-                    sort_two: 1 //两组min-max标记
+                    sort_two: sort_two_single, //两组min-max标记
                 };
                 this.compareStr3(comObj, this.chosenArr);
             },
@@ -1004,7 +1034,7 @@
                     min: obj.min,
                     max: obj.max,
                     unit: obj.unit,
-                    sort_two: 1 //两组min-max标记
+                    sort_two: obj.sort_two //两组min-max标记
                 });
 
                 //显示已选择条件
@@ -1016,13 +1046,31 @@
                 this.getList();
             },
 
+            //自定义面积
+            self_area(){
+                this.area = [this.bArea, this.eArea];
+                this.getList();
+            },
+
+            //自定义单价
+            self_price_per(){
+                this.price_dj = [this.bNum, this.eNum];
+                this.getList();
+            },
+
+            //自定义总价
+            self_price_tot(){
+                this.price_zj = [this.bNum_tot * 10000, this.eNum_tot * 10000];
+                this.getList();
+            },
+
 
             //改变单价筛选
             sel_price_list(e){
                 var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
-                var min = 0, max = 0;
+                var min = 0, max = 0, sort_two_single = 1;
 
                 if ($(e.currentTarget).html() == '全部') {
                     this.price_dj = "";
@@ -1050,6 +1098,7 @@
                     this.price_dj = [];
                     this.price_dj.push(min);
                     this.price_dj.push(max);
+                    sort_two_single = 2;
                 } else {
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
                     max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
@@ -1066,8 +1115,8 @@
                     sortType: $(e.currentTarget).attr('data-sortType'),
                     min: min,
                     max: max,
-                    unit: $(e.currentTarget).find('span:last-child').text(),
-                    sort_two: 1 //两组min-max标记
+                    unit: $(e.currentTarget).find('span:last-child').text()+'/m²·天',
+                    sort_two: sort_two_single //两组min-max标记
                 };
                 this.compareStr4(comObj, this.chosenArr);
             },
@@ -1077,7 +1126,7 @@
                 var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
-                var min = 0, max = 0;
+                var min = 0, max = 0, sort_two_single = 1;
 
                 if ($(e.currentTarget).html() == '全部') {
                     this.price_zj = "";
@@ -1105,6 +1154,7 @@
                     max = "";
                     this.price_zj.push(min);
                     this.price_zj.push(max);
+                    sort_two_single = 2;
                 } else {
                     this.price_zj = [];
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
@@ -1122,8 +1172,8 @@
                     sortType: $(e.currentTarget).attr('data-sortType'),
                     min: min,
                     max: max,
-                    unit: $(e.currentTarget).find('span:last-child').text(),
-                    sort_two: 1 //两组min-max标记
+                    unit: $(e.currentTarget).find('span:last-child').text()+'/月',
+                    sort_two: sort_two_single //两组min-max标记
                 };
                 this.compareStr4(comObj, this.chosenArr);
 
@@ -1156,7 +1206,7 @@
                     min: obj.min,
                     max: obj.max,
                     unit: obj.unit,
-                    sort_two: 1 //两组min-max标记
+                    sort_two: obj.sort_two //两组min-max标记
                 });
 
                 //显示已选择条件
