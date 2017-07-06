@@ -53,13 +53,13 @@
                 <div class="contents clearfix">
                     <div class="list_search fl">
                         <div class="fl">
-                            <input type="text" autocomplete="off" v-model="search_keywork" placeholder="请输入写字楼名称或商圈"
+                            <input id="search_inp" type="text" autocomplete="off" v-model="search_keywork" placeholder="请输入写字楼名称或商圈"
                                    maxlength="30">
                             <div class="search-3">
                                 <div class="s-result sem-search" id="association" style="display: none;">智能提示</div>
                             </div>
                         </div>
-                        <a class="map_btn" id="bannerSearchbtn">搜索</a>
+                        <a class="map_btn" id="bannerSearchbtn" @click="searchClick()">搜索</a>
                     </div>
                 </div>
             </div>
@@ -567,6 +567,18 @@
         },
 
         methods: {
+
+            //模糊搜索
+            searchClick(){
+                if(this.search_keywork){
+
+                    this.getList();
+                }else{
+                    this.$Message.error('请输入查询条件');
+                    $('#search_inp').focus();
+                }
+
+            },
 
             //删除一条
             del_one(e){
