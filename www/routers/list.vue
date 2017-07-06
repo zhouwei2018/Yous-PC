@@ -570,14 +570,7 @@
 
             //模糊搜索
             searchClick(){
-                if(this.search_keywork){
-
-                    this.getList();
-                }else{
-                    this.$Message.error('请输入查询条件');
-                    $('#search_inp').focus();
-                }
-
+                this.getList();
             },
 
             //删除一条
