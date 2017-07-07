@@ -319,8 +319,8 @@
                                             <input name="beginArea"
                                                    maxlength="6"
                                                    value=""
-                                                   type="text" a
-                                                   utocomplete="off"
+                                                   type="text"
+                                                   autocomplete="off"
                                                    v-model="bArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
@@ -394,61 +394,46 @@
                     <!--搜索结果-->
                     <div class="clearfix">
 
-                        <div class="sort-list clearfix fl">
+                        <div class="sort-list clearfix fl" @click="buildSort($event)">
                             <a href="javascript:;" class="tag">默认</a>
-                            <a href="javascript:;" class="">最新</a>
-
-                            <a href="javascript:;">价格</a>
-                            <a href="javascript:;">面积</a>
+                            <a href="javascript:;">最新</a>
+                            <a href="javascript:;">价格<span></span></a>
+                            <a href="javascript:;">面积<span></span></a>
                         </div>
                         <div class="fr sort-meet-result ">共 <b>2380</b> 套房源符合条件</div>
                     </div>
 
+                    <!--加载中-->
+                    <div class="loading_wrap" v-show="loadingFlag">
+                        <Spin fix>
+                            <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
+                            <div>加载中……</div>
+                        </Spin>
+                    </div>
+
                     <ul class="detail-office-list">
-                        <li>
+                        <li v-for="item in buildList">
                             <a href="javascript:;" target="_blank">
                                 <div class="list-img">
-                                    <img src="../../resources/images/detail/detail01.jpg" alt="">
+                                    <img :src="item.housing_icon" alt="">
                                 </div>
                                 <div class="list-introduce">
                                     <div class="introduce-primary clearfix">
-                                        <span class="font20">173<em class="font-num">m²</em>·精装</span>
+                                        <span class="font20">{{item.housing_area}}<em
+                                                class="font-num">m²</em>·{{item.decoration_level}}</span>
                                         <div>
-                                            <span class="text-gray6"><em class="font-num">3.7</em> 万元/月</span>
-                                            <div><b class="font-num text-black">7</b> 元/<span
+                                            <span class="text-gray6"><em class="font-num"
+                                                                         v-text="item.monthly_price"></em> 万元/月</span>
+                                            <div><b class="font-num text-black" v-text="item.daily_price"></b> 元/<span
                                                     class="font-num">m²</span>·天
                                             </div>
                                         </div>
                                     </div>
                                     <div class="introduce-second">
-                                        <span><em class="text-gray6">工位：</em>22-43个</span>
+                                        <span><em class="text-gray6">工位：</em>{{item.workstation}}个</span>
                                     </div>
                                     <div class="introduce-time-btn">
-                                        <span>更新于：2017-04-17 15:50</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" target="_blank">
-                                <div class="list-img">
-                                    <img src="../../resources/images/detail/detail01.jpg" alt="">
-                                </div>
-                                <div class="list-introduce">
-                                    <div class="introduce-primary clearfix">
-                                        <span class="font20">173<em class="font-num">m²</em>·精装</span>
-                                        <div>
-                                            <span class="text-gray6"><em class="font-num">3.7</em> 万元/月</span>
-                                            <div><b class="font-num text-black">7</b> 元/<span
-                                                    class="font-num">m²</span>·天
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="introduce-second">
-                                        <span><em class="text-gray6">工位：</em>22-43个</span>
-                                    </div>
-                                    <div class="introduce-time-btn">
-                                        <span>更新于：2017-04-17 15:50</span>
+                                        <span>更新于：{{item.refreshTime}}</span>
                                     </div>
                                 </div>
                             </a>
@@ -594,16 +579,27 @@
                 loadingFlag: true, //loading是否显示
                 pageFlag: false, //页码是否显示
 
+                //搜索结果
+                decoration_level: "",//装修程度
+                housing_area: "", //面积
+                daily_price: "", //日价格
+                monthly_price: "", //月价格
+                housing_icon: "", //图片
+                workstation: "", //工位
+
+                //scroll flag
+                detScrollFlag: true,
+
             }
         },
         components: {
             mapPart
         },
         methods: {
+
             //获取楼盘详情
             getDetail(){
                 var _this = this;
-                this.loadingFlag = true;
 
                 this.building_id = this.$route.query.building_id;
 
@@ -624,7 +620,6 @@
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
-                    _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {
                             _this.buildingName = result.data.building_name + '周边配套';
@@ -654,7 +649,7 @@
             //分页
             change(page){
                 this.curPage = page;
-                this.getList(); //获取楼盘列表
+                this.getDetList(); //获取楼盘列表
                 $(window).scrollTop(0);
             },
 
@@ -675,9 +670,9 @@
                         "parameters": {
                             "building_id": this.building_id,
                             "area": "",
-                            "price_dj": "[0,500]",
+                            "price_dj": "[0,100000]",
                             "price_zj": "",
-                            "orderby": "",
+                            "orderby": "D",
                             "curr_page": "1",
                             "items_perpage": "5"
                         },
@@ -685,31 +680,43 @@
                         "code": "30000003"
                     }
                 ).then(function (res) {
-                    var result = JSON.parse(res.bodyText);
+                    //var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
-                    if (result.success) {
-                        if (result.data) {
-                            for (var i = 0; i < result.data.buildings.length; i++) {
-                                if (result.data.buildings[i].label) {
-                                    result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
-                                } else {
-                                    result.data.buildings[i].tags = [];
-                                }
 
-                            }
-                            _this.buildList = result.data.buildings;
-                            _this.total_items = result.data.total_items;
-                            _this.total_pages = result.data.total_pages;
-                            _this.pageFlag = true;
-
-                        } else {
-                            _this.pageFlag = false;
-                        }
-
-                    } else {
-                        _this.buildingShowFlag = true;
-                        _this.total_items = 0;
+                    var result = {
+                        "items_perpage": "long,房源列表每页记录数",
+                        "houses": [{
+                            "id": "int,房源id",
+                            "decoration_level": "装修水平",
+                            "building_id": "int,楼盘id",
+                            "housing_area": "180",
+                            "housing_name": "房源名称",
+                            "daily_price": "7",
+                            "monthly_price": "3.9",
+                            "housing_icon": "http://116.62.71.76:81/default-youshi.png",
+                            "workstation": "200",
+                            "refreshTime":"2017-07-07 22:03"
+                        }],
+                        "total_items": "long,房源列表总记录数",
+                        "total_pages": "long,房源列表总页数",
+                        "current_page": "long,房源列表当前页"
                     }
+
+                    _this.buildList = result.houses;
+                    _this.decoration_level = result.decoration_level;
+                    _this.housing_area = result.housing_area;
+                    _this.daily_price = result.daily_price;
+                    _this.monthly_price = result.monthly_price;
+                    _this.housing_icon = result.housing_icon;
+                    _this.workstation = result.workstation;
+
+//                    if (result.success) {
+//
+//
+//                    } else {
+//                        _this.buildingShowFlag = true;
+//                        _this.total_items = 0;
+//                    }
 
                 }, function (res) {
                     this.$Message.error('获取楼盘列表失败');
@@ -724,19 +731,57 @@
             //自定义面积
             self_area(){
                 this.area = [this.bArea, this.eArea];
-                this.getList();
+                this.getDetList();
             },
 
             //自定义单价
             self_price_per(){
                 this.price_dj = [this.bNum, this.eNum];
-                this.getList();
+                this.getDetList();
+            },
+
+            //排序筛选 默认：D ，面积升序：AA，面积降序：AD，价格升序：PA，价格降序：PD
+            buildSort(e){
+                var target = null;
+                if ($(e.target).parent()[0].tagName == 'A') {
+                    target = $(e.target).parent();
+                } else if ($(e.target)[0].tagName == 'A') {
+                    target = $(e.target);
+                }
+                if (target) {
+                    target.addClass('tag').siblings().removeClass('tag');
+                    if (target.find('span').length > 0) {
+                        target.siblings().find('span').hide();
+                        target.find('span').css('display', 'inline-block');
+                        if (target.find('span').hasClass('up')) {
+                            target.find('span').removeClass('up');
+                            target.find('span').html('↓');
+                            if (target.attr('id') == 'areaSort') {
+                                this.orderby = 'AD'; //面积降序：AD
+                            } else if (target.attr('id') == 'priceSort') {
+                                this.orderby = 'AD'; //价格降序：PD
+                            }
+                        } else {
+                            target.find('span').addClass('up').html('↑');
+                            if (target.attr('id') == 'areaSort') {
+                                this.orderby = 'AA'; //面积升序：AA
+                            } else if (target.attr('id') == 'priceSort') {
+                                this.orderby = 'AD'; //价格升序：PA
+                            }
+                        }
+                    } else {
+                        this.orderby = 'D'; //默认排序D
+                    }
+                    this.getDetList(); //排序后的列表
+                }
             },
         },
 
         mounted(){
             var _this = this;
             this.getDetail(); //获取楼盘详情
+
+            this.getDetList();
 
             //首屏轮播
             $('#carousel_building').banqh({
@@ -764,31 +809,34 @@
 
             //top悬浮窗固定
             $(window).on("scroll", function () {
-                var window_height = $(window).height(); //浏览器当前窗口可视区域高度
-                var document_height = $(document).height(); //浏览器当前窗口文档的高度
-                var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                var navStandard_line = $('.navfixed-box').offset().top;
-                var standard_line = $('.category-message-box').offset().top;
-                var standard_line_wrap = $('#category_message').height();
-                var fixed_self = $('#sidebar_fix').height();
-                if (scroll_top > navStandard_line) {
-                    $('.navfixed').slideDown(50);
-                } else {
-                    $('.navfixed').slideUp(50);
+                if (_this.detScrollFlag) {
+                    var window_height = $(window).height(); //浏览器当前窗口可视区域高度
+                    var document_height = $(document).height(); //浏览器当前窗口文档的高度
+                    var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                    var navStandard_line = $('.navfixed-box').offset().top;
+                    var standard_line = $('.category-message-box').offset().top;
+                    var standard_line_wrap = $('#category_message').height();
+                    var fixed_self = $('#sidebar_fix').height();
+                    if (scroll_top > navStandard_line) {
+                        $('.navfixed').slideDown(50);
+                    } else {
+                        $('.navfixed').slideUp(50);
+                    }
+
+                    if (scroll_top > (standard_line)) {
+                        $('#sidebar_fix').addClass('fixed');
+                        $('.sidebar-box').css('bottom', 'auto');
+                    } else {
+                        $('#sidebar_fix').removeClass('fixed');
+                        $('.sidebar-box').css('bottom', 'auto');
+                    }
+
+                    if (scroll_top > (standard_line + standard_line_wrap - fixed_self - 66)) {
+                        $('#sidebar_fix').removeClass('fixed');
+                        $('.sidebar-box').css('bottom', '0');
+                    }
                 }
 
-                if (scroll_top > (standard_line)) {
-                    $('#sidebar_fix').addClass('fixed');
-                    $('.sidebar-box').css('bottom', 'auto');
-                } else {
-                    $('#sidebar_fix').removeClass('fixed');
-                    $('.sidebar-box').css('bottom', 'auto');
-                }
-
-                if (scroll_top > (standard_line + standard_line_wrap - fixed_self - 66)) {
-                    $('#sidebar_fix').removeClass('fixed');
-                    $('.sidebar-box').css('bottom', '0');
-                }
             });
 
             //单价总价切换
@@ -828,6 +876,10 @@
             });
 
 
+        },
+
+        destroyed () {
+            this.detScrollFlag = false;
         }
     }
 </script>
