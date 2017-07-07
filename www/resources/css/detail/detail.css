@@ -339,13 +339,10 @@
   margin-right: 0;
 }
 [detail] .common-info .building-message .rental-info dd > span {
-  display: block;
   margin-bottom: 10px;
 }
-[detail] .common-info .building-message .rental-info dd > p {
-  font-size: 22px;
-}
 [detail] .common-info .building-message .rental-info dd > p > a {
+  display: inline-block;
   margin-left: 10px;
   font-size: 14px;
   color: #999;

@@ -36,10 +36,8 @@
                 <div class="building-tag">
                     <h1 v-text="building_name"></h1>
                     <ul class="tag-item">
-                        <li>互联网</li>
-                        <li>LEED认证</li>
-                        <li>地标建筑</li>
-                        <li>名企开发商</li>
+                        <!--<li>互联网</li>-->
+                        <li v-for="item in labels" v-text="item"></li>
                     </ul>
                 </div>
             </div>
@@ -88,7 +86,9 @@
 
             <!--楼盘 tab end-->
 
-            <component :is="currentView"></component>
+            <component :is="currentView"
+                       @listenchild="getName"
+            ></component>
 
         </div>
 
@@ -150,8 +150,10 @@
 
                 ],
 
-                //楼盘名称
-                building_name:""
+                building_name: "", //楼盘名称
+                labels: [],//标签
+
+
             }
         },
 
@@ -163,46 +165,15 @@
                 $(window).scrollTop(0);
             },
 
-            //获取楼盘详情
-            getDetail(){
-                var _this = this;
-
-                this.loadingFlag = true;
-
-                this.$http.post(
-                    this.$api,
-                    {
-                        "parameters": {
-                            "building_id": "3003",
-                            "area": "",
-                            "price_dj": "[0,500]",
-                            "price_zj": "",
-                            "orderby": "",
-                            "curr_page": "1",
-                            "items_perpage": "5"
-                        },
-                        "foreEndType": 2,
-                        "code": "30000002"
-                    }
-                ).then(function (res) {
-                    var result = JSON.parse(res.bodyText);
-                    _this.loadingFlag = false;
-                    if (result.success) {
-                        if (result.data) {
-                            _this.building_name = result.data.building_name;
-
-                        }
-                    }
-
-                }, function (res) {
-                    this.$Message.error('获取楼盘详情失败');
-                });
+            //获取子组件传来的名称和label
+            getName(obj){
+                this.building_name = obj.name;
+                this.labels = obj.labels;
             },
-
 
         },
         mounted: function () {
-            this.getDetail(); //获取楼盘详情
+
         },
 
         created(){
