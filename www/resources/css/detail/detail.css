@@ -157,6 +157,8 @@
 [detail] .nav-consulting {
   width: 1200px;
   margin: 20px auto 0;
+  height: 43px;
+  line-height: 43px;
   border-bottom: 1px solid #e5e5e6;
 }
 [detail] .nav-consulting .nav-building > li {
@@ -165,6 +167,7 @@
 }
 [detail] .nav-consulting .nav-building > li a {
   padding: 0 22px 9px;
+  display: inline;
 }
 [detail] .nav-consulting .nav-building > li.active a {
   color: #476cba;
@@ -195,6 +198,7 @@
 }
 [detail] .navfixed-box .navfixed .nav-building > li > a {
   padding: 0 22px 9px;
+  display: inline;
 }
 [detail] .consulting {
   float: right;

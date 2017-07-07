@@ -18,7 +18,7 @@
     export default {
         data(){
             return {
-                buildingName:'望京SOHO周边配套'
+                buildingName:'建外SOHO周边配套'
             }
         },
         components: {

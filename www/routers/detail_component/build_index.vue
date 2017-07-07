@@ -25,6 +25,9 @@
                             <li>
                                 <a><img src="../../resources/images/detail/det_banner01.jpg" alt=""></a>
                             </li>
+                            <li>
+                                <a><img src="../../resources/images/detail/det_banner01.jpg" alt=""></a>
+                            </li>
                         </ul>
                     </div>
                     <div class="panorama">
@@ -39,6 +42,10 @@
                         <div class="carousel-small clearfix" id="carousel_small">
                             <ul>
                                 <li class="on"><a class="pr db cur-pointer">
+                                    <div class="small-mask" style="display: block;"></div>
+                                    <img src="../../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
+                                         alt=""></a></li>
+                                <li><a class="pr db cur-pointer">
                                     <div class="small-mask" style="display: block;"></div>
                                     <img src="../../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
                                          alt=""></a></li>
@@ -147,7 +154,11 @@
                                 class="text-blue">2380</strong>&nbsp;套房源待租</h2>
                         <a class="show-link mr20" href="/detail/houses-184.html" target="_blank">查看全部</a>
                     </div>
+
+
                     <div class="screening-range ph10">
+
+                        <!--面积-->
                         <div class="screening-range-list">
                             <span>面积:</span>
                             <ul class="clearfix">
@@ -187,6 +198,8 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <!--价格-->
                         <div class="screening-range-list" id="price-list">
                             <span>价格:</span>
 
@@ -273,6 +286,8 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <!--自定义价格-->
                         <div class="screening-range-list">
                             <span>自定义:</span>
                             <ul class="clearfix pl20">
@@ -338,6 +353,8 @@
                             </ul>
                         </div>
                     </div>
+
+                    <!--搜索结果-->
                     <div class="clearfix">
 
                         <div class="sort-list clearfix fl">
@@ -577,6 +594,8 @@
             },
 
 
+
+
             //分页
             change(page){
                 this.curPage = page;
@@ -611,6 +630,40 @@
                 pop_prev: '#pop_carousel_prev',//弹出框左箭头
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
+            });
+
+            //top悬浮窗固定
+            $(window).on("scroll",function(){
+                var window_height = $(window).height(); //浏览器当前窗口可视区域高度
+                var document_height = $(document).height(); //浏览器当前窗口文档的高度
+                var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                var navStandard_line = $('.navfixed-box').offset().top;
+                var standard_line = $('.category-message-box').offset().top;
+                var standard_line_wrap = $('#category_message').height();
+                var fixed_self = $('#sidebar_fix').height();
+                if(scroll_top > navStandard_line ){
+                    $('.navfixed').slideDown(50);
+                }else {
+                    $('.navfixed').slideUp(50);
+                }
+
+                if(scroll_top > (standard_line)){
+                    $('#sidebar_fix').addClass('fixed');
+                    $('.sidebar-box').css('bottom','auto');
+                }else {
+                    $('#sidebar_fix').removeClass('fixed');
+                    $('.sidebar-box').css('bottom','auto');
+                }
+
+                if(scroll_top > (standard_line + standard_line_wrap - fixed_self - 66) ){
+                    $('#sidebar_fix').removeClass('fixed');
+                    $('.sidebar-box').css('bottom','0');
+                }
+            });
+
+            //单价总价切换
+            $('.cur-pointer').click(function () {
+                $('#price-list').children('ul').toggleClass('none');
             });
 
 

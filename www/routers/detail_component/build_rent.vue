@@ -18,9 +18,8 @@
 
                 <div id="detail-infomation">
                     <div class="category-item-title-first">
-                        <h2 class="fl"><i class="detail-icon rent"></i>望京SOHO共有&nbsp;<strong
+                        <h2 class="fl"><i class="detail-icon rent"></i>建外SOHO共有&nbsp;<strong
                                 class="text-blue">2380</strong>&nbsp;套房源待租</h2>
-                        <a class="show-link mr20" href="/detail/houses-184.html" target="_blank">查看全部</a>
                     </div>
                     <div class="screening-range ph10">
                         <div class="screening-range-list">
