@@ -118,8 +118,8 @@
   color: #fff;
   font-size: 16px;
   background-color: #476cba;
-  border: none;
-  cursor: pointer;
+  display: inline-block;
+  text-align: center;
 }
 [detail] .building-label {
   width: 1200px;

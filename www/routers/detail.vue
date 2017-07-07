@@ -25,7 +25,7 @@
                 </ul>
                 <div class="search-box">
                     <input type="text" placeholder="请输入写字楼名称或商圈" maxlength="30" id="detail-search-keyword">
-                    <button class="search-btn" type="button" id="detail-search-btn">搜索</button>
+                    <router-link class="search-btn" target="_blank" id="detail-search-btn" :to="{path:'/list'}">搜索</router-link>
                 </div>
             </div>
             <!--搜索 end-->
