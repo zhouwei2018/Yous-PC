@@ -562,10 +562,10 @@
     export default {
         data(){
             return {
-                buildingName: "", //拼出的楼盘周边配套
+                buildingName: "建外SOHO", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
-                positionData: "100,20", //经纬度
+                positionData: "116.646319, 40.006356", //经纬度
 
                 pageFlag: true, //页码是否显示
 

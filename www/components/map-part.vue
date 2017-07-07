@@ -53,7 +53,7 @@
             };
         },
         created() {
-            axios.get('/sockjs-node/info',{params:{t:6666666}})
+           /* axios.get('/sockjs-node/info',{params:{t:6666666}})
                 .then(function (response) {
                     if(1){
                         this.remoteData = response.data;
@@ -61,24 +61,15 @@
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
+                });*/
         },
         mounted: function () {
             this.init();
-            //alert(this.positionData);  //经度纬度
         },
         methods: {
-
             init:function(){
-                var geolocation = new BMap.Geolocation(), this_=this;
-                geolocation.getCurrentPosition(function(r){
-                    if(this.getStatus() == BMAP_STATUS_SUCCESS){
-                        this_.initMap(r.point.lng,r.point.lat, 15, "您在此处");
-                    }
-                    else {
-                        alert('请开启浏览器定位'+this.getStatus());
-                    }
-                },{enableHighAccuracy: true});
+                let tem=this.positionData.split(',');
+                this.initMap(tem[0],tem[1], 15, this.buildingName);
             },
             initMap: function(x, y, z, title){
                 var map = {},this_=this, point={}, markerico=null,markerico2=null;
