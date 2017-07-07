@@ -208,7 +208,6 @@
 }
 [detail] .consulting > div.quick {
   font-size: 14px;
-  width: 220px;
 }
 [detail] .consulting > div.quick .detail-icon {
   background-position: -56px -305px;
@@ -483,9 +482,6 @@
   width: 100%;
   padding: 10px 0 0 20px;
   margin-bottom: 15px;
-}
-[detail] .mobile_consult .quick {
-  width: 230px;
 }
 [detail] .mobile_consult .tel_num_all {
   font-size: 26px;
