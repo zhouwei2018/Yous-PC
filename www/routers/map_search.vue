@@ -94,6 +94,10 @@
             margin: 15px 0 13px -31px;
             position: absolute;
         }
+        .fanglistinfo{
+            overflow: hidden;
+            padding: 8px 15px;
+        }
     }
 </style>
 
@@ -162,7 +166,7 @@
                                     </ul>
                                 </li>
                                 <li class="price-class">
-                                    <a href="javascript:void(0);"><span style="color:#CCC;">价格</span><img
+                                    <a href="javascript:void(0);"><span style="color:#CCC;">面积</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul style="display:none;" class="subnav">
                                         <li class="result-item" v-for="(item, index) in priceArray" :value="item.value"
@@ -170,7 +174,7 @@
                                     </ul>
                                 </li>
                                 <li class="size-class">
-                                    <a href="javascript:void(0);"><span style="color:#CCC;">面积</span><img
+                                    <a href="javascript:void(0);"><span style="color:#CCC;">价格</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul style="display:none;" class="subnav">
                                         <li class="result-item" v-for="(item, index) in areaArray" :value="item.id"
@@ -178,18 +182,10 @@
                                     </ul>
                                 </li>
                                 <li class="room-type">
-                                    <a href="javascript:void(0);"><span style="color:#CCC;">户型</span><img
-                                            src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav">
-                                        <li class="result-item" v-for="(item, index) in roomArray" :value="item.id"
-                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
-                                    </ul>
-                                </li>
-                                <li class="last feature-type" style="width: 110px;">
                                     <a href="javascript:void(0);"><span style="color:#CCC;">特色</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul style="display:none;" class="subnav">
-                                        <li class="result-item" v-for="(item, index) in featureArray" :value="item.id"
+                                        <li class="result-item" v-for="(item, index) in roomArray" :value="item.id"
                                             @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
                                     </ul>
                                 </li>
@@ -297,15 +293,17 @@
                                             <div class="sly">
                                                 <ul class="big cfix houses_list">
                                                     <li class="waiclisty" v-for="(item, index) in detailLists.houses">
-                                                        <div class="fanglistinfo"><ul>
+                                                        <div class="fanglistinfo">
+                                                            <ul>
                                                             <li :id="item.houseId" class="xianshiflod">
                                                                 <p>
                                                                     <img :src="item.img" border="0" width="160" height="120" class="house-img">
                                                                 </p>
                                                                 <dl>
-                                                                    <dt>{{item.totalPrice}}万/<span>{{item.perPrice}}元/m²</span></dt>
+                                                                    <dt>{{item.perPrice}}元/m²</dt>
+                                                                    <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>价格范围{{item.priceArea}}/m²·天</span></dd>
                                                                     <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>{{detailLists.title}}</span>（{{detailLists.area}}）</dd>
-                                                                    <dd class="fangcontent">{{item.condition}}丨{{item.size}}平米丨{{item.direction}}</dd>
+                                                                    <dd class="fangcontent">{{item.size}}平米丨{{item.decoration}}</dd>
                                                                     <dd><div class="fangbtn"></div></dd>
                                                                 </dl>
                                                             </li></ul>
@@ -547,127 +545,72 @@
             },
             loadArea: function () {
                 var paraObj = {
-                    type: "all", //返回房源类型 "rent":出租房源 ，“exchange”：二手房 , "all":去全部
+                    type: "all", //返回房源类型  "all":去全部， //这个现在房源类型单一，我就都传all,后面再根据实际调整
                     dataType: "area",  //返回房源在什么尺度下  "area":行政区域下 ，“district”：商圈 , "community":楼栋
-                    priceClass: 1, //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
-                    sizeClass: 1, //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
-                    roomType: 0, //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
-                    featureType: 0, //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
-                    zoom: 12  //这个是附带给你的，前端要用，传给你什么你就返回什么
+                    priceClass: [1,3], //价格区间  [3,5],[5,8],[8,10],[10,20],[30,""]
+                    sizeClass: [0,100], //面积区间 [100,200],[200,300],[300,500],[500,1000],[1000,2000],[2000,3000],[3000,""]
+                    featureType: 1, // 特色搜索 1.地铁周边 2.互联网+ 3.金融精英 4.健康空气 5LEED 6新楼 7地标建筑 8创意园区 9名企开发商 10知名物业 115A写字楼 12纳什空间
+                    zoom: 12,  //这个是附带给你的，前端要用，传给你什么你就返回什么
+                    searchKeyword:"天赐良缘" //搜索过滤关键字
                 }, this_ = this;
 
                 var successCb = function(data){
                     this_.removeMapLoading(); //移除地图加载中
                     var testData = {
                         "houses": [{
-                            "exchangeNumber": 7730,
-                            "rentNumber": 1844,
                             "countNumber": 9574,
                             "title": "\u671d\u9633",
                             "point": "116.49674|39.93258",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "6"
                         }, {
-                            "exchangeNumber": 4240,
-                            "rentNumber": 1047,
                             "countNumber": 5287,
                             "title": "\u6d77\u6dc0",
                             "point": "116.32949|39.99316",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "5"
                         }, {
-                            "exchangeNumber": 3348,
-                            "rentNumber": 780,
                             "countNumber": 4128,
                             "title": "\u4e30\u53f0",
                             "point": "116.30185|39.84615",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "7"
                         }, {
-                            "exchangeNumber": 1322,
-                            "rentNumber": 636,
                             "countNumber": 1958,
                             "title": "\u4e1c\u57ce",
                             "point": "116.41493|39.9272",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "1"
                         }, {
-                            "exchangeNumber": 2197,
-                            "rentNumber": 743,
                             "countNumber": 2940,
                             "title": "\u897f\u57ce",
                             "point": "116.37855|39.91649",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "2"
                         }, {
-                            "exchangeNumber": 760,
-                            "rentNumber": 59,
                             "countNumber": 819,
                             "title": "\u77f3\u666f\u5c71",
                             "point": "116.22789|39.90617",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "8"
                         }, {
-                            "exchangeNumber": 1950,
-                            "rentNumber": 680,
                             "countNumber": 2630,
                             "title": "\u5927\u5174",
                             "point": "116.35355|39.73293",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "990"
                         }, {
-                            "exchangeNumber": 1805,
-                            "rentNumber": 700,
                             "countNumber": 2505,
                             "title": "\u901a\u5dde",
                             "point": "116.66406|39.91199",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "970"
                         }, {
-                            "exchangeNumber": 1012,
-                            "rentNumber": 367,
                             "countNumber": 1379,
                             "title": "\u987a\u4e49",
                             "point": "116.65839|40.13294",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "1010"
                         }, {
-                            "exchangeNumber": 2334,
-                            "rentNumber": 529,
                             "countNumber": 2863,
                             "title": "\u660c\u5e73",
                             "point": "116.2405|40.22647",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "21"
                         }, {
-                            "exchangeNumber": 2607,
-                            "rentNumber": 659,
                             "countNumber": 3266,
                             "title": "\u623f\u5c71",
                             "point": "116.15337|39.74106",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "1030"
                         }], "zoom": "12"
                     };
@@ -684,114 +627,59 @@
                     this_.removeMapLoading(); //移除地图加载中
                     var testData = {
                         "houses": [{
-                            "exchangeNumber": 7730,
-                            "rentNumber": 1844,
                             "countNumber": 9574,
                             "title": "\u671d\u9633",
                             "point": "116.49674|39.93258",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "6"
                         }, {
-                            "exchangeNumber": 4240,
-                            "rentNumber": 1047,
                             "countNumber": 5287,
                             "title": "\u6d77\u6dc0",
                             "point": "116.32949|39.99316",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "5"
                         }, {
-                            "exchangeNumber": 3348,
-                            "rentNumber": 780,
                             "countNumber": 4128,
                             "title": "\u4e30\u53f0",
                             "point": "116.30185|39.84615",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "7"
                         }, {
-                            "exchangeNumber": 1322,
-                            "rentNumber": 636,
                             "countNumber": 1958,
                             "title": "\u4e1c\u57ce",
                             "point": "116.41493|39.9272",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "1"
                         }, {
-                            "exchangeNumber": 2197,
-                            "rentNumber": 743,
                             "countNumber": 2940,
                             "title": "\u897f\u57ce",
                             "point": "116.37855|39.91649",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "2"
                         }, {
-                            "exchangeNumber": 760,
-                            "rentNumber": 59,
                             "countNumber": 819,
                             "title": "\u77f3\u666f\u5c71",
                             "point": "116.22789|39.90617",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "8"
                         }, {
-                            "exchangeNumber": 1950,
-                            "rentNumber": 680,
                             "countNumber": 2630,
                             "title": "\u5927\u5174",
                             "point": "116.35355|39.73293",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "990"
                         }, {
-                            "exchangeNumber": 1805,
-                            "rentNumber": 700,
                             "countNumber": 2505,
                             "title": "\u901a\u5dde",
                             "point": "116.66406|39.91199",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "970"
                         }, {
-                            "exchangeNumber": 1012,
-                            "rentNumber": 367,
                             "countNumber": 1379,
                             "title": "\u987a\u4e49",
                             "point": "116.65839|40.13294",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "1010"
                         }, {
-                            "exchangeNumber": 2334,
-                            "rentNumber": 529,
                             "countNumber": 2863,
                             "title": "\u660c\u5e73",
                             "point": "116.2405|40.22647",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "21"
                         }, {
-                            "exchangeNumber": 2607,
-                            "rentNumber": 659,
                             "countNumber": 3266,
                             "title": "\u623f\u5c71",
                             "point": "116.15337|39.74106",
-                            "isOpen": 0,
-                            "icon": "w:20,h:29",
-                            "type": 2,
                             "id": "1030"
                         }], "zoom": "12"
                     };
@@ -810,14 +698,14 @@
             loadDistrict: function () {
                 this.YSMap.resetCondition();
                   var paraObj = {
-                      type: "all", //返回房源类型 "rent":出租房源 ，“exchange”：二手房 , "all":去全部
+                      type: "all", //返回房源类型  "all":去全部， //这个现在房源类型单一，我就都传all,后面再根据实际调整
                       dataType: "district",  //返回房源在什么尺度下  "area":行政区域下 ，“district”：商圈 , "community":楼栋
-                      priceClass: 1, //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
-                      sizeClass: 1, //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
-                      roomType: 0, //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
-                      featureType: 0, //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
+                      priceClass: [1,3], //价格区间  [3,5],[5,8],[8,10],[10,20],[30,""]
+                      sizeClass: [0,100], //面积区间 [100,200],[200,300],[300,500],[500,1000],[1000,2000],[2000,3000],[3000,""]
+                      featureType: 1, // 特色搜索 1.地铁周边 2.互联网+ 3.金融精英 4.健康空气 5LEED 6新楼 7地标建筑 8创意园区 9名企开发商 10知名物业 115A写字楼 12纳什空间
+                      zoom: 15,  //这个是附带给你的，前端要用，传给你什么你就返回什么
                       areaId:8, //该区域的id
-                      zoom:15   //需要返回数据时携带的地图级别数字
+                      searchKeyword:"天赐良缘" //搜索过滤关键字
                   }, this_ = this;
                   var successCb = function(data){
                       this.YSMap.area.id = ''; //重置区域id
@@ -1855,14 +1743,14 @@
                 var this_ = this;
                 this.YSMap.resetCondition();
                 var paraObj = {
-                    type: "all", //返回房源类型 "rent":出租房源 ，“exchange”：二手房 , "all":去全部
+                    type: "all", //返回房源类型  "all":去全部， //这个现在房源类型单一，我就都传all,后面再根据实际调整
                     dataType: "community",  //返回房源在什么尺度下  "area":行政区域下 ，“district”：商圈 , "community":楼栋
-                    priceClass: 1, //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
-                    sizeClass: 1, //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
-                    roomType: 0, //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
-                    featureType: 0, //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
-                    districtId:8, //该区域的id
-                    zoom:17
+                    priceClass: [1,3], //价格区间  [3,5],[5,8],[8,10],[10,20],[30,""]
+                    sizeClass: [0,100], //面积区间 [100,200],[200,300],[300,500],[500,1000],[1000,2000],[2000,3000],[3000,""]
+                    featureType: 1, // 特色搜索 1.地铁周边 2.互联网+ 3.金融精英 4.健康空气 5LEED 6新楼 7地标建筑 8创意园区 9名企开发商 10知名物业 115A写字楼 12纳什空间
+                    zoom: 17,  //这个是附带给你的，前端要用，传给你什么你就返回什么
+                    districtId:8, //该商圈的id
+                    searchKeyword:"天赐良缘" //搜索过滤关键字
                 }
                 var successCb = function(data){
                     this.YSMap.area.id = ''; //重置区域id

@@ -191,15 +191,16 @@ YMap.prototype.addPageEvent = function(vueobj) {
         $('.shareshow').css('display', 'none'); //默认关闭分享
         self.community.id = $(this).attr('communityid');
         var paraObj = {
-            type: "all", //返回房源类型 "rent":出租房源 ，“exchange”：二手房 , "all":去全部
-            priceClass: 1, //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
-            sizeClass: 1, //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
-            roomType: 0, //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
-            featureType: 0, //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
-            communityId:118440 //楼栋的id
+            type: "all", //返回房源类型  "all":去全部， //这个现在房源类型单一，我就都传all,后面再根据实际调整
+            dataType: "premises",  //返回房源在什么尺度下  "area":行政区域下 ，“district”：商圈 , "community":楼盘， premises:房源
+            priceClass: [1,3], //价格区间  [3,5],[5,8],[8,10],[10,20],[30,""]
+            sizeClass: [0,100], //面积区间 [100,200],[200,300],[300,500],[500,1000],[1000,2000],[2000,3000],[3000,""]
+            featureType: 1, // 特色搜索 1.地铁周边 2.互联网+ 3.金融精英 4.健康空气 5LEED 6新楼 7地标建筑 8创意园区 9名企开发商 10知名物业 115A写字楼 12纳什空间
+            communityId:8, ////楼盘的id
+            searchKeyword:"天赐良缘" //搜索过滤关键字
         }
         var this_ = vueobj;
-        //vueobj.YSMap.resetCondition();
+        vueobj.YSMap.resetCondition();
         var successCb = function(data){
             vueobj.removeHouseLoading(); //移除地图加载中
             vueobj.loadScrollbar(); //滚动条
@@ -214,35 +215,31 @@ YMap.prototype.addPageEvent = function(vueobj) {
                 pic :"http://bj.5i5j.com/themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
                 houses:[
                     {
+                        houseId:333, //房源Id
                         img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        totalPrice:"335", //总价
-                        perPrice:"50758",  //单价每平米
-                        condition:"2室1聼", //房源佈局
+                        perPrice:"6.5", //每日价格
+                        priceArea:"5.3~9.8", //每日价格范围
                         size:"56", //房源面积 56平
-                        direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
-                        houseId:333 //房源Id
+                        decoration :"精装修" //装修水平
                     },
                     {
+                        houseId:333, //房源Id
                         img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        totalPrice:"335万", //总价
-                        perPrice:"50758",  //单价每平米
-                        condition:"2室1聼", //房源佈局
+                        perPrice:"6.5", //每日价格
+                        priceArea:"5.3~9.8", //每日价格范围
                         size:"56", //房源面积 56平
-                        direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
-                        houseId:333 //房源Id
+                        decoration :"精装修" //装修水平
                     },
                     {
+                        houseId:333, //房源Id
                         img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        totalPrice:"335万", //总价
-                        perPrice:"50758",  //单价每平米
-                        condition:"2室1聼", //房源佈局
+                        perPrice:"6.5", //每日价格
+                        priceArea:"5.3~9.8", //每日价格范围
                         size:"56", //房源面积 56平
-                        direction:"1" ,//房源朝向 1东西， 2.南北  3.其他
-                        houseId:333 //房源Id
-                    },
-
+                        decoration :"精装修" //装修水平
+                    }
                 ]
-            }
+            };
             this_.rightPannel= true;
         };
         vueobj.addHouseLoading(); //地图加载中
