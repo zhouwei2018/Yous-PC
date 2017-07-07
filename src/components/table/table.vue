@@ -405,21 +405,21 @@
                 this.$emit('on-selection-change', selection);
             },
             selectAll (status) {
-                // this.rebuildData.forEach((data) => {
-                //     if(this.objData[data._index]._isDisabled){
-                //         this.objData[data._index]._isChecked = false;
-                //     }else{
-                //         this.objData[data._index]._isChecked = status;
-                //     }
-                    
-                // });
-                for(const data of this.rebuildData){
+                this.rebuildData.forEach((data) => {
                     if(this.objData[data._index]._isDisabled){
-                        continue;
+                        this.objData[data._index]._isChecked = false;
                     }else{
                         this.objData[data._index]._isChecked = status;
                     }
-                }
+
+                });
+                // for(const data of this.rebuildData){
+                //     if(this.objData[data._index]._isDisabled){
+                //         continue;
+                //     }else{
+                //         this.objData[data._index]._isChecked = status;
+                //     }
+                // }
                 const selection = this.getSelection();
                 if (status) {
                     this.$emit('on-select-all', selection);
