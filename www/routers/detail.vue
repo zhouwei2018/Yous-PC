@@ -150,6 +150,9 @@
                 building_name: "", //楼盘名称
                 labels: [],//标签
 
+                //scroll flag
+                detScrollFlag: true,
+
 
             }
         },
@@ -170,7 +173,38 @@
 
         },
         mounted: function () {
+            var _this=this;
+            //top悬浮窗固定
+            $(window).on("scroll", function () {
+                if (_this.detScrollFlag) {
+                    var window_height = $(window).height(); //浏览器当前窗口可视区域高度
+                    var document_height = $(document).height(); //浏览器当前窗口文档的高度
+                    var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+                    var navStandard_line = $('.navfixed-box').offset().top;
+                    var standard_line = $('.category-message-box').offset().top;
+                    var standard_line_wrap = $('#category_message').height();
+                    var fixed_self = $('#sidebar_fix').height();
+                    if (scroll_top > navStandard_line) {
+                        $('.navfixed').slideDown(50);
+                    } else {
+                        $('.navfixed').slideUp(50);
+                    }
 
+                    if (scroll_top > (standard_line)) {
+                        $('#sidebar_fix').addClass('fixed');
+                        $('.sidebar-box').css('bottom', 'auto');
+                    } else {
+                        $('#sidebar_fix').removeClass('fixed');
+                        $('.sidebar-box').css('bottom', 'auto');
+                    }
+
+                    if (scroll_top > (standard_line + standard_line_wrap - fixed_self - 66)) {
+                        $('#sidebar_fix').removeClass('fixed');
+                        $('.sidebar-box').css('bottom', '0');
+                    }
+                }
+
+            });
         },
 
         created(){
@@ -178,6 +212,10 @@
         },
         beforeDestroy(){
             document.body.style.backgroundColor = "#f5f5f5";
+        },
+
+        destroyed () {
+            this.detScrollFlag = false;
         }
 
     }

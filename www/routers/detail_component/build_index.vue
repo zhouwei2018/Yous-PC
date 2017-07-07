@@ -117,7 +117,7 @@
 
                     <dd>
                         <span>全部待租</span>
-                        <span><i class="bold">2380</i> 套 <a href="#category_message">查看全部</a></span>
+                        <span><i class="bold" v-text="total_items"></i> 套 <a href="#category_message">查看全部</a></span>
                     </dd>
                     <dd>
                         <span>价格范围</span>
@@ -155,7 +155,7 @@
                 <div id="detail-infomation">
                     <div class="category-item-title-first">
                         <h2 class="fl"><i class="detail-icon rent"></i>{{buildingNameSingle}}共有&nbsp;<strong
-                                class="text-blue">2380</strong>&nbsp;套房源待租</h2>
+                                class="text-blue" v-text="total_items"></strong>&nbsp;套房源待租</h2>
                         <a class="show-link mr20" href="javascript:;" target="_blank" @click="lookAll()">查看全部</a>
                     </div>
 
@@ -166,9 +166,9 @@
                         <div class="screening-range-list">
                             <span>面积:</span>
                             <ul class="clearfix">
-                                <li v-for="(item4,index) in area_arr" v-if="index == 0">
+                                <li v-for="(item1,index) in area_arr" v-if="index == 0">
                                     <a href="javascript:;"
-                                       :id="item4.code"
+                                       :id="item1.code"
                                        :class="{on:areaActive == index}"
                                        :data-sortType="'sort_are_'+index"
                                        @click="sel_area_list($event)"
@@ -176,10 +176,10 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == area_arr.length-1">
-                                        <a href="javascript:;">>{{item4.minnum}}m²</a>
+                                        <a href="javascript:;" class="last" @click="sel_area_list($event)">>{{item1.minnum}}m²</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;">{{item4.minnum}}-{{item4.maxnum}}m²</a>
+                                        <a href="javascript:;" @click="sel_area_list($event)">{{item1.minnum}}-{{item1.maxnum}}m²</a>
                                     </li>
                                 </template>
                                 <li></li>
@@ -196,36 +196,48 @@
                                        :id="item2.code"
                                        :class="{on:areaActive == index}"
                                        :data-sortType="'sort_are_'+index"
-                                       @click="sel_area_list($event)"
+                                       @click="sel_price_list($event)"
                                     >全部</a>
                                 </li>
                                 <template v-else>
                                     <li v-if="index == range_unit_prices.length-1">
-                                        <a href="javascript:;">>{{item2.minnum}}元</a>
+                                        <a href="javascript:;" class="last" @click="sel_price_list($event)">>{{item2.minnum}}{{item2.unit}}</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;">{{item2.minnum}}-{{item2.maxnum}}元</a>
+                                        <a href="javascript:;" @click="sel_price_list($event)">{{item2.minnum}}-{{item2.maxnum}}{{item2.unit}}</a>
                                     </li>
                                 </template>
 
                                 <li>
                                     <div class="price-wrap">
-                                        <a class="active cur-pointer">按单价</a>
-                                        <a class="cur-pointer">按总价</a>
+                                        <a class="active cur-pointer conts_option">按单价</a>
+                                        <a class="cur-pointer conts_option">按总价</a>
                                     </div>
                                 </li>
                             </ul>
                             <ul class="clearfix none">
-                                <li class="on">
-                                    <a href="javascript:;">全部</a>
+
+                                <li v-for="(item3,index) in range_total_prices" v-if="index == 0">
+                                    <a href="javascript:;"
+                                       :id="item3.code"
+                                       :class="{on:areaActive == index}"
+                                       :data-sortType="'sort_are_'+index"
+                                       @click="self_price_tot($event)"
+                                    >全部</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:;">&lt;1万元</a>
-                                </li>
+                                <template v-else>
+                                    <li v-if="index == range_total_prices.length-1">
+                                        <a href="javascript:;" @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
+                                    </li>
+                                    <li v-else>
+                                        <a href="javascript:;" @click="sel_tot_price_list($event)">{{item3.minnum}}-{{item3.maxnum}}{{item3.unit}}</a>
+                                    </li>
+                                </template>
+
                                 <li>
                                     <div class="price-wrap">
-                                        <a class="cur-pointer">按单价</a>
-                                        <a class="active cur-pointer">按总价</a>
+                                        <a class="cur-pointer conts_option">按单价</a>
+                                        <a class="cur-pointer conts_option active">按总价</a>
                                     </div>
                                 </li>
                             </ul>
@@ -491,7 +503,7 @@
     export default {
         data(){
             return {
-                buildingName: "建外SOHO", //拼出的楼盘周边配套
+                buildingName: "", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
                 positionData: "", //经纬度
@@ -530,6 +542,10 @@
                 bNum: "", //起始价格
                 eNum: "", //结束价格
 
+                area:"",
+                price_dj:"",
+                price_zj:"",
+
                 buildList: [], //楼盘列表，搜索结果
                 total_items: 0, //结果总数
                 total_pages: 0, //总页数
@@ -547,9 +563,6 @@
                 monthly_price: "", //月价格
                 housing_icon: "", //图片
                 workstation: "", //工位
-
-                //scroll flag
-                detScrollFlag: true,
 
             }
         },
@@ -614,7 +627,6 @@
                 var _this = this;
 
                 this.building_id = this.$route.query.building_id;
-
                 this.$http.post(
                     this.$api,
                     {
@@ -687,9 +699,9 @@
                     {
                         "parameters": {
                             "building_id": this.building_id,
-                            "area": "",
-                            "price_dj": "[0,100000]",
-                            "price_zj": "",
+                            "area": this.area,
+                            "price_dj": this.price_dj,
+                            "price_zj": this.price_zj,
                             "orderby": "D",
                             "curr_page": "1",
                             "items_perpage": "5"
@@ -715,7 +727,7 @@
                             "workstation": "200",
                             "refreshTime": "2017-07-07 22:03"
                         }],
-                        "total_items": "long,房源列表总记录数",
+                        "total_items": "100",
                         "total_pages": "long,房源列表总页数",
                         "current_page": "long,房源列表当前页"
                     }
@@ -727,6 +739,7 @@
                     _this.monthly_price = result.monthly_price;
                     _this.housing_icon = result.housing_icon;
                     _this.workstation = result.workstation;
+                    _this.total_items = result.total_items;
 
 //                    if (result.success) {
 //
@@ -793,6 +806,88 @@
                     this.getDetList(); //排序后的列表
                 }
             },
+
+            //改变面积
+            sel_area_list(e){
+                var _this = this;
+                $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+                var min = 0, max = 0;
+                if ($(e.target).html() == '全部') {
+                    this.area = "";
+
+                } else if ($(e.target).hasClass('last')) {
+                    this.area = [];
+                    min = Math.floor($(e.target).html().match(/\d+/g)[0]);
+                    max = "";
+                    this.area.push(min);
+                    this.area.push(max);
+                } else {
+
+                    this.area = [];
+                    var newArr=$(e.target).html().split('-');
+                    min = Math.floor(newArr[0]);
+                    max = Math.floor(newArr[1].match(/\d+/g)[0]);
+                    this.area.push(min);
+                    this.area.push(max);
+                }
+                this.getDetList();
+            },
+
+            //改变单价筛选
+            sel_price_list(e){
+                $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                var min = 0, max = 0;
+
+                if ($(e.target).html() == '全部') {
+                    this.price_dj = "";
+
+                } else if ($(e.target).hasClass('last')) {
+                    min = Math.floor($(e.target).html().match(/\d+/g));
+                    max = "";
+                    this.price_dj = [];
+                    this.price_dj.push(min);
+                    this.price_dj.push(max);
+                } else {
+                    var newArr=$(e.target).html().split('-');
+                    min = Math.floor(newArr[0]);
+                    max = Math.floor(newArr[1].match(/\d+/g)[0]);
+                    this.price_dj = [];
+                    this.price_dj.push(min);
+                    this.price_dj.push(max);
+                }
+                this.price_zj = ""; //总价置空
+                this.getDetList();
+            },
+
+            //改变总价筛选
+            sel_tot_price_list(e){
+                var _this = this;
+                $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                var min = 0, max = 0;
+
+                if ($(e.target).html() == '全部') {
+                    this.price_zj = "";
+
+                } else if ($(e.target).hasClass('last')) {
+                    min = Math.floor($(e.target).html().match(/\d+/g));
+                    max = "";
+                    this.price_zj = [];
+                    this.price_zj.push(min);
+                    this.price_zj.push(max);
+                } else {
+                    var newArr=$(e.target).html().split('-');
+                    min = Math.floor(newArr[0]);
+                    max = Math.floor(newArr[1].match(/\d+/g)[0]);
+                    this.price_zj = [];
+                    this.price_zj.push(min);
+                    this.price_zj.push(max);
+                }
+                this.price_dj = ""; //总价置空
+                this.getDetList();
+
+            },
         },
 
         mounted(){
@@ -828,40 +923,10 @@
                 mhc: '.carousel-mask'//朦灰层
             });
 
-            //top悬浮窗固定
-            $(window).on("scroll", function () {
-                if (_this.detScrollFlag) {
-                    var window_height = $(window).height(); //浏览器当前窗口可视区域高度
-                    var document_height = $(document).height(); //浏览器当前窗口文档的高度
-                    var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
-                    var navStandard_line = $('.navfixed-box').offset().top;
-                    var standard_line = $('.category-message-box').offset().top;
-                    var standard_line_wrap = $('#category_message').height();
-                    var fixed_self = $('#sidebar_fix').height();
-                    if (scroll_top > navStandard_line) {
-                        $('.navfixed').slideDown(50);
-                    } else {
-                        $('.navfixed').slideUp(50);
-                    }
 
-                    if (scroll_top > (standard_line)) {
-                        $('#sidebar_fix').addClass('fixed');
-                        $('.sidebar-box').css('bottom', 'auto');
-                    } else {
-                        $('#sidebar_fix').removeClass('fixed');
-                        $('.sidebar-box').css('bottom', 'auto');
-                    }
-
-                    if (scroll_top > (standard_line + standard_line_wrap - fixed_self - 66)) {
-                        $('#sidebar_fix').removeClass('fixed');
-                        $('.sidebar-box').css('bottom', '0');
-                    }
-                }
-
-            });
 
             //单价总价切换
-            $('.cur-pointer').click(function () {
+            $('.conts_option').click(function () {
                 $('#price-list').children('ul').toggleClass('none');
             });
 
@@ -897,10 +962,6 @@
             });
 
 
-        },
-
-        destroyed () {
-            this.detScrollFlag = false;
         }
     }
 </script>
