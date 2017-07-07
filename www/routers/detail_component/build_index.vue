@@ -914,7 +914,7 @@
                 picdire: true,//大图滚动方向（true为水平方向滚动）
                 mindire: true,//小图滚动方向（true为水平方向滚动）
                 min_picnum: 4,//小图显示数量
-                pop_up: true,//大图是否有弹出框
+                pop_up: false,//大图是否有弹出框
                 pop_div: '#pop_carousel_box',//弹出框框架
                 pop_pic: '#pop_carousel',//弹出框图片框架
                 pop_xx: '.pop-carousel-close',//关闭弹出框按钮
