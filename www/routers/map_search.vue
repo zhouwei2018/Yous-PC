@@ -43,6 +43,9 @@
             width: 10px;
             height: 6px;
         }
+        .contnav ul.topnav li.add img{
+            margin:4px 14px 0 90px;
+        }
         .fang_type .typelist ul li {
             overflow: hidden;
             background: #66d0fa;
@@ -54,6 +57,18 @@
             margin-top: 11px;
             width: 19px;
             height: 18px;
+        }
+        .contnav ul.topnav li.add ul.subnav{
+            width: 132px;
+        }
+        .contnav ul.topnav li.add ul.subnav li{
+            width: 132px;
+        }
+        .contnav ul.topnav li.add ul.subnav li a{
+              width: 132px;
+          }
+        .contnav ul.topnav li.add ul.subnav li:hover a{
+            width: 132px;
         }
         .contnav ul.topnav li ul.subnav li {
             clear: both;
@@ -77,14 +92,9 @@
             border: none;
             width: 90px;
         }
-        .s_location {
+        .choose{
             .subnav {
-                display: none;
-            }
-        }
-        .s_location:hover {
-            .subnav {
-                display: block;
+                display: block!important;
             }
         }
         .house-location{
@@ -132,16 +142,12 @@
                                 <ul>
                                     <li key="exchange">
                                         <a href="javascript:void(0);">
-                                            <div class="bottomstyle"><img
-                                                    src="../resources/images/map_search/icon_fang.png"><span>二手房</span>
-                                            </div>
+                                            <div class="bottomstyle"  @click="houseType(item.id, item.title, $event)"><img src="../resources/images/map_search/icon_fang.png"><span>航海房源</span></div>
                                         </a>
                                     </li>
                                     <li key="rent">
                                         <a href="javascript:void(0);">
-                                            <div class="bottomstyle last"><img
-                                                    src="../resources/images/map_search/icon_fang.png"><span>租房</span>
-                                            </div>
+                                            <div class="bottomstyle last"  @click="houseType(item.id, item.title, $event)"><img src="../resources/images/map_search/icon_fang.png"><span>幼狮房源</span></div>
                                         </a>
                                     </li>
                                 </ul>
@@ -149,44 +155,44 @@
                         </div>
                         <div class="search fl">
                             <input type="text" placeholder="请输入小区名称或地址..." autocomplete="off" id="autocomplete">
-                            <a class="search_btn fl" href="javascript:void(0);"><img
+                            <a class="search_btn fl" href="javascript:void(0);" @click="seachWord"><img
                                     src="../resources/images/map_search/searchbtn.png" width="17" height="17"></a>
                         </div>
 
                         <div class="contnav fl">
-                            <ul class="topnav">
-                                <li class="s_location">
-                                    <a href="javascript:void(0);"><span id="chv">{{areaTitle}}</span><img
+                            <ul class="topnav" @mouseout="selectOutHandler($event)">
+                                <li class="s_location s-li" @mouseover="selectHandler($event)">
+                                    <a href="javascript:void(0);"><span class="chv">区域</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul class="subnav">
-                                        <li class="result-item" v-for="(item, index) in areaDatas" areaid="item.id"
+                                        <li class="result-item" data-type="area" v-for="(item, index) in areaDatas" areaid="item.id"
                                             :x="item.point.toString().split('|')[0]"
                                             :y="item.point.toString().split('|')[1]"
-                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
+                                            @click="searchChoose(item.id, item.title, $event)"><a>{{item.title}}</a></li>
                                     </ul>
                                 </li>
-                                <li class="price-class">
-                                    <a href="javascript:void(0);"><span style="color:#CCC;">面积</span><img
+                                <li class="price-class s-li add" @mouseover="selectHandler($event)">
+                                    <a href="javascript:void(0);"><span class="chv">面积</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav">
-                                        <li class="result-item" v-for="(item, index) in priceArray" :value="item.value"
-                                            @click="searchFilter(item.value, item)"><a>{{item.title}}</a></li>
+                                    <ul class="subnav">
+                                        <li class="result-item" data-type="size" v-for="(item, index) in sizeArray" :value="item.value"
+                                            @click="searchChoose(item.value,item.title, $event)"><a>{{item.title}}</a></li>
                                     </ul>
                                 </li>
-                                <li class="size-class">
-                                    <a href="javascript:void(0);"><span style="color:#CCC;">价格</span><img
+                                <li class="size-class s-li" @mouseover="selectHandler($event)">
+                                    <a href="javascript:void(0);"><span class="chv">价格</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav">
-                                        <li class="result-item" v-for="(item, index) in areaArray" :value="item.id"
-                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
+                                    <ul class="subnav">
+                                        <li class="result-item"  data-type="price" v-for="(item, index) in priceArray" :value="item.id"
+                                            @click="searchChoose(item.value,item.title, $event)"><a>{{item.title}}</a></li>
                                     </ul>
                                 </li>
-                                <li class="room-type">
-                                    <a href="javascript:void(0);"><span style="color:#CCC;">特色</span><img
+                                <li class="room-type s-li" @mouseover="selectHandler($event)">
+                                    <a href="javascript:void(0);"><span class="chv">特色</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
-                                    <ul style="display:none;" class="subnav">
-                                        <li class="result-item" v-for="(item, index) in roomArray" :value="item.id"
-                                            @click="searchDistrict(index, item, $event)"><a>{{item.title}}</a></li>
+                                    <ul class="subnav">
+                                        <li class="result-item" data-type="feature" v-for="(item, index) in featureArray" :value="item.id"
+                                            @click="searchChoose(item.value,item.title, $event)"><a>{{item.title}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -216,67 +222,8 @@
                                         <a href="javascript:void(0);"><label class="icon_fanhui"></label>返回</a>
                                     </div>
                                     <div class="fenxiangshow fl" style="margin-left: 147px;"><span></span></div>
-                        <!--            &lt;!&ndash;分享的弹出层 str&ndash;&gt;
-                                    <div class="shareshow" style="display:none;">
-                                        <p class="fxdao">分享到</p>
-                                        <div class="fxlist">
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0);" class="share qq_share xq"></a>
-                                                    <a class="sharetext qq_sharetext">QQ好友</a>
-                                                </li>
-                                                <li style="background-position: 66% 0%">
-                                                    <a href="javascript:void(0);" class="share kj_share xq"></a>
-                                                    <a class="sharetext kj_sharetext">QQ空间</a>
-                                                </li>
-                                                <li style="background-position: 33% 175%">
-                                                    <a href="javascript:void(0);" class="share tx_share xq"></a>
-                                                    <a class="sharetext tx_sharetext">腾讯微博</a>
-                                                </li>
-                                                <li class="wxbtn" style="background-position: 100% 0%">
-                                                    <div class="bdsharebuttonbox"><a href="javascript:void(0);" class="share wx_share xq" data-cmd="weixin"></a></div>
-                                                    <a class="sharetext wx_sharetext">微信分享</a>
-                                                </li>
-                                                <li style="background-position:0% 175% ">
-                                                    <a href="javascript:void(0);" class="share xl_share xq"></a>
-                                                    <a class="sharetext xl_sharetext">新浪微博</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    &lt;!&ndash;分享的弹出层 end&ndash;&gt;
-                                  -->
                                     <div class="close qqserver_arrow fl"><span></span></div>
                                 </div>
-                               <!-- <div class="tabPanel">
-                                    <div class="tabList">
-                                    </div>
-                                    <div class="tabCon leftAround">
-                                        <div class="pane">
-                                            <ul class="gongjiaoinfo">
-                                                <li>
-                                                    <p class="jieguoinfo">
-                                                        <span class="iconbiao"></span>周边
-                                                        <b class="number">1公里</b>
-                                                        <span class="tiaoshuinfo"><b></b> 条结果</span>
-                                                    </p>
-                                                    <div class="vertical scrollbox clearfix">
-                                                        <div class="slyWrap example1">
-                                                            <div class="scrollbar"><div class="handle" style="position: absolute; top: 0px;"></div></div>
-                                                            <div class="sly" data-options="{ &quot;itemNav&quot;: &quot;smart&quot;, &quot;dragContent&quot;: 1, &quot;startAt&quot;: 1, &quot;scrollBy&quot;: 1, &quot;elasticBounds&quot;: 1 }" style="overflow: hidden; position: relative;">
-                                                                <ul class="big cfix gongjiaoload" style="position: absolute; top: 0px; height: 0px;">
-                                                                    <li class="zhoubians active">
-                                                                        <ul class="luxianadress"></ul>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>-->
                                 <div class="liebiao"><div class="fangyuanlist">
                                     <div class="adress"><span class="house-location"></span>{{detailLists.address}}</div>
                                     <div class="fanginfo">
@@ -325,7 +272,7 @@
             <div id="h_L"></div>
             <div id="ht_L"></div>
         </div>
-       <!-- <footer1></footer1>-->
+        <footer1></footer1>
     </div>
 </template>
 <script>
@@ -358,28 +305,64 @@
                 is_baidu: false, //是否开启百度地图标识
                 is_community_load: true, //是否加载小区 防止死循环
                 zoomId: 12, //默认的地图放大级别
-                house_type: 'all', //房源类型 all 全部 exchange rent
                 priceClass: 0, //价格
                 sizeType: 0, //面积
-                roomType: 0, //居室
                 featureType: 0,//特色
                 areaArray:[],
                 rightPannel:false,
-                priceArray: [
-                    {value: 1, title: "不限"},
-                    {value: 2, title: "1500-3000元"},
-                    {value: 3, title: "3000-6000元"},
-                    {value: 4, title: "3000-6000元"},
-                ], //价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
-                sizeArray: [], //面积区间  1:不限  2：50m以下  3:50-70，4：70-90,5:90-110,6:110-130:7:130-150,8:150-200,9:200以上
-                roomArray: [], //房屋布局   1.一居 ,2二局, 3，三居 ,4. 四局 ....... 6.6居， 7.6居以上
-                featureArray: [], //不限   1.拎包入住 ,可短租, 3，免佣 ,4. 单身公寓5.随时看房 6.注册办公， 7.新上房源
+                priceArray: [//价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
+                    {value: "", title: "全部"},
+                    {value: [1,3], title: "1-3元"},
+                    {value: [3,5], title: "3-5元"},
+                    {value: [5,8], title: "5-8元"},
+                    {value: [8,10], title: "8-10元"},
+                    {value: [10,20], title: "10-20元"},
+                    {value: [20,30], title: "20-30元"},
+                    {value: [30,""], title: ">30元"},
+                ],
+                sizeArray: [ //
+                    {value: "", title: "全部"},
+                    {value: [0,100], title: "0-100m²"},
+                    {value: [100,200], title: "100-200m²"},
+                    {value: [200,300], title: "200-300m²"},
+                    {value: [300,500], title: "300-500m²"},
+                    {value: [500,100], title: "500-1000m²"},
+                    {value: [1000,2000], title: "1000-2000m²"},
+                    {value: [2000,3000], title: "2000-3000m²"},
+                    {value: [3000,""], title: ">3000m²"},
+                ], //面积区间
+                featureArray: [ //全部
+                    {value: "", title: "全部"},
+                    {value: 1, title: "地铁周边"},
+                    {value: 2, title: "互联网+"},
+                    {value: 3, title: "金融精英"},
+                    {value: 4, title: "健康空气"},
+                    {value: 5, title: "LEED"},
+                    {value: 6, title: "新楼"},
+                    {value: 7, title: "地标建筑"},
+                    {value: 8, title: "创意园区"},
+                    {value: 9, title: "名企开发商"},
+                    {value: 10, title: "知名物业"},
+                    {value: 11, title: "5A写字楼"},
+                    {value: 12, title: "纳什空间"},
+
+                ],
                 detailLists: {
                     address:"", //楼栋地址
                     title:"", //楼栋名称
                     area:"", //楼栋所屬行政區域
                     pic :"", //楼栋封面图片
                     houses:[]
+                },
+                paraObj:{
+                    type: "all", //返回房源类型  "all":去全部， //这个现在房源类型单一，我就都传all,后面再根据实际调整
+                  /*  dataType: "district",  //返回房源在什么尺度下  "area":行政区域下 ，“district”：商圈 , "community":楼栋*/
+                    priceClass: [1,3], //价格区间  [3,5],[5,8],[8,10],[10,20],[30,""]
+                    sizeClass: [0,100], //面积区间 [100,200],[200,300],[300,500],[500,1000],[1000,2000],[2000,3000],[3000,""]
+                    featureType: 1, // 特色搜索 1.地铁周边 2.互联网+ 3.金融精英 4.健康空气 5LEED 6新楼 7地标建筑 8创意园区 9名企开发商 10知名物业 115A写字楼 12纳什空间
+                    zoom: 15,  //这个是附带给你的，前端要用，传给你什么你就返回什么
+                    areaId:8, //该区域的id
+                    searchKeyword:"天赐良缘" //搜索过滤关键字
                 }
             }
         },
@@ -393,6 +376,13 @@
 
         },
         methods: {
+            selectHandler:function(e){
+               var target = e.target;
+               $(target).closest('li').addClass('choose').siblings('li').removeClass('choose')
+            },
+            selectOutHandler:function(e){
+                $(e.target).closest('ul').children('li').removeClass('choose')
+            },
             getDisData: function () {
                 //行政区域边界
                 let boundary_location = [];
@@ -467,6 +457,44 @@
                 };
                 this.YSMap = new YMap(options);
                 this.YSMap.loadMap(this.YSMap, this);
+            },
+            seachWord:function(){
+                if (this.zoomId === 12) {
+                    this.loadArea();
+                }else if(this.zoomId === 15) {
+                    this.loadDistrict();
+                }else if(this.zoomId===17){
+                    this.loadCommunity();
+                }else{
+                    //this.loadArea();
+                }
+            },
+            searchChoose:function(value, title, e){
+
+                $(e.target).closest('.s-li').removeClass('choose').find('.chv').html(title)
+                switch ($(e.target).closest('li').attr('data-type')){
+                     case 'area':
+                         //
+                         break;
+                     case 'size':
+                         //
+                         break;
+                     case 'price':
+                         //
+                         break;
+                     case 'feature':
+                         //
+                         break;
+                 };
+                if (this.zoomId === 12) {
+                    this.loadArea();
+                }else if(this.zoomId === 15) {
+                    this.loadDistrict();
+                }else if(this.zoomId===17){
+                    this.loadCommunity();
+                }else{
+                    //this.loadArea();
+                }
             },
             searchDistrict: function (ele, index, e) {
                 this.areaTitle = index.title;
