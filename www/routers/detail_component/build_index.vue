@@ -152,7 +152,7 @@
                     <div class="category-item-title-first">
                         <h2 class="fl"><i class="detail-icon rent"></i>{{buildingNameSingle}}共有&nbsp;<strong
                                 class="text-blue">2380</strong>&nbsp;套房源待租</h2>
-                        <a class="show-link mr20" href="/detail/houses-184.html" target="_blank">查看全部</a>
+                        <a class="show-link mr20" href="javascript:;" target="_blank" @click="lookAll()">查看全部</a>
                     </div>
 
 
@@ -291,61 +291,98 @@
                         <div class="screening-range-list">
                             <span>自定义:</span>
                             <ul class="clearfix pl20">
-                                <li><a class=" fb">面积</a></li>
-                                <li class="area-wrap clearfix pr">
+                                <li><a class="fb">面积</a></li>
+                                <li class="area-wrap clearfix pr" @mouseenter="areaShowFlag = true"
+                                    @mouseleave="areaShowFlag = false">
                                     <div>
-                                        <input name="temp-beginArea" maxlength="6" value="" type="text"
+                                        <input name="temp-beginArea"
+                                               maxlength="6"
+                                               value=""
+                                               type="text"
+                                               autocomplete="off"
+                                               v-model="bArea"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <i class="mv05 text-grayC">-</i>
-                                        <input name="temp-endArea" maxlength="6" value="" type="text"
+                                        <input name="temp-endArea"
+                                               maxlength="6"
+                                               value=""
+                                               type="text"
+                                               autocomplete="off"
+                                               v-model="eArea"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <i class="font-num text-black ml05">m²</i>
                                     </div>
-                                    <div class="inp-pop none">
+                                    <div class="inp-pop" v-show="areaShowFlag">
                                         <form action="/detail-184.html#detail-infomation" class="fl" id="areaForm">
-                                            <input name="beginArea" maxlength="6" value="" type="text"
+                                            <input name="beginArea"
+                                                   maxlength="6"
+                                                   value=""
+                                                   type="text" a
+                                                   utocomplete="off"
+                                                   v-model="bArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="mv05 text-grayC">-</i>
-                                            <input name="endArea" maxlength="6" value="" type="text"
+                                            <input name="endArea"
+                                                   maxlength="6"
+                                                   value=""
+                                                   type="text"
+                                                   autocomplete="off"
+                                                   v-model="eArea"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="font-num text-black ml05">m²</i>
-                                            <a class="confrim-btn cur-pointer ml05 none" id="areaConfirm">确定</a>
+                                            <a class="confrim-btn cur-pointer ml05" @click="self_area($event)"
+                                               id="areaConfirm">确定</a>
                                         </form>
                                     </div>
-
                                 </li>
                                 <li>
                                     <a class="fb">价格</a>
                                 </li>
-                                <li class="price-inp-wrap pr">
+                                <li class="price-inp-wrap pr" @mouseenter="priceShowFlag = true"
+                                    @mouseleave="priceShowFlag = false">
                                     <div>
-                                        <input type="text" name="temp-startprice" value="" maxlength="2"
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="temp-startprice"
+                                               value=""
+                                               maxlength="3"
+                                               v-model="bNum"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <i class="mv05 text-grayC">-</i>
-                                        <input type="text" name="temp-endprice" value="" class="mr05" maxlength="2"
+                                        <input type="text"
+                                               autocomplete="off"
+                                               name="temp-endprice"
+                                               value=""
+                                               class="mr05"
+                                               maxlength="2"
+                                               v-model="eNum"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <i class="text-black">元</i>
                                     </div>
-                                    <div class="inp-pop none">
+                                    <div class="inp-pop" v-show="priceShowFlag">
                                         <form action="/detail-184.html#detail-infomation" class="fl" id="priceForm">
 
-                                            <input type="text" name="startprice" value="" maxlength="2"
+                                            <input type="text"
+                                                   autocomplete="off" name="startprice" value="" maxlength="2"
+                                                   v-model="bNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="mv05 text-grayC">-</i>
-                                            <input type="text" name="endprice" value="" class="mr05" maxlength="2"
+                                            <input type="text" autocomplete="off" name="endprice"
+                                                   value="" class="mr05" maxlength="2"
+                                                   v-model="eNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="text-black">元</i>
 
                                             <input type="hidden" name="priceFlag" value="1">
-                                            <a class="confrim-btn cur-pointer ml05 none" id="priceConfirm">确定</a>
+                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm">确定</a>
                                         </form>
                                     </div>
 
@@ -428,7 +465,7 @@
                 <div class="building-information">
                     <div class="category-item-title">
                         <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingNameSingle}}简介</h2>
-                        <a class="show-link mr20" href="/detail/info-184.html" target="_blank">查看详情</a>
+                        <a class="show-link mr20" href="javascript:;" target="_blank">查看详情</a>
                     </div>
                     <table>
                         <tbody>
@@ -476,7 +513,7 @@
                             <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
                                 <input type="hidden" name="flag" value="5">
                                 <input name="searchengine" type="hidden" value="">
-                                <input name="phone" class="form_control form_telphone" type="text"
+                                <input name="phone" class="form_control form_telphone" type="text" autocomplete="off"
                                        placeholder="手机号" maxlength="11"
                                        onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                        onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
@@ -536,6 +573,27 @@
                 highlights: "", //特色
                 address: "",//地址
                 price: "",//价格
+
+                //筛选部分
+                areaShowFlag: false, //默认面积窗不显示
+                bArea: "", //起始面积
+                eArea: "", //结束面积
+
+                //单价
+                priceShowFlag: false, //默认价格窗不显示
+                bNum: "", //起始价格
+                eNum: "", //结束价格
+
+                buildList: [], //楼盘列表，搜索结果
+                total_items: 0, //结果总数
+                total_pages: 0, //总页数
+                //分页
+                pageSize: 10, //每页个数
+                curPage: 1, //当前页数
+
+                loadingFlag: true, //loading是否显示
+                pageFlag: false, //页码是否显示
+
             }
         },
         components: {
@@ -569,8 +627,8 @@
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {
-                            _this.buildingName = result.data.building_name+ '周边配套';
-                            _this.buildingNameSingle = result.data.building_name ;
+                            _this.buildingName = result.data.building_name + '周边配套';
+                            _this.buildingNameSingle = result.data.building_name;
                             var obj = {
                                 name: result.data.building_name,
                                 labels: result.data.label.split('、')
@@ -593,19 +651,91 @@
                 });
             },
 
-
-
-
             //分页
             change(page){
                 this.curPage = page;
                 this.getList(); //获取楼盘列表
                 $(window).scrollTop(0);
             },
+
+            //获取楼盘列表
+            getDetList(){
+                var _this = this;
+
+                this.buildList = [];
+
+                this.loadingFlag = true;
+                this.pageFlag = false;
+
+                this.buildingShowFlag = false;
+
+                this.$http.post(
+                    this.$api,
+                    {
+                        "parameters": {
+                            "building_id": this.building_id,
+                            "area": "",
+                            "price_dj": "[0,500]",
+                            "price_zj": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "5"
+                        },
+                        "foreEndType": 2,
+                        "code": "30000003"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    _this.loadingFlag = false;
+                    if (result.success) {
+                        if (result.data) {
+                            for (var i = 0; i < result.data.buildings.length; i++) {
+                                if (result.data.buildings[i].label) {
+                                    result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
+                                } else {
+                                    result.data.buildings[i].tags = [];
+                                }
+
+                            }
+                            _this.buildList = result.data.buildings;
+                            _this.total_items = result.data.total_items;
+                            _this.total_pages = result.data.total_pages;
+                            _this.pageFlag = true;
+
+                        } else {
+                            _this.pageFlag = false;
+                        }
+
+                    } else {
+                        _this.buildingShowFlag = true;
+                        _this.total_items = 0;
+                    }
+
+                }, function (res) {
+                    this.$Message.error('获取楼盘列表失败');
+                });
+            },
+
+            //查看全部
+            lookAll(){
+                this.$emit('listenchild2');
+            },
+
+            //自定义面积
+            self_area(){
+                this.area = [this.bArea, this.eArea];
+                this.getList();
+            },
+
+            //自定义单价
+            self_price_per(){
+                this.price_dj = [this.bNum, this.eNum];
+                this.getList();
+            },
         },
 
         mounted(){
-
+            var _this = this;
             this.getDetail(); //获取楼盘详情
 
             //首屏轮播
@@ -633,7 +763,7 @@
             });
 
             //top悬浮窗固定
-            $(window).on("scroll",function(){
+            $(window).on("scroll", function () {
                 var window_height = $(window).height(); //浏览器当前窗口可视区域高度
                 var document_height = $(document).height(); //浏览器当前窗口文档的高度
                 var scroll_top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
@@ -641,29 +771,60 @@
                 var standard_line = $('.category-message-box').offset().top;
                 var standard_line_wrap = $('#category_message').height();
                 var fixed_self = $('#sidebar_fix').height();
-                if(scroll_top > navStandard_line ){
+                if (scroll_top > navStandard_line) {
                     $('.navfixed').slideDown(50);
-                }else {
+                } else {
                     $('.navfixed').slideUp(50);
                 }
 
-                if(scroll_top > (standard_line)){
+                if (scroll_top > (standard_line)) {
                     $('#sidebar_fix').addClass('fixed');
-                    $('.sidebar-box').css('bottom','auto');
-                }else {
+                    $('.sidebar-box').css('bottom', 'auto');
+                } else {
                     $('#sidebar_fix').removeClass('fixed');
-                    $('.sidebar-box').css('bottom','auto');
+                    $('.sidebar-box').css('bottom', 'auto');
                 }
 
-                if(scroll_top > (standard_line + standard_line_wrap - fixed_self - 66) ){
+                if (scroll_top > (standard_line + standard_line_wrap - fixed_self - 66)) {
                     $('#sidebar_fix').removeClass('fixed');
-                    $('.sidebar-box').css('bottom','0');
+                    $('.sidebar-box').css('bottom', '0');
                 }
             });
 
             //单价总价切换
             $('.cur-pointer').click(function () {
                 $('#price-list').children('ul').toggleClass('none');
+            });
+
+            //input propertchange事件
+            $('input[name="beginArea"]').on("input propertychange", function () {
+                if (_this.bArea && _this.eArea) {
+                    $('#areaConfirm').show();
+                } else {
+                    $('#areaConfirm').hide();
+                }
+            });
+            $('input[name="endArea"]').on("input propertychange", function () {
+                if (_this.bArea && _this.eArea) {
+                    $('#areaConfirm').show();
+                } else {
+                    $('#areaConfirm').hide();
+                }
+            });
+
+            $('input[name="startprice"]').on("input propertychange", function () {
+                if (_this.bNum && _this.eNum) {
+                    $('#priceConfirm').show();
+                } else {
+                    $('#priceConfirm').hide();
+                }
+            });
+            $('input[name="endprice"]').on("input propertychange", function () {
+                if (_this.bNum && _this.eNum) {
+                    $('#priceConfirm').show();
+                } else {
+                    $('#priceConfirm').hide();
+                }
             });
 
 

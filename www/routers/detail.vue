@@ -63,13 +63,9 @@
             <div class="navfixed-box">
                 <div class="navfixed" style="display: none">
                     <ul class="nav-building fl">
-
-                        <li class="active"><a href="/detail-184.html">楼盘首页</a></li>
-
-                        <li><a href="/detail/houses-184.html">待租房源</a></li>
-                        <li><a href="/detail/surrounding-184.html">周边配套</a></li>
-                        <li><a href="/detail/info-184.html">楼盘详情</a></li>
-                        <li><a href="/detail/trade-184.html">历史挂牌</a></li>
+                        <li v-for="(tab,index) in tabs" @click="toggle(index,tab.view)" :class="{active:active === index}">
+                            <a href="javascript:;">{{tab.type}}</a>
+                        </li>
                     </ul>
                     <div class="consulting">
                         <div class="quick">
@@ -88,6 +84,7 @@
 
             <component :is="currentView"
                        @listenchild="getName"
+                       @listenchild2="toggle(1,'build_rent')"
             ></component>
 
         </div>
