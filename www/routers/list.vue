@@ -446,7 +446,7 @@
                             <div class="app_download mt20">
                                 <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
                                 <div class="mh25">
-                                    <img src="../resources/images/ys_weixin.jpg" alt="幼狮APP">
+                                    <img src="../resources/images/ys_logo2.jpg" alt="幼狮APP">
                                     <img src="../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
                                          alt="扫描二维码关注">
                                 </div>

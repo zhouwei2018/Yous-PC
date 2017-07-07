@@ -24,7 +24,7 @@
     //import qs from 'qs';
     export default {
         name: 'Ymap',
-        props: ['buildingName'],
+        props: ['buildingName',"positionData"],  //positionData "100,20" 经度 纬度
         data(){
             return {
                 remoteData: {},
@@ -65,6 +65,7 @@
         },
         mounted: function () {
             this.init();
+            //alert(this.positionData);  //经度纬度
         },
         methods: {
 

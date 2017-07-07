@@ -34,6 +34,7 @@
 /*浅红色*/
 /*hover 浅灰色*/
 /*hover 浅lv色*/
+/*浅lv色*/
 /*边线颜色*/
 /*小竖线白色*/
 /*小竖线*/
@@ -220,6 +221,9 @@ select {
 /*针对特殊网站样式start*/
 .none {
   display: none;
+}
+.bold {
+  font-weight: bold !important;
 }
 .cursor {
   cursor: pointer;

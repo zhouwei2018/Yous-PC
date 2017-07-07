@@ -92,18 +92,33 @@
                 <p class="building-consult clearfix">
                     <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span>
                 </p>
+
+                <!--电话咨询-->
+                <div class="consulting clearfix mobile_consult">
+                    <div class="quick">
+                        <i class="detail-icon"></i>
+                        <div class="tel">
+                            <em class="tel_num_all">400-078-8800</em></div>
+                    </div>
+                    <div class="mobile_box">
+                        <a href="javascript:;" class="call_back_btn">免费回拨</a>
+                        <a href="javascript:;" class="call_back_btn">在线咨询</a>
+                    </div>
+                </div>
+
                 <dl class="rental-info clearfix">
+
                     <dd>
                         <span>全部待租</span>
-                        <span>2380套 <a href="#category_message">查看全部</a></span>
+                        <span><i class="bold">2380</i> 套 <a href="#category_message">查看全部</a></span>
                     </dd>
                     <dd>
                         <span>价格范围</span>
-                        <p>5.3~9.8元/<em class="font-num">m²</em>·天</p>
+                        <span><i class="bold">5.3</i>~<i class="bold">9.8</i> 元/<em class="font-num">m²</em>·天</span>
                     </dd>
                     <dd>
                         <span>面积范围</span>
-                        <p>0-4576<em class="font-num">m²</em></p>
+                        <span><i class="bold">0</i>-<i class="bold">4576</i><em class="font-num"> m²</em></span>
                     </dd>
                 </dl>
                 <div class="around-circle clearfix">
@@ -128,7 +143,7 @@
 
                 <div id="detail-infomation">
                     <div class="category-item-title-first">
-                        <h2 class="fl"><i class="detail-icon rent"></i>望京SOHO共有&nbsp;<strong
+                        <h2 class="fl"><i class="detail-icon rent"></i>{{buildingNameSingle}}共有&nbsp;<strong
                                 class="text-blue">2380</strong>&nbsp;套房源待租</h2>
                         <a class="show-link mr20" href="/detail/houses-184.html" target="_blank">查看全部</a>
                     </div>
@@ -395,7 +410,7 @@
 
                 <div class="building-information">
                     <div class="category-item-title">
-                        <h2 class="fl"><i class="detail-icon introduce"></i>望京SOHO简介</h2>
+                        <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingNameSingle}}简介</h2>
                         <a class="show-link mr20" href="/detail/info-184.html" target="_blank">查看详情</a>
                     </div>
                     <table>
@@ -463,7 +478,7 @@
                     <div class="app_download mt20">
                         <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
                         <div class="mh25">
-                            <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
+                            <img src="../../resources/images/ys_logo2.jpg" alt="幼狮APP">
                             <img src="../../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
                                  alt="扫描二维码关注">
                         </div>
@@ -478,7 +493,7 @@
         <!--周边配套信息-->
         <div class="category-message-box clearfix " id="buildmap">
             <!--地图-->
-            <map-part :building-name="buildingName"></map-part>
+            <map-part :building-name="buildingName" :position-data="positionData"></map-part>
         </div>
 
     </div>
@@ -493,7 +508,11 @@
     export default {
         data(){
             return {
-                buildingName: '望京SOHO周边配套',
+                buildingName: "", //拼出的楼盘周边配套
+                buildingNameSingle: "", //单独楼盘名称
+
+                positionData: "100,20", //经纬度
+
                 pageFlag: true, //页码是否显示
 
                 building_id: "", //楼盘id
@@ -533,6 +552,8 @@
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {
+                            _this.buildingName = result.data.building_name+ '周边配套';
+                            _this.buildingNameSingle = result.data.building_name ;
                             var obj = {
                                 name: result.data.building_name,
                                 labels: result.data.label.split('、')
@@ -544,7 +565,7 @@
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
 
-                            _this.address = '[' + _this.district+'-' + _this.business + '] ' + result.data.address;
+                            _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
                             _this.price = result.data.price == null ? '--' : result.data.price;
 
                         }

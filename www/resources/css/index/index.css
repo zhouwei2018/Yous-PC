@@ -32,6 +32,7 @@
 /*浅红色*/
 /*hover 浅灰色*/
 /*hover 浅lv色*/
+/*浅lv色*/
 /*边线颜色*/
 /*小竖线白色*/
 /*小竖线*/
@@ -140,7 +141,7 @@
 [index_content] .content_tit {
   height: 120px;
   line-height: 120px;
-  font-size: 28px;
+  font-size: 28px !important;
   text-align: center;
 }
 [index_content] [one_state] {
