@@ -509,7 +509,7 @@
                 featureActive: 0,
 
                 buildList: [], //楼盘列表，搜索结果
-                total_items: 0, //结果总数
+                total_items: '--', //结果总数
                 total_pages: 0, //总页数
 
                 areaShowFlag: false, //默认面积窗不显示

@@ -121,11 +121,15 @@
                     </dd>
                     <dd>
                         <span>价格范围</span>
-                        <span><i class="bold">5.3</i>~<i class="bold">9.8</i> 元/<em class="font-num">m²</em>·天</span>
+                        <span><i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
+                                                                                 v-text="max_renge_price"></i> 元/<em
+                                class="font-num">m²</em>·天</span>
                     </dd>
                     <dd>
                         <span>面积范围</span>
-                        <span><i class="bold">0</i>-<i class="bold">4576</i><em class="font-num"> m²</em></span>
+                        <span><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
+                                                                                v-text="max_renge_area"></i><em
+                                class="font-num"> m²</em></span>
                     </dd>
                 </dl>
                 <div class="around-circle clearfix">
@@ -156,46 +160,38 @@
                     </div>
 
 
-                    <div class="screening-range ph10">
+                    <div class="screening-range ph10" v-show="initFlag">
 
                         <!--面积-->
                         <div class="screening-range-list">
                             <span>面积:</span>
                             <ul class="clearfix">
-                                <li>
-                                    <a class="on" href="/detail-184.html#detail-infomation">全部</a>
+                                <li v-for="(item1,index) in area_arr" v-if="index == 0">
+                                    <a href="javascript:;"
+                                       :id="item1.code"
+                                       :class="{active:areaActive == index}"
+                                       :data-sortType="'sort_are_'+index"
+                                       @click="sel_area_list($event)"
+                                    >全部</a>
                                 </li>
-                                <li>
-                                    <a href="/detail-184/a1.html#detail-infomation">0-100<i class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a2.html#detail-infomation">100-200<i
-                                            class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a3.html#detail-infomation">200-300<i
-                                            class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a4.html#detail-infomation">300-500<i
-                                            class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a5.html#detail-infomation">500-1000<i
-                                            class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a6.html#detail-infomation">1000-2000<i
-                                            class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a7.html#detail-infomation">2000-3000<i
-                                            class="font-num">m²</i></a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/a8.html#detail-infomation">&gt;3000<i
-                                            class="font-num">m²</i></a>
-                                </li>
+                                <template v-else>
+                                    <li v-if="index == area_arr.length-1">
+                                        <a :class="{active:areaActive == index}"
+                                           href="javascript:;"
+                                           class="last"
+                                           :data-sortType="'sort_are_'+index"
+                                           @click="sel_area_list($event)"
+                                        >&gt;{{item1.minnum}}m²</a>
+                                    </li>
+                                    <li v-else>
+                                        <a href="javascript:;"
+                                           :class="{active:areaActive == index}"
+                                           :data-sortType="'sort_are_'+index"
+                                           @click="sel_area_list($event)">
+                                            {{item1.minnum}}-{{item1.maxnum}}<span class="font_num">m²</span>
+                                        </a>
+                                    </li>
+                                </template>
                             </ul>
                         </div>
 
@@ -205,35 +201,10 @@
 
                             <ul class="clearfix">
                                 <li>
-                                    <a href="/detail-184.html#detail-infomation" class="on">全部</a>
+                                    <a href="javascript:;" class="on">全部</a>
                                 </li>
                                 <li>
-                                    <a href="/detail-184/t1-p1.html#detail-infomation">
-                                        1-3元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t1-p2.html#detail-infomation">
-                                        3-5元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t1-p3.html#detail-infomation">
-                                        5-8元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t1-p4.html#detail-infomation">
-                                        8-10元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t1-p5.html#detail-infomation">
-                                        10-20元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t1-p6.html#detail-infomation">
-                                        20-30元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t1-p7.html#detail-infomation">
-                                        &gt;30元</a>
+                                    <a href="javascript:;">1-3元</a>
                                 </li>
                                 <li>
                                     <div class="price-wrap">
@@ -244,39 +215,10 @@
                             </ul>
                             <ul class="clearfix none">
                                 <li class="on">
-                                    <a href="/detail-184.html#detail-infomation">全部</a>
+                                    <a href="javascript:;">全部</a>
                                 </li>
                                 <li>
-                                    <a href="/detail-184/t2-p1.html#detail-infomation">
-                                        &lt;1万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p2.html#detail-infomation">
-                                        1-3万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p3.html#detail-infomation">
-                                        3-5万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p4.html#detail-infomation">
-                                        5-8万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p5.html#detail-infomation">
-                                        8-10万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p6.html#detail-infomation">
-                                        10-20万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p7.html#detail-infomation">
-                                        20-30万元</a>
-                                </li>
-                                <li>
-                                    <a href="/detail-184/t2-p8.html#detail-infomation">
-                                        &gt;30万元</a>
+                                    <a href="javascript:;">&lt;1万元</a>
                                 </li>
                                 <li>
                                     <div class="price-wrap">
@@ -287,7 +229,7 @@
                             </ul>
                         </div>
 
-                        <!--自定义价格-->
+                        <!--自定义面积和价格-->
                         <div class="screening-range-list">
                             <span>自定义:</span>
                             <ul class="clearfix pl20">
@@ -406,7 +348,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -532,7 +474,7 @@
         <!--周边配套信息-->
         <div class="category-message-box clearfix " id="buildmap">
             <!--地图-->
-            <map-part :building-name="buildingName" :position-data="positionData"></map-part>
+            <map-part :building-name="buildingName" :position-data="positionData" v-if="positionData"></map-part>
         </div>
 
     </div>
@@ -550,7 +492,7 @@
                 buildingName: "建外SOHO", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
-                positionData: "116.646319, 40.006356", //经纬度
+                positionData: "", //经纬度
 
                 pageFlag: true, //页码是否显示
 
@@ -558,8 +500,25 @@
                 highlights: "", //特色
                 address: "",//地址
                 price: "",//价格
+                min_renge_area: "",
+                max_renge_area: "",
+                min_renge_price: "",
+                max_renge_price: "",
+                lease_nums: "",
 
                 //筛选部分
+                initFlag: true,
+                areaActive: 0,
+                perPriceActive: 0,
+                totPriceActive: 0,
+                //面积筛选数组
+                area_arr: [],
+
+                //价格筛选数组
+                range_unit_prices: [],
+
+                range_total_prices: [],
+
                 areaShowFlag: false, //默认面积窗不显示
                 bArea: "", //起始面积
                 eArea: "", //结束面积
@@ -596,6 +555,57 @@
             mapPart
         },
         methods: {
+
+            //获取筛选条件
+            getSortList(){
+                var _this = this;
+                //调用区域查询接口，更新数据
+                this.$http.post(
+                    this.$api,
+                    {
+                        "parameters": {},
+                        "foreEndType": 2,
+                        "code": "90000301"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        _this.area_arr = result.data.range_areas; //面积arr
+
+                        var all_area = {
+                            code: "area_all",
+                            name: "全部"
+                        };
+                        _this.area_arr.unshift(all_area);
+                        //alert(JSON.stringify(_this.area_arr));
+
+                        _this.range_unit_prices = result.data.range_unit_prices; //单价
+
+
+                        var all_range_unit = {
+                            code: "range_pri_per_all",
+                            name: "全部"
+                        };
+                        _this.range_unit_prices.unshift(all_range_unit);
+
+                        _this.range_total_prices = result.data.range_total_prices; //总价
+
+                        var all_range_total = {
+                            code: "range_pri_tot_all",
+                            name: "全部"
+                        };
+                        _this.range_total_prices.unshift(all_range_total);
+
+                        _this.initFlag = true;
+
+
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取搜索条件失败');
+                });
+            },
 
             //获取楼盘详情
             getDetail(){
@@ -637,7 +647,13 @@
 
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
                             _this.price = result.data.price == null ? '--' : result.data.price;
+                            _this.positionData = result.data.longitude + ',' + result.data.latitude;
 
+                            _this.min_renge_area = result.data.min_renge_area == null ? '--' : result.data.min_renge_area;
+                            _this.max_renge_area = result.data.max_renge_area == null ? '--' : result.data.max_renge_area;
+                            _this.min_renge_price = result.data.min_renge_price == null ? '--' : result.data.min_renge_price;
+                            _this.max_renge_price = result.data.max_renge_price == null ? '--' : result.data.max_renge_price;
+                            _this.lease_nums = result.data.lease_nums == null ? '--' : result.data.lease_nums;
                         }
                     }
 
@@ -695,7 +711,7 @@
                             "monthly_price": "3.9",
                             "housing_icon": "http://116.62.71.76:81/default-youshi.png",
                             "workstation": "200",
-                            "refreshTime":"2017-07-07 22:03"
+                            "refreshTime": "2017-07-07 22:03"
                         }],
                         "total_items": "long,房源列表总记录数",
                         "total_pages": "long,房源列表总页数",
@@ -779,9 +795,12 @@
 
         mounted(){
             var _this = this;
+
+            this.getSortList(); //获取筛选条件
+
             this.getDetail(); //获取楼盘详情
 
-            this.getDetList();
+            this.getDetList(); //搜索结果列表
 
             //首屏轮播
             $('#carousel_building').banqh({

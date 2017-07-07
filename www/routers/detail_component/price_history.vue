@@ -4,7 +4,7 @@
 
 
 <template>
-
+    <div style="min-height: 460px;"></div>
 </template>
 
 <script>

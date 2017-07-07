@@ -230,6 +230,7 @@
 [detail] .common-info {
   width: 1200px;
   margin: 29px auto 30px;
+  min-height: 460px;
 }
 [detail] .common-info .building-message {
   float: right;
