@@ -166,32 +166,23 @@
                         <div class="screening-range-list">
                             <span>面积:</span>
                             <ul class="clearfix">
-                                <li v-for="(item1,index) in area_arr" v-if="index == 0">
+                                <li v-for="(item4,index) in area_arr" v-if="index == 0">
                                     <a href="javascript:;"
-                                       :id="item1.code"
-                                       :class="{active:areaActive == index}"
+                                       :id="item4.code"
+                                       :class="{on:areaActive == index}"
                                        :data-sortType="'sort_are_'+index"
                                        @click="sel_area_list($event)"
                                     >全部</a>
                                 </li>
                                 <template v-else>
                                     <li v-if="index == area_arr.length-1">
-                                        <a :class="{active:areaActive == index}"
-                                           href="javascript:;"
-                                           class="last"
-                                           :data-sortType="'sort_are_'+index"
-                                           @click="sel_area_list($event)"
-                                        >&gt;{{item1.minnum}}m²</a>
+                                        <a href="javascript:;">>{{item4.minnum}}m²</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;"
-                                           :class="{active:areaActive == index}"
-                                           :data-sortType="'sort_are_'+index"
-                                           @click="sel_area_list($event)">
-                                            {{item1.minnum}}-{{item1.maxnum}}<span class="font_num">m²</span>
-                                        </a>
+                                        <a href="javascript:;">{{item4.minnum}}-{{item4.maxnum}}m²</a>
                                     </li>
                                 </template>
+                                <li></li>
                             </ul>
                         </div>
 
@@ -200,12 +191,23 @@
                             <span>价格:</span>
 
                             <ul class="clearfix">
-                                <li>
-                                    <a href="javascript:;" class="on">全部</a>
+                                <li v-for="(item2,index) in range_unit_prices" v-if="index == 0">
+                                    <a href="javascript:;"
+                                       :id="item2.code"
+                                       :class="{on:areaActive == index}"
+                                       :data-sortType="'sort_are_'+index"
+                                       @click="sel_area_list($event)"
+                                    >全部</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:;">1-3元</a>
-                                </li>
+                                <template v-else>
+                                    <li v-if="index == range_unit_prices.length-1">
+                                        <a href="javascript:;">>{{item2.minnum}}元</a>
+                                    </li>
+                                    <li v-else>
+                                        <a href="javascript:;">{{item2.minnum}}-{{item2.maxnum}}元</a>
+                                    </li>
+                                </template>
+
                                 <li>
                                     <div class="price-wrap">
                                         <a class="active cur-pointer">按单价</a>
