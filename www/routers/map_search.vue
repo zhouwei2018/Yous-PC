@@ -135,19 +135,19 @@
                     </div>
                     <div class="search_main">
                         <div class="fang_type fl">
-                            <div class="fangtypebtn"><img
-                                    src="../resources/images/map_search/fang_type.jpg"><span>房源类型</span>
+                            <div class="fangtypebtn"><img src="../resources/images/map_search/fang_type.jpg">
+                                <span class="result-span">房源类型</span>
                             </div>
                             <div class="typelist">
                                 <ul>
                                     <li key="exchange">
                                         <a href="javascript:void(0);">
-                                            <div class="bottomstyle"  @click="houseType(item.id, item.title, $event)"><img src="../resources/images/map_search/icon_fang.png"><span>航海房源</span></div>
+                                            <div class="bottomstyle"  @click="houseType('hh', '航海房源', $event)"><img src="../resources/images/map_search/icon_fang.png"><span>航海房源</span></div>
                                         </a>
                                     </li>
                                     <li key="rent">
                                         <a href="javascript:void(0);">
-                                            <div class="bottomstyle last"  @click="houseType(item.id, item.title, $event)"><img src="../resources/images/map_search/icon_fang.png"><span>幼狮房源</span></div>
+                                            <div class="bottomstyle last"  @click="houseType('ys', '幼狮房源', $event)"><img src="../resources/images/map_search/icon_fang.png"><span>幼狮房源</span></div>
                                         </a>
                                     </li>
                                 </ul>
@@ -445,6 +445,8 @@
                     }
                 });
 
+                $(window).resize(this_.resetMapSize);
+
             },
             init: function () {
                 let options = {
@@ -457,6 +459,17 @@
                 };
                 this.YSMap = new YMap(options);
                 this.YSMap.loadMap(this.YSMap, this);
+                this.resetMapSize();
+            },
+            resetMapSize:function(){
+                var clientHeight = $(window).height();
+                var headerHeight = $('.header_menu_out').outerHeight(true);
+                $('#map').height(clientHeight-headerHeight);
+            },
+            houseType:function(type, title, e){
+                $(e.target).closest('.fang_type').find('.result-span').html(title);
+                $('.typelist').toggle()
+                this.switchOperate();
             },
             seachWord:function(){
                 if (this.zoomId === 12) {
