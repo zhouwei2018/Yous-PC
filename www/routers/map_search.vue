@@ -165,7 +165,7 @@
                                     <a href="javascript:void(0);"><span class="chv">区域</span><img
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul class="subnav">
-                                        <li class="result-item" data-type="area" v-for="(item, index) in areaDatas" areaid="item.id"
+                                        <li class="result-item" data-type="area" v-for="(item, index) in areaDatas" areaid="item.code"
                                             :x="item.point.toString().split('|')[0]"
                                             :y="item.point.toString().split('|')[1]"
                                             @click="searchChoose(item.id, item.title, $event)"><a>{{item.title}}</a></li>
@@ -176,7 +176,7 @@
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul class="subnav">
                                         <li class="result-item" data-type="size" v-for="(item, index) in sizeArray" :value="item.value"
-                                            @click="searchChoose(item.value,item.title, $event)"><a>{{item.title}}</a></li>
+                                            @click="searchChoose(item.code,  item.minnum+'-'+item.maxnum+'m²', $event)"><a>{{item.minnum}}-{{item.maxnum}}m²</a></li>
                                     </ul>
                                 </li>
                                 <li class="size-class s-li" @mouseover="selectHandler($event)">
@@ -184,7 +184,7 @@
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul class="subnav">
                                         <li class="result-item"  data-type="price" v-for="(item, index) in priceArray" :value="item.id"
-                                            @click="searchChoose(item.value,item.title, $event)"><a>{{item.title}}</a></li>
+                                            @click="searchChoose(item.code, item.minnum+'-'+item.maxnum+'元', $event)"><a>{{item.minnum}}-{{item.maxnum}}元</a></li>
                                     </ul>
                                 </li>
                                 <li class="room-type s-li" @mouseover="selectHandler($event)">
@@ -192,7 +192,7 @@
                                             src="../resources/images/map_search/xiabtnhui.png"></a>
                                     <ul class="subnav">
                                         <li class="result-item" data-type="feature" v-for="(item, index) in featureArray" :value="item.id"
-                                            @click="searchChoose(item.value,item.title, $event)"><a>{{item.title}}</a></li>
+                                            @click="searchChoose(item.code,item.name, $event)"><a>{{item.name}}</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -294,7 +294,7 @@
                 district: [],
                 YSMap: null,
                 autoSearchMaker: "",
-                domainRoot: 'http:/www.ys.com/map/',
+                domainRoot: 'http://116.62.71.76:8001/',
                 circleNum: 0, //圆内标示加载次数的标识, 当为1的时候不再重复加载
                 autoSearchVal: '', //定位搜索的值
                 my_radius: 1000, //默认周边圆的单位(米)
@@ -311,40 +311,13 @@
                 areaArray:[],
                 rightPannel:false,
                 priceArray: [//价格区间  1:不限  2：1500-3000元  3:3000-6000，4：6000-12000
-                    {value: "", title: "全部"},
-                    {value: [1,3], title: "1-3元"},
-                    {value: [3,5], title: "3-5元"},
-                    {value: [5,8], title: "5-8元"},
-                    {value: [8,10], title: "8-10元"},
-                    {value: [10,20], title: "10-20元"},
-                    {value: [20,30], title: "20-30元"},
-                    {value: [30,""], title: ">30元"},
+                    {code: "", name: "全部"},
                 ],
                 sizeArray: [ //
-                    {value: "", title: "全部"},
-                    {value: [0,100], title: "0-100m²"},
-                    {value: [100,200], title: "100-200m²"},
-                    {value: [200,300], title: "200-300m²"},
-                    {value: [300,500], title: "300-500m²"},
-                    {value: [500,100], title: "500-1000m²"},
-                    {value: [1000,2000], title: "1000-2000m²"},
-                    {value: [2000,3000], title: "2000-3000m²"},
-                    {value: [3000,""], title: ">3000m²"},
+                    {code: "", name: "全部"},
                 ], //面积区间
                 featureArray: [ //全部
-                    {value: "", title: "全部"},
-                    {value: 1, title: "地铁周边"},
-                    {value: 2, title: "互联网+"},
-                    {value: 3, title: "金融精英"},
-                    {value: 4, title: "健康空气"},
-                    {value: 5, title: "LEED"},
-                    {value: 6, title: "新楼"},
-                    {value: 7, title: "地标建筑"},
-                    {value: 8, title: "创意园区"},
-                    {value: 9, title: "名企开发商"},
-                    {value: 10, title: "知名物业"},
-                    {value: 11, title: "5A写字楼"},
-                    {value: 12, title: "纳什空间"},
+                    {code: "", name: "全部"},
 
                 ],
                 detailLists: {
@@ -367,6 +340,21 @@
             }
         },
         mounted: function () {
+            var paraObj = {
+                "parameters":{},
+                "foreEndType":2,
+                "code":"90000301"
+            }, this_=this;
+            axios.post(this.domainRoot+'api/GetServiceApiResult',paraObj)
+                .then(function (response) {
+                    //this_.areaDatas = response.data.data.districts;
+                    this_.sizeArray = response.data.data.range_areas;
+                    this_.priceArray =response.data.data.range_unit_prices;
+                    this_.priceTotalArray = response.data.data.range_total_prices;
+                    this_.featureArray = response.data.data.labels;
+                }).catch(function (error) {
+
+            });
             this.getDisData();
             this.init();
             this.temHelper();
@@ -482,22 +470,24 @@
                     //this.loadArea();
                 }
             },
-            searchChoose:function(value, title, e){
+            searchChoose:function(code, value, e){
 
-                $(e.target).closest('.s-li').removeClass('choose').find('.chv').html(title)
+                $(e.target).closest('.s-li').removeClass('choose').find('.chv').html(value);
                 switch ($(e.target).closest('li').attr('data-type')){
                      case 'area':
-                         //
+                         this.paraObj.areaId=code;
                          break;
                      case 'size':
-                         //
+                         this.paraObj.sizeClass=code;
                          break;
                      case 'price':
-                         //
+                         this.paraObj.priceClass=code;
                          break;
                      case 'feature':
-                         //
+                         this.paraObj.featureType=code;
                          break;
+                    default:
+
                  };
                 if (this.zoomId === 12) {
                     this.loadArea();
