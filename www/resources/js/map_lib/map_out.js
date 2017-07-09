@@ -163,99 +163,41 @@ YMap.prototype.addPageEvent = function(vueobj) {
     $(document).on('click', '.map_pop_community', function(){
         $('.qqserver').addClass('unfold');
         $('.qqserver001').removeClass('unfold001');
-        $('.shareshow').css('display', 'none'); //默认关闭分享
+        $('.shareshow').css('display', 'none');
         vueobj.building_id=$(this).attr('building_id')
         var paraObj={
-            "parameters": {
-                "building_id":"3003",
-                "search_keywork": "",
-                "area": "",  //面积 （[0,100]）数组第一个：面积起 数组第二参数：面积止
-                "price_dj": "", //单价（[30,100]）
-                "price_zj": "", //总价（[30,100]）
-                "label": "", //特色标签
+            parameters: {
+                building_id:vueobj.building_id,
+                search_keywork: vueobj.filterWords,
+                area: vueobj.area,
+                price_dj: "",
+                price_zj: vueobj.price_zj,
+                label:vueobj.label,
+                district_id:vueobj.district_id,
             },
-            "foreEndType": 2,
-            "code": "30000004"
+            foreEndType: 2,
+            code: "30000008"
         };
         var this_ = vueobj;
-        vueobj.YSMap.resetCondition();
+        this_.YSMap.resetCondition();
+        this_.rightPannel= false;
+        this_.detailLists = [];
         var successCb = function(data){
-            vueobj.removeHouseLoading(); //移除地图加载中
-            vueobj.loadScrollbar(); //滚动条
-            this_.detailLists = {
-                address:"石景山古城地铁站东南口向东100米", //楼栋地址
-                title:"长安家园", //楼栋名称
-                area:"石景山", //楼栋所屬行政區域
-                pic :"http://bj.5i5j.com/themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
-                houses:[
-                    {
-                        houseId:333, //房源Id
-                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        perPrice:"6.5", //每日价格
-                        priceArea:"5.3~9.8", //每日价格范围
-                        size:"56", //房源面积 56平
-                        decoration :"精装修" //装修水平
-                    },
-                    {
-                        houseId:333, //房源Id
-                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        perPrice:"6.5", //每日价格
-                        priceArea:"5.3~9.8", //每日价格范围
-                        size:"56", //房源面积 56平
-                        decoration :"精装修" //装修水平
-                    },
-                    {
-                        houseId:333, //房源Id
-                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        perPrice:"6.5", //每日价格
-                        priceArea:"5.3~9.8", //每日价格范围
-                        size:"56", //房源面积 56平
-                        decoration :"精装修" //装修水平
-                    }
-                ]
-            };
-            this_.rightPannel= true;
+            this_.removeHouseLoading(); //移除地图加载中
+            this_.loadScrollbar(); //滚动条
+            if( data.data.data){
+                this_.detailLists = data.data.data;
+                this_.rightPannel= true;
+            }else{
+                this_.noData()
+            }
         };
         var errorCb = function(data){
-            vueobj.removeHouseLoading(); //移除地图加载中
-            //alert('附近未找到房源，请重新选择！');
-            this_.detailLists = {
-                address:"石景山古城地铁站东南口向东100米", //楼栋地址
-                title:"长安家园", //楼栋名称
-                area:"石景山", //楼栋所屬行政區域
-                pic :"http://bj.5i5j.com/themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
-                houses:[
-                    {
-                        houseId:333, //房源Id
-                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        perPrice:"6.5", //每日价格
-                        priceArea:"5.3~9.8", //每日价格范围
-                        size:"56", //房源面积 56平
-                        decoration :"精装修" //装修水平
-                    },
-                    {
-                        houseId:333, //房源Id
-                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        perPrice:"6.5", //每日价格
-                        priceArea:"5.3~9.8", //每日价格范围
-                        size:"56", //房源面积 56平
-                        decoration :"精装修" //装修水平
-                    },
-                    {
-                        houseId:333, //房源Id
-                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
-                        perPrice:"6.5", //每日价格
-                        priceArea:"5.3~9.8", //每日价格范围
-                        size:"56", //房源面积 56平
-                        decoration :"精装修" //装修水平
-                    }
-                ]
-            };
-            this_.rightPannel= true;
-        };
-        vueobj.addHouseLoading(); //地图加载中
-        vueobj.gRemoteData(paraObj, successCb ,errorCb);
+            this_.removeHouseLoading(); //移除地图加载中
 
+        };
+        this_.addHouseLoading(); //地图加载中
+        this_.gRemoteData(JSON.stringify(paraObj), successCb ,errorCb);
         $(this).siblings().removeClass('map_pop_community_cur lock');
         $(this).addClass('map_pop_community_cur fixed lock');
     });

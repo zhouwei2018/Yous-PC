@@ -100,8 +100,8 @@
                             <router-link target="_blank" :to="{path:'/list'}"></router-link>
                         </div>
                         <!--右边浮动层开始-->
-                        <div class="qqserver" :class="{ unfold: rightPannel }"  @click="rightHandler_($event)">
-                            <div class="qqserver-body" style="display:block;">
+                        <div class="qqserver" :class="{ unfold: rightPannel }"  @click="rightHandler_($event,detailLists.building_id )">
+                            <div class="qqserver-body">
                                 <div class="qqserver-header">
                                     <div class="xiaoqushow fl" id="xiaoqushow">
                                         <span class="icon_xqshow"></span>小区展示
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="liebiao"><div class="fangyuanlist">
                                     <div class="adress"><span class="house-location"></span>{{detailLists.address}}</div>
-                                    <div class="fanginfo">
+                                    <div class="fanginfo" :building-id="detailLists.building_id">
                                         <a href=":;" target="_blank">{{detailLists.title}}</a>
                                         <img style="border:none;width:390px;height:106px" :src="detailLists.pic">
                                         <span class="fuceng"> </span>
@@ -130,13 +130,13 @@
                                                     <li class="waiclisty" v-for="(item, index) in detailLists.houses">
                                                         <div class="fanglistinfo">
                                                             <ul>
-                                                                <li :id="item.houseId" class="xianshiflod">
+                                                                <li :id="item.house_id" class="xianshiflod">
                                                                     <p>
                                                                         <img :src="item.img" border="0" width="160" height="120" class="house-img">
                                                                     </p>
                                                                     <dl>
-                                                                        <dt>{{item.perPrice}}元/m²</dt>
-                                                                        <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>价格范围{{item.priceArea}}/m²·天</span></dd>
+                                                                        <dt>{{item.daily_price}}元/m²·天</dt>
+                                                                        <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>价格范围{{item.monthly_price}}/m²·月</span></dd>
                                                                         <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>{{detailLists.title}}</span>（{{detailLists.area}}）</dd>
                                                                         <dd class="fangcontent">{{item.size}}平米丨{{item.decoration}}</dd>
                                                                         <dd><div class="fangbtn"></div></dd>
@@ -163,13 +163,14 @@
                 <p>没有找到符合条件房源，请重新选择试试！</p>
             </div>
         </div>
-        <footer1></footer1>
+       <!-- <footer1></footer1>-->
     </div>
 </template>
 <script>
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
     import {ComplexCustomOverlay, YMap }  from '../resources/js/map_lib/map_out.js';
+    import  '../resources/js/map_lib/jquery.sly.js';
     import axios from 'axios';
     import qs from 'qs';
     export default {
@@ -219,6 +220,7 @@
                 building_id:"3303",
 
                 detailLists: {
+                    building_id:"",
                     address:"", //楼栋地址
                     title:"", //楼栋名称
                     area:"", //楼栋所屬行政區域
@@ -280,13 +282,11 @@
                 boundary_location['大兴区'] = "116.427216, 39.506168;116.423565, 39.498397;116.443715, 39.494768;116.454391, 39.483755;116.461077, 39.459314;116.45876, 39.453338;116.449037, 39.447444;116.438896, 39.446875;116.425962, 39.453909;116.395975, 39.458828;116.380362, 39.458267;116.367919, 39.45421;116.349994, 39.455207;116.33155, 39.469752;116.315295, 39.489351;116.26345, 39.508095;116.25317, 39.522674;116.25263, 39.550753;116.244258, 39.558461;116.242085, 39.56721;116.235353, 39.571404;116.227572, 39.584595;116.233384, 39.59841;116.224637, 39.614871;116.226499, 39.625056;116.223342, 39.645452;116.234695, 39.694268;116.231818, 39.69929;116.235744, 39.703929;116.234718, 39.711761;116.248602, 39.729755;116.251188, 39.750128;116.258462, 39.759385;116.257286, 39.80278;116.267216, 39.801391;116.267818, 39.798164;116.292667, 39.805447;116.312091, 39.778858;116.317014, 39.779695;116.322283, 39.787592;116.328555, 39.803713;116.33624, 39.807402;116.343224, 39.806204;116.3509, 39.812772;116.362271, 39.812077;116.362034, 39.807632;116.375155, 39.806154;116.377241, 39.800682;116.372007, 39.799629;116.3739, 39.791265;116.389653, 39.792451;116.388854, 39.784992;116.396231, 39.78638;116.397547, 39.771661;116.404635, 39.772487;116.401967, 39.793073;116.426115, 39.794037;116.428014, 39.799523;116.435754, 39.800831;116.435673, 39.807688;116.429704, 39.815781;116.423126, 39.817379;116.39805, 39.818163;116.39671, 39.813978;116.386657, 39.811599;116.385893, 39.815124;116.396854, 39.821619;116.394945, 39.823853;116.401249, 39.827913;116.409247, 39.829142;116.419025, 39.821758;116.423854, 39.826679;116.42045, 39.831203;116.422147, 39.835304;116.441988, 39.835735;116.449989, 39.832692;116.451859, 39.826392;116.461995, 39.827179;116.482208, 39.816099;116.492298, 39.819204;116.492618, 39.822996;116.497099, 39.822436;116.497187, 39.824714;116.501791, 39.822277;116.516185, 39.822545;116.52113, 39.834944;116.532722, 39.836217;116.53327, 39.833242;116.541787, 39.831745;116.540724, 39.8274;116.545125, 39.823029;116.544521, 39.81838;116.537773, 39.815432;116.545082, 39.803831;116.538842, 39.801309;116.5415, 39.787374;116.539025, 39.782994;116.548153, 39.769151;116.536851, 39.768045;116.53086, 39.770538;116.529582, 39.759332;116.539093, 39.756959;116.536205, 39.753605;116.537508, 39.747107;116.547707, 39.74058;116.548511, 39.720988;116.575042, 39.719699;116.583947, 39.716756;116.59247, 39.720194;116.600666, 39.718041;116.625752, 39.732241;116.64571, 39.731588;116.646979, 39.718259;116.649882, 39.717074;116.653928, 39.701268;116.656828, 39.700981;116.658064, 39.69417;116.672184, 39.689929;116.672332, 39.68225;116.675679, 39.679729;116.692673, 39.681594;116.709526, 39.678326;116.711689, 39.673409;116.707545, 39.655711;116.714984, 39.648844;116.726844, 39.643817;116.732378, 39.622566;116.714438, 39.620189;116.71637, 39.613995;116.728086, 39.609701;116.710468, 39.599876;116.701745, 39.60451;116.673363, 39.609935;116.63644, 39.606442;116.618944, 39.628629;116.585652, 39.627478;116.577529, 39.621966;116.57452, 39.609939;116.565197, 39.60494;116.554845, 39.603896;116.547581, 39.608086;116.536942, 39.603461;116.531734, 39.587893;116.533441, 39.580088;116.514741, 39.561168;116.507235, 39.562618;116.48695, 39.555863;116.4821, 39.543784;116.469509, 39.538592;116.450737, 39.535575;116.44157, 39.521807;116.433045, 39.523335;116.4275, 39.528935;116.418117, 39.527631;116.411754, 39.520478;116.427216, 39.506168";
                 this.boundary_location = boundary_location;
             },
-            rightHandler_:function(e){
+            rightHandler_:function(e,bid){
                 if($(e.target).closest('.close').length>0){
                     $('.qqserver').removeClass('unfold');
-                    //$('.qqserver001').removeClass('unfold001');
-                    //$('#fanhui').click(); //返回小区
                 }else if($(e.target).hasClass("house-img" )){
-                    alert("去详情页")
+                    location.href="../detail?building_id="+bid;
                 }
 
             },
@@ -344,7 +344,7 @@
             },
             resetMapSize:function(){
                 var clientHeight = $(window).height();
-                var headerHeight = $('.header_menu_out').outerHeight(true);
+                var headerHeight = $('.header_menu_out').outerHeight(true)+$("#lion_head").outerHeight(true);
                 $('#map').height(clientHeight-headerHeight);
             },
             houseType:function(type, title, e){
@@ -401,7 +401,11 @@
                 this.changeToDistrict();
             },
             gRemoteData:function(paraobj, successcb, errorcb){
-                axios.post(this.domainRoot+'api/GetServiceApiResult',paraobj)
+                var instance = axios.create({
+                    baseURL: 'http://116.62.71.76:8001/'
+                });
+                instance.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
+                instance.post('api/GetServiceApiResult',paraobj)
                     .then(function (response) {
                         if(typeof successcb==="function"){
                             successcb(response)
@@ -569,7 +573,7 @@
                var errorCb = function(data){
                     this_.YSMap.mapObj.clearOverlays();
                     this_.removeMapLoading(); //移除地图加载中
-                    alert('附近未找到房源，请重新选择！');
+                    this_.noData()
                 };
                this_.addMapLoading(); //地图加载中
                this.gRemoteData(paraObj, successCb ,errorCb);
@@ -593,6 +597,8 @@
                 this.loadCommunity();
             },
             switchOperate: function () {
+                this.rightPannel= false;
+                this.detailLists = [];
                 if (this.YSMap.mapObj.getZoom() >= 16) {
                     this.YSMap.mapStatu = 'building';
                     this.YSMap.loadList = false;
@@ -666,6 +672,7 @@
                 right: 0;
                 background: #fff;
                 .header_menu {
+                    display: none;
                     width: 100%;
                     height: 59px;
                     border-bottom: 2px solid #8c91ff;
