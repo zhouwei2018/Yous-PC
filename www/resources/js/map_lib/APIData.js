@@ -116,3 +116,44 @@ var result ={
         }
     ]
 };
+
+var paraObj = paraObj={//区域
+    "parameters": {
+        "search_keywork": "国贸",
+        "area": [0,100],  //面积 （[0,100]）数组第一个：面积起 数组第二参数：面积止
+        "price_dj": [0,500], //单价（[30,100]）
+        "price_zj": [30,100], //总价（[30,100]）
+        "label": "1", //特色标签
+        "zoom": 12
+    },
+    "foreEndType": 2,
+    "code": "30000005"
+}
+
+paraObj={ //商圈
+    "parameters": {
+        "search_keywork": "国贸",
+        "area": "",  //面积 （[0,100]）数组第一个：面积起 数组第二参数：面积止
+        "price_dj": "", //单价（[30,100]）
+        "price_zj": "", //总价（[30,100]）
+        "label": "", //特色标签
+        "district_id":"110105",
+        "zoom": 15
+    },
+    "foreEndType": 2,
+    "code": "30000006"
+}
+
+paraobj={ //楼栋
+    "parameters": {
+    "search_keywork": "",
+        "area": "",  //面积 （[0,100]）数组第一个：面积起 数组第二参数：面积止
+        "price_dj": "", //单价（[30,100]）
+        "price_zj": "", //总价（[30,100]）
+        "label": "", //特色标签
+        "business_id":"110105013",
+        "zoom": 17
+},
+    "foreEndType": 2,
+    "code": "30000007"
+}

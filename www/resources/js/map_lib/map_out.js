@@ -1,7 +1,7 @@
 function YMap(options) { //地图实例的依附对象的构造函数
     this.loadDataAjax = null;
-    this.mapStatu = 'area'; //记录当前地图的状态
-    this.operate = { loadList:false };
+    this.mapStatu = 'district'; //记录当前地图的状态
+    this.loadList = false;
     this.tools = { myDis: null };
     this.ply = {};
     this.nearbys = {};
@@ -16,7 +16,7 @@ function YMap(options) { //地图实例的依附对象的构造函数
     };
     this.condition = {
         zoom: null,
-        center: null, //经度:this.condition.center.lng 纬度:this.condition.center.lat
+        center: null,
         x: null,
         y: null,
         bounds: null,
@@ -25,31 +25,11 @@ function YMap(options) { //地图实例的依附对象的构造函数
         searchType: '', //搜索类型[默认,二手房,租房]
         searchData: '' //执行条件,当搜索类型不为空时有效
     };
-    this.area = {
-        id: '',
-        name: ''
-    };
-    this.district= {
-        id: '',
-        name: ''
-    };
-    this.community = {
-        id: '', //当前小区ID
-        x: '',
-        y: '',
-        data: '', //当前小区的json格式信息
-        key: '', //当前小区的本地搜索关键词
-        index: 0,
-        keys: [],
-        localSearchResult: null,
-        infoList: null
-    };
-
-
+    /*
     this.subWay = {//地铁搜索参数
         isSubWay: false,
         line: ''
-    };
+    };*/
     this.mapObj = null;
     if (options) {
         if (options.x) {
@@ -104,7 +84,6 @@ YMap.prototype.addScale = function(){
 };
 
 YMap.prototype.addOverlay = function(data, lv) {
-
     var self = this;
     var div;
     $.each(data, function(key, value) {
@@ -156,31 +135,27 @@ YMap.prototype.addPageEvent = function(vueobj) {
     var self = this;
     //区域标注点事件 start
     $(document).on('click', '.map_pop_location', function(){
-        if ($(this).attr('domain') != '') {//城市图标
-           // window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
-        } else {//城区图标
-            self.mapObj.setZoom(15);
-            self.mapObj.clearOverlays(); //清除地图上所有标注
-            self.area.id = $(this).attr('areaid');//选中的区域
-            //设置当前城区为中心点.移动完成后加载数据
-            self.mapObj.panTo(new BMap.Point($(this).attr('x'), $(this).attr('y')));
-            vueobj.move_load=false;
-        }
+        vueobj.zoomId=15;
+        vueobj.district_id=$(this).attr('district_id');
+        vueobj.is_zoom_eventing=true;
+        self.mapObj.mapStatu="business";
+        self.mapObj.setZoom(15);
+        self.mapObj.clearOverlays(); //清除地图上所有标注
+        self.mapObj.panTo(new BMap.Point($(this).attr('x'), $(this).attr('y')));
+        vueobj.move_load=false;
         return false;
     });
 
     //商圈标注点事件 start
     $(document).on('click', '.map_pop_sublocation', function(){
-        if ($(this).attr('domain') != '') {//城市图标
-            //window.location.href = 'http://' + $(this).attr('domain') + '.' + domainRoot;
-        } else {
-
-            self.mapObj.setZoom(17);
-            self.mapObj.clearOverlays(); //清除地图上所有标注
-            //设置当前城区为中心点.移动完成后加载数据
-            self.mapObj.panTo(new BMap.Point($(this).attr('x'), $(this).attr('y')));
-            vueobj.move_load=false;
-        }
+         vueobj.zoomId=17;
+         vueobj.business_id=$(this).attr('business_id');
+         vueobj.is_zoom_eventing=true;
+         self.mapObj.mapStatu="building";
+         self.mapObj.setZoom(17);
+         self.mapObj.clearOverlays();
+         self.mapObj.panTo(new BMap.Point($(this).attr('x'), $(this).attr('y')));
+         vueobj.move_load=false;
         return false;
     });
 
@@ -189,25 +164,61 @@ YMap.prototype.addPageEvent = function(vueobj) {
         $('.qqserver').addClass('unfold');
         $('.qqserver001').removeClass('unfold001');
         $('.shareshow').css('display', 'none'); //默认关闭分享
-        self.community.id = $(this).attr('communityid');
-        var paraObj = {
-            type: "all", //返回房源类型  "all":去全部， //这个现在房源类型单一，我就都传all,后面再根据实际调整
-            dataType: "premises",  //返回房源在什么尺度下  "area":行政区域下 ，“district”：商圈 , "community":楼盘， premises:房源
-            priceClass: [1,3], //价格区间  [3,5],[5,8],[8,10],[10,20],[30,""]
-            sizeClass: [0,100], //面积区间 [100,200],[200,300],[300,500],[500,1000],[1000,2000],[2000,3000],[3000,""]
-            featureType: 1, // 特色搜索 1.地铁周边 2.互联网+ 3.金融精英 4.健康空气 5LEED 6新楼 7地标建筑 8创意园区 9名企开发商 10知名物业 115A写字楼 12纳什空间
-            communityId:8, ////楼盘的id
-            searchKeyword:"天赐良缘" //搜索过滤关键字
-        }
+        vueobj.building_id=$(this).attr('building_id')
+        var paraObj={
+            "parameters": {
+                "building_id":"3003",
+                "search_keywork": "",
+                "area": "",  //面积 （[0,100]）数组第一个：面积起 数组第二参数：面积止
+                "price_dj": "", //单价（[30,100]）
+                "price_zj": "", //总价（[30,100]）
+                "label": "", //特色标签
+            },
+            "foreEndType": 2,
+            "code": "30000004"
+        };
         var this_ = vueobj;
         vueobj.YSMap.resetCondition();
         var successCb = function(data){
             vueobj.removeHouseLoading(); //移除地图加载中
             vueobj.loadScrollbar(); //滚动条
-
+            this_.detailLists = {
+                address:"石景山古城地铁站东南口向东100米", //楼栋地址
+                title:"长安家园", //楼栋名称
+                area:"石景山", //楼栋所屬行政區域
+                pic :"http://bj.5i5j.com/themes/new2015/common/images/mapcity/bj.jpg", //楼栋封面图片
+                houses:[
+                    {
+                        houseId:333, //房源Id
+                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+                        perPrice:"6.5", //每日价格
+                        priceArea:"5.3~9.8", //每日价格范围
+                        size:"56", //房源面积 56平
+                        decoration :"精装修" //装修水平
+                    },
+                    {
+                        houseId:333, //房源Id
+                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+                        perPrice:"6.5", //每日价格
+                        priceArea:"5.3~9.8", //每日价格范围
+                        size:"56", //房源面积 56平
+                        decoration :"精装修" //装修水平
+                    },
+                    {
+                        houseId:333, //房源Id
+                        img:"http://image.5i5j.com/picture/slpic/l/house/3766/37666120/shinei/cjgpedmfafb53cce.JPG.jpg?1a98033375ade15eb8b596d36ab21aef", //房源圖片
+                        perPrice:"6.5", //每日价格
+                        priceArea:"5.3~9.8", //每日价格范围
+                        size:"56", //房源面积 56平
+                        decoration :"精装修" //装修水平
+                    }
+                ]
+            };
+            this_.rightPannel= true;
         };
         var errorCb = function(data){
             vueobj.removeHouseLoading(); //移除地图加载中
+            //alert('附近未找到房源，请重新选择！');
             this_.detailLists = {
                 address:"石景山古城地铁站东南口向东100米", //楼栋地址
                 title:"长安家园", //楼栋名称
@@ -243,7 +254,7 @@ YMap.prototype.addPageEvent = function(vueobj) {
             this_.rightPannel= true;
         };
         vueobj.addHouseLoading(); //地图加载中
-        vueobj.remoteData(paraObj, successCb ,errorCb);
+        vueobj.gRemoteData(paraObj, successCb ,errorCb);
 
         $(this).siblings().removeClass('map_pop_community_cur lock');
         $(this).addClass('map_pop_community_cur fixed lock');
@@ -323,7 +334,7 @@ function ComplexCustomOverlay(value, lv, enr) {
     this._self = enr;
     this._value = value;
     this._point = new BMap.Point(value.point.toString().split("|")[0], value.point.toString().split("|")[1]);
-    this._countNumber = value.countNumber;
+    this.count_number = value.count_number;
     this._title = value.title;
     this._price = value.price;
     this._lv = parseInt(lv);
@@ -341,11 +352,9 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
     this._map = map;
     var div = this._div = document.createElement("div");
     div.setAttribute('index', '');
-    if (this._lv <= 13) {
-        console.log('区域标识');
+    if (this._lv <= 12) {
         div.id = 'map_pop_lv1_' + this._value.id;
-        div.setAttribute('areaId', this._value.id);
-        div.setAttribute('domain', '');
+        div.setAttribute('district_id', this._value.id);
         div.className = "map_pop_location";
         var span = document.createElement("span");
         var label = document.createElement("label");
@@ -355,17 +364,15 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
         if (title.substring(title.length - 1) === '区') {
             title = title.substring(0, title.length - 1);
         }
-        var numText = parseInt(this._value.countNumber) + '套';
+        var numText = parseInt(this._value.count_number) + '套';
         span.appendChild(document.createTextNode(title));
         label.appendChild(document.createTextNode(numText));
         div.setAttribute('x', this._x);
         div.setAttribute('y', this._y);
-
     } else if(this._lv <= 15) {
         console.log('商圈标识');
         div.id = 'map_pop_district_lv2_' + this._value.id;
-        div.setAttribute('districtId', this._value.id);
-        div.setAttribute('domain', '');
+        div.setAttribute('business_id', this._value.id);
         div.className = "map_pop_sublocation";
         var span = document.createElement("span");
         var label = document.createElement("label");
@@ -375,31 +382,23 @@ ComplexCustomOverlay.prototype.createOverlay = function(map) {
         if (title.substring(title.length - 1) === '区') {
             title = title.substring(0, title.length - 1);
         }
-        var numText = parseInt(this._value.countNumber) + '套';
+        var numText = parseInt(this._value.count_number) + '套';
         span.appendChild(document.createTextNode(title));
         label.appendChild(document.createTextNode(numText));
         div.setAttribute('x', this._x);
         div.setAttribute('y', this._y);
-    } else {
+    } else if(this._lv <= 17){
         console.log('樓棟标识');
         div.id = 'map_pop_community_lv2_' + this._value.id;
-        div.setAttribute('communityId', this._value.id);
-        var adds = '';
-        if(this._self.community.data.address != '') {
-            adds = this._self.community.data.address;
-        }
-        if((this._show == '1') || (this._title == adds)) {
-            div.className = "map_pop_community map_pop_community_cur lock";
-        } else {
-            div.className = "map_pop_community";
-        }
+        div.setAttribute('building_id', this._value.id);
+        div.className = "map_pop_community";
         var span = document.createElement("span");
         var label = document.createElement("label");
         label.className = "pricesty";
         var newspan = document.createElement("em");
         div.appendChild(span);
         div.appendChild(label);
-        numText = parseInt(this._value.countNumber) + '套';
+        numText = parseInt(this._value.count_number) + '套';
         span.appendChild(document.createTextNode(numText));
         label.appendChild(document.createTextNode(this._title));
         label.appendChild(newspan);
