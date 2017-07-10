@@ -176,10 +176,12 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == area_arr.length-1">
-                                        <a href="javascript:;" class="last" @click="sel_area_list($event)">>{{item1.minnum}}m²</a>
+                                        <a href="javascript:;" class="last"
+                                           @click="sel_area_list($event)">>{{item1.minnum}}m²</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;" @click="sel_area_list($event)">{{item1.minnum}}-{{item1.maxnum}}m²</a>
+                                        <a href="javascript:;"
+                                           @click="sel_area_list($event)">{{item1.minnum}}-{{item1.maxnum}}m²</a>
                                     </li>
                                 </template>
                                 <li></li>
@@ -201,10 +203,12 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == range_unit_prices.length-1">
-                                        <a href="javascript:;" class="last" @click="sel_price_list($event)">>{{item2.minnum}}{{item2.unit}}</a>
+                                        <a href="javascript:;" class="last"
+                                           @click="sel_price_list($event)">>{{item2.minnum}}{{item2.unit}}</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;" @click="sel_price_list($event)">{{item2.minnum}}-{{item2.maxnum}}{{item2.unit}}</a>
+                                        <a href="javascript:;"
+                                           @click="sel_price_list($event)">{{item2.minnum}}-{{item2.maxnum}}{{item2.unit}}</a>
                                     </li>
                                 </template>
 
@@ -227,10 +231,12 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == range_total_prices.length-1">
-                                        <a href="javascript:;" @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
+                                        <a href="javascript:;"
+                                           @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;" @click="sel_tot_price_list($event)">{{item3.minnum}}-{{item3.maxnum}}{{item3.unit}}</a>
+                                        <a href="javascript:;"
+                                           @click="sel_tot_price_list($event)">{{item3.minnum}}-{{item3.maxnum}}{{item3.unit}}</a>
                                     </li>
                                 </template>
 
@@ -362,7 +368,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -542,9 +548,9 @@
                 bNum: "", //起始价格
                 eNum: "", //结束价格
 
-                area:"",
-                price_dj:"",
-                price_zj:"",
+                area: "",
+                price_dj: "",
+                price_zj: "",
 
                 buildList: [], //楼盘列表，搜索结果
                 total_items: 0, //结果总数
@@ -710,44 +716,24 @@
                         "code": "30000003"
                     }
                 ).then(function (res) {
-                    //var result = JSON.parse(res.bodyText);
+                    var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
 
-                    var result = {
-                        "items_perpage": "long,房源列表每页记录数",
-                        "houses": [{
-                            "id": "int,房源id",
-                            "decoration_level": "装修水平",
-                            "building_id": "int,楼盘id",
-                            "housing_area": "180",
-                            "housing_name": "房源名称",
-                            "daily_price": "7",
-                            "monthly_price": "3.9",
-                            "housing_icon": "http://116.62.71.76:81/default-youshi.png",
-                            "workstation": "200",
-                            "refreshTime": "2017-07-07 22:03"
-                        }],
-                        "total_items": "100",
-                        "total_pages": "long,房源列表总页数",
-                        "current_page": "long,房源列表当前页"
+                    if (result.success) {
+                        _this.buildList = result.data.houses;
+
+//                        _this.decoration_level = result.decoration_level;
+//                        _this.housing_area = result.housing_area;
+//                        _this.daily_price = result.daily_price;
+//                        _this.monthly_price = result.monthly_price;
+//                        _this.housing_icon = result.housing_icon;
+//                        _this.workstation = result.workstation;
+//                        _this.total_items = result.total_items;
+
+                    } else {
+                        _this.buildingShowFlag = true;
+                        _this.total_items = 0;
                     }
-
-                    _this.buildList = result.houses;
-                    _this.decoration_level = result.decoration_level;
-                    _this.housing_area = result.housing_area;
-                    _this.daily_price = result.daily_price;
-                    _this.monthly_price = result.monthly_price;
-                    _this.housing_icon = result.housing_icon;
-                    _this.workstation = result.workstation;
-                    _this.total_items = result.total_items;
-
-//                    if (result.success) {
-//
-//
-//                    } else {
-//                        _this.buildingShowFlag = true;
-//                        _this.total_items = 0;
-//                    }
 
                 }, function (res) {
                     this.$Message.error('获取楼盘列表失败');
@@ -824,7 +810,7 @@
                 } else {
 
                     this.area = [];
-                    var newArr=$(e.target).html().split('-');
+                    var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.area.push(min);
@@ -849,7 +835,7 @@
                     this.price_dj.push(min);
                     this.price_dj.push(max);
                 } else {
-                    var newArr=$(e.target).html().split('-');
+                    var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.price_dj = [];
@@ -877,7 +863,7 @@
                     this.price_zj.push(min);
                     this.price_zj.push(max);
                 } else {
-                    var newArr=$(e.target).html().split('-');
+                    var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.price_zj = [];
@@ -922,7 +908,6 @@
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
             });
-
 
 
             //单价总价切换

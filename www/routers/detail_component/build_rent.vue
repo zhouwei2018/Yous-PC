@@ -449,44 +449,16 @@
                         "code": "30000003"
                     }
                 ).then(function (res) {
-                    //var result = JSON.parse(res.bodyText);
+                    var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
 
-                    var result = {
-                        "items_perpage": "long,房源列表每页记录数",
-                        "houses": [{
-                            "id": "int,房源id",
-                            "decoration_level": "装修水平",
-                            "building_id": "int,楼盘id",
-                            "housing_area": "180",
-                            "housing_name": "房源名称",
-                            "daily_price": "7",
-                            "monthly_price": "3.9",
-                            "housing_icon": "http://116.62.71.76:81/default-youshi.png",
-                            "workstation": "200",
-                            "refreshTime": "2017-07-07 22:03"
-                        }],
-                        "total_items": "100",
-                        "total_pages": "long,房源列表总页数",
-                        "current_page": "long,房源列表当前页"
+                    if (result.success) {
+                        _this.buildList = result.data.houses;
+
+                    } else {
+                        _this.buildingShowFlag = true;
+                        _this.total_items = 0;
                     }
-
-                    _this.buildList = result.houses;
-                    _this.decoration_level = result.decoration_level;
-                    _this.housing_area = result.housing_area;
-                    _this.daily_price = result.daily_price;
-                    _this.monthly_price = result.monthly_price;
-                    _this.housing_icon = result.housing_icon;
-                    _this.workstation = result.workstation;
-                    _this.total_items = result.total_items;
-
-//                    if (result.success) {
-//
-//
-//                    } else {
-//                        _this.buildingShowFlag = true;
-//                        _this.total_items = 0;
-//                    }
 
                 }, function (res) {
                     this.$Message.error('获取楼盘列表失败');
