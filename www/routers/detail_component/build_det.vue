@@ -19,6 +19,10 @@
                             <em>开发商：</em><span v-text="developer"></span>
                         </td>
                         <td colspan="2">
+                            <em></em><span></span>
+                        </td>
+
+                        <td colspan="2">
                             <em>均价：</em><span v-text="price+'元/m²·天'"></span>
                         </td>
                     </tr>
@@ -27,22 +31,31 @@
                             <em>建成年代：</em><span v-text="opening_date+'年'"></span>
                         </td>
                         <td colspan="2">
+                            <em></em><span></span>
+                        </td>
+                        <td colspan="2">
                             <em>楼盘级别：</em><span v-text="building_level"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <em>产权性质：</em><span v-text="property_rights"></span>
                         </td>
-                        <td>
+                        <td colspan="2">
+                            <em></em><span></span>
+                        </td>
+                        <td colspan="2">
                             <em>建筑面积：</em><span v-text="building_area+'m²'"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <em>总户数：</em><span v-text="total_households"></span>
                         </td>
-                        <td>
+                        <td colspan="2">
+                            <em></em><span></span>
+                        </td>
+                        <td colspan="2">
                             <em>使用率：</em><span v-text="use_rate">65%</span>
                         </td>
                     </tr>
@@ -56,14 +69,20 @@
                             <em>物业管理公司：</em><span v-text="property_company"></span>
                         </td>
                         <td colspan="2">
+                            <em></em><span></span>
+                        </td>
+                        <td colspan="2">
                             <em>物业费：</em><span v-text="property_fee+'元/m²·月 '"></span>
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <em>停车数量：</em><span v-text="vehicle_number"></span>
                         </td>
-                        <td>
+                        <td colspan="2">
+                            <em></em><span></span>
+                        </td>
+                        <td colspan="2">
                             <em>停车费：</em><span v-text="monthly_rent+'元/月'"></span>
                         </td>
                     </tr>
