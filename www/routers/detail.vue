@@ -85,6 +85,7 @@
             <component :is="currentView"
                        @listenchild="getName"
                        @listenchild2="toggle(1,'build_rent')"
+                       ref="company_proper"
             ></component>
 
         </div>
