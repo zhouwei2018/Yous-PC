@@ -118,7 +118,7 @@
                 total_households: '',  //总户数
                 use_rate: '', //使用率
                 property_company: '', //物业公司
-                property_fee: '', //停车费
+                property_fee: '', //物业费
                 vehicle_number: '',  //停车数量
                 monthly_rent: '', //停车费
                 building_introduction: '',// 楼盘介绍
@@ -154,7 +154,6 @@
                             _this.developer = result.data.developer;
                             _this.price = result.data.price;
                             _this.opening_date = result.data.opening_date;
-                            _this.developer = result.data.developer;
                             _this.building_level = result.data.building_level;
                             _this.property_rights = result.data.property_rights;
                             _this.building_area = result.data.building_area;

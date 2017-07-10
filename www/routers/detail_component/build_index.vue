@@ -412,38 +412,35 @@
                 <div class="building-information">
                     <div class="category-item-title">
                         <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingNameSingle}}简介</h2>
-                        <a class="show-link mr20" href="javascript:;" target="_blank">查看详情</a>
+                        <a class="show-link mr20" href="javascript:;" target="_blank" @click="lookMore()">查看详情</a>
                     </div>
                     <table>
                         <tbody>
                         <tr>
-                            <td>
-                                <em>业主类型：</em><span>大业主+小业主</span>
-                            </td>
                             <td colspan="2">
-                                <em>物业管理公司：</em><span>北京锦融物业有限公司</span>
+                                <em>物业公司：</em><span v-text="property_company"></span>
+                            </td>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+                                <em>物业费：</em><span v-text="property_fee+'/m²·月 '"></span>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <em>净层高：</em><span>2.7m</span>
+                            <td colspan="2">
+                                <em>建成年代：</em><span v-text="opening_date"></span>
                             </td>
-                            <td>
-                                <em>建筑面积：</em><span>521265m²</span>
-                            </td>
-                            <td>
-                                <em>物业费：</em><span>24元/m²·月 </span>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+                                <em>楼盘级别：</em><span v-text="building_level"></span>
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <em>层数：</em><span>47</span>
+                            <td colspan="2">
+                                <em>产权性质：</em><span v-text="property_rights"></span>
                             </td>
-                            <td>
-                                <em>得房率：</em><span>65%</span>
-                            </td>
-                            <td>
-                                <em>物业等级：</em><span>甲级</span>
+                            <td colspan="2"></td>
+                            <td colspan="2">
+                                <em>建筑面积：</em><span v-text="building_area+'m²'"></span>
                             </td>
                         </tr>
                         </tbody>
@@ -570,6 +567,15 @@
                 housing_icon: "", //图片
                 workstation: "", //工位
 
+
+                //物业信息
+                property_company: '', //物业公司
+                property_fee: '', //物业费
+                opening_date: '',// 建成年代
+                building_level: '', //楼盘级别
+                property_rights: '', //产权性质
+                building_area: '', //建筑面积
+
             }
         },
         components: {
@@ -674,6 +680,15 @@
                             _this.min_renge_price = result.data.min_renge_price == null ? '--' : result.data.min_renge_price;
                             _this.max_renge_price = result.data.max_renge_price == null ? '--' : result.data.max_renge_price;
                             _this.lease_nums = result.data.lease_nums == null ? '--' : result.data.lease_nums;
+
+
+                            //物业信息
+                            _this.property_company = result.data.property_company; //物业公司
+                            _this.property_fee = result.data.property_fee; //物业费
+                            _this.opening_date = result.data.opening_date; // 建成年代
+                            _this.building_level = result.data.building_level; //楼盘级别
+                            _this.property_rights = result.data.property_rights; //产权性质
+                            _this.building_area = result.data.building_area;  //建筑面积
                         }
                     }
 
@@ -743,6 +758,11 @@
             //查看全部
             lookAll(){
                 this.$emit('listenchild2');
+            },
+
+            //查看详情
+            lookMore(){
+                this.$emit('listenchild3');
             },
 
             //自定义面积
