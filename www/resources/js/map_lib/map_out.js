@@ -67,19 +67,22 @@ YMap.prototype.loadMap = function(YSMap, vueobj) {
     this.mapObj.enableDoubleClickZoom(); //禁用双击放大。
     this.mapObj.centerAndZoom(new BMap.Point(this.options.x, this.options.y), this.options.defaultZoom); //设定地图的中心点和坐标并将地图显示在地图容器中
 
-    this.addScale(); //向地图中添加比例尺控件
-    this.addNavigation(); //添加绽放平移控件
-    this.addBaiduImage(); //’百度地图‘标识
+    this.addScale(vueobj); //向地图中添加比例尺控件
+    this.addNavigation(vueobj); //添加绽放平移控件
+    this.addBaiduImage(vueobj); //’百度地图‘标识
 };
 
 /**
  * 地图比例尺
  * @returns {undefined}
  */
-YMap.prototype.addScale = function(){
-    if(this.is_scale) {
+YMap.prototype.addScale = function(vueobj){
+    if(vueobj.is_scale) {
+        var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+        var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
         var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
-        this.mapObj.addControl(ctrl_sca);
+        this.mapObj.addControl(top_left_control);
+        this.mapObj.addControl(top_left_navigation);
     }
 };
 
@@ -96,8 +99,8 @@ YMap.prototype.addOverlay = function(data, lv) {
  * 地图“百度地图标识”
  * @returns {undefined}
  */
-YMap.prototype.addBaiduImage = function(){
-    if(!this.is_baidu) {
+YMap.prototype.addBaiduImage = function(vueobj){
+    if(!vueobj.is_baidu) {
         $('.zuoleftimg').css('display', 'none');
         $('.zuoleftbiao').css('display', 'none');
     }
@@ -107,8 +110,8 @@ YMap.prototype.addBaiduImage = function(){
  * 地图平移控件
  * @returns {undefined}
  */
-YMap.prototype.addNavigation = function(){
-    if(this.is_navigation) {
+YMap.prototype.addNavigation = function(vueobj){
+    if(vueobj.is_navigation) {
         this.mapObj.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT}));
     }
 };
@@ -184,7 +187,7 @@ YMap.prototype.addPageEvent = function(vueobj) {
         this_.detailLists = [];
         var successCb = function(data){
             this_.removeHouseLoading(); //移除地图加载中
-            this_.loadScrollbar(); //滚动条
+            //this_.loadScrollbar(); //滚动条
             if( data.data.data){
                 this_.detailLists = data.data.data;
                 this_.rightPannel= true;
@@ -200,6 +203,37 @@ YMap.prototype.addPageEvent = function(vueobj) {
         this_.gRemoteData(JSON.stringify(paraObj), successCb ,errorCb);
         $(this).siblings().removeClass('map_pop_community_cur lock');
         $(this).addClass('map_pop_community_cur fixed lock');
+
+/*
+        $.ajax({
+            url: vueobj.domainRoot + 'api/GetServiceApiResult',
+            type: 'POST',
+            data: JSON.stringify(paraObj),
+            contentType:'application/json;charset=UTF-8',
+            dataType: 'json',
+            beforeSend: function (XMLHttpRequest) {
+                vueobj.addMapLoading(); //地图加载中
+            },
+            success: function (data) {
+                this_.removeHouseLoading(); //移除地图加载中
+                if( data.data){
+                    this_.detailLists =data.data;
+                    this_.rightPannel= true;
+                    this_.loadScrollbar(); //滚动条
+                }else{
+                    this_.noData()
+                }
+            },
+            complete: function (XMLHttpRequest) {
+                vueobj.removeMapLoading(); //移除地图加载中
+            },
+            error: function () {
+                console.log("failed")
+            }
+        });*/
+
+
+
     });
 
     $(document).on('mouseover', '.map_pop_sublocation', function(){ //子区域鼠标滑入颜色

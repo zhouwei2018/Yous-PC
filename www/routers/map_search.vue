@@ -125,7 +125,7 @@
                                             <div class="scrollbar">
                                                 <div class="handle"></div>
                                             </div>
-                                            <div class="sly">
+                                            <div class="sly" id="smart">
                                                 <ul class="big cfix houses_list">
                                                     <li class="waiclisty" v-for="(item, index) in detailLists.houses">
                                                         <div class="fanglistinfo">
@@ -169,8 +169,8 @@
 <script>
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
-    import {ComplexCustomOverlay, YMap }  from '../resources/js/map_lib/map_out.js';
     import  '../resources/js/map_lib/jquery.sly.js';
+    import {ComplexCustomOverlay, YMap }  from '../resources/js/map_lib/map_out.js';
     import axios from 'axios';
     import qs from 'qs';
     export default {
@@ -445,21 +445,36 @@
                 $('#h_L').empty();
             },
             loadScrollbar: function () {
-                var $section = $(".scrollbox");
-                var $frame = $section, $ul = $frame.find('ul').eq(0);
-                var $scrollbar = $section.find('.scrollbar');
-                $section.find(".slyWrap").each(function (i, e) {
-                    var cont = $(this),
-                        frame = cont.find(".sly"),
-                        slidee = $section.find("ul"),
-                        scrollbar = cont.find(".scrollbar"),
-                        options = frame.data("options");
-
-                    options = $.extend({}, options, {
-                        scrollBar: scrollbar
-                    });
-                    frame.sly(options);
+              /*  var $frame  = $('#smart');
+                var $slidee = $frame.children('ul').eq(0);
+                var $wrap   = $frame.parent();
+                $frame.sly({
+                    itemNav: 'basic',
+                    smart: 1,
+                    activateOn: 'click',
+                    mouseDragging: 1,
+                    touchDragging: 1,
+                    releaseSwing: 1,
+                    startAt: 3,
+                    scrollBar: $wrap.find('.scrollbar'),
+                    scrollBy: 1,
+                    speed: 300,
+                    elasticBounds: 1,
+                    easing: 'easeOutExpo',
+                    dragHandle: 1,
+                    dynamicHandle: 1,
+                    clickBar: 1
                 });
+
+*/
+                var options = {
+                    horizontal: 1,
+                    itemNav: 'basic',
+                    speed: 300,
+                    mouseDragging: 1,
+                    touchDragging: 1
+                };
+                var frame = new Sly('#smart', options).init();
             },
             addHouseLoading: function () {
                 var htm = '<div ><div class="houseloadings"><div class="circle"></div><div class="housesloadcontents">正在加载房源，请稍候...</div></div></div>'; //房源列表
