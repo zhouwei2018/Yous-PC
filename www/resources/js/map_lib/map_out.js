@@ -183,11 +183,17 @@ YMap.prototype.addPageEvent = function(vueobj) {
         };
         var this_ = vueobj;
         this_.YSMap.resetCondition();
-        this_.rightPannel= false;
-        this_.detailLists = [];
+        this_.rightPannel= true;
+        this_.detailLists =  {
+            building_id:"",
+            address:"", //楼栋地址
+            title:"", //楼栋名称
+            area:"", //楼栋所屬行政區域
+            pic :"", //楼栋封面图片
+            houses:[]
+        };
         var successCb = function(data){
             this_.removeHouseLoading(); //移除地图加载中
-            //this_.loadScrollbar(); //滚动条
             if( data.data.data){
                 this_.detailLists = data.data.data;
                 this_.rightPannel= true;

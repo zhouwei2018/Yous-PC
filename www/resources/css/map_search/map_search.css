@@ -208,7 +208,9 @@ a img{ border:none;}
 .qqserver-body .tabPanel .tabList ul li:last-child,.yuantop dl dd span,.tabs li:last-child{-moz-border-radius-topleft:0px;-moz-border-radius-topright: 20px;-moz-border-radius-bottomleft:0px;-moz-border-radius-bottomright:20px;-webkit-border-top-left-radius:0px;-webkit-border-top-right-radius:20px;-webkit-border-bottom-left-radius:0px;-webkit-border-bottom-right-radius:20px;border-top-left-radius:0px;border-top-right-radius:20px;border-bottom-right-radius:20px;border-bottom-left-radius:0px;/*behavior: url(css/iecss3.htc)*/}
 .qqserver-body .tabPanel .tabList ul li:first-child{border-left:0px;}
 .qqserver-body .tabPanel .tabList ul li{float:left;background-color:#a5ddd0;padding:5px 0;width:72px;text-align:center;cursor:pointer;border-left:1px solid #ffffff;}
-.qqserver-body .fangyuanlist{height:156px;}
+.qqserver-body .fangyuanlist{
+    height:156px;
+}
 .qqserver-body .fangyuanlist .adress{height:50px;line-height:50px;background-color:#f7f7f7;font-size:14px;color:#696969;padding-left:41px;}
 /*.qqserver-body .fangyuanlist .adress span{background-image:url(../../images/map_search/fangzhi.png);width:18px;height:22px;margin:15px 0px 13px -31px; position:absolute;}*/
 .qqserver-body .fangyuanlist .fanginfo{ position:relative;cursor:pointer;}

@@ -102,7 +102,7 @@
                         <!--右边浮动层开始-->
                         <div class="qqserver" :class="{ unfold: rightPannel }"  @click="rightHandler_($event,detailLists.building_id )">
                             <div class="qqserver-body">
-                                <div class="qqserver-header">
+                                <div class="qqserver-header" style="position: relative;z-index: 333">
                                     <div class="xiaoqushow fl" id="xiaoqushow">
                                         <span class="icon_xqshow"></span>小区展示
                                     </div>
@@ -112,40 +112,41 @@
                                     <div class="fenxiangshow fl" style="margin-left: 147px;"><span></span></div>
                                     <div class="close qqserver_arrow fl"><span></span></div>
                                 </div>
-                                <div class="liebiao"><div class="fangyuanlist">
-                                    <div class="adress"><span class="house-location"></span>{{detailLists.address}}</div>
-                                    <div class="fanginfo" :building-id="detailLists.building_id">
+                                <div class="liebiao">
+                                    <div class="fangyuanlist">
+                                    <div class="adress" style="position: relative;z-index: 333"><span class="house-location"></span>{{detailLists.address}}</div>
+                                    <div class="fanginfo" style="position: relative;z-index: 333" :building-id="detailLists.building_id">
                                         <a href=":;" target="_blank">{{detailLists.title}}</a>
                                         <img style="border:none;width:390px;height:106px" :src="detailLists.pic">
                                         <span class="fuceng"> </span>
                                     </div>
                                     <!--内容-->
-                                    <div class="vertical scrollbox clearfix">
-                                        <div class="slyWrap example1">
-                                            <div class="scrollbar">
-                                                <div class="handle"></div>
-                                            </div>
-                                            <div class="sly" id="smart">
-                                                <ul class="big cfix houses_list">
-                                                    <li class="waiclisty" v-for="(item, index) in detailLists.houses">
-                                                        <div class="fanglistinfo">
-                                                            <ul>
-                                                                <li :id="item.house_id" class="xianshiflod">
-                                                                    <p>
-                                                                        <img :src="item.img" border="0" width="160" height="120" class="house-img">
-                                                                    </p>
-                                                                    <dl>
-                                                                        <dt>{{item.daily_price}}元/m²·天</dt>
-                                                                        <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>价格范围{{item.monthly_price}}/m²·月</span></dd>
-                                                                        <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>{{detailLists.title}}</span>（{{detailLists.area}}）</dd>
-                                                                        <dd class="fangcontent">{{item.size}}平米丨{{item.decoration}}</dd>
-                                                                        <dd><div class="fangbtn"></div></dd>
-                                                                    </dl>
-                                                                </li></ul>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div></div></div>
+                                      <div id="box-out">
+                                          <div id="scrollbar">
+                                                <div id="handle"></div>
+                                          </div>
+                                          <div id="ul-outer">
+                                              <ul id="list-ul">
+                                                  <li class="waiclisty" v-for="(item, index) in detailLists.houses">
+                                                      <div class="fanglistinfo">
+                                                          <ul>
+                                                              <li :id="item.house_id" class="xianshiflod">
+                                                                  <p>
+                                                                      <img :src="item.img" border="0" width="160" height="120" class="house-img">
+                                                                  </p>
+                                                                  <dl>
+                                                                      <dt>{{item.daily_price}}元/m²·天</dt>
+                                                                      <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>价格范围{{item.monthly_price}}/m²·月</span></dd>
+                                                                      <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>{{detailLists.title}}</span>（{{detailLists.area}}）</dd>
+                                                                      <dd class="fangcontent">{{item.size}}平米丨{{item.decoration}}</dd>
+                                                                      <dd><div class="fangbtn"></div></dd>
+                                                                  </dl>
+                                                              </li></ul>
+                                                      </div>
+                                                  </li>
+                                              </ul>
+                                          </div>
+                                      </div>
                                     <!--内容结束-->
                                 </div>
                                 </div>
@@ -169,8 +170,8 @@
 <script>
     import header1 from '../components/header.vue';
     import footer1 from '../components/footer.vue';
-    import  '../resources/js/map_lib/jquery.sly.js';
     import {ComplexCustomOverlay, YMap }  from '../resources/js/map_lib/map_out.js';
+    import  yScroll  from '../resources/js/map_lib/yscroll.js';
     import axios from 'axios';
     import qs from 'qs';
     export default {
@@ -185,6 +186,7 @@
                 district: [],
                 commitArray: [],
                 YSMap: null,
+                yScroll:null,
                 autoSearchMaker: "",
                 domainRoot: 'http://116.62.71.76:8001/',
 
@@ -234,6 +236,27 @@
                 return value.trim();
             }
         },
+        updated: function () {
+            var transfor = function(that){
+                that.scale = that.wrapBox.clientHeight / that.wrapUl.scrollHeight; //可视区窗口与实际内容的比例系数
+
+                if (that.scale > 1){
+                    that.scale = 1;
+                    that.scrollBox.style.display = 'none';
+                }
+                that.top = that.scale * that.scrollBox.scrollHeight; //重新设定scrollbar位置
+                that.maxTop = that.scrollBox.scrollHeight - that.height;//再次获得滚动条滑动的距离 上限值
+                that.ListMaxTop = that.wrapBox.clientHeight - that.wrapUl.scrollHeight; //再次 absolute top值，所以为负
+                that.maxTop = that.scrollBox.scrollHeight - that.height;//再次获得滚动条滑动的距离 上限值
+                console.log("that.scale   :"+that.scale)
+            }
+            if(this.detailLists.houses.length>0){
+                this.initSub();
+                transfor(this.yScroll)
+            }
+            console.log("分页加载数据：渲染数据结束")
+
+        },
         mounted: function () {
             var paraObj = {
                 "parameters":{},
@@ -259,6 +282,20 @@
 
         },
         methods: {
+            initSub:function(){
+                var that = this;
+                this.yScroll =  new yScroll({
+                    wrapBox: document.querySelector('#ul-outer'),
+                    wrapUl: document.querySelector('#list-ul'),
+                    scrollBox: document.querySelector('#scrollbar'),
+                    scrollBar: document.querySelector('#handle'),
+                    cb:that.loadMore
+                })
+            },
+            loadMore:function(){
+                console.log("拿到分页加载数据：渲染数据")
+                this.detailLists.houses=this.detailLists.houses.concat([])
+            },
             selectHandler:function(e){
                 var target = e.target;
                 $(target).closest('li').addClass('choose').siblings('li').removeClass('choose')
@@ -346,6 +383,9 @@
                 var clientHeight = $(window).height();
                 var headerHeight = $('.header_menu_out').outerHeight(true)+$("#lion_head").outerHeight(true);
                 $('#map').height(clientHeight-headerHeight);
+                $('#ul-outer').height(clientHeight-headerHeight-197);
+                $('#list-ul').height(clientHeight-headerHeight-197);
+                $('#scrollbar').height(clientHeight-headerHeight-197);
             },
             houseType:function(type, title, e){
                 $(e.target).closest('.fang_type').find('.result-span').html(title);
@@ -391,7 +431,15 @@
             },
             searchDistrict: function (ele, index, e) {
                 this.areaTitle = index.title;
-                this.rightPannel = false;
+                this.rightPannel= false;
+                this.detailLists = {
+                    building_id:"",
+                    address:"", //楼栋地址
+                    title:"", //楼栋名称
+                    area:"", //楼栋所屬行政區域
+                    pic :"", //楼栋封面图片
+                    houses:[]
+                };
                 this.YSMap.mapObj.setZoom(15);
                 this.YSMap.mapObj.clearOverlays(); //清除地图上所有标注
                 this.YSMap.area.id = $(this).attr('areaid');//选中的区域
@@ -445,36 +493,6 @@
                 $('#h_L').empty();
             },
             loadScrollbar: function () {
-              /*  var $frame  = $('#smart');
-                var $slidee = $frame.children('ul').eq(0);
-                var $wrap   = $frame.parent();
-                $frame.sly({
-                    itemNav: 'basic',
-                    smart: 1,
-                    activateOn: 'click',
-                    mouseDragging: 1,
-                    touchDragging: 1,
-                    releaseSwing: 1,
-                    startAt: 3,
-                    scrollBar: $wrap.find('.scrollbar'),
-                    scrollBy: 1,
-                    speed: 300,
-                    elasticBounds: 1,
-                    easing: 'easeOutExpo',
-                    dragHandle: 1,
-                    dynamicHandle: 1,
-                    clickBar: 1
-                });
-
-*/
-                var options = {
-                    horizontal: 1,
-                    itemNav: 'basic',
-                    speed: 300,
-                    mouseDragging: 1,
-                    touchDragging: 1
-                };
-                var frame = new Sly('#smart', options).init();
             },
             addHouseLoading: function () {
                 var htm = '<div ><div class="houseloadings"><div class="circle"></div><div class="housesloadcontents">正在加载房源，请稍候...</div></div></div>'; //房源列表
@@ -613,7 +631,14 @@
             },
             switchOperate: function () {
                 this.rightPannel= false;
-                this.detailLists = [];
+                this.detailLists = {
+                    building_id:"",
+                    address:"", //楼栋地址
+                    title:"", //楼栋名称
+                    area:"", //楼栋所屬行政區域
+                    pic :"", //楼栋封面图片
+                    houses:[]
+                };
                 if (this.YSMap.mapObj.getZoom() >= 16) {
                     this.YSMap.mapStatu = 'building';
                     this.YSMap.loadList = false;
@@ -805,7 +830,41 @@
          #result-tip,#t_L,#h_L,#ht_L{
              border-radius: .4em;
          }
-
+         #box-out{
+             width: 390px;
+             height:700px;
+             padding-bottom: 180px;
+             position: relative;
+         }
+         #scrollbar{
+             position: absolute;
+             width: 5px;
+             top: 0;
+             right: 3px;
+             min-height: 500px;
+             z-index: 5;
+         }
+         #handle{
+             position: absolute;
+             top: 0;
+             height: 100px;
+             width: 100%;
+             border-radius: 5px;
+             background: #ccc;
+             cursor: pointer;
+             line-height: 0;
+         }
+         #ul-outer{
+             position: relative;
+             width: 390px;
+             min-height: 500px;
+         }
+         #list-ul{
+             position: absolute;
+             width: 390px;
+             top: 0;
+             min-height: 500px;
+         }
     }
 </style>
 
