@@ -362,7 +362,7 @@
                             <a href="javascript:;">价格<span></span></a>
                             <a href="javascript:;">面积<span></span></a>
                         </div>
-                        <div class="fr sort-meet-result ">共 <b>2380</b> 套房源符合条件</div>
+                        <div class="fr sort-meet-result ">共 <b v-text=""></b> 套房源符合条件</div>
                     </div>
 
                     <!--加载中-->
@@ -375,7 +375,7 @@
 
                     <ul class="detail-office-list">
                         <li v-for="item in buildList">
-                            <a href="javascript:;" target="_blank">
+                            <router-link target="_blank" :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
                                 <div class="list-img">
                                     <img :src="item.housing_icon" alt="">
                                 </div>
@@ -398,7 +398,7 @@
                                         <span>更新于：{{item.refreshTime}}</span>
                                     </div>
                                 </div>
-                            </a>
+                            </router-link>
                         </li>
                     </ul>
 
@@ -463,7 +463,7 @@
                                        onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
                                        aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
                                 <span class="db text-left mt05" id="msg-phone"></span>
-                                <div class="form_control form_btn mt10 cur_pointer" id="list_yijianyuyue">一键咨询
+                                <div class="form_control form_btn mt10 cur_pointer" @click="instance('success')" >一键咨询
                                 </div>
                             </form>
 
@@ -566,6 +566,8 @@
                 monthly_price: "", //月价格
                 housing_icon: "", //图片
                 workstation: "", //工位
+
+                total_items:0, //搜索结果个数
 
 
                 //物业信息
@@ -737,13 +739,7 @@
                     if (result.success) {
                         _this.buildList = result.data.houses;
 
-//                        _this.decoration_level = result.decoration_level;
-//                        _this.housing_area = result.housing_area;
-//                        _this.daily_price = result.daily_price;
-//                        _this.monthly_price = result.monthly_price;
-//                        _this.housing_icon = result.housing_icon;
-//                        _this.workstation = result.workstation;
-//                        _this.total_items = result.total_items;
+                        _this.total_items=res.data.total_items;
 
                     } else {
                         _this.buildingShowFlag = true;
@@ -894,6 +890,22 @@
                 this.getDetList();
 
             },
+
+            //一键咨询
+            instance (type) {
+                $('#freeLook_inp').focus();
+                const title = '提交成功';
+                const content = '<p>客服将在10分钟内联系您，和您沟通找房需求</p>';
+                switch (type) {
+                    case 'success':
+                        this.$Modal.success({
+                            title: title,
+                            content: content
+                        });
+                        break;
+                    default:;
+                }
+            }
         },
 
         mounted(){
@@ -943,6 +955,7 @@
                     $('#areaConfirm').hide();
                 }
             });
+
             $('input[name="endArea"]').on("input propertychange", function () {
                 if (_this.bArea && _this.eArea) {
                     $('#areaConfirm').show();

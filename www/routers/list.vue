@@ -432,7 +432,6 @@
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <span class="db text-left mt05" id="msg-phone"></span>
                                         <div class="form_control form_btn mt10 cur_pointer"
-                                             id="list_yijianyuyue"
                                              @click="instance('success')">一键咨询
                                         </div>
                                     </form>

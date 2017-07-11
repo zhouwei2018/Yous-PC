@@ -109,6 +109,10 @@ var router = new VueRouter({
             component: require('./routers/map_search.vue')
         },
         {
+            path: '/house_det',
+            component: require('./routers/house_detail.vue')
+        },
+        {
             path: '*',
             redirect: '/index'
         }
