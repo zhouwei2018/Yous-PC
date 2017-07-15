@@ -21,7 +21,7 @@
 
     .loading_wrap {
         width: 100px;
-        height: 60px;
+        height: 84px;
         margin: 0 auto;
         position: relative;
     }

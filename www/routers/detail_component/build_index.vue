@@ -368,14 +368,15 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20       class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
 
-                    <ul class="detail-office-list">
+                    <ul class="detail-office-list" v-show="house_res_show">
                         <li v-for="item in buildList">
-                            <router-link target="_blank" :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
+                            <router-link target="_blank"
+                                         :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
                                 <div class="list-img">
                                     <img :src="item.housing_icon" alt="">
                                 </div>
@@ -401,6 +402,9 @@
                             </router-link>
                         </li>
                     </ul>
+
+                    <!--暂无结果-->
+                    <h3 class="no_result" v-show="buildingShowFlag">暂无待出租写字楼 !</h3>
 
                     <!--page-->
                     <div class="page_det_box" v-show="pageFlag">
@@ -463,7 +467,7 @@
                                        onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
                                        aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
                                 <span class="db text-left mt05" id="msg-phone"></span>
-                                <div class="form_control form_btn mt10 cur_pointer" @click="instance('success')" >一键咨询
+                                <div class="form_control form_btn mt10 cur_pointer" @click="instance('success')">一键咨询
                                 </div>
                             </form>
 
@@ -506,6 +510,9 @@
     export default {
         data(){
             return {
+                buildingShowFlag: true, //无结果
+                house_res_show:true,  //楼盘结果ul
+
                 buildingName: "", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
@@ -567,7 +574,7 @@
                 housing_icon: "", //图片
                 workstation: "", //工位
 
-                total_items:0, //搜索结果个数
+                total_items: 0, //搜索结果个数
 
 
                 //物业信息
@@ -714,7 +721,6 @@
 
                 this.loadingFlag = true;
                 this.pageFlag = false;
-
                 this.buildingShowFlag = false;
 
                 this.$http.post(
@@ -737,13 +743,17 @@
                     _this.loadingFlag = false;
 
                     if (result.success) {
-                        _this.buildList = result.data.houses;
-
-                        _this.total_items=res.data.total_items;
-
+                        if(result.data.houses.length){
+                            _this.buildList = result.data.houses;
+                            _this.total_items = res.data.total_items;
+                        }else {
+                            _this.house_res_show = false; //结果不展示
+                            _this.buildingShowFlag = true;
+                            _this.total_items = 0;
+                        }
                     } else {
-                        _this.buildingShowFlag = true;
                         _this.total_items = 0;
+
                     }
 
                 }, function (res) {
@@ -903,7 +913,8 @@
                             content: content
                         });
                         break;
-                    default:;
+                    default:
+                        ;
                 }
             }
         },
