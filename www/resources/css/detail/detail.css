@@ -525,6 +525,7 @@
   line-height: 14px;
 }
 [detail] .detail-office-list {
+  min-height: 141px;
   background-color: #FFF;
 }
 [detail] .detail-office-list li {
