@@ -8,6 +8,7 @@
     <div class="screening_conts_detail pv20">
         <div class="screening_conts_list weizhi clearfix tj_box_1" @click="getStation($event)">
             <span class="screening_title mr15">位置:</span>
+            <Progress :percent="statusbar" :stroke-width="5" status="active" v-show="statusShow"></Progress>
             <a href="javascript:;"
                v-for="(item,index) in lines"
                :class="[{active:line_active == index},item.class]"
@@ -16,6 +17,7 @@
             >{{item.name}}</a>
         </div>
         <p id="sub_line" class="tj_box_1 clearfix" v-show="station_show_flag">
+            <Progress :percent="statusbar" :stroke-width="5" status="active" v-show="statusShow"></Progress>
             <a href="javascript:;"
                v-for="(item1,index) in station_arr"
                :class="{active:station_active == index}"
@@ -34,6 +36,11 @@
 
         data (){
             return {
+
+                statusbar: 0,
+                statusShow: true,
+                timer: null,
+
                 lines: [],
                 station_arr: [],
 
@@ -46,7 +53,7 @@
         methods: {
 
             lineHide(){
-                this.sub_show_flag=false; //二级车站隐藏
+                this.sub_show_flag = false; //二级车站隐藏
                 $('.weizhi a').removeClass('active');
                 $('#district_all').addClass('active');
             },
@@ -74,9 +81,10 @@
                         var all_lines = {
                             code: "line_all",
                             name: "全部",
-                            class:"noArrow"
+                            class: "noArrow"
                         }
                         _this.lines.unshift(all_lines);
+                        _this.statusShow = false;
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -95,7 +103,7 @@
                 var emitObj = {
                     id: $(e.target).attr('id'),
                     name: $(e.target).text(),
-                    sortType:$(e.target).attr('data-sortType')
+                    sortType: $(e.target).attr('data-sortType')
                 };
                 this.$emit("refreshbizlines3", emitObj);
 
@@ -146,14 +154,24 @@
                 var emitObj2 = {
                     id: $(e.target).attr('id'),
                     name: $(e.target).text(),
-                    sortType:$(e.target).attr('data-sortType')
+                    sortType: $(e.target).attr('data-sortType')
                 };
                 this.$emit("refreshbizlines4", emitObj2);
             }
         },
 
         mounted(){
+            var _this = this;
             this.getLine(); //获取地铁线路
+
+            _this.timer = setInterval(function () {
+                _this.statusbar += 30;
+                if (_this.statusbar >= 99) {
+                    _this.statusbar = 99;
+                    clearInterval(_this.timer);
+                }
+            }, 500);
+
         }
     }
 </script>

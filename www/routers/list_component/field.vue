@@ -1,4 +1,5 @@
 <style lang="less">
+    @import "../../resources/css/color";
     .ivu-progress{
         width:90%;
     }
@@ -173,8 +174,8 @@
 
             _this.timer=setInterval(function(){
                 _this.statusbar+=30;
-                if(_this.statusbar >=100){
-                    _this.statusbar=100;
+                if(_this.statusbar >=99){
+                    _this.statusbar=99;
                     clearInterval(_this.timer);
                 }
             },500);
