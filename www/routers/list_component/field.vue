@@ -1,5 +1,7 @@
 <style lang="less">
-
+    .ivu-progress{
+        width:90%;
+    }
 </style>
 
 
@@ -8,6 +10,7 @@
     <div class="screening_conts_detail pv20">
         <div class="screening_conts_list weizhi clearfix tj_box_1">
             <span class="screening_title mr15">位置:</span>
+            <Progress :percent="statusbar" :stroke-width="5" status="active" v-show="statusShow"></Progress>
             <a href="javascript:;" @click="getSubDistrict($event)"
                v-for="(item,index) in district"
                :class="[{active:positon_active == index},item.class]"
@@ -16,6 +19,7 @@
             >{{item.name}}</a>
         </div>
         <p class="tj_box_1 clearfix" id="sub_district" v-show="sub_show_flag">
+            <Progress :percent="statusbar" :stroke-width="5" status="active" v-show="statusShow"></Progress>
             <a href="javascript:;"
                v-for="(item1,index) in sub_district"
                :class="{active:sub_pos_active == index}"
@@ -34,6 +38,11 @@
 
         data (){
             return {
+
+                statusbar:0,
+                statusShow:true,
+                timer:null,
+
                 district: [],
                 sub_district: [],
 
@@ -66,6 +75,8 @@
                             class: "noArrow"
                         }
                         _this.district.unshift(all_district);
+
+                        _this.statusShow=false;
                     } else {
                         this.$Message.error(result.message);
                     }
@@ -157,7 +168,17 @@
         },
 
         mounted(){
+            var _this=this;
             this.getDistrict();
+
+            _this.timer=setInterval(function(){
+                _this.statusbar+=30;
+                if(_this.statusbar >=100){
+                    _this.statusbar=100;
+                    clearInterval(_this.timer);
+                }
+            },500);
+
         }
     }
 </script>
