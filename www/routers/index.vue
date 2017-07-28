@@ -13,7 +13,9 @@
     [header] {
         background-color: transparent;
     }
-
+    .ivu-form-item {
+        margin-bottom: 12px;
+      }
     /*回到顶部start*/
     .side-contact > a {
         display: block;
@@ -268,26 +270,27 @@
 
                 <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
-                        <Form ref="formInline1" :model="formItem1">
+                        <Form  ref="formInline1" :model="formInline1" :rules="ruleValidate">
                             <h4>帮我找楼</h4>
-
-                            <div class="popItem">
-                                <span class="inp_icon phone"></span>
-                                <input type="num" maxlength="11" required="" value="" name="" v-model="formInline1.telephone" placeholder="请输入您的手机号码">
-                                                 <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode1"
-                                                           style="width: 140px; height: 50px;"
-                                                           second="60"></TimerBtn>
-                            </div>
-                            <div class="popItem">
-                                <span class="inp_icon password"></span>
-                                <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
-                            </div>
+                            <Form-item  prop="telephone">
+                                <div class="popItem">
+                                    <span class="inp_icon phone"></span>
+                                    <input type="num"  v-model="formInline1.telephone" placeholder="请输入您的手机号码">
+                                    <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode1" style="width: 140px; height: 50px;"second="60"></TimerBtn>
+                                </div>
+                            </Form-item>
+                            <Form-item  prop="InputCode">
+                                <div class="popItem">
+                                    <span class="inp_icon password"></span>
+                                    <input type="num" v placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
+                                </div>
+                            </Form-item>
                             <p class="help_tips">*输入您的手机号码,以便幼狮提供更高效的服务</p>
 
                             <div class="clearfix">
 
-                                <Form-item label="区域" prop="city" class="pop_list fl right_none">
-                                    <Select v-model="formValidate.city" placeholder="请选择城市">
+                                <Form-item label="区域" prop="Col_city" class="pop_list fl right_none">
+                                    <Select v-model="formInline1.Col_city" placeholder="请选择城市">
                                         <Option v-for="item in cityList"
                                                 :value="item.value"
                                                 :key="item">{{ item.label }}
@@ -296,56 +299,57 @@
                                 </Form-item>
 
                                 <Form-item label="商圈" prop="trade_area" class="pop_list fr right_none">
-                                    <Select v-model="formValidate.trade_area" placeholder="请选择商圈">
-  
+                                    <Select v-model="formInline1.Col_business" placeholder="请选择商圈">
                                          <Option v-for="item in trade_areaList" :value="item.value" :key="item">{{ item.label }}</Option>
                                     </Select>
                                 </Form-item>
 
                                 <div class="pop_list fl">
                                     <span>面积</span>
-                                    <input type="text" maxlength="9" id="area_text" value="" name="">
+                                    <input type="text" maxlength="9" id="area_text" value="" name="" v-model="formInline1.Col_measure">
                                     <i class="pop_list_text">平米</i>
                                 </div>
 
                                 <div class="pop_list fr">
                                     <span>租金</span>
-                                    <input type="text" id="rent_text" value="" name="">
+                                    <input type="text" id="rent_text" value="" name="" v-model="formInline1.Col_rent">
                                     <i class="pop_list_text">元/月</i>
                                 </div>
                             </div>
-                            <textarea class="pop_textarea" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等">
-
-                    </textarea>
+                            <textarea class="pop_textarea" v-model="formInline1.Col_desc" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等"> </textarea>
 
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
+                            <Form-item>
+                               <input type="primary" class="pop_subbtn" value="确    认"  @click="handleSubmit1('formInline1')">
+                            </Form-item>
 
-                            <input type="submit" class="pop_subbtn" value="确    认"
-                                   @click="handleSubmit1('formInline1')">
                         </Form>
                     </div>
                 </Modal>
 
                 <Modal v-model="modal6" width="420" scrollable="false">
                     <div popup>
-                        <Form ref="formInline2" :model="formItem2">
+                        <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
                             <h3>安心委托,快速成交</h3>
 
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
-
-                            <div class="popItem">
-                                <span class="inp_icon phone"></span>
-                                <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
-                                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
-                                                      style="width: 140px; height: 50px;"
-                                                      second="60"></TimerBtn>
-                            </div>
+                           <Form-item  prop="telephone">
+                              <div class="popItem">
+                                  <span class="inp_icon phone"></span>
+                                  <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                                              <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
+                                                        style="width: 140px; height: 50px;"
+                                                        second="60"></TimerBtn>
+                              </div>
+                            </Form-item>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
-                                <input type="num" value="" maxlength="6" required="" name="" placeholder="请输入您收到的验证码">
+                                <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
                             </div>
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
-                            <input type="submit" class="pop_subbtn" value="提交委托" @click="handleSubmit2('formInline2')">
+                              <Form-item>
+                                 <input type="primary" class="pop_subbtn" value="提交委托" @click="handleSubmit2('formInline2')">
+                            </Form-item>
                         </Form>
                     </div>
                 </Modal>
@@ -444,34 +448,40 @@
                     select: ''
                 },
 
-                formValidate: {
+                formInline1: {
+                    telephone:'',
                     city: '',
                     trade_area: ''
+                },
+                ruleValidate: {
+                    telephone: [
+                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                    ]
                 },
 
                 //弹窗城市和商圈选择
                 cityList: [
                     {
-                        value: 'beijing',
+                        value: '北京市',
                         label: '北京市'
                     }
                 ],
 
                 trade_areaList: [
                     {
-                        value: '0',
+                        value: 'CBD',
                         label: 'CBD'
                     },
                     {
-                        value: '1',
+                        value: '朝阳门',
                         label: '朝阳门'
                     },
                     {
-                        value: '2',
+                        value: '大望路',
                         label: '大望路'
                     },
                     {
-                        value: '3',
+                        value: '三里屯',
                         label: '三里屯'
                     }
                 ],
@@ -518,7 +528,7 @@
                              {
                                  parameters: {
                                    "VerifiationCCodeType": 3,
-                                   "Col_telephone": this.formInline1.telephone
+                                   "Col_telephone": this.formInline2.telephone
                                  },
                                  foreEndType: "1",
                                  code: "90000102"
@@ -528,33 +538,51 @@
                              if (!reslute.success) {
                                    this.$Message.error(reslute.message);
                              }
+
                          }, function (response) {
                              this.$Message.error('API接口报错-网络错误!');
                              this.loading = false;
                          });
             },
             handleSubmit1(name) {
-              this.$http.post(
-                 this.$api,
-                 {
-                     parameters: {
-                        "VerifiationCCodeType":2,
-                        "Col_telephone":this.formInline1.telephone,
-                        "InputCode":this.formInline1.code
-                     },
-                     foreEndType: "1",
-                     code: "20000002"
-                 }
-             ).then(function (response) {
-                 var reslute = JSON.parse(response.bodyText);
-                 if (reslute.success) {
-                       this.$Message.success('需求单提交成功!');
-                 } else {
-                     this.$Message.error(reslute.message);
-                 }
-             }, function (response) {
-                 this.$Message.error('API接口报错-网络错误!');
-             });
+
+              this.$refs[name].validate((valid) => {
+                                  if (valid) {
+                                    this.$http.post(
+                                       this.$api,
+                                       {
+                                         parameters: {
+                                            "VerifiationCCodeType":2,
+                                            "Col_telephone":this.formInline1.telephone,
+                                            "InputCode":this.formInline1.InputCode,
+                                            "Col_business":this.formInline1.Col_business,
+                                            "Col_city":this.formInline1.Col_city,
+                                            "Col_measure":this.formInline1.Col_measure,
+                                            "Col_rent":this.formInline1.Col_rent,
+                                            "Col_desc":this.formInline1.Col_desc
+                                         },
+                                           foreEndType: "1",
+                                           code: "20000002"
+                                       }
+                                   ).then(function (response) {
+                                       var reslute = JSON.parse(response.bodyText);
+                                       if (reslute.success) {
+                                             this.$Message.success('需求单提交成功!');
+                                             this.modal5=false;
+                                       } else {
+                                           this.$Message.error(reslute.message);
+                                       }
+
+                                   }, function (response) {
+                                       this.$Message.error('API接口报错-网络错误!');
+                                   });
+                                      this.$Message.success('提交成功11!');
+                                  } else {
+                                      this.$Message.error('表单验证失败!');
+                                  }
+                              })
+
+
 
             },
             handleSubmit2(name) {
@@ -563,18 +591,21 @@
                       {
                           parameters: {
                             "VerifiationCCodeType": 3,
-                            "Col_telephone": this.formInline2.telephone
+                            "Col_telephone": this.formInline2.telephone,
+                            "InputCode":this.formInline2.InputCode
                           },
                           foreEndType: "1",
-                          code: "90000102"
+                          code: "20000004"
                       }
                   ).then(function (response) {
                       var reslute = JSON.parse(response.bodyText);
                       if (reslute.success) {
                           this.$Message.success('委托单提交成功!');
+                          this.modal6=false;
                       } else {
                           this.$Message.error(reslute.message);
                       }
+
                   }, function (response) {
                       this.$Message.error('API接口报错-网络错误!');
                       this.loading = false;

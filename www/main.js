@@ -24,8 +24,8 @@ Vue.use(VueLazyload, {
 })
 
 //const变量
-Vue.prototype.$api = "http://116.62.71.76:8001/api/GetServiceApiResult" //api地址
-//Vue.prototype.$api = "http://localhost:8001//api/GetServiceApiResult" //api地址
+//Vue.prototype.$api = "http://116.62.71.76:8001/api/GetServiceApiResult" //api地址
+Vue.prototype.$api = "http://localhost:8001//api/GetServiceApiResult" //api地址
 Vue.prototype.$resouceUrl = "http://localhost:8081/"  //资源文件地址
 
 // 开启debug模式
@@ -46,6 +46,7 @@ var router = new VueRouter({
         },
         {
             path: '/update',
+
             component: require('./routers/update.vue')
         },
         {
@@ -79,6 +80,27 @@ var router = new VueRouter({
         {
             path: '/detail',
             component: require('./routers/detail.vue')
+        },
+        {
+            path: '/admin',
+            component: require('./routers/admin/main.vue'),
+            children: [
+                 {
+                    path: '/delegateOrder',
+                    component: resolve => require(['./routers/admin/delegateOrder.vue'], resolve)
+                 },
+                 {
+                    path: '/requestOrder',
+                    component: resolve => require(['./routers/admin/requestOrder.vue'], resolve)
+                 },
+                 {
+                    path: '/form',
+                    component: resolve => require(['./routers/admin/form.vue'], resolve)
+                 }
+
+
+
+              ]
         },
         {
             path: '/admin',

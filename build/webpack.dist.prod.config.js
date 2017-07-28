@@ -7,7 +7,7 @@ process.env.NODE_ENV = 'production';
 
 module.exports = merge(webpackBaseConfig, {
     entry: {
-        main: './src/index.js'
+        main: './www/index.js'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
