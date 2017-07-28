@@ -341,11 +341,13 @@
                 var _this = this;
 
                 this.building_id = this.$route.query.building_id;
+                this.state = this.$route.query.state;
                 this.$http.post(
                     this.$api,
                     {
                         "parameters": {
                             "building_id": this.building_id,
+                            "state":this.state,
                             "area": "",
                             "price_dj": "[0,1000000]",
                             "price_zj": "",
@@ -449,5 +451,3 @@
     }
 
 </script>
-
-
