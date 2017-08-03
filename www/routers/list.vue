@@ -38,6 +38,11 @@
         padding: 20px;
     }
 
+    .ivu-btn-primary{
+        background-color: #3facf8;
+        border-color: #3facf8;
+    }
+
 
 </style>
 
