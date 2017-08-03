@@ -62,6 +62,27 @@
     }
   }
 
+  .map_find_room{
+    width:140px;
+    height:40px;
+    line-height: 40px;
+    padding-left: 24px;
+    border:1px solid @bdc_bot_lightline;
+    color: @bg_search_blue;
+    font-size: @font16;
+    i{
+      width:18px;
+      height:16px;
+      margin-right: 8px;
+      background: url("../../images/list/map_icon.png") no-repeat;
+      background-size: 18px 16px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -2px;
+    }
+  }
+
+
   //面包屑
   .address_tit {
     h1 {
@@ -128,7 +149,7 @@
         }
         &.active {
           color: @cl_white;
-          background-color: @cl_class_black;
+          background-color: @bg_search_blue;
           .sem_icon {
             background-position-y: -45px;
           }
@@ -189,7 +210,7 @@
             text-align: center;
             &.tag {
               color: @cl_white;
-              background-color: @cl_class_black;
+              background-color: @bg_search_blue;
             }
           }
         }

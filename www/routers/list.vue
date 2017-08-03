@@ -52,14 +52,13 @@
             <div class="search_box">
                 <div class="contents clearfix">
                     <div class="list_search fl">
-                        <div class="fl">
+                        <div class="fl clearfix">
                             <input id="search_inp" type="text" autocomplete="off" v-model="search_keywork" placeholder="请输入写字楼名称或商圈"
                                    maxlength="30">
-                            <div class="search-3">
-                                <div class="s-result sem-search" id="association" style="display: none;">智能提示</div>
-                            </div>
                         </div>
-                        <a class="map_btn" id="bannerSearchbtn" @click="searchClick()">搜索</a>
+                        <a class="map_btn fl ml10" id="bannerSearchbtn" @click="searchClick()">搜索</a>
+                        <router-link target="_blank" :to="{path:'/map_search'}" class="map_find_room fl ml10"><i></i>地图搜索
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -88,8 +87,6 @@
                             </a>
                             <!--<a href="javascript:;" class="active"><i class="sem_icon quyu"></i>区域</a>-->
                             <!--<a href="javascript:;"><i class="sem_icon ditie"></i>地铁</a>-->
-                            <router-link target="_blank" :to="{path:'/map_search'}"><i class="sem_icon ditu"></i>地图
-                            </router-link>
                         </div>
 
                         <component :is="currentView"
@@ -415,31 +412,36 @@
                     <!--右侧栏-->
                     <div class="sidebar_box">
                         <div class="sidebar_main" id="sidebar_fix">
-                            <div class="map_house">
-                                <img src="../resources/images/list/maps.png" alt="">
-                                <router-link target="_blank" class="map_find_btn" :to="{path:'/map_search'}">地图找房
-                                </router-link>
+                            <div class="side_model_tit"><i></i>地图找房</div>
+                            <div class="map_house pr mt10">
+                                <div class="map_hover_wrap">
+                                    <div class="map_hover_bg"></div>
+                                    <div class="pr">
+                                        <img src="../resources/images/list/maps.png" alt="">
+                                        <router-link target="_blank" class="quick_btn" :to="{path:'/map_search'}">立即找房
+                                        </router-link>
+                                    </div>
+                                </div>
                             </div>
                             <div class="booking_house mt20">
                                 <div class="booking_house_mes">
-                                    <h2>快速找房</h2>
+                                    <div class="side_model_tit"><i></i>地图找房</div>
                                     <form id="freeLookForm" class="nice-validator n-default">
                                         <input id="freeLook_inp" name="phone" class="form_control form_telphone"
                                                type="text"
                                                autocomplete="off"
-                                               placeholder="手机号" maxlength="11"
+                                               placeholder="输入您的手机号" maxlength="11"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <span class="db text-left mt05" id="msg-phone"></span>
-                                        <div class="form_control form_btn mt10 cur_pointer"
-                                             @click="instance('success')">一键咨询
-                                        </div>
+                                        <div class="form_control form_btn mt10 tc cur_pointer"
+                                             @click="instance('success')">一键咨询</div>
                                     </form>
 
-                                    <p class="nearby">客服将在10分钟内联系您</p>
+                                    <p class="nearby">* 客服将在10分钟内联系您</p>
                                 </div>
-                                <div class="ph20 tc text_gray9">
-                                    咨询热线：<b class="text_pink_app">400-810-6698</b>
+                                <div class="ph10 tc">
+                                    <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-810-6698</b>
                                 </div>
                             </div>
                             <div class="app_download mt20">
