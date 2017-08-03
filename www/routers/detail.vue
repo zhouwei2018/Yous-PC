@@ -32,7 +32,6 @@
 
             <!--logo-->
             <div class="building-label clearfix">
-                <img class="fl" src="../resources/images/ys_weixin.jpg" alt="望京SOHO二维码">
                 <div class="building-tag">
                     <h1 v-text="building_name"></h1>
                     <ul class="tag-item">

@@ -57,7 +57,9 @@
   position: absolute;
   width: 290px;
   right: 0;
-  padding-top: 20px;
+}
+.sidebar_box.pt70 {
+  padding-top: 70px;
 }
 .sidebar_box .sidebar_main {
   width: 290px;
@@ -104,7 +106,7 @@
 }
 .sidebar_box .sidebar_main .booking_house .booking_house_mes .form_control.form_btn {
   color: #fff;
-  background-color: #608ceb;
+  background-color: #3facf8;
 }
 .sidebar_box .sidebar_main .booking_house .booking_house_mes .form_control.form_telphone {
   margin-top: 17px;
@@ -124,6 +126,9 @@
   margin-top: 18px;
   color: #666;
 }
+.sidebar_box .sidebar_main .booking_house .consult_box {
+  padding: 15px 0;
+}
 .sidebar_box .sidebar_main .app_download {
   width: 290px;
   height: 226px;
@@ -138,12 +143,9 @@
 .sidebar_box .sidebar_main .app_download img {
   display: inline-block;
   vertical-align: middle;
-  width: 72px;
-  height: 72px;
-}
-.sidebar_box .sidebar_main .app_download img.weixin_img {
-  width: 80px;
-  height: 80px;
+  width: 115px;
+  height: 115px;
+  margin-bottom: 10px;
 }
 .sidebar_box .right_logo_icon {
   display: inline-block;
@@ -155,6 +157,7 @@
   background-size: 19px 26px;
 }
 .sidebar_box .map_house {
+  margin-bottom: 20px;
   background: url("../../images/list/right_bar_img.png") no-repeat;
 }
 .sidebar_box .map_house:hover .map_hover_wrap {

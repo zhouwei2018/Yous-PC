@@ -70,6 +70,13 @@
   background: url("../../images/icons/detail-icon-bg.png") no-repeat;
   /* background-color: #f1f5f6; */
 }
+[detail] .build_weixin_top {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
 [detail] .font-num {
   font-family: Tahoma;
 }
@@ -399,7 +406,7 @@
   top: -8px;
   padding: 7px 10px;
   white-space: nowrap;
-  background-color: #FFF;
+  background-color: #fff;
   border: 1px solid #D8D8D8;
   -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
@@ -413,9 +420,9 @@
   margin-right: 0;
   margin-left: 19px;
   font-size: 13px;
-  color: #FFF !important;
+  color: #fff !important;
   line-height: 26px;
-  background-color: #476CBA;
+  background-color: #3facf8;
 }
 [detail] .screening-range-list {
   position: relative;
@@ -443,7 +450,7 @@
 }
 [detail] .screening-range-list ul li .price-wrap {
   height: 26px;
-  border: 1px solid #302F35;
+  border: 1px solid #e5e5e6;
 }
 [detail] .screening-range-list ul li .price-wrap a {
   float: left;
@@ -453,8 +460,8 @@
   font-size: 13px;
 }
 [detail] .screening-range-list ul li .price-wrap a.active {
-  background-color: #302F35;
-  color: #FFF;
+  background-color: #3facf8;
+  color: #fff;
 }
 [detail] .screening-range-list ul li:first-child {
   margin-left: 0;
@@ -470,8 +477,8 @@
   width: 70px;
   height: 26px;
   text-align: center;
-  background: #FFFFFF;
-  border: 1px solid #E5E5E6;
+  background: #fff;
+  border: 1px solid #e5e5e6;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -500,7 +507,7 @@
   text-align: center;
   color: #fff;
   font-size: 15px;
-  background-color: #0d6daa;
+  background-color: #3facf8;
 }
 [detail] .sort-list a {
   float: left;
@@ -513,9 +520,9 @@
   text-align: center;
 }
 [detail] .sort-list a.tag {
-  color: #302F35;
+  color: #3facf8;
   font-weight: 700;
-  border-bottom: 4px solid #302F35;
+  border-bottom: 4px solid #3facf8;
 }
 [detail] .sort-list a span {
   margin-left: 7px;
@@ -525,13 +532,13 @@
   line-height: 14px;
 }
 [detail] .detail-office-list {
-  background-color: #FFF;
+  background-color: #fff;
 }
 [detail] .detail-office-list li {
   height: 100px;
   padding: 20px 21px 20px 0;
-  background-color: #FFF;
-  border-top: 1px solid #E5E5E6;
+  background-color: #fff;
+  border-top: 1px solid #e5e5e6;
   cursor: pointer;
   box-sizing: content-box;
 }
@@ -698,7 +705,7 @@
   cursor: pointer;
 }
 [detail] .map-type-nav .map-type-item.on {
-  color: #FFF;
+  color: #fff;
   background-color: #302F35;
 }
 [detail] .map-type-nav .map-type-item.on .detail-icon.jt {
@@ -763,7 +770,7 @@
   width: 20px;
   height: 20px;
   margin-right: 7px;
-  color: #FFF;
+  color: #fff;
   text-align: center;
   border-radius: 50%;
   background-color: #302F35;
@@ -816,7 +823,7 @@
   left: 0;
   width: 100%;
   margin-top: -58px;
-  color: #FFF;
+  color: #fff;
   text-align: center;
 }
 [detail] .occupancy-info .consulting-detail {
@@ -825,7 +832,7 @@
   line-height: 1em;
   margin: 17px auto 0;
   padding: 8px 13px;
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   background-color: #476CBA;
   box-sizing: border-box;
@@ -907,7 +914,7 @@
   height: 500px;
   margin-left: -480px;
   margin-top: -250px;
-  background-color: #FFF;
+  background-color: #fff;
   z-index: 99;
 }
 [detail] .pop-carousel-box .pop-carousel-close {
@@ -988,7 +995,7 @@
   height: 24px;
   line-height: 24px;
   margin-top: 10px;
-  color: #FFF;
+  color: #fff;
   font-size: 12px;
   text-align: center;
   background: rgba(48, 47, 53, 0.7);
@@ -1011,6 +1018,6 @@
   bottom: 20px;
   left: 50%;
   margin-left: -42px;
-  color: #FFF;
+  color: #fff;
   text-align: center;
 }

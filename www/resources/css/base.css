@@ -231,6 +231,9 @@ select {
 .bg_white {
   background-color: #fff;
 }
+.cl_blue {
+  color: #3facf8;
+}
 .text_indent1 {
   text-indent: 1.2em;
 }

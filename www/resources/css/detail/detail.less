@@ -14,6 +14,15 @@
     /* background-color: #f1f5f6; */
   }
 
+  .build_weixin_top{
+    width:100px;
+    height:100px;
+    position: absolute;
+    right:20px;
+    top:10px;
+
+  }
+
   .font-num {
     font-family: Tahoma;
   }
@@ -63,7 +72,7 @@
         width: 86px;
         height: 40px;
         margin-left: 10px;
-        color: #fff;
+        color: @cl_white;
         font-size: 16px;
         background-color: @bg_search_blue;
         display: inline-block;
@@ -116,7 +125,7 @@
     margin: 20px auto 0;
     height: 43px;
     line-height: 43px;
-    border-bottom: 1px solid #e5e5e6;
+    border-bottom: 1px solid @bdc_bot_lightline;
     .nav-building {
       > li {
         float: left;
@@ -213,7 +222,7 @@
       > h2 {
         line-height: 1em;
         font-size: 18px;
-        color: #302F35;
+        color: @cl_class_black;
         font-weight: 700;
       }
       .price-box {
@@ -390,7 +399,7 @@
     top: -8px;
     padding: 7px 10px;
     white-space: nowrap;
-    background-color: #FFF;
+    background-color: @cl_white;
     border: 1px solid #D8D8D8;
     -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
     -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
@@ -403,9 +412,9 @@
       margin-right: 0;
       margin-left: 19px;
       font-size: 13px;
-      color: #FFF !important;
+      color: @cl_white !important;
       line-height: 26px;
-      background-color: #476CBA;
+      background-color: @bg_search_blue;
     }
   }
 
@@ -432,7 +441,7 @@
         margin-left: 15px;
         .price-wrap {
           height: 26px;
-          border: 1px solid #302F35;
+          border: 1px solid @bdc_bot_lightline;
           a {
             float: left;
             display: block;
@@ -440,8 +449,8 @@
             line-height: 24px;
             font-size: 13px;
             &.active {
-              background-color: #302F35;
-              color: #FFF;
+              background-color: @bg_search_blue;
+              color: @cl_white;
             }
           }
         }
@@ -460,8 +469,8 @@
           width: 70px;
           height: 26px;
           text-align: center;
-          background: #FFFFFF;
-          border: 1px solid #E5E5E6;
+          background: @cl_white;
+          border: 1px solid @bdc_bot_lightline;
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
           box-sizing: border-box;
@@ -494,7 +503,7 @@
       text-align: center;
       color: @cl_white;
       font-size: @font15;
-      background-color: @bg_deep_blue;
+      background-color: @bg_search_blue;
     }
   }
 
@@ -510,9 +519,9 @@
       color: #666;
       text-align: center;
       &.tag {
-        color: #302F35;
+        color: @bg_search_blue;
         font-weight: 700;
-        border-bottom: 4px solid #302F35;
+        border-bottom: 4px solid @bg_search_blue;
       }
       span{
         margin-left: 7px;
@@ -527,16 +536,16 @@
 
   //结果列表
   .detail-office-list {
-    background-color: #FFF;
+    background-color: @cl_white;
     li {
       height: 100px;
       padding: 20px 21px 20px 0;
-      background-color: #FFF;
-      border-top: 1px solid #E5E5E6;
+      background-color: @cl_white;
+      border-top: 1px solid @bdc_bot_lightline;
       cursor: pointer;
       box-sizing: content-box;
       a {
-        color: #302F35;
+        color: @cl_class_black;
         .list-img {
           float: left;
           position: relative;
@@ -615,7 +624,7 @@
       line-height: 30px;
       padding-top: 27px;
       margin-bottom: 15px;
-      border-top: 1px solid #e5e5e6;
+      border-top: 1px solid @bdc_bot_lightline;
       box-sizing: content-box;
       h2 {
         font-size: @font20;
@@ -718,8 +727,8 @@
       text-align: center;
       cursor: pointer;
       &.on {
-        color: #FFF;
-        background-color: #302F35;
+        color: @cl_white;
+        background-color: @cl_class_black;
         .detail-icon.jt {
           background-position: -27px -117px;
         }
@@ -765,7 +774,7 @@
       box-sizing: border-box;
       cursor: pointer;
       &.currenttype {
-        border-bottom: 3px solid #302F35;
+        border-bottom: 3px solid @cl_class_black;
       }
     }
   }
@@ -787,10 +796,10 @@
         width: 20px;
         height: 20px;
         margin-right: 7px;
-        color: #FFF;
+        color: @cl_white;
         text-align: center;
         border-radius: 50%;
-        background-color: #302F35;
+        background-color: @cl_class_black;
       }
       p {
         float: left;
@@ -846,7 +855,7 @@
     left: 0;
     width: 100%;
     margin-top: -58px;
-    color: #FFF;
+    color: @cl_white;
     text-align: center;
   }
   .occupancy-info .consulting-detail {
@@ -855,7 +864,7 @@
     line-height: 1em;
     margin: 17px auto 0;
     padding: 8px 13px;
-    color: #FFF;
+    color: @cl_white;
     font-size: 16px;
     background-color: #476CBA;
     box-sizing: border-box;
@@ -911,7 +920,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #302F35;
+    background-color: @cl_class_black;
     opacity: 0.7;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
     filter: alpha(opacity=70);
@@ -939,7 +948,7 @@
     height: 500px;
     margin-left: -480px;
     margin-top: -250px;
-    background-color: #FFF;
+    background-color: @cl_white;
     z-index: 99;
   }
   .pop-carousel-box .pop-carousel-close {
@@ -1021,7 +1030,7 @@
     height: 24px;
     line-height: 24px;
     margin-top: 10px;
-    color: #FFF;
+    color: @cl_white;
     font-size: 12px;
     text-align: center;
     background: rgba(48, 47, 53, 0.70);
@@ -1044,7 +1053,7 @@
     bottom: 20px;
     left: 50%;
     margin-left: -42px;
-    color: #FFF;
+    color: @cl_white;
     text-align: center;
   }
 

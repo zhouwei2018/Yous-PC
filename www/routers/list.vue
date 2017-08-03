@@ -410,7 +410,7 @@
                     </div>
 
                     <!--右侧栏-->
-                    <div class="sidebar_box">
+                    <div class="sidebar_box pt70">
                         <div class="sidebar_main" id="sidebar_fix">
                             <div class="side_model_tit"><i></i>地图找房</div>
                             <div class="map_house pr mt10">
@@ -423,9 +423,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="booking_house mt20">
+                            <div class="side_model_tit mb10"><i></i>快速找房</div>
+                            <div class="booking_house">
                                 <div class="booking_house_mes">
-                                    <div class="side_model_tit"><i></i>地图找房</div>
+                                    <div class="side_model_tit cl_blue">快速委托找房</div>
                                     <form id="freeLookForm" class="nice-validator n-default">
                                         <input id="freeLook_inp" name="phone" class="form_control form_telphone"
                                                type="text"
@@ -440,18 +441,13 @@
 
                                     <p class="nearby">* 客服将在10分钟内联系您</p>
                                 </div>
-                                <div class="ph10 tc">
+                                <div class="consult_box tc">
                                     <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-810-6698</b>
                                 </div>
                             </div>
-                            <div class="app_download mt20">
-                                <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
-                                <div class="mh25">
-                                    <img src="../resources/images/ys_logo2.jpg" alt="幼狮APP">
-                                    <img src="../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
-                                         alt="扫描二维码关注">
-                                </div>
-                                <p>扫描二维码关注</p>
+                            <div class="app_download tc">
+                                <img src="../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
+                                <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
                             </div>
                         </div>
                     </div>
@@ -817,24 +813,35 @@
                     _this.loadingFlag = false;
                     if (result.success) {
                         if (result.data) {
-                            for (var i = 0; i < result.data.buildings.length; i++) {
-                                if (result.data.buildings[i].label) {
-                                    result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
-                                } else {
-                                    result.data.buildings[i].tags = [];
-                                }
 
+                            if(result.data.total_items>0){
+                                for (var i = 0; i < result.data.buildings.length; i++) {
+                                    if (result.data.buildings[i].label) {
+                                        result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
+                                    } else {
+                                        result.data.buildings[i].tags = [];
+                                    }
+
+                                }
+                                _this.buildList = result.data.buildings;
+                                _this.total_items = result.data.total_items;
+                                _this.total_pages = result.data.total_pages;
+                                _this.pageFlag = true;
+                            }else {
+                                _this.pageFlag = false;
+                                _this.buildingShowFlag = true;
+                                _this.total_items = 0;
                             }
-                            _this.buildList = result.data.buildings;
-                            _this.total_items = result.data.total_items;
-                            _this.total_pages = result.data.total_pages;
-                            _this.pageFlag = true;
+
 
                         } else {
                             _this.pageFlag = false;
+                            _this.buildingShowFlag = true;
+                            _this.total_items = 0;
                         }
 
                     } else {
+                        _this.pageFlag = false;
                         _this.buildingShowFlag = true;
                         _this.total_items = 0;
                     }

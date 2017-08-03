@@ -4,7 +4,10 @@
   position: absolute;
   width: 290px;
   right: 0;
-  padding-top: 20px;
+  &.pt70{
+    padding-top: 70px;
+  }
+
   .sidebar_main {
     width: 290px;
     .map_house {
@@ -47,7 +50,7 @@
           box-sizing: border-box;
           &.form_btn {
             color: @cl_white;
-            background-color: @bg_btn_blue;
+            background-color: @bg_search_blue;
           }
           &.form_telphone {
             margin-top: 17px;
@@ -70,7 +73,10 @@
           margin-top: 18px;
           color: @cl_666;
         }
+      }
 
+      .consult_box{
+        padding: 15px 0;
       }
     }
     .app_download {
@@ -86,12 +92,9 @@
       img {
         display: inline-block;
         vertical-align: middle;
-        width: 72px;
-        height: 72px;
-        &.weixin_img {
-          width: 80px;
-          height: 80px;
-        }
+        width: 115px;
+        height: 115px;
+        margin-bottom: 10px;
       }
     }
 
@@ -108,6 +111,7 @@
   }
 
   .map_house {
+    margin-bottom: 20px;
     background: url("../../images/list/right_bar_img.png") no-repeat;
     &:hover {
       .map_hover_wrap {

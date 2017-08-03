@@ -87,15 +87,19 @@
             <!--轮播图 end-->
 
             <div class="building-message">
+
                 <h2 v-text="highlights"></h2>
+
                 <div class="price-box clearfix mt20">
                     <p class="building-price">
                         <strong v-text="price">&nbsp;</strong><span>元/<em class="font-num">m²</em>·天</span>
                     </p>
                 </div>
+
                 <p class="building-address clearfix">
                     <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap" class="show-map">查看地图</a>
                 </p>
+
                 <p class="building-consult clearfix">
                     <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span>
                 </p>
@@ -143,7 +147,7 @@
                         <li><i class="detail-icon bank"></i>银行 <em class="text-black">22</em></li>
                     </ul>
                 </div>
-
+                <img class="build_weixin_top" src="../../resources/images/ys_weixin.jpg" alt="">
             </div>
         </div>
 
@@ -455,36 +459,31 @@
             <!--右侧悬浮box start-->
             <div class="sidebar_box">
                 <div class="sidebar_main" id="sidebar_fix">
-                    <div class="booking_house mt20">
+                    <div class="side_model_tit mb10"><i></i>快速找房</div>
+                    <div class="booking_house">
                         <div class="booking_house_mes">
-                            <h2>快速找房</h2>
-                            <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
-                                <input type="hidden" name="flag" value="5">
-                                <input name="searchengine" type="hidden" value="">
-                                <input name="phone" class="form_control form_telphone" type="text" autocomplete="off"
-                                       placeholder="手机号" maxlength="11"
+                            <div class="side_model_tit cl_blue">快速委托找房</div>
+                            <form id="freeLookForm" class="nice-validator n-default">
+                                <input id="freeLook_inp" name="phone" class="form_control form_telphone"
+                                       type="text"
+                                       autocomplete="off"
+                                       placeholder="输入您的手机号" maxlength="11"
                                        onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
-                                       aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
+                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                 <span class="db text-left mt05" id="msg-phone"></span>
-                                <div class="form_control form_btn mt10 cur_pointer" @click="instance('success')">一键咨询
-                                </div>
+                                <div class="form_control form_btn mt10 tc cur_pointer"
+                                     @click="instance('success')">一键咨询</div>
                             </form>
 
-                            <p class="nearby">客服将在10分钟内联系您</p>
+                            <p class="nearby">* 客服将在10分钟内联系您</p>
                         </div>
-                        <div class="ph20 tc text_gray9">
-                            咨询热线：<b class="text_pink_app">400-810-6698</b>
+                        <div class="consult_box tc">
+                            <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-810-6698</b>
                         </div>
                     </div>
-                    <div class="app_download mt20">
-                        <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
-                        <div class="mh25">
-                            <img src="../../resources/images/ys_logo2.jpg" alt="幼狮APP">
-                            <img src="../../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
-                                 alt="扫描二维码关注">
-                        </div>
-                        <p>扫描二维码关注</p>
+                    <div class="app_download tc">
+                        <img src="../../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
+                        <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
                     </div>
                 </div>
             </div>

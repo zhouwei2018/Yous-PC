@@ -291,7 +291,7 @@
                     }
                     li.on{
                         color: #FFF;
-                        background-color: #302F35;
+                        background-color: #3facf8;
                     }
                     li:nth-child(1){
                         i{
@@ -359,7 +359,7 @@
                         cursor: pointer;
                     }
                     li.currenttype {
-                        border-bottom: 3px solid #302F35;
+                        border-bottom: 3px solid #3facf8;
                     }
                 }
                 .result-ul{
@@ -382,7 +382,7 @@
                             color: #FFF;
                             text-align: center;
                             border-radius: 50%;
-                            background-color: #302F35;
+                            background-color: #3facf8;
                         }
                         p{
                             float: left;
