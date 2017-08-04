@@ -667,17 +667,15 @@ a img {
 
 .map_pop_community span {
     position: absolute;
-    height: 44px;
+    height: 40px;
     z-index: 2;
     background: url(../../images/map_search/icon_zi.png) no-repeat;
-    height: 44px;
-    width: 37px;
+    background-size: 40px 40px;
     text-align: center;
-    line-height: 40px;
-    display: block;
+    line-height: 38px;
     font-size: 12px;
-    color: #fff;
-    float: left;
+    color: #3facf8;
+    padding-left: 50px;
 }
 
 .map_pop_community .pricesty {
@@ -695,15 +693,17 @@ a img {
     font-size: 12px;
     height: 44px;
     background: #ffffff;
-    margin-left: 18px;
+    margin-left: 14px;
+    width:150px;
     cursor: pointer;
-    padding: 0 15px 0 30px;
+    padding: 0 15px 0 70px;
     position: relative;
     z-index: 1;
     display: block;
     height: 28px;
     line-height: 28px;
     float: left;
+    color: #3facf8;
     border-top-left-radius: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -719,24 +719,24 @@ a img {
     box-shadow: 0 0px 10px #555;
     -webkit-box-shadow: 0 0px 10px #555;
     -moz-box-shadow: 0 0px 10px #555;
-    display: none;
 }
 
 .map_pop_community_cur label {
     overflow: hidden;
     margin-top: 5px;
     font-size: 12px;
-    height: 44px;
     background: #ffffff;
-    margin-left: 18px;
+    margin-left: 14px;
+    width:150px;
     cursor: pointer;
-    padding: 0 15px 0 30px;
+    padding: 0 15px 0 70px;
     position: relative;
     z-index: 1;
     display: block;
     height: 28px;
     line-height: 28px;
     float: left;
+    color: #3facf8;
     border-top-left-radius: 0;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -755,7 +755,10 @@ a img {
 }
 
 .map_pop_community_cur span {
-    background: url(../../images/map_search/icon_hong.png) no-repeat;
+    background: url(../../images/map_search/icon_zi.png) no-repeat;
+    background-size: 40px 40px;
+    color: #3facf8;
+    padding-left: 50px;
     cursor: pointer;
 }
 
@@ -847,7 +850,7 @@ a img {
     left: -500px;
     top: 50px;
     bottom: 0;
-    width: 468px;
+    width: 400px;
     height: 100%;
     padding: 0;
     -webkit-transition: .8s cubic-bezier(.19, 1, .22, 1);
