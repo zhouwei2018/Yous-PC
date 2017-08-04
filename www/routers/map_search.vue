@@ -1,3 +1,171 @@
+<style scoped lang="less">
+    @import "../resources/css/base.less";
+    @import "../resources/css/map_search/map_search.css";
+</style>
+<style lang="less">
+    [map-search] {
+
+        .region_inp{
+            width:400px;
+        }
+
+        .mapbg {
+            min-width: 1200px;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            .header_menu_out {
+                position: relative;
+                bottom: 0;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #fff;
+                .header_menu {
+                    display: none;
+                    width: 100%;
+                    height: 59px;
+                    border-bottom: 2px solid #8c91ff;
+                    .header_logo {
+                        width: 183px;
+                        height: 57px;
+                    }
+                }
+            }
+        }
+        .fang_type {
+            .fangtypebtn {
+                img {
+                    float: left;
+                    cursor: pointer;
+                    width: 41px;
+                    height: 41px
+                }
+
+            }
+        }
+        .contnav ul.topnav li img {
+            margin: 4px 14px 0 48px;
+            width: 10px;
+            height: 6px;
+        }
+        .contnav ul.topnav li.add img{
+            margin:4px 14px 0 90px;
+        }
+        .fang_type .typelist ul li {
+            overflow: hidden;
+            background: #66d0fa;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .fang_type .typelist ul li a img {
+            float: left;
+            margin-top: 11px;
+            width: 19px;
+            height: 18px;
+        }
+        .contnav ul.topnav li ul.subnav li {
+            clear: both;
+            width: 100%;
+            height: 28px;
+            border: 0;
+            overflow: hidden;
+            text-align: center
+        }
+        .contnav ul.topnav li ul.subnav li a {
+            clear: both;
+            float: left;
+            width: 100%;
+            margin: 0;
+            height: 28px;
+            line-height: 28px;
+        }
+        .contnav ul.topnav li ul.subnav li a:hover {
+            color: #ffffff;
+            background: #64cff9;
+            border: none;
+            width: 100%;
+        }
+        .choose{
+            .subnav {
+                display: block!important;
+            }
+        }
+        .house-location{
+            background-image: url(../resources/images/map_search/fangzhi.png);
+            width: 18px;
+            height: 22px;
+            margin: 15px 0 13px -31px;
+            position: absolute;
+        }
+        .fanglistinfo{
+            overflow: hidden;
+            padding: 8px 15px;
+        }
+        #result-tip{
+            position: fixed;
+            display: none;
+            z-index: 33;
+            top:50%;
+            left:50%;
+            width: 200px;
+            margin-left:-100px;
+            margin-top:-100px;
+            background: #8d91ff;
+            height: 85px;
+            bottom: 10%;
+            color: #fff;
+            font-size: 16px;
+            -webkit-transition: all 3s ease-in 0s ;
+            -moz-transition: all 3s ease-in 0s ;
+            -o-transition: all 3s ease-in 0s ;
+            transition: all 3s ease-in 0s ;
+            p{
+                text-align: center;
+                padding: 16px 20px;
+            }
+        }
+        #result-tip,#t_L,#h_L,#ht_L{
+            border-radius: .4em;
+        }
+        #box-out{
+            width: 390px;
+            height:700px;
+            padding-bottom: 180px;
+            position: relative;
+        }
+        #scrollbar{
+            position: absolute;
+            width: 5px;
+            top: 0;
+            right: 3px;
+            min-height: 500px;
+            z-index: 5;
+        }
+        #handle{
+            position: absolute;
+            top: 0;
+            height: 100px;
+            width: 100%;
+            border-radius: 5px;
+            background: #ccc;
+            cursor: pointer;
+            line-height: 0;
+        }
+        #ul-outer{
+            position: relative;
+            width: 390px;
+            min-height: 500px;
+        }
+        #list-ul{
+            position: absolute;
+            width: 390px;
+            top: 0;
+            min-height: 500px;
+        }
+    }
+</style>
+
 <template>
     <div class="all">
         <!--header start-->
@@ -21,27 +189,27 @@
                         </div>
                     </div>
                     <div class="search_main">
-                        <div class="fang_type fl">
-                            <div class="fangtypebtn"><img src="../resources/images/map_search/fang_type.jpg">
-                                <span class="result-span">房源类型</span>
-                            </div>
-                            <div class="typelist">
-                                <ul>
-                                    <li key="exchange">
-                                        <a href="javascript:void(0);">
-                                            <div class="bottomstyle"  @click="houseType('hh', '航远房源', $event)"><img src="../resources/images/map_search/icon_fang.png"><span>航远房源</span></div>
-                                        </a>
-                                    </li>
-                                    <li key="rent">
-                                        <a href="javascript:void(0);">
-                                            <div class="bottomstyle last"  @click="houseType('ys', '幼狮房源', $event)"><img src="../resources/images/map_search/icon_fang.png"><span>幼狮房源</span></div>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        <!--<div class="fang_type fl">-->
+                            <!--<div class="fangtypebtn"><img src="../resources/images/map_search/fang_type.jpg">-->
+                                <!--<span class="result-span">房源类型</span>-->
+                            <!--</div>-->
+                            <!--<div class="typelist">-->
+                                <!--<ul>-->
+                                    <!--<li key="exchange">-->
+                                        <!--<a href="javascript:void(0);">-->
+                                            <!--<div class="bottomstyle"  @click="houseType('hh', '航远房源', $event)"><img src="../resources/images/map_search/icon_fang.png"><span>航远房源</span></div>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li key="rent">-->
+                                        <!--<a href="javascript:void(0);">-->
+                                            <!--<div class="bottomstyle last"  @click="houseType('ys', '幼狮房源', $event)"><img src="../resources/images/map_search/icon_fang.png"><span>幼狮房源</span></div>-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
                         <div class="search fl">
-                            <input type="text" placeholder="请输入小区名称或地址..." v-model="filterWords"  autocomplete="off" id="autocomplete">
+                            <input type="text" class="region_inp" placeholder="请输入小区名称或地址..." v-model="filterWords"  autocomplete="off" id="autocomplete">
                             <a class="search_btn fl" href="javascript:void(0);" @click="seachWord"><img
                                     src="../resources/images/map_search/searchbtn.png" width="17" height="17"></a>
                         </div>
@@ -85,6 +253,12 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <!--列表找房图标-->
+                        <div class="r_listbtn qqserver_fold">
+                            <router-link target="_blank" :to="{path:'/list'}"></router-link>
+                        </div>
+
                     </div>
                     <div class="tsinfosty"><img src="../resources/images/map_search/ts_icon.png"></div>
                 </div>
@@ -96,30 +270,27 @@
                             <a href="javascript:" class="bar"></a>
                         </div>
                         <div class="main_zhoubian" style="display:none;"></div>
-                        <div class="r_listbtn qqserver_fold">
-                            <router-link target="_blank" :to="{path:'/list'}"></router-link>
-                        </div>
                         <!--右边浮动层开始-->
                         <div class="qqserver" :class="{ unfold: rightPannel }"  @click="rightHandler_($event,detailLists.building_id )">
                             <div class="qqserver-body">
-                                <div class="qqserver-header" style="position: relative;z-index: 333">
-                                    <div class="xiaoqushow fl" id="xiaoqushow">
-                                        <span class="icon_xqshow"></span>小区展示
-                                    </div>
-                                    <div class="fanhuibtn fl" id="fanhui" style="display:none;">
-                                        <a href="javascript:void(0);"><label class="icon_fanhui"></label>返回</a>
-                                    </div>
-                                    <div class="fenxiangshow fl" style="margin-left: 147px;"><span></span></div>
-                                    <div class="close qqserver_arrow fl"><span></span></div>
-                                </div>
+                                <!--<div class="qqserver-header" style="position: relative;z-index: 333">-->
+                                    <!--<div class="xiaoqushow fl" id="xiaoqushow">-->
+                                        <!--<span class="icon_xqshow"></span>小区展示-->
+                                    <!--</div>-->
+                                    <!--<div class="fanhuibtn fl" id="fanhui" style="display:none;">-->
+                                        <!--<a href="javascript:void(0);"><label class="icon_fanhui"></label>返回</a>-->
+                                    <!--</div>-->
+                                    <!--<div class="fenxiangshow fl" style="margin-left: 147px;"><span></span></div>-->
+                                    <!--<div class="close qqserver_arrow fl"><span></span></div>-->
+                                <!--</div>-->
                                 <div class="liebiao">
                                     <div class="fangyuanlist">
-                                    <div class="adress" style="position: relative;z-index: 333"><span class="house-location"></span>{{detailLists.address}}</div>
-                                    <div class="fanginfo" style="position: relative;z-index: 333" :building-id="detailLists.building_id">
-                                        <a href=":;" target="_blank">{{detailLists.title}}</a>
-                                        <img style="border:none;width:390px;height:106px" :src="detailLists.pic">
-                                        <span class="fuceng"> </span>
-                                    </div>
+                                    <!--<div class="adress" style="position: relative;z-index: 333"><span class="house-location"></span>{{detailLists.address}}</div>-->
+                                    <!--<div class="fanginfo" style="position: relative;z-index: 333" :building-id="detailLists.building_id">-->
+                                        <!--<a href=":;" target="_blank">{{detailLists.title}}</a>-->
+                                        <!--<img style="border:none;width:390px;height:106px" :src="detailLists.pic">-->
+                                        <!--<span class="fuceng"> </span>-->
+                                    <!--</div>-->
                                     <!--内容-->
                                       <div id="box-out">
                                           <div id="scrollbar">
@@ -335,9 +506,9 @@
                 /**
                  * 地图房源类型选择
                  */
-                $('.fangtypebtn').on('click', function () {
-                    $('.typelist').slideToggle('slow');
-                });
+//                $('.fangtypebtn').on('click', function () {
+//                    $('.typelist').slideToggle('slow');
+//                });
 
                 $(document).on('click', '.qqserver_arrow001', function () {
                     $('.qqserver001').removeClass('unfold001');
@@ -693,180 +864,7 @@
         beforeDestroy(){}
     }
 </script>
-<style scoped lang="less">
-    @import "../resources/css/base.less";
-    @import "../resources/css/map_search/map_search.css";
-</style>
-<style lang="less">
-    [map-search] {
-        .mapbg {
-            min-width: 1200px;
-            overflow: hidden;
-            height: 100%;
-            width: 100%;
-            .header_menu_out {
-                position: relative;
-                bottom: 0;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: #fff;
-                .header_menu {
-                    display: none;
-                    width: 100%;
-                    height: 59px;
-                    border-bottom: 2px solid #8c91ff;
-                    .header_logo {
-                        width: 183px;
-                        height: 57px;
-                    }
-                }
-            }
-        }
-        .fang_type {
-            .fangtypebtn {
-                img {
-                    float: left;
-                    cursor: pointer;
-                    width: 41px;
-                    height: 41px
-                }
 
-            }
-        }
-        .contnav ul.topnav li img {
-            margin: 4px 14px 0 48px;
-            width: 10px;
-            height: 6px;
-        }
-        .contnav ul.topnav li.add img{
-            margin:4px 14px 0 90px;
-        }
-        .fang_type .typelist ul li {
-            overflow: hidden;
-            background: #66d0fa;
-            color: #ffffff;
-            font-size: 14px;
-        }
-        .fang_type .typelist ul li a img {
-            float: left;
-            margin-top: 11px;
-            width: 19px;
-            height: 18px;
-        }
-        .contnav ul.topnav li.add ul.subnav{
-            width: 132px;
-        }
-        .contnav ul.topnav li.add ul.subnav li{
-            width: 132px;
-        }
-        .contnav ul.topnav li.add ul.subnav li a{
-            width: 132px;
-        }
-        .contnav ul.topnav li.add ul.subnav li:hover a{
-            width: 132px;
-        }
-        .contnav ul.topnav li ul.subnav li {
-            clear: both;
-            width: 90px;
-            height: 28px;
-            border: 0;
-            overflow: hidden;
-            text-align: center
-        }
-        .contnav ul.topnav li ul.subnav li a {
-            clear: both;
-            float: left;
-            width: 90px;
-            margin: 0;
-            height: 28px;
-            line-height: 28px;
-        }
-        .contnav ul.topnav li ul.subnav li a:hover {
-            color: #ffffff;
-            background: #64cff9;
-            border: none;
-            width: 90px;
-        }
-        .choose{
-            .subnav {
-                display: block!important;
-            }
-        }
-        .house-location{
-            background-image: url(../resources/images/map_search/fangzhi.png);
-            width: 18px;
-            height: 22px;
-            margin: 15px 0 13px -31px;
-            position: absolute;
-        }
-        .fanglistinfo{
-            overflow: hidden;
-            padding: 8px 15px;
-        }
-         #result-tip{
-            position: fixed;
-            display: none;
-            z-index: 33;
-            top:50%;
-            left:50%;
-            width: 200px;
-            margin-left:-100px;
-            margin-top:-100px;
-            background: #8d91ff;
-            height: 85px;
-            bottom: 10%;
-            color: #fff;
-            font-size: 16px;
-            -webkit-transition: all 3s ease-in 0s ;
-            -moz-transition: all 3s ease-in 0s ;
-            -o-transition: all 3s ease-in 0s ;
-             transition: all 3s ease-in 0s ;
-            p{
-                text-align: center;
-                padding: 16px 20px;
-            }
-        }
-         #result-tip,#t_L,#h_L,#ht_L{
-             border-radius: .4em;
-         }
-         #box-out{
-             width: 390px;
-             height:700px;
-             padding-bottom: 180px;
-             position: relative;
-         }
-         #scrollbar{
-             position: absolute;
-             width: 5px;
-             top: 0;
-             right: 3px;
-             min-height: 500px;
-             z-index: 5;
-         }
-         #handle{
-             position: absolute;
-             top: 0;
-             height: 100px;
-             width: 100%;
-             border-radius: 5px;
-             background: #ccc;
-             cursor: pointer;
-             line-height: 0;
-         }
-         #ul-outer{
-             position: relative;
-             width: 390px;
-             min-height: 500px;
-         }
-         #list-ul{
-             position: absolute;
-             width: 390px;
-             top: 0;
-             min-height: 500px;
-         }
-    }
-</style>
 
 
 
