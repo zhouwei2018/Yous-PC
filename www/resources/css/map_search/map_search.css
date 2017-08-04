@@ -808,18 +808,30 @@ a img {
 .search_main .r_listbtn {
     position: absolute;
     right: 38px;
-    top: 0px;
-}
-
-.search_main .r_listbtn a {
-    background: url(../../images/map_search/listinfobtn.jpg) no-repeat;
+    top: 8px;
+    line-height: 26px;
     width: 118px;
-    height: 40px;
+    height: 26px;
+    padding-left: 40px;
+    font-size: 15px;
+    background-color: #fff;
 }
 
-.search_main .r_listbtn a:hover {
-    background: url(../../images/map_search/listinfobtn.jpg) no-repeat;
-    background-position: 0px -56px;
+.search_main .r_listbtn:hover {
+    background-color: #3facf8;
+}
+
+.search_main .r_listbtn:hover a {
+    color: #fff;
+}
+
+.search_main .r_listbtn a span{
+    width:17px;
+    height:14px;
+    position: absolute;
+    left:12px;
+    top:6px;
+    background: url(../../images/map_search/list_find_icon.png) no-repeat;
 }
 
 .qqserver {
@@ -1152,12 +1164,13 @@ a img {
 }
 
 .fanglistinfo ul dl dt {
-    font-size: 18px;
+    font-size: 16px;
     color: #ff6f92;
-    margin-bottom: 5px;
     height: 28px;
     line-height: 28px;
 }
+
+
 
 .fanglistinfo ul dl dt span {
     font-size: 14px;
@@ -1171,13 +1184,21 @@ a img {
     color: #66d0fa;
 }
 
-.fanglistinfo ul dl dd span {
-    display: block;
+.fanglistinfo ul dl dd .houses_tag_name{
+    display: inline-block;
+    padding: 0 8px;
+    border: 1px solid #b5b5b5;
+    font-size: 13px;
+}
+
+.fanglistinfo ul dl dd .houses_tag_name.active{
+    border: 1px solid #3facf8;
 }
 
 .fanglistinfo ul dl dd.fangcontent {
     height: 21px;
     line-height: 21px;
+    font-size: 16px;
 }
 
 .fanglistinfo ul dl dd.hpcolor span {

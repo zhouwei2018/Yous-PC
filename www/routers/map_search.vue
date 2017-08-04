@@ -255,12 +255,14 @@
                         </div>
 
                         <!--列表找房图标-->
-                        <div class="r_listbtn qqserver_fold">
-                            <router-link target="_blank" :to="{path:'/list'}"></router-link>
+                        <div class="r_listbtn">
+                            <router-link target="_blank" :to="{path:'/list'}">
+                                <span></span>列表找房
+                            </router-link>
                         </div>
 
                     </div>
-                    <div class="tsinfosty"><img src="../resources/images/map_search/ts_icon.png"></div>
+                    <!--<div class="tsinfosty"><img src="../resources/images/map_search/ts_icon.png"></div>-->
                 </div>
                 <!--地图部分-->
                 <div class="mapmain">
@@ -270,7 +272,7 @@
                             <a href="javascript:" class="bar"></a>
                         </div>
                         <div class="main_zhoubian" style="display:none;"></div>
-                        <!--右边浮动层开始-->
+                        <!--左边浮动层开始-->
                         <div class="qqserver" :class="{ unfold: rightPannel }"  @click="rightHandler_($event,detailLists.building_id )">
                             <div class="qqserver-body">
                                 <!--<div class="qqserver-header" style="position: relative;z-index: 333">-->
@@ -306,10 +308,11 @@
                                                                       <img :src="item.img" border="0" width="160" height="120" class="house-img">
                                                                   </p>
                                                                   <dl>
+                                                                      <dd class="fangcontent hpcolor" style="margin-bottom: 5px"><span>{{detailLists.area}}</span><span style="margin-left: 10px">{{detailLists.title}}</span></dd>
                                                                       <dt>{{item.daily_price}}元/m²·天</dt>
-                                                                      <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>价格范围{{item.monthly_price}}/m²·月</span></dd>
-                                                                      <dd class="fangcontent hpcolor" style="overflow: hidden;"><span>{{detailLists.title}}</span>（{{detailLists.area}}）</dd>
-                                                                      <dd class="fangcontent">{{item.size}}平米丨{{item.decoration}}</dd>
+                                                                      <dd class="fangcontent hpcolor" style="margin-bottom: 8px"><span class="font14">价格范围 {{item.monthly_price}}/m²·月</span></dd>
+
+                                                                      <dd class="fangcontent"><span class="houses_tag_name active mr8">{{item.decoration}}</span><span class="houses_tag_name">{{item.size}}m²</span></dd>
                                                                       <dd><div class="fangbtn"></div></dd>
                                                                   </dl>
                                                               </li></ul>
@@ -501,7 +504,7 @@
             temHelper: function () {
                 //显示2秒隐藏
                 var this_ = this;
-                $('.tsinfosty').slideDown(1000).delay(1500).slideUp(1000); //一个点击此处的提示
+//                $('.tsinfosty').slideDown(1000).delay(1500).slideUp(1000); //一个点击此处的提示
 
                 /**
                  * 地图房源类型选择
