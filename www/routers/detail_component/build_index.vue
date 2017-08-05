@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
-                    <div class="attention-share-ewm">
+                    <div class="attention-share-ewm none">
                         <div class="build_weixin_img" id="ys_weixin_img"></div>
                     </div>
                 </div>

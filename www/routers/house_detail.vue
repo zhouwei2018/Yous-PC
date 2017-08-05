@@ -165,7 +165,7 @@
 
                     <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
                         <div class="attention-share-ewm none">
-                            <img class="build_weixin_img" src="../resources/images/ys_weixin.jpg" alt="">
+                            <div class="build_weixin_img" id="ys_weixin_img"></div>
                         </div>
                     </div>
 
@@ -263,6 +263,8 @@
 
     import mapPart from '../components/map-part.vue';
     import '../resources/plugin/pic_tab/pic_tab.js';
+
+    import '../resources/plugin/qrcode/jquery.qrcode.min.js';
 
     export default {
         components: {
@@ -431,6 +433,14 @@
                 pop_prev: '#pop_carousel_prev',//弹出框左箭头
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
+            });
+
+            //qrcode生成微信二维码
+
+            $('#ys_weixin_img').qrcode({
+                width: 78,
+                height: 78,
+                text: window.location.href
             });
 
             //微信
