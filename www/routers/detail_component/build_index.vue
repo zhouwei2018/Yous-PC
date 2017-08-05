@@ -112,13 +112,14 @@
                     </dd>
                     <dd>
                         <span class="bold db rent_num">
-                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold" v-text="max_renge_price"></i> 元/<em
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
+                                                                               v-text="max_renge_price"></i> 元/<em
                                 class="font-num">m²</em>·天</span>
                         <span>价格范围</span>
                     </dd>
                     <dd>
                         <span class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
-                                                                                v-text="max_renge_area"></i><em
+                                                                                                         v-text="max_renge_area"></i><em
                                 class="font-num"> m²</em></span>
                         <span>面积范围</span>
                     </dd>
@@ -145,8 +146,8 @@
                 </div>
 
                 <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
-                    <div class="attention-share-ewm none">
-                        <img class="build_weixin_img" src="../../resources/images/ys_weixin.jpg" alt="">
+                    <div class="attention-share-ewm">
+                        <div class="build_weixin_img" id="ys_weixin_img"></div>
                     </div>
                 </div>
 
@@ -375,7 +376,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20       class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -475,7 +476,8 @@
                                        onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                 <span class="db text-left mt05" id="msg-phone"></span>
                                 <div class="form_control form_btn mt10 tc cur_pointer"
-                                     @click="instance('success')">一键咨询</div>
+                                     @click="instance('success')">一键咨询
+                                </div>
                             </form>
 
                             <p class="nearby">* 客服将在10分钟内联系您</p>
@@ -509,13 +511,15 @@
     import mapPart from '../../components/map-part.vue';
     import '../../resources/plugin/pic_tab/pic_tab.js';
 
+    import '../../resources/plugin/qrcode/jquery.qrcode.min.js';
+
     export default {
         data(){
             return {
                 buildingShowFlag: true, //无结果
-                house_res_show:true,  //楼盘结果ul
+                house_res_show: true,  //楼盘结果ul
 
-                labels:[],
+                labels: [],
 
                 buildingName: "", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
@@ -671,7 +675,7 @@
                             _this.buildingName = result.data.building_name + '周边配套';
                             _this.buildingNameSingle = result.data.building_name;
 
-                            _this.labels=result.data.label.split('、');
+                            _this.labels = result.data.label.split('、');
                             var obj = {
                                 name: result.data.building_name,
                                 labels: result.data.label.split('、')
@@ -744,10 +748,10 @@
                     _this.loadingFlag = false;
 
                     if (result.success) {
-                        if(result.data.houses.length){
+                        if (result.data.houses.length) {
                             _this.buildList = result.data.houses;
                             _this.total_items = res.data.total_items == null ? '--' : res.data.total_items;
-                        }else {
+                        } else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
                             _this.total_items = 0;
@@ -991,11 +995,18 @@
                 }
             });
 
+            //qrcode生成微信二维码
+
+            $('#ys_weixin_img').qrcode({
+                width: 78,
+                height: 78,
+                text: window.location.href
+            });
 
             //微信
-            $('.build_weixin_top').hover(function(){
+            $('.build_weixin_top').hover(function () {
                 $(this).find('.attention-share-ewm').show();
-            },function(){
+            }, function () {
                 $(this).find('.attention-share-ewm').hide();
             });
 
