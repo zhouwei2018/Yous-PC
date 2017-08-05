@@ -218,13 +218,13 @@
                             <a href="javascript:;">价格<span></span></a>
                             <a href="javascript:;">面积<span></span></a>
                         </div>
-                        <div class="fr sort-meet-result ">共 <b>2380</b> 套房源符合条件</div>
+                        <div class="fr sort-meet-result ">共 <b></b> 套房源符合条件</div>
                     </div>
 
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20 class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -269,36 +269,31 @@
             <!--右侧悬浮box start-->
             <div class="sidebar_box">
                 <div class="sidebar_main" id="sidebar_fix">
-                    <div class="booking_house mt20">
+                    <div class="side_model_tit mb10"><i></i>快速找房</div>
+                    <div class="booking_house">
                         <div class="booking_house_mes">
-                            <h2>快速找房</h2>
-                            <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
-                                <input type="hidden" name="flag" value="5">
-                                <input name="searchengine" type="hidden" value="">
-                                <input name="phone" class="form_control form_telphone" type="text"
-                                       placeholder="手机号" maxlength="11"
+                            <div class="side_model_tit cl_blue">快速委托找房</div>
+                            <form id="freeLookForm" class="nice-validator n-default">
+                                <input id="freeLook_inp" name="phone" class="form_control form_telphone"
+                                       type="text"
+                                       autocomplete="off"
+                                       placeholder="输入您的手机号" maxlength="11"
                                        onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
-                                       aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
+                                       onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                 <span class="db text-left mt05" id="msg-phone"></span>
-                                <div class="form_control form_btn mt10 cur_pointer" id="list_yijianyuyue">一键咨询
-                                </div>
+                                <div class="form_control form_btn mt10 tc cur_pointer"
+                                     @click="instance('success')">一键咨询</div>
                             </form>
 
-                            <p class="nearby">客服将在10分钟内联系您</p>
+                            <p class="nearby">* 客服将在10分钟内联系您</p>
                         </div>
-                        <div class="ph20 tc text_gray9">
-                            咨询热线：<b class="text_pink_app">400-810-6698</b>
+                        <div class="consult_box tc">
+                            <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-810-6698</b>
                         </div>
                     </div>
-                    <div class="app_download mt20">
-                        <p>随时随地查阅最新房源，<br>即刻关注官方微信</p>
-                        <div class="mh25">
-                            <img src="http://img2.static.uban.com/www/images/appicon72.png" alt="幼狮APP">
-                            <img src="../../resources/images/ys_weixin.jpg" class="ml25 weixin_img"
-                                 alt="扫描二维码关注">
-                        </div>
-                        <p>扫描二维码关注</p>
+                    <div class="app_download tc">
+                        <img src="../../resources/images/ys_weixin.jpg" alt="扫描二维码关注">
+                        <p>随时随地查阅最新房源<br>即刻关注官方微信</p>
                     </div>
                 </div>
             </div>
