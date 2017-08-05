@@ -258,6 +258,9 @@
                         </li>
                     </ul>
 
+                    <!--暂无结果-->
+                    <h3 class="no_result" v-show="buildingShowFlag">暂无待出租写字楼 !</h3>
+
                     <!--page-->
                     <div class="page_wrap" v-show="pageFlag">
                         <Page :total="100" @on-change="change"></Page>
@@ -308,6 +311,11 @@
     export default {
         data(){
             return {
+
+                building_id:"",
+                buildingShowFlag:false,
+                house_res_show:false,
+
                 pageFlag: true, //页码是否显示
 
                 buildingName: "", //拼出的楼盘周边配套
@@ -420,7 +428,7 @@
             //获取楼盘列表
             getDetList(){
                 var _this = this;
-
+                this.building_id = this.$route.query.building_id;
                 this.buildList = [];
 
                 this.loadingFlag = true;
@@ -444,15 +452,22 @@
                         "code": "30000003"
                     }
                 ).then(function (res) {
+
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
 
                     if (result.success) {
-                        _this.buildList = result.data.houses;
-
+                        if(result.data.houses.length){
+                            _this.buildList = result.data.houses;
+                            _this.total_items = res.data.total_items;
+                        }else {
+                            _this.house_res_show = false; //结果不展示
+                            _this.buildingShowFlag = true;
+                            _this.total_items = 0;
+                        }
                     } else {
-                        _this.buildingShowFlag = true;
                         _this.total_items = 0;
+
                     }
 
                 }, function (res) {
