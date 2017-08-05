@@ -14,12 +14,32 @@
     /* background-color: #f1f5f6; */
   }
 
-  .build_weixin_top{
-    width:100px;
-    height:100px;
+  .build_weixin_top {
     position: absolute;
-    right:20px;
-    top:10px;
+    right: 30px;
+    top: 100px;
+
+    .detail-icon{
+      background-position: -62px -76px;
+    }
+
+    .build_weixin_img{
+      width:80px;
+      height:80px;
+      margin: 10px auto 0;
+    }
+
+    .attention-share-ewm{
+      position: absolute;
+      right: -36px;
+      bottom: 20px;
+      width: 100px;
+      height: 120px;
+      line-height: 120px;
+      text-align: center;
+      background: url("../../images/detail/ewm-bg-up.png") no-repeat;
+      z-index: 3;
+    }
 
   }
 
@@ -86,7 +106,7 @@
   .building-label {
     width: 1200px;
     height: 69px;
-    margin: 9px auto 0;
+    margin: 0 auto;
     > img {
       width: 69px;
       height: 69px;
@@ -315,9 +335,24 @@
       }
 
       .rental-info {
+        border-top:1px solid @bdc_bot_lightline;
+        border-bottom:1px solid @bdc_bot_lightline;
+        height: 100px;
+        margin: 20px 0;
+        padding: 15px 0;
         dd {
+          float: left;
           width: 210px;
-          padding: 10px 0;
+          border-right:1px solid @bdc_bot_lightline;
+          text-align: center;
+          &:last-of-type{
+            border-right:none;
+          }
+          .rent_num {
+            margin: 0 auto 5px;
+            min-height: 40px;
+            line-height: 40px;
+          }
           &:last-child {
             margin-right: 0;
           }
@@ -523,7 +558,7 @@
         font-weight: 700;
         border-bottom: 4px solid @bg_search_blue;
       }
-      span{
+      span {
         margin-left: 7px;
       }
     }

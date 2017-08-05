@@ -270,7 +270,7 @@
             </div>
 
             <!--右侧悬浮box start-->
-            <div class="sidebar_box">
+            <div class="sidebar_box mt10">
                 <div class="sidebar_main" id="sidebar_fix">
                     <div class="side_model_tit mb10"><i></i>快速找房</div>
                     <div class="booking_house">

@@ -26,16 +26,6 @@
                 </ul>
             </div>
             <!--搜索 end-->
-            <!--labels-->
-            <div class="building-label clearfix">
-                <div class="building-tag">
-                    <h1 v-text="buildingName"></h1>
-                    <ul class="tag-item">
-                        <!--<li>互联网</li>-->
-                        <li v-for="item in labels" v-text="item"></li>
-                    </ul>
-                </div>
-            </div>
 
             <!--img detail-->
             <div class="common-info clearfix">
@@ -115,16 +105,48 @@
                 <!--轮播图 end-->
 
                 <div class="building-message">
-                    <h2 v-text="highlights"></h2>
+
+                    <!--logo-->
+                    <div class="building-label clearfix">
+                        <div class="building-tag">
+                            <h1 v-text="buildingName"></h1>
+                            <ul class="tag-item">
+                                <!--<li>互联网</li>-->
+                                <li v-for="item in labels" v-text="item"></li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <div class="price-box clearfix mt20">
                         <p class="building-price">
-                            <strong v-text="daily_price">&nbsp;</strong><span>元/<em class="font-num">m²</em>·天</span>
+                            <strong v-text="month_price">&nbsp;</strong><span>万元/月</span>
+                            <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em class="font-num">m²</em>·天</span>
                         </p>
                     </div>
+
+                    <dl class="rental-info clearfix">
+                        <dd>
+                            <i class="bold db rent_num" v-text="total_items"></i>
+                            <span>待租套数</span>
+                        </dd>
+                        <dd>
+                        <span class="bold db rent_num">
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold" v-text="max_renge_price"></i> 元/<em
+                                class="font-num">m²</em>·天</span>
+                            <span>价格范围</span>
+                        </dd>
+                        <dd>
+                        <span class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
+                                                                                                         v-text="max_renge_area"></i><em
+                                class="font-num"> m²</em></span>
+                            <span>面积范围</span>
+                        </dd>
+                    </dl>
+
                     <p class="building-address clearfix">
-                        <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap"
-                                                                                       class="show-map">查看地图</a>
+                        <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap" class="show-map">&nbsp;查看地图</a>
                     </p>
+
                     <p class="building-consult clearfix">
                         <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span>
                     </p>
@@ -138,43 +160,17 @@
                         </div>
                         <div class="mobile_box">
                             <a href="javascript:;" class="call_back_btn">免费回拨</a>
-                            <a href="javascript:;" class="call_back_btn">在线咨询</a>
                         </div>
                     </div>
 
-                    <dl class="rental-info clearfix">
-
-                        <dd>
-                            <span>全部待租</span>
-                            <span><i class="bold" v-text="total_items"></i> 套 <a
-                                    href="#category_message">查看全部</a></span>
-                        </dd>
-                        <dd>
-                            <span>价格范围</span>
-                            <span><i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
-                                                                                     v-text="max_renge_price"></i> 元/<em
-                                    class="font-num">m²</em>·天</span>
-                        </dd>
-                        <dd>
-                            <span>面积范围</span>
-                            <span><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
-                                                                                    v-text="max_renge_area"></i><em
-                                    class="font-num"> m²</em></span>
-                        </dd>
-                    </dl>
-                    <div class="around-circle clearfix">
-                        <span class="fl"><i class="detail-icon minute"></i>10分钟生活圈</span>
-                        <ul class="fl">
-                            <li class="subway-cnt"><i class="detail-icon subway"></i>地铁 <em class="text-black">1</em>
-                            </li>
-                            <li><i class="detail-icon restaurant"></i>餐厅 <em class="text-black">33</em></li>
-                            <li><i class="detail-icon hotel"></i>酒店 <em class="text-black">25</em></li>
-                            <li><i class="detail-icon bodybuilding"></i>健身 <em class="text-black">4</em></li>
-                            <li><i class="detail-icon bank"></i>银行 <em class="text-black">22</em></li>
-                        </ul>
+                    <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
+                        <div class="attention-share-ewm none">
+                            <img class="build_weixin_img" src="../resources/images/ys_weixin.jpg" alt="">
+                        </div>
                     </div>
 
                 </div>
+
             </div>
 
             <!--building 信息分类start-->
@@ -223,26 +219,26 @@
                     <div class="sidebar_main" id="sidebar_fix">
                         <div class="booking_house">
                             <div class="booking_house_mes">
-                                <h2>快速找房</h2>
-                                <form id="freeLookForm" class="nice-validator n-default" novalidate="novalidate">
-                                    <input type="hidden" name="flag" value="5">
-                                    <input name="searchengine" type="hidden" value="">
-                                    <input name="phone" class="form_control form_telphone" type="text" autocomplete="off"
-                                           placeholder="手机号" maxlength="11"
+                                <div class="side_model_tit cl_blue">快速委托找房</div>
+                                <form id="freeLookForm" class="nice-validator n-default">
+                                    <input id="freeLook_inp" name="phone" class="form_control form_telphone"
+                                           type="text"
+                                           autocomplete="off"
+                                           placeholder="输入您的手机号" maxlength="11"
                                            onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-                                           onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')"
-                                           aria-required="true" data-target="#msg-phone" data-tip="请输入您的手机号码。">
+                                           onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                     <span class="db text-left mt05" id="msg-phone"></span>
-                                    <div class="form_control form_btn mt10 cur_pointer" @click="instance('success')" >一键咨询
-                                    </div>
+                                    <div class="form_control form_btn mt10 tc cur_pointer"
+                                         @click="instance('success')">一键咨询</div>
                                 </form>
 
-                                <p class="nearby">客服将在10分钟内联系您</p>
+                                <p class="nearby">* 客服将在10分钟内联系您</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--右侧悬浮box end-->
+
             </div>
             <!--building 信息分类end-->
 
@@ -285,9 +281,9 @@
                 positionData: "", //经纬度
 
                 building_id: "", //楼盘id
-                highlights: "", //特色
                 address: "",//地址
-                daily_price: "",//价格
+                daily_price: "--",//价格
+                month_price: "--",//价格
                 min_renge_area: "",
                 max_renge_area: "",
                 min_renge_price: "",
@@ -302,7 +298,6 @@
                 building_level: '', //楼盘级别
                 property_rights: '', //产权性质
                 building_area: '', //建筑面积
-
             }
         },
 
@@ -328,6 +323,7 @@
                             _this.buildingName = result.data.building_name;
                             _this.labels = result.data.labels.split('、');
                             _this.daily_price = result.data.daily_price == null ? '--' : result.data.daily_price;
+                            _this.month_price = result.data.month_price == null ? '--' : result.data.month_price;
                         }
                     }
 
@@ -363,11 +359,8 @@
                     if (result.success) {
                         if (result.data) {
 
-                            _this.highlights = result.data.highlights == "" ? '特色标题占位' : result.data.highlights; //特色
-
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
-
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
 
 
@@ -439,6 +432,14 @@
                 pop_next: '#pop_carousel_next',//弹出框右箭头
                 mhc: '.carousel-mask'//朦灰层
             });
+
+            //微信
+            $('.build_weixin_top').hover(function(){
+                $(this).find('.attention-share-ewm').show();
+            },function(){
+                $(this).find('.attention-share-ewm').hide();
+            });
+
         },
 
         created(){

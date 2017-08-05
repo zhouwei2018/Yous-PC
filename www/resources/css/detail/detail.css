@@ -71,11 +71,28 @@
   /* background-color: #f1f5f6; */
 }
 [detail] .build_weixin_top {
-  width: 100px;
-  height: 100px;
   position: absolute;
-  right: 20px;
-  top: 10px;
+  right: 30px;
+  top: 100px;
+}
+[detail] .build_weixin_top .detail-icon {
+  background-position: -62px -76px;
+}
+[detail] .build_weixin_top .build_weixin_img {
+  width: 80px;
+  height: 80px;
+  margin: 10px auto 0;
+}
+[detail] .build_weixin_top .attention-share-ewm {
+  position: absolute;
+  right: -36px;
+  bottom: 20px;
+  width: 100px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  background: url("../../images/detail/ewm-bg-up.png") no-repeat;
+  z-index: 3;
 }
 [detail] .font-num {
   font-family: Tahoma;
@@ -131,7 +148,7 @@
 [detail] .building-label {
   width: 1200px;
   height: 69px;
-  margin: 9px auto 0;
+  margin: 0 auto;
 }
 [detail] .building-label > img {
   width: 69px;
@@ -334,9 +351,26 @@
   margin-right: 20px;
   line-height: 24px;
 }
+[detail] .common-info .building-message .rental-info {
+  border-top: 1px solid #e5e5e6;
+  border-bottom: 1px solid #e5e5e6;
+  height: 100px;
+  margin: 20px 0;
+  padding: 15px 0;
+}
 [detail] .common-info .building-message .rental-info dd {
+  float: left;
   width: 210px;
-  padding: 10px 0;
+  border-right: 1px solid #e5e5e6;
+  text-align: center;
+}
+[detail] .common-info .building-message .rental-info dd:last-of-type {
+  border-right: none;
+}
+[detail] .common-info .building-message .rental-info dd .rent_num {
+  margin: 0 auto 5px;
+  min-height: 40px;
+  line-height: 40px;
 }
 [detail] .common-info .building-message .rental-info dd:last-child {
   margin-right: 0;

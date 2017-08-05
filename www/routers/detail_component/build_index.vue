@@ -88,7 +88,16 @@
 
             <div class="building-message">
 
-                <h2 v-text="highlights"></h2>
+                <!--logo-->
+                <div class="building-label clearfix">
+                    <div class="building-tag">
+                        <h1 v-text="buildingNameSingle"></h1>
+                        <ul class="tag-item">
+                            <!--<li>互联网</li>-->
+                            <li v-for="item in labels" v-text="item"></li>
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="price-box clearfix mt20">
                     <p class="building-price">
@@ -96,8 +105,27 @@
                     </p>
                 </div>
 
+                <dl class="rental-info clearfix">
+                    <dd>
+                        <i class="bold db rent_num" v-text="total_items"></i>
+                        <span>待租套数</span>
+                    </dd>
+                    <dd>
+                        <span class="bold db rent_num">
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold" v-text="max_renge_price"></i> 元/<em
+                                class="font-num">m²</em>·天</span>
+                        <span>价格范围</span>
+                    </dd>
+                    <dd>
+                        <span class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
+                                                                                v-text="max_renge_area"></i><em
+                                class="font-num"> m²</em></span>
+                        <span>面积范围</span>
+                    </dd>
+                </dl>
+
                 <p class="building-address clearfix">
-                    <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap" class="show-map">查看地图</a>
+                    <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap" class="show-map">&nbsp;查看地图</a>
                 </p>
 
                 <p class="building-consult clearfix">
@@ -113,42 +141,17 @@
                     </div>
                     <div class="mobile_box">
                         <a href="javascript:;" class="call_back_btn">免费回拨</a>
-                        <a href="javascript:;" class="call_back_btn">在线咨询</a>
                     </div>
                 </div>
 
-                <dl class="rental-info clearfix">
-
-                    <dd>
-                        <span>全部待租</span>
-                        <span><i class="bold" v-text="total_items"></i> 套 <a href="#category_message">查看全部</a></span>
-                    </dd>
-                    <dd>
-                        <span>价格范围</span>
-                        <span><i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
-                                                                                 v-text="max_renge_price"></i> 元/<em
-                                class="font-num">m²</em>·天</span>
-                    </dd>
-                    <dd>
-                        <span>面积范围</span>
-                        <span><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
-                                                                                v-text="max_renge_area"></i><em
-                                class="font-num"> m²</em></span>
-                    </dd>
-                </dl>
-                <div class="around-circle clearfix">
-                    <span class="fl"><i class="detail-icon minute"></i>10分钟生活圈</span>
-                    <ul class="fl">
-                        <li class="subway-cnt"><i class="detail-icon subway"></i>地铁 <em class="text-black">1</em>
-                        </li>
-                        <li><i class="detail-icon restaurant"></i>餐厅 <em class="text-black">33</em></li>
-                        <li><i class="detail-icon hotel"></i>酒店 <em class="text-black">25</em></li>
-                        <li><i class="detail-icon bodybuilding"></i>健身 <em class="text-black">4</em></li>
-                        <li><i class="detail-icon bank"></i>银行 <em class="text-black">22</em></li>
-                    </ul>
+                <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
+                    <div class="attention-share-ewm none">
+                        <img class="build_weixin_img" src="../../resources/images/ys_weixin.jpg" alt="">
+                    </div>
                 </div>
-                <img class="build_weixin_top" src="../../resources/images/ys_weixin.jpg" alt="">
+
             </div>
+
         </div>
 
         <!--building 信息分类start-->
@@ -512,6 +515,8 @@
                 buildingShowFlag: true, //无结果
                 house_res_show:true,  //楼盘结果ul
 
+                labels:[],
+
                 buildingName: "", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
@@ -520,7 +525,6 @@
                 pageFlag: true, //页码是否显示
 
                 building_id: "", //楼盘id
-                highlights: "", //特色
                 address: "",//地址
                 price: "",//价格
                 min_renge_area: "",
@@ -556,7 +560,7 @@
                 price_zj: "",
 
                 buildList: [], //楼盘列表，搜索结果
-                total_items: 0, //结果总数
+                total_items: '--', //结果总数
                 total_pages: 0, //总页数
                 //分页
                 pageSize: 10, //每页个数
@@ -572,8 +576,6 @@
                 monthly_price: "", //月价格
                 housing_icon: "", //图片
                 workstation: "", //工位
-
-                total_items: 0, //搜索结果个数
 
 
                 //物业信息
@@ -668,13 +670,13 @@
                         if (result.data) {
                             _this.buildingName = result.data.building_name + '周边配套';
                             _this.buildingNameSingle = result.data.building_name;
+
+                            _this.labels=result.data.label.split('、');
                             var obj = {
                                 name: result.data.building_name,
                                 labels: result.data.label.split('、')
                             };
                             _this.$emit("listenchild", obj);
-
-                            _this.highlights = result.data.highlights == "" ? '特色标题占位' : result.data.highlights; //特色
 
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
@@ -744,7 +746,7 @@
                     if (result.success) {
                         if(result.data.houses.length){
                             _this.buildList = result.data.houses;
-                            _this.total_items = res.data.total_items;
+                            _this.total_items = res.data.total_items == null ? '--' : res.data.total_items;
                         }else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
@@ -987,6 +989,14 @@
                 } else {
                     $('#priceConfirm').hide();
                 }
+            });
+
+
+            //微信
+            $('.build_weixin_top').hover(function(){
+                $(this).find('.attention-share-ewm').show();
+            },function(){
+                $(this).find('.attention-share-ewm').hide();
             });
 
 

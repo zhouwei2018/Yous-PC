@@ -153,7 +153,7 @@
 
                             _this.developer = result.data.developer;
                             _this.price = result.data.price;
-                            _this.opening_date = result.data.opening_date;
+                            _this.opening_date = result.data.opening_date == null ? ' -- ' : result.data.opening_date;
                             _this.building_level = result.data.building_level;
                             _this.property_rights = result.data.property_rights;
                             _this.building_area = result.data.building_area;

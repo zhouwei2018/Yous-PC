@@ -30,16 +30,16 @@
             </div>
             <!--搜索 end-->
 
-            <!--logo-->
-            <div class="building-label clearfix">
-                <div class="building-tag">
-                    <h1 v-text="building_name"></h1>
-                    <ul class="tag-item">
-                        <!--<li>互联网</li>-->
-                        <li v-for="item in labels" v-text="item"></li>
-                    </ul>
-                </div>
-            </div>
+            <!--&lt;!&ndash;logo&ndash;&gt;-->
+            <!--<div class="building-label clearfix">-->
+                <!--<div class="building-tag">-->
+                    <!--<h1 v-text="building_name"></h1>-->
+                    <!--<ul class="tag-item">-->
+                        <!--&lt;!&ndash;<li>互联网</li>&ndash;&gt;-->
+                        <!--<li v-for="item in labels" v-text="item"></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <!--楼盘 tab start-->
             <div class="nav-consulting clearfix">
