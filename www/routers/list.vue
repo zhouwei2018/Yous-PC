@@ -831,7 +831,13 @@
                                 _this.buildList = result.data.buildings;
                                 _this.total_items = result.data.total_items;
                                 _this.total_pages = result.data.total_pages;
-                                _this.pageFlag = true;
+
+                                if(_this.total_pages <=1){
+                                    _this.pageFlag = false;
+                                }else{
+                                    _this.pageFlag = true;
+                                }
+
                             }else {
                                 _this.pageFlag = false;
                                 _this.buildingShowFlag = true;
