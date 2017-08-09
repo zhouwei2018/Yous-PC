@@ -203,7 +203,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <em>产权性质：</em><span v-text="property_rights"></span>
+                                    <em>产权性质：</em><span class="whitespace dib w100" v-text="property_rights"></span>
                                 </td>
                                 <td colspan="2">
                                     <em>建筑面积：</em><span v-text="building_area+'m²'"></span>

@@ -222,6 +222,17 @@ select {
 .none {
   display: none;
 }
+.dib {
+  display: inline-block;
+}
+.whitespace {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.w100 {
+  width: 100px;
+}
 .bold {
   font-weight: bold !important;
 }

@@ -440,8 +440,7 @@
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                         <span class="db text-left mt05" id="msg-phone"></span>
-                                        <div class="form_control form_btn mt10 tc cur_pointer"
-                                             @click="instance('success')">一键咨询</div>
+                                        <div class="form_control form_btn mt10 tc cur_pointer" @click="modal6 = true">一键咨询</div>
                                     </form>
 
                                     <p class="nearby">* 客服将在10分钟内联系您</p>
@@ -462,6 +461,36 @@
             </div>
 
         </div>
+
+        <!--一键咨询弹窗-->
+        <Modal v-model="modal6" width="420">
+            <div popup>
+                <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
+                    <h3>安心委托,快速成交</h3>
+
+                    <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
+                    <Form-item  prop="telephone">
+                        <div class="popItem">
+                            <span class="inp_icon phone"></span>
+                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
+                                      style="width: 140px; height: 50px;"
+                                      second="60"></TimerBtn>
+                        </div>
+                    </Form-item>
+                    <div class="popItem">
+                        <span class="inp_icon password"></span>
+                        <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
+                    </div>
+                    <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
+                    <Form-item>
+                        <input type="primary" class="pop_subbtn" value="提交委托" @click="handleSubmit2('formInline2')">
+                    </Form-item>
+                </Form>
+            </div>
+        </Modal>
+
+
         <!--list  end-->
 
         <!--footer-->
@@ -487,6 +516,26 @@
 
         data(){
             return {
+
+                modal6: false, //弹窗
+                formInline1: {
+                    telephone:'',
+                    city: '',
+                    trade_area: ''
+                },
+
+                formInline2:{
+                    telephone: ''
+                },
+
+                ruleValidate: {
+                    telephone: [
+                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                    ]
+                },
+
+
+
                 list_scroll: true, //屏幕滚动
 
                 //五大组件tab切换
@@ -569,6 +618,59 @@
         },
 
         methods: {
+
+            sendCode2: function () {
+                this.$refs.timerbtn2.start(); //启动倒计时
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {
+                            "VerifiationCCodeType": 3,
+                            "Col_telephone": this.formInline2.telephone
+                        },
+                        foreEndType: "1",
+                        code: "90000102"
+                    }
+                ).then(function (response) {
+                    var reslute = JSON.parse(response.bodyText);
+                    if (!reslute.success) {
+                        this.$Message.error(reslute.message);
+                    }
+
+                }, function (response) {
+                    this.$Message.error('API接口报错-网络错误!');
+                    this.loading = false;
+                });
+            },
+
+            handleSubmit2(name) {
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {
+                            "VerifiationCCodeType": 3,
+                            "Col_telephone": this.formInline2.telephone,
+                            "InputCode":this.formInline2.InputCode
+                        },
+                        foreEndType: "1",
+                        code: "20000004"
+                    }
+                ).then(function (response) {
+                    var reslute = JSON.parse(response.bodyText);
+                    if (reslute.success) {
+                        this.$Message.success('委托单提交成功!');
+                        this.modal6=false;
+                    } else {
+                        this.$Message.error(reslute.message);
+                    }
+
+                }, function (response) {
+                    this.$Message.error('API接口报错-网络错误!');
+                    this.loading = false;
+                });
+                this.$Message.error('委托单提交成功!');
+            },
+
 
             //模糊搜索
             searchClick(){
@@ -1331,20 +1433,20 @@
             },
 
             //一键咨询
-            instance (type) {
-                $('#freeLook_inp').focus();
-                const title = '提交成功';
-                const content = '<p>客服将在10分钟内联系您，和您沟通找房需求</p>';
-                switch (type) {
-                    case 'success':
-                        this.$Modal.success({
-                            title: title,
-                            content: content
-                        });
-                        break;
-                    default:;
-                }
-            }
+//            instance (type) {
+//                $('#freeLook_inp').focus();
+//                const title = '提交成功';
+//                const content = '<p>客服将在10分钟内联系您，和您沟通找房需求</p>';
+//                switch (type) {
+//                    case 'success':
+//                        this.$Modal.success({
+//                            title: title,
+//                            content: content
+//                        });
+//                        break;
+//                    default:;
+//                }
+//            }
 
         },
 
