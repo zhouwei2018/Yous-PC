@@ -376,17 +376,16 @@
                                 <li>
                                     <h4><i></i>幼狮空间，传递爱的力量</h4>
 
-                                    <p class="clearfix">“母亲”一个伟大的称呼。一个你无论如何宣泄情绪都是那么包容你的人。
+                                    <p class="clearfix">幼狮空间加入爱百福基金，为孩子们送去温暖。
                                         <router-link :to="{path:'/love'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>
                                         </p>
 
                                 </li>
                                 <li>
-                                    <h4><i></i>幼狮空间，展现不一样的风采</h4>
-                                    <p class="clearfix" style="text-indent: 1em">持该卡，您将享受以下福利：
-                                        1、此卡的面值金额，可用作抵扣房租使用
-                                        2、享有基础项免费服务，包括：协助陪同注册、代开发票、布局设计、灯具维修、
-                                        门窗门锁维修<router-link :to="{path:'/room_sale'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>>
+                                    <h4><i></i>幼狮空间，租房优惠卡上线了！</h4>
+                                    <p class="clearfix" style="text-indent: 1em">
+                                        幼狮空间租房优惠卡正式上线，为您的企业快速成长献出一份力
+                                        <router-link :to="{path:'/room_sale'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>>
                                     </p>
 
                                 </li>
@@ -636,7 +635,7 @@
         mounted: function () {
             $(window).scrollTop(0);
             //数字滚动
-            this.show_num('#bannerNum1', 140000);
+            this.show_num('#bannerNum1', 190000);
             this.show_num('#bannerNum2', 1000);
             this.show_num('#bannerNum3', 2000);
             this.show_num('#bannerNum4', 410);
