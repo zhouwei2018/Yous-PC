@@ -378,16 +378,14 @@
 
                                     <p class="clearfix">幼狮空间加入爱百福基金，为孩子们送去温暖。
                                         <router-link :to="{path:'/love'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>
-                                        </p>
-
+                                    </p>
                                 </li>
                                 <li>
                                     <h4><i></i>幼狮空间，租房优惠卡上线了！</h4>
-                                    <p class="clearfix" style="text-indent: 1em">
+                                    <p class="clearfix">
                                         幼狮空间租房优惠卡正式上线，为您的企业快速成长献出一份力
-                                        <router-link :to="{path:'/room_sale'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>>
+                                        <router-link :to="{path:'/room_sale'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>
                                     </p>
-
                                 </li>
                             </ul>
                             <a href="javascript:;" class="look_more">查看更多</a>
