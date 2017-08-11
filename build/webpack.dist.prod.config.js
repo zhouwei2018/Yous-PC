@@ -7,13 +7,13 @@ process.env.NODE_ENV = 'production';
 
 module.exports = merge(webpackBaseConfig, {
     entry: {
-        main: './www/index.js'
+        main: './www/main.js'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '/dist/',
-        filename: 'iview.min.js',
-        library: 'iview',
+        filename: 'yous.js',
+        library: 'yous',
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
