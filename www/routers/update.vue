@@ -7,10 +7,10 @@
         <header1></header1>
         <!--update start-->
         <div update>
-            <!--<div class="update_banner">-->
-                <!--&lt;!&ndash;<img src="../resources/images/index/banner02.jpg" alt="">&ndash;&gt;-->
-            <!--</div>-->
-            <img src="../resources/images/update/update.png" alt="">
+            <div class="update_banner">
+                <img src="../resources/images/update/update.png" alt="">
+            </div>
+            <img src="../resources/images/update/update_02.png" alt="">
         </div>
 
         <!--footer-->

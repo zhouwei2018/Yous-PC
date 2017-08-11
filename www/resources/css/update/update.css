@@ -57,8 +57,19 @@
   overflow: hidden;
 }
 [update] .update_banner {
-  height: 800px;
+  height: 650px;
 }
 [update] .update_banner img {
-  height: 800px;
+  height: 650px;
+}
+@media screen and (min-width: 1500px) {
+  [update] {
+    overflow: hidden;
+  }
+  [update] .update_banner {
+    height: 900px;
+  }
+  [update] .update_banner img {
+    height: 900px;
+  }
 }
