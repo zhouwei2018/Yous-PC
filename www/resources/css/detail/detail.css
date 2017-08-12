@@ -872,9 +872,9 @@
   cursor: pointer;
 }
 [detail] .carousel-small-box {
-  float: right;
+  float: left;
   position: relative;
-  width: 406px;
+  width: 510px;
   height: 62px;
   margin-top: 10px;
 }

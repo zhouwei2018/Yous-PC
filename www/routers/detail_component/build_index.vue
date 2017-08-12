@@ -21,17 +21,13 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="panorama">
-                        <img src="../../resources/images/detail/panorama.png" id="panorama_btn" class="cur-pointer"
-                             width="94" height="62" alt="720°全景">
-                    </div>
                     <div class="carousel-small-box">
                         <div class="carousel-small-prev toggle-button" id="carousel_small_prev">
                             <img src="../../resources/images/detail/small-prev.png" width="20" height="62" alt="">
                         </div>
                         <div class="carousel-small clearfix" id="carousel_small">
                             <ul>
-                                <li class="on" v-for="item1 in building_images">
+                                <li v-for="item1 in building_images">
                                     <a class="pr db cur-pointer">
                                         <div class="small-mask"></div>
                                         <img :src="item1" alt="" />
@@ -749,7 +745,15 @@
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
 
-                            _this.building_images=result.data.building_images;
+                            //_this.building_images=result.data.building_images;
+                            _this.building_images=[
+                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
+                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
+                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
+                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
+                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
+                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
+                            ];
 
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
                             _this.price = result.data.price == null ? '--' : result.data.price;
@@ -769,6 +773,33 @@
                             _this.building_level = result.data.building_level; //楼盘级别
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积
+
+
+                            setTimeout(function(){
+                                //首屏轮播
+                                $('#carousel_building').banqh({
+                                    box: '#carousel_building',//总框架
+                                    pic: '#carousel_big',//大图框架
+                                    pnum: '#carousel_small',//小图框架
+                                    prev_btn: '#carousel_small_prev',//小图左箭头
+                                    next_btn: '#carousel_small_next',//小图右箭头
+                                    autoplay: true,//是否自动播放
+                                    interTime: 5000,//图片自动切换间隔
+                                    delayTime: 400,//切换一张图片时间
+                                    pop_delayTime: 400,//弹出框切换一张图片时间
+                                    order: 0,//当前显示的图片（从0开始）
+                                    picdire: true,//大图滚动方向（true为水平方向滚动）
+                                    mindire: true,//小图滚动方向（true为水平方向滚动）
+                                    min_picnum: 4,//小图显示数量
+                                    pop_up: false,//大图是否有弹出框
+                                    pop_div: '#pop_carousel_box',//弹出框框架
+                                    pop_pic: '#pop_carousel',//弹出框图片框架
+                                    pop_xx: '.pop-carousel-close',//关闭弹出框按钮
+                                    pop_prev: '#pop_carousel_prev',//弹出框左箭头
+                                    pop_next: '#pop_carousel_next',//弹出框右箭头
+                                    mhc: '.carousel-mask'//朦灰层
+                                });
+                            },1000);
                         }
                     }
 
@@ -981,31 +1012,6 @@
             this.getDetail(); //获取楼盘详情
 
             this.getDetList(); //搜索结果列表
-
-            //首屏轮播
-            $('#carousel_building').banqh({
-                box: '#carousel_building',//总框架
-                pic: '#carousel_big',//大图框架
-                pnum: '#carousel_small',//小图框架
-                prev_btn: '#carousel_small_prev',//小图左箭头
-                next_btn: '#carousel_small_next',//小图右箭头
-                autoplay: true,//是否自动播放
-                interTime: 5000,//图片自动切换间隔
-                delayTime: 400,//切换一张图片时间
-                pop_delayTime: 400,//弹出框切换一张图片时间
-                order: 0,//当前显示的图片（从0开始）
-                picdire: true,//大图滚动方向（true为水平方向滚动）
-                mindire: true,//小图滚动方向（true为水平方向滚动）
-                min_picnum: 4,//小图显示数量
-                pop_up: false,//大图是否有弹出框
-                pop_div: '#pop_carousel_box',//弹出框框架
-                pop_pic: '#pop_carousel',//弹出框图片框架
-                pop_xx: '.pop-carousel-close',//关闭弹出框按钮
-                pop_prev: '#pop_carousel_prev',//弹出框左箭头
-                pop_next: '#pop_carousel_next',//弹出框右箭头
-                mhc: '.carousel-mask'//朦灰层
-            });
-
 
             //单价总价切换
             $('.conts_option').click(function () {

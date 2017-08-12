@@ -360,8 +360,8 @@
                             <router-link :to="{path:'/detail',query:{building_id:item.id}}" class="db pr clearfix"
                                          :id="item.id" target="_blank">
                                 <div class="fl pr">
-                                    <!--<img :src="item.img_path" :alt="item.img_alt">-->
-                                    <img src="http://116.62.71.76:81/default-youshi.png" :alt="item.img_alt">
+                                    <img :src="item.img_path" :alt="item.img_alt">
+                                    <!--<img :src="http://116.62.71.76:81/default-youshi.png" :alt="item.img_alt">-->
                                 </div>
                                 <div class="price_box tright">
                                     <span class="db text_gray6"><em class="font26 font_num fb text_pink_app"
