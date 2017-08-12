@@ -147,7 +147,10 @@
                     <div class="building-information">
                         <div class="category-item-title">
                             <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingName}}简介</h2>
-                            <a class="show-link mr20" href="javascript:;" target="_blank" @click="lookMore()">查看详情</a>
+                            <router-link :to="{path:'/detail',query:{building_id:building_id}}"
+                                         class="show-link mr20"
+                                         target="_blank">查看详情
+                            </router-link>
                         </div>
                         <table>
                             <tbody>
@@ -292,7 +295,7 @@
 
                 labels: [],//标签
 
-                building_images:[
+                building_images: [
                     'http://116.62.71.76:81/default-youshi.png',
                     'http://116.62.71.76:81/default-youshi.png',
                     'http://116.62.71.76:81/default-youshi.png',
@@ -306,7 +309,7 @@
 
                 positionData: "", //经纬度
 
-                building_id: "", //楼盘id
+                building_id: this.$route.query.building_id, //楼盘id
                 address: "",//地址
                 daily_price: "--",//价格
                 month_price: "--",//价格
@@ -324,6 +327,8 @@
                 building_level: '', //楼盘级别
                 property_rights: '', //产权性质
                 building_area: '', //建筑面积
+
+
             }
         },
 
@@ -459,7 +464,7 @@
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积
 
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 //首屏轮播
                                 $('#carousel_building').banqh({
                                     box: '#carousel_building',//总框架
@@ -483,7 +488,7 @@
                                     pop_next: '#pop_carousel_next',//弹出框右箭头
                                     mhc: '.carousel-mask'//朦灰层
                                 });
-                            },1000);
+                            }, 1000);
 
                         }
                     }
