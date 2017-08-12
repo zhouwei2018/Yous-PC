@@ -541,7 +541,13 @@
                 max_renge_price: "",
                 lease_nums: "",
 
-                building_images:[], //banner图片
+                building_images:[
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png'
+                ], //banner图片
 
 
                 //筛选部分
@@ -745,15 +751,8 @@
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
 
-                            //_this.building_images=result.data.building_images;
-                            _this.building_images=[
-                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
-                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
-                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
-                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
-                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
-                                "http://resource.youshispace.com/upload/2017-08-07/ecff438394e5d1e1391b7207d672456d.jpg",
-                            ];
+                            _this.building_images=result.data.building_images;
+
 
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
                             _this.price = result.data.price == null ? '--' : result.data.price;

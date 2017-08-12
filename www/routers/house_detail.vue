@@ -292,7 +292,13 @@
 
                 labels: [],//标签
 
-                building_images: [], //banner图片
+                building_images:[
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png',
+                    'http://116.62.71.76:81/default-youshi.png'
+                ], //banner图片
 
                 buildingName: "", //楼盘name
 
@@ -452,6 +458,33 @@
                             _this.building_level = result.data.building_level; //楼盘级别
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积
+
+                            setTimeout(function(){
+                                //首屏轮播
+                                $('#carousel_building').banqh({
+                                    box: '#carousel_building',//总框架
+                                    pic: '#carousel_big',//大图框架
+                                    pnum: '#carousel_small',//小图框架
+                                    prev_btn: '#carousel_small_prev',//小图左箭头
+                                    next_btn: '#carousel_small_next',//小图右箭头
+                                    autoplay: true,//是否自动播放
+                                    interTime: 5000,//图片自动切换间隔
+                                    delayTime: 400,//切换一张图片时间
+                                    pop_delayTime: 400,//弹出框切换一张图片时间
+                                    order: 0,//当前显示的图片（从0开始）
+                                    picdire: true,//大图滚动方向（true为水平方向滚动）
+                                    mindire: true,//小图滚动方向（true为水平方向滚动）
+                                    min_picnum: 4,//小图显示数量
+                                    pop_up: false,//大图是否有弹出框
+                                    pop_div: '#pop_carousel_box',//弹出框框架
+                                    pop_pic: '#pop_carousel',//弹出框图片框架
+                                    pop_xx: '.pop-carousel-close',//关闭弹出框按钮
+                                    pop_prev: '#pop_carousel_prev',//弹出框左箭头
+                                    pop_next: '#pop_carousel_next',//弹出框右箭头
+                                    mhc: '.carousel-mask'//朦灰层
+                                });
+                            },1000);
+
                         }
                     }
 
