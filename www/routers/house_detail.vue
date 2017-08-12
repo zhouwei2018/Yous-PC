@@ -34,17 +34,8 @@
                     <div class="carousel-box" id="carousel_building">
                         <div class="carousel-big" id="carousel_big">
                             <ul>
-                                <li>
-                                    <a><img src="../resources/images/detail/det_banner01.jpg" alt=""></a>
-                                </li>
-                                <li>
-                                    <a><img src="../resources/images/detail/det_banner01.jpg" alt=""></a>
-                                </li>
-                                <li>
-                                    <a><img src="../resources/images/detail/det_banner01.jpg" alt=""></a>
-                                </li>
-                                <li>
-                                    <a><img src="../resources/images/detail/det_banner01.jpg" alt=""></a>
+                                <li v-for="item in building_images">
+                                    <a><img :src="item" alt=""></a>
                                 </li>
                             </ul>
                         </div>
@@ -54,52 +45,22 @@
                         </div>
                         <div class="carousel-small-box">
                             <div class="carousel-small-prev toggle-button" id="carousel_small_prev">
-                                <img src="http://img2.static.uban.com/www/images/small-prev.png" width="20" height="62"
-                                     alt="">
+                                <img src="../resources/images/detail/small-prev.png" width="20" height="62" alt="">
                             </div>
                             <div class="carousel-small clearfix" id="carousel_small">
                                 <ul>
-                                    <li class="on"><a class="pr db cur-pointer">
-                                        <div class="small-mask" style="display: block;"></div>
-                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                             alt=""></a></li>
-                                    <li><a class="pr db cur-pointer">
-                                        <div class="small-mask" style="display: block;"></div>
-                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                             alt=""></a></li>
-                                    <li><a class="pr db cur-pointer">
-                                        <div class="small-mask" style="display: block;"></div>
-                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                             alt=""></a></li>
-                                    <li><a class="pr db cur-pointer">
-                                        <div class="small-mask" style="display: block;"></div>
-                                        <img src="../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                             alt=""></a></li>
+                                    <li class="on" v-for="item1 in building_images">
+                                        <a class="pr db cur-pointer">
+                                            <div class="small-mask"></div>
+                                            <img :src="item1" alt=""/>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="carousel-small-next toggle-button" id="carousel_small_next"><img
-                                    src="http://img2.static.uban.com/www/images/small-next.png" width="20" height="62"
-                                    alt=""></div>
+                            <div class="carousel-small-next toggle-button" id="carousel_small_next">
+                                <img src="../resources/images/detail/small-next.png" width="20" height="62" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-mask"></div>
-                    <div class="pop-carousel-box" id="pop_carousel_box">
-                        <div class="pop-carousel-close"><img
-                                src="http://img2.static.uban.com/www/images/swiper-close.png" width="35" height="35"
-                                alt="关闭"></div>
-                        <div class="pop-carousel" id="pop_carousel">
-                            <ul style="width: 11000px;">
-                                <li><a class="cur-pointer"><img
-                                        src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-w1000x500"
-                                        alt="" width="1000" height="500"></a></li>
-                            </ul>
-                        </div>
-                        <div class="pop-carousel-prev" id="pop_carousel_prev"><img
-                                src="http://img2.static.uban.com/www/images/zuoanniu.png" width="25" height="45"
-                                alt="上一页"></div>
-                        <div class="pop-carousel-next" id="pop_carousel_next"><img
-                                src="http://img2.static.uban.com/www/images/youanniu.png" width="25" height="45"
-                                alt="下一页"></div>
                     </div>
                 </div>
                 <!--轮播图 end-->
@@ -120,7 +81,8 @@
                     <div class="price-box clearfix mt20">
                         <p class="building-price">
                             <strong v-text="month_price">&nbsp;</strong><span>万元/月</span>
-                            <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em class="font-num">m²</em>·天</span>
+                            <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em
+                                class="font-num">m²</em>·天</span>
                         </p>
                     </div>
 
@@ -131,7 +93,8 @@
                         </dd>
                         <dd>
                         <span class="bold db rent_num">
-                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold" v-text="max_renge_price"></i> 元/<em
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
+                                                                               v-text="max_renge_price"></i> 元/<em
                                 class="font-num">m²</em>·天</span>
                             <span>价格范围</span>
                         </dd>
@@ -144,7 +107,8 @@
                     </dl>
 
                     <p class="building-address clearfix">
-                        <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap" class="show-map">&nbsp;查看地图</a>
+                        <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap"
+                                                                                       class="show-map">&nbsp;查看地图</a>
                     </p>
 
                     <p class="building-consult clearfix">
@@ -186,8 +150,9 @@
                         <table>
                             <tbody>
                             <tr>
-                                <td colspan="2">
-                                    <em>物业公司：</em><span v-text="property_company"></span>
+                                <td colspan="2" class="clearfix">
+                                    <em class="fl">物业公司：</em>
+                                    <span class="fl" v-text="property_company"></span>
                                 </td>
                                 <td colspan="2">
                                     <em>物业费：</em><span v-text="property_fee+'/m²·月 '"></span>
@@ -229,7 +194,8 @@
                                            onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                     <span class="db text-left mt05" id="msg-phone"></span>
                                     <div class="form_control form_btn mt10 tc cur_pointer"
-                                         @click="modal6 = true">一键咨询</div>
+                                         @click="modal6 = true">一键咨询
+                                    </div>
                                 </form>
 
                                 <p class="nearby">* 客服将在10分钟内联系您</p>
@@ -249,10 +215,11 @@
                         <h3>安心委托,快速成交</h3>
 
                         <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
-                        <Form-item  prop="telephone">
+                        <Form-item prop="telephone">
                             <div class="popItem">
                                 <span class="inp_icon phone"></span>
-                                <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                                <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码"
+                                       v-model="formInline2.telephone">
                                 <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
                                           style="width: 140px; height: 50px;"
                                           second="60"></TimerBtn>
@@ -260,7 +227,8 @@
                         </Form-item>
                         <div class="popItem">
                             <span class="inp_icon password"></span>
-                            <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
+                            <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"
+                                   placeholder="请输入您收到的验证码">
                         </div>
                         <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
                         <Form-item>
@@ -305,22 +273,24 @@
 
                 modal6: false, //弹窗
                 formInline1: {
-                    telephone:'',
+                    telephone: '',
                     city: '',
                     trade_area: ''
                 },
 
-                formInline2:{
+                formInline2: {
                     telephone: ''
                 },
 
                 ruleValidate: {
                     telephone: [
-                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                        {required: true, message: '手机号不能为空', trigger: 'blur'}
                     ]
                 },
 
                 labels: [],//标签
+
+                building_images: [], //banner图片
 
                 buildingName: "", //楼盘name
 
@@ -382,7 +352,7 @@
                         parameters: {
                             "VerifiationCCodeType": 3,
                             "Col_telephone": this.formInline2.telephone,
-                            "InputCode":this.formInline2.InputCode
+                            "InputCode": this.formInline2.InputCode
                         },
                         foreEndType: "1",
                         code: "20000004"
@@ -391,7 +361,7 @@
                     var reslute = JSON.parse(response.bodyText);
                     if (reslute.success) {
                         this.$Message.success('委托单提交成功!');
-                        this.modal6=false;
+                        this.modal6 = false;
                     } else {
                         this.$Message.error(reslute.message);
                     }
@@ -444,7 +414,7 @@
                     {
                         "parameters": {
                             "building_id": this.building_id,
-                            "state":this.state,
+                            "state": this.state,
                             "area": "",
                             "price_dj": "[0,1000000]",
                             "price_zj": "",
@@ -464,6 +434,7 @@
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
 
+                            _this.building_images = result.data.building_images;
 
                             _this.min_renge_area = result.data.min_renge_area == null ? '--' : result.data.min_renge_area;
                             _this.max_renge_area = result.data.max_renge_area == null ? '--' : result.data.max_renge_area;
@@ -499,7 +470,8 @@
                             content: content
                         });
                         break;
-                    default:;
+                    default:
+                        ;
                 }
             }
 
@@ -543,9 +515,9 @@
             });
 
             //微信
-            $('.build_weixin_top').hover(function(){
+            $('.build_weixin_top').hover(function () {
                 $(this).find('.attention-share-ewm').show();
-            },function(){
+            }, function () {
                 $(this).find('.attention-share-ewm').hide();
             });
 

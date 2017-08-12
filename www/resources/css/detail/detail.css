@@ -668,7 +668,6 @@
   margin-bottom: 27px;
 }
 [detail] .building-information table td {
-  width: 200px;
   line-height: 1em;
   padding: 10px;
   color: #999;
@@ -914,6 +913,10 @@
 }
 [detail] .carousel-small ul li:last-child {
   margin-right: 0;
+}
+[detail] .carousel-small img {
+  width: 94px;
+  height: 62px;
 }
 [detail] .small-mask {
   position: absolute;

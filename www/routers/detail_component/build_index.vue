@@ -16,17 +16,8 @@
                 <div class="carousel-box" id="carousel_building">
                     <div class="carousel-big" id="carousel_big">
                         <ul>
-                            <li>
-                                <a><img src="../../resources/images/detail/det_banner01.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a><img src="../../resources/images/detail/det_banner01.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a><img src="../../resources/images/detail/det_banner01.jpg" alt=""></a>
-                            </li>
-                            <li>
-                                <a><img src="../../resources/images/detail/det_banner01.jpg" alt=""></a>
+                            <li v-for="item in building_images">
+                                <a><img :src="item" alt=""></a>
                             </li>
                         </ul>
                     </div>
@@ -36,52 +27,21 @@
                     </div>
                     <div class="carousel-small-box">
                         <div class="carousel-small-prev toggle-button" id="carousel_small_prev">
-                            <img src="http://img2.static.uban.com/www/images/small-prev.png" width="20" height="62"
-                                 alt="">
+                            <img src="../../resources/images/detail/small-prev.png" width="20" height="62" alt="">
                         </div>
                         <div class="carousel-small clearfix" id="carousel_small">
                             <ul>
-                                <li class="on"><a class="pr db cur-pointer">
-                                    <div class="small-mask" style="display: block;"></div>
-                                    <img src="../../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                         alt=""></a></li>
-                                <li><a class="pr db cur-pointer">
-                                    <div class="small-mask" style="display: block;"></div>
-                                    <img src="../../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                         alt=""></a></li>
-                                <li><a class="pr db cur-pointer">
-                                    <div class="small-mask" style="display: block;"></div>
-                                    <img src="../../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                         alt=""></a></li>
-                                <li><a class="pr db cur-pointer">
-                                    <div class="small-mask" style="display: block;"></div>
-                                    <img src="../../resources/images/detail/det_sm_banner01.jpg" width="94" height="62"
-                                         alt=""></a></li>
+                                <li class="on" v-for="item1 in building_images">
+                                    <a class="pr db cur-pointer">
+                                        <div class="small-mask"></div>
+                                        <img :src="item1" alt="" />
+                                    </a>
+                                </li>
                             </ul>
                         </div>
-                        <div class="carousel-small-next toggle-button" id="carousel_small_next"><img
-                                src="http://img2.static.uban.com/www/images/small-next.png" width="20" height="62"
-                                alt=""></div>
+                        <div class="carousel-small-next toggle-button" id="carousel_small_next">
+                            <img src="../../resources/images/detail/small-next.png" width="20" height="62" alt=""></div>
                     </div>
-                </div>
-                <div class="carousel-mask"></div>
-                <div class="pop-carousel-box" id="pop_carousel_box">
-                    <div class="pop-carousel-close"><img
-                            src="http://img2.static.uban.com/www/images/swiper-close.png" width="35" height="35"
-                            alt="关闭"></div>
-                    <div class="pop-carousel" id="pop_carousel">
-                        <ul style="width: 11000px;">
-                            <li><a class="cur-pointer"><img
-                                    src="http://img1.static.uban.com/fcfc04d8-26d0-11e5-a40d-00163e00571b.jpg-w1000x500"
-                                    alt="" width="1000" height="500"></a></li>
-                        </ul>
-                    </div>
-                    <div class="pop-carousel-prev" id="pop_carousel_prev"><img
-                            src="http://img2.static.uban.com/www/images/zuoanniu.png" width="25" height="45"
-                            alt="上一页"></div>
-                    <div class="pop-carousel-next" id="pop_carousel_next"><img
-                            src="http://img2.static.uban.com/www/images/youanniu.png" width="25" height="45"
-                            alt="下一页"></div>
                 </div>
             </div>
             <!--轮播图 end-->
@@ -429,8 +389,9 @@
                     <table>
                         <tbody>
                         <tr>
-                            <td colspan="2">
-                                <em>物业公司：</em><span v-text="property_company"></span>
+                            <td colspan="2" class="clearfix">
+                                <em class="fl">物业公司：</em>
+                                <span class="fl" v-text="property_company"></span>
                             </td>
                             <td colspan="2"></td>
                             <td colspan="2">
@@ -583,6 +544,9 @@
                 min_renge_price: "",
                 max_renge_price: "",
                 lease_nums: "",
+
+                building_images:[], //banner图片
+
 
                 //筛选部分
                 initFlag: true,
@@ -784,6 +748,8 @@
 
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
+
+                            _this.building_images=result.data.building_images;
 
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
                             _this.price = result.data.price == null ? '--' : result.data.price;
