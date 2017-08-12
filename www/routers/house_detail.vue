@@ -19,7 +19,9 @@
             <!--搜索 start-->
             <div class="breadcrumb-search clearfix">
                 <ul class="breadcrumb fl clearfix">
-                    <li><a href="javascript:;"><i class="detail-icon"></i>幼狮空间</a>&gt;</li>
+                    <li>
+                        <router-link :to="{path:'/list'}"><i class="detail-icon"></i>幼狮空间 &gt;</router-link>
+                    </li>
                     <li><a href="javascript:;">办公楼</a>&gt;</li>
                     <li><a href="javascript:;" v-text="buildingName"></a>></li>
                     <li v-text="buildingName+'办公楼'"></li>

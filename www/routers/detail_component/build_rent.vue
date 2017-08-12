@@ -218,7 +218,7 @@
                             <a href="javascript:;">价格<span></span></a>
                             <a href="javascript:;">面积<span></span></a>
                         </div>
-                        <div class="fr sort-meet-result ">共 <b></b> 套房源符合条件</div>
+                        <div class="fr sort-meet-result ">共 <b v-text="total_items"></b> 套房源符合条件</div>
                     </div>
 
                     <!--加载中-->
@@ -558,7 +558,7 @@
                     if (result.success) {
                         if(result.data.houses.length){
                             _this.buildList = result.data.houses;
-                            _this.total_items = res.data.total_items;
+                            _this.total_items = result.data.total_items;
                         }else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
