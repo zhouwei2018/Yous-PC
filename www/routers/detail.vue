@@ -52,7 +52,6 @@
                     <!--<li><a href="javascript:;">待租房源</a></li>-->
                     <!--<li><a href="javascript:;">周边配套</a></li>-->
                     <!--<li><a href="javascript:;">楼盘详情</a></li>-->
-                    <!--<li><a href="javascript:;">历史挂牌</a></li>-->
                     <li v-for="(tab,index) in tabs" @click="toggle(index,tab.view)" :class="{active:active === index}">
                         <a href="javascript:;">{{tab.type}}</a>
                     </li>
@@ -142,10 +141,6 @@
                     {
                         type: '楼盘详情',
                         view: 'build_det'
-                    },
-                    {
-                        type: '历史价格',
-                        view: 'price_history'
                     }
 
                 ],
@@ -208,6 +203,13 @@
                 }
 
             });
+
+            //跳转记录参数
+            this.active = this.$route.query.name == undefined ? 0 : this.$route.query.name;
+            this.toggle(this.active, this.tabs[this.active].view);
+
+            $('.nav-building li').eq(this.active).addClass('active');
+
         },
 
         created(){

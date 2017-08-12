@@ -147,7 +147,7 @@
                     <div class="building-information">
                         <div class="category-item-title">
                             <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingName}}简介</h2>
-                            <router-link :to="{path:'/detail',query:{building_id:building_id}}"
+                            <router-link :to="{path:'/detail',query:{building_id:building_id,name:3}}"
                                          class="show-link mr20"
                                          target="_blank">查看详情
                             </router-link>
@@ -191,13 +191,6 @@
                             <div class="booking_house_mes">
                                 <div class="side_model_tit cl_blue">快速委托找房</div>
                                 <form id="freeLookForm" class="nice-validator n-default">
-                                    <input id="freeLook_inp" name="phone" class="form_control form_telphone"
-                                           type="text"
-                                           autocomplete="off"
-                                           placeholder="输入您的手机号" maxlength="11"
-                                           onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
-                                           onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
-                                    <span class="db text-left mt05" id="msg-phone"></span>
                                     <div class="form_control form_btn mt10 tc cur_pointer"
                                          @click="modal6 = true">一键咨询
                                     </div>
