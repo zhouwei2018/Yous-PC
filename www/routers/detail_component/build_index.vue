@@ -30,7 +30,7 @@
                                 <li v-for="item1 in building_images">
                                     <a class="pr db cur-pointer">
                                         <div class="small-mask"></div>
-                                        <img :src="item1" alt="" />
+                                        <img :src="item1" alt=""/>
                                     </a>
                                 </li>
                             </ul>
@@ -332,7 +332,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20         class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -453,10 +453,11 @@
                     <h3>安心委托,快速成交</h3>
 
                     <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
-                    <Form-item  prop="telephone">
+                    <Form-item prop="telephone">
                         <div class="popItem">
                             <span class="inp_icon phone"></span>
-                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码"
+                                   v-model="formInline2.telephone">
                             <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
                                       style="width: 140px; height: 50px;"
                                       second="60"></TimerBtn>
@@ -464,7 +465,8 @@
                     </Form-item>
                     <div class="popItem">
                         <span class="inp_icon password"></span>
-                        <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
+                        <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"
+                               placeholder="请输入您收到的验证码">
                     </div>
                     <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
                     <Form-item>
@@ -497,18 +499,18 @@
 
                 modal6: false, //弹窗
                 formInline1: {
-                    telephone:'',
+                    telephone: '',
                     city: '',
                     trade_area: ''
                 },
 
-                formInline2:{
+                formInline2: {
                     telephone: ''
                 },
 
                 ruleValidate: {
                     telephone: [
-                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                        {required: true, message: '手机号不能为空', trigger: 'blur'}
                     ]
                 },
 
@@ -534,7 +536,7 @@
                 max_renge_price: "",
                 lease_nums: "",
 
-                building_images:[
+                building_images: [
                     'http://116.62.71.76:81/default-youshi.png',
                     'http://116.62.71.76:81/default-youshi.png',
                     'http://116.62.71.76:81/default-youshi.png',
@@ -634,7 +636,7 @@
                         parameters: {
                             "VerifiationCCodeType": 3,
                             "Col_telephone": this.formInline2.telephone,
-                            "InputCode":this.formInline2.InputCode
+                            "InputCode": this.formInline2.InputCode
                         },
                         foreEndType: "1",
                         code: "20000004"
@@ -643,7 +645,7 @@
                     var reslute = JSON.parse(response.bodyText);
                     if (reslute.success) {
                         this.$Message.success('委托单提交成功!');
-                        this.modal6=false;
+                        this.modal6 = false;
                     } else {
                         this.$Message.error(reslute.message);
                     }
@@ -744,7 +746,7 @@
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
 
-                            _this.building_images=result.data.building_images;
+                            _this.building_images = result.data.building_images;
 
 
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
@@ -767,7 +769,7 @@
                             _this.building_area = result.data.building_area;  //建筑面积
 
 
-                            setTimeout(function(){
+                            setTimeout(function () {
                                 //首屏轮播
                                 $('#carousel_building').banqh({
                                     box: '#carousel_building',//总框架
@@ -791,7 +793,7 @@
                                     pop_next: '#pop_carousel_next',//弹出框右箭头
                                     mhc: '.carousel-mask'//朦灰层
                                 });
-                            },1000);
+                            }, 1000);
                         }
                     }
 
