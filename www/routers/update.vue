@@ -7,15 +7,11 @@
         <!--header-->
         <header1></header1>
         <!--update start-->
-        <div update style="height: 600px; overflow: hidden">
+        <div update>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="../resources/images/update/update.png" alt="">
-
-                    </div>
-                    <div class="swiper-slide pr">
-                        <img src="../resources/images/update/update_01.png" alt="">
+                    <div class="swiper-slide slide1"></div>
+                    <div class="swiper-slide pr slide2">
                         <div class="up_two_prag">
                             <p>企业升级服务部以提供专业化服务为宗旨，解决用户在发展过程中遇到的有碍其成长的资金、人力、风险控制等困扰因素为目标，以办公空间为载体，
                                 通过提供财税服务、法务服务、人力资源服务、商学院服务、FA服务等内容，与客户建立深度链接、超强黏性，进而带来新的办公空间需求，通过对空
@@ -31,17 +27,70 @@
                             <span><i class="up_icon5"></i>FA服务</span>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <img src="../resources/images/update/update_02.png" alt="">
+                    <div class="swiper-slide slide3">
+                        <ul class="update_ser_wrap" id="animate2">
+                            <li class="clearfix">
+                                <span class="fl up_left_box">
+                                    <i class="black">我的客服</i>
+                                    <i>贴心专业，快速响应</i>
+                                    <i>使企业更专注于自身业务</i>
+                                </span>
+                                <span class="fr up_ser_rtips ser1"></span>
+                            </li>
+                            <li class="clearfix">
+                                <span class="fl up_left_box">
+                                    <i class="black">我的服务</i>
+                                    <i>线上下单，线下快速解决</i>
+                                    <i>企业成长过程中核心需求</i>
+                                </span>
+                                <span class="fr up_ser_rtips ser2"></span>
+                            </li>
+                            <li class="clearfix">
+                                <span class="fl up_left_box">
+                                    <i class="black">我的动态</i>
+                                    <i>发布企业动态，实现线上</i>
+                                    <i>线下企业服务资源高效对接，构建企业生态圈</i>
+                                </span>
+                                <span class="fr up_ser_rtips ser3"></span>
+                            </li>
+                            <li class="clearfix">
+                                <span class="fl up_left_box">
+                                    <i class="black">我的钱包</i>
+                                    <i>企业服务平台实</i>
+                                    <i>现交易过程中的资金保障</i>
+                                </span>
+                                <span class="fr up_ser_rtips ser4"></span>
+                            </li>
+                        </ul>
+                        <div class="up_service_desc" id="animate3">登录幼狮科技企业服务平台，您可以享受舒适的办公空间，结交优质的商业合作伙伴，获得高效的专属服务。</div>
                     </div>
-                    <div class="swiper-slide">
-                        <img src="../resources/images/update/update_03.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../resources/images/update/update_04.png" alt="">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="../resources/images/update/update_05.png" alt="">
+                    <div class="swiper-slide slide4"></div>
+                    <div class="swiper-slide slide5"></div>
+                    <div class="swiper-slide slide6"></div>
+                    <div class="swiper-slide slide7">
+                        <div footer>
+                            <div class="contents foot_head clearfix">
+                                <div class="fl">
+                                    <h3>北京幼狮科技有限公司</h3>
+                                    <p><i class="commerce_tel"></i>400-078-8800</p>
+                                    <p class="lion_address">地址：北京市朝阳区东三环中路39号建外SOHO东区A座2503</p>
+                                </div>
+                                <div class="fr">
+                                    <img src="../resources/images/ys_weixin.jpg" alt="幼狮微信" style="width: 98px;height: 98px;"/>
+                                    <span class="weixin_text">幼狮官网</span>
+                                </div>
+                            </div>
+                            <div class="foot_bot">
+                                <div class="contents">
+                                    <span class="bottom_copyright fl">北京幼狮科技有限公司 保留所有权利&nbsp;&nbsp;京ICP备20176444</span>
+                                    <div class="fr">
+                                      <span>
+                                          <router-link :to="{ path: '/about',query:{name:0}}">关于我们</router-link>
+                                      </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- Add Pagination -->
@@ -50,19 +99,16 @@
 
         </div>
 
-        <!--footer-->
-        <footer1></footer1>
     </div>
 
 </template>
 <script>
     import header1 from '../components/header.vue';
-    import footer1 from '../components/footer.vue';
 
     import '../resources/plugin/swiper/js/swiper.min.js';
 
     export default {
-        components: {header1, footer1},
+        components: {header1},
         mounted(){
             $(window).scrollTop(0);
 
@@ -78,6 +124,18 @@
                         $('#animate').addClass('animated infinite bounceInUp');
                         setTimeout(function () {
                             $('#animate').removeClass('animated infinite bounceInUp')
+                        }, 1000);
+                    }
+
+                    if (swiper.activeIndex == 2) {
+                        $('#animate2').addClass('animated infinite bounceInLeft');
+                        setTimeout(function () {
+                            $('#animate2').removeClass('animated infinite bounceInLeft')
+                        }, 1000);
+
+                        $('#animate3').addClass('animated infinite bounceInUp');
+                        setTimeout(function () {
+                            $('#animate3').removeClass('animated infinite bounceInUp')
                         }, 1000);
                     }
                 }

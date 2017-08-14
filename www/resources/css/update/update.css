@@ -55,9 +55,7 @@
 /*用于补充说明文字、次要文字*/
 [update] {
   overflow: hidden;
-}
-[update] img {
-  height: 100%;
+  height: 588px;
 }
 [update] .swiper-container {
   width: 100%;
@@ -82,6 +80,41 @@
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+}
+[update] .swiper-slide.slide1 {
+  background: url("../../images/update/update.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide2 {
+  background: url("../../images/update/update_01.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide3 {
+  background: url("../../images/update/update_02.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide4 {
+  background: url("../../images/update/update_03.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide5 {
+  background: url("../../images/update/update_04.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide6 {
+  background: url("../../images/update/update_05.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide7 {
+  background: url("../../images/update/update_06.png");
+  background-size: 100% 100%;
+}
+[update] .swiper-slide.slide7 [footer] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
 }
 [update] .up_two_prag {
   position: absolute;
@@ -115,35 +148,136 @@
 }
 [update] .update_icon_wrap > span > i.up_icon1 {
   background: url("../../images/update/up_icon/up_icon1.png") no-repeat;
+  background-size: 100% 100%;
 }
 [update] .update_icon_wrap > span > i.up_icon2 {
   width: 48px;
   height: 42px;
   background: url("../../images/update/up_icon/up_icon2.png") no-repeat;
+  background-size: 100% 100%;
 }
 [update] .update_icon_wrap > span > i.up_icon3 {
   width: 35px;
   height: 44px;
   background: url("../../images/update/up_icon/up_icon3.png") no-repeat;
+  background-size: 100% 100%;
 }
 [update] .update_icon_wrap > span > i.up_icon4 {
   width: 46px;
   height: 45px;
   background: url("../../images/update/up_icon/up_icon4.png") no-repeat;
+  background-size: 100% 100%;
 }
 [update] .update_icon_wrap > span > i.up_icon5 {
   width: 47px;
   height: 45px;
   background: url("../../images/update/up_icon/up_icon5.png") no-repeat;
+  background-size: 100% 100%;
+}
+[update] .update_ser_wrap {
+  width: 310px;
+  position: absolute;
+  left: 210px;
+  top: 100px;
+}
+[update] .update_ser_wrap > li {
+  margin-bottom: 16px;
+}
+[update] .up_left_box {
+  text-align: right;
+  color: #fff;
+  padding-top: 10px;
+  width: 180px;
+}
+[update] .up_left_box i {
+  line-height: 24px;
+  display: block;
+  font-size: 14px;
+}
+[update] .up_left_box i.black {
+  color: #333;
+}
+[update] .up_service_desc {
+  position: absolute;
+  bottom: 90px;
+  right: 286px;
+  width: 390px;
+  color: #fff;
+  font-size: 15px;
+}
+[update] .up_ser_rtips {
+  width: 100px;
+  height: 100px;
+}
+[update] .up_ser_rtips.ser1 {
+  background: url("../../images/update/up_icon/up_three_icon1.png") no-repeat;
+  background-size: 100% 100%;
+}
+[update] .up_ser_rtips.ser2 {
+  background: url("../../images/update/up_icon/up_three_icon2.png") no-repeat;
+  background-size: 100% 100%;
+}
+[update] .up_ser_rtips.ser3 {
+  background: url("../../images/update/up_icon/up_three_icon3.png") no-repeat;
+  background-size: 100% 100%;
+}
+[update] .up_ser_rtips.ser4 {
+  background: url("../../images/update/up_icon/up_three_icon4.png") no-repeat;
+  background-size: 100% 100%;
 }
 @media screen and (min-width: 1500px) {
   [update] {
-    overflow: hidden;
+    height: 940px;
   }
-  [update] .update_banner {
-    height: 900px;
+  [update] .swiper-container {
+    height: 100%;
   }
-  [update] .update_banner img {
-    height: 900px;
+  [update] .up_two_prag {
+    position: absolute;
+    left: 50%;
+    top: 380px;
+    margin-left: -750px;
+    width: 1500px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+  }
+  [update] .update_icon_wrap {
+    bottom: 150px;
+  }
+  [update] .update_icon_wrap > span i {
+    width: 60px;
+    height: 60px;
+  }
+  [update] .update_icon_wrap > span i.up_icon2,
+  [update] .update_icon_wrap > span i.up_icon3,
+  [update] .update_icon_wrap > span i.up_icon4,
+  [update] .update_icon_wrap > span i.up_icon5 {
+    width: 60px;
+    height: 60px;
+  }
+  [update] .update_ser_wrap {
+    top: 200px;
+    left: 350px;
+  }
+  [update] .update_ser_wrap .up_left_box {
+    text-align: right;
+    color: #fff;
+    padding-top: 5px;
+    width: 180px;
+  }
+  [update] .update_ser_wrap .up_left_box i {
+    line-height: 26px;
+    display: block;
+    font-size: 16px;
+  }
+  [update] .update_ser_wrap .up_left_box i.black {
+    color: #333;
+  }
+  [update] .up_service_desc {
+    width: 640px;
+    right: 360px;
+    bottom: 120px;
+    font-size: 24px;
   }
 }
