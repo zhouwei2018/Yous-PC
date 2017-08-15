@@ -10,9 +10,9 @@
         <!--aboutus start-->
         <div about_us>
             <div class="crumb_nav contents">
-                <a href="javascript:;">首页</a>
-                <i>&gt;</i>
-                <span class="nav_sub_item">关于我们</span>
+                <!--<a href="javascript:;">首页</a>-->
+                <!--<i>&gt;</i>-->
+                <!--<span class="nav_sub_item">关于我们</span>-->
             </div>
             <div class="contents clearfix" id="about_us_box">
                 <div class="about_left fl" id="about_us_menu">
