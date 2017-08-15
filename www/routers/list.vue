@@ -459,9 +459,7 @@
         <Modal v-model="modal6" width="420">
             <div popup>
                 <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
-                    <h3>安心委托,快速成交</h3>
-
-                    <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
+                    <h3>一键咨询</h3>
                     <Form-item  prop="telephone">
                         <div class="popItem">
                             <span class="inp_icon phone"></span>
@@ -475,9 +473,9 @@
                         <span class="inp_icon password"></span>
                         <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
                     </div>
-                    <p>您也可以拨打<i> 400-078-8800 </i>直接委托房源</p>
+                    <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
-                        <input type="primary" class="pop_subbtn" value="提交委托" @click="handleSubmit2('formInline2')">
+                        <input type="primary" class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
                     </Form-item>
                 </Form>
             </div>
