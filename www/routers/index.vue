@@ -320,7 +320,7 @@
 
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                             <Form-item>
-                               <input type="primary" class="pop_subbtn" value="确    认"  @click="handleSubmit1('formInline1')">
+                               <input type="primary" class="pop_subbtn" readonly value="确    认"  @click="handleSubmit1('formInline1')">
                             </Form-item>
 
                         </Form>
@@ -347,7 +347,7 @@
                             </div>
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                               <Form-item>
-                                 <input type="primary" class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
+                                 <input type="primary" readonly class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
                             </Form-item>
                         </Form>
                     </div>
