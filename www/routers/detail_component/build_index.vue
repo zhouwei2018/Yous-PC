@@ -433,7 +433,7 @@
                             <p class="nearby">* 客服将在10分钟内联系您</p>
                         </div>
                         <div class="consult_box tc">
-                            <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-810-6698</b>
+                            <i class="right_logo_icon"></i>咨询热线：<b class="text_pink_app">400-078-8800</b>
                         </div>
                     </div>
                     <div class="app_download tc">
