@@ -387,7 +387,7 @@
                                     </p>
                                 </li>
                             </ul>
-                            <a href="javascript:;" class="look_more">查看更多</a>
+                            <!--<a href="javascript:;" class="look_more">查看更多</a>-->
                         </div>
                     </div>
                 </div>
