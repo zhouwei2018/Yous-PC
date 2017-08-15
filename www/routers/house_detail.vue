@@ -452,7 +452,7 @@
                             //物业信息
                             _this.property_company = result.data.property_company; //物业公司
                             _this.property_fee = result.data.property_fee; //物业费
-                            _this.opening_date = result.data.opening_date; // 建成年代
+                            _this.opening_date = result.data.opening_date.replace('0:00:00',''); // 建成年代
                             _this.building_level = result.data.building_level; //楼盘级别
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积
