@@ -426,8 +426,7 @@
                             <div class="side_model_tit cl_blue">快速委托找房</div>
                             <form id="freeLookForm" class="nice-validator n-default">
                                 <div class="form_control form_btn mt10 tc cur_pointer"
-                                     @click="modal6 = true">一键咨询
-                                </div>
+                                     @click="modal6 = true">一键咨询</div>
                             </form>
 
                             <p class="nearby">* 客服将在10分钟内联系您</p>

@@ -73,8 +73,6 @@
                             <div class="tel">
                                 <em>400-078-8800</em></div>
                         </div>
-                        <div class="online cur-pointer detail-head-consultation" data-id="184"><i
-                                class="detail-icon"></i><span class="text">在线咨询</span></div>
                     </div>
                 </div>
             </div>
