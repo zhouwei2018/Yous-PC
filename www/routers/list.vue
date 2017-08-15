@@ -38,7 +38,7 @@
         padding: 20px;
     }
 
-    .ivu-btn-primary{
+    .ivu-btn-primary {
         background-color: #3facf8;
         border-color: #3facf8;
     }
@@ -58,7 +58,8 @@
                 <div class="contents clearfix">
                     <div class="list_search fl">
                         <div class="fl clearfix">
-                            <input id="search_inp" type="text" autocomplete="off" v-model="search_keywork" placeholder="请输入写字楼名称或商圈"
+                            <input id="search_inp" type="text" autocomplete="off" v-model="search_keywork"
+                                   placeholder="请输入写字楼名称或商圈"
                                    maxlength="30">
                         </div>
                         <a class="map_btn fl ml10" id="bannerSearchbtn" @click="searchClick()">搜索</a>
@@ -403,7 +404,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20       class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -433,7 +434,9 @@
                                 <div class="booking_house_mes">
                                     <div class="side_model_tit cl_blue">快速委托找房</div>
                                     <form id="freeLookForm" class="nice-validator n-default">
-                                        <div class="form_control form_btn mt10 tc cur_pointer" @click="modal6 = true">一键咨询</div>
+                                        <div class="form_control form_btn mt10 tc cur_pointer" @click="modal6 = true">
+                                            一键咨询
+                                        </div>
                                     </form>
 
                                     <p class="nearby">* 客服将在10分钟内联系您</p>
@@ -460,10 +463,11 @@
             <div popup>
                 <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
                     <h3>一键咨询</h3>
-                    <Form-item  prop="telephone">
+                    <Form-item prop="telephone">
                         <div class="popItem">
                             <span class="inp_icon phone"></span>
-                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码"
+                                   v-model="formInline2.telephone">
                             <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
                                       style="width: 140px; height: 50px;"
                                       second="60"></TimerBtn>
@@ -471,7 +475,8 @@
                     </Form-item>
                     <div class="popItem">
                         <span class="inp_icon password"></span>
-                        <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
+                        <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"
+                               placeholder="请输入您收到的验证码">
                     </div>
                     <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
@@ -510,21 +515,20 @@
 
                 modal6: false, //弹窗
                 formInline1: {
-                    telephone:'',
+                    telephone: '',
                     city: '',
                     trade_area: ''
                 },
 
-                formInline2:{
+                formInline2: {
                     telephone: ''
                 },
 
                 ruleValidate: {
                     telephone: [
-                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                        {required: true, message: '手机号不能为空', trigger: 'blur'}
                     ]
                 },
-
 
 
                 list_scroll: true, //屏幕滚动
@@ -641,7 +645,7 @@
                         parameters: {
                             "VerifiationCCodeType": 3,
                             "Col_telephone": this.formInline2.telephone,
-                            "InputCode":this.formInline2.InputCode
+                            "InputCode": this.formInline2.InputCode
                         },
                         foreEndType: "1",
                         code: "20000004"
@@ -650,7 +654,7 @@
                     var reslute = JSON.parse(response.bodyText);
                     if (reslute.success) {
                         this.$Message.success('委托单提交成功!');
-                        this.modal6=false;
+                        this.modal6 = false;
                     } else {
                         this.$Message.error(reslute.message);
                     }
@@ -912,7 +916,7 @@
                     if (result.success) {
                         if (result.data) {
 
-                            if(result.data.total_items>0){
+                            if (result.data.total_items > 0) {
                                 for (var i = 0; i < result.data.buildings.length; i++) {
                                     if (result.data.buildings[i].label) {
                                         result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
@@ -925,13 +929,13 @@
                                 _this.total_items = result.data.total_items;
                                 _this.total_pages = result.data.total_pages;
 
-                                if(_this.total_pages <=1){
+                                if (_this.total_pages <= 1) {
                                     _this.pageFlag = false;
-                                }else{
+                                } else {
                                     _this.pageFlag = true;
                                 }
 
-                            }else {
+                            } else {
                                 _this.pageFlag = false;
                                 _this.buildingShowFlag = true;
                                 _this.total_items = 0;
@@ -1230,7 +1234,7 @@
                     sortType: $(e.currentTarget).attr('data-sortType'),
                     min: min,
                     max: max,
-                    unit: $(e.currentTarget).find('span:last-child').text()+'/m²·天',
+                    unit: $(e.currentTarget).find('span:last-child').text() + '/m²·天',
                     sort_two: sort_two_single //两组min-max标记
                 };
                 this.compareStr4(comObj, this.chosenArr);
@@ -1287,7 +1291,7 @@
                     sortType: $(e.currentTarget).attr('data-sortType'),
                     min: min,
                     max: max,
-                    unit: $(e.currentTarget).find('span:last-child').text()+'/月',
+                    unit: $(e.currentTarget).find('span:last-child').text() + '/月',
                     sort_two: sort_two_single //两组min-max标记
                 };
                 this.compareStr4(comObj, this.chosenArr);
@@ -1526,6 +1530,11 @@
             });
 
             this.getSortList(); //获取筛选条件
+
+            if (this.$route.query.search_keywork) {
+                this.search_keywork = this.$route.query.search_keywork;
+            }
+
             this.getList(); //获取楼盘列表
 
         },
