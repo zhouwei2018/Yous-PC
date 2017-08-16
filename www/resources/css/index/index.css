@@ -447,6 +447,9 @@
 [index_content] [response] .res_right .look_more:hover {
   color: #fb7530;
 }
+.ivu-modal-wrap {
+  overflow: hidden !important;
+}
 @media screen and (min-width: 1500px) {
   [index_content] .banner_wrap .banner_cont .banner_img {
     height: 800px;
