@@ -60,6 +60,7 @@
                         <div class="fl clearfix">
                             <input id="search_inp" type="text" autocomplete="off" v-model="search_keywork"
                                    placeholder="请输入写字楼名称或商圈"
+                                   @keyup.enter="searchClick();"
                                    maxlength="30">
                         </div>
                         <a class="map_btn fl ml10" id="bannerSearchbtn" @click="searchClick()">搜索</a>
@@ -198,7 +199,7 @@
                             </template>
 
                             <div class="price_wrap pr" @mouseenter="priceShowFlag = true"
-                                @mouseleave="hidePop('priceShowFlag','bNum','eNum')">
+                                 @mouseleave="hidePop('priceShowFlag','bNum','eNum')">
                                 <div class="interval pr">
                                     <input name="temp-startprice" type="text" autocomplete="off"
                                            readonly
@@ -262,7 +263,7 @@
                             </template>
 
                             <div class="price_wrap pr" @mouseenter="priceShowFlag_tot = true"
-                                @mouseleave="hidePop('priceShowFlag_tot','bNum_tot','eNum_tot')">
+                                 @mouseleave="hidePop('priceShowFlag_tot','bNum_tot','eNum_tot')">
                                 <div class="interval pr">
                                     <input type="text" autocomplete="off" name="temp-startprice"
                                            readonly
@@ -415,7 +416,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20         class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -1097,8 +1098,8 @@
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
                 //清空自定义
-                this.bArea=''; //起始面积
-                this.eArea=''; //结束面积
+                this.bArea = ''; //起始面积
+                this.eArea = ''; //结束面积
 
                 var min = 0, max = 0, sort_two_single = 1;
                 if ($(e.currentTarget).html() == '全部') {
@@ -1106,7 +1107,8 @@
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_are') != -1) {
                             _this.chosenArr.splice(i, 1);
-                        };
+                        }
+                        ;
                     });
 
                     //显示已选择条件
@@ -1211,10 +1213,10 @@
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
                 //清空自定义
-                this.bNum=''; //起始价格
-                this.eNum=''; //结束价格
-                this.bNum_tot=''; //起始价格
-                this.eNum_tot=''; //结束价格
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
+                this.bNum_tot = ''; //起始价格
+                this.eNum_tot = ''; //结束价格
 
                 var min = 0, max = 0, sort_two_single = 1;
 
@@ -1273,10 +1275,10 @@
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
                 //清空自定义
-                this.bNum=''; //起始价格
-                this.eNum=''; //结束价格
-                this.bNum_tot=''; //起始价格
-                this.eNum_tot=''; //结束价格
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
+                this.bNum_tot = ''; //起始价格
+                this.eNum_tot = ''; //结束价格
 
                 var min = 0, max = 0, sort_two_single = 1;
 
@@ -1461,9 +1463,9 @@
             },
 
             //隐藏弹窗
-            hidePop(flag,data1,data2){
-                this[data1]=this[data1].replace(/[^\d.]/g,'');
-                this[data2]=this[data2].replace(/[^\d.]/g,'');
+            hidePop(flag, data1, data2){
+                this[data1] = this[data1].replace(/[^\d.]/g, '');
+                this[data2] = this[data2].replace(/[^\d.]/g, '');
                 this[flag] = false;
             }
 
