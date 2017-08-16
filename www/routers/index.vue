@@ -263,21 +263,22 @@
 
                 <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
-                        <Form ref="formInline1" :model="formInline1" :rules="ruleValidate">
+                        <Form id="findForm" ref="formInline1" :model="formInline1" :rules="ruleValidate">
                             <h4>帮我找楼</h4>
                             <Form-item prop="telephone">
                                 <div class="popItem">
                                     <span class="inp_icon phone"></span>
-                                    <input type="num" v-model="formInline1.telephone" placeholder="请输入您的手机号码">
+                                    <input type="text" v-model="formInline1.telephone"
+                                           name="ys_mobile"
+                                           placeholder="请输入您的手机号码">
                                     <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn"
-                                              v-on:run="sendCode1" style="width: 140px; height: 50px;"
-                                              second="60"></TimerBtn>
+                                              v-on:run="sendCode1" second="60"></TimerBtn>
                                 </div>
                             </Form-item>
                             <Form-item prop="InputCode">
                                 <div class="popItem">
                                     <span class="inp_icon password"></span>
-                                    <input type="num" v placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
+                                    <input type="text" placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
                                 </div>
                             </Form-item>
                             <p class="help_tips">*输入您的手机号码,以便幼狮提供更高效的服务</p>
@@ -329,23 +330,22 @@
 
                 <Modal v-model="modal6" width="420" scrollable="false">
                     <div popup>
-                        <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
+                        <Form ref="formInline2" id="wt_form" :model="formInline1" :rules="ruleValidate">
                             <h3>安心委托,快速成交</h3>
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
                             <Form-item prop="telephone">
                                 <div class="popItem">
                                     <span class="inp_icon phone"></span>
-                                    <input type="num" maxlength="11" required="" value="" name=""
+                                    <input type="text" maxlength="11" required="" value=""
+                                           name="ys_mobile2"
                                            placeholder="请输入您的手机号码" v-model="formInline2.telephone">
                                     <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
-                                              v-on:run="sendCode2"
-                                              style="width: 140px; height: 50px;"
-                                              second="60"></TimerBtn>
+                                              v-on:run="sendCode2" second="60"></TimerBtn>
                                 </div>
                             </Form-item>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
-                                <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"
+                                <input type="num" value="" maxlength="6" v-model="formInline2.InputCode"
                                        placeholder="请输入您收到的验证码">
                             </div>
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
@@ -425,6 +425,8 @@
     import footer1 from '../components/footer.vue';
 
     import '../resources/plugin/swiper/js/swiper.min.js';
+    import '../resources/plugin/validate/jquery.validate';
+    import '../resources/plugin/validate/validate.config';
 
     export default {
         components: {header1, footer1},
@@ -493,6 +495,8 @@
         },
 
         methods: {
+
+
             telShow(e){
                 $(e.target).addClass('active').html('400-078-8800');
             },
@@ -502,51 +506,60 @@
             },
 
             sendCode1: function () {
-                this.$refs.timerbtn1.start(); //启动倒计时
-                this.$http.post(
-                    this.$api,
-                    {
-                        parameters: {
-                            "VerifiationCCodeType": 2,
-                            "Col_telephone": this.formInline1.telephone
-                        },
-                        foreEndType: "1",
-                        code: "90000102"
-                    }
-                ).then(function (response) {
-                    var reslute = JSON.parse(response.bodyText);
-                    if (!reslute.success) {
-                        this.$Message.error(reslute.message);
-                    }
-                }, function (response) {
-                    this.$Message.error('API接口报错-网络错误!');
-                    this.loading = false;
-                });
+
+                if($('#findForm').valid()){
+
+                    this.$refs.timerbtn1.start(); //启动倒计时
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 2,
+                                "Col_telephone": this.formInline1.telephone
+                            },
+                            foreEndType: "1",
+                            code: "90000102"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (!reslute.success) {
+                            this.$Message.error(reslute.message);
+                        }
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                    });
+                }
             },
+
             sendCode2: function () {
-                this.$refs.timerbtn2.start(); //启动倒计时
+                if($('#wt_form').valid()){
 
-                this.$http.post(
-                    this.$api,
-                    {
-                        parameters: {
-                            "VerifiationCCodeType": 3,
-                            "Col_telephone": this.formInline2.telephone
-                        },
-                        foreEndType: "1",
-                        code: "90000102"
-                    }
-                ).then(function (response) {
-                    var reslute = JSON.parse(response.bodyText);
-                    if (!reslute.success) {
-                        this.$Message.error(reslute.message);
-                    }
+                    this.$refs.timerbtn2.start(); //启动倒计时
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 3,
+                                "Col_telephone": this.formInline2.telephone
+                            },
+                            foreEndType: "1",
+                            code: "90000102"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (!reslute.success) {
+                            this.$Message.error(reslute.message);
+                        }
 
-                }, function (response) {
-                    this.$Message.error('API接口报错-网络错误!');
-                    this.loading = false;
-                });
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                    });
+                }
+
             },
+
             handleSubmit1(name) {
 
                 this.$refs[name].validate((valid) => {
@@ -587,6 +600,7 @@
 
 
             },
+
             handleSubmit2(name) {
                 this.$http.post(
                     this.$api,
@@ -666,17 +680,15 @@
 
                 if (win_scrollTop > 200) {
                     $('#phone_and_top').show();
-                }else{
+                } else {
                     $('#phone_and_top').hide();
                 }
             });
 
-            $('#sideTop').click(function(){
-                $('html, body').animate({scrollTop: 0},1000);
+            $('#sideTop').click(function () {
+                $('html, body').animate({scrollTop: 0}, 1000);
                 $('#phone_and_top').hide();
             });
-
-
 
             //banner swiper
             var mySwiper = new Swiper('.swiper-container', {
@@ -694,7 +706,48 @@
                 //},
                 autoplayDisableOnInteraction: true  //鼠标操作时关闭autopaly
 
-            })
+            });
+
+
+            //validate
+            $("#findForm").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile: {
+                        required: true,
+                        mobile: true
+                    },
+
+                },
+                messages: {
+                    ys_mobile: {
+                        required: "请输入手机号"
+                    },
+                }
+            });
+
+            $("#wt_form").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile2: {
+                        required: true,
+                        mobile: true
+                    },
+                },
+                messages: {
+                    ys_mobile2: {
+                        required: "请输入手机号"
+                    },
+                }
+            });
+
+
 
         }
     }

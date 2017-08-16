@@ -443,3 +443,19 @@ a {
   margin-right: 8px;
 }
 /*针对特殊网站样式end*/
+.ivu-modal-wrap {
+  overflow: hidden !important;
+}
+.ivu-modal-wrap * {
+  text-align: left;
+}
+.ivu-form-item {
+  margin-bottom: 18px !important;
+}
+.popItem input.error {
+  border: 1px solid red;
+}
+.popItem span.error {
+  display: block;
+  color: red;
+}
