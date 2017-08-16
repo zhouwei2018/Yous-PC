@@ -1213,6 +1213,8 @@
                 //清空自定义
                 this.bNum=''; //起始价格
                 this.eNum=''; //结束价格
+                this.bNum_tot=''; //起始价格
+                this.eNum_tot=''; //结束价格
 
                 var min = 0, max = 0, sort_two_single = 1;
 
@@ -1271,6 +1273,8 @@
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
                 //清空自定义
+                this.bNum=''; //起始价格
+                this.eNum=''; //结束价格
                 this.bNum_tot=''; //起始价格
                 this.eNum_tot=''; //结束价格
 

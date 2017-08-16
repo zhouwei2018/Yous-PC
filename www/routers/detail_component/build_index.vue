@@ -308,7 +308,7 @@
                                             <i class="text-black">元</i>
 
                                             <input type="hidden" name="priceFlag" value="1">
-                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm">确定</a>
+                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm" @click="self_price_per($event)">确定</a>
                                         </form>
                                     </div>
 
@@ -1020,6 +1020,11 @@
             sel_area_list(e){
                 var _this = this;
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bArea=''; //起始面积
+                this.eArea=''; //结束面积
+
                 var min = 0, max = 0;
                 if ($(e.target).html() == '全部') {
                     this.area = "";
@@ -1045,6 +1050,10 @@
             //改变单价筛选
             sel_price_list(e){
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bNum=''; //起始价格
+                this.eNum=''; //结束价格
 
                 var min = 0, max = 0;
 
@@ -1073,6 +1082,10 @@
             sel_tot_price_list(e){
                 var _this = this;
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bNum=''; //起始价格
+                this.eNum=''; //结束价格
 
                 var min = 0, max = 0;
 
