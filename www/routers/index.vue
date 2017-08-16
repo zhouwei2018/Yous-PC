@@ -13,10 +13,19 @@
     [header] {
         background-color: transparent;
     }
+
     .ivu-form-item {
         margin-bottom: 12px;
-      }
+    }
+
     /*回到顶部start*/
+
+    .side-contact {
+        position: fixed;
+        right: 40px;
+        bottom: 100px;
+    }
+
     .side-contact > a {
         display: block;
         width: 50px;
@@ -250,36 +259,22 @@
                             </li>
                         </ul>
                     </div>
-                    <!--<ul class="clearfix contents">-->
-                    <!--<li @click="modal5 = true">-->
-                    <!--<span class="space_tip"></span>-->
-                    <!--<h4>帮我找楼</h4>-->
-
-                    <!--<p>专业、可靠、免费提供一对一全程找房服务</p>-->
-                    <!--<a href="javascript:;" class="look_more">了解更多></a>-->
-                    <!--</li>-->
-                    <!--<li @click="modal6 = true">-->
-                    <!--<span class="space_tip company"></span>-->
-                    <!--<h4>业主委托</h4>-->
-
-                    <!--<p>解决业主闲置房源提供在线托管平台</p>-->
-                    <!--<a href="javascript:;" class="look_more">了解更多></a>-->
-                    <!--</li>-->
-                    <!--</ul>-->
                 </div>
 
                 <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
-                        <Form  ref="formInline1" :model="formInline1" :rules="ruleValidate">
+                        <Form ref="formInline1" :model="formInline1" :rules="ruleValidate">
                             <h4>帮我找楼</h4>
-                            <Form-item  prop="telephone">
+                            <Form-item prop="telephone">
                                 <div class="popItem">
                                     <span class="inp_icon phone"></span>
-                                    <input type="num"  v-model="formInline1.telephone" placeholder="请输入您的手机号码">
-                                    <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode1" style="width: 140px; height: 50px;"second="60"></TimerBtn>
+                                    <input type="num" v-model="formInline1.telephone" placeholder="请输入您的手机号码">
+                                    <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn"
+                                              v-on:run="sendCode1" style="width: 140px; height: 50px;"
+                                              second="60"></TimerBtn>
                                 </div>
                             </Form-item>
-                            <Form-item  prop="InputCode">
+                            <Form-item prop="InputCode">
                                 <div class="popItem">
                                     <span class="inp_icon password"></span>
                                     <input type="num" v placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
@@ -300,13 +295,16 @@
 
                                 <Form-item label="商圈" prop="trade_area" class="pop_list fr right_none">
                                     <Select v-model="formInline1.Col_business" placeholder="请选择商圈">
-                                         <Option v-for="item in trade_areaList" :value="item.value" :key="item">{{ item.label }}</Option>
+                                        <Option v-for="item in trade_areaList" :value="item.value" :key="item">
+                                            {{ item.label }}
+                                        </Option>
                                     </Select>
                                 </Form-item>
 
                                 <div class="pop_list fl">
                                     <span>面积</span>
-                                    <input type="text" maxlength="9" id="area_text" value="" name="" v-model="formInline1.Col_measure">
+                                    <input type="text" maxlength="9" id="area_text" value="" name=""
+                                           v-model="formInline1.Col_measure">
                                     <i class="pop_list_text">平米</i>
                                 </div>
 
@@ -316,11 +314,13 @@
                                     <i class="pop_list_text">元/月</i>
                                 </div>
                             </div>
-                            <textarea class="pop_textarea" v-model="formInline1.Col_desc" placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等"> </textarea>
+                            <textarea class="pop_textarea" v-model="formInline1.Col_desc"
+                                      placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等"> </textarea>
 
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                             <Form-item>
-                               <input type="primary" class="pop_subbtn" readonly value="确    认"  @click="handleSubmit1('formInline1')">
+                                <input type="primary" class="pop_subbtn" readonly value="确    认"
+                                       @click="handleSubmit1('formInline1')">
                             </Form-item>
 
                         </Form>
@@ -332,22 +332,26 @@
                         <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
                             <h3>安心委托,快速成交</h3>
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
-                           <Form-item  prop="telephone">
-                              <div class="popItem">
-                                  <span class="inp_icon phone"></span>
-                                  <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
-                                              <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
-                                                        style="width: 140px; height: 50px;"
-                                                        second="60"></TimerBtn>
-                              </div>
+                            <Form-item prop="telephone">
+                                <div class="popItem">
+                                    <span class="inp_icon phone"></span>
+                                    <input type="num" maxlength="11" required="" value="" name=""
+                                           placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                                    <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
+                                              v-on:run="sendCode2"
+                                              style="width: 140px; height: 50px;"
+                                              second="60"></TimerBtn>
+                                </div>
                             </Form-item>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
-                                <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
+                                <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"
+                                       placeholder="请输入您收到的验证码">
                             </div>
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
-                              <Form-item>
-                                 <input type="primary" readonly class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
+                            <Form-item>
+                                <input type="primary" readonly class="pop_subbtn" value="提交"
+                                       @click="handleSubmit2('formInline2')">
                             </Form-item>
                         </Form>
                     </div>
@@ -376,14 +380,18 @@
                                     <h4><i></i>幼狮空间，传递爱的力量</h4>
 
                                     <p class="clearfix">幼狮空间加入爱百福基金，为孩子们送去温暖。
-                                        <router-link :to="{path:'/love'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>
+                                        <router-link :to="{path:'/love'}" target="_blank" class="look_detail fr">
+                                            【查看详情】
+                                        </router-link>
                                     </p>
                                 </li>
                                 <li>
                                     <h4><i></i>幼狮空间，租房优惠卡上线了！</h4>
                                     <p class="clearfix">
                                         幼狮空间租房优惠卡正式上线，为您的企业快速成长献出一份力
-                                        <router-link :to="{path:'/room_sale'}" target = "_blank" class="look_detail fr">【查看详情】</router-link>
+                                        <router-link :to="{path:'/room_sale'}" target="_blank" class="look_detail fr">
+                                            【查看详情】
+                                        </router-link>
                                     </p>
                                 </li>
                             </ul>
@@ -399,15 +407,14 @@
         <footer1></footer1>
 
         <!--回到顶部-->
-        <Back-top :height="100" :bottom="200">
-            <div class="side-contact clearfix" style="width: 50px;">
-                <a class="baseIcon baseIcon-tel cur-pointer fr" id="sideTel" @mouseenter="telShow($event)" @mouseleave="telHide($event)"
-                   data-val="400-078-8800">
-                    <!--<img class="tel_hover" src="../resources/images/index/tel_hover.png" alt="">-->
-                </a>
-                <a class="baseIcon baseIcon-back fr" id="sideTop"></a>
-            </div>
-        </Back-top>
+        <div class="side-contact clearfix none" id="phone_and_top" style="width: 50px;">
+            <a class="baseIcon baseIcon-tel cur-pointer fr" id="sideTel" @mouseenter="telShow($event)"
+               @mouseleave="telHide($event)"
+               data-val="400-078-8800">
+                <!--<img class="tel_hover" src="../resources/images/index/tel_hover.png" alt="">-->
+            </a>
+            <a class="baseIcon baseIcon-back fr" id="sideTop"></a>
+        </div>
 
     </div>
 
@@ -426,13 +433,13 @@
 
                 modal5: false, //弹窗1
                 modal6: false, //弹窗2
-                formInline1:{
+                formInline1: {
                     telephone: ''
                 },
-                formInline2:{
+                formInline2: {
                     telephone: ''
                 },
-                formItem1:{
+                formItem1: {
 
                     input: '',
                     select: ''
@@ -445,13 +452,13 @@
                 },
 
                 formInline1: {
-                    telephone:'',
+                    telephone: '',
                     city: '',
                     trade_area: ''
                 },
                 ruleValidate: {
                     telephone: [
-                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                        {required: true, message: '手机号不能为空', trigger: 'blur'}
                     ]
                 },
 
@@ -495,118 +502,117 @@
             },
 
             sendCode1: function () {
-                   this.$refs.timerbtn1.start(); //启动倒计时
-                   this.$http.post(
-                       this.$api,
-                       {
-                           parameters: {
-                             "VerifiationCCodeType": 2,
-                             "Col_telephone": this.formInline1.telephone
-                           },
-                           foreEndType: "1",
-                           code: "90000102"
-                       }
-                   ).then(function (response) {
-                       var reslute = JSON.parse(response.bodyText);
-                       if (!reslute.success) {
-                               this.$Message.error(reslute.message);
-                       }
-                   }, function (response) {
-                       this.$Message.error('API接口报错-网络错误!');
-                       this.loading = false;
-                   });
+                this.$refs.timerbtn1.start(); //启动倒计时
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {
+                            "VerifiationCCodeType": 2,
+                            "Col_telephone": this.formInline1.telephone
+                        },
+                        foreEndType: "1",
+                        code: "90000102"
+                    }
+                ).then(function (response) {
+                    var reslute = JSON.parse(response.bodyText);
+                    if (!reslute.success) {
+                        this.$Message.error(reslute.message);
+                    }
+                }, function (response) {
+                    this.$Message.error('API接口报错-网络错误!');
+                    this.loading = false;
+                });
             },
             sendCode2: function () {
-                         this.$refs.timerbtn2.start(); //启动倒计时
+                this.$refs.timerbtn2.start(); //启动倒计时
 
-                         this.$http.post(
-                             this.$api,
-                             {
-                                 parameters: {
-                                   "VerifiationCCodeType": 3,
-                                   "Col_telephone": this.formInline2.telephone
-                                 },
-                                 foreEndType: "1",
-                                 code: "90000102"
-                             }
-                         ).then(function (response) {
-                             var reslute = JSON.parse(response.bodyText);
-                             if (!reslute.success) {
-                                   this.$Message.error(reslute.message);
-                             }
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {
+                            "VerifiationCCodeType": 3,
+                            "Col_telephone": this.formInline2.telephone
+                        },
+                        foreEndType: "1",
+                        code: "90000102"
+                    }
+                ).then(function (response) {
+                    var reslute = JSON.parse(response.bodyText);
+                    if (!reslute.success) {
+                        this.$Message.error(reslute.message);
+                    }
 
-                         }, function (response) {
-                             this.$Message.error('API接口报错-网络错误!');
-                             this.loading = false;
-                         });
+                }, function (response) {
+                    this.$Message.error('API接口报错-网络错误!');
+                    this.loading = false;
+                });
             },
             handleSubmit1(name) {
 
-              this.$refs[name].validate((valid) => {
-                                  if (valid) {
-                                    this.$http.post(
-                                       this.$api,
-                                       {
-                                         parameters: {
-                                            "VerifiationCCodeType":2,
-                                            "Col_telephone":this.formInline1.telephone,
-                                            "InputCode":this.formInline1.InputCode,
-                                            "Col_business":this.formInline1.Col_business,
-                                            "Col_city":this.formInline1.Col_city,
-                                            "Col_measure":this.formInline1.Col_measure,
-                                            "Col_rent":this.formInline1.Col_rent,
-                                            "Col_desc":this.formInline1.Col_desc
-                                         },
-                                           foreEndType: "1",
-                                           code: "20000002"
-                                       }
-                                   ).then(function (response) {
-                                       var reslute = JSON.parse(response.bodyText);
-                                       if (reslute.success) {
-                                             this.$Message.success('需求单提交成功!');
-                                             this.modal5=false;
-                                       } else {
-                                           this.$Message.error(reslute.message);
-                                       }
+                this.$refs[name].validate((valid) => {
+                    if (valid) {
+                        this.$http.post(
+                            this.$api,
+                            {
+                                parameters: {
+                                    "VerifiationCCodeType": 2,
+                                    "Col_telephone": this.formInline1.telephone,
+                                    "InputCode": this.formInline1.InputCode,
+                                    "Col_business": this.formInline1.Col_business,
+                                    "Col_city": this.formInline1.Col_city,
+                                    "Col_measure": this.formInline1.Col_measure,
+                                    "Col_rent": this.formInline1.Col_rent,
+                                    "Col_desc": this.formInline1.Col_desc
+                                },
+                                foreEndType: "1",
+                                code: "20000002"
+                            }
+                        ).then(function (response) {
+                            var reslute = JSON.parse(response.bodyText);
+                            if (reslute.success) {
+                                this.$Message.success('需求单提交成功!');
+                                this.modal5 = false;
+                            } else {
+                                this.$Message.error(reslute.message);
+                            }
 
-                                   }, function (response) {
-                                       this.$Message.error('API接口报错-网络错误!');
-                                   });
-                                      this.$Message.success('提交成功11!');
-                                  } else {
-                                      this.$Message.error('表单验证失败!');
-                                  }
-                              })
-
+                        }, function (response) {
+                            this.$Message.error('API接口报错-网络错误!');
+                        });
+                        this.$Message.success('提交成功11!');
+                    } else {
+                        this.$Message.error('表单验证失败!');
+                    }
+                })
 
 
             },
             handleSubmit2(name) {
                 this.$http.post(
-                      this.$api,
-                      {
-                          parameters: {
+                    this.$api,
+                    {
+                        parameters: {
                             "VerifiationCCodeType": 3,
                             "Col_telephone": this.formInline2.telephone,
-                            "InputCode":this.formInline2.InputCode
-                          },
-                          foreEndType: "1",
-                          code: "20000004"
-                      }
-                  ).then(function (response) {
-                      var reslute = JSON.parse(response.bodyText);
-                      if (reslute.success) {
-                          this.$Message.success('委托单提交成功!');
-                          this.modal6=false;
-                      } else {
-                          this.$Message.error(reslute.message);
-                      }
+                            "InputCode": this.formInline2.InputCode
+                        },
+                        foreEndType: "1",
+                        code: "20000004"
+                    }
+                ).then(function (response) {
+                    var reslute = JSON.parse(response.bodyText);
+                    if (reslute.success) {
+                        this.$Message.success('委托单提交成功!');
+                        this.modal6 = false;
+                    } else {
+                        this.$Message.error(reslute.message);
+                    }
 
-                  }, function (response) {
-                      this.$Message.error('API接口报错-网络错误!');
-                      this.loading = false;
-                  });
-                  this.$Message.error('委托单提交成功!');
+                }, function (response) {
+                    this.$Message.error('API接口报错-网络错误!');
+                    this.loading = false;
+                });
+                this.$Message.error('委托单提交成功!');
             },
 
             show_num: function (id, d) {
@@ -656,7 +662,21 @@
                         backgroundColor: 'transparent'
                     })
                 }
-            })
+
+
+                if (win_scrollTop > 200) {
+                    $('#phone_and_top').show();
+                }else{
+                    $('#phone_and_top').hide();
+                }
+            });
+
+            $('#sideTop').click(function(){
+                $('html, body').animate({scrollTop: 0},1000);
+                $('#phone_and_top').hide();
+            });
+
+
 
             //banner swiper
             var mySwiper = new Swiper('.swiper-container', {
