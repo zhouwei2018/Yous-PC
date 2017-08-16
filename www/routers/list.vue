@@ -1095,14 +1095,18 @@
             sel_area_list(e){
                 var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
+
+                //清空自定义
+                this.bArea=''; //起始面积
+                this.eArea=''; //结束面积
+
                 var min = 0, max = 0, sort_two_single = 1;
                 if ($(e.currentTarget).html() == '全部') {
                     this.area = "";
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_are') != -1) {
                             _this.chosenArr.splice(i, 1);
-                        }
-                        ;
+                        };
                     });
 
                     //显示已选择条件
@@ -1206,6 +1210,10 @@
                 var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
 
+                //清空自定义
+                this.bNum=''; //起始价格
+                this.eNum=''; //结束价格
+
                 var min = 0, max = 0, sort_two_single = 1;
 
                 if ($(e.currentTarget).html() == '全部') {
@@ -1261,6 +1269,10 @@
             sel_tot_price_list(e){
                 var _this = this;
                 $(e.currentTarget).addClass('active').siblings().removeClass('active');
+
+                //清空自定义
+                this.bNum_tot=''; //起始价格
+                this.eNum_tot=''; //结束价格
 
                 var min = 0, max = 0, sort_two_single = 1;
 
