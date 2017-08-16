@@ -134,12 +134,15 @@
                             </template>
 
                             <div class="area_wrap pr" @mouseenter="areaShowFlag = true"
-                                 @mouseleave="areaShowFlag = false">
+                                 @mouseleave="hidePop('areaShowFlag','bArea','eArea')">
                                 <div class="interval pr">
                                     <input type="text" autocomplete="off" name="temp-beginArea" value=""
+                                           readonly
                                            v-model="bArea">
                                     <samp>-</samp>
-                                    <input type="text" autocomplete="off" name="temp-endArea" value="" v-model="eArea">
+                                    <input type="text" autocomplete="off" name="temp-endArea" value=""
+                                           readonly
+                                           v-model="eArea">
                                     <em class="ml05 font_num">m²</em>
                                 </div>
 
@@ -195,11 +198,15 @@
                             </template>
 
                             <div class="price_wrap pr" @mouseenter="priceShowFlag = true"
-                                 @mouseleave="priceShowFlag = false">
+                                @mouseleave="hidePop('priceShowFlag','bNum','eNum')">
                                 <div class="interval pr">
-                                    <input name="temp-startprice" type="text" autocomplete="off" v-model="bNum">
+                                    <input name="temp-startprice" type="text" autocomplete="off"
+                                           readonly
+                                           v-model="bNum">
                                     <samp>-</samp>
-                                    <input name="temp-endprice" type="text" autocomplete="off" v-model="eNum">
+                                    <input name="temp-endprice" type="text" autocomplete="off"
+                                           readonly
+                                           v-model="eNum">
                                     <em class="text-black ml05">元</em>
                                 </div>
                                 <div class="interval_pop clearfix" style="display: none;" v-show="priceShowFlag">
@@ -255,11 +262,15 @@
                             </template>
 
                             <div class="price_wrap pr" @mouseenter="priceShowFlag_tot = true"
-                                 @mouseleave="priceShowFlag_tot = false">
+                                @mouseleave="hidePop('priceShowFlag_tot','bNum_tot','eNum_tot')">
                                 <div class="interval pr">
-                                    <input type="text" autocomplete="off" name="temp-startprice" v-model="bNum_tot">
+                                    <input type="text" autocomplete="off" name="temp-startprice"
+                                           readonly
+                                           v-model="bNum_tot">
                                     <samp>-</samp>
-                                    <input type="text" autocomplete="off" name="temp-endprice" v-model="eNum_tot">
+                                    <input type="text" autocomplete="off" name="temp-endprice"
+                                           readonly
+                                           v-model="eNum_tot">
                                     <em class="text-black ml05">万元</em>
                                 </div>
                                 <div class="interval_pop clearfix" v-show="priceShowFlag_tot">
@@ -404,7 +415,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20       class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -466,7 +477,10 @@
                     <Form-item prop="telephone">
                         <div class="popItem">
                             <span class="inp_icon phone"></span>
-                            <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码"
+                            <input type="num" maxlength="11" required="" value="" name=""
+                                   onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                   onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                                   placeholder="请输入您的手机号码"
                                    v-model="formInline2.telephone">
                             <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
                                       style="width: 140px; height: 50px;"
@@ -475,12 +489,16 @@
                     </Form-item>
                     <div class="popItem">
                         <span class="inp_icon password"></span>
-                        <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"
+                        <input type="num" value="" maxlength="6"
+                               onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                               required="" v-model="formInline2.InputCode"
                                placeholder="请输入您收到的验证码">
                     </div>
                     <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
-                        <input type="primary" readonly class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
+                        <input type="primary" readonly class="pop_subbtn" value="提交"
+                               @click="handleSubmit2('formInline2')">
                     </Form-item>
                 </Form>
             </div>
@@ -665,7 +683,6 @@
                 });
                 this.$Message.error('委托单提交成功!');
             },
-
 
             //模糊搜索
             searchClick(){
@@ -1427,21 +1444,12 @@
                 $(window).scrollTop(400);
             },
 
-            //一键咨询
-//            instance (type) {
-//                $('#freeLook_inp').focus();
-//                const title = '提交成功';
-//                const content = '<p>客服将在10分钟内联系您，和您沟通找房需求</p>';
-//                switch (type) {
-//                    case 'success':
-//                        this.$Modal.success({
-//                            title: title,
-//                            content: content
-//                        });
-//                        break;
-//                    default:;
-//                }
-//            }
+            //隐藏弹窗
+            hidePop(flag,data1,data2){
+                this[data1]=this[data1].replace(/[^\d.]/g,'');
+                this[data2]=this[data2].replace(/[^\d.]/g,'');
+                this[flag] = false;
+            }
 
         },
 
