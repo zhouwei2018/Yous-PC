@@ -350,7 +350,7 @@
                                                 class="font-num">m²</em>·{{item.decoration_level}}</span>
                                         <div>
                                             <span class="text-gray6"><em class="font-num"
-                                                                         v-text="item.monthly_price.toFixed(1)"></em> 万/月</span>
+                                                                         v-text="Number(item.monthly_price).toFixed(1)"></em> 万/月</span>
                                             <div><b class="font-num text-black" v-text="item.daily_price"></b> 元/<span
                                                     class="font-num">m²</span>·天
                                             </div>
@@ -556,12 +556,6 @@
                         {required: true, message: '手机号不能为空', trigger: 'blur'}
                     ]
                 },
-
-
-
-
-
-
 
                 buildingShowFlag: true, //无结果
                 house_res_show: true,  //楼盘结果ul
@@ -942,6 +936,9 @@
                     if (result.success) {
                         if (result.data.houses.length) {
                             _this.buildList = result.data.houses;
+//                            for(var i=0;i<_this.buildList.length; i++){
+//                                _this.buildList[i]=_this.buildList[i].
+//                            }
                             _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
                         } else {
                             _this.house_res_show = false; //结果不展示
