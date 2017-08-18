@@ -114,7 +114,7 @@
                     </p>
 
                     <p class="building-consult clearfix">
-                        <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span>
+                        <!-- <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span> -->
                     </p>
 
                     <!--电话咨询-->

@@ -881,7 +881,7 @@
                         _this.labels = result.data.labels; //特色
 
                         var all_labels = {
-                            code: "label_all",
+                            code: "",
                             name: "全部"
                         };
                         _this.labels.unshift(all_labels);
@@ -1375,7 +1375,8 @@
             //改变label特色筛选
             sel_feature_list(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                this.label = $(e.target).html();
+                debugger;
+                this.label = $(e.target).attr("id");
 
                 var comObj = {
                     id: $(e.target).attr('id'),
