@@ -2,6 +2,7 @@
     @import "../../src/styles/index.less";
     @import "../resources/css/index/index.less";
     @import "../resources/css/popup/popup.less";
+    @import "../resources/plugin/animate/animate.min.css";
     /*弹窗*/
     @import "../resources/plugin/swiper/css/swiper.css"; /*swiper 轮播*/
 
@@ -89,22 +90,30 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img banner02"></div>
+                                    <div class="banner_img banner01">
+                                        <img id="animate_index1" src="../resources/images/index/ban_word1.png" alt="">
+                                    </div>
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img banner01"></div>
+                                    <div class="banner_img banner02">
+                                        <img id="animate_index2" src="../resources/images/index/ban_word2.png" alt="">
+                                    </div>
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img banner03"></div>
+                                    <div class="banner_img banner03">
+
+                                    </div>
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="javascript:;">
-                                    <div class="banner_img banner04"></div>
+                                    <div class="banner_img banner04">
+                                        <img id="animate_index4" src="../resources/images/index/ban_word4.png" alt="">
+                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -709,7 +718,28 @@
                 //fade: {
                 //    crossFade: false,
                 //},
-                autoplayDisableOnInteraction: true  //鼠标操作时关闭autopaly
+                autoplayDisableOnInteraction: true,  //鼠标操作时关闭autopaly
+
+                onSlideChangeStart: function(swiper){
+                    if (swiper.activeIndex == 1) {
+                        $('#animate_index1').addClass('animated infinite rotateInUpRight');
+                        setTimeout(function () {
+                            $('#animate_index1').removeClass('animated infinite rotateInUpRight')
+                        }, 1000);
+                    }else if (swiper.activeIndex == 2) {
+                        $('#animate_index2').addClass('animated infinite rotateInUpRight');
+                        setTimeout(function () {
+                            $('#animate_index2').removeClass('animated infinite rotateInUpRight')
+                        }, 1000);
+                    }else if (swiper.activeIndex == 3) {
+
+                    }else if (swiper.activeIndex == 4) {
+                        $('#animate_index4').addClass('animated infinite rotateInUpRight');
+                        setTimeout(function () {
+                            $('#animate_index4').removeClass('animated infinite rotateInUpRight')
+                        }, 1000);
+                    }
+                }
 
             });
 
