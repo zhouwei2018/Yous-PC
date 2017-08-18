@@ -270,7 +270,7 @@
                     </div>
                 </div>
 
-                <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
+                <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420" @on-cancel="cancel_find">
                     <div popup>
                         <Form id="findForm" ref="formInline1" :model="formInline1">
                             <h4>帮我找楼</h4>
@@ -281,9 +281,13 @@
                                         <input type="text" v-model="formInline1.telephone"
                                                name="ys_mobile"
                                                autocomplete="off"
+                                               maxlength="11"
+                                               onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                                placeholder="请输入您的手机号码">
                                     </form>
                                     <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn"
+
                                               v-on:run="sendCode1" second="60"></TimerBtn>
                                 </div>
                             </Form-item>
@@ -292,6 +296,8 @@
                                     <span class="inp_icon password"></span>
                                     <input type="text"
                                            maxlength="4"
+                                           onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                           onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                            autocomplete="off"
                                            name="identify_code1"
                                            placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
@@ -320,14 +326,18 @@
 
                                 <div class="pop_list fl">
                                     <span>面积</span>
-                                    <input type="text" maxlength="9" id="area_text" value="" name=""
+                                    <input type="text" maxlength="9" id="area_text" value=""
+                                           name="area"
                                            v-model="formInline1.Col_measure">
                                     <i class="pop_list_text">平米</i>
                                 </div>
 
                                 <div class="pop_list fr">
                                     <span>租金</span>
-                                    <input type="text" id="rent_text" value="" name="" v-model="formInline1.Col_rent">
+                                    <input type="text" id="rent_text"
+                                           value=""
+                                           name="rent_money"
+                                           v-model="formInline1.Col_rent">
                                     <i class="pop_list_text">元/月</i>
                                 </div>
                             </div>
@@ -336,7 +346,9 @@
 
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                             <Form-item>
-                                <input type="primary" class="pop_subbtn" readonly value="确    认"
+                                <input type="primary"
+                                       name="bd_btn"
+                                       class="pop_subbtn" readonly value="确    认"
                                        @click="handleSubmit1('formInline1')">
                             </Form-item>
 
@@ -344,36 +356,44 @@
                     </div>
                 </Modal>
 
-                <Modal v-model="modal6" width="420" scrollable="false">
+                <Modal v-model="modal6" width="420" scrollable="false" @on-cancel="cancel_wt">
                     <div popup>
-                        <Form ref="formInline2" id="wt_form" :model="formInline1" :rules="ruleValidate">
+                        <Form ref="formInline2" id="wt_form" :model="formInline2">
                             <h3>安心委托,快速成交</h3>
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
                             <Form-item prop="telephone">
-                                <form action="" id="form_send2">
-                                  <div class="popItem">
-                                      <span class="inp_icon phone"></span>
-                                      <input type="text" maxlength="11" required="" value=""
-                                             name="ys_mobile2"
-                                             autocomplete="off"
-                                             placeholder="请输入您的手机号码" v-model="formInline2.telephone">
-                                      <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
-                                                v-on:run="sendCode2" second="60"></TimerBtn>
-                                  </div>
-                              </form>
+                                <div class="popItem">
+                                    <span class="inp_icon phone"></span>
+
+                                    <form action="" id="form_send2">
+                                        <input type="text" maxlength="11" value=""
+                                               name="ys_mobile2"
+                                               autocomplete="off"
+                                               onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                                               placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                                    </form>
+
+                                    <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
+                                              v-on:run="sendCode2" second="60"></TimerBtn>
+                                </div>
                             </Form-item>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
-                                <input type="num" value=""
+                                <input type="text" value=""
                                        name="identify_code2"
                                        autocomplete="off"
                                        maxlength="4"
+                                       onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                       onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                        v-model="formInline2.InputCode"
                                        placeholder="请输入您收到的验证码">
                             </div>
-                            <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
+                            <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                             <Form-item>
-                                <input type="primary" readonly class="pop_subbtn" value="提交"
+                                <input type="primary"
+                                       name="direct_wt"
+                                       readonly class="pop_subbtn" value="提交"
                                        @click="handleSubmit2('formInline2')">
                             </Form-item>
                         </Form>
@@ -481,11 +501,6 @@
                     city: '',
                     trade_area: ''
                 },
-                ruleValidate: {
-                    telephone: [
-                        {required: true, message: '手机号不能为空', trigger: 'blur'}
-                    ]
-                },
 
                 //弹窗城市和商圈选择
                 cityList: [
@@ -519,13 +534,24 @@
 
         methods: {
 
-
             telShow(e){
                 $(e.target).addClass('active').html('400-078-8800');
             },
 
             telHide(e){
                 $(e.target).removeClass('active').html('');
+            },
+
+            cancel_find () {
+                this.$refs.timerbtn1.stop(); //关闭倒计时
+                this.formInline1.telephone=''; //
+                this.formInline1.InputCode=''; //
+            },
+
+            cancel_wt(){
+                this.$refs.timerbtn2.stop(); //关闭倒计时
+                this.formInline2.telephone=''; //
+                this.formInline2.InputCode=''; //
             },
 
             sendCode1: function () {
@@ -606,6 +632,11 @@
                         var reslute = JSON.parse(response.bodyText);
                         if (reslute.success) {
                             this.$Message.success('需求单提交成功!');
+
+                            this.$refs.timerbtn1.stop(); //关闭倒计时
+                            this.formInline1.telephone=''; //
+                            this.formInline1.InputCode=''; //
+
                             this.modal5 = false;
                         } else {
                             this.$Message.error(reslute.message);
@@ -613,36 +644,50 @@
 
                     }, function (response) {
                         this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                        this.$refs.timerbtn1.stop(); //关闭倒计时
+                        this.formInline1.telephone=''; //
+                        this.formInline1.InputCode=''; //
                     });
                 }
             },
 
             handleSubmit2(name) {
-                this.$http.post(
-                    this.$api,
-                    {
-                        parameters: {
-                            "VerifiationCCodeType": 3,
-                            "Col_telephone": this.formInline2.telephone,
-                            "InputCode": this.formInline2.InputCode
-                        },
-                        foreEndType: "1",
-                        code: "20000004"
-                    }
-                ).then(function (response) {
-                    var reslute = JSON.parse(response.bodyText);
-                    if (reslute.success) {
-                        this.$Message.success('委托单提交成功!');
-                        this.modal6 = false;
-                    } else {
-                        this.$Message.error(reslute.message);
-                    }
 
-                }, function (response) {
-                    this.$Message.error('API接口报错-网络错误!');
-                    this.loading = false;
-                });
-                this.$Message.error('委托单提交失败!');
+                if ($('#wt_form').valid()) {
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 3,
+                                "Col_telephone": this.formInline2.telephone,
+                                "InputCode": this.formInline2.InputCode
+                            },
+                            foreEndType: "1",
+                            code: "20000004"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (reslute.success) {
+                            this.$Message.success('委托单提交成功!');
+
+                            this.$refs.timerbtn2.stop(); //关闭倒计时
+                            this.formInline2.telephone=''; //
+                            this.formInline2.InputCode=''; //
+
+                            this.modal6 = false;
+                        } else {
+                            this.$Message.error(reslute.message);
+                        }
+
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                        this.$refs.timerbtn2.stop(); //关闭倒计时
+                        this.formInline2.telephone=''; //
+                        this.formInline2.InputCode=''; //
+                    });
+                }
             },
 
             show_num: function (id, d) {
@@ -722,20 +767,20 @@
                 //},
                 autoplayDisableOnInteraction: true,  //鼠标操作时关闭autopaly
 
-                onSlideChangeStart: function(swiper){
+                onSlideChangeStart: function (swiper) {
                     if (swiper.activeIndex == 1) {
                         $('#animate_index1').addClass('animated infinite rotateInUpRight');
                         setTimeout(function () {
                             $('#animate_index1').removeClass('animated infinite rotateInUpRight')
                         }, 1000);
-                    }else if (swiper.activeIndex == 2) {
+                    } else if (swiper.activeIndex == 2) {
                         $('#animate_index2').addClass('animated infinite rotateInUpRight');
                         setTimeout(function () {
                             $('#animate_index2').removeClass('animated infinite rotateInUpRight')
                         }, 1000);
-                    }else if (swiper.activeIndex == 3) {
+                    } else if (swiper.activeIndex == 3) {
 
-                    }else if (swiper.activeIndex == 4) {
+                    } else if (swiper.activeIndex == 4) {
                         $('#animate_index4').addClass('animated infinite rotateInUpRight');
                         setTimeout(function () {
                             $('#animate_index4').removeClass('animated infinite rotateInUpRight')
@@ -762,12 +807,11 @@
                 messages: {
                     ys_mobile: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     }
                 }
             });
 
-            //validate
             $("#form_send2").validate({
                 debug: true, //调试模式取消submit的默认提交功能
                 focusInvalid: true, //当为false时，验证无效时，没有焦点响应
@@ -783,7 +827,7 @@
                 messages: {
                     ys_mobile2: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     }
                 }
             });
@@ -799,20 +843,20 @@
                         required: true,
                         mobile: true
                     },
-                    identify_code1:{
+                    identify_code1: {
                         required: true,
-                        identify_four:true
+                        identify_four: true
                     }
 
                 },
                 messages: {
                     ys_mobile: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     },
-                    identify_code1:{
+                    identify_code1: {
                         required: "请输入验证码",
-                        identify_four:"验证码格式错误"
+                        identify_four: "验证码格式错误"
                     }
                 }
             });
@@ -827,24 +871,22 @@
                         required: true,
                         mobile: true
                     },
-                    identify_code2:{
+                    identify_code2: {
                         required: true,
-                        identify_four:true
+                        identify_four: true
                     }
                 },
                 messages: {
                     ys_mobile2: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     },
-                    identify_code2:{
+                    identify_code2: {
                         required: "请输入验证码",
-                        identify_four:"验证码格式错误"
+                        identify_four: "验证码格式错误"
                     }
                 }
             });
-
-
         }
     }
 </script>
