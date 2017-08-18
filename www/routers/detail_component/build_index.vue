@@ -86,7 +86,7 @@
                 </p>
 
                 <p class="building-consult clearfix">
-                    <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span>
+                    <!-- <i class="detail-icon fl"></i><span>距离14号线阜通站808米</span> -->
                 </p>
 
                 <!--电话咨询-->
@@ -360,7 +360,7 @@
                                         <span><em class="text-gray6">工位：</em>{{item.workstation}}个</span>
                                     </div>
                                     <div class="introduce-time-btn">
-                                        <span>更新于：{{item.refreshTime}}</span>
+                                        <span>更新于：{{item.refreshTime | formatDate}}</span>
                                     </div>
                                 </div>
                             </router-link>
@@ -515,7 +515,7 @@
 
     import mapPart from '../../components/map-part.vue';
     import '../../resources/plugin/pic_tab/pic_tab.js';
-
+    import {formatDate} from '../../components/date.js';
     import '../../resources/plugin/qrcode/jquery.qrcode.min.js';
 
     export default {
@@ -1110,7 +1110,12 @@
 
             },
         },
-
+        filters: {
+          formatDate(time) {
+            var date = new Date(time);
+            return formatDate(date, "yyyy-MM-dd");
+          }
+        },
         mounted(){
             var _this = this;
 
