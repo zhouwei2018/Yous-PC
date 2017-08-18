@@ -358,7 +358,7 @@
 
                 <Modal v-model="modal6" width="420" scrollable="false" @on-cancel="cancel_wt">
                     <div popup>
-                        <Form ref="formInline2" id="wt_form" :model="formInline1">
+                        <Form ref="formInline2" id="wt_form" :model="formInline2">
                             <h3>安心委托,快速成交</h3>
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
                             <Form-item prop="telephone">
@@ -373,7 +373,6 @@
                                                onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                                placeholder="请输入您的手机号码" v-model="formInline2.telephone">
                                     </form>
-
 
                                     <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
                                               v-on:run="sendCode2" second="60"></TimerBtn>

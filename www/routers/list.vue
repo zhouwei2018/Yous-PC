@@ -471,9 +471,9 @@
         </div>
 
         <!--一键咨询弹窗-->
-        <Modal v-model="modal6" width="420" @on-cancel="cancel_wt">
+        <Modal v-model="modal6" width="420" @on-cancel="cancel_one">
             <div popup>
-                <Form ref="formInline2" id="wt_form" :model="formInline1">
+                <Form ref="formInline2" id="wt_form" :model="formInline2">
                     <h3>一键咨询</h3>
                     <Form-item prop="telephone">
                         <div class="popItem">
@@ -632,7 +632,7 @@
 
         methods: {
 
-            cancel_wt(){
+            cancel_one(){
                 this.$refs.timerbtn2.stop(); //关闭倒计时
                 this.formInline2.telephone=''; //
                 this.formInline2.InputCode=''; //
