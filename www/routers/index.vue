@@ -358,7 +358,7 @@
 
                 <Modal v-model="modal6" width="420" scrollable="false" @on-cancel="cancel_wt">
                     <div popup>
-                        <Form ref="formInline2" id="wt_form" :model="formInline1" :rules="ruleValidate">
+                        <Form ref="formInline2" id="wt_form" :model="formInline1">
                             <h3>安心委托,快速成交</h3>
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
                             <Form-item prop="telephone">
@@ -502,11 +502,6 @@
                     city: '',
                     trade_area: ''
                 },
-                ruleValidate: {
-                    telephone: [
-                        {required: true, message: '手机号不能为空', trigger: 'blur'}
-                    ]
-                },
 
                 //弹窗城市和商圈选择
                 cityList: [
@@ -638,6 +633,11 @@
                         var reslute = JSON.parse(response.bodyText);
                         if (reslute.success) {
                             this.$Message.success('需求单提交成功!');
+
+                            this.$refs.timerbtn1.stop(); //关闭倒计时
+                            this.formInline1.telephone=''; //
+                            this.formInline1.InputCode=''; //
+
                             this.modal5 = false;
                         } else {
                             this.$Message.error(reslute.message);
@@ -645,6 +645,10 @@
 
                     }, function (response) {
                         this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                        this.$refs.timerbtn1.stop(); //关闭倒计时
+                        this.formInline1.telephone=''; //
+                        this.formInline1.InputCode=''; //
                     });
                 }
             },
@@ -667,6 +671,11 @@
                         var reslute = JSON.parse(response.bodyText);
                         if (reslute.success) {
                             this.$Message.success('委托单提交成功!');
+
+                            this.$refs.timerbtn2.stop(); //关闭倒计时
+                            this.formInline2.telephone=''; //
+                            this.formInline2.InputCode=''; //
+
                             this.modal6 = false;
                         } else {
                             this.$Message.error(reslute.message);
@@ -675,6 +684,9 @@
                     }, function (response) {
                         this.$Message.error('API接口报错-网络错误!');
                         this.loading = false;
+                        this.$refs.timerbtn2.stop(); //关闭倒计时
+                        this.formInline2.telephone=''; //
+                        this.formInline2.InputCode=''; //
                     });
                 }
             },
@@ -876,8 +888,6 @@
                     }
                 }
             });
-
-
         }
     }
 </script>
