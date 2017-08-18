@@ -196,6 +196,7 @@
                                 <template v-else>
                                     <li v-if="index == range_total_prices.length-1">
                                         <a href="javascript:;"
+                                           class="last"
                                            @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
                                     </li>
                                     <li v-else>
@@ -496,7 +497,6 @@
                             <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码"
                                    v-model="formInline4.telephone">
                             <TimerBtn ref="timerbtn3" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode3"
-                                      style="width: 140px; height: 50px;"
                                       second="60"></TimerBtn>
                         </div>
                     </Form-item>
