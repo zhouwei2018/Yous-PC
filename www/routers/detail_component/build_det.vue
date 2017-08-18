@@ -56,7 +56,7 @@
                             <em></em><span></span>
                         </td>
                         <td colspan="2">
-                            <em>使用率：</em><span v-text="use_rate">65%</span>
+                            <em>使用率：</em><span v-text="use_rate+'%'"></span>
                         </td>
                     </tr>
                     </tbody>

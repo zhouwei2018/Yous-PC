@@ -301,7 +301,7 @@
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="mv05 text-grayC">-</i>
                                             <input type="text" autocomplete="off" name="endprice"
-                                                   value="" class="mr05" maxlength="2"
+                                                   value="" class="mr05" maxlength="3"
                                                    v-model="eNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
@@ -935,11 +935,13 @@
 
                     if (result.success) {
                         if (result.data.houses.length) {
+
                             _this.buildList = result.data.houses;
 //                            for(var i=0;i<_this.buildList.length; i++){
 //                                _this.buildList[i]=_this.buildList[i].
 //                            }
                             _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
+                            _this.house_res_show = true;
                         } else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;

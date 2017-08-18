@@ -507,7 +507,7 @@
 
             sendCode1: function () {
 
-                if($('#findForm').valid()){
+                if ($('#findForm').valid()) {
 
                     this.$refs.timerbtn1.start(); //启动倒计时
                     this.$http.post(
@@ -533,7 +533,7 @@
             },
 
             sendCode2: function () {
-                if($('#wt_form').valid()){
+                if ($('#wt_form').valid()) {
 
                     this.$refs.timerbtn2.start(); //启动倒计时
                     this.$http.post(
@@ -562,42 +562,39 @@
 
             handleSubmit1(name) {
 
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$http.post(
-                            this.$api,
-                            {
-                                parameters: {
-                                    "VerifiationCCodeType": 2,
-                                    "Col_telephone": this.formInline1.telephone,
-                                    "InputCode": this.formInline1.InputCode,
-                                    "Col_business": this.formInline1.Col_business,
-                                    "Col_city": this.formInline1.Col_city,
-                                    "Col_measure": this.formInline1.Col_measure,
-                                    "Col_rent": this.formInline1.Col_rent,
-                                    "Col_desc": this.formInline1.Col_desc
-                                },
-                                foreEndType: "1",
-                                code: "20000002"
-                            }
-                        ).then(function (response) {
-                            var reslute = JSON.parse(response.bodyText);
-                            if (reslute.success) {
-                                this.$Message.success('需求单提交成功!');
-                                this.modal5 = false;
-                            } else {
-                                this.$Message.error(reslute.message);
-                            }
+                if ($('#findForm').valid()) {
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 2,
+                                "Col_telephone": this.formInline1.telephone,
+                                "InputCode": this.formInline1.InputCode,
+                                "Col_business": this.formInline1.Col_business,
+                                "Col_city": this.formInline1.Col_city,
+                                "Col_measure": this.formInline1.Col_measure,
+                                "Col_rent": this.formInline1.Col_rent,
+                                "Col_desc": this.formInline1.Col_desc
+                            },
+                            foreEndType: "1",
+                            code: "20000002"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (reslute.success) {
+                            this.$Message.success('需求单提交成功!');
+                            this.modal5 = false;
+                        } else {
+                            this.$Message.error(reslute.message);
+                        }
 
-                        }, function (response) {
-                            this.$Message.error('API接口报错-网络错误!');
-                        });
-                        this.$Message.success('提交成功11!');
-                    } else {
-                        this.$Message.error('表单验证失败!');
-                    }
-                })
-
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                    });
+                    this.$Message.success('提交成功11!');
+                } else {
+                    this.$Message.error('表单验证失败!');
+                }
 
             },
 
@@ -746,7 +743,6 @@
                     },
                 }
             });
-
 
 
         }
