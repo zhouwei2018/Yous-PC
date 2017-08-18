@@ -281,6 +281,9 @@
                                         <input type="text" v-model="formInline1.telephone"
                                                name="ys_mobile"
                                                autocomplete="off"
+                                               maxlength="11"
+                                               onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                                placeholder="请输入您的手机号码">
                                     </form>
                                     <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn"
@@ -292,6 +295,8 @@
                                     <span class="inp_icon password"></span>
                                     <input type="text"
                                            maxlength="4"
+                                           onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                           onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                            autocomplete="off"
                                            name="identify_code1"
                                            placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
@@ -355,6 +360,8 @@
                                     <input type="text" maxlength="11" required="" value=""
                                            name="ys_mobile2"
                                            autocomplete="off"
+                                           onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                           onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                            placeholder="请输入您的手机号码" v-model="formInline2.telephone">
                                     <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
                                               v-on:run="sendCode2" second="60"></TimerBtn>
@@ -366,6 +373,8 @@
                                        name="identify_code2"
                                        autocomplete="off"
                                        maxlength="4"
+                                       onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                       onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                        v-model="formInline2.InputCode"
                                        placeholder="请输入您收到的验证码">
                             </div>
@@ -760,7 +769,7 @@
                 messages: {
                     ys_mobile: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     }
                 }
             });
@@ -785,7 +794,7 @@
                 messages: {
                     ys_mobile: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     },
                     identify_code1:{
                         required: "请输入验证码",
@@ -812,7 +821,7 @@
                 messages: {
                     ys_mobile2: {
                         required: "请输入手机号",
-                        mobile: "手机号格式错误"
+                        mobile: "请输入有效手机号"
                     },
                     identify_code2:{
                         required: "请输入验证码",
