@@ -391,7 +391,7 @@
                             </td>
                             <td colspan="2"></td>
                             <td colspan="2">
-                                <em>物业费：</em><span v-text="property_fee+'/m²·月 '"></span>
+                                <em>物业费：</em><span v-text="property_fee+'元/m²·月 '"></span>
                             </td>
                         </tr>
                         <tr>
@@ -455,9 +455,7 @@
                             <span class="inp_icon phone"></span>
                             <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码"
                                    v-model="formInline2.telephone">
-                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
-                                      style="width: 140px; height: 50px;"
-                                      second="60"></TimerBtn>
+                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2" second="60"></TimerBtn>
                         </div>
                     </Form-item>
                     <div class="popItem">
@@ -1055,7 +1053,6 @@
                 this.eNum=''; //结束价格
 
                 var min = 0, max = 0;
-
                 if ($(e.target).html() == '全部') {
                     this.price_dj = "";
 

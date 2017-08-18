@@ -350,15 +350,17 @@
                             <h3>安心委托,快速成交</h3>
                             <p>只需一个电话，房源直接上线，坐等海量客户上门看房</p>
                             <Form-item prop="telephone">
-                                <div class="popItem">
-                                    <span class="inp_icon phone"></span>
-                                    <input type="text" maxlength="11" required="" value=""
-                                           name="ys_mobile2"
-                                           autocomplete="off"
-                                           placeholder="请输入您的手机号码" v-model="formInline2.telephone">
-                                    <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
-                                              v-on:run="sendCode2" second="60"></TimerBtn>
-                                </div>
+                                <form action="" id="form_send2">
+                                  <div class="popItem">
+                                      <span class="inp_icon phone"></span>
+                                      <input type="text" maxlength="11" required="" value=""
+                                             name="ys_mobile2"
+                                             autocomplete="off"
+                                             placeholder="请输入您的手机号码" v-model="formInline2.telephone">
+                                      <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
+                                                v-on:run="sendCode2" second="60"></TimerBtn>
+                                  </div>
+                              </form>
                             </Form-item>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
@@ -554,7 +556,7 @@
             },
 
             sendCode2: function () {
-                if ($('#wt_form').valid()) {
+                if ($('#form_send2').valid()) {
 
                     this.$refs.timerbtn2.start(); //启动倒计时
                     this.$http.post(
@@ -640,7 +642,7 @@
                     this.$Message.error('API接口报错-网络错误!');
                     this.loading = false;
                 });
-                this.$Message.error('委托单提交成功!');
+                this.$Message.error('委托单提交失败!');
             },
 
             show_num: function (id, d) {
@@ -759,6 +761,27 @@
                 },
                 messages: {
                     ys_mobile: {
+                        required: "请输入手机号",
+                        mobile: "手机号格式错误"
+                    }
+                }
+            });
+
+            //validate
+            $("#form_send2").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile2: {
+                        required: true,
+                        mobile: true
+                    }
+
+                },
+                messages: {
+                    ys_mobile2: {
                         required: "请输入手机号",
                         mobile: "手机号格式错误"
                     }

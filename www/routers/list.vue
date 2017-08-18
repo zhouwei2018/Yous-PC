@@ -483,9 +483,7 @@
                                    onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
                                    placeholder="请输入您的手机号码"
                                    v-model="formInline2.telephone">
-                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
-                                      style="width: 140px; height: 50px;"
-                                      second="60"></TimerBtn>
+                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2" second="60"></TimerBtn>
                         </div>
                     </Form-item>
                     <div class="popItem">
