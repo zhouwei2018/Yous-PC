@@ -263,14 +263,17 @@
 
                 <Modal v-model="modal5" :styles="{top: '50px'}" scrollable="false" width="420">
                     <div popup>
-                        <Form id="findForm" ref="formInline1" :model="formInline1" :rules="ruleValidate">
+                        <Form id="findForm" ref="formInline1" :model="formInline1">
                             <h4>帮我找楼</h4>
                             <Form-item prop="telephone">
                                 <div class="popItem">
                                     <span class="inp_icon phone"></span>
-                                    <input type="text" v-model="formInline1.telephone"
-                                           name="ys_mobile"
-                                           placeholder="请输入您的手机号码">
+                                    <form action="" id="form_send1">
+                                        <input type="text" v-model="formInline1.telephone"
+                                               name="ys_mobile"
+                                               autocomplete="off"
+                                               placeholder="请输入您的手机号码">
+                                    </form>
                                     <TimerBtn ref="timerbtn1" class="btn btn-default pop_sendcode_btn"
                                               v-on:run="sendCode1" second="60"></TimerBtn>
                                 </div>
@@ -278,7 +281,11 @@
                             <Form-item prop="InputCode">
                                 <div class="popItem">
                                     <span class="inp_icon password"></span>
-                                    <input type="text" placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
+                                    <input type="text"
+                                           maxlength="4"
+                                           autocomplete="off"
+                                           name="identify_code1"
+                                           placeholder="请输入您收到的验证码" v-model="formInline1.InputCode">
                                 </div>
                             </Form-item>
                             <p class="help_tips">*输入您的手机号码,以便幼狮提供更高效的服务</p>
@@ -338,6 +345,7 @@
                                     <span class="inp_icon phone"></span>
                                     <input type="text" maxlength="11" required="" value=""
                                            name="ys_mobile2"
+                                           autocomplete="off"
                                            placeholder="请输入您的手机号码" v-model="formInline2.telephone">
                                     <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn"
                                               v-on:run="sendCode2" second="60"></TimerBtn>
@@ -345,7 +353,11 @@
                             </Form-item>
                             <div class="popItem">
                                 <span class="inp_icon password"></span>
-                                <input type="num" value="" maxlength="6" v-model="formInline2.InputCode"
+                                <input type="num" value=""
+                                       name="identify_code2"
+                                       autocomplete="off"
+                                       maxlength="4"
+                                       v-model="formInline2.InputCode"
                                        placeholder="请输入您收到的验证码">
                             </div>
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
@@ -507,7 +519,7 @@
 
             sendCode1: function () {
 
-                if ($('#findForm').valid()) {
+                if ($('#form_send1').valid()) {
 
                     this.$refs.timerbtn1.start(); //启动倒计时
                     this.$http.post(
@@ -591,11 +603,7 @@
                     }, function (response) {
                         this.$Message.error('API接口报错-网络错误!');
                     });
-                    this.$Message.success('提交成功11!');
-                } else {
-                    this.$Message.error('表单验证失败!');
                 }
-
             },
 
             handleSubmit2(name) {
@@ -707,6 +715,27 @@
 
 
             //validate
+            $("#form_send1").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile: {
+                        required: true,
+                        mobile: true
+                    }
+
+                },
+                messages: {
+                    ys_mobile: {
+                        required: "请输入手机号",
+                        mobile: "手机号格式错误"
+                    }
+                }
+            });
+
+            //validate
             $("#findForm").validate({
                 debug: true, //调试模式取消submit的默认提交功能
                 focusInvalid: true, //当为false时，验证无效时，没有焦点响应
@@ -717,12 +746,21 @@
                         required: true,
                         mobile: true
                     },
+                    identify_code1:{
+                        required: true,
+                        identify_four:true
+                    }
 
                 },
                 messages: {
                     ys_mobile: {
-                        required: "请输入手机号"
+                        required: "请输入手机号",
+                        mobile: "手机号格式错误"
                     },
+                    identify_code1:{
+                        required: "请输入验证码",
+                        identify_four:"验证码格式错误"
+                    }
                 }
             });
 
@@ -736,11 +774,20 @@
                         required: true,
                         mobile: true
                     },
+                    identify_code2:{
+                        required: true,
+                        identify_four:true
+                    }
                 },
                 messages: {
                     ys_mobile2: {
-                        required: "请输入手机号"
+                        required: "请输入手机号",
+                        mobile: "手机号格式错误"
                     },
+                    identify_code2:{
+                        required: "请输入验证码",
+                        identify_four:"验证码格式错误"
+                    }
                 }
             });
 

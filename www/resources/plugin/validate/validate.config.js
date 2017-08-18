@@ -65,6 +65,12 @@ jQuery.validator.addMethod("identify", function (value, element) {
     return this.optional(element) || (identify.test(value));
 }, "验证码错误");
 
+//验证码验证规则
+jQuery.validator.addMethod("identify_four", function (value, element) {
+    var identify_four = /^[0-9]{4}$/;
+    return this.optional(element) || (identify_four.test(value));
+}, "验证码错误");
+
 
 //密码验证规则
 jQuery.validator.addMethod("password", function (value, element) {
