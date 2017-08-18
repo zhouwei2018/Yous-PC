@@ -276,7 +276,6 @@
                                                autocomplete="off"
                                                name="temp-startprice"
                                                value=""
-                                               maxlength="3"
                                                v-model="bNum"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
@@ -286,7 +285,6 @@
                                                name="temp-endprice"
                                                value=""
                                                class="mr05"
-                                               maxlength="2"
                                                v-model="eNum"
                                                onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
@@ -296,13 +294,13 @@
                                         <form action="/detail-184.html#detail-infomation" class="fl" id="priceForm">
 
                                             <input type="text"
-                                                   autocomplete="off" name="startprice" value="" maxlength="2"
+                                                   autocomplete="off" name="startprice" value="" maxlength="5"
                                                    v-model="bNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <i class="mv05 text-grayC">-</i>
                                             <input type="text" autocomplete="off" name="endprice"
-                                                   value="" class="mr05" maxlength="3"
+                                                   value="" class="mr05" maxlength="5"
                                                    v-model="eNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
