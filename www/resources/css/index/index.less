@@ -8,6 +8,33 @@
       position: relative;
       .banner_img {
         height: 600px;
+        position: relative;
+        >img{
+          position: absolute;
+          &#animate_index1 {
+            left: 50%;
+            top: 250px;
+            width:480px;
+            height:170px;
+            margin-left: -240px;
+          }
+
+          &#animate_index2{
+            right: 200px;
+            top: 250px;
+            width:508px;
+            height:200px;
+          }
+
+          &#animate_index4 {
+            left: 200px;
+            top: 250px;
+            width:480px;
+            height:170px;
+          }
+        }
+
+
         &.banner01 {
           background: url("../../images/index/banner01.png") no-repeat;
           background-size: 100% 100%;
