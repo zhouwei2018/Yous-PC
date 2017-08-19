@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <td colspan="2">
-                            <em>建成年代：</em><span v-text="opening_date+'年'"></span>
+                            <em>建成年代：</em><span v-text="opening_date"></span>
                         </td>
                         <td colspan="2">
                             <em></em><span></span>

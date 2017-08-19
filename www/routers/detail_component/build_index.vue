@@ -390,7 +390,7 @@
                             </td>
                             <td colspan="2"></td>
                             <td colspan="2">
-                                <em>物业费：</em><span v-text="property_fee+'/m²·月 '"></span>
+                                <em>物业费：</em><span v-text="property_fee+'元/m²·月 '"></span>
                             </td>
                         </tr>
                         <tr>
@@ -846,6 +846,7 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         if (result.data) {
+
                             _this.buildingName = result.data.building_name + '周边配套';
                             _this.buildingNameSingle = result.data.building_name;
 
@@ -865,6 +866,7 @@
                             _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
                             _this.price = result.data.price == null ? '--' : result.data.price;
                             _this.positionData = result.data.longitude + ',' + result.data.latitude;
+
 
                             _this.min_renge_area = result.data.min_renge_area == null ? '--' : result.data.min_renge_area;
                             _this.max_renge_area = result.data.max_renge_area == null ? '--' : result.data.max_renge_area;
