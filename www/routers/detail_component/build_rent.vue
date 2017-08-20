@@ -38,10 +38,12 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == area_arr.length-1">
-                                        <a href="javascript:;" class="last" @click="sel_area_list($event)">>{{item1.minnum}}m²</a>
+                                        <a href="javascript:;" class="last"
+                                           @click="sel_area_list($event)">>{{item1.minnum}}m²</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;" @click="sel_area_list($event)">{{item1.minnum}}-{{item1.maxnum}}m²</a>
+                                        <a href="javascript:;"
+                                           @click="sel_area_list($event)">{{item1.minnum}}-{{item1.maxnum}}m²</a>
                                     </li>
                                 </template>
                                 <li></li>
@@ -63,10 +65,12 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == range_unit_prices.length-1">
-                                        <a href="javascript:;" class="last" @click="sel_price_list($event)">>{{item2.minnum}}{{item2.unit}}</a>
+                                        <a href="javascript:;" class="last"
+                                           @click="sel_price_list($event)">>{{item2.minnum}}{{item2.unit}}</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;" @click="sel_price_list($event)">{{item2.minnum}}-{{item2.maxnum}}{{item2.unit}}</a>
+                                        <a href="javascript:;"
+                                           @click="sel_price_list($event)">{{item2.minnum}}-{{item2.maxnum}}{{item2.unit}}</a>
                                     </li>
                                 </template>
 
@@ -89,10 +93,12 @@
                                 </li>
                                 <template v-else>
                                     <li v-if="index == range_total_prices.length-1">
-                                        <a href="javascript:;" @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
+                                        <a href="javascript:;"
+                                           @click="sel_tot_price_list($event)">>{{item3.minnum}}{{item3.unit}}</a>
                                     </li>
                                     <li v-else>
-                                        <a href="javascript:;" @click="sel_tot_price_list($event)">{{item3.minnum}}-{{item3.maxnum}}{{item3.unit}}</a>
+                                        <a href="javascript:;"
+                                           @click="sel_tot_price_list($event)">{{item3.minnum}}-{{item3.maxnum}}{{item3.unit}}</a>
                                     </li>
                                 </template>
 
@@ -224,7 +230,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20 class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -278,7 +284,8 @@
                             <div class="side_model_tit cl_blue">快速委托找房</div>
                             <form id="freeLookForm" class="nice-validator n-default">
                                 <div class="form_control form_btn mt10 tc cur_pointer"
-                                     @click="modal6 = true">一键咨询</div>
+                                     @click="modal6 = true">一键咨询
+                                </div>
                             </form>
 
                             <p class="nearby">* 客服将在10分钟内联系您</p>
@@ -296,26 +303,44 @@
             <!--右侧悬浮box end-->
 
             <!--一键咨询弹窗-->
-            <Modal v-model="modal6" width="420">
+            <Modal v-model="modal6" width="420" @on-cancel="cancel_one">
                 <div popup>
-                    <Form ref="formInline2" :model="formInline1" :rules="ruleValidate">
+                    <Form ref="formInline2" id="wt_form" :model="formInline1">
                         <h3>一键咨询</h3>
-                        <Form-item  prop="telephone">
+                        <Form-item prop="telephone">
                             <div class="popItem">
                                 <span class="inp_icon phone"></span>
-                                <input type="num" maxlength="11" required="" value="" name="" placeholder="请输入您的手机号码" v-model="formInline2.telephone">
-                                <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
-                                          style="width: 140px; height: 50px;"
+                                <form action="" id="form_send2">
+                                    <input type="text" maxlength="11" required="" value=""
+                                           name="ys_mobile2"
+                                           onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                           onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                                           placeholder="请输入您的手机号码"
+                                           v-model="formInline2.telephone">
+                                </form>
+                                <TimerBtn ref="timerbtn2"
+                                          class="btn btn-default pop_sendcode_btn"
+                                          v-on:run="sendCode2"
                                           second="60"></TimerBtn>
                             </div>
                         </Form-item>
                         <div class="popItem">
                             <span class="inp_icon password"></span>
-                            <input type="num" value="" maxlength="6" required="" v-model="formInline2.InputCode"  placeholder="请输入您收到的验证码">
+                            <input type="text" value=""
+                                   name="identify_code2"
+                                   autocomplete="off"
+                                   maxlength="4"
+                                   onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
+                                   onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
+                                   v-model="formInline2.InputCode"
+                                   placeholder="请输入您收到的验证码">
                         </div>
-                        <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
+                        <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                         <Form-item>
-                            <input type="primary" readonly class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
+                            <input type="primary" readonly class="pop_subbtn"
+                                   name="rent_sub"
+                                   value="提交"
+                                   @click="handleSubmit2('formInline2')">
                         </Form-item>
                     </Form>
                 </div>
@@ -334,24 +359,24 @@
 
                 modal6: false, //弹窗
                 formInline1: {
-                    telephone:'',
+                    telephone: '',
                     city: '',
                     trade_area: ''
                 },
 
-                formInline2:{
+                formInline2: {
                     telephone: ''
                 },
 
                 ruleValidate: {
                     telephone: [
-                        { required: true, message: '手机号不能为空', trigger: 'blur' }
+                        {required: true, message: '手机号不能为空', trigger: 'blur'}
                     ]
                 },
 
-                building_id:"",
-                buildingShowFlag:false,
-                house_res_show:false,
+                building_id: "",
+                buildingShowFlag: false,
+                house_res_show: false,
 
                 pageFlag: true, //页码是否显示
 
@@ -380,9 +405,9 @@
                 bNum: "", //起始价格
                 eNum: "", //结束价格
 
-                area:"",
-                price_dj:"",
-                price_zj:"",
+                area: "",
+                price_dj: "",
+                price_zj: "",
 
                 buildList: [], //楼盘列表，搜索结果
                 total_items: 0, //结果总数
@@ -405,56 +430,77 @@
         },
         methods: {
 
-            sendCode2: function () {
-                this.$refs.timerbtn2.start(); //启动倒计时
-                this.$http.post(
-                    this.$api,
-                    {
-                        parameters: {
-                            "VerifiationCCodeType": 3,
-                            "Col_telephone": this.formInline2.telephone
-                        },
-                        foreEndType: "1",
-                        code: "90000102"
-                    }
-                ).then(function (response) {
-                    var reslute = JSON.parse(response.bodyText);
-                    if (!reslute.success) {
-                        this.$Message.error(reslute.message);
-                    }
+            cancel_one(){
+                this.$refs.timerbtn2.stop(); //关闭倒计时
+                this.formInline2.telephone=''; //
+                this.formInline2.InputCode=''; //
+            },
 
-                }, function (response) {
-                    this.$Message.error('API接口报错-网络错误!');
-                    this.loading = false;
-                });
+            sendCode2: function () {
+                if ($('#form_send2').valid()) {
+
+                    this.$refs.timerbtn2.start(); //启动倒计时
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 3,
+                                "Col_telephone": this.formInline2.telephone
+                            },
+                            foreEndType: "1",
+                            code: "90000102"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (!reslute.success) {
+                            this.$Message.error(reslute.message);
+                        }
+
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+                    });
+                }
+
             },
 
             handleSubmit2(name) {
-                this.$http.post(
-                    this.$api,
-                    {
-                        parameters: {
-                            "VerifiationCCodeType": 3,
-                            "Col_telephone": this.formInline2.telephone,
-                            "InputCode":this.formInline2.InputCode
-                        },
-                        foreEndType: "1",
-                        code: "20000004"
-                    }
-                ).then(function (response) {
-                    var reslute = JSON.parse(response.bodyText);
-                    if (reslute.success) {
-                        this.$Message.success('委托单提交成功!');
-                        this.modal6=false;
-                    } else {
-                        this.$Message.error(reslute.message);
-                    }
 
-                }, function (response) {
-                    this.$Message.error('API接口报错-网络错误!');
-                    this.loading = false;
-                });
-                this.$Message.error('委托单提交成功!');
+                if ($('#wt_form').valid()) {
+                    this.$http.post(
+                        this.$api,
+                        {
+                            parameters: {
+                                "VerifiationCCodeType": 3,
+                                "Col_telephone": this.formInline2.telephone,
+                                "InputCode": this.formInline2.InputCode
+                            },
+                            foreEndType: "1",
+                            code: "20000004"
+                        }
+                    ).then(function (response) {
+                        var reslute = JSON.parse(response.bodyText);
+                        if (reslute.success) {
+                            this.$Message.success('委托单提交成功!');
+
+                        } else {
+                            this.$Message.error(reslute.message);
+                        }
+
+                        this.$refs.timerbtn2.stop(); //关闭倒计时
+                        this.formInline2.telephone=''; //
+                        this.formInline2.InputCode=''; //
+                        this.modal6 = false;
+
+                    }, function (response) {
+                        this.$Message.error('API接口报错-网络错误!');
+                        this.loading = false;
+
+                        this.$refs.timerbtn2.stop(); //关闭倒计时
+                        this.formInline2.telephone=''; //
+                        this.formInline2.InputCode=''; //
+                    });
+                }
             },
 
             //分页
@@ -547,10 +593,10 @@
                     _this.loadingFlag = false;
 
                     if (result.success) {
-                        if(result.data.houses.length){
+                        if (result.data.houses.length) {
                             _this.buildList = result.data.houses;
                             _this.total_items = result.data.total_items;
-                        }else {
+                        } else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
                             _this.total_items = 0;
@@ -630,7 +676,7 @@
                 } else {
 
                     this.area = [];
-                    var newArr=$(e.target).html().split('-');
+                    var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.area.push(min);
@@ -655,7 +701,7 @@
                     this.price_dj.push(min);
                     this.price_dj.push(max);
                 } else {
-                    var newArr=$(e.target).html().split('-');
+                    var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.price_dj = [];
@@ -683,7 +729,7 @@
                     this.price_zj.push(min);
                     this.price_zj.push(max);
                 } else {
-                    var newArr=$(e.target).html().split('-');
+                    var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.price_zj = [];
@@ -702,7 +748,6 @@
             this.getSortList(); //获取筛选条件
 
             this.getDetList(); //搜索结果列表
-
 
 
             //单价总价切换
@@ -738,6 +783,53 @@
                     $('#priceConfirm').show();
                 } else {
                     $('#priceConfirm').hide();
+                }
+            });
+
+            $("#form_send2").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile2: {
+                        required: true,
+                        mobile: true
+                    }
+
+                },
+                messages: {
+                    ys_mobile2: {
+                        required: "请输入手机号",
+                        mobile: "请输入有效手机号"
+                    }
+                }
+            });
+
+            $("#wt_form").validate({
+                debug: true, //调试模式取消submit的默认提交功能
+                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
+                focusCleanup: true, //当前元素输入时，移除error
+                rules: {
+                    //全部为input name值
+                    ys_mobile2: {
+                        required: true,
+                        mobile: true
+                    },
+                    identify_code2: {
+                        required: true,
+                        identify_four: true
+                    }
+                },
+                messages: {
+                    ys_mobile2: {
+                        required: "请输入手机号",
+                        mobile: "请输入有效手机号"
+                    },
+                    identify_code2: {
+                        required: "请输入验证码",
+                        identify_four: "验证码格式错误"
+                    }
                 }
             });
         }
