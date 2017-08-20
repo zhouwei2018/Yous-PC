@@ -28,6 +28,7 @@
                 <div class="search-box">
                     <input type="text" placeholder="请输入写字楼名称或商圈"
                            onkeyup="this.value=this.value.replace(/(^\s*)/g,'')"
+                           @keyup.enter="searchClick();"
                            v-model="search_keywork" maxlength="30" id="detail-search-keyword">
                     <router-link class="search-btn" target="_blank" id="detail-search-btn" :to="{path:'/list',query:{search_keywork:search_keywork}}">搜索</router-link>
                 </div>
@@ -167,6 +168,11 @@
             getName(obj){
                 this.building_name = obj.name;
                 this.labels = obj.labels;
+            },
+
+            //模糊搜索
+            searchClick(){
+                this.$router.push({path:'/list',query:{search_keywork:this.search_keywork}});
             },
 
         },
