@@ -544,14 +544,14 @@
 
             cancel_find () {
                 this.$refs.timerbtn1.stop(); //关闭倒计时
-                this.formInline1.telephone=''; //
-                this.formInline1.InputCode=''; //
+                this.formInline1.telephone = ''; //
+                this.formInline1.InputCode = ''; //
             },
 
             cancel_wt(){
                 this.$refs.timerbtn2.stop(); //关闭倒计时
-                this.formInline2.telephone=''; //
-                this.formInline2.InputCode=''; //
+                this.formInline2.telephone = ''; //
+                this.formInline2.InputCode = ''; //
             },
 
             sendCode1: function () {
@@ -634,8 +634,8 @@
                             this.$Message.success('需求单提交成功!');
 
                             this.$refs.timerbtn1.stop(); //关闭倒计时
-                            this.formInline1.telephone=''; //
-                            this.formInline1.InputCode=''; //
+                            this.formInline1.telephone = ''; //
+                            this.formInline1.InputCode = ''; //
 
                             this.modal5 = false;
                         } else {
@@ -646,8 +646,8 @@
                         this.$Message.error('API接口报错-网络错误!');
                         this.loading = false;
                         this.$refs.timerbtn1.stop(); //关闭倒计时
-                        this.formInline1.telephone=''; //
-                        this.formInline1.InputCode=''; //
+                        this.formInline1.telephone = ''; //
+                        this.formInline1.InputCode = ''; //
                     });
                 }
             },
@@ -672,8 +672,8 @@
                             this.$Message.success('委托单提交成功!');
 
                             this.$refs.timerbtn2.stop(); //关闭倒计时
-                            this.formInline2.telephone=''; //
-                            this.formInline2.InputCode=''; //
+                            this.formInline2.telephone = ''; //
+                            this.formInline2.InputCode = ''; //
 
                             this.modal6 = false;
                         } else {
@@ -684,8 +684,8 @@
                         this.$Message.error('API接口报错-网络错误!');
                         this.loading = false;
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                     });
                 }
             },
@@ -764,21 +764,15 @@
                 autoplayDisableOnInteraction: false,  //鼠标操作时关闭autopaly
 
                 onSlideChangeEnd: function (swiper) {
-                    if (swiper.activeIndex == 1) {
-                        $('#animate_index1').animate({
-                            opacity:1
-                        },2000);
-                    } else if (swiper.activeIndex == 2) {
-                        $('#animate_index2').animate({
-                            opacity:1
-                        },2000);
-                    } else if (swiper.activeIndex == 3) {
 
-                    } else if (swiper.activeIndex == 4) {
-                        $('#animate_index4').animate({
-                            opacity:1
-                        },2000);
-                    }
+                    $('.banner_img').eq(swiper.activeIndex).find('img').animate({
+                        opacity: 1
+                    }, 1000);
+                },
+                onSlideNextStart: function (swiper) {
+                    $('.banner_img').eq(swiper.activeIndex).find('img').css({
+                        opacity: 0
+                    });
                 }
 
             });
