@@ -225,6 +225,84 @@
   background: url("../../images/update/up_icon/up_three_icon4.png") no-repeat;
   background-size: 100% 100%;
 }
+[update] .serice_four_right,
+[update] .serice_five_right {
+  position: absolute;
+  right: 250px;
+  top: 140px;
+  text-align: left;
+}
+[update] .serice_four_right h3,
+[update] .serice_five_right h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+[update] .serice_four_right p,
+[update] .serice_five_right p {
+  font-size: 14px;
+}
+[update] .serice_four_left,
+[update] .serice_five_left {
+  position: absolute;
+  left: 220px;
+  top: 250px;
+  text-align: right;
+}
+[update] .serice_four_left .service_four_item,
+[update] .serice_five_left .service_four_item {
+  margin-bottom: 20px;
+}
+[update] .serice_four_left h3,
+[update] .serice_five_left h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+[update] .serice_four_left p,
+[update] .serice_five_left p {
+  font-size: 14px;
+}
+[update] .serice_five_right {
+  top: 80px;
+  left: 150px;
+}
+[update] .serice_five_left {
+  right: 210px;
+  left: auto;
+  top: 450px;
+  text-align: left;
+}
+[update] .serice_six {
+  position: absolute;
+  right: 240px;
+  top: 50px;
+  text-align: left;
+}
+[update] .serice_six .service_four_item {
+  margin-bottom: 20px;
+}
+[update] .serice_six h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+[update] .serice_six p {
+  font-size: 14px;
+}
+[update] .serice_seven {
+  position: absolute;
+  left: 350px;
+  top: 150px;
+  text-align: right;
+}
+[update] .serice_seven .service_four_item {
+  margin-bottom: 20px;
+}
+[update] .serice_seven h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+[update] .serice_seven p {
+  font-size: 14px;
+}
 @media screen and (min-width: 1500px) {
   [update] {
     height: 940px;

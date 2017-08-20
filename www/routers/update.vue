@@ -12,7 +12,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide slide1"></div>
                     <div class="swiper-slide pr slide2">
-                        <div class="up_two_prag">
+                        <div class="up_two_prag" id="animate_2">
                             <p>企业升级服务部以提供专业化服务为宗旨，解决用户在发展过程中遇到的有碍其成长的资金、人力、风险控制等困扰因素为目标，以办公空间为载体，
                                 通过提供财税服务、法务服务、人力资源服务、商学院服务、FA服务等内容，与客户建立深度链接、超强黏性，进而带来新的办公空间需求，通过对空
                                 间租户的服务，衍生辐射到非空间用户，从而形成具有影响力的企业办公服务品牌，服务助力空间、空间承载服务，最终形成“有形的空间+无形的服务”
@@ -62,12 +62,67 @@
                                 <span class="fr up_ser_rtips ser4"></span>
                             </li>
                         </ul>
-                        <div class="up_service_desc" id="animate3">登录幼狮科技企业服务平台，您可以享受舒适的办公空间，结交优质的商业合作伙伴，获得高效的专属服务。</div>
+                        <div class="up_service_desc" id="animate3">登录幼狮科技企业服务平台，您可以享受舒适的办公空间，结交优质的商业合作伙伴，获得高效的专属服务。
+                        </div>
                     </div>
-                    <div class="swiper-slide slide4"></div>
-                    <div class="swiper-slide slide5"></div>
-                    <div class="swiper-slide slide6"></div>
+                    <div class="swiper-slide slide4">
+                        <div class="serice_four_right" id="animate4_1">
+                            <h3>财/法/税支持</h3>
+                            <p>数家知名会计事务所／律师事务所，针对不同行业，</p>
+                            <p>为企业提供更加细致、专业的财／法／税的咨询服务，</p>
+                            <p>把控企业风险，提供解决及优化方案。</p>
+                        </div>
+
+                        <div class="serice_four_left" id="animate4_2">
+                            <div class="service_four_item">
+                                <h3>finance 财务</h3>
+                                <p>优化中小企业销售费用管理结构</p>
+                                <p>企业财务风险管理存在的问题及解决策略</p>
+                            </div>
+                            <div class="service_four_item">
+                                <h3>legal affairs 法务</h3>
+                                <p>公司成立后，如何应对股东出资瑕疵/出资不足</p>
+                                <p>法律风险防范和业务发展的对立与冲突</p>
+                            </div>
+                            <div class="service_four_item">
+                                <h3>Taxation 税务</h3>
+                                <p>企业设立分公司时，办理税务登记的相关流程</p>
+                                <p>如何权衡纳税成本与企业发展之间制约关系</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="swiper-slide slide5">
+                        <div class="serice_five_right" id="animate5_1">
+                            <h3 class="mb10">FA服务/投融资对接</h3>
+                            <p>深挖不同专业领域和投资方向的国内外投资人，普惠</p>
+                            <p>于幼狮空间企业，定期举办投资人见面会和项目路演</p>
+                            <p>为企业与投资人建立最直接、最深入的对接平台。</p>
+                        </div>
+
+                        <div class="serice_five_left" id="animate5_2">
+                            <div class="service_four_item">
+                                <p>为个人投资者，幼狮空间企业，基金及银行借贷机构，提供优质投资项目。</p>
+                                <p>通过VC/PE机构打通融资渠道，迅速、高效解决企业资金需求。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide slide6">
+                        <div class="serice_six" id="animate6">
+                            <h3 class="mb10">幼狮商学院</h3>
+                            <p>作为幼狮空间办公生态体系的重要组成部分，幼狮商学院将成为幼</p>
+                            <p>狮空间企业在战略执行和价值创造的道路上提供各类管理实践课程</p>
+                            <p>同时发起并展开论坛、讲座、沙龙等丰富的交流活动。</p>
+                        </div>
+                    </div>
                     <div class="swiper-slide slide7">
+                        <div class="serice_seven" id="animate7">
+                            <h3 class="mb10">人力资源服务</h3>
+                            <p>根据企业发展战略的要求，及对人才的需求</p>
+                            <p>为企业提供人才服务，从而促进企业人力资</p>
+                            <p>源的有效开发与优化配置</p>
+                        </div>
+
                         <div footer>
                             <div class="contents foot_head clearfix">
                                 <div class="fl">
@@ -76,7 +131,8 @@
                                     <p class="lion_address">地址：北京市朝阳区东三环中路39号建外SOHO东区A座2503</p>
                                 </div>
                                 <div class="fr">
-                                    <img src="../resources/images/ys_weixin.jpg" alt="幼狮微信" style="width: 98px;height: 98px;"/>
+                                    <img src="../resources/images/ys_weixin.jpg" alt="幼狮微信"
+                                         style="width: 98px;height: 98px;"/>
                                     <span class="weixin_text">幼狮官网</span>
                                 </div>
                             </div>
@@ -125,6 +181,13 @@
                         setTimeout(function () {
                             $('#animate').removeClass('animated infinite bounceInUp')
                         }, 1000);
+
+                        $('#animate_2').addClass('animated infinite swing');
+                        setTimeout(function () {
+                            $('#animate_2').removeClass('animated infinite swing')
+                        }, 1000);
+
+
                     }
 
                     if (swiper.activeIndex == 2) {
@@ -138,6 +201,45 @@
                             $('#animate3').removeClass('animated infinite bounceInUp')
                         }, 1000);
                     }
+
+                    if (swiper.activeIndex == 3) {
+                        $('#animate4_1').addClass('animated infinite fadeInRight');
+                        setTimeout(function () {
+                            $('#animate4_1').removeClass('animated infinite fadeInRight')
+                        }, 1000);
+
+                        $('#animate4_2').addClass('animated infinite fadeInUp');
+                        setTimeout(function () {
+                            $('#animate4_2').removeClass('animated infinite fadeInUp')
+                        }, 1000);
+                    }
+
+                    if (swiper.activeIndex == 4) {
+                        $('#animate5_1').addClass('animated infinite flipInY');
+                        setTimeout(function () {
+                            $('#animate5_1').removeClass('animated infinite flipInY')
+                        }, 1000);
+
+                        $('#animate5_2').addClass('animated infinite fadeInUpBig');
+                        setTimeout(function () {
+                            $('#animate5_2').removeClass('animated infinite fadeInUpBig')
+                        }, 1000);
+                    }
+
+                    if (swiper.activeIndex == 5) {
+                        $('#animate6').addClass('animated infinite fadeInRight');
+                        setTimeout(function () {
+                            $('#animate6').removeClass('animated infinite fadeInRight')
+                        }, 1000);
+                    }
+                    if (swiper.activeIndex == 6) {
+                        $('#animate7').addClass('animated infinite swing');
+                        setTimeout(function () {
+                            $('#animate7').removeClass('animated infinite swing')
+                        }, 1000);
+                    }
+
+
                 }
             })
 
