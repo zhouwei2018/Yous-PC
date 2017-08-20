@@ -1188,7 +1188,7 @@
             });
 
             //qrcode生成微信二维码
-            var linkUrl = window.location.href.replace('www', 'm');
+            var linkUrl = window.location.href;
             alert(linkUrl)
             $('#ys_weixin_img').qrcode({
                 width: 78,
