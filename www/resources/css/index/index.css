@@ -66,25 +66,26 @@
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img {
   position: absolute;
+  opacity: 0;
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index1 {
   left: 50%;
-  top: 250px;
+  top: 200px;
   width: 480px;
-  height: 170px;
+  height: 140px;
   margin-left: -240px;
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index2 {
   right: 200px;
   top: 250px;
-  width: 508px;
-  height: 200px;
+  width: 400px;
+  height: 150px;
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index4 {
   left: 200px;
   top: 250px;
   width: 480px;
-  height: 170px;
+  height: 140px;
 }
 [index_content] .banner_wrap .banner_cont .banner_img.banner01 {
   background: url("../../images/index/banner01.png") no-repeat;

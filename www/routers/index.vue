@@ -193,7 +193,7 @@
                         <div class="ys_bg"></div>
                         <div class="space_bg_wrap">
                             <div class="space_bg"></div>
-                            <span>建外SOHO-时尚灵活风格</span>
+                            <span>时尚灵活风格</span>
                         </div>
                     </div>
                     <div class="fl clearfix space_top_right">
@@ -204,7 +204,7 @@
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
-                                    <span>建外SOHO-时尚灵活风格</span>
+                                    <span>简约风格</span>
                                 </div>
                             </div>
                             <div class="spa_top_right fl spa_item">
@@ -213,7 +213,7 @@
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
-                                    <span>建外SOHO-时尚灵活风格</span>
+                                    <span>时尚灵活风格</span>
                                 </div>
                             </div>
                         </div>
@@ -224,7 +224,7 @@
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
-                                    <span>建外SOHO-时尚灵活风格</span>
+                                    <span>温馨暖色风格</span>
                                 </div>
                             </div>
                             <div class="spa_bot_right fl spa_item">
@@ -233,7 +233,7 @@
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
-                                    <span>建外SOHO-时尚灵活风格</span>
+                                    <span>大气通透风格</span>
                                 </div>
                             </div>
                         </div>
@@ -761,30 +761,23 @@
                 //spaceBetween: 30,  //无缝
                 centeredSlides: true,
                 autoplay: 3500,
-                //effect : 'fade', //切换效果(淡入淡出)
-                //fade: {
-                //    crossFade: false,
-                //},
-                autoplayDisableOnInteraction: true,  //鼠标操作时关闭autopaly
+                autoplayDisableOnInteraction: false,  //鼠标操作时关闭autopaly
 
-                onSlideChangeStart: function (swiper) {
+                onSlideChangeEnd: function (swiper) {
                     if (swiper.activeIndex == 1) {
-                        $('#animate_index1').addClass('animated infinite rotateInUpRight');
-                        setTimeout(function () {
-                            $('#animate_index1').removeClass('animated infinite rotateInUpRight')
-                        }, 1000);
+                        $('#animate_index1').animate({
+                            opacity:1
+                        },2000);
                     } else if (swiper.activeIndex == 2) {
-                        $('#animate_index2').addClass('animated infinite rotateInUpRight');
-                        setTimeout(function () {
-                            $('#animate_index2').removeClass('animated infinite rotateInUpRight')
-                        }, 1000);
+                        $('#animate_index2').animate({
+                            opacity:1
+                        },2000);
                     } else if (swiper.activeIndex == 3) {
 
                     } else if (swiper.activeIndex == 4) {
-                        $('#animate_index4').addClass('animated infinite rotateInUpRight');
-                        setTimeout(function () {
-                            $('#animate_index4').removeClass('animated infinite rotateInUpRight')
-                        }, 1000);
+                        $('#animate_index4').animate({
+                            opacity:1
+                        },2000);
                     }
                 }
 
