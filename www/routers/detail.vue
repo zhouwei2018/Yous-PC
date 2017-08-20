@@ -26,7 +26,9 @@
                     <li v-text="building_name"></li>
                 </ul>
                 <div class="search-box">
-                    <input type="text" placeholder="请输入写字楼名称或商圈" v-model="search_keywork" maxlength="30" id="detail-search-keyword">
+                    <input type="text" placeholder="请输入写字楼名称或商圈"
+                           onkeyup="this.value=this.value.replace(/(^\s*)/g,'')"
+                           v-model="search_keywork" maxlength="30" id="detail-search-keyword">
                     <router-link class="search-btn" target="_blank" id="detail-search-btn" :to="{path:'/list',query:{search_keywork:search_keywork}}">搜索</router-link>
                 </div>
             </div>

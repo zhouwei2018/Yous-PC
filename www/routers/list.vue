@@ -60,6 +60,7 @@
                         <div class="fl clearfix">
                             <input id="search_inp" type="text" autocomplete="off" v-model="search_keywork"
                                    placeholder="请输入写字楼名称或商圈"
+                                   onkeyup="this.value=this.value.replace(/(^\s*)/g,'')"
                                    @keyup.enter="searchClick();"
                                    maxlength="30">
                         </div>
@@ -927,6 +928,7 @@
                 this.pageFlag = false;
 
                 this.buildingShowFlag = false;
+                this.search_keywork=this.search_keywork.replace(/(^\s*)|(\s*$)/g,'');
 
                 this.$http.post(
                     this.$api,
@@ -1459,14 +1461,14 @@
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'AD'; //面积降序：AD
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'AD'; //价格降序：PD
+                                this.orderby = 'PD'; //价格降序：PD
                             }
                         } else {
                             target.find('.sem_icon').addClass('up');
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'AA'; //面积升序：AA
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'AD'; //价格升序：PA
+                                this.orderby = 'PA'; //价格升序：PA
                             }
                         }
                     } else {
