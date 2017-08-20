@@ -307,7 +307,8 @@
                                             <i class="text-black">元</i>
 
                                             <input type="hidden" name="priceFlag" value="1">
-                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm" @click="self_price_per($event)">确定</a>
+                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm"
+                                               @click="self_price_per($event)">确定</a>
                                         </form>
                                     </div>
 
@@ -331,7 +332,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -425,7 +426,8 @@
                             <div class="side_model_tit cl_blue">快速委托找房</div>
                             <form id="freeLookForm" class="nice-validator n-default">
                                 <div class="form_control form_btn mt10 tc cur_pointer"
-                                     @click="modal6 = true">一键咨询</div>
+                                     @click="modal6 = true">一键咨询
+                                </div>
                             </form>
 
                             <p class="nearby">* 客服将在10分钟内联系您</p>
@@ -478,7 +480,8 @@
                     </div>
                     <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
-                        <input type="primary" readonly class="pop_subbtn" value="提交" @click="handleSubmit2('formInline2')">
+                        <input type="primary" readonly class="pop_subbtn" value="提交"
+                               @click="handleSubmit2('formInline2')">
                     </Form-item>
                 </Form>
             </div>
@@ -505,7 +508,8 @@
                     </div>
                     <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
-                        <input type="primary" readonly class="pop_subbtn" value="提交" @click="handleSubmit3('formInline4')">
+                        <input type="primary" readonly class="pop_subbtn" value="提交"
+                               @click="handleSubmit3('formInline4')">
                     </Form-item>
                 </Form>
             </div>
@@ -646,8 +650,8 @@
         methods: {
             cancel_one(){
                 this.$refs.timerbtn2.stop(); //关闭倒计时
-                this.formInline2.telephone=''; //
-                this.formInline2.InputCode=''; //
+                this.formInline2.telephone = ''; //
+                this.formInline2.InputCode = ''; //
             },
 
             sendCode2: function () {
@@ -702,8 +706,8 @@
                         }
 
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                         this.modal6 = false;
 
                     }, function (response) {
@@ -711,8 +715,8 @@
                         this.loading = false;
 
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                     });
                 }
             },
@@ -878,7 +882,7 @@
                             //物业信息
                             _this.property_company = result.data.property_company; //物业公司
                             _this.property_fee = result.data.property_fee; //物业费
-                            _this.opening_date = result.data.opening_date.replace('0:00:00',''); // 建成年代
+                            _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
                             _this.building_level = result.data.building_level; //楼盘级别
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积
@@ -1041,8 +1045,8 @@
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
 
                 //清空自定义
-                this.bArea=''; //起始面积
-                this.eArea=''; //结束面积
+                this.bArea = ''; //起始面积
+                this.eArea = ''; //结束面积
 
                 var min = 0, max = 0;
                 if ($(e.target).html() == '全部') {
@@ -1071,8 +1075,8 @@
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
 
                 //清空自定义
-                this.bNum=''; //起始价格
-                this.eNum=''; //结束价格
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
 
                 var min = 0, max = 0;
 
@@ -1103,8 +1107,8 @@
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
 
                 //清空自定义
-                this.bNum=''; //起始价格
-                this.eNum=''; //结束价格
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
 
                 var min = 0, max = 0;
 
@@ -1132,10 +1136,10 @@
         },
 
         filters: {
-          formatDate(time) {
-            var date = new Date(time);
-            return formatDate(date, "yyyy-MM-dd");
-          }
+            formatDate(time) {
+                var date = new Date(time);
+                return formatDate(date, "yyyy-MM-dd");
+            }
         },
         mounted(){
             var _this = this;
@@ -1184,11 +1188,11 @@
             });
 
             //qrcode生成微信二维码
-
+            var linkUrl = window.location.href.replace('www', 'm');
             $('#ys_weixin_img').qrcode({
                 width: 78,
                 height: 78,
-                text: window.location.href
+                text: linkUrl
             });
 
             //微信
