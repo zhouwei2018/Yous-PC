@@ -475,4 +475,17 @@
   [index_content] .banner_wrap .banner_cont .banner_img {
     height: 800px;
   }
+  [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index1 {
+    top: 300px;
+  }
+  [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index2 {
+    right: 350px;
+    top: 300px;
+    width: 400px;
+    height: 150px;
+  }
+  [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index4 {
+    left: 350px;
+    top: 300px;
+  }
 }
