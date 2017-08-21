@@ -283,6 +283,13 @@
   width: 500px;
   height: 320px;
 }
+[update] .light_icon {
+  position: absolute;
+  right: 140px;
+  top: 70px;
+  width: 1100px;
+  height: 540px;
+}
 [update] .serice_four_left,
 [update] .serice_five_left {
   position: absolute;
@@ -306,12 +313,14 @@
 [update] .serice_five_right {
   top: 80px;
   left: 150px;
+  z-index: 10;
 }
 [update] .serice_five_left {
   right: 210px;
   left: auto;
-  top: 450px;
+  top: 510px;
   text-align: left;
+  z-index: 10;
 }
 [update] .serice_six {
   position: absolute;
@@ -334,6 +343,9 @@
   left: 320px;
   top: 150px;
   text-align: right;
+}
+[update] .serice_seven.half {
+  top: 530px;
 }
 [update] .serice_seven .service_four_item {
   margin-bottom: 20px;
@@ -423,7 +435,7 @@
     left: 350px;
     top: 160px;
     width: 550px;
-    height: 480px;
+    height: 440px;
   }
   [update] .hr_icon {
     position: absolute;
@@ -438,6 +450,13 @@
     top: 60px;
     width: 600px;
     height: 400px;
+  }
+  [update] .light_icon {
+    position: absolute;
+    right: 360px;
+    top: 120px;
+    width: 1200px;
+    height: 650px;
   }
   [update] .four_icon {
     position: absolute;
@@ -460,7 +479,7 @@
     position: absolute;
     left: auto;
     right: 380px;
-    top: 730px;
+    top: 660px;
   }
   [update] .serice_five_left p {
     font-size: 16px;

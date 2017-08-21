@@ -98,13 +98,14 @@
 
                     </div>
                     <div class="swiper-slide slide5">
+                        <img class="light_icon" src="../resources/images/update/light_icon.png" alt="">
+
                         <div class="serice_five_right" id="animate5_1">
                             <h3 class="mb10">FA服务/投融资对接</h3>
                             <p>深挖不同专业领域和投资方向的国内外投资人，普惠</p>
                             <p>于幼狮空间企业，定期举办投资人见面会和项目路演</p>
                             <p>为企业与投资人建立最直接、最深入的对接平台。</p>
                         </div>
-
                         <div class="serice_five_left" id="animate5_2">
                             <div class="service_four_item">
                                 <p>为个人投资者，幼狮空间企业，基金及银行借贷机构，提供优质投资项目。</p>
@@ -122,6 +123,12 @@
                         </div>
                         <img class="four_icon" src="../resources/images/update/four_icon.png" alt="">
                         <img class="hr_icon" src="../resources/images/update/hr_icon.png" alt="">
+                        <div class="serice_seven half" id="animate6_half">
+                            <h3 class="mb10">人力资源服务</h3>
+                            <p>根据企业发展战略的要求，及对人才的需求</p>
+                            <p>为企业提供人才服务，从而促进企业人力资</p>
+                            <p>源的有效开发与优化配置</p>
+                        </div>
                     </div>
                     <div class="swiper-slide slide7">
                         <div class="serice_seven" id="animate7">
@@ -195,8 +202,6 @@
                         setTimeout(function () {
                             $('#animate_2').removeClass('animated infinite swing')
                         }, 1000);
-
-
                     }
 
                     if (swiper.activeIndex == 2) {
@@ -240,11 +245,17 @@
                         setTimeout(function () {
                             $('#animate6').removeClass('animated infinite fadeInRight')
                         }, 1000);
+
+                        $('#animate6_half').addClass('animated infinite fadeInRight');
+                        setTimeout(function () {
+                            $('#animate6_half').removeClass('animated infinite fadeInRight')
+                        }, 1000);
+
                     }
                     if (swiper.activeIndex == 6) {
-                        $('#animate7').addClass('animated infinite swing');
+                        $('#animate7').addClass('animated infinite fadeInUp');
                         setTimeout(function () {
-                            $('#animate7').removeClass('animated infinite swing')
+                            $('#animate7').removeClass('animated infinite fadeInUp')
                         }, 1000);
                     }
                 }
