@@ -62,7 +62,10 @@
                                 <span class="fr up_ser_rtips ser4"></span>
                             </li>
                         </ul>
-                        <div class="up_service_desc" id="animate3">登录幼狮科技企业服务平台，您可以享受舒适的办公空间，结交优质的商业合作伙伴，获得高效的专属服务。
+                        <img class="pad_icon" src="../resources/images/update/pad_icon.png" alt="">
+                        <div class="up_service_desc" id="animate3">
+                            <h3 class="mb10">企业升级服务平台</h3>
+                            <p>登录幼狮科技企业服务平台，您可以享受舒适的办公空间，结交优质的商业合作伙伴，获得高效的专属服务。</p>
                         </div>
                     </div>
                     <div class="swiper-slide slide4">
@@ -91,6 +94,8 @@
                             </div>
                         </div>
 
+                        <img class="male_icon" src="../resources/images/update/male_icon.png" alt="">
+
                     </div>
                     <div class="swiper-slide slide5">
                         <div class="serice_five_right" id="animate5_1">
@@ -108,12 +113,15 @@
                         </div>
                     </div>
                     <div class="swiper-slide slide6">
+                        <img class="female_icon" src="../resources/images/update/female_icon.png" alt="">
                         <div class="serice_six" id="animate6">
                             <h3 class="mb10">幼狮商学院</h3>
                             <p>作为幼狮空间办公生态体系的重要组成部分，幼狮商学院将成为幼</p>
                             <p>狮空间企业在战略执行和价值创造的道路上提供各类管理实践课程</p>
                             <p>同时发起并展开论坛、讲座、沙龙等丰富的交流活动。</p>
                         </div>
+                        <img class="four_icon" src="../resources/images/update/four_icon.png" alt="">
+                        <img class="hr_icon" src="../resources/images/update/hr_icon.png" alt="">
                     </div>
                     <div class="swiper-slide slide7">
                         <div class="serice_seven" id="animate7">
@@ -122,6 +130,7 @@
                             <p>为企业提供人才服务，从而促进企业人力资</p>
                             <p>源的有效开发与优化配置</p>
                         </div>
+                        <img class="hr_icon_1" src="../resources/images/update/hr_icon.png" alt="">
 
                         <div footer>
                             <div class="contents foot_head clearfix">
@@ -238,11 +247,8 @@
                             $('#animate7').removeClass('animated infinite swing')
                         }, 1000);
                     }
-
-
                 }
             })
-
         }
     }
 </script>

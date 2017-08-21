@@ -120,8 +120,8 @@
   position: absolute;
   left: 50%;
   top: 220px;
-  margin-left: -500px;
-  width: 1000px;
+  margin-left: -600px;
+  width: 1200px;
   line-height: 36px;
   font-size: 15px;
   color: #fff;
@@ -178,7 +178,7 @@
   width: 310px;
   position: absolute;
   left: 210px;
-  top: 100px;
+  top: 130px;
 }
 [update] .update_ser_wrap > li {
   margin-bottom: 16px;
@@ -197,6 +197,13 @@
 [update] .up_left_box i.black {
   color: #333;
 }
+[update] .pad_icon {
+  position: absolute;
+  top: 30px;
+  right: 200px;
+  width: 600px;
+  height: 400px;
+}
 [update] .up_service_desc {
   position: absolute;
   bottom: 90px;
@@ -206,8 +213,8 @@
   font-size: 15px;
 }
 [update] .up_ser_rtips {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 [update] .up_ser_rtips.ser1 {
   background: url("../../images/update/up_icon/up_three_icon1.png") no-repeat;
@@ -240,6 +247,41 @@
 [update] .serice_four_right p,
 [update] .serice_five_right p {
   font-size: 14px;
+}
+[update] .male_icon {
+  position: absolute;
+  bottom: 40px;
+  right: 180px;
+  width: 600px;
+  height: 280px;
+}
+[update] .female_icon {
+  position: absolute;
+  left: 100px;
+  top: 60px;
+  width: 540px;
+  height: 400px;
+}
+[update] .four_icon {
+  position: absolute;
+  right: 200px;
+  top: 210px;
+  width: 410px;
+  height: 110px;
+}
+[update] .hr_icon {
+  position: absolute;
+  right: 180px;
+  top: 400px;
+  width: 500px;
+  height: 320px;
+}
+[update] .hr_icon_1 {
+  position: absolute;
+  right: 180px;
+  top: 30px;
+  width: 500px;
+  height: 320px;
 }
 [update] .serice_four_left,
 [update] .serice_five_left {
@@ -289,7 +331,7 @@
 }
 [update] .serice_seven {
   position: absolute;
-  left: 350px;
+  left: 320px;
   top: 150px;
   text-align: right;
 }
@@ -314,11 +356,18 @@
     position: absolute;
     left: 50%;
     top: 380px;
-    margin-left: -750px;
-    width: 1500px;
+    margin-left: -600px;
+    width: 1200px;
     line-height: 50px;
     color: #fff;
     font-size: 20px;
+  }
+  [update] .pad_icon {
+    position: absolute;
+    top: 60px;
+    right: 350px;
+    width: 800px;
+    height: 600px;
   }
   [update] .update_icon_wrap {
     bottom: 150px;
@@ -347,15 +396,101 @@
   [update] .update_ser_wrap .up_left_box i {
     line-height: 26px;
     display: block;
-    font-size: 16px;
+    font-size: 15px;
   }
   [update] .update_ser_wrap .up_left_box i.black {
     color: #333;
   }
   [update] .up_service_desc {
-    width: 640px;
-    right: 360px;
-    bottom: 120px;
+    width: 390px;
+    bottom: 200px;
+    right: 600px;
+    color: #fff;
+    font-size: 15px;
+  }
+  [update] .up_service_desc h3 {
     font-size: 24px;
+  }
+  [update] .male_icon {
+    position: absolute;
+    bottom: 140px;
+    right: 350px;
+    width: 800px;
+    height: 380px;
+  }
+  [update] .female_icon {
+    position: absolute;
+    left: 350px;
+    top: 160px;
+    width: 550px;
+    height: 480px;
+  }
+  [update] .hr_icon {
+    position: absolute;
+    right: 360px;
+    top: 650px;
+    width: 600px;
+    height: 400px;
+  }
+  [update] .hr_icon_1 {
+    position: absolute;
+    right: 360px;
+    top: 60px;
+    width: 600px;
+    height: 400px;
+  }
+  [update] .four_icon {
+    position: absolute;
+    right: 350px;
+    top: 320px;
+    width: 600px;
+    height: 180px;
+  }
+  [update] .serice_four_left {
+    position: absolute;
+    left: 400px;
+    top: 420px;
+  }
+  [update] .serice_four_right {
+    position: absolute;
+    right: 520px;
+    top: 260px;
+  }
+  [update] .serice_five_left {
+    position: absolute;
+    left: auto;
+    right: 380px;
+    top: 730px;
+  }
+  [update] .serice_five_left p {
+    font-size: 16px;
+  }
+  [update] .serice_five_right {
+    position: absolute;
+    right: auto;
+    left: 400px;
+    top: 130px;
+  }
+  [update] .serice_six {
+    position: absolute;
+    right: 550px;
+    top: 160px;
+    text-align: left;
+  }
+  [update] .serice_six .service_four_item {
+    margin-bottom: 20px;
+  }
+  [update] .serice_six h3 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  [update] .serice_six p {
+    font-size: 14px;
+  }
+  [update] .serice_seven {
+    position: absolute;
+    left: 550px;
+    top: 260px;
+    text-align: right;
   }
 }
