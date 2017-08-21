@@ -70,10 +70,10 @@
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index1 {
   left: 50%;
-  top: 200px;
-  width: 480px;
-  height: 140px;
-  margin-left: -240px;
+  top: 180px;
+  width: 580px;
+  height: 180px;
+  margin-left: -280px;
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index2 {
   right: 200px;
@@ -83,9 +83,9 @@
 }
 [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index4 {
   left: 200px;
-  top: 250px;
-  width: 400px;
-  height: 150px;
+  top: 220px;
+  width: 520px;
+  height: 190px;
 }
 [index_content] .banner_wrap .banner_cont .banner_img.banner01 {
   background: url("../../images/index/banner01.png") no-repeat;
