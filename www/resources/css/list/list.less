@@ -1,0 +1,458 @@
+@import "../color";
+
+[list] {
+  /*common css start*/
+  .sem_icon {
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+    background: url(http://img2.static.uban.com/www/images/sem-icon.png) no-repeat;
+  }
+
+  .mt15 {
+    margin-top: 15px !important;
+  }
+
+  .tj_box {
+    border-bottom: 1px solid @bdc_bot_lightline;
+  }
+
+  .tj_box_1 {
+    border-bottom: 1px solid @bdc_f1;
+  }
+
+  .right_fixed {
+    position: fixed;
+    top: 20px;
+    z-index: 3;
+  }
+
+  /*common css end*/
+
+  //搜索栏
+  .search_box {
+    padding: 20px 0 15px 0;
+    .list_search {
+      > div {
+        position: relative;
+        width: 594px;
+        height: 40px;
+        padding: 0 50px 0 13px;
+        background-color: @bg_white;
+        border: 1px solid @bdc_input;
+        > input {
+          width: 100%;
+          height: 38px;
+          line-height: 38px;
+          color: #999;
+          border: none;
+        }
+      }
+      .map_btn {
+        display: inline-block;
+        padding: 0 27px;
+        margin-left: 8px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        color: #FFF;
+        background-color: @bg_search_blue;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  .map_find_room{
+    width:140px;
+    height:40px;
+    line-height: 40px;
+    padding-left: 24px;
+    border:1px solid @bdc_bot_lightline;
+    color: @bg_search_blue;
+    font-size: @font16;
+    i{
+      width:18px;
+      height:16px;
+      margin-right: 8px;
+      background: url("../../images/list/map_icon.png") no-repeat;
+      background-size: 18px 16px;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: -2px;
+    }
+  }
+
+
+  //面包屑
+  .address_tit {
+    h1 {
+      font-size: @font14;
+      .sem_icon {
+        width: 12px;
+        height: 14px;
+        margin-bottom: -3px;
+        background-position: -24px -106px;
+      }
+    }
+    a {
+      display: inline-block;
+      font-size: @font13;
+    }
+  }
+
+  //sem-main start
+  .screening_conditions {
+    background-color: @bg_white;
+    border: 1px solid @bdc_eee;
+
+    .weizhi {
+      a {
+        position: relative;
+        &.active:after {
+          position: absolute;
+          bottom: -16px;
+          left: 50%;
+          margin-left: -4px;
+          content: '';
+          display: block;
+          width: 7px;
+          height: 5px;
+          background: url(http://img2.static.uban.com/www/images/weizhi.png) no-repeat center center;
+        }
+        &.noArrow:after {
+          display: none;
+        }
+      }
+    }
+
+    .screening_conts {
+      a {
+        display: inline-block;
+        width: 96px;
+        height: 37px;
+        line-height: 37px;
+        font-size: 16px;
+        text-align: center;
+        color: #666;
+        .sem_icon {
+          margin-bottom: -6px;
+          margin-right: 5px;
+          &.quyu {
+            background-position: -22px -18px;
+          }
+          &.ditie {
+            background-position: -49px -18px;
+          }
+          &.ditu {
+            background-position: -78px -17px;
+          }
+        }
+        &.active {
+          color: @cl_white;
+          background-color: @bg_search_blue;
+          .sem_icon {
+            background-position-y: -45px;
+          }
+        }
+      }
+    }
+
+    .screening_conts_detail {
+
+      p {
+        margin-right: 20px;
+        padding: 15px 0 15px 16px;
+        border: 1px solid #F1F1F1;
+      }
+
+      a {
+        display: block;
+        float: left;
+        margin-right: 16px;
+        line-height: 26px;
+        color: #666;
+        font-size: @font14;
+
+        &:hover, &.active {
+          color: @bg_blue;
+        }
+      }
+
+      .screening_conts_list {
+        padding: 15px 0;
+        &.none {
+          display: none;
+        }
+        .screening_title {
+          color: @cl_blockgray;
+          line-height: 26px;
+          font-weight: 700;
+          float: left;
+        }
+
+        .area_wrap, .price_wrap {
+          float: left;
+          margin-left: 15px;
+        }
+
+        .conts_section {
+          float: left;
+          height: 26px;
+          border: 1px solid @bdc_bot_lightline;
+          .conts_option {
+            cursor: pointer;
+            display: block;
+            width: 70px;
+            margin-right: 0;
+            line-height: 24px;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            &.tag {
+              color: @cl_white;
+              background-color: @bg_search_blue;
+            }
+          }
+        }
+
+        .interval {
+          samp {
+            color: #E5E5E6;
+          }
+          input {
+            display: inline-block;
+            width: 70px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            border: 1px solid @bdc_bot_lightline;
+            background-color: @bg_white;
+          }
+
+        }
+
+        .interval_pop {
+          position: absolute;
+          left: 0;
+          top: -15px;
+          white-space: nowrap;
+          padding: 14px 10px;
+          background-color: #FFF;
+          border: 1px solid #D8D8D8;
+          -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+          -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+          box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+
+          a {
+            float: none;
+            display: inline-block;
+            padding: 0 16px;
+            margin-right: 0;
+            margin-left: 19px;
+            font-size: 13px;
+            color: #FFF;
+            line-height: 26px;
+            background-color: @bg_search_blue;
+          }
+
+        }
+
+      }
+    }
+  }
+
+  .selected_item {
+    a {
+      height: 26px;
+      line-height: 26px;
+      padding: 0 5px;
+      color: #999;
+      border: 1px solid #E5E5E6;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      .sem_icon {
+        width: 10px;
+        height: 10px;
+        margin-left: 5px;
+        background-position: -80px -130px;
+      }
+      &:hover {
+        border-color: @bg_search_blue;
+        .sem_icon {
+          background-position: -80px -151px;
+        }
+      }
+    }
+
+    .del_all {
+      .sem_icon {
+        width: 15px;
+        height: 15px;
+        margin: 0 5px -3px 0;
+        background-position: -50px -149px;
+      }
+    }
+  }
+
+  //搜索结果
+  .list_result {
+    min-height: 530px;
+
+    .office_list {
+      float: left;
+      width: 891px;
+      min-height: 800px;
+
+      .conditions_result_box {
+        width: 890px;
+        padding-bottom: 15px;
+        .mt07 {
+          margin-top: 7px !important;
+          .sem_icon {
+            width: 20px;
+            height: 20px;
+            margin-bottom: -5px;
+            margin-right: 10px;
+            background-position: -47px -72px;
+          }
+          .result_conts_txt {
+            font-size: 20px;
+            font-weight: 700;
+            color: #302F35;
+          }
+        }
+      }
+
+      .sort_box {
+        height: 46px;
+        line-height: 46px;
+        position: relative;
+        a {
+          display: block;
+          float: left;
+          padding: 0 30px;
+          color: #666;
+          text-align: center;
+          font-size: @font14;
+          p {
+            display: none;
+            position: absolute;
+            top: -24px;
+            left: -45px;
+            padding: 9px 12px;
+            line-height: 13px;
+            color: @bg_hoverblue;
+            white-space: nowrap;
+            background-color: @bg_white;
+            border: 1px solid @bdc_d8;
+            -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+            -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+            box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.10);
+          }
+          .sem_icon {
+            display: none;
+            width: 8px;
+            height: 12px;
+            margin-bottom: -2px;
+            margin-left: 5px;
+            background-position: -25px -128px;
+            &.up {
+              background-position: -52px -128px;
+            }
+          }
+          &:hover {
+            p {
+              display: block;
+            }
+          }
+          &.on {
+            color: @cl_class_black;
+            border-bottom: 4px solid @cl_class_black;
+          }
+        }
+      }
+
+      .sort_box_line {
+        width: 100%;
+        border-color: @bdc_bot_lightline;
+      }
+
+      .office_list_item {
+        position: relative;
+        display: block;
+        padding: 30px 20px 30px 0;
+        border-bottom: 1px solid @bdc_eee;
+        &:hover {
+          background-color: @bg_hovergray;
+        }
+        img {
+          width: 270px;
+          height: 180px;
+        }
+
+        .sem_icon {
+          float: left;
+          width: 15px;
+          height: 14px;
+          margin-right: 9px;
+          &.item_address {
+            background-position: -22px -106px;
+          }
+          &.item_area {
+            background-position: -49px -106px;
+          }
+          &.item_see {
+            background-position: -77px -107px;
+          }
+        }
+
+        .price_box {
+          position: absolute;
+          right: 0;
+          top: 62px;
+        }
+
+        .office_building_cont {
+          padding-left: 290px;
+          color: @cl_blockgray;
+          dt {
+            height: 20px;
+            line-height: 20px;
+            b {
+              color: @cl_class_black;
+              font-size: @font20;
+            }
+          }
+          dd {
+            margin-bottom: 20px;
+            line-height: 14px;
+            font-size: @font14;
+            &.last_fix_bottom {
+              position: absolute;
+              bottom: 0;
+              margin-bottom: 0 !important;
+              .building_tag {
+                max-width: 445px;
+                white-space: nowrap;
+                overflow: hidden;
+                > span {
+                  display: inline-block;
+                  padding: 0 10px;
+                  margin-right: 5px;
+                  line-height: 24px;
+                  font-size: 12px;
+                  background-color: #F1F5FC;
+                }
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+
+  }
+
+}

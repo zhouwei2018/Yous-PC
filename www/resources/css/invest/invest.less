@@ -1,0 +1,160 @@
+@import "../color";
+
+[invest] {
+  min-width: 1200px;
+  margin: 0 auto;
+  .invest_banner {
+    height: 500px;
+    text-align: center;
+    background: url("../../images/invest/invest_bg.png") no-repeat;
+    background-size: 100% 100%;
+    color: @cl_white;
+    padding-top: 80px;
+
+    h3 {
+      font-size: @font34;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: @font22;
+      line-height: 38px;
+    }
+
+    .Release_pro_btn {
+      display: block;
+      margin: 50px auto 0;
+      width: 342px;
+      height: 72px;
+      border: 1px solid @cl_white;
+      text-align: center;
+      line-height: 72px;
+      color: @cl_white;
+      font-size: @font24;
+    }
+  }
+
+  .invest_cooperate {
+    height: 480px;
+    background-color: @bg_white;
+    ul {
+      height: 480px;
+      li {
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        padding-top: 88px;
+        img {
+          display: inline-block;
+          width: 100px;
+          height: 110px;
+          margin-bottom: 70px;
+        }
+        .coop_btn {
+          display: inline-block;
+          width: 248px;
+          height: 53px;
+          background-color: @bg_orange;
+          color: @cl_white;
+          text-align: center;
+          line-height: 53px;
+          font-size: @font20;
+          margin-bottom: 25px;
+          &.bg_blue {
+            background-color: @bg_blue;
+          }
+        }
+        p {
+          font-size: @font16;
+          line-height: 28px;
+          color: @cl_blockgray;
+        }
+      }
+    }
+  }
+
+  h3 {
+    font-size: @font28;
+    margin-bottom: 55px;
+  }
+  .invest_procedure {
+    text-align: center;
+    padding-top: 55px;
+    height: 480px;
+
+    ul {
+      height: 312px;
+      li {
+
+        .proce_text {
+          width: 254px;
+          height: 100%;
+          img {
+            width: 80px;
+            height: 80px;
+            display: inline-block;
+            margin-bottom: 28px;
+          }
+          h4 {
+            font-size: @font22;
+            margin-bottom: 10px;
+            color: @cl_blockgray;
+          }
+          p {
+            font-size: @font15;
+            color: @cl_gray;
+          }
+        }
+
+        .proce_icon {
+          height: 86px;
+          width: 56px;
+          background: url("../../../resources/images/invest/right_arrow_big.png") left center no-repeat;
+        }
+      }
+    }
+  }
+
+  .increment_wrap {
+    text-align: center;
+    background-color: @bg_white;
+    padding: 65px 0 70px;
+    ul {
+      li {
+        width: 384px;
+        height: 264px;
+        margin-right: 23px;
+        padding-top: 68px;
+        color: @cl_white;
+        font-size: @font18;
+        background-color: @bg_seablue;
+        &:last-child {
+          margin-right: 0;
+        }
+        &.brown {
+          padding-top: 58px;
+          background-color: @bg_brown;
+          img {
+            width: 78px;
+            height: 80px;
+          }
+        }
+        &.red {
+          padding-top: 65px;
+          background-color: @bg_lightred;
+          img {
+            width: 75px;
+            height: 68px;
+          }
+        }
+        img {
+          width: 88px;
+          height: 71px;
+          margin-bottom: 38px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+}

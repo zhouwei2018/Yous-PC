@@ -1,0 +1,491 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*辅助色*/
+/*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
+/*用于背景颜色深灰*/
+/*用于背景颜色灰*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*index 业主委托亮蓝色*/
+/*深蓝色*/
+/*浅蓝色*/
+/*首页登录按钮border*/
+/*棕色*/
+/*deep棕色*/
+/*浅红色*/
+/*hover 浅灰色*/
+/*hover 浅lv色*/
+/*浅lv色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*inp 浅灰色*/
+/*深灰底线*/
+/*浅灰底线*/
+/*经典底线*/
+/*底线*/
+/*超浅灰底线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+/*index content*/
+[index_content] {
+  margin-top: -55px;
+}
+[index_content] .banner_wrap .banner_cont {
+  position: relative;
+}
+[index_content] .banner_wrap .banner_cont .banner_img {
+  height: 600px;
+  position: relative;
+}
+[index_content] .banner_wrap .banner_cont .banner_img > img {
+  position: absolute;
+  opacity: 0;
+}
+[index_content] .banner_wrap .banner_cont .banner_img > img#animate_index1 {
+  left: 50%;
+  top: 180px;
+  width: 580px;
+  height: 180px;
+  margin-left: -280px;
+}
+[index_content] .banner_wrap .banner_cont .banner_img > img#animate_index2 {
+  right: 200px;
+  top: 250px;
+  width: 400px;
+  height: 150px;
+}
+[index_content] .banner_wrap .banner_cont .banner_img > img#animate_index4 {
+  left: 200px;
+  top: 220px;
+  width: 520px;
+  height: 190px;
+}
+[index_content] .banner_wrap .banner_cont .banner_img.banner01 {
+  background: url("../../images/index/banner01.png") no-repeat;
+  background-size: 100% 100%;
+}
+[index_content] .banner_wrap .banner_cont .banner_img.banner02 {
+  background: url("../../images/index/banner02.png") no-repeat;
+  background-size: 100% 100%;
+}
+[index_content] .banner_wrap .banner_cont .banner_img.banner03 {
+  background: url("../../images/index/banner03.png") no-repeat;
+  background-size: 100% 100%;
+}
+[index_content] .banner_wrap .banner_cont .banner_img.banner04 {
+  background: url("../../images/index/banner04.png") no-repeat;
+  background-size: 100% 100%;
+}
+[index_content] .banner_wrap .banner_cont .ban_tip_bot {
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce {
+  width: 960px;
+  height: 90px;
+  margin: 0 auto;
+  color: #fff;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+  bottom: 0;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li {
+  position: absolute;
+  bottom: 0;
+  padding-top: 5px;
+  height: 90px;
+  width: 25%;
+  padding-left: 45px;
+  transition: 0.2s all ease-in-out;
+  opacity: .85;
+  filter: alpha(opacity=85);
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li:hover {
+  height: 110px;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area01 {
+  background-color: #658d9e;
+  left: 0;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area02 {
+  background-color: #0f6fac;
+  left: 25%;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area03 {
+  background-color: #74b048;
+  left: 50%;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li.area04 {
+  background-color: #e87e3f;
+  left: 75%;
+  border-right: none;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li p {
+  font-size: 17px;
+}
+[index_content] .banner_wrap .banner_cont .banner_bot .banner_introduce > li span {
+  font-size: 36px;
+}
+[index_content] .content_tit {
+  height: 120px;
+  line-height: 120px;
+  font-size: 28px !important;
+  text-align: center;
+}
+[index_content] [one_state] {
+  background-color: #fff;
+  padding-bottom: 50px;
+}
+[index_content] [one_state] ul li {
+  width: 286px;
+  height: 340px;
+  float: left;
+  text-align: center;
+  margin-right: 18px;
+  padding: 50px 25px 0;
+  transition: .2s all ease;
+}
+[index_content] [one_state] ul li:hover {
+  background-color: #0f6fac;
+  color: #fff;
+}
+[index_content] [one_state] ul li:hover p {
+  color: #fff;
+}
+[index_content] [one_state] ul li:hover .one_tip.location {
+  background-position: 5px -138px;
+}
+[index_content] [one_state] ul li:hover .one_tip.service {
+  background-position: -150px -138px;
+}
+[index_content] [one_state] ul li:hover .one_tip.update {
+  background-position: -304px -138px;
+}
+[index_content] [one_state] ul li:hover .one_tip.communicate {
+  background-position: -464px -138px;
+}
+[index_content] [one_state] ul li:last-child {
+  margin-right: 0;
+}
+[index_content] [one_state] ul li .one_tip {
+  display: inline-block;
+  width: 100px;
+  height: 95px;
+  margin-bottom: 20px;
+  background: url("../../images/index/lion_state_tips.png") no-repeat;
+  background-size: 620px 270px;
+  transition: .7s all ease;
+}
+[index_content] [one_state] ul li .one_tip.location {
+  background-position: 5px -15px;
+}
+[index_content] [one_state] ul li .one_tip.service {
+  background-position: -150px -16px;
+}
+[index_content] [one_state] ul li .one_tip.update {
+  background-position: -304px -16px;
+}
+[index_content] [one_state] ul li .one_tip.communicate {
+  background-position: -464px -15px;
+}
+[index_content] [one_state] ul li h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+[index_content] [one_state] ul li p {
+  text-align: left;
+  line-height: 21px;
+  color: #959595;
+  font-size: 13px;
+}
+[index_content] [space] .ys_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+[index_content] [space] h3 {
+  background-color: #f5f5f5;
+}
+[index_content] [space] img {
+  height: 100%;
+}
+[index_content] [space] .space_top {
+  margin-bottom: 40px;
+}
+[index_content] [space] .space_top .spa_item {
+  overflow: hidden;
+}
+[index_content] [space] .space_top .space_bg_wrap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+}
+[index_content] [space] .space_top .space_bg_wrap span {
+  position: relative;
+}
+[index_content] [space] .space_top .space_bg_wrap .space_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: .6;
+  filter: alpha(opacity=60);
+}
+[index_content] [space] .space_top .space_top_left {
+  width: 635px;
+  height: 396px;
+  margin-right: 15px;
+  position: relative;
+}
+[index_content] [space] .space_top .space_top_left img {
+  transition: .4s all ease;
+}
+[index_content] [space] .space_top .space_top_left:hover img {
+  transform: scale(1.1);
+}
+[index_content] [space] .space_top .space_top_right {
+  width: 550px;
+}
+[index_content] [space] .space_top .space_top_right .spa_top {
+  margin-bottom: 16px;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_left {
+  width: 300px;
+  height: 190px;
+  position: relative;
+  margin-right: 16px;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_left img {
+  transition: .4s all ease;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_left:hover img {
+  transform: scale(1.2);
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_right {
+  width: 230px;
+  height: 190px;
+  position: relative;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_right img {
+  transition: .4s all ease;
+}
+[index_content] [space] .space_top .space_top_right .spa_top .spa_top_right:hover img {
+  transform: scale(1.2);
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_left {
+  width: 230px;
+  height: 190px;
+  margin-right: 16px;
+  position: relative;
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_left img {
+  transition: .4s all ease;
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_left:hover img {
+  transform: scale(1.2);
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_right {
+  width: 300px;
+  height: 190px;
+  position: relative;
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_right img {
+  transition: .4s all ease;
+}
+[index_content] [space] .space_top .space_top_right .spa_bot .spa_bot_right:hover img {
+  transform: scale(1.2);
+}
+[index_content] [space] .space_bot {
+  height: 380px;
+  background: url("../../images/index/city_bg.png") no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  color: #fff;
+}
+[index_content] [space] .space_bot h4 {
+  font-size: 26px;
+  padding: 30px 0;
+}
+[index_content] [space] .space_bot ul li {
+  height: 120px;
+}
+[index_content] [space] .space_bot ul li .space_tip {
+  display: inline-block;
+  width: 54px;
+  height: 60px;
+  background: url("../../images/index/location_sm.png") no-repeat;
+  background-size: 54px 60px;
+}
+[index_content] [space] .space_bot ul li .space_tip.company {
+  background: url("../../images/index/home_sm.png") no-repeat;
+  background-size: 54px 60px;
+}
+[index_content] [space] .space_bot ul li > div {
+  margin-left: 40px;
+}
+[index_content] [space] .space_bot ul li > div .help_wrap {
+  height: 42px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+[index_content] [space] .space_bot ul li > div .help_wrap a {
+  display: block;
+  font-size: 18px;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #0f6fac;
+  text-align: center;
+}
+[index_content] [space] .space_bot ul li > div .help_wrap a:hover {
+  background-color: #1278b8;
+}
+[index_content] [response] {
+  background-color: #fff;
+  padding-bottom: 70px;
+}
+[index_content] [response] .res_left {
+  position: relative;
+  overflow: hidden;
+}
+[index_content] [response] .res_left:hover .res_left_img {
+  transform: scale(1.1);
+}
+[index_content] [response] .res_left .res_left_img {
+  width: 620px;
+  height: 360px;
+  transition: .4s all ease;
+}
+[index_content] [response] .res_left .res_wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 26px;
+  transition: .3s all ease;
+}
+[index_content] [response] .res_left .res_wrap .res_text_box {
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  width: 100%;
+  text-align: center;
+}
+[index_content] [response] .res_left .res_wrap .res_bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: .5;
+  filter: alpha(opacity=50);
+}
+[index_content] [response] .res_right {
+  width: 550px;
+}
+[index_content] [response] .res_right ul {
+  padding-top: 15px;
+}
+[index_content] [response] .res_right ul li {
+  border-bottom: 1px solid #b5b5b5;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+[index_content] [response] .res_right ul li h4 {
+  font-size: 24px;
+  color: #0f6fac;
+  margin-bottom: 10px;
+}
+[index_content] [response] .res_right ul li h4 i {
+  width: 26px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: top;
+  background: url("../../images/index/res_tip.png") no-repeat;
+  background-size: 26px 16px;
+  margin: 12px 10px 0 0;
+}
+[index_content] [response] .res_right ul li p {
+  line-height: 24px;
+}
+[index_content] [response] .res_right ul li p .look_detail {
+  color: #fb7530;
+}
+[index_content] [response] .res_right .look_more {
+  display: block;
+  text-align: right;
+  color: #666;
+}
+[index_content] [response] .res_right .look_more:hover {
+  color: #fb7530;
+}
+@media screen and (min-width: 1500px) {
+  [index_content] .banner_wrap .banner_cont .banner_img {
+    height: 800px;
+  }
+  [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index1 {
+    top: 300px;
+  }
+  [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index2 {
+    right: 350px;
+    top: 300px;
+    width: 400px;
+    height: 150px;
+  }
+  [index_content] .banner_wrap .banner_cont .banner_img > img#animate_index4 {
+    left: 350px;
+    top: 300px;
+  }
+}

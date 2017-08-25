@@ -1,0 +1,119 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*辅助色*/
+/*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
+/*用于背景颜色深灰*/
+/*用于背景颜色灰*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*index 业主委托亮蓝色*/
+/*深蓝色*/
+/*浅蓝色*/
+/*首页登录按钮border*/
+/*棕色*/
+/*deep棕色*/
+/*浅红色*/
+/*hover 浅灰色*/
+/*hover 浅lv色*/
+/*浅lv色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*inp 浅灰色*/
+/*深灰底线*/
+/*浅灰底线*/
+/*经典底线*/
+/*底线*/
+/*超浅灰底线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+[activity] {
+  width: 990px;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+[activity] h3 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #999;
+  margin-bottom: 20px;
+}
+[activity] .act_wrap ul {
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+[activity] .act_wrap ul li {
+  min-height: 220px;
+  position: relative;
+  margin-bottom: 20px;
+  padding: 25px 30px;
+  background-color: #fff;
+}
+[activity] .act_wrap ul li img {
+  width: 400px;
+  height: 260px;
+}
+[activity] .act_wrap ul li .act_text_wrap {
+  width: 520px;
+  height: 100%;
+  padding: 0 30px 0 20px;
+}
+[activity] .act_wrap ul li .act_text_wrap h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+[activity] .act_wrap ul li .act_text_wrap h4 .pub_ver_line {
+  display: inline-block;
+  vertical-align: middle;
+  margin: -2px 8px 0;
+  width: 2px;
+  height: 20px;
+  background-color: #d6971d;
+}
+[activity] .act_wrap ul li .act_text_wrap p {
+  line-height: 25px;
+}
+[activity] .act_wrap ul li .act_text_wrap .sign_up_btn {
+  position: absolute;
+  right: 50px;
+  bottom: 40px;
+  width: 135px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #bdbcbc;
+  font-size: 15px;
+}
+[activity] .act_wrap ul li .act_text_wrap .sign_up_btn.active {
+  background-color: #fb7530;
+}

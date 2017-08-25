@@ -1,0 +1,73 @@
+@import "../color";
+
+[activity] {
+  width: 990px;
+  margin: 0 auto;
+  padding-top: 50px;
+  h3 {
+    font-size: @font26;
+    font-weight: 600;
+    color: @cl_gray;
+    margin-bottom: 20px;
+  }
+
+  .act_wrap {
+    ul {
+      overflow: hidden;
+      margin-bottom: 20px;
+      li {
+        min-height: 220px;
+        position: relative;
+        margin-bottom: 20px;
+        padding: 25px 30px;
+        background-color: @bg_white;
+        img {
+          width: 400px;
+          height: 260px;
+        }
+
+        .act_text_wrap {
+          width: 520px;
+          height: 100%;
+          padding: 0 30px 0 20px;
+          h4 {
+            margin-bottom: 10px;
+            font-size: @font18;
+            font-weight: 600;
+            color: @cl_default;
+            .pub_ver_line{
+              display: inline-block;
+              vertical-align: middle;
+              margin: -2px 8px 0;
+              width:2px;
+              height:20px;
+              background-color: @bg_deepbrown;
+            }
+          }
+          p{
+            line-height: 25px;
+          }
+          .sign_up_btn {
+            position: absolute;
+            right: 50px;
+            bottom: 40px;
+            width: 135px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: @cl_white;
+            border-radius: 5px;
+            background-color: @bg_bdc;
+            font-size: @font15;
+            &.active{
+              background-color: @cl_orange;
+            }
+
+          }
+
+        }
+      }
+    }
+  }
+
+}

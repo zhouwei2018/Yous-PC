@@ -1,0 +1,1061 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*辅助色*/
+/*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
+/*用于背景颜色深灰*/
+/*用于背景颜色灰*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*index 业主委托亮蓝色*/
+/*深蓝色*/
+/*浅蓝色*/
+/*首页登录按钮border*/
+/*棕色*/
+/*deep棕色*/
+/*浅红色*/
+/*hover 浅灰色*/
+/*hover 浅lv色*/
+/*浅lv色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*inp 浅灰色*/
+/*深灰底线*/
+/*浅灰底线*/
+/*经典底线*/
+/*底线*/
+/*超浅灰底线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+[detail] {
+  padding-bottom: 40px;
+  /*common css start*/
+  /*common css end*/
+  /* 轮播 */
+  /* 全景图 */
+}
+[detail] .detail-icon {
+  position: relative;
+  top: 8px;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+  background: url("../../images/icons/detail-icon-bg.png") no-repeat;
+  /* background-color: #f1f5f6; */
+}
+[detail] .build_weixin_top {
+  position: absolute;
+  right: 30px;
+  top: 100px;
+}
+[detail] .build_weixin_top .detail-icon {
+  background-position: -62px -76px;
+}
+[detail] .build_weixin_top .build_weixin_img {
+  width: 80px;
+  height: 80px;
+  margin: 13px auto 0;
+}
+[detail] .build_weixin_top .attention-share-ewm {
+  position: absolute;
+  right: -36px;
+  bottom: 20px;
+  width: 100px;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  background: url("../../images/detail/ewm-bg-up.png") no-repeat;
+  z-index: 3;
+}
+[detail] .font-num {
+  font-family: Tahoma;
+}
+[detail] .breadcrumb-search {
+  width: 1200px;
+  height: 40px;
+  line-height: 40px;
+  margin: 15px auto 0;
+}
+[detail] .breadcrumb-search .breadcrumb > li:first-child {
+  padding-left: 0;
+}
+[detail] .breadcrumb-search .breadcrumb > li {
+  float: left;
+  color: #666;
+  font-size: 12px;
+  padding-left: 10px;
+}
+[detail] .breadcrumb-search .breadcrumb > li a {
+  color: #666;
+  margin-right: 10px;
+  display: inline-block;
+}
+[detail] .breadcrumb-search .breadcrumb > li a .detail-icon {
+  width: 10px;
+  background-position: -31px -302px;
+}
+[detail] .breadcrumb-search .search-box {
+  float: right;
+  height: 40px;
+}
+[detail] .breadcrumb-search .search-box > input {
+  float: left;
+  width: 429px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 13px;
+  padding-right: 13px;
+  color: #999;
+  border: 1px solid #ccc;
+}
+[detail] .breadcrumb-search .search-box .search-btn {
+  width: 86px;
+  height: 40px;
+  margin-left: 10px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #3facf8;
+  display: inline-block;
+  text-align: center;
+}
+[detail] .building-label {
+  width: 1200px;
+  height: 69px;
+  margin: 0 auto;
+}
+[detail] .building-label > img {
+  width: 69px;
+  height: 69px;
+  margin-right: 16px;
+}
+[detail] .building-label .building-tag {
+  float: left;
+  margin-top: 3px;
+}
+[detail] .building-label .building-tag > h1,
+[detail] .building-label .building-tag p {
+  margin-bottom: 14px;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+}
+[detail] .building-label .building-tag .tag-item li {
+  float: left;
+  height: 20px;
+  line-height: 20px;
+  padding-right: 7px;
+  padding-left: 7px;
+  margin-right: 10px;
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+  background-color: #f1f5f8;
+}
+[detail] .nav-consulting {
+  width: 1200px;
+  margin: 20px auto 0;
+  height: 43px;
+  line-height: 43px;
+  border-bottom: 1px solid #e5e5e6;
+}
+[detail] .nav-consulting .nav-building > li {
+  float: left;
+  font-size: 16px;
+}
+[detail] .nav-consulting .nav-building > li a {
+  padding: 0 22px 9px;
+  display: inline;
+}
+[detail] .nav-consulting .nav-building > li.active a {
+  color: #3facf8;
+  border-bottom: 4px solid #3facf8;
+}
+[detail] .navfixed-box {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+[detail] .navfixed-box .navfixed {
+  position: fixed;
+  top: 0;
+  width: 1200px;
+  height: 43px;
+  line-height: 43px;
+  background-color: #fff;
+  z-index: 3;
+  border-bottom: 1px solid #e5e5e6;
+}
+[detail] .navfixed-box .navfixed .nav-building > li {
+  float: left;
+  font-size: 16px;
+}
+[detail] .navfixed-box .navfixed .nav-building > li.active a {
+  color: #3facf8;
+  border-bottom: 4px solid #3facf8;
+}
+[detail] .navfixed-box .navfixed .nav-building > li > a {
+  padding: 0 22px 9px;
+  display: inline;
+}
+[detail] .consulting {
+  float: right;
+}
+[detail] .consulting > div {
+  float: left;
+}
+[detail] .consulting > div.quick {
+  font-size: 14px;
+}
+[detail] .consulting > div.quick .detail-icon {
+  background-position: -56px -305px;
+}
+[detail] .consulting > div.quick .tel {
+  float: right;
+  line-height: 44px;
+  color: #3facf8;
+}
+[detail] .consulting > div.online {
+  margin-left: 16px;
+}
+[detail] .consulting > div.online .detail-icon {
+  background-position: -153px -306px;
+}
+[detail] .consulting > div .text {
+  color: #476CBA;
+  font-size: 14px;
+}
+[detail] .common-info {
+  width: 1200px;
+  margin: 29px auto 30px;
+  min-height: 460px;
+}
+[detail] .common-info .building-message {
+  float: right;
+  position: relative;
+  width: 660px;
+  height: 412px;
+}
+[detail] .common-info .building-message > h2 {
+  line-height: 1em;
+  font-size: 18px;
+  color: #302F35;
+  font-weight: 700;
+}
+[detail] .common-info .building-message .price-box {
+  margin-top: -7px;
+  margin-bottom: 21px;
+}
+[detail] .common-info .building-message .price-box .building-price {
+  float: left;
+  position: relative;
+  margin-right: 11px;
+}
+[detail] .common-info .building-message .price-box .building-price > strong {
+  font-size: 48px;
+  line-height: 1;
+  color: #FF4859;
+  font-family: tahoma;
+}
+[detail] .common-info .building-message .building-address {
+  margin-top: 1px;
+  line-height: 20px;
+}
+[detail] .common-info .building-message .building-address .detail-icon {
+  background-position: -28px -271px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+[detail] .common-info .building-message .building-address > span {
+  float: left;
+  display: block;
+}
+[detail] .common-info .building-message .building-address .show-map {
+  margin-left: 10px;
+  color: #999;
+}
+[detail] .common-info .building-message .building-consult {
+  margin: 15px 0;
+  line-height: 20px;
+}
+[detail] .common-info .building-message .building-consult .detail-icon {
+  background-position: -57px -271px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+[detail] .common-info .building-message .around-circle {
+  margin-top: 14px;
+  line-height: 24px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon {
+  float: left;
+  top: 0;
+  width: 26px;
+  height: 26px;
+  margin-right: 9px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon.minute {
+  margin-right: 0;
+  background-position: -201px -268px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon.subway {
+  background-position: -28px -148px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon.bank {
+  background-position: -148px -148px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon.restaurant {
+  background-position: -228px -148px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon.hotel {
+  background-position: -188px -148px;
+}
+[detail] .common-info .building-message .around-circle .detail-icon.bodybuilding {
+  background-position: -108px -148px;
+}
+[detail] .common-info .building-message .around-circle ul {
+  margin-left: 23px;
+}
+[detail] .common-info .building-message .around-circle ul li {
+  float: left;
+  margin-right: 20px;
+  line-height: 24px;
+}
+[detail] .common-info .building-message .rental-info {
+  border-top: 1px solid #e5e5e6;
+  border-bottom: 1px solid #e5e5e6;
+  height: 100px;
+  margin: 20px 0;
+  padding: 15px 0;
+}
+[detail] .common-info .building-message .rental-info dd {
+  float: left;
+  width: 210px;
+  border-right: 1px solid #e5e5e6;
+  text-align: center;
+}
+[detail] .common-info .building-message .rental-info dd:last-of-type {
+  border-right: none;
+}
+[detail] .common-info .building-message .rental-info dd .rent_num {
+  margin: 0 auto 5px;
+  min-height: 40px;
+  line-height: 40px;
+}
+[detail] .common-info .building-message .rental-info dd:last-child {
+  margin-right: 0;
+}
+[detail] .common-info .building-message .rental-info dd > span {
+  margin-bottom: 10px;
+}
+[detail] .common-info .building-message .rental-info dd > span > a {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+  color: #999;
+}
+[detail] .common-info .building-message .building-message {
+  margin-top: 15px;
+}
+[detail] .common-info .building-message .building-message .expert-title {
+  margin-bottom: 12px;
+}
+[detail] .common-info .building-message .building-message .expert-title .detail-icon {
+  background-position: -175px -272px;
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  margin-right: 7px;
+}
+[detail] .category-message-box {
+  position: relative;
+  width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+[detail] .category-message {
+  float: left;
+  width: 890px;
+}
+[detail] .category-item-title-first {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+[detail] .category-item-title-first h2,
+[detail] .category-item-title-first h1 {
+  font-size: 20px;
+}
+[detail] .category-item-title-first .detail-icon {
+  float: left;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+[detail] .category-item-title-first .detail-icon.rent {
+  background-position: -148px -220px;
+}
+[detail] .category-item-title-first .show-link {
+  float: right;
+  color: #848587;
+}
+[detail] .screening-range {
+  border-top: 1px solid #e5e5e6;
+  border-bottom: 1px solid #e5e5e6;
+}
+[detail] .inp-pop {
+  position: absolute;
+  left: 0;
+  top: -8px;
+  padding: 7px 10px;
+  white-space: nowrap;
+  background-color: #fff;
+  border: 1px solid #D8D8D8;
+  -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  z-index: 2;
+}
+[detail] .inp-pop a {
+  display: inline-block;
+  padding: 0 16px;
+  margin-right: 0;
+  margin-left: 19px;
+  font-size: 13px;
+  color: #fff !important;
+  line-height: 26px;
+  background-color: #3facf8;
+}
+[detail] .screening-range-list {
+  position: relative;
+  padding: 8px 0;
+}
+[detail] .screening-range-list span {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  display: block;
+  line-height: 26px;
+  color: #666;
+  font-weight: 700;
+}
+[detail] .screening-range-list ul {
+  margin-left: 47px;
+}
+[detail] .screening-range-list ul li {
+  float: left;
+  line-height: 26px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  margin-left: 15px;
+}
+[detail] .screening-range-list ul li .price-wrap {
+  height: 26px;
+  border: 1px solid #e5e5e6;
+}
+[detail] .screening-range-list ul li .price-wrap a {
+  float: left;
+  display: block;
+  padding: 0 16px;
+  line-height: 24px;
+  font-size: 13px;
+}
+[detail] .screening-range-list ul li .price-wrap a.active {
+  background-color: #3facf8;
+  color: #fff;
+}
+[detail] .screening-range-list ul li:first-child {
+  margin-left: 0;
+}
+[detail] .screening-range-list ul li a {
+  color: #666;
+}
+[detail] .screening-range-list ul li a.on {
+  color: #476CBA;
+}
+[detail] .screening-range-list ul li input {
+  display: inline-block;
+  width: 70px;
+  height: 26px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e5e5e6;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+[detail] .mobile_consult {
+  height: 58px;
+  background-color: #f2f5fa;
+  width: 100%;
+  padding: 10px 0 0 20px;
+  margin-bottom: 15px;
+}
+[detail] .mobile_consult .tel_num_all {
+  font-size: 26px;
+  margin-top: -2px;
+}
+[detail] .mobile_consult .mobile_box {
+  float: right;
+  padding-right: 5px;
+}
+[detail] .mobile_consult .call_back_btn {
+  margin: 3px 10px 0 0;
+  display: inline-block;
+  width: 90px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  background-color: #3facf8;
+}
+[detail] .sort-list a {
+  float: left;
+  display: block;
+  width: 70px;
+  padding: 16px 0 14px 0;
+  font-size: 13px;
+  line-height: 13px;
+  color: #666;
+  text-align: center;
+}
+[detail] .sort-list a.tag {
+  color: #3facf8;
+  font-weight: 700;
+  border-bottom: 4px solid #3facf8;
+}
+[detail] .sort-list a span {
+  margin-left: 7px;
+}
+[detail] .sort-meet-result {
+  margin-top: 17px;
+  line-height: 14px;
+}
+[detail] .detail-office-list {
+  background-color: #fff;
+}
+[detail] .detail-office-list li {
+  height: 100px;
+  padding: 20px 21px 20px 0;
+  background-color: #fff;
+  border-top: 1px solid #e5e5e6;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+[detail] .detail-office-list li a {
+  color: #302F35;
+}
+[detail] .detail-office-list li a .list-img {
+  float: left;
+  position: relative;
+  width: 160px;
+  height: 100px;
+  margin-right: 20px;
+}
+[detail] .detail-office-list li a .list-img > img {
+  width: 160px;
+  height: 100px;
+}
+[detail] .detail-office-list li a .list-introduce {
+  float: left;
+  width: 689px;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-primary {
+  line-height: 21px;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-primary > span {
+  float: left;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-primary div {
+  position: relative;
+  float: right;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-primary div span > em {
+  position: relative;
+  top: 3px;
+  margin: 0 5px 0 8px;
+  color: #FF4859;
+  font-size: 26px;
+  font-weight: 700;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-primary div > div {
+  position: absolute;
+  top: 41px;
+  right: 0;
+  color: #2A2A2A;
+  white-space: nowrap;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-second {
+  margin: 15px 0 5px;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-second > span {
+  display: inline-block;
+  line-height: 21px;
+  color: #000017;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-time-btn {
+  float: right;
+  width: 100%;
+}
+[detail] .detail-office-list li a .list-introduce .introduce-time-btn > span {
+  float: left;
+  display: block;
+  margin-top: 15px;
+  font-size: 12px;
+  color: #999;
+}
+[detail] .building-information .category-item-title {
+  height: 30px;
+  line-height: 30px;
+  padding-top: 27px;
+  margin-bottom: 15px;
+  border-top: 1px solid #e5e5e6;
+  box-sizing: content-box;
+}
+[detail] .building-information .category-item-title h2 {
+  font-size: 20px;
+}
+[detail] .building-information .category-item-title .detail-icon {
+  float: left;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+[detail] .building-information .category-item-title .detail-icon.introduce {
+  background-position: -27px -220px;
+}
+[detail] .building-information .category-item-title .show-link {
+  float: right;
+  color: #848587;
+}
+[detail] .building-information table {
+  margin-top: 22px;
+  margin-bottom: 27px;
+}
+[detail] .building-information table td {
+  line-height: 1em;
+  padding: 10px;
+  color: #999;
+}
+[detail] .building-information table td span {
+  color: #000017;
+}
+[detail] .building-information hr {
+  border-color: #e5e5e6;
+}
+[detail] .building-information .message {
+  line-height: 26px;
+}
+[detail] .building-information .message > p {
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+}
+[detail] .category-message-box {
+  position: relative;
+  width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+[detail] .category-item-title-first {
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+[detail] .category-item-title-first .detail-icon {
+  float: left;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+[detail] .category-item-title-first .detail-icon.supporting {
+  background-position: -106px -220px;
+}
+[detail] .category-item-title-first .detail-icon.introduce {
+  background-position: -27px -220px;
+}
+[detail] .map-container {
+  float: left;
+  width: 800px;
+  height: 420px;
+}
+[detail] .map-conts {
+  float: right;
+  width: 380px;
+  height: 420px;
+  border: 1px solid #EEE;
+  box-sizing: border-box;
+}
+[detail] .map-type-nav {
+  height: 56px;
+  border-bottom: 1px solid #EEE;
+}
+[detail] .map-type-nav .map-type-item {
+  float: left;
+  width: 20%;
+  height: 100%;
+  line-height: 21px;
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+}
+[detail] .map-type-nav .map-type-item.on {
+  color: #fff;
+  background-color: #302F35;
+}
+[detail] .map-type-nav .map-type-item.on .detail-icon.jt {
+  background-position: -27px -117px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon {
+  top: 7px;
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0 auto 4px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.jt {
+  background-position: -27px -148px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.ct {
+  background-position: -228px -147px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.jd {
+  background-position: -188px -146px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.js {
+  background-position: -108px -147px;
+}
+[detail] .map-type-nav .map-type-item .detail-icon.yh {
+  background-position: -148px -146px;
+}
+[detail] .type-item-sel {
+  height: 44px;
+  border-bottom: 1px solid #EEE;
+}
+[detail] .type-item-sel li {
+  float: left;
+  min-width: 70px;
+  height: 44px;
+  line-height: 18px;
+  padding: 14px 10px 13px;
+  font-size: 13px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+[detail] .type-item-sel li.currenttype {
+  border-bottom: 3px solid #302F35;
+}
+[detail] .results-panel {
+  height: 316px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+[detail] .results-panel li {
+  height: 20px;
+  line-height: 20px;
+  padding: 10px 20px 10px 15px;
+  font-size: 13px;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+[detail] .results-panel li i {
+  display: block;
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #302F35;
+}
+[detail] .results-panel li p {
+  float: left;
+  width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+[detail] .results-panel li span {
+  float: right;
+}
+[detail] .anchorBL {
+  display: none !important;
+}
+[detail] .carousel-wrapper {
+  float: left;
+  width: 510px;
+  height: 412px;
+}
+[detail] .carousel-box {
+  position: relative;
+  width: 510px;
+  height: 412px;
+  overflow: hidden;
+}
+[detail] .carousel-box .carousel-big {
+  position: relative;
+  width: 510px;
+  height: 340px;
+  overflow: hidden;
+}
+[detail] .carousel-box .carousel-big ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+[detail] .carousel-box .carousel-big ul li {
+  float: left;
+}
+[detail] .carousel-box .carousel-big ul li a img {
+  width: 510px;
+  height: 340px;
+}
+[detail] .occupancy .occupancy-info {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  margin-top: -58px;
+  color: #fff;
+  text-align: center;
+}
+[detail] .occupancy-info .consulting-detail {
+  display: block;
+  width: 90px;
+  line-height: 1em;
+  margin: 17px auto 0;
+  padding: 8px 13px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #476CBA;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+[detail] .carousel-small-box {
+  float: left;
+  position: relative;
+  width: 510px;
+  height: 62px;
+  margin-top: 10px;
+}
+[detail] .carousel-small-box .toggle-button {
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+[detail] .toggle-button.carousel-small-prev {
+  left: 0;
+}
+[detail] .toggle-button.carousel-small-next {
+  right: 0;
+}
+[detail] .carousel-small-box:hover .toggle-button {
+  display: block;
+}
+[detail] .carousel-small-box .carousel-small {
+  position: absolute;
+  width: 100%;
+  height: 62px;
+  overflow: hidden;
+}
+[detail] .carousel-small ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 520px;
+}
+[detail] .carousel-small ul li {
+  float: left;
+  width: 94px;
+  height: 62px;
+  margin-right: 10px;
+}
+[detail] .carousel-small ul li:last-child {
+  margin-right: 0;
+}
+[detail] .carousel-small img {
+  width: 94px;
+  height: 62px;
+}
+[detail] .small-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #302F35;
+  opacity: 0.7;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+  filter: alpha(opacity=70);
+}
+[detail] .carousel-wrapper .carousel-mask {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+  z-index: 35;
+}
+[detail] .pop-carousel-box {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 1000px;
+  height: 500px;
+  margin-left: -480px;
+  margin-top: -250px;
+  background-color: #fff;
+  z-index: 99;
+}
+[detail] .pop-carousel-box .pop-carousel-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+[detail] .pop-carousel-box .pop-carousel-prev,
+[detail] .pop-carousel-box .pop-carousel-next {
+  position: absolute;
+  top: 50%;
+  width: 25px;
+  height: 45px;
+  margin-top: -23px;
+  z-index: 9;
+  cursor: pointer;
+}
+[detail] .pop-carousel-box .pop-carousel-prev {
+  left: -40px;
+}
+[detail] .pop-carousel-box .pop-carousel-next {
+  right: -40px;
+}
+[detail] .pop-carousel-box .pop-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+[detail] .pop-carousel-box .pop-carousel ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+[detail] .pop-carousel ul li {
+  float: left;
+  width: 1000px;
+  height: auto;
+}
+[detail] .panorama {
+  float: left;
+  position: relative;
+  width: 94px;
+  height: 62px;
+  margin-top: 10px;
+}
+[detail] .panorama-box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1000px;
+  height: 500px;
+  margin: -250px -500px;
+  z-index: 36;
+}
+[detail] .panorama-box .panorama-close {
+  position: absolute;
+  top: 0;
+  right: -48px;
+  cursor: pointer;
+}
+[detail] .panorama-box .panorama-icon {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+[detail] .panorama-box .panorama-area-list {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+[detail] .panorama-box .panorama-area-list li {
+  width: 70px;
+  height: 24px;
+  line-height: 24px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background: rgba(48, 47, 53, 0.7);
+  cursor: pointer;
+}
+[detail] .panorama-box .panorama-area-list li:first-child {
+  margin-top: 0;
+}
+[detail] .panorama-box .panorama-area-list li.on {
+  background: #302f35;
+}
+[detail] .panorama-box .loadbox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px;
+}
+[detail] .panorama-box .tip-mouse {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -42px;
+  color: #fff;
+  text-align: center;
+}

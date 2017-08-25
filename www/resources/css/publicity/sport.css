@@ -1,0 +1,109 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*辅助色*/
+/*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
+/*用于背景颜色深灰*/
+/*用于背景颜色灰*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*index 业主委托亮蓝色*/
+/*深蓝色*/
+/*浅蓝色*/
+/*首页登录按钮border*/
+/*棕色*/
+/*deep棕色*/
+/*浅红色*/
+/*hover 浅灰色*/
+/*hover 浅lv色*/
+/*浅lv色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*inp 浅灰色*/
+/*深灰底线*/
+/*浅灰底线*/
+/*经典底线*/
+/*底线*/
+/*超浅灰底线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+[sport] .sport_wrap {
+  width: 940px;
+  margin: 0 auto;
+}
+[sport] .sport_wrap .sport_item01 {
+  height: 450px;
+  padding: 50px 0 60px;
+}
+[sport] .sport_wrap .sport_item01 .sport_rem_tit {
+  color: #097c25;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+[sport] .sport_wrap .sport_item01 .sport_item01_left {
+  width: 360px;
+  height: 100%;
+  padding: 30px 45px;
+  border: 2px solid #097c25;
+}
+[sport] .sport_wrap .sport_item01 .sport_item01_left p {
+  line-height: 30px;
+  margin-bottom: 15px;
+}
+[sport] .sport_wrap .sport_item01 .sport_item01_right {
+  width: 550px;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+[sport] .sport_wrap .sport_item01 .sport_item01_right h3 {
+  margin: 30px;
+  font-size: 16px;
+}
+[sport] .sport_wrap .sport_item01 .sport_item01_right h2 {
+  font-size: 26px;
+  color: #097c25;
+}
+[sport] .sport_wrap .sport_item01 .sport_item01_right img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+[sport] .sport_wrap > h3 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+[sport] .sport_wrap .sport_exhibition {
+  width: 980px;
+}
+[sport] .sport_wrap .sport_exhibition li {
+  float: left;
+  width: 450px;
+  margin: 0 40px 20px 0;
+}

@@ -1,0 +1,200 @@
+/*文字色*/
+/*特殊位置黑色*/
+/*特殊位置黑色*/
+/*默认文字灰色*/
+/*用于辅助说明文字、次要文字信息*/
+/*用于次要辅助说明文字*/
+/*用于次要辅助说明文字*/
+/*用于详情提示文字，引导词*/
+/*用于价格显示、注意事项提醒文字*/
+/*底部文字浅灰*/
+/* 特殊样式白色字体 */
+/*辅助色*/
+/*背景颜色白色*/
+/*背景颜色白色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色蓝色*/
+/*用于背景颜色黑色*/
+/*用于背景颜色深黑色*/
+/*用于背景颜色超级黑色*/
+/*用于背景颜色深灰*/
+/*用于背景颜色灰*/
+/*用于背景颜色浅灰*/
+/*用于背景颜色浅浅灰*/
+/*海蓝色*/
+/*天蓝色*/
+/*index 业主委托亮蓝色*/
+/*深蓝色*/
+/*浅蓝色*/
+/*首页登录按钮border*/
+/*棕色*/
+/*deep棕色*/
+/*浅红色*/
+/*hover 浅灰色*/
+/*hover 浅lv色*/
+/*浅lv色*/
+/*边线颜色*/
+/*小竖线白色*/
+/*小竖线*/
+/* 灰色边框 */
+/*搜索背景色*/
+/*input边框线*/
+/*inp 浅灰色*/
+/*深灰底线*/
+/*浅灰底线*/
+/*经典底线*/
+/*底线*/
+/*超浅灰底线*/
+/*字号*/
+/*用于板块标题显示*/
+/*用于导航栏标题*/
+/*用于footer 导航栏*/
+/*next  button按钮*/
+/*用于正文标题，重要文字信息*/
+/*用于正文标题，重要文字信息*/
+/*用于补充说明文字、次要文字*/
+[invest] {
+  min-width: 1200px;
+  margin: 0 auto;
+}
+[invest] .invest_banner {
+  height: 500px;
+  text-align: center;
+  background: url("../../images/invest/invest_bg.png") no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  padding-top: 80px;
+}
+[invest] .invest_banner h3 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+[invest] .invest_banner p {
+  font-size: 22px;
+  line-height: 38px;
+}
+[invest] .invest_banner .Release_pro_btn {
+  display: block;
+  margin: 50px auto 0;
+  width: 342px;
+  height: 72px;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 72px;
+  color: #fff;
+  font-size: 24px;
+}
+[invest] .invest_cooperate {
+  height: 480px;
+  background-color: #fff;
+}
+[invest] .invest_cooperate ul {
+  height: 480px;
+}
+[invest] .invest_cooperate ul li {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  padding-top: 88px;
+}
+[invest] .invest_cooperate ul li img {
+  display: inline-block;
+  width: 100px;
+  height: 110px;
+  margin-bottom: 70px;
+}
+[invest] .invest_cooperate ul li .coop_btn {
+  display: inline-block;
+  width: 248px;
+  height: 53px;
+  background-color: #ea5433;
+  color: #fff;
+  text-align: center;
+  line-height: 53px;
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+[invest] .invest_cooperate ul li .coop_btn.bg_blue {
+  background-color: #0f6fac;
+}
+[invest] .invest_cooperate ul li p {
+  font-size: 16px;
+  line-height: 28px;
+  color: #666;
+}
+[invest] h3 {
+  font-size: 28px !important;
+  margin-bottom: 55px;
+}
+[invest] .invest_procedure {
+  text-align: center;
+  padding-top: 55px;
+  height: 480px;
+}
+[invest] .invest_procedure ul {
+  height: 312px;
+}
+[invest] .invest_procedure ul li .proce_text {
+  width: 254px;
+  height: 100%;
+}
+[invest] .invest_procedure ul li .proce_text img {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  margin-bottom: 28px;
+}
+[invest] .invest_procedure ul li .proce_text h4 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #666;
+}
+[invest] .invest_procedure ul li .proce_text p {
+  font-size: 15px;
+  color: #999;
+}
+[invest] .invest_procedure ul li .proce_icon {
+  height: 86px;
+  width: 56px;
+  background: url("../../../resources/images/invest/right_arrow_big.png") left center no-repeat;
+}
+[invest] .increment_wrap {
+  text-align: center;
+  background-color: #fff;
+  padding: 65px 0 70px;
+}
+[invest] .increment_wrap ul li {
+  width: 384px;
+  height: 264px;
+  margin-right: 23px;
+  padding-top: 68px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #4bb0dd;
+}
+[invest] .increment_wrap ul li:last-child {
+  margin-right: 0;
+}
+[invest] .increment_wrap ul li.brown {
+  padding-top: 58px;
+  background-color: #edaa41;
+}
+[invest] .increment_wrap ul li.brown img {
+  width: 78px;
+  height: 80px;
+}
+[invest] .increment_wrap ul li.red {
+  padding-top: 65px;
+  background-color: #e7745b;
+}
+[invest] .increment_wrap ul li.red img {
+  width: 75px;
+  height: 68px;
+}
+[invest] .increment_wrap ul li img {
+  width: 88px;
+  height: 71px;
+  margin-bottom: 38px;
+  display: inline-block;
+}
