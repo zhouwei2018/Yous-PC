@@ -409,6 +409,8 @@
                 price_dj: "",
                 price_zj: "",
 
+                orderby:"D",
+
                 buildList: [], //楼盘列表，搜索结果
                 total_items: 0, //结果总数
                 total_pages: 0, //总页数
@@ -580,7 +582,7 @@
                             "area": this.area,
                             "price_dj": this.price_dj,
                             "price_zj": this.price_zj,
-                            "orderby": "D",
+                            "orderby": this.orderby,
                             "curr_page": "1",
                             "items_perpage": "5"
                         },
