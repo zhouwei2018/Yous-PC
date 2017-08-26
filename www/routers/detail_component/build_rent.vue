@@ -374,7 +374,7 @@
                     ]
                 },
 
-                building_id: "",
+                building_id: this.$route.query.building_id,
                 buildingName: "", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
@@ -410,7 +410,7 @@
                 total_items: 0, //结果总数
                 total_pages: 0, //总页数
                 //分页
-                pageSize: 10, //每页个数
+                pageSize: 5, //每页个数
                 curPage: 1, //当前页数
 
                 buildingShowFlag: true, //无结果div是否显示
