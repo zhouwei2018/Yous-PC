@@ -371,8 +371,8 @@
                     <h3 class="no_result" v-show="buildingShowFlag">暂无待出租写字楼 !</h3>
 
                     <!--page-->
-                    <div class="page_det_box" v-show="pageFlag">
-                        <Page :total="100" @on-change="change"></Page>
+                    <div class="page_wrap mb25" v-show="pageFlag">
+                        <Page :total="total_pages*10" @on-change="change"></Page>
                     </div>
 
                 </div>
@@ -576,8 +576,10 @@
                     telephone: ''
                 },
 
-                buildingShowFlag: true, //无结果
-                house_res_show: true,  //楼盘结果ul
+                buildingShowFlag: true, //无结果div是否显示
+                house_res_show: true,  //楼盘结果ul是否显示
+                loadingFlag: true, //loading是否显示
+                pageFlag: false, //页码是否显示
 
                 labels: [],
 
@@ -585,8 +587,6 @@
                 buildingNameSingle: "", //单独楼盘名称
 
                 positionData: "", //经纬度
-
-                pageFlag: true, //页码是否显示
 
                 orderby:"D",
 
@@ -638,11 +638,8 @@
                 total_items: '--', //结果总数
                 total_pages: 0, //总页数
                 //分页
-                pageSize: 10, //每页个数
+                pageSize: 5, //每页个数
                 curPage: 1, //当前页数
-
-                loadingFlag: true, //loading是否显示
-                pageFlag: false, //页码是否显示
 
                 //搜索结果
                 decoration_level: "",//装修程度
@@ -980,6 +977,7 @@
                 this.loadingFlag = true;
                 this.pageFlag = false;
                 this.buildingShowFlag = false;
+                this.house_res_show = false;
                 this.$http.post(
                     this.$api,
                     {
@@ -989,8 +987,8 @@
                             "price_dj": this.price_dj,
                             "price_zj": this.price_zj,
                             "orderby": this.orderby,
-                            "curr_page": "1",
-                            "items_perpage": "5"
+                            "curr_page": this.curPage,
+                            "items_perpage": this.pageSize
                         },
                         "foreEndType": 2,
                         "code": "30000003"
@@ -1003,18 +1001,31 @@
                         if (result.data.houses.length) {
 
                             _this.buildList = result.data.houses;
-//                            for(var i=0;i<_this.buildList.length; i++){
-//                                _this.buildList[i]=_this.buildList[i].
-//                            }
                             _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
+
+                            _this.total_pages = result.data.total_pages;
+
+                            if (_this.total_pages <= 1) {
+                                _this.pageFlag = false;
+                            } else {
+                                _this.pageFlag = true;
+                            }
+
+                            _this.buildingShowFlag = false;
                             _this.house_res_show = true;
+                            _this.pageFlag = true;
+
                         } else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
                             _this.total_items = 0;
+                            _this.pageFlag = false;
                         }
                     } else {
                         _this.total_items = 0;
+                        _this.house_res_show = false; //结果不展示
+                        _this.buildingShowFlag = true;
+                        _this.pageFlag = false;
 
                     }
 

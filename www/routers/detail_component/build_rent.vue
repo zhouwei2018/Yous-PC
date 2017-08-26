@@ -268,8 +268,8 @@
                     <h3 class="no_result" v-show="buildingShowFlag">暂无待出租写字楼 !</h3>
 
                     <!--page-->
-                    <div class="page_wrap" v-show="pageFlag">
-                        <Page :total="100" @on-change="change"></Page>
+                    <div class="page_wrap mb25" v-show="pageFlag">
+                        <Page :total="total_pages*10" @on-change="change"></Page>
                     </div>
 
                 </div>
@@ -375,11 +375,6 @@
                 },
 
                 building_id: "",
-                buildingShowFlag: false,
-                house_res_show: false,
-
-                pageFlag: true, //页码是否显示
-
                 buildingName: "", //拼出的楼盘周边配套
                 buildingNameSingle: "", //单独楼盘名称
 
@@ -418,6 +413,8 @@
                 pageSize: 10, //每页个数
                 curPage: 1, //当前页数
 
+                buildingShowFlag: true, //无结果div是否显示
+                house_res_show: true,  //楼盘结果ul是否显示
                 loadingFlag: true, //loading是否显示
                 pageFlag: false, //页码是否显示
 
@@ -566,14 +563,13 @@
             //获取楼盘列表
             getDetList(){
                 var _this = this;
-                this.building_id = this.$route.query.building_id;
+
                 this.buildList = [];
 
                 this.loadingFlag = true;
                 this.pageFlag = false;
-
                 this.buildingShowFlag = false;
-
+                this.house_res_show = false;
                 this.$http.post(
                     this.$api,
                     {
@@ -583,35 +579,45 @@
                             "price_dj": this.price_dj,
                             "price_zj": this.price_zj,
                             "orderby": this.orderby,
-                            "curr_page": "1",
-                            "items_perpage": "5"
+                            "curr_page": this.curPage,
+                            "items_perpage": this.pageSize
                         },
                         "foreEndType": 2,
                         "code": "30000003"
                     }
                 ).then(function (res) {
-
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
 
                     if (result.success) {
                         if (result.data.houses.length) {
-                            _this.buildList = result.data.houses;
 
-                            for(var i=0;i<_this.buildList.length; i++){
-                                if(_this.buildList[i].refreshTime){
-                                    _this.buildList[i].refreshTime=_this.buildList[i].refreshTime.replace('T00:00:00','');
-                                }
+                            _this.buildList = result.data.houses;
+                            _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
+
+                            _this.total_pages = result.data.total_pages;
+
+                            if (_this.total_pages <= 1) {
+                                _this.pageFlag = false;
+                            } else {
+                                _this.pageFlag = true;
                             }
 
-                            _this.total_items = result.data.total_items;
+                            _this.buildingShowFlag = false;
+                            _this.house_res_show = true;
+                            _this.pageFlag = true;
+
                         } else {
                             _this.house_res_show = false; //结果不展示
                             _this.buildingShowFlag = true;
                             _this.total_items = 0;
+                            _this.pageFlag = false;
                         }
                     } else {
                         _this.total_items = 0;
+                        _this.house_res_show = false; //结果不展示
+                        _this.buildingShowFlag = true;
+                        _this.pageFlag = false;
 
                     }
 
