@@ -417,7 +417,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20          class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -928,6 +928,8 @@
                 this.pageFlag = false;
 
                 this.buildingShowFlag = false;
+                this.total_items = '--';
+
                 this.search_keywork=this.search_keywork.replace(/(^\s*)|(\s*$)/g,'');
 
                 this.$http.post(
@@ -954,44 +956,33 @@
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
                     if (result.success) {
-                        if (result.data) {
+                        if (result.data.total_items > 0) {
 
-                            if (result.data.total_items > 0) {
-                                for (var i = 0; i < result.data.buildings.length; i++) {
-                                    if (result.data.buildings[i].label) {
-                                        result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
-                                    } else {
-                                        result.data.buildings[i].tags = [];
-                                    }
+                            _this.buildingShowFlag = false;
 
-                                }
-                                _this.buildList = result.data.buildings;
-                                _this.total_items = result.data.total_items;
-                                _this.total_pages = result.data.total_pages;
-
-                                if (_this.total_pages <= 1) {
-                                    _this.pageFlag = false;
+                            for (var i = 0; i < result.data.buildings.length; i++) {
+                                if (result.data.buildings[i].label) {
+                                    result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
                                 } else {
-                                    _this.pageFlag = true;
+                                    result.data.buildings[i].tags = [];
                                 }
 
-                            } else {
-                                _this.pageFlag = false;
-                                _this.buildingShowFlag = true;
-                                _this.total_items = 0;
                             }
+                            _this.buildList = result.data.buildings;
+                            _this.total_items = result.data.total_items;
+                            _this.total_pages = result.data.total_pages;
 
+                            if (_this.total_pages <= 1) {
+                                _this.pageFlag = false;
+                            } else {
+                                _this.pageFlag = true;
+                            }
 
                         } else {
                             _this.pageFlag = false;
                             _this.buildingShowFlag = true;
-                            _this.total_items = 0;
+                            _this.total_items = '--';
                         }
-
-                    } else {
-                        _this.pageFlag = false;
-                        _this.buildingShowFlag = true;
-                        _this.total_items = 0;
                     }
 
                 }, function (res) {
