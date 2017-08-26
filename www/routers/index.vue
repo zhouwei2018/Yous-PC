@@ -136,7 +136,7 @@
                                 <span><i id="bannerNum2"></i>+</span>
                             </li>
                             <li class="area03">
-                                <p>联合服务商</p>
+                                <p>渠道经纪人</p>
                                 <span><i id="bannerNum3"></i>+</span>
                             </li>
                             <li class="area04">
@@ -716,8 +716,8 @@
             //数字滚动
             this.show_num('#bannerNum1', 190000);
             this.show_num('#bannerNum2', 1000);
-            this.show_num('#bannerNum3', 2000);
-            this.show_num('#bannerNum4', 410);
+            this.show_num('#bannerNum3', 550);
+            this.show_num('#bannerNum4', 160);
 
             //top固定
             var lion_head = $('#lion_head'),
