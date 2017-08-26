@@ -223,7 +223,7 @@
                                         <li class="result-item" data-type="district" v-for="(item, index) in areaArray"
                                             :x="item.point.split('|')[0]"
                                             :y="item.point.split('|')[1]"
-                                            @click="searchChoose(item.id, '', item.name, $event)"><a>{{item.title}}</a>
+                                            @click="searchChoose(item.id, '', item.title, $event)"><a>{{item.title}}</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -439,7 +439,7 @@
             }, this_=this;
             axios.post(this.domainRoot+'api/GetServiceApiResult', paraObj)
                 .then(function (response) {
-                   // this_.areaArray = response.data.data.districts;
+                    this_.areaArray = response.data.data.districts;
                     this_.sizeArray = response.data.data.range_areas;
                     this_.priceArray =response.data.data.range_unit_prices;
                     this_.priceTotalArray = response.data.data.range_total_prices;
@@ -578,7 +578,7 @@
                 }
             },
             searchChoose:function(code, val, value, e){
-                $(e.target).closest('.s-li').removeClass('choose').find('.chv').html(value);
+                $(e.target).parents('.s-li').removeClass('choose').find('.chv').html(value);
                 switch ($(e.target).closest('li').attr('data-type')){
                     case 'district':
                         var tli = $(e.target).closest('li');
