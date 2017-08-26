@@ -595,6 +595,13 @@
                     if (result.success) {
                         if (result.data.houses.length) {
                             _this.buildList = result.data.houses;
+
+                            for(var i=0;i<_this.buildList.length; i++){
+                                if(_this.buildList[i].refreshTime){
+                                    _this.buildList[i].refreshTime=_this.buildList[i].refreshTime.replace('T00:00:00','');
+                                }
+                            }
+
                             _this.total_items = result.data.total_items;
                         } else {
                             _this.house_res_show = false; //结果不展示
