@@ -221,8 +221,8 @@
                         <div class="sort-list clearfix fl" @click="buildSort($event)">
                             <a href="javascript:;" class="tag">默认</a>
                             <a href="javascript:;">最新</a>
-                            <a href="javascript:;">价格<span></span></a>
-                            <a href="javascript:;">面积<span></span></a>
+                            <a href="javascript:;" id="priceSort">价格<span></span></a>
+                            <a href="javascript:;" id="areaSort">面积<span></span></a>
                         </div>
                         <div class="fr sort-meet-result ">共 <b v-text="total_items"></b> 套房源符合条件</div>
                     </div>
@@ -651,14 +651,14 @@
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'AD'; //面积降序：AD
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'AD'; //价格降序：PD
+                                this.orderby = 'PD'; //价格降序：PD
                             }
                         } else {
                             target.find('span').addClass('up').html('↑');
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'AA'; //面积升序：AA
                             } else if (target.attr('id') == 'priceSort') {
-                                this.orderby = 'AD'; //价格升序：PA
+                                this.orderby = 'PA'; //价格升序：PA
                             }
                         }
                     } else {
