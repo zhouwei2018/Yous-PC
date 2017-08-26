@@ -148,8 +148,7 @@
                         <div class="category-item-title">
                             <h2 class="fl"><i class="detail-icon introduce"></i>{{buildingName}}简介</h2>
                             <router-link :to="{path:'/detail',query:{building_id:building_id,name:3}}"
-                                         class="show-link mr20"
-                                         target="_blank">查看详情
+                                         class="show-link mr20">查看详情
                             </router-link>
                         </div>
                         <table>
