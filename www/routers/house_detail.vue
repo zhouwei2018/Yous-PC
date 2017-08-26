@@ -50,10 +50,6 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="panorama">
-                            <img src="../resources/images/detail/panorama.png" id="panorama_btn" class="cur-pointer"
-                                 width="94" height="62" alt="720°全景">
-                        </div>
                         <div class="carousel-small-box">
                             <div class="carousel-small-prev toggle-button" id="carousel_small_prev">
                                 <img src="../resources/images/detail/small-prev.png" width="20" height="62" alt="">
@@ -107,12 +103,12 @@
                         </dd>
                     </dl>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180">楼层：<i>12/26</i></span>
+                        <span class="mr180">楼层：<i>{{locat_floor}}/{{floors}}</i></span>
                         <span>朝向：<i>朝南</i></span>
                     </p>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180">层高：<i>m²</i></span>
-                        <span>物业费：<span>元/<em class="font-num">m²</em>·天</span></span>
+                        <span class="mr180">层高：<i v-text="floor_height+'m²'"></i></span>
+                        <span>物业费：<span>{{property_fee}}元/<em class="font-num">m²</em>·天</span></span>
                     </p>
                     <p class="building-address clearfix">
                         <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap"
@@ -364,15 +360,17 @@
                 address: "",//地址
                 daily_price: "--",//价格
                 monthly_price: "--",//月价格
-                min_renge_area: "",
-                max_renge_area: "",
                 workstation: "--",
                 lease_nums: "",
+
+                locat_floor:"--",
+                floors:"--",
+                floor_height:"--",
 
 
                 //物业信息
                 property_company: '', //物业公司
-                property_fee: '', //物业费
+                property_fee: '--', //物业费
                 opening_date: '',// 建成年代
                 building_level: '', //楼盘级别
                 property_rights: '', //产权性质
@@ -551,6 +549,12 @@
                             _this.workstation = result.data.workstation == null ? '--' : result.data.workstation;
                             _this.daily_price = result.data.daily_price == null ? '--' : result.data.daily_price;
                             _this.monthly_price = result.data.monthly_price == null ? '--' : result.data.monthly_price;
+
+                            _this.locat_floor = result.data.locat_floor == null ? '--':result.data.locat_floor;
+                            _this.floors = result.data.floors == null ? '--':result.data.floors;
+                            _this.floor_height = result.data.floor_height == null ? '--':result.data.floor_height;
+                            _this.address = result.data.address;
+                            _this.address = result.data.address;
                             _this.address = result.data.address;
                         }
                     }
@@ -564,36 +568,37 @@
             getProperty(){
                 var _this = this;
 
-                this.state = this.$route.query.state;
                 this.$http.post(
                     this.$api,
                     {
                         "parameters": {
-                            "hourse_id": this.hourse_id
+                            "building_id": this.building_id,
+                            "area": "",
+                            "price_dj": "[0,1000000]",
+                            "price_zj": "",
+                            "orderby": "",
+                            "curr_page": "1",
+                            "items_perpage": "10"
                         },
                         "foreEndType": 2,
-                        "code": "30000004"
+                        "code": "30000002"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         if (result.data) {
 
-                            _this.district = result.data.district == null ? '区域' : result.data.district; //区域
-                            _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
-
                             _this.building_images = result.data.building_images;
 
-                            _this.min_renge_area = result.data.min_renge_area == null ? '--' : result.data.min_renge_area;
-                            _this.max_renge_area = result.data.max_renge_area == null ? '--' : result.data.max_renge_area;
-                            _this.workstation = result.data.workstation == null ? '--' : result.data.workstation;
-                            _this.lease_nums = result.data.lease_nums == null ? '--' : result.data.lease_nums;
                             _this.positionData = result.data.longitude + ',' + result.data.latitude;
 
                             //物业信息
                             _this.property_company = result.data.property_company; //物业公司
                             _this.property_fee = result.data.property_fee; //物业费
-                            _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
+                            if(result.data.opening_date){
+                                _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
+                            }
+
                             _this.building_level = result.data.building_level; //楼盘级别
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积

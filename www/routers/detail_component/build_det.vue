@@ -177,6 +177,12 @@
 
         mounted(){
             this.getDetail();
+        },
+        created(){
+            document.body.style.backgroundColor='#fff';
+        },
+        beforeDestroy(){
+            document.body.style.backgroundColor='#f5f5f5';
         }
     }
 </script>
