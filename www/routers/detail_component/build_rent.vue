@@ -505,7 +505,7 @@
             //分页
             change(page){
                 this.curPage = page;
-                this.getList(); //获取楼盘列表
+                this.getDetList(); //获取楼盘列表
                 $(window).scrollTop(0);
             },
 
