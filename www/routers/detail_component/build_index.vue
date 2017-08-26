@@ -322,7 +322,6 @@
 
                         <div class="sort-list clearfix fl" @click="buildSort($event)">
                             <a href="javascript:;" class="tag">默认</a>
-                            <a href="javascript:;">最新</a>
                             <a href="javascript:;" id="priceSort">价格<span></span></a>
                             <a href="javascript:;" id="areaSort">面积<span></span></a>
                         </div>
