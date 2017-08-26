@@ -200,41 +200,41 @@
                     <div class="fl clearfix space_top_right">
                         <div class="spa_top clearfix">
                             <div class="spa_top_left fl spa_item">
-                                <img src="../resources/images/index/space02.jpg" alt=""/>
+                                <img src="../resources/images/index/space02.png" alt=""/>
 
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
-                                    <span>简约风格</span>
+                                    <span>时尚简约风格</span>
                                 </div>
                             </div>
                             <div class="spa_top_right fl spa_item">
-                                <img src="../resources/images/index/space03.jpg" alt=""/>
-
-                                <div class="ys_bg"></div>
-                                <div class="space_bg_wrap">
-                                    <div class="space_bg"></div>
-                                    <span>时尚灵活风格</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="spa_bot clearfix">
-                            <div class="spa_bot_left fl spa_item">
-                                <img src="../resources/images/index/space04.jpg" alt=""/>
-
-                                <div class="ys_bg"></div>
-                                <div class="space_bg_wrap">
-                                    <div class="space_bg"></div>
-                                    <span>温馨暖色风格</span>
-                                </div>
-                            </div>
-                            <div class="spa_bot_right fl spa_item">
-                                <img src="../resources/images/index/space05.jpg" alt=""/>
+                                <img src="../resources/images/index/space03.png" alt=""/>
 
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
                                     <div class="space_bg"></div>
                                     <span>大气通透风格</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="spa_bot clearfix">
+                            <div class="spa_bot_left fl spa_item">
+                                <img src="../resources/images/index/space04.png" alt=""/>
+
+                                <div class="ys_bg"></div>
+                                <div class="space_bg_wrap">
+                                    <div class="space_bg"></div>
+                                    <span>经典简约风格</span>
+                                </div>
+                            </div>
+                            <div class="spa_bot_right fl spa_item">
+                                <img src="../resources/images/index/space05.png" alt=""/>
+
+                                <div class="ys_bg"></div>
+                                <div class="space_bg_wrap">
+                                    <div class="space_bg"></div>
+                                    <span>现代雅致风格</span>
                                 </div>
                             </div>
                         </div>
