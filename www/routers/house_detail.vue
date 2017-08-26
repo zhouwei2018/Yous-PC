@@ -6,6 +6,11 @@
     .anchorBL {
         display: none !important;
     }
+    .detail_ld_name{
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 69px !important;
+    }
 
 </style>
 
@@ -28,6 +33,10 @@
                 </ul>
             </div>
             <!--搜索 end-->
+            <!--logo-->
+            <div class="building-label clearfix">
+                <h2 class="detail_ld_name" v-text="buildingName"></h2>
+            </div>
 
             <!--img detail-->
             <div class="common-info clearfix">
@@ -69,45 +78,42 @@
 
                 <div class="building-message">
 
-                    <!--logo-->
-                    <div class="building-label clearfix">
-                        <div class="building-tag">
-                            <h1 v-text="buildingName"></h1>
-                            <ul class="tag-item">
-                                <!--<li>互联网</li>-->
-                                <li v-for="item in labels" v-text="item"></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="price-box clearfix mt20">
+                    <div class="price-box clearfix mt20 pr">
                         <p class="building-price">
-                            <strong v-text="month_price">&nbsp;</strong><span>万元/月</span>
+                            <strong v-text="monthly_price">&nbsp;</strong><span>万元/月</span>
                             <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em
                                 class="font-num">m²</em>·天</span>
                         </p>
+                        <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
+                            <div class="attention-share-ewm none">
+                                <div class="build_weixin_img" id="ys_weixin_img"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <dl class="rental-info clearfix">
                         <dd>
-                            <i class="bold db rent_num" v-text="total_items"></i>
-                            <span>待租套数</span>
+                            <i class="bold db rent_num" v-text="room_area+' m²'"></i>
+                            <span>面积</span>
                         </dd>
                         <dd>
                         <span class="bold db rent_num">
-                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
-                                                                               v-text="max_renge_price"></i> 元/<em
-                                class="font-num">m²</em>·天</span>
-                            <span>价格范围</span>
+                            <i class="bold" v-text="workstation"></i>个</span>
+                            <span>工位</span>
                         </dd>
                         <dd>
-                        <span class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
-                                                                                                         v-text="max_renge_area"></i><em
-                                class="font-num"> m²</em></span>
-                            <span>面积范围</span>
+                            <span class="bold db rent_num"><i class="bold">精装修</i></span>
+                            <span>装修</span>
                         </dd>
                     </dl>
-
+                    <p class="building-address mb20 clearfix">
+                        <span class="mr180">楼层：<i>12/26</i></span>
+                        <span>朝向：<i>朝南</i></span>
+                    </p>
+                    <p class="building-address mb20 clearfix">
+                        <span class="mr180">层高：<i>m²</i></span>
+                        <span>物业费：<span>元/<em class="font-num">m²</em>·天</span></span>
+                    </p>
                     <p class="building-address clearfix">
                         <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap"
                                                                                        class="show-map">&nbsp;查看地图</a>
@@ -128,13 +134,6 @@
                             <a href="javascript:;" class="call_back_btn" @click="modal5 = true">免费回拨</a>
                         </div>
                     </div>
-
-                    <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
-                        <div class="attention-share-ewm none">
-                            <div class="build_weixin_img" id="ys_weixin_img"></div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -346,8 +345,6 @@
                     telephone: ''
                 },
 
-                labels: [],//标签
-
                 building_images: [
                     'http://116.62.71.76:81/default-youshi.png',
                     'http://116.62.71.76:81/default-youshi.png',
@@ -358,18 +355,18 @@
 
                 buildingName: "", //楼盘name
 
-                total_items: 0,
+                room_area: '--',
 
                 positionData: "", //经纬度
 
                 building_id: this.$route.query.building_id, //楼盘id
+                house_id: this.$route.query.house_id, //楼栋id
                 address: "",//地址
                 daily_price: "--",//价格
-                month_price: "--",//价格
+                monthly_price: "--",//月价格
                 min_renge_area: "",
                 max_renge_area: "",
-                min_renge_price: "",
-                max_renge_price: "",
+                workstation: "--",
                 lease_nums: "",
 
 
@@ -465,7 +462,6 @@
                 this.formInline4.InputCode = ''; //
             },
 
-
             sendCode3: function () {
 
                 if ($('#form_send3').valid()) {
@@ -520,7 +516,7 @@
                         this.$refs.timerbtn2.stop(); //关闭倒计时
                         this.formInline2.telephone = ''; //
                         this.formInline2.InputCode = ''; //
-                        this.modal5= false;
+                        this.modal5 = false;
 
                     }, function (response) {
                         this.$Message.error('API接口报错-网络错误!');
@@ -537,7 +533,6 @@
             getDetail(){
                 var _this = this;
 
-                this.building_id = this.$route.query.building_id;
                 this.$http.post(
                     this.$api,
                     {
@@ -552,9 +547,11 @@
                     if (result.success) {
                         if (result.data) {
                             _this.buildingName = result.data.building_name;
-                            _this.labels = result.data.labels.split('、');
+                            _this.room_area = result.data.room_area == null ? '--' : result.data.room_area;
+                            _this.workstation = result.data.workstation == null ? '--' : result.data.workstation;
                             _this.daily_price = result.data.daily_price == null ? '--' : result.data.daily_price;
-                            _this.month_price = result.data.month_price == null ? '--' : result.data.month_price;
+                            _this.monthly_price = result.data.monthly_price == null ? '--' : result.data.monthly_price;
+                            _this.address = result.data.address;
                         }
                     }
 
@@ -567,23 +564,15 @@
             getProperty(){
                 var _this = this;
 
-                this.building_id = this.$route.query.building_id;
                 this.state = this.$route.query.state;
                 this.$http.post(
                     this.$api,
                     {
                         "parameters": {
-                            "building_id": this.building_id,
-                            "state": this.state,
-                            "area": "",
-                            "price_dj": "[0,1000000]",
-                            "price_zj": "",
-                            "orderby": "",
-                            "curr_page": "1",
-                            "items_perpage": "10"
+                            "hourse_id": this.hourse_id
                         },
                         "foreEndType": 2,
-                        "code": "30000002"
+                        "code": "30000004"
                     }
                 ).then(function (res) {
                     var result = JSON.parse(res.bodyText);
@@ -592,21 +581,19 @@
 
                             _this.district = result.data.district == null ? '区域' : result.data.district; //区域
                             _this.business = result.data.business == null ? '商圈' : result.data.business; //商圈
-                            _this.address = '[' + _this.district + '-' + _this.business + '] ' + result.data.address;
 
                             _this.building_images = result.data.building_images;
 
                             _this.min_renge_area = result.data.min_renge_area == null ? '--' : result.data.min_renge_area;
                             _this.max_renge_area = result.data.max_renge_area == null ? '--' : result.data.max_renge_area;
-                            _this.min_renge_price = result.data.min_renge_price == null ? '--' : result.data.min_renge_price;
-                            _this.max_renge_price = result.data.max_renge_price == null ? '--' : result.data.max_renge_price;
+                            _this.workstation = result.data.workstation == null ? '--' : result.data.workstation;
                             _this.lease_nums = result.data.lease_nums == null ? '--' : result.data.lease_nums;
                             _this.positionData = result.data.longitude + ',' + result.data.latitude;
 
                             //物业信息
                             _this.property_company = result.data.property_company; //物业公司
                             _this.property_fee = result.data.property_fee; //物业费
-                            _this.opening_date = result.data.opening_date.replace('0:00:00',''); // 建成年代
+                            _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
                             _this.building_level = result.data.building_level; //楼盘级别
                             _this.property_rights = result.data.property_rights; //产权性质
                             _this.building_area = result.data.building_area;  //建筑面积
