@@ -237,7 +237,7 @@
 
                     <ul class="detail-office-list">
                         <li v-for="item in buildList">
-                            <a href="javascript:;" target="_blank">
+                            <router-link target="_blank" :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
                                 <div class="list-img">
                                     <img :src="item.housing_icon" alt="">
                                 </div>
@@ -260,7 +260,7 @@
                                         <span>更新于：{{item.refreshTime}}</span>
                                     </div>
                                 </div>
-                            </a>
+                            </router-link>
                         </li>
                     </ul>
 
