@@ -250,7 +250,7 @@
 
                                 <div class="fl">
                                     <div class="help_wrap">
-                                        <a href="javascript:;" @click="modal5 = true">帮我找楼</a>
+                                        <a href="javascript:;" @click="help_find">帮我找楼</a>
                                     </div>
 
                                     <p>专业、可靠、免费提供一对一全程找房服务</p>
@@ -504,31 +504,9 @@
                 },
 
                 //弹窗城市和商圈选择
-                cityList: [
-                    {
-                        value: '北京市',
-                        label: '北京市'
-                    }
-                ],
+                cityList: [],
 
-                trade_areaList: [
-                    {
-                        value: 'CBD',
-                        label: 'CBD'
-                    },
-                    {
-                        value: '朝阳门',
-                        label: '朝阳门'
-                    },
-                    {
-                        value: '大望路',
-                        label: '大望路'
-                    },
-                    {
-                        value: '三里屯',
-                        label: '三里屯'
-                    }
-                ],
+                trade_areaList: [],
 
             }
         },
@@ -707,6 +685,50 @@
                         clearInterval(powertimer);
                     }
                 }, interTime);
+            },
+
+            //帮我找楼点击
+            help_find(){
+                this.modal5 = true;
+                this.loadDistrict();
+            },
+
+
+            //获取区域
+            loadDistrict: function () {
+
+                this.$http.post(
+                    this.$api,
+                    {
+                        parameters: {
+                            "search_keywork": "",
+                            "area": "",
+                            "price_dj":"",
+                            "price_zj": "",
+                            "label":"",
+                            "zoom": 12,
+                        },
+                        "foreEndType": 2,
+                        "code": "30000005"
+                    }
+                ).then(function (response) {
+                    var result = JSON.parse(response.bodyText);
+                    if (result.success) {
+                        for(var i=0;i<result.data.houses.length; i++){
+                            var obj={
+                                value:result.data.houses[i].id,
+                                label:result.data.houses[i].title
+                            }
+                            this.cityList.push(obj);
+                        }
+                    } else {
+                        this.$Message.error(reslute.message);
+                    }
+
+                }, function (response) {
+                    this.$Message.error('API接口报错-网络错误!');
+
+                });
             },
 
         },
