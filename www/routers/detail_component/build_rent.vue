@@ -230,14 +230,15 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20  class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
 
                     <ul class="detail-office-list">
                         <li v-for="item in buildList">
-                            <router-link target="_blank" :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
+                            <router-link target="_blank"
+                                         :to="{path:'/house_det',query:{building_id:building_id,house_id:item.id}}">
                                 <div class="list-img">
                                     <img :src="item.housing_icon" alt="">
                                 </div>
@@ -404,7 +405,7 @@
                 price_dj: "",
                 price_zj: "",
 
-                orderby:"D",
+                orderby: "D",
 
                 buildList: [], //楼盘列表，搜索结果
                 total_items: 0, //结果总数
@@ -431,8 +432,8 @@
 
             cancel_one(){
                 this.$refs.timerbtn2.stop(); //关闭倒计时
-                this.formInline2.telephone=''; //
-                this.formInline2.InputCode=''; //
+                this.formInline2.telephone = ''; //
+                this.formInline2.InputCode = ''; //
             },
 
             sendCode2: function () {
@@ -487,8 +488,8 @@
                         }
 
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                         this.modal6 = false;
 
                     }, function (response) {
@@ -496,8 +497,8 @@
                         this.loading = false;
 
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                     });
                 }
             },
@@ -593,6 +594,11 @@
                         if (result.data.houses.length) {
 
                             _this.buildList = result.data.houses;
+
+                            for (var i = 0; i < _this.buildList.length; i++) {
+                                _this.buildList[i].refreshTime = _this.buildList[i].refreshTime.replace('T00:00:00', '');
+                            }
+
                             _this.total_items = result.data.total_items == null ? '--' : result.data.total_items;
 
                             _this.total_pages = result.data.total_pages;
