@@ -342,7 +342,7 @@
                             </template>
 
 
-                            <a href="javascript:;" class="del_all" @click="del_all()"><i class="sem_icon"></i>全部清除</a>
+                            <span class="del_all cursor" @click="del_all()"><i class="sem_icon"></i>全部清除</span>
 
                         </div>
                     </div>
@@ -417,7 +417,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20   class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -487,7 +487,8 @@
                                        placeholder="请输入您的手机号码"
                                        v-model="formInline2.telephone">
                             </form>
-                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2" second="60"></TimerBtn>
+                            <TimerBtn ref="timerbtn2" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode2"
+                                      second="60"></TimerBtn>
                         </div>
                     </Form-item>
                     <div class="popItem">
@@ -634,8 +635,8 @@
 
             cancel_one(){
                 this.$refs.timerbtn2.stop(); //关闭倒计时
-                this.formInline2.telephone=''; //
-                this.formInline2.InputCode=''; //
+                this.formInline2.telephone = ''; //
+                this.formInline2.InputCode = ''; //
             },
 
             sendCode2: function () {
@@ -690,8 +691,8 @@
                         }
 
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                         this.modal6 = false;
 
                     }, function (response) {
@@ -699,8 +700,8 @@
                         this.loading = false;
 
                         this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone=''; //
-                        this.formInline2.InputCode=''; //
+                        this.formInline2.telephone = ''; //
+                        this.formInline2.InputCode = ''; //
                     });
                 }
             },
@@ -930,7 +931,7 @@
                 this.buildingShowFlag = false;
                 this.total_items = '--';
 
-                this.search_keywork=this.search_keywork.replace(/(^\s*)|(\s*$)/g,'');
+                this.search_keywork = this.search_keywork.replace(/(^\s*)|(\s*$)/g, '');
 
                 this.$http.post(
                     this.$api,
@@ -1205,6 +1206,14 @@
             //自定义面积
             self_area(){
                 this.area = [this.bArea, this.eArea];
+                $('#areaSort_wrap >a').removeClass('active');
+
+                for(var i=0;i<$('.selected_item >a').length;i++){
+                    if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_are') != -1) {
+                        $('.selected_item >a').eq(i).attr('data-sortType','sort_are_9').html(this.bArea+'-'+this.eArea+'m²');
+                    }
+                }
+
                 this.getList();
             },
 
