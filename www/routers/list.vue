@@ -215,13 +215,13 @@
                                     <div class="interval ma0">
                                         <form action="">
                                             <input type="text" autocomplete="off" id="beginPrice4Day" name="startprice"
-                                                   maxlength="5"
+                                                   maxlength="6"
                                                    v-model="bNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
                                             <samp>-</samp>
                                             <input type="text" autocomplete="off" id="endPrice4Day" name="endprice"
-                                                   maxlength="5"
+                                                   maxlength="6"
                                                    v-model="eNum"
                                                    onkeyup="this.value=this.value.replace(/[^\d.]/g,'');"
                                                    onafterpaste="this.value=this.value.replace(/[^\d.]/g,'')">
