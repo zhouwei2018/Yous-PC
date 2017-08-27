@@ -8,12 +8,13 @@
         <header1></header1>
         <!--update start-->
         <div update>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide slide1">
-                    <img src="../resources/images/update/update.jpg" alt="">
-                </div>
-                <div class="swiper-slide pr slide2">
+            <div class="update-wrapper">
+                <div class="update-slide slide1">
                     <img src="../resources/images/update/update_01.png" alt="">
+                </div>
+                <div class="update-slide slide2">
+                    <img src="../resources/images/update/update_02.png" alt="">
+                    <img class="slide_two_title" src="../resources/images/update/up_icon/slide_two_title.png" alt="">
                     <div class="up_two_prag" id="animate_2">
                         <p>企业升级服务部以提供专业化服务为宗旨，解决用户在发展过程中遇到的有碍其成长的资金、人力、风险控制等困扰因素为目标，以办公空间为载体，
                             通过提供财税服务、法务服务、人力资源服务、商学院服务、FA服务等内容，与客户建立深度链接、超强黏性，进而带来新的办公空间需求，通过对空
@@ -29,7 +30,8 @@
                         <span><i class="up_icon5"></i>FA服务</span>
                     </div>
                 </div>
-                <div class="swiper-slide slide3">
+                <div class="update-slide slide3">
+                    <img src="../resources/images/update/update_03.png" alt="">
                     <ul class="update_ser_wrap" id="animate2">
                         <li class="clearfix">
                                 <span class="fl up_left_box">
@@ -70,7 +72,8 @@
                         <p>登录幼狮科技企业服务平台，您可以享受舒适的办公空间，结交优质的商业合作伙伴，获得高效的专属服务。</p>
                     </div>
                 </div>
-                <div class="swiper-slide slide4">
+                <div class="update-slide slide4">
+                    <img src="../resources/images/update/update_04.png" alt="">
                     <div class="serice_four_right" id="animate4_1">
                         <h3>财/法/税支持</h3>
                         <p>数家知名会计事务所／律师事务所，针对不同行业，</p>
@@ -99,7 +102,8 @@
                     <img class="male_icon" src="../resources/images/update/male_icon.png" alt="">
 
                 </div>
-                <div class="swiper-slide slide5">
+                <div class="update-slide slide5">
+                    <img src="../resources/images/update/update_05.png" alt="">
                     <img class="light_icon" src="../resources/images/update/light_icon.png" alt="">
 
                     <div class="serice_five_right" id="animate5_1">
@@ -115,7 +119,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide slide6">
+                <div class="update-slide slide6">
                     <img class="female_icon" src="../resources/images/update/female_icon.png" alt="">
                     <div class="serice_six" id="animate6">
                         <h3 class="mb10">幼狮商学院</h3>
@@ -124,7 +128,6 @@
                         <p>同时发起并展开论坛、讲座、沙龙等丰富的交流活动。</p>
                     </div>
                     <img class="four_icon" src="../resources/images/update/four_icon.png" alt="">
-                    <img class="hr_icon" src="../resources/images/update/hr_icon.png" alt="">
                     <div class="serice_seven half" id="animate6_half">
                         <h3 class="mb10">人力资源服务</h3>
                         <p>根据企业发展战略的要求，及对人才的需求</p>
@@ -132,7 +135,8 @@
                         <p>源的有效开发与优化配置</p>
                     </div>
                 </div>
-                <div class="swiper-slide slide7">
+                <div class="update-slide slide7">
+                    <img src="../resources/images/update/update_07.png" alt="">
                     <div class="serice_seven" id="animate7">
                         <h3 class="mb10">人力资源服务</h3>
                         <p>根据企业发展战略的要求，及对人才的需求</p>
@@ -140,31 +144,6 @@
                         <p>源的有效开发与优化配置</p>
                     </div>
                     <img class="hr_icon_1" src="../resources/images/update/hr_icon.png" alt="">
-
-                    <div footer>
-                        <div class="contents foot_head clearfix">
-                            <div class="fl">
-                                <h3>北京幼狮科技有限公司</h3>
-                                <p><i class="commerce_tel"></i>400-078-8800</p>
-                                <p class="lion_address">地址：北京市朝阳区东三环中路39号建外SOHO东区A座2503</p>
-                            </div>
-                            <div class="fr">
-                                <img src="../resources/images/ys_weixin.jpg" alt="幼狮微信"
-                                     style="width: 98px;height: 98px;"/>
-                                <span class="weixin_text">幼狮官网</span>
-                            </div>
-                        </div>
-                        <div class="foot_bot">
-                            <div class="contents">
-                                <span class="bottom_copyright fl">北京幼狮科技有限公司 保留所有权利&nbsp;&nbsp;京ICP备20176444</span>
-                                <div class="fr">
-                                      <span>
-                                          <router-link :to="{ path: '/about',query:{name:0}}">关于我们</router-link>
-                                      </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
