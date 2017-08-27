@@ -128,12 +128,6 @@
                         <p>同时发起并展开论坛、讲座、沙龙等丰富的交流活动。</p>
                     </div>
                     <img class="four_icon" src="../resources/images/update/four_icon.png" alt="">
-                    <div class="serice_seven half" id="animate6_half">
-                        <h3 class="mb10">人力资源服务</h3>
-                        <p>根据企业发展战略的要求，及对人才的需求</p>
-                        <p>为企业提供人才服务，从而促进企业人力资</p>
-                        <p>源的有效开发与优化配置</p>
-                    </div>
                 </div>
                 <div class="update-slide slide7">
                     <img src="../resources/images/update/update_07.png" alt="">
@@ -159,10 +153,36 @@
 
     export default {
         components: {header1, footer1},
+        data(){
+          return {
+              scrollUpdate: true,
+          }
+        },
         mounted(){
-            $(window).scrollTop(0);
+            var _this = this;
+            $(window).on('scroll', function () {
+                if (_this.scrollUpdate) {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop >= 150 && scrollTop <= 290) {
+                        $('#animate').addClass('animated infinite bounceInUp');
+                        setTimeout(function () {
+                            $('#animate').removeClass('animated infinite bounceInUp')
+                        }, 1000);
+
+                        $('#animate_2').addClass('animated infinite swing');
+                        setTimeout(function () {
+                            $('#animate_2').removeClass('animated infinite swing')
+                        }, 1000);
+                    } else if (scrollTop < 90) {
+
+                    }
+                }
+            });
 
 
+        },
+        destroyed () {
+            this.scrollUpdate = false;
         }
     }
 </script>
