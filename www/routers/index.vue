@@ -105,14 +105,14 @@
                             <div class="swiper-slide">
                                 <a href="javascript:;">
                                     <div class="banner_img banner03">
-
+                                        <img id="animate_index4" src="../resources/images/index/ban_word3.png" alt="">
                                     </div>
                                 </a>
                             </div>
                             <div class="swiper-slide">
                                 <a href="javascript:;">
                                     <div class="banner_img banner04">
-                                        <img id="animate_index4" src="../resources/images/index/ban_word4.png" alt="">
+
                                     </div>
                                 </a>
                             </div>
