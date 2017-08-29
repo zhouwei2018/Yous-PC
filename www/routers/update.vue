@@ -154,40 +154,42 @@
     export default {
         components: {header1, footer1},
         data(){
-          return {
-              scrollUpdate: true,
-          }
+            return {
+                scrollUpdate: true,
+            }
         },
         mounted(){
             var _this = this;
             $(window).on('scroll', function () {
                 if (_this.scrollUpdate) {
                     var scrollTop = $(window).scrollTop();
-                    console.log(scrollTop);
-                    if (scrollTop >= 150 && scrollTop < 290) {
-                        $('#animate').addClass('animated infinite bounceInUp');
+                    if ($('#animate').offset().top < scrollTop + $(window).height()-200) {
+                        $('#animate').addClass('animated bounceInUp');
+                        $('#animate_2').addClass('animated swing');
+                    }
 
-                        $('#animate_2').addClass('animated infinite swing');
+                    if ($('#animate2').offset().top < scrollTop + $(window).height()-200) {
+                        $('#animate2').addClass('animated bounceInLeft');
+                        $('#animate3').addClass('animated bounceInUp');
+                    }
 
-                    } else if (scrollTop >620 && scrollTop < 750) {
-                        $('#animate2').addClass('animated infinite bounceInLeft');
+                    if ($('#animate4_1').offset().top < scrollTop + $(window).height()-200) {
+                        $('#animate4_1').addClass('animated fadeInRight');
+                        $('#animate4_2').addClass('animated fadeInUp');
+                    }
 
-                        $('#animate3').addClass('animated infinite bounceInUp');
+                    if ($('#animate5_1').offset().top < scrollTop + $(window).height()-200) {
+                        $('#animate5_1').addClass('animated flipInY');
+                        $('#animate5_2').addClass('animated fadeInUpBig');
+                    }
 
-                    }else if (scrollTop >1000 && scrollTop < 1400) {
-                        $('#animate4_1').addClass('animated infinite fadeInRight');
-                        $('#animate4_2').addClass('animated infinite fadeInUp');
+                    if ($('#animate6').offset().top < scrollTop + $(window).height()-200) {
+                        $('#animate6').addClass('animated fadeInRight');
+                        $('#animate6_half').addClass('animated fadeInRight');
+                    }
 
-                    }else if (scrollTop >2000 && scrollTop < 2400) {
-                        $('#animate5_1').addClass('animated infinite flipInY');
-                        $('#animate5_2').addClass('animated infinite fadeInUpBig');
-
-                    }else if (scrollTop >2700 && scrollTop < 2800) {
-                        $('#animate6').addClass('animated infinite fadeInRight');
-
-                        $('#animate6_half').addClass('animated infinite fadeInRight');
-                    }else if (scrollTop >3000 ) {
-                        $('#animate7').addClass('animated infinite fadeInUp');
+                    if ($('#animate7').offset().top < scrollTop + $(window).height()-200) {
+                        $('#animate7').addClass('animated fadeInUp');
                     }
                 }
             });
