@@ -91,6 +91,7 @@
                             <div class="swiper-slide">
                                 <a href="javascript:;">
                                     <div class="banner_img banner01">
+                                        <img class="banner_tips" src="../resources/images/index/banner1_icon.png" alt="">
                                         <img id="animate_index1" src="../resources/images/index/ban_word1.png" alt="">
                                     </div>
                                 </a>
