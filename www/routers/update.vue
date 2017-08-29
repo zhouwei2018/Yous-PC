@@ -166,59 +166,28 @@
                     console.log(scrollTop);
                     if (scrollTop >= 150 && scrollTop < 290) {
                         $('#animate').addClass('animated infinite bounceInUp');
-                        setTimeout(function () {
-                            $('#animate').removeClass('animated infinite bounceInUp')
-                        }, 1000);
 
                         $('#animate_2').addClass('animated infinite swing');
-                        setTimeout(function () {
-                            $('#animate_2').removeClass('animated infinite swing')
-                        }, 1000);
+
                     } else if (scrollTop >620 && scrollTop < 750) {
                         $('#animate2').addClass('animated infinite bounceInLeft');
-                        setTimeout(function () {
-                            $('#animate2').removeClass('animated infinite bounceInLeft')
-                        }, 1000);
 
                         $('#animate3').addClass('animated infinite bounceInUp');
-                        setTimeout(function () {
-                            $('#animate3').removeClass('animated infinite bounceInUp')
-                        }, 1000);
+
                     }else if (scrollTop >1000 && scrollTop < 1400) {
                         $('#animate4_1').addClass('animated infinite fadeInRight');
-                        setTimeout(function () {
-                            $('#animate4_1').removeClass('animated infinite fadeInRight')
-                        }, 1000);
-
                         $('#animate4_2').addClass('animated infinite fadeInUp');
-                        setTimeout(function () {
-                            $('#animate4_2').removeClass('animated infinite fadeInUp')
-                        }, 1000);
+
                     }else if (scrollTop >2000 && scrollTop < 2400) {
                         $('#animate5_1').addClass('animated infinite flipInY');
-                        setTimeout(function () {
-                            $('#animate5_1').removeClass('animated infinite flipInY')
-                        }, 1000);
-
                         $('#animate5_2').addClass('animated infinite fadeInUpBig');
-                        setTimeout(function () {
-                            $('#animate5_2').removeClass('animated infinite fadeInUpBig')
-                        }, 1000);
+
                     }else if (scrollTop >2700 && scrollTop < 2800) {
                         $('#animate6').addClass('animated infinite fadeInRight');
-                        setTimeout(function () {
-                            $('#animate6').removeClass('animated infinite fadeInRight')
-                        }, 1000);
 
                         $('#animate6_half').addClass('animated infinite fadeInRight');
-                        setTimeout(function () {
-                            $('#animate6_half').removeClass('animated infinite fadeInRight')
-                        }, 1000);
                     }else if (scrollTop >3000 ) {
                         $('#animate7').addClass('animated infinite fadeInUp');
-                        setTimeout(function () {
-                            $('#animate7').removeClass('animated infinite fadeInUp')
-                        }, 1000);
                     }
                 }
             });
