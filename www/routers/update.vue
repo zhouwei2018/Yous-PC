@@ -16,7 +16,7 @@
                     <img src="../resources/images/update/update_02.png" alt="">
                     <img class="slide_two_title" src="../resources/images/update/up_icon/slide_two_title.png" alt="">
                     <div class="up_two_prag" id="animate_2">
-                        <p>企业升级服务部以提供专业化服务为宗旨，解决用户在发展过程中遇到的有碍其成长的资金、人力、风险控制等困扰因素为目标，以办公空间为载体，
+                        <p class="tc">企业升级服务部以提供专业化服务为宗旨，解决用户在发展过程中遇到的有碍其成长的资金、人力、风险控制等困扰因素为目标，以办公空间为载体，
                             通过提供财税服务、法务服务、人力资源服务、商学院服务、FA服务等内容，与客户建立深度链接、超强黏性，进而带来新的办公空间需求，通过对空
                             间租户的服务，衍生辐射到非空间用户，从而形成具有影响力的企业办公服务品牌，服务助力空间、空间承载服务，最终形成“有形的空间+无形的服务”
                             一站式全新办公服务体验。
@@ -163,7 +163,8 @@
             $(window).on('scroll', function () {
                 if (_this.scrollUpdate) {
                     var scrollTop = $(window).scrollTop();
-                    if (scrollTop >= 150 && scrollTop <= 290) {
+                    console.log(scrollTop);
+                    if (scrollTop >= 150 && scrollTop < 290) {
                         $('#animate').addClass('animated infinite bounceInUp');
                         setTimeout(function () {
                             $('#animate').removeClass('animated infinite bounceInUp')
@@ -173,8 +174,51 @@
                         setTimeout(function () {
                             $('#animate_2').removeClass('animated infinite swing')
                         }, 1000);
-                    } else if (scrollTop < 90) {
+                    } else if (scrollTop >620 && scrollTop < 750) {
+                        $('#animate2').addClass('animated infinite bounceInLeft');
+                        setTimeout(function () {
+                            $('#animate2').removeClass('animated infinite bounceInLeft')
+                        }, 1000);
 
+                        $('#animate3').addClass('animated infinite bounceInUp');
+                        setTimeout(function () {
+                            $('#animate3').removeClass('animated infinite bounceInUp')
+                        }, 1000);
+                    }else if (scrollTop >1000 && scrollTop < 1400) {
+                        $('#animate4_1').addClass('animated infinite fadeInRight');
+                        setTimeout(function () {
+                            $('#animate4_1').removeClass('animated infinite fadeInRight')
+                        }, 1000);
+
+                        $('#animate4_2').addClass('animated infinite fadeInUp');
+                        setTimeout(function () {
+                            $('#animate4_2').removeClass('animated infinite fadeInUp')
+                        }, 1000);
+                    }else if (scrollTop >2000 && scrollTop < 2400) {
+                        $('#animate5_1').addClass('animated infinite flipInY');
+                        setTimeout(function () {
+                            $('#animate5_1').removeClass('animated infinite flipInY')
+                        }, 1000);
+
+                        $('#animate5_2').addClass('animated infinite fadeInUpBig');
+                        setTimeout(function () {
+                            $('#animate5_2').removeClass('animated infinite fadeInUpBig')
+                        }, 1000);
+                    }else if (scrollTop >2700 && scrollTop < 2800) {
+                        $('#animate6').addClass('animated infinite fadeInRight');
+                        setTimeout(function () {
+                            $('#animate6').removeClass('animated infinite fadeInRight')
+                        }, 1000);
+
+                        $('#animate6_half').addClass('animated infinite fadeInRight');
+                        setTimeout(function () {
+                            $('#animate6_half').removeClass('animated infinite fadeInRight')
+                        }, 1000);
+                    }else if (scrollTop >3000 ) {
+                        $('#animate7').addClass('animated infinite fadeInUp');
+                        setTimeout(function () {
+                            $('#animate7').removeClass('animated infinite fadeInUp')
+                        }, 1000);
                     }
                 }
             });
