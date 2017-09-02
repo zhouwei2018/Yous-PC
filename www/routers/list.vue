@@ -417,7 +417,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -705,7 +705,6 @@
                     });
                 }
             },
-
 
             //模糊搜索
             searchClick(){
@@ -1121,8 +1120,7 @@
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_are') != -1) {
                             _this.chosenArr.splice(i, 1);
-                        }
-                        ;
+                        };
                     });
 
                     //显示已选择条件
@@ -1144,6 +1142,20 @@
                     sort_two_single = 2;
                 } else {
                     this.area = [];
+                    var curr_index = 0,n=0;
+                    if (this.chosenArr.length > 0) {
+                        this.chosenArr.forEach(function (val, i) {
+                            if (val.sortType.indexOf('sort_are') != -1) {
+                                n++;
+                                curr_index = i;
+                            };
+                        });
+
+                        if (n > 0) {
+                            this.chosenArr.splice(curr_index, 1);
+                        }
+                    }
+
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
                     max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
                     this.area.push(min);
@@ -1164,12 +1176,44 @@
                 this.compareStr3(comObj, this.chosenArr);
             },
 
+            //自定义面积
+            self_area(e){
+                var _this=this;
+                this.area = [Math.floor(this.bArea), Math.floor(this.eArea)];
+                $('#areaSort_wrap >a').removeClass('active');
+
+                if ($('.selected_item >a').length) {
+                    for (var i = 0; i < $('.selected_item >a').length; i++) {
+                        if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_are') != -1) {
+                            $('.selected_item >a').eq(i).attr('data-sortType', 'sort_are_9').html(this.bArea + '-' + this.eArea + 'm²<i class="sem_icon hover"></i>');
+                        }
+                    }
+                } else {
+                    //创建自定义的条件
+                    this.chosenFlag = true;
+
+                    this.chosenArr.push({
+                        id: $(e.target).id,
+                        sortType: 'sort_are_9',
+                        min: Math.floor($(e.target).parent().find('input').eq(0).val()),
+                        max: Math.floor($(e.target).parent().find('input').eq(1).val()),
+                        unit: 'm²',
+                        sort_two: 1 //min-max形式
+                    });
+                }
+
+                $('.sem_icon').off().click(function(){
+                    _this.del_one();
+                });
+
+                this.getList();
+            },
+
             //比较条件是否已存在（面积）
             compareStr3(obj, arr){
 
                 var findStr = obj.sortType.substring(0, 8);
-                var n = 0,
-                    curr_index = 0;
+                var n = 0, curr_index = 0;
                 if (arr.length > 0) {
                     arr.forEach(function (val, i) {
                         if (val.sortType.indexOf(findStr) != -1) {
@@ -1203,19 +1247,6 @@
                 this.getList();
             },
 
-            //自定义面积
-            self_area(){
-                this.area = [this.bArea, this.eArea];
-                $('#areaSort_wrap >a').removeClass('active');
-
-                for (var i = 0; i < $('.selected_item >a').length; i++) {
-                    if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_are') != -1) {
-                        $('.selected_item >a').eq(i).attr('data-sortType', 'sort_are_9').html(this.bArea + '-' + this.eArea + 'm²');
-                    }
-                }
-
-                this.getList();
-            },
 
             //自定义单价
             self_price_per(){
@@ -1397,7 +1428,6 @@
             //改变label特色筛选
             sel_feature_list(e){
                 $(e.target).addClass('active').siblings().removeClass('active');
-                debugger;
                 this.label = $(e.target).attr("id");
 
                 var comObj = {
