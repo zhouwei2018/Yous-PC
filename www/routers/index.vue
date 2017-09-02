@@ -737,7 +737,7 @@
         mounted: function () {
             $(window).scrollTop(0);
             //数字滚动
-            this.show_num('#bannerNum1', 215000);
+            this.show_num('#bannerNum1', 250000);
             this.show_num('#bannerNum2', 1000);
             this.show_num('#bannerNum3', 550);
             this.show_num('#bannerNum4', 160);
