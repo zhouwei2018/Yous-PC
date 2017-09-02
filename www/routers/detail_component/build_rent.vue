@@ -610,7 +610,6 @@
 
                             _this.buildingShowFlag = false;
                             _this.house_res_show = true;
-                            _this.pageFlag = true;
 
                         } else {
                             _this.house_res_show = false; //结果不展示

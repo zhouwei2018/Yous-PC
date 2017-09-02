@@ -810,7 +810,6 @@
                 }
             },
 
-
             //获取筛选条件
             getSortList(){
                 var _this = this;
@@ -1012,7 +1011,6 @@
 
                             _this.buildingShowFlag = false;
                             _this.house_res_show = true;
-                            _this.pageFlag = true;
 
                         } else {
                             _this.house_res_show = false; //结果不展示
