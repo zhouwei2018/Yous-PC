@@ -417,7 +417,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20        class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20         class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -713,9 +713,9 @@
 
             //删除一条
             del_one(e){
-
                 var _this = this;
-                var del_tip = $(e.currentTarget).parent().attr('data-sortType');
+                var del_tip = $(e.target).parent().attr('data-sortType');
+                console.log(this.chosenArr);
                 if (del_tip.indexOf('sort_reg_dis') != -1) { //点击的是删除区域
 
                     this.chosenArr.forEach(function (val, i) {
@@ -789,6 +789,7 @@
 
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType == del_tip) {
+
                             _this.chosenArr.splice(i, 1);
                         }
                     });
@@ -1120,7 +1121,8 @@
                     this.chosenArr.forEach(function (val, i) {
                         if (val.sortType.indexOf('sort_are') != -1) {
                             _this.chosenArr.splice(i, 1);
-                        };
+                        }
+                        ;
                     });
 
                     //显示已选择条件
@@ -1142,13 +1144,14 @@
                     sort_two_single = 2;
                 } else {
                     this.area = [];
-                    var curr_index = 0,n=0;
+                    var curr_index = 0, n = 0;
                     if (this.chosenArr.length > 0) {
                         this.chosenArr.forEach(function (val, i) {
                             if (val.sortType.indexOf('sort_are') != -1) {
                                 n++;
                                 curr_index = i;
-                            };
+                            }
+                            ;
                         });
 
                         if (n > 0) {
@@ -1178,32 +1181,33 @@
 
             //自定义面积
             self_area(e){
-                var _this=this;
+                var _this = this;
                 this.area = [Math.floor(this.bArea), Math.floor(this.eArea)];
                 $('#areaSort_wrap >a').removeClass('active');
 
                 if ($('.selected_item >a').length) {
                     for (var i = 0; i < $('.selected_item >a').length; i++) {
                         if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_are') != -1) {
+                            this.chosenArr.splice(i, 1);
                             $('.selected_item >a').eq(i).attr('data-sortType', 'sort_are_9').html(this.bArea + '-' + this.eArea + 'm²<i class="sem_icon hover"></i>');
                         }
                     }
                 } else {
                     //创建自定义的条件
                     this.chosenFlag = true;
-
-                    this.chosenArr.push({
-                        id: $(e.target).id,
-                        sortType: 'sort_are_9',
-                        min: Math.floor($(e.target).parent().find('input').eq(0).val()),
-                        max: Math.floor($(e.target).parent().find('input').eq(1).val()),
-                        unit: 'm²',
-                        sort_two: 1 //min-max形式
-                    });
                 }
 
-                $('.sem_icon').off().click(function(){
-                    _this.del_one();
+                this.chosenArr.push({
+                    id: $(e.target).id,
+                    sortType: 'sort_are_9',
+                    min: Math.floor($(e.target).parent().find('input').eq(0).val()),
+                    max: Math.floor($(e.target).parent().find('input').eq(1).val()),
+                    unit: 'm²',
+                    sort_two: 1 //min-max形式
+                });
+
+                $('.sem_icon').off().click(function (e) {
+                    _this.del_one(e);
                 });
 
                 this.getList();
@@ -1249,13 +1253,41 @@
 
 
             //自定义单价
-            self_price_per(){
-                this.price_dj = [this.bNum, this.eNum];
+            self_price_per(e){
+                var _this = this;
+                this.price_dj = [Math.floor(this.bNum), Math.floor(this.eNum)];
+                $('#price-list a').removeClass('active');
+
+                if ($('.selected_item >a').length) {
+                    for (var i = 0; i < $('.selected_item >a').length; i++) {
+                        if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_pri_per') != -1) {
+                            $('.selected_item >a').eq(i).attr('data-sortType', 'sort_pri_per8').html(this.bNum + '-' + this.eNum + '元/m²·天<i class="sem_icon hover"></i>');
+                        }
+                    }
+               } else {
+                    alert(1);
+                    //创建自定义的单价条件
+                    this.chosenFlag = true;
+
+                    this.chosenArr.push({
+                        id: $(e.target).id,
+                        sortType: 'sort_pri_per8',
+                        min: Math.floor($(e.target).parent().find('input[type="text"]').eq(0).val()),
+                        max: Math.floor($(e.target).parent().find('input[type="text"]').eq(1).val()),
+                        unit: '元/m²·天',
+                        sort_two: 1 //min-max形式
+                    });
+                }
+
+                $('.sem_icon').off().click(function (e) {
+                    _this.del_one(e);
+                });
+
                 this.getList();
             },
 
             //自定义总价
-            self_price_tot(){
+            self_price_tot(e){
                 this.price_zj = [this.bNum_tot * 10000, this.eNum_tot * 10000];
                 this.getList();
             },
