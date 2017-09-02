@@ -417,7 +417,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20      class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -1208,9 +1208,9 @@
                 this.area = [this.bArea, this.eArea];
                 $('#areaSort_wrap >a').removeClass('active');
 
-                for(var i=0;i<$('.selected_item >a').length;i++){
+                for (var i = 0; i < $('.selected_item >a').length; i++) {
                     if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_are') != -1) {
-                        $('.selected_item >a').eq(i).attr('data-sortType','sort_are_9').html(this.bArea+'-'+this.eArea+'m²');
+                        $('.selected_item >a').eq(i).attr('data-sortType', 'sort_are_9').html(this.bArea + '-' + this.eArea + 'm²');
                     }
                 }
 

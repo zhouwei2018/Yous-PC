@@ -110,13 +110,13 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="swiper-slide">
-                                <a href="javascript:;">
-                                    <div class="banner_img banner04">
+                            <!--<div class="swiper-slide">-->
+                                <!--<a href="javascript:;">-->
+                                    <!--<div class="banner_img banner04">-->
 
-                                    </div>
-                                </a>
-                            </div>
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</div>-->
                         </div>
 
                         <!--左右按钮-->
@@ -158,9 +158,9 @@
                     <ul class="clearfix">
                         <li>
                             <span class="one_tip location"></span>
-                            <h4>办公选址</h4>
+                            <h4>空间定制</h4>
 
-                            <p>幼狮空间强大的运营团队，承载了13年的运营实践，久经考验值得信赖。多渠道无缝融合，服务质量和效率倍增，高于行业，先于时代。</p>
+                            <p>满足客户个性化需求，提供可定制的楼盘项目、面积、装修专属服务，为每一个梦想，创造专属办公空间。</p>
                         </li>
                         <li>
                             <span class="one_tip service"></span>
@@ -178,7 +178,7 @@
                             <span class="one_tip communicate"></span>
                             <h4>企业互联</h4>
 
-                            <p>精选合作服务商，让你在工作之余享受生活，原来创业如此快乐。</p>
+                            <p>面向入驻企业开放的动态发布、商机推广，实现线上线下企业服务资源高效配置，构建高成长性企业创新生态圈。</p>
                         </li>
                     </ul>
                 </div>
@@ -201,7 +201,7 @@
                     <div class="fl clearfix space_top_right">
                         <div class="spa_top clearfix">
                             <div class="spa_top_left fl spa_item">
-                                <img src="../resources/images/index/space02.png" alt=""/>
+                                <img src="../resources/images/index/space02.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
@@ -210,7 +210,7 @@
                                 </div>
                             </div>
                             <div class="spa_top_right fl spa_item">
-                                <img src="../resources/images/index/space03.png" alt=""/>
+                                <img src="../resources/images/index/space03.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
@@ -221,7 +221,7 @@
                         </div>
                         <div class="spa_bot clearfix">
                             <div class="spa_bot_left fl spa_item">
-                                <img src="../resources/images/index/space04.png" alt=""/>
+                                <img src="../resources/images/index/space04.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             <div class="spa_bot_right fl spa_item">
-                                <img src="../resources/images/index/space05.png" alt=""/>
+                                <img src="../resources/images/index/space05.jpg" alt=""/>
 
                                 <div class="ys_bg"></div>
                                 <div class="space_bg_wrap">
@@ -737,7 +737,7 @@
         mounted: function () {
             $(window).scrollTop(0);
             //数字滚动
-            this.show_num('#bannerNum1', 190000);
+            this.show_num('#bannerNum1', 215000);
             this.show_num('#bannerNum2', 1000);
             this.show_num('#bannerNum3', 550);
             this.show_num('#bannerNum4', 160);
