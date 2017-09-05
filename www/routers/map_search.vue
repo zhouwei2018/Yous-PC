@@ -362,8 +362,8 @@
                 YSMap: null,
                 yScroll:null,
                 autoSearchMaker: "",
-                domainRoot: 'http://116.62.71.76:8001/',
-
+                // domainRoot: 'http://116.62.71.76:8001/',
+                domainRoot: this.$api,
                 circleNum: 0, //圆内标示加载次数的标识, 当为1的时候不再重复加载
                 autoSearchVal: '', //定位搜索的值
                 my_radius: 1000, //默认周边圆的单位(米)
@@ -437,7 +437,7 @@
                 "foreEndType":2,
                 "code":"90000301"
             }, this_=this;
-            axios.post(this.domainRoot+'api/GetServiceApiResult', paraObj)
+            axios.post(this.domainRoot, paraObj)
                 .then(function (response) {
                     this_.areaArray = response.data.data.districts;
                     this_.sizeArray = response.data.data.range_areas;
@@ -624,10 +624,9 @@
             },
             gRemoteData:function(paraobj, successcb, errorcb){
                 var instance = axios.create({
-                    baseURL: 'http://116.62.71.76:8001/'
                 });
                 instance.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
-                instance.post('api/GetServiceApiResult',paraobj)
+                instance.post(this.$api,paraobj)
                     .then(function (response) {
                         if(typeof successcb==="function"){
                             successcb(response)
@@ -867,7 +866,3 @@
         beforeDestroy(){}
     }
 </script>
-
-
-
-
