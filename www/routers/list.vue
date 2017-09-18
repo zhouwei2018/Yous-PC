@@ -957,33 +957,40 @@
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
                     if (result.success) {
-                        if (result.data.total_items > 0) {
+                        if(result.data){
+                            if (result.data.total_items > 0) {
 
-                            _this.buildingShowFlag = false;
+                                _this.buildingShowFlag = false;
 
-                            for (var i = 0; i < result.data.buildings.length; i++) {
-                                if (result.data.buildings[i].label) {
-                                    result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
+                                for (var i = 0; i < result.data.buildings.length; i++) {
+                                    if (result.data.buildings[i].label) {
+                                        result.data.buildings[i].tags = result.data.buildings[i].label.split(',');
+                                    } else {
+                                        result.data.buildings[i].tags = [];
+                                    }
+
+                                }
+                                _this.buildList = result.data.buildings;
+                                _this.total_items = result.data.total_items;
+                                _this.total_pages = result.data.total_pages;
+
+                                if (_this.total_pages <= 1) {
+                                    _this.pageFlag = false;
                                 } else {
-                                    result.data.buildings[i].tags = [];
+                                    _this.pageFlag = true;
                                 }
 
-                            }
-                            _this.buildList = result.data.buildings;
-                            _this.total_items = result.data.total_items;
-                            _this.total_pages = result.data.total_pages;
-
-                            if (_this.total_pages <= 1) {
-                                _this.pageFlag = false;
                             } else {
-                                _this.pageFlag = true;
+                                _this.pageFlag = false;
+                                _this.buildingShowFlag = true;
+                                _this.total_items = 0;
                             }
-
-                        } else {
+                        }else{
                             _this.pageFlag = false;
                             _this.buildingShowFlag = true;
-                            _this.total_items = '--';
+                            _this.total_items = 0;
                         }
+
                     }
 
                 }, function (res) {
