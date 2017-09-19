@@ -103,12 +103,12 @@
                         </dd>
                     </dl>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180">楼层：<i>{{locat_floor}}/{{floors}}</i></span>
+                        <span class="mr180">楼层：<i>{{locat_floor}}</i></span>
                         <span>朝向：<i>朝南</i></span>
                     </p>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180">层高：<i v-text="floor_height+'m²'"></i></span>
-                        <span>物业费：<span>{{property_fee}}元/<em class="font-num">m²</em>·天</span></span>
+                        <span class="mr180">层高：<i v-text="floor_height+'m'"></i></span>
+                        <span>物业费：<i>{{property_fee}}元/<em class="font-num">m²</em>·天</i></span>
                     </p>
                     <p class="building-address clearfix">
                         <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap"
@@ -151,7 +151,7 @@
                             <tr>
                                 <td colspan="2" class="clearfix">
                                     <em class="fl">物业公司：</em>
-                                    <span class="fl" v-text="property_company"></span>
+                                    <span class="fl whitespace  w550" v-text="property_company"></span>
                                 </td>
                                 <td colspan="2">
                                     <em>物业费：</em><span v-text="property_fee+'/m²·月 '"></span>
@@ -167,7 +167,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <em>产权性质：</em><span class="whitespace dib w100" v-text="property_rights"></span>
+                                    <em>产权性质：</em><span class="whitespace dib w220" v-text="property_rights"></span>
                                 </td>
                                 <td colspan="2">
                                     <em>建筑面积：</em><span v-text="building_area+'m²'"></span>
@@ -549,6 +549,7 @@
                             _this.workstation = result.data.workstation == null ? '--' : result.data.workstation;
                             _this.daily_price = result.data.daily_price == null ? '--' : result.data.daily_price;
                             _this.monthly_price = result.data.monthly_price == null ? '--' : result.data.monthly_price;
+                            _this.building_images=result.data.houses_images;
 
                             _this.locat_floor = result.data.locat_floor == null ? '--':result.data.locat_floor;
                             _this.floors = result.data.floors == null ? '--':result.data.floors;
