@@ -391,8 +391,10 @@
                                         <i class="sem_icon item_address"></i><span v-text="item.address"></span>
                                     </dd>
                                     <dd>
-                                        <i class="sem_icon item_area"></i>可租面积 <span class="text-black fb"
-                                                                                     v-text="item.min_areas+'-'+item.max_areas"></span><span
+                                        <i class="sem_icon item_area"></i>可租面积
+                                        <span v-if="item.min_areas==item.max_areas" class="text-black fb" v-text="item.min_areas"></span>
+                                        <span v-else class="text-black fb" v-text="item.min_areas+'-'+item.max_areas"></span>
+                                        <span
                                             class="font-num"> m²</span>, 待租办公室&nbsp;<span
                                             class="font-num text-black fb" v-text="item.lease_nums"></span>&nbsp;套
                                     </dd>

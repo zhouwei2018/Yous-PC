@@ -48,9 +48,10 @@
                 <div class="building-label clearfix">
                     <div class="building-tag">
                         <h1 v-text="buildingNameSingle"></h1>
-                        <ul class="tag-item">
+                        <ul class="tag-item" v-for="item in labels">
                             <!--<li>互联网</li>-->
-                            <li v-for="item in labels" v-text="item"></li>
+                            <li v-for="label in item.split(',')" v-text="label"></li>
+
                         </ul>
                     </div>
                 </div>
@@ -64,19 +65,24 @@
                 <dl class="rental-info clearfix">
                     <dd>
                         <i class="bold db rent_num" v-text="total_items"></i>
-                        <span>待租套数</span>
+                        <span>全部待租</span>
                     </dd>
                     <dd>
-                        <span class="bold db rent_num">
-                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
-                                                                               v-text="max_renge_price"></i> 元/<em
-                                class="font-num">m²</em>·天</span>
+
+                        <span v-if="max_renge_price==min_renge_price" class="bold db rent_num">
+                          <i class="bold" v-text="min_renge_price"></i>元/<em class="font-num">m²</em>·天
+                        </span>
+                        <span v-else class="bold db rent_num">
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold" v-text="max_renge_price"></i> 元/<em class="font-num">m²</em>·天</span>
                         <span>价格范围</span>
                     </dd>
                     <dd>
-                        <span class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
-                                                                                                         v-text="max_renge_area"></i><em
-                                class="font-num"> m²</em></span>
+                        <span v-if="min_renge_area==max_renge_area" class="bold db rent_num">
+                           <i class="bold"v-text="max_renge_area"></i><em class="font-num"> m²</em>
+                        </span>
+                        <span v-else class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
+                          v-text="max_renge_area"></i><em class="font-num"> m²</em>
+                        </span>
                         <span>面积范围</span>
                     </dd>
                 </dl>
@@ -97,7 +103,7 @@
                             <em class="tel_num_all">400-078-8800</em></div>
                     </div>
                     <div class="mobile_box">
-                        <a href="javascript:;" class="call_back_btn" @click="modal5 = true">免费回拨</a>
+                        <a href="javascript:;" class="call_back_btn" @click="modal5 = true">客服电话</a>
                     </div>
                 </div>
 
@@ -358,9 +364,9 @@
                                     <div class="introduce-second">
                                         <span><em class="text-gray6">工位：</em>{{item.workstation}}个</span>
                                     </div>
-                                    <div class="introduce-time-btn">
+                                    <!-- <div class="introduce-time-btn">
                                         <span>更新于：{{item.refreshTime | formatDate}}</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </router-link>
                         </li>
