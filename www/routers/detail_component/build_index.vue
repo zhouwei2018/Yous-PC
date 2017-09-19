@@ -355,7 +355,7 @@
                                                 class="font-num">m²</em>·{{item.decoration_level}}</span>
                                         <div>
                                             <span class="text-gray6"><em class="font-num"
-                                                                         v-text="Number(item.monthly_price).toFixed(1)"></em> 万/月</span>
+                                                                         v-text="item.monthly_price"></em> 元/月</span>
                                             <div><b class="font-num text-black" v-text="item.daily_price"></b> 元/<span
                                                     class="font-num">m²</span>·天
                                             </div>

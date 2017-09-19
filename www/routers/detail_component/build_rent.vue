@@ -247,7 +247,7 @@
                                                 class="font-num">m²</em>·{{item.decoration_level}}</span>
                                         <div>
                                             <span class="text-gray6"><em class="font-num"
-                                                                         v-text="item.monthly_price"></em> 万元/月</span>
+                                                                         v-text="item.monthly_price"></em> 元/月</span>
                                             <div><b class="font-num text-black" v-text="item.daily_price"></b> 元/<span
                                                     class="font-num">m²</span>·天
                                             </div>
@@ -256,9 +256,9 @@
                                     <div class="introduce-second">
                                         <span><em class="text-gray6">工位：</em>{{item.workstation}}个</span>
                                     </div>
-                                    <div class="introduce-time-btn">
+                                    <!-- <div class="introduce-time-btn">
                                         <span>更新于：{{item.refreshTime}}</span>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </router-link>
                         </li>

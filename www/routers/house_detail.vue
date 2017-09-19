@@ -76,7 +76,7 @@
 
                     <div class="price-box clearfix mt20 pr">
                         <p class="building-price">
-                            <strong v-text="monthly_price">&nbsp;</strong><span>万元/月</span>
+                            <strong v-text="monthly_price">&nbsp;</strong><span>元/月</span>
                             <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em
                                 class="font-num">m²</em>·天</span>
                         </p>
