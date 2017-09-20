@@ -1407,8 +1407,8 @@
                     this.price_zj = [];
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
                     max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
-                    this.price_zj.push(min);
-                    this.price_zj.push(max);
+                    this.price_zj.push(min*10000);
+                    this.price_zj.push(max*10000);
                 }
 
                 this.price_dj = ""; //单价置空
