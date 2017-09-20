@@ -710,6 +710,7 @@
 
             //模糊搜索
             searchClick(){
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1088,6 +1089,7 @@
                 } else {
                     this.chosenFlag = true;
                 }
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1291,13 +1293,14 @@
                 $('.sem_icon').off().click(function (e) {
                     _this.del_one(e);
                 });
-
+                this.curPage=1;
                 this.getList();
             },
 
             //自定义总价
             self_price_tot(e){
                 this.price_zj = [this.bNum_tot * 10000, this.eNum_tot * 10000];
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1330,6 +1333,7 @@
                     } else {
                         this.chosenFlag = true;
                     }
+                    this.curPage=1;
                     this.getList();
 
                     return;
@@ -1392,6 +1396,7 @@
                     } else {
                         this.chosenFlag = true;
                     }
+                    this.curPage=1;
                     this.getList();
 
                     return;
@@ -1463,6 +1468,7 @@
                 } else {
                     this.chosenFlag = true;
                 }
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1510,6 +1516,7 @@
                 } else {
                     this.chosenFlag = true;
                 }
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1549,6 +1556,7 @@
                     } else {
                         this.orderby = 'D'; //默认排序D
                     }
+                    this.curPage=1;
                     this.getList(); //排序后的列表
                 }
             },
@@ -1658,7 +1666,7 @@
             if (this.$route.query.search_keywork) {
                 this.search_keywork = this.$route.query.search_keywork;
             }
-
+            this.curPage=1;
             this.getList(); //获取楼盘列表
 
             $("#form_send2").validate({

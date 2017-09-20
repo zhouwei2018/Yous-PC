@@ -1050,12 +1050,14 @@
             //自定义面积
             self_area(){
                 this.area = [this.bArea, this.eArea];
+                this.curPage=1;
                 this.getDetList();
             },
 
             //自定义单价
             self_price_per(){
                 this.price_dj = [this.bNum, this.eNum];
+                this.curPage=1;
                 this.getDetList();
             },
 
@@ -1091,6 +1093,7 @@
                     } else {
                         this.orderby = 'D'; //默认排序D
                     }
+                    this.curPage=1;
                     this.getDetList(); //排序后的列表
                 }
             },
@@ -1123,6 +1126,7 @@
                     this.area.push(min);
                     this.area.push(max);
                 }
+                this.curPage=1;
                 this.getDetList();
             },
 
@@ -1154,6 +1158,7 @@
                     this.price_dj.push(max);
                 }
                 this.price_zj = ""; //总价置空
+                this.curPage=1;
                 this.getDetList();
             },
 
@@ -1175,17 +1180,18 @@
                     min = Math.floor($(e.target).html().match(/\d+/g));
                     max = "";
                     this.price_zj = [];
-                    this.price_zj.push(min);
-                    this.price_zj.push(max);
+                    this.price_zj.push(min*10000);
+                    this.price_zj.push(max*10000);
                 } else {
                     var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.price_zj = [];
-                    this.price_zj.push(min);
-                    this.price_zj.push(max);
+                    this.price_zj.push(min*10000);
+                    this.price_zj.push(max*10000);
                 }
                 this.price_dj = ""; //总价置空
+                this.curPage=1;
                 this.getDetList();
 
             },

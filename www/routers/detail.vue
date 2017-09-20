@@ -20,9 +20,9 @@
             <div class="breadcrumb-search clearfix">
                 <ul class="breadcrumb fl clearfix">
                     <li>
-                        <router-link :to="{path:'/list'}"><i class="detail-icon"></i>幼狮空间 &gt;</router-link>
+                        <router-link :to="{path:'/index'}"><i class="detail-icon"></i>幼狮空间 &gt;</router-link>
                     </li>
-                    <li><a href="javascript:;">办公楼</a>&gt;</li>
+                    <li><router-link to="/list" >办公楼</router-link> &gt;</li>
                     <li v-text="building_name"></li>
                 </ul>
                 <div class="search-box">
@@ -232,5 +232,3 @@
     }
 
 </script>
-
-
