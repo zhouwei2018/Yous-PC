@@ -1531,7 +1531,7 @@
                             target.find('.sem_icon').removeClass('up');
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'AD'; //面积降序：AD
-                                target.find('.bubble').html('点击按面积从小到大排序');
+                                target.find('.bubble').html('点击按面积从大到小排序');
                             } else if (target.attr('id') == 'priceSort') {
                                 this.orderby = 'PD'; //价格降序：PD
                                 target.find('.bubble').html('点击按价格从低到高排序');
@@ -1540,7 +1540,7 @@
                             target.find('.sem_icon').addClass('up');
                             if (target.attr('id') == 'areaSort') {
                                 this.orderby = 'AA'; //面积升序：AA
-                                target.find('.bubble').html('点击按面积从大到小排序');
+                                target.find('.bubble').html('点击按面积从小到大排序');
                             } else if (target.attr('id') == 'priceSort') {
                                 this.orderby = 'PA'; //价格升序：PA
                                 target.find('.bubble').html('点击按价格从高到低排序');
