@@ -2,6 +2,7 @@
     <Table border :content="self" :columns="columns7" :data="data6"></Table>
 </template>
 <script>
+  import {formatDate} from '../../components/date.js';
     export default {
         data () {
             return {
@@ -15,12 +16,20 @@
                         }
                     },
                     {
-                        title: '城市',
+                        title: '商圈',
                         key: 'Col_city'
                     },
                     {
-                        title: '商圈',
+                        title: '区域',
                         key: 'Col_business'
+                    },
+                    {
+                        title: '面积',
+                        key: 'Col_measure'
+                    },
+                    {
+                        title: '租金',
+                        key: 'Col_rent'
                     },
                     {
                         title: '发布时间',
@@ -37,6 +46,12 @@
                     }
                 ],
                 data6:[]
+            }
+        },
+        filters: {
+            formatDate(time) {
+                var date = new Date(time);
+                return formatDate(date, "yyyy-MM-dd");
             }
         },
         methods: {

@@ -351,8 +351,13 @@
                                 </div>
                                 <div class="list-introduce">
                                     <div class="introduce-primary clearfix">
-                                        <span class="font20">{{item.housing_area}}<em
-                                                class="font-num">m²</em>·{{item.decoration_level}}</span>
+                                        <span class="font20" v-if="item.decoration_level==null">
+                                          {{item.housing_area}}<em class="font-num">m²</em>{{item.decoration_level}}
+                                        </span>
+                                        <span class="font20" v-else>
+                                           {{item.housing_area}}<em class="font-num">m²</em>·{{item.decoration_level}}
+                                        </span>
+
                                         <div>
                                             <span class="text-gray6"><em class="font-num"
                                                                          v-text="item.monthly_price"></em> 元/月</span>
@@ -484,7 +489,7 @@
                                v-model="formInline2.InputCode"
                                placeholder="请输入您收到的验证码">
                     </div>
-                    <p class="pt10">您也可以拨打<i v-text="pid"></i>直接委托需求给幼狮</p>
+                    <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
                         <input type="primary" readonly class="pop_subbtn" value="提交"
                                @click="handleSubmit2('formInline2')">
