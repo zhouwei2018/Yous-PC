@@ -484,7 +484,7 @@
                                v-model="formInline2.InputCode"
                                placeholder="请输入您收到的验证码">
                     </div>
-                    <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
+                    <p class="pt10">您也可以拨打<i v-text="pid"></i>直接委托需求给幼狮</p>
                     <Form-item>
                         <input type="primary" readonly class="pop_subbtn" value="提交"
                                @click="handleSubmit2('formInline2')">

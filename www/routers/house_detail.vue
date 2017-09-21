@@ -2,7 +2,7 @@
     @import "../resources/css/detail/detail.less";
     @import "../resources/css/right_column/right_column.less";
 </style>
-<style>
+<style scoped>
     .anchorBL {
         display: none !important;
     }
@@ -11,6 +11,10 @@
         font-size: 30px;
         font-weight: bold;
         line-height: 69px !important;
+    }
+    .pid{
+         color: #3facf8;
+          margin-right:  20px;     
     }
 
 </style>
@@ -143,10 +147,12 @@
 
                     <!--免费回拨-->
                     <div class="consulting clearfix mobile_consult">
+
                         <div class="quick">
+                            <em class="pid">销售负责人</em>
                             <i class="detail-icon"></i>
                             <div class="tel">
-                                <em class="tel_num_all">400-078-8800</em></div>
+                                <em class="tel_num_all" v-text="pid"></em></div>
                         </div>
                         <div class="mobile_box">
                             <a href="javascript:;" class="call_back_btn" @click="modal5 = true">免费回拨</a>
@@ -375,6 +381,7 @@
                 ], //banner图片
 
                 buildingName: "", //楼盘name
+                pid:"",//销售电话
 
                 room_area: '',
 
@@ -569,7 +576,7 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         if (result.data) {
-                            debugger;
+
                             _this.buildingName = result.data.building_name;
                             _this.room_area = result.data.room_area;
                             _this.workstation = result.data.workstation;
@@ -577,6 +584,7 @@
                             _this.monthly_price = result.data.monthly_price;
                             _this.building_images = result.data.houses_images;
 
+                            _this.pid=result.data.pid;
 
                             _this.locat_floor = result.data.locat_floor;
                             _this.floors = result.data.floors == null ? '--' : result.data.floors;
