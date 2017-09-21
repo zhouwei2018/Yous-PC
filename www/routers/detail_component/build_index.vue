@@ -392,7 +392,7 @@
                         <tr>
                             <td colspan="2" class="clearfix">
                                 <em class="fl">物业公司：</em>
-                                <span class="fl" v-text="property_company"></span>
+                                <span class="fl whitespace  w550" v-text="property_company"></span>
                             </td>
                             <td colspan="2"></td>
                             <td colspan="2">

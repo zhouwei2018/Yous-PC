@@ -569,12 +569,14 @@
                     var result = JSON.parse(res.bodyText);
                     if (result.success) {
                         if (result.data) {
+                            debugger;
                             _this.buildingName = result.data.building_name;
                             _this.room_area = result.data.room_area;
                             _this.workstation = result.data.workstation;
                             _this.daily_price = result.data.daily_price;
                             _this.monthly_price = result.data.monthly_price;
                             _this.building_images = result.data.houses_images;
+
 
                             _this.locat_floor = result.data.locat_floor;
                             _this.floors = result.data.floors == null ? '--' : result.data.floors;
@@ -614,7 +616,7 @@
                     if (result.success) {
                         if (result.data) {
 
-                            _this.building_images = result.data.building_images;
+                          //  _this.building_images = result.data.building_images;
 
                             _this.positionData = result.data.longitude + ',' + result.data.latitude;
 
