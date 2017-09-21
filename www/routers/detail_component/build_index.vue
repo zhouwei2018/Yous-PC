@@ -73,15 +73,18 @@
                           <i class="bold" v-text="min_renge_price"></i>元/<em class="font-num">m²</em>·天
                         </span>
                         <span v-else class="bold db rent_num">
-                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold" v-text="max_renge_price"></i> 元/<em class="font-num">m²</em>·天</span>
+                            <i class="bold" v-text="min_renge_price"></i> ~ <i class="bold"
+                                                                               v-text="max_renge_price"></i> 元/<em
+                                class="font-num">m²</em>·天</span>
                         <span>价格范围</span>
                     </dd>
                     <dd>
                         <span v-if="min_renge_area==max_renge_area" class="bold db rent_num">
-                           <i class="bold"v-text="max_renge_area"></i><em class="font-num"> m²</em>
+                           <i class="bold" v-text="max_renge_area"></i><em class="font-num"> m²</em>
                         </span>
-                        <span v-else class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i class="bold"
-                          v-text="max_renge_area"></i><em class="font-num"> m²</em>
+                        <span v-else class="bold db rent_num"><i class="bold" v-text="min_renge_area"></i> - <i
+                                class="bold"
+                                v-text="max_renge_area"></i><em class="font-num"> m²</em>
                         </span>
                         <span>面积范围</span>
                     </dd>
@@ -103,7 +106,7 @@
                             <em class="tel_num_all">400-078-8800</em></div>
                     </div>
                     <!--<div class="mobile_box">-->
-                        <!--<a href="javascript:;" class="call_back_btn" @click="modal5 = true">客服电话</a>-->
+                    <!--<a href="javascript:;" class="call_back_btn" @click="modal5 = true">客服电话</a>-->
                     <!--</div>-->
                 </div>
 
@@ -135,7 +138,7 @@
                         <!--面积-->
                         <div class="screening-range-list">
                             <span>面积:</span>
-                            <ul class="clearfix">
+                            <ul class="clearfix" id="area_qj_wrap">
                                 <li v-for="(item1,index) in area_arr" v-if="index == 0">
                                     <a href="javascript:;"
                                        :id="item1.code"
@@ -162,7 +165,7 @@
                         <div class="screening-range-list" id="price-list">
                             <span>价格:</span>
 
-                            <ul class="clearfix">
+                            <ul class="clearfix" id="price_dj_wrap">
                                 <li v-for="(item2,index) in range_unit_prices" v-if="index == 0">
                                     <a href="javascript:;"
                                        :id="item2.code"
@@ -196,7 +199,7 @@
                                        :id="item3.code"
                                        :class="{on:areaActive == index}"
                                        :data-sortType="'sort_are_'+index"
-                                       @click="self_price_tot($event)"
+                                       @click="sel_tot_price_list($event)"
                                     >全部</a>
                                 </li>
                                 <template v-else>
@@ -337,7 +340,7 @@
                     <!--加载中-->
                     <div class="loading_wrap" v-show="loadingFlag">
                         <Spin fix>
-                            <Icon type="load-c" size=20    class="demo-spin-icon-load"></Icon>
+                            <Icon type="load-c" size=20     class="demo-spin-icon-load"></Icon>
                             <div>加载中……</div>
                         </Spin>
                     </div>
@@ -484,7 +487,7 @@
                                v-model="formInline2.InputCode"
                                placeholder="请输入您收到的验证码">
                     </div>
-                    <p class="pt10">您也可以拨打<i v-text="pid"></i>直接委托需求给幼狮</p>
+                    <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
                     <Form-item>
                         <input type="primary" readonly class="pop_subbtn" value="提交"
                                @click="handleSubmit2('formInline2')">
@@ -537,7 +540,7 @@
 
                 positionData: "", //经纬度
 
-                orderby:"D",
+                orderby: "D",
 
                 building_id: "", //楼盘id
                 address: "",//地址
@@ -793,7 +796,7 @@
                             //物业信息
                             _this.property_company = result.data.property_company; //物业公司
                             _this.property_fee = result.data.property_fee; //物业费
-                            if(result.data.opening_date){
+                            if (result.data.opening_date) {
                                 _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
                             }
 
@@ -920,14 +923,16 @@
             //自定义面积
             self_area(){
                 this.area = [this.bArea, this.eArea];
-                this.curPage=1;
+                $('#area_qj_wrap a').removeClass('on');
+                this.curPage = 1;
                 this.getDetList();
             },
 
             //自定义单价
             self_price_per(){
                 this.price_dj = [this.bNum, this.eNum];
-                this.curPage=1;
+                $('#price_dj_wrap a').removeClass('on');
+                this.curPage = 1;
                 this.getDetList();
             },
 
@@ -963,7 +968,7 @@
                     } else {
                         this.orderby = 'D'; //默认排序D
                     }
-                    this.curPage=1;
+                    this.curPage = 1;
                     this.getDetList(); //排序后的列表
                 }
             },
@@ -996,7 +1001,7 @@
                     this.area.push(min);
                     this.area.push(max);
                 }
-                this.curPage=1;
+                this.curPage = 1;
                 this.getDetList();
             },
 
@@ -1028,7 +1033,7 @@
                     this.price_dj.push(max);
                 }
                 this.price_zj = ""; //总价置空
-                this.curPage=1;
+                this.curPage = 1;
                 this.getDetList();
             },
 
@@ -1050,18 +1055,18 @@
                     min = Math.floor($(e.target).html().match(/\d+/g));
                     max = "";
                     this.price_zj = [];
-                    this.price_zj.push(min*10000);
-                    this.price_zj.push(max*10000);
+                    this.price_zj.push(min * 10000);
+                    this.price_zj.push(max * 10000);
                 } else {
                     var newArr = $(e.target).html().split('-');
                     min = Math.floor(newArr[0]);
                     max = Math.floor(newArr[1].match(/\d+/g)[0]);
                     this.price_zj = [];
-                    this.price_zj.push(min*10000);
-                    this.price_zj.push(max*10000);
+                    this.price_zj.push(min * 10000);
+                    this.price_zj.push(max * 10000);
                 }
                 this.price_dj = ""; //总价置空
-                this.curPage=1;
+                this.curPage = 1;
                 this.getDetList();
 
             },
