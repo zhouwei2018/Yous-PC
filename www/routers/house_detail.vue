@@ -126,13 +126,13 @@
                         </dd>
                     </dl>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180" v-if="locat_floor">楼层：<i v-text="locat_floor"></i></span>
-                        <span class="mr180" v-else>楼层：<i>暂无数据</i></span>
+                        <span v-if="locat_floor">楼层：<i v-text="locat_floor" class="build_name_wid"></i></span>
+                        <span v-else>楼层：<i class="build_name_wid">暂无数据</i></span>
                         <span>朝向：<i>朝南</i></span>
                     </p>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180" v-if="locat_floor">层高：<i v-text="floor_height+'m'"></i></span>
-                        <span class="mr180" v-else>层高：<i>暂无数据</i></span>
+                        <span v-if="locat_floor">层高：<i v-text="floor_height+'m'" class="build_name_wid"></i></span>
+                        <span v-else>层高：<i class="build_name_wid">暂无数据</i></span>
                         <span v-if="property_fee">物业费：<i>{{property_fee}}元/<em class="font-num">m²</em>·天</i></span>
                         <span v-else>物业费：<i>暂无数据</i></span>
                     </p>
@@ -153,9 +153,6 @@
                             <i class="detail-icon"></i>
                             <div class="tel">
                                 <em class="tel_num_all" v-text="pid"></em></div>
-                        </div>
-                        <div class="mobile_box">
-                            <a href="javascript:;" class="call_back_btn" @click="modal5 = true">免费回拨</a>
                         </div>
                     </div>
                 </div>
@@ -268,50 +265,6 @@
                         <Form-item>
                             <input type="primary" readonly class="pop_subbtn" value="提交"
                                    @click="handleSubmit2('formInline2')">
-                        </Form-item>
-                    </Form>
-                </div>
-            </Modal>
-
-            <!--免费回拨弹窗-->
-            <Modal v-model="modal5" width="420" @on-cancel="cancel_free">
-                <div popup>
-                    <Form ref="formInline4" :model="formInline3" id="free_form">
-                        <h3>免费回拨</h3>
-                        <Form-item prop="telephone">
-                            <div class="popItem">
-                                <span class="inp_icon phone"></span>
-                                <form action="" id="form_send3">
-                                    <input type="text" maxlength="11"
-                                           value=""
-                                           autocomplete="off"
-                                           name="ys_mobile3"
-                                           onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
-                                           onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
-                                           placeholder="请输入您的手机号码"
-                                           v-model="formInline4.telephone">
-                                </form>
-                                <TimerBtn ref="timerbtn3" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode3"
-                                          second="60"></TimerBtn>
-                            </div>
-                        </Form-item>
-                        <div class="popItem">
-                            <span class="inp_icon password"></span>
-                            <input type="text" value=""
-                                   maxlength="4"
-                                   autocomplete="off"
-                                   name="identify_code3"
-                                   onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
-                                   onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
-                                   v-model="formInline4.InputCode"
-                                   placeholder="请输入您收到的验证码">
-                        </div>
-                        <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
-                        <Form-item>
-                            <input type="primary"
-                                   name="free_sub_btn"
-                                   readonly class="pop_subbtn" value="提交"
-                                   @click="handleSubmit3('formInline4')">
                         </Form-item>
                     </Form>
                 </div>
@@ -760,55 +713,6 @@
                         mobile: "请输入有效手机号"
                     },
                     identify_code2: {
-                        required: "请输入验证码",
-                        identify_four: "验证码格式错误"
-                    }
-                }
-            });
-
-            //免费回拨验证码
-            $("#form_send3").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile3: {
-                        required: true,
-                        mobile: true
-                    }
-
-                },
-                messages: {
-                    ys_mobile3: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    }
-                }
-            });
-
-            //免费回拨
-            $("#free_form").validate({
-                debug: true, //调试模式取消submit的默认提交功能
-                focusInvalid: true, //当为false时，验证无效时，没有焦点响应
-                focusCleanup: true, //当前元素输入时，移除error
-                rules: {
-                    //全部为input name值
-                    ys_mobile3: {
-                        required: true,
-                        mobile: true
-                    },
-                    identify_code3: {
-                        required: true,
-                        identify_four: true
-                    }
-                },
-                messages: {
-                    ys_mobile3: {
-                        required: "请输入手机号",
-                        mobile: "请输入有效手机号"
-                    },
-                    identify_code3: {
                         required: "请输入验证码",
                         identify_four: "验证码格式错误"
                     }
