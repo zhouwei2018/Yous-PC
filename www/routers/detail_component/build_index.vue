@@ -102,9 +102,9 @@
                         <div class="tel">
                             <em class="tel_num_all">400-078-8800</em></div>
                     </div>
-                    <div class="mobile_box">
-                        <a href="javascript:;" class="call_back_btn" @click="modal5 = true">客服电话</a>
-                    </div>
+                    <!--<div class="mobile_box">-->
+                        <!--<a href="javascript:;" class="call_back_btn" @click="modal5 = true">客服电话</a>-->
+                    <!--</div>-->
                 </div>
 
                 <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
@@ -493,50 +493,6 @@
             </div>
         </Modal>
 
-        <!--免费回拨弹窗-->
-        <Modal v-model="modal5" width="420" @on-cancel="cancel_free">
-            <div popup>
-                <Form ref="formInline4" :model="formInline3" id="free_form">
-                    <h3>免费回拨</h3>
-                    <Form-item prop="telephone">
-                        <div class="popItem">
-                            <span class="inp_icon phone"></span>
-                            <form action="" id="form_send3">
-                                <input type="text" maxlength="11"
-                                       value=""
-                                       autocomplete="off"
-                                       name="ys_mobile3"
-                                       onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
-                                       onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
-                                       placeholder="请输入您的手机号码"
-                                       v-model="formInline4.telephone">
-                            </form>
-                            <TimerBtn ref="timerbtn3" class="btn btn-default pop_sendcode_btn" v-on:run="sendCode3"
-                                      second="60"></TimerBtn>
-                        </div>
-                    </Form-item>
-                    <div class="popItem">
-                        <span class="inp_icon password"></span>
-                        <input type="text" value=""
-                               maxlength="4"
-                               autocomplete="off"
-                               name="identify_code3"
-                               onkeyup="this.value=this.value.replace(/[^\d]/g,'');"
-                               onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"
-                               v-model="formInline4.InputCode"
-                               placeholder="请输入您收到的验证码">
-                    </div>
-                    <p class="pt10">您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
-                    <Form-item>
-                        <input type="primary"
-                               name="free_sub_btn"
-                               readonly class="pop_subbtn" value="提交"
-                               @click="handleSubmit3('formInline4')">
-                    </Form-item>
-                </Form>
-            </div>
-        </Modal>
-
         <!--周边配套信息-->
         <div class="category-message-box clearfix " id="buildmap">
             <!--地图-->
@@ -566,18 +522,6 @@
                 },
 
                 formInline2: {
-                    telephone: ''
-                },
-
-
-                modal5: false, //弹窗
-                formInline3: {
-                    telephone: '',
-                    city: '',
-                    trade_area: ''
-                },
-
-                formInline4: {
                     telephone: ''
                 },
 
@@ -738,80 +682,6 @@
                         this.$refs.timerbtn2.stop(); //关闭倒计时
                         this.formInline2.telephone = ''; //
                         this.formInline2.InputCode = ''; //
-                    });
-                }
-            },
-
-            cancel_free(){
-                this.$refs.timerbtn3.stop(); //关闭倒计时
-                this.formInline4.telephone = ''; //
-                this.formInline4.InputCode = ''; //
-            },
-
-
-            sendCode3: function () {
-
-                if ($('#form_send3').valid()) {
-
-                    this.$refs.timerbtn3.start(); //启动倒计时
-                    this.$http.post(
-                        this.$api,
-                        {
-                            parameters: {
-                                "VerifiationCCodeType": 3,
-                                "Col_telephone": this.formInline4.telephone
-                            },
-                            foreEndType: "1",
-                            code: "90000102"
-                        }
-                    ).then(function (response) {
-                        var reslute = JSON.parse(response.bodyText);
-                        if (!reslute.success) {
-                            this.$Message.error(reslute.message);
-                        }
-
-                    }, function (response) {
-                        this.$Message.error('API接口报错-网络错误!');
-                        this.loading = false;
-                    });
-                }
-            },
-
-            handleSubmit3(name) {
-
-                if ($('#free_form').valid()) {
-                    this.$http.post(
-                        this.$api,
-                        {
-                            parameters: {
-                                "VerifiationCCodeType": 3,
-                                "Col_telephone": this.formInline4.telephone,
-                                "InputCode": this.formInline4.InputCode
-                            },
-                            foreEndType: "1",
-                            code: "20000004"
-                        }
-                    ).then(function (response) {
-                        var reslute = JSON.parse(response.bodyText);
-                        if (reslute.success) {
-                            this.$Message.success('委托单提交成功!');
-
-                        } else {
-                            this.$Message.error(reslute.message);
-                        }
-
-                        this.$refs.timerbtn2.stop(); //关闭倒计时
-                        this.formInline2.telephone = ''; //
-                        this.formInline2.InputCode = ''; //
-                        this.modal5 = false;
-
-                    }, function (response) {
-                        this.$Message.error('API接口报错-网络错误!');
-                        this.loading = false;
-
-                        this.$refs.timerbtn3.stop(); //关闭倒计时
-                        this.formInline4.telephone = ''; //
-                        this.formInline4.InputCode = ''; //
                     });
                 }
             },
