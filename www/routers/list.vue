@@ -413,7 +413,7 @@
 
                         <!--搜索结果list end-->
                         <div class="page_wrap" v-show="pageFlag">
-                            <Page :total="total_pages*10" @on-change="change"></Page>
+                            <Page ref="pages" :total="total_pages*10" @on-change="change"></Page>
                         </div>
 
                         <!--加载中-->
@@ -710,6 +710,7 @@
 
             //模糊搜索
             searchClick(){
+                this.$refs['pages'].currentPage = 1;
                 this.curPage=1;
                 this.getList();
             },
@@ -1089,6 +1090,7 @@
                 } else {
                     this.chosenFlag = true;
                 }
+                this.$refs['pages'].currentPage = 1;
                 this.curPage=1;
                 this.getList();
             },
@@ -1142,6 +1144,8 @@
                     } else {
                         this.chosenFlag = true;
                     }
+                    this.$refs['pages'].currentPage = 1;
+                    this.curPage=1;
                     this.getList();
 
                     return;
@@ -1220,7 +1224,8 @@
                 $('.sem_icon').off().click(function (e) {
                     _this.del_one(e);
                 });
-
+                this.$refs['pages'].currentPage = 1;
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1259,6 +1264,8 @@
                 } else {
                     this.chosenFlag = true;
                 }
+                this.$refs['pages'].currentPage = 1;
+                this.curPage=1;
                 this.getList();
             },
 
@@ -1276,7 +1283,6 @@
                         }
                     }
                } else {
-                    alert(1);
                     //创建自定义的单价条件
                     this.chosenFlag = true;
 
@@ -1293,6 +1299,7 @@
                 $('.sem_icon').off().click(function (e) {
                     _this.del_one(e);
                 });
+                this.$refs['pages'].currentPage = 1;
                 this.curPage=1;
                 this.getList();
             },
@@ -1300,6 +1307,7 @@
             //自定义总价
             self_price_tot(e){
                 this.price_zj = [this.bNum_tot * 10000, this.eNum_tot * 10000];
+                this.$refs['pages'].currentPage = 1;
                 this.curPage=1;
                 this.getList();
             },
@@ -1333,6 +1341,7 @@
                     } else {
                         this.chosenFlag = true;
                     }
+                    this.$refs['pages'].currentPage = 1;
                     this.curPage=1;
                     this.getList();
 
@@ -1396,6 +1405,7 @@
                     } else {
                         this.chosenFlag = true;
                     }
+                    this.$refs['pages'].currentPage = 1;
                     this.curPage=1;
                     this.getList();
 
@@ -1468,6 +1478,8 @@
                 } else {
                     this.chosenFlag = true;
                 }
+
+                this.$refs['pages'].currentPage = 1;
                 this.curPage=1;
                 this.getList();
             },
@@ -1516,6 +1528,7 @@
                 } else {
                     this.chosenFlag = true;
                 }
+                this.$refs['pages'].currentPage = 1;
                 this.curPage=1;
                 this.getList();
             },
