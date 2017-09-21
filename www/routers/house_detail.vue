@@ -6,7 +6,8 @@
     .anchorBL {
         display: none !important;
     }
-    .detail_ld_name{
+
+    .detail_ld_name {
         font-size: 30px;
         font-weight: bold;
         line-height: 69px !important;
@@ -75,11 +76,21 @@
                 <div class="building-message">
 
                     <div class="price-box clearfix mt20 pr">
-                        <p class="building-price">
-                            <strong v-text="monthly_price">&nbsp;</strong><span>元/月</span>
-                            <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em
-                                class="font-num">m²</em>·天</span>
-                        </p>
+                        <div class="building-price clearfix">
+                            <div class="fl" v-if="monthly_price">
+                                <strong v-text="monthly_price">&nbsp;</strong><span>元/月</span>
+                            </div>
+                            <div class="fl month_no_data" v-else>
+                                <span>&nbsp;暂无数据</span>
+                            </div>
+                            <div class="fl per_price_wrap" v-if="daily_price">
+                                <span class="ml20">单价 : </span><i v-text="daily_price"></i><span>元/<em
+                                    class="font-num">m²</em>·天</span>
+                            </div>
+                            <div class="fl per_price_wrap" v-else>
+                                <span class="ml20">单价 : 暂无数据</span>
+                            </div>
+                        </div>
                         <div class="build_weixin_top"><i class="detail-icon"></i><span>分享</span>
                             <div class="attention-share-ewm none">
                                 <div class="build_weixin_img" id="ys_weixin_img"></div>
@@ -88,13 +99,21 @@
                     </div>
 
                     <dl class="rental-info clearfix">
-                        <dd>
+                        <dd v-if="room_area">
                             <i class="bold db rent_num" v-text="room_area+' m²'"></i>
                             <span>面积</span>
                         </dd>
-                        <dd>
-                        <span class="bold db rent_num">
-                            <i class="bold" v-text="workstation"></i>个</span>
+                        <dd v-else>
+                            <span class="bold db rent_num">暂无数据</span>
+                            <span>面积</span>
+                        </dd>
+                        <dd v-if="workstation">
+                            <span class="bold db rent_num">
+                                <i class="bold" v-text="workstation"></i>个</span>
+                            <span>工位</span>
+                        </dd>
+                        <dd v-else>
+                            <span class="bold db rent_num">暂无数据</span>
                             <span>工位</span>
                         </dd>
                         <dd>
@@ -103,12 +122,15 @@
                         </dd>
                     </dl>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180">楼层：<i>{{locat_floor}}</i></span>
+                        <span class="mr180" v-if="locat_floor">楼层：<i v-text="locat_floor"></i></span>
+                        <span class="mr180" v-else>楼层：<i>暂无数据</i></span>
                         <span>朝向：<i>朝南</i></span>
                     </p>
                     <p class="building-address mb20 clearfix">
-                        <span class="mr180">层高：<i v-text="floor_height+'m'"></i></span>
-                        <span>物业费：<i>{{property_fee}}元/<em class="font-num">m²</em>·天</i></span>
+                        <span class="mr180" v-if="locat_floor">层高：<i v-text="floor_height+'m'"></i></span>
+                        <span class="mr180" v-else>层高：<i>暂无数据</i></span>
+                        <span v-if="property_fee">物业费：<i>{{property_fee}}元/<em class="font-num">m²</em>·天</i></span>
+                        <span v-else>物业费：<i>暂无数据</i></span>
                     </p>
                     <p class="building-address clearfix">
                         <i class="detail-icon fl"></i><span v-text="address"></span><a href="#buildmap"
@@ -153,8 +175,11 @@
                                     <em class="fl">物业公司：</em>
                                     <span class="fl whitespace  w550" v-text="property_company"></span>
                                 </td>
-                                <td colspan="2">
+                                <td colspan="2" v-if="property_fee">
                                     <em>物业费：</em><span v-text="property_fee+'/m²·月 '"></span>
+                                </td>
+                                <td colspan="2" v-else>
+                                    <em>物业费：</em><span>暂无数据</span>
                                 </td>
                             </tr>
                             <tr>
@@ -351,26 +376,26 @@
 
                 buildingName: "", //楼盘name
 
-                room_area: '--',
+                room_area: '',
 
                 positionData: "", //经纬度
 
                 building_id: this.$route.query.building_id, //楼盘id
                 house_id: this.$route.query.house_id, //楼栋id
                 address: "",//地址
-                daily_price: "--",//价格
-                monthly_price: "--",//月价格
-                workstation: "--",
+                daily_price: "",//价格
+                monthly_price: "",//月价格
+                workstation: "",
                 lease_nums: "",
 
-                locat_floor:"--",
-                floors:"--",
-                floor_height:"--",
+                locat_floor: "",
+                floors: "--",
+                floor_height: "",
 
 
                 //物业信息
                 property_company: '', //物业公司
-                property_fee: '--', //物业费
+                property_fee: '', //物业费
                 opening_date: '',// 建成年代
                 building_level: '', //楼盘级别
                 property_rights: '', //产权性质
@@ -545,15 +570,15 @@
                     if (result.success) {
                         if (result.data) {
                             _this.buildingName = result.data.building_name;
-                            _this.room_area = result.data.room_area == null ? '--' : result.data.room_area;
-                            _this.workstation = result.data.workstation == null ? '--' : result.data.workstation;
-                            _this.daily_price = result.data.daily_price == null ? '--' : result.data.daily_price;
-                            _this.monthly_price = result.data.monthly_price == null ? '--' : result.data.monthly_price;
-                            _this.building_images=result.data.houses_images;
+                            _this.room_area = result.data.room_area;
+                            _this.workstation = result.data.workstation;
+                            _this.daily_price = result.data.daily_price;
+                            _this.monthly_price = result.data.monthly_price;
+                            _this.building_images = result.data.houses_images;
 
-                            _this.locat_floor = result.data.locat_floor == null ? '--':result.data.locat_floor;
-                            _this.floors = result.data.floors == null ? '--':result.data.floors;
-                            _this.floor_height = result.data.floor_height == null ? '--':result.data.floor_height;
+                            _this.locat_floor = result.data.locat_floor;
+                            _this.floors = result.data.floors == null ? '--' : result.data.floors;
+                            _this.floor_height = result.data.floor_height;
                             _this.address = result.data.address;
                             _this.address = result.data.address;
                             _this.address = result.data.address;
@@ -596,7 +621,7 @@
                             //物业信息
                             _this.property_company = result.data.property_company; //物业公司
                             _this.property_fee = result.data.property_fee; //物业费
-                            if(result.data.opening_date){
+                            if (result.data.opening_date) {
                                 _this.opening_date = result.data.opening_date.replace('0:00:00', ''); // 建成年代
                             }
 
