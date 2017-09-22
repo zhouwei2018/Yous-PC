@@ -392,10 +392,12 @@
                                     </dd>
                                     <dd>
                                         <i class="sem_icon item_area"></i>可租面积
-                                        <span v-if="item.min_areas==item.max_areas" class="text-black fb" v-text="item.min_areas"></span>
-                                        <span v-else class="text-black fb" v-text="item.min_areas+'-'+item.max_areas"></span>
+                                        <span v-if="item.min_areas==item.max_areas" class="text-black fb"
+                                              v-text="item.min_areas"></span>
+                                        <span v-else class="text-black fb"
+                                              v-text="item.min_areas+'-'+item.max_areas"></span>
                                         <span
-                                            class="font-num"> m²</span>, 待租办公室&nbsp;<span
+                                                class="font-num"> m²</span>, 待租办公室&nbsp;<span
                                             class="font-num text-black fb" v-text="item.lease_nums"></span>&nbsp;套
                                     </dd>
                                     <dd>
@@ -419,7 +421,7 @@
                         <!--加载中-->
                         <div class="loading_wrap" v-show="loadingFlag">
                             <Spin fix>
-                                <Icon type="load-c" size=20         class="demo-spin-icon-load"></Icon>
+                                <Icon type="load-c" size=20          class="demo-spin-icon-load"></Icon>
                                 <div>加载中……</div>
                             </Spin>
                         </div>
@@ -711,7 +713,7 @@
             //模糊搜索
             searchClick(){
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
@@ -961,7 +963,7 @@
                     var result = JSON.parse(res.bodyText);
                     _this.loadingFlag = false;
                     if (result.success) {
-                        if(result.data){
+                        if (result.data) {
                             if (result.data.total_items > 0) {
 
                                 _this.buildingShowFlag = false;
@@ -989,7 +991,7 @@
                                 _this.buildingShowFlag = true;
                                 _this.total_items = 0;
                             }
-                        }else{
+                        } else {
                             _this.pageFlag = false;
                             _this.buildingShowFlag = true;
                             _this.total_items = 0;
@@ -1091,7 +1093,7 @@
                     this.chosenFlag = true;
                 }
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
@@ -1145,7 +1147,7 @@
                         this.chosenFlag = true;
                     }
                     this.$refs['pages'].currentPage = 1;
-                    this.curPage=1;
+                    this.curPage = 1;
                     this.getList();
 
                     return;
@@ -1159,19 +1161,13 @@
                     sort_two_single = 2;
                 } else {
                     this.area = [];
-                    var curr_index = 0, n = 0;
                     if (this.chosenArr.length > 0) {
                         this.chosenArr.forEach(function (val, i) {
                             if (val.sortType.indexOf('sort_are') != -1) {
-                                n++;
-                                curr_index = i;
+                                _this.chosenArr.splice(i, 1);
                             }
                             ;
                         });
-
-                        if (n > 0) {
-                            this.chosenArr.splice(curr_index, 1);
-                        }
                     }
 
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
@@ -1191,7 +1187,19 @@
                     unit: $(e.currentTarget).find('span:last-child').text(),
                     sort_two: sort_two_single, //两组min-max标记
                 };
-                this.compareStr3(comObj, this.chosenArr);
+
+                this.chosenArr.push(comObj);
+
+                //显示已选择条件
+                if (this.chosenArr.length <= 0) {
+                    this.chosenFlag = false;
+                } else {
+                    this.chosenFlag = true;
+                }
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
+                this.getList();
+
             },
 
             //自定义面积
@@ -1204,13 +1212,11 @@
                     for (var i = 0; i < $('.selected_item >a').length; i++) {
                         if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_are') != -1) {
                             this.chosenArr.splice(i, 1);
-                            $('.selected_item >a').eq(i).attr('data-sortType', 'sort_are_9').html(this.bArea + '-' + this.eArea + 'm²<i class="sem_icon hover"></i>');
                         }
                     }
-                } else {
-                    //创建自定义的条件
-                    this.chosenFlag = true;
                 }
+
+                this.chosenFlag = true;
 
                 this.chosenArr.push({
                     id: $(e.target).id,
@@ -1225,47 +1231,7 @@
                     _this.del_one(e);
                 });
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
-                this.getList();
-            },
-
-            //比较条件是否已存在（面积）
-            compareStr3(obj, arr){
-
-                var findStr = obj.sortType.substring(0, 8);
-                var n = 0, curr_index = 0;
-                if (arr.length > 0) {
-                    arr.forEach(function (val, i) {
-                        if (val.sortType.indexOf(findStr) != -1) {
-                            n++;
-                            curr_index = i;
-                        }
-                        ;
-                    });
-
-                    if (n > 0) {
-                        arr.splice(curr_index, 1);
-                    }
-                }
-
-                arr.push({
-                    name: obj.name,
-                    id: obj.id,
-                    sortType: obj.sortType,
-                    min: obj.min,
-                    max: obj.max,
-                    unit: obj.unit,
-                    sort_two: obj.sort_two //两组min-max标记
-                });
-
-                //显示已选择条件
-                if (arr.length <= 0) {
-                    this.chosenFlag = false;
-                } else {
-                    this.chosenFlag = true;
-                }
-                this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
@@ -1279,36 +1245,63 @@
                 if ($('.selected_item >a').length) {
                     for (var i = 0; i < $('.selected_item >a').length; i++) {
                         if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_pri_per') != -1) {
-                            $('.selected_item >a').eq(i).attr('data-sortType', 'sort_pri_per8').html(this.bNum + '-' + this.eNum + '元/m²·天<i class="sem_icon hover"></i>');
+                            this.chosenArr.splice(i, 1);
                         }
                     }
-               } else {
-                    //创建自定义的单价条件
-                    this.chosenFlag = true;
-
-                    this.chosenArr.push({
-                        id: $(e.target).id,
-                        sortType: 'sort_pri_per8',
-                        min: Math.floor($(e.target).parent().find('input[type="text"]').eq(0).val()),
-                        max: Math.floor($(e.target).parent().find('input[type="text"]').eq(1).val()),
-                        unit: '元/m²·天',
-                        sort_two: 1 //min-max形式
-                    });
                 }
+
+                //创建自定义的单价条件
+                this.chosenFlag = true;
+
+                this.chosenArr.push({
+                    id: $(e.target).id,
+                    sortType: 'sort_pri_per8',
+                    min: Math.floor($(e.target).parent().find('input[type="text"]').eq(0).val()),
+                    max: Math.floor($(e.target).parent().find('input[type="text"]').eq(1).val()),
+                    unit: '元/m²·天',
+                    sort_two: 1 //min-max形式
+                });
 
                 $('.sem_icon').off().click(function (e) {
                     _this.del_one(e);
                 });
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
             //自定义总价
             self_price_tot(e){
+                var _this=this;
                 this.price_zj = [this.bNum_tot * 10000, this.eNum_tot * 10000];
+                $('#price-list a').removeClass('active');
+
+                if ($('.selected_item >a').length) {
+                    for (var i = 0; i < $('.selected_item >a').length; i++) {
+                        if ($('.selected_item >a').eq(i).attr('data-sortType').indexOf('sort_pri_tot') != -1) {
+                            this.chosenArr.splice(i, 1);
+                        }
+                    }
+                }
+
+                //创建自定义的单价条件
+                this.chosenFlag = true;
+
+                this.chosenArr.push({
+                    id: $(e.target).id,
+                    sortType: 'sort_pri_tot8',
+                    min: Math.floor($(e.target).parent().find('input[type="text"]').eq(0).val()),
+                    max: Math.floor($(e.target).parent().find('input[type="text"]').eq(1).val()),
+                    unit: '万元/月',
+                    sort_two: 1 //min-max形式
+                });
+
+                $('.sem_icon').off().click(function (e) {
+                    _this.del_one(e);
+                });
+
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
@@ -1329,7 +1322,7 @@
                     this.price_dj = "";
 
                     this.chosenArr.forEach(function (val, i) {
-                        if (val.sortType.indexOf('sort_pri') != -1) {
+                        if (val.sortType.indexOf('sort_pri_tot') != -1) {
                             _this.chosenArr.splice(i, 1);
                         }
                         ;
@@ -1342,7 +1335,7 @@
                         this.chosenFlag = true;
                     }
                     this.$refs['pages'].currentPage = 1;
-                    this.curPage=1;
+                    this.curPage = 1;
                     this.getList();
 
                     return;
@@ -1406,7 +1399,7 @@
                         this.chosenFlag = true;
                     }
                     this.$refs['pages'].currentPage = 1;
-                    this.curPage=1;
+                    this.curPage = 1;
                     this.getList();
 
                     return;
@@ -1422,8 +1415,8 @@
                     this.price_zj = [];
                     min = Math.floor($(e.currentTarget).find('span:first-child').html());
                     max = Math.floor($(e.currentTarget).find('span:nth-child(2)').html());
-                    this.price_zj.push(min*10000);
-                    this.price_zj.push(max*10000);
+                    this.price_zj.push(min * 10000);
+                    this.price_zj.push(max * 10000);
                 }
 
                 this.price_dj = ""; //单价置空
@@ -1480,7 +1473,7 @@
                 }
 
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
@@ -1529,7 +1522,7 @@
                     this.chosenFlag = true;
                 }
                 this.$refs['pages'].currentPage = 1;
-                this.curPage=1;
+                this.curPage = 1;
                 this.getList();
             },
 
@@ -1569,7 +1562,7 @@
                     } else {
                         this.orderby = 'D'; //默认排序D
                     }
-                    this.curPage=1;
+                    this.curPage = 1;
                     this.getList(); //排序后的列表
                 }
             },
@@ -1679,7 +1672,7 @@
             if (this.$route.query.search_keywork) {
                 this.search_keywork = this.$route.query.search_keywork;
             }
-            this.curPage=1;
+            this.curPage = 1;
             this.getList(); //获取楼盘列表
 
             $("#form_send2").validate({
