@@ -243,8 +243,13 @@
                                 </div>
                                 <div class="list-introduce">
                                     <div class="introduce-primary clearfix">
-                                        <span class="font20">{{item.housing_area}}<em
-                                                class="font-num">m²</em>·{{item.decoration_level}}</span>
+                                      <span class="font20" v-if="item.decoration_level==null">
+                                        {{item.housing_area}}<em class="font-num">m²</em>{{item.decoration_level}}
+                                      </span>
+                                      <span class="font20" v-else>
+                                         {{item.housing_area}}<em class="font-num">m²</em>·{{item.decoration_level}}
+                                      </span>
+                                      
                                         <div>
                                             <span class="text-gray6"><em class="font-num"
                                                                          v-text="item.monthly_price"></em> 元/月</span>
