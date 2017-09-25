@@ -16,11 +16,11 @@
                         }
                     },
                     {
-                        title: '商圈',
+                        title: '区域',
                         key: 'Col_city'
                     },
                     {
-                        title: '区域',
+                        title: '商圈',
                         key: 'Col_business'
                     },
                     {

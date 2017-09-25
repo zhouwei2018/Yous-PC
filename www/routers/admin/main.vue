@@ -84,7 +84,7 @@
                         <Menu-item name="delegateOrder"><Icon type="ios-paper"></Icon>业主委托</Menu-item>
                         <Menu-item name="requestOrder"><Icon type="ios-paper"></Icon>帮我找楼</Menu-item>
                     </Submenu>
-      
+
             </Menu>
         </i-col>
         <i-col :span="spanRight">
@@ -97,7 +97,7 @@
                 <Breadcrumb>
                     <Breadcrumb-item>首页</Breadcrumb-item>
                     <Breadcrumb-item>页面</Breadcrumb-item>
-                    <Breadcrumb-item>{{this.$route.path.replace('/','')}}</Breadcrumb-item>
+                    <Breadcrumb-item>{{this.$route.name}}</Breadcrumb-item>
                 </Breadcrumb>
             </div>
             <div class="layout-content">
