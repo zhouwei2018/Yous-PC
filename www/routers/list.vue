@@ -1029,7 +1029,7 @@
                                 arr.splice(arr[i]);
                             }
                         }
-                        this.business = ""; //商圈跟着删
+                        //this.business = ""; //商圈跟着删
                     }
                 }
 
@@ -1099,14 +1099,12 @@
 
             //改变区域筛选
             selList(obj){
-                debugger;
                 this.district = obj.id;
                 this.compareStr(obj, this.chosenArr);
             },
 
             //改变商圈
             selList_business(obj){
-                debugger;
                 this.business = obj.id;
                 this.compareStr(obj, this.chosenArr);
             },
