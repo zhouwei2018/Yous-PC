@@ -120,7 +120,7 @@
                         <td colspan="2" v-if="monthly_rent">
                             <em>停车费：</em><span v-text="monthly_rent+'元/月'"></span>
                         </td>
-                        <td colspan="2">
+                        <td colspan="2" v-else>
                             <em>停车费：</em><span>暂无数据</span>
                         </td>
                     </tr>
