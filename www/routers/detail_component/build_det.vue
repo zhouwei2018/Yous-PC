@@ -131,7 +131,7 @@
                 <div class="ml20 text-gray6 message" v-if="building_introduction">
                     <p v-text="building_introduction"></p>
                 </div>
-                <div class="ml20 text-gray6 message">
+                <div class="ml20 text-gray6 message" v-else>
                     <p>暂无数据</p>
                 </div>
 
