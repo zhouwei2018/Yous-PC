@@ -385,7 +385,7 @@
 
                     <!--page-->
                     <div class="page_wrap mb25" v-show="pageFlag">
-                        <Page :total="total_pages*10" @on-change="change"></Page>
+                        <Page ref="pages" :total="total_pages*10" @on-change="change"></Page>
                     </div>
 
                 </div>
@@ -929,6 +929,7 @@
             self_area(){
                 this.area = [this.bArea, this.eArea];
                 $('#area_qj_wrap a').removeClass('on');
+                this.$refs['pages'].currentPage = 1;
                 this.curPage = 1;
                 this.getDetList();
             },
@@ -937,6 +938,7 @@
             self_price_per(){
                 this.price_dj = [this.bNum, this.eNum];
                 $('#price_dj_wrap a').removeClass('on');
+                this.$refs['pages'].currentPage = 1;
                 this.curPage = 1;
                 this.getDetList();
             },
@@ -1006,6 +1008,7 @@
                     this.area.push(min);
                     this.area.push(max);
                 }
+                this.$refs['pages'].currentPage = 1;
                 this.curPage = 1;
                 this.getDetList();
             },
@@ -1038,6 +1041,7 @@
                     this.price_dj.push(max);
                 }
                 this.price_zj = ""; //总价置空
+                this.$refs['pages'].currentPage = 1;
                 this.curPage = 1;
                 this.getDetList();
             },
@@ -1071,6 +1075,7 @@
                     this.price_zj.push(max * 10000);
                 }
                 this.price_dj = ""; //总价置空
+                this.$refs['pages'].currentPage = 1;
                 this.curPage = 1;
                 this.getDetList();
 

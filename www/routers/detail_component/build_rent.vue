@@ -54,7 +54,7 @@
                         <div class="screening-range-list" id="price-list">
                             <span>价格:</span>
 
-                            <ul class="clearfix">
+                            <ul class="clearfix" id="price_dj_wrap">
                                 <li v-for="(item2,index) in range_unit_prices" v-if="index == 0">
                                     <a href="javascript:;"
                                        :id="item2.code"
@@ -88,7 +88,7 @@
                                        :id="item3.code"
                                        :class="{on:areaActive == index}"
                                        :data-sortType="'sort_are_'+index"
-                                       @click="self_price_tot($event)"
+                                       @click="sel_tot_price_list($event)"
                                     >全部</a>
                                 </li>
                                 <template v-else>
@@ -206,7 +206,8 @@
                                             <i class="text-black">元</i>
 
                                             <input type="hidden" name="priceFlag" value="1">
-                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm">确定</a>
+                                            <a class="confrim-btn cur-pointer ml05" id="priceConfirm"
+                                               @click="self_price_per($event)">确定</a>
                                         </form>
                                     </div>
 
@@ -274,7 +275,7 @@
 
                     <!--page-->
                     <div class="page_wrap mb25" v-show="pageFlag">
-                        <Page :total="total_pages*10" @on-change="change"></Page>
+                        <Page ref="pages" :total="total_pages*10" @on-change="change"></Page>
                     </div>
 
                 </div>
@@ -638,12 +639,17 @@
             //自定义面积
             self_area(){
                 this.area = [this.bArea, this.eArea];
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
                 this.getDetList();
             },
 
             //自定义单价
             self_price_per(){
                 this.price_dj = [this.bNum, this.eNum];
+                $('#price_dj_wrap a').removeClass('on');
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
                 this.getDetList();
             },
 
@@ -687,6 +693,10 @@
             sel_area_list(e){
                 var _this = this;
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+                //清空自定义
+                this.bArea = ''; //起始面积
+                this.eArea = ''; //结束面积
+
                 var min = 0, max = 0;
                 if ($(e.target).html() == '全部') {
                     this.area = "";
@@ -706,12 +716,18 @@
                     this.area.push(min);
                     this.area.push(max);
                 }
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
                 this.getDetList();
             },
 
             //改变单价筛选
             sel_price_list(e){
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
 
                 var min = 0, max = 0;
 
@@ -733,6 +749,8 @@
                     this.price_dj.push(max);
                 }
                 this.price_zj = ""; //总价置空
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
                 this.getDetList();
             },
 
@@ -740,6 +758,10 @@
             sel_tot_price_list(e){
                 var _this = this;
                 $(e.target).addClass('on').parent().siblings('li').find('a').removeClass('on');
+
+                //清空自定义
+                this.bNum = ''; //起始价格
+                this.eNum = ''; //结束价格
 
                 var min = 0, max = 0;
 
@@ -761,6 +783,8 @@
                     this.price_zj.push(max);
                 }
                 this.price_dj = ""; //总价置空
+                this.$refs['pages'].currentPage = 1;
+                this.curPage = 1;
                 this.getDetList();
 
             },
