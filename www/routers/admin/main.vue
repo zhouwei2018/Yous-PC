@@ -84,13 +84,7 @@
                         <Menu-item name="delegateOrder"><Icon type="ios-paper"></Icon>业主委托</Menu-item>
                         <Menu-item name="requestOrder"><Icon type="ios-paper"></Icon>帮我找楼</Menu-item>
                     </Submenu>
-                    <Submenu name="2">
-                        <template slot="title">
-                            <Icon type="ios-paper"></Icon>
-                             统计管理
-                        </template>
-                        <Menu-item name="form"><Icon type="ios-paper"></Icon>测试Form</Menu-item>
-                    </Submenu>
+      
             </Menu>
         </i-col>
         <i-col :span="spanRight">

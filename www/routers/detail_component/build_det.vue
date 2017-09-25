@@ -15,48 +15,74 @@
                 <table class="ml10 mh05">
                     <tbody>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" v-if='developer'>
                             <em>开发商：</em><span v-text="developer"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>开发商：</em><span>暂无数据</span>
                         </td>
                         <td colspan="2">
                             <em></em><span></span>
                         </td>
 
-                        <td colspan="2">
+                        <td colspan="2" v-if='price'>
                             <em>均价：</em><span v-text="price+'元/m²·天'"></span>
                         </td>
+                        <td colspan="2" v-else>
+                            <em>均价：</em><span>暂无数据</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" v-if="opening_date">
                             <em>建成年代：</em><span v-text="opening_date"></span>
                         </td>
+                        <td colspan="2" v-else>
+                            <em>建成年代：</em><span>暂无数据</span>
+                        </td>
                         <td colspan="2">
                             <em></em><span></span>
                         </td>
-                        <td colspan="2">
+                        <td colspan="2" v-if="building_level">
                             <em>楼盘级别：</em><span v-text="building_level"></span>
                         </td>
+                        <td colspan="2" v-else>
+                            <em>楼盘级别：</em><span>暂无数据</span>
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" v-if="property_rights">
                             <em>产权性质：</em><span v-text="property_rights"></span>
                         </td>
+                        <td colspan="2" v-else>
+                            <em>产权性质：</em><span>暂无数据</span>
+                        </td>
                         <td colspan="2">
                             <em></em><span></span>
                         </td>
-                        <td colspan="2">
+                        <td colspan="2" v-if="building_area">
                             <em>建筑面积：</em><span v-text="building_area+'m²'"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>建筑面积：</em><span>暂无数据</span>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" v-if="total_households">
                             <em>总户数：</em><span v-text="total_households"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>总户数：</em><span >暂无数据</span>
                         </td>
                         <td colspan="2">
                             <em></em><span></span>
                         </td>
-                        <td colspan="2">
-                            <em>使用率：</em><span v-text="use_rate+'%'"></span>
+                        <td colspan="2" v-if="use_rate">
+                            <em>使用率：</em>
+                            <span v-text="use_rate+'%'"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>使用率：</em>
+                            <span>暂无数据</span>
                         </td>
                     </tr>
                     </tbody>
@@ -65,34 +91,50 @@
                 <table class="ml10 mh05" id="desc">
                     <tbody>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" v-if="property_company">
                             <em>物业管理公司：</em><span v-text="property_company"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>物业管理公司：</em><span>暂无数据</span>
                         </td>
                         <td colspan="2">
                             <em></em><span></span>
                         </td>
-                        <td colspan="2">
+                        <td colspan="2" v-if="property_fee">
                             <em>物业费：</em><span v-text="property_fee+'元/m²·月 '"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>物业费：</em><span>暂无数据</span>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">
+                        <td colspan="2" v-if="vehicle_number">
                             <em>停车数量：</em><span v-text="vehicle_number"></span>
+                        </td>
+                        <td colspan="2" v-else>
+                            <em>停车数量：</em><span>暂无数据</span>
                         </td>
                         <td colspan="2">
                             <em></em><span></span>
                         </td>
-                        <td colspan="2">
+                        <td colspan="2" v-if="monthly_rent">
                             <em>停车费：</em><span v-text="monthly_rent+'元/月'"></span>
+                        </td>
+                        <td colspan="2">
+                            <em>停车费：</em><span>暂无数据</span>
                         </td>
                     </tr>
                     </tbody>
                 </table>
                 <hr>
                 <h4 class="ml20 mt20 mb10 font16">楼盘简介</h4>
-                <div class="ml20 text-gray6 message">
+                <div class="ml20 text-gray6 message" v-if="building_introduction">
                     <p v-text="building_introduction"></p>
                 </div>
+                <div class="ml20 text-gray6 message">
+                    <p>暂无数据</p>
+                </div>
+
             </div>
         </div>
 
