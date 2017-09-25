@@ -87,10 +87,12 @@ var router = new VueRouter({
             children: [
                  {
                     path: '/delegateOrder',
+                    name:"业主委托",
                     component: resolve => require(['./routers/admin/delegateOrder.vue'], resolve)
                  },
                  {
                     path: '/requestOrder',
+                    name:"帮我找楼",
                     component: resolve => require(['./routers/admin/requestOrder.vue'], resolve)
                  },
                  {
