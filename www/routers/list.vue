@@ -1099,12 +1099,14 @@
 
             //改变区域筛选
             selList(obj){
+                debugger;
                 this.district = obj.id;
                 this.compareStr(obj, this.chosenArr);
             },
 
             //改变商圈
             selList_business(obj){
+                debugger;
                 this.business = obj.id;
                 this.compareStr(obj, this.chosenArr);
             },

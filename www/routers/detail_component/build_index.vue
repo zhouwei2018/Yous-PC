@@ -1134,7 +1134,7 @@
             $('#ys_weixin_img').qrcode({
                 width: 78,
                 height: 78,
-                text: linkUrl
+                text: "http://omc.urskongjian.com/nx/#/detail?building_id="+this.building_id
             });
 
             //微信
