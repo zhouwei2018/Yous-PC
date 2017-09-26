@@ -91,7 +91,8 @@
                             <div class="swiper-slide">
                                 <a href="javascript:;">
                                     <div class="banner_img banner01">
-                                        <img class="banner_tips" src="../resources/images/index/banner1_icon.png" alt="">
+                                        <img class="banner_tips" src="../resources/images/index/banner1_icon.png"
+                                             alt="">
                                         <img id="animate_index1" src="../resources/images/index/ban_word1.png" alt="">
                                     </div>
                                 </a>
@@ -111,11 +112,11 @@
                                 </a>
                             </div>
                             <!--<div class="swiper-slide">-->
-                                <!--<a href="javascript:;">-->
-                                    <!--<div class="banner_img banner04">-->
+                            <!--<a href="javascript:;">-->
+                            <!--<div class="banner_img banner04">-->
 
-                                    <!--</div>-->
-                                <!--</a>-->
+                            <!--</div>-->
+                            <!--</a>-->
                             <!--</div>-->
                         </div>
 
@@ -309,22 +310,29 @@
 
                             <div class="clearfix">
 
-                                <Form-item label="区域" prop="Col_city" class="pop_list fl right_none">
-                                    <Select v-model="formInline1.Col_city" placeholder="请选择城市">
-                                        <Option v-for="item in cityList"
-                                                :value="item.value"
-                                                :key="item">{{ item.label }}
-                                        </Option>
-                                    </Select>
-                                </Form-item>
+                                <div class="pop_list fl clearfix">
+                                    <label class="fl">区域</label>
+                                    <select class="fr"
+                                            name="region1"
+                                            placeholder="请选择区域"
+                                            @change="getBusiness">
+                                        <option v-for="item in cityList"
+                                                :value="item.code">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
 
-                                <Form-item label="商圈" prop="trade_area" class="pop_list fr right_none">
-                                    <Select v-model="formInline1.Col_business" placeholder="请选择商圈">
-                                        <Option v-for="item in trade_areaList" :value="item.value" :key="item">
-                                            {{ item.label }}
-                                        </Option>
-                                    </Select>
-                                </Form-item>
+                                <div class="pop_list fr clearfix">
+                                    <label class="fl">商圈</label>
+                                    <select class="fr"
+                                            name="region2"
+                                            placeholder="请选择商圈"
+                                            @change="chooseBusiness">
+                                        <option v-for="item in trade_areaList"
+                                                :value="item.code">{{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
 
                                 <div class="pop_list fl">
                                     <span>面积</span>
@@ -343,7 +351,9 @@
                                     <i class="pop_list_text">元/月</i>
                                 </div>
                             </div>
-                            <textarea class="pop_textarea" v-model="formInline1.Col_desc"
+                            <textarea class="pop_textarea"
+                                      name="desc1"
+                                      v-model="formInline1.Col_desc"
                                       placeholder="请输入您的其他需求：如、互联网企业密集,周边交通方便等"> </textarea>
 
                             <p>您也可以拨打<i> 400-078-8800 </i>直接委托需求给幼狮</p>
@@ -481,32 +491,20 @@
                 modal5: false, //弹窗1
                 modal6: false, //弹窗2
                 formInline1: {
-                    telephone: ''
+                    telephone: '',
+                    InputCode:'',
+                    Col_city: '', //区域
+                    Col_business: '', //商圈
+                    Col_measure: '', //平米
+                    Col_rent: '', //租金
                 },
                 formInline2: {
-                    telephone: ''
-                },
-                formItem1: {
-
-                    input: '',
-                    select: ''
-                },
-
-                formItem2: {
                     telephone: '',
-                    input: '',
-                    select: ''
-                },
-
-                formInline1: {
-                    telephone: '',
-                    city: '',
-                    trade_area: ''
+                    InputCode:''
                 },
 
                 //弹窗城市和商圈选择
                 cityList: [],
-
                 trade_areaList: [],
 
             }
@@ -701,27 +699,18 @@
                 this.$http.post(
                     this.$api,
                     {
-                        parameters: {
-                            "search_keywork": "",
-                            "area": "",
-                            "price_dj":"",
-                            "price_zj": "",
-                            "label":"",
-                            "zoom": 12,
-                        },
+                        "parameters": {},
                         "foreEndType": 2,
-                        "code": "30000005"
+                        "code": "90000301"
                     }
                 ).then(function (response) {
                     var result = JSON.parse(response.bodyText);
                     if (result.success) {
-                        for(var i=0;i<result.data.houses.length; i++){
-                            var obj={
-                                value:result.data.houses[i].id,
-                                label:result.data.houses[i].title
-                            }
-                            this.cityList.push(obj);
-                        }
+                        this.cityList = result.data.districts;
+                        this.cityList.unshift({
+                            code:'',
+                            name:'全部'
+                        });
                     } else {
                         this.$Message.error(reslute.message);
                     }
@@ -730,6 +719,50 @@
                     this.$Message.error('API接口报错-网络错误!');
 
                 });
+            },
+
+            //获取商圈
+            getBusiness(e){
+
+                if (e.target.value == '') {
+                    return;
+                };
+
+                this.formInline1.Col_city=e.target.value;
+
+                this.$http.post(
+                    this.$api,
+                    {
+                        "parameters": {
+                            "city_code": e.target.value
+                        },
+                        "foreEndType": 2,
+                        "code": "90000302"
+                    }
+                ).then(function (res) {
+                    var result = JSON.parse(res.bodyText);
+                    if (result.success) {
+                        this.trade_areaList = result.data;
+                        this.trade_areaList.unshift({
+                            code:'',
+                            name:'全部'
+                        });
+                    } else {
+                        this.$Message.error(result.message);
+                    }
+                }, function (res) {
+                    this.$Message.error('获取商圈失败');
+                });
+            },
+
+            //获取商圈
+            chooseBusiness(e){
+
+                if (e.target.value == '') {
+                    return;
+                };
+
+                this.formInline1.Col_business=e.target.value;
             },
 
         },
