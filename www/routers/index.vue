@@ -775,34 +775,6 @@
             this.show_num('#bannerNum3', 550);
             this.show_num('#bannerNum4', 160);
 
-            //top固定
-            var lion_head = $('#lion_head'),
-                lion_offset = lion_head.offset();
-            $(document).on('scroll', function () {
-                var win_scrollTop = $(document).scrollTop();
-                if (lion_offset.top < win_scrollTop) {
-                    lion_head.css({
-                        position: 'fixed',
-                        top: 0,
-                        backgroundColor: '#333',
-
-                    })
-                } else {
-                    lion_head.css({
-                        position: 'relative',
-                        top: 0,
-                        backgroundColor: 'transparent'
-                    })
-                }
-
-
-                if (win_scrollTop > 200) {
-                    $('#phone_and_top').show();
-                } else {
-                    $('#phone_and_top').hide();
-                }
-            });
-
             $('#sideTop').click(function () {
                 $('html, body').animate({scrollTop: 0}, 1000);
                 $('#phone_and_top').hide();
