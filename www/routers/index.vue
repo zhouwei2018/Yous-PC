@@ -76,7 +76,7 @@
 </style>
 
 <template>
-    <div class="all">
+    <div class="all" id="ys_index_flag">
         <!--header-->
         <header1></header1>
 

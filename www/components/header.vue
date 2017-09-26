@@ -1,4 +1,4 @@
-<style  lang="less">
+<style lang="less">
     @import "../resources/css/base.less";
     @import "../resources/css/main_head_foot.less";
 
@@ -16,14 +16,24 @@
             </router-link>
             <div nav_boxs class="fr">
                 <div class="nav clearfix">
-                    <router-link to="/index" active-class="active">首页<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/index" active-class="active">首页
+                        <div class="lion_nav_line"></div>
+                    </router-link>
                     <!--<router-link to="/list" active-class="active">办公空间<div class="lion_nav_line"></div></router-link>-->
                     <!-- <router-link to="/list" active-class="active">办公空间<div class="lion_nav_line"></div></router-link> -->
-                    <a href="javascript:;">办公空间<div class="lion_nav_line"></div></a>
-                    <router-link to="/update" active-class="active">升级服务<div class="lion_nav_line"></div></router-link>
-                    <router-link to="/collect" active-class="active">幼狮汇<div class="lion_nav_line"></div></router-link>
+                    <a href="javascript:;">办公空间
+                        <div class="lion_nav_line"></div>
+                    </a>
+                    <router-link to="/update" active-class="active">升级服务
+                        <div class="lion_nav_line"></div>
+                    </router-link>
+                    <router-link to="/collect" active-class="active">幼狮汇
+                        <div class="lion_nav_line"></div>
+                    </router-link>
                     <!--<router-link to="/invest" active-class="active">投融资<div class="lion_nav_line"></div></router-link>-->
-                    <router-link to="/about" active-class="active">关于我们<div class="lion_nav_line"></div></router-link>
+                    <router-link to="/about" active-class="active">关于我们
+                        <div class="lion_nav_line"></div>
+                    </router-link>
                     <!--<router-link to="/score" active-class="active">积分商城</router-link>-->
                     <!-- <div class="reg_log_wrap fl">
                         <router-link to="/login" active-class="active">登录</router-link>
@@ -38,9 +48,7 @@
 
 <script type="es6">
     export default {
-        methods:{
-
-        },
+        methods: {},
 
         mounted(){
             //top固定
@@ -56,10 +64,20 @@
 
                     })
                 } else {
-                    lion_head.css({
-                        position: 'relative',
-                        top: 0
-                    })
+
+                    if (lion_head.parent().attr('id') == 'ys_index_flag') {
+                        lion_head.css({
+                            position: 'relative',
+                            top: 0,
+                            backgroundColor: 'transparent'
+                        })
+                    } else {
+                        lion_head.css({
+                            position: 'relative',
+                            top: 0
+                        })
+                    }
+
                 }
 
 
