@@ -775,6 +775,7 @@
             this.show_num('#bannerNum3', 550);
             this.show_num('#bannerNum4', 160);
 
+
             $('#sideTop').click(function () {
                 $('html, body').animate({scrollTop: 0}, 1000);
                 $('#phone_and_top').hide();
