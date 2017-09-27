@@ -120,7 +120,7 @@
                             $('#about_us_menu').css({
                                 position: 'fixed',
                                 left: fixLeft,
-                                top: 0
+                                top: 49
                             });
                         } else if (scrollTop < 90) {
                             $('#about_us_menu').css({
