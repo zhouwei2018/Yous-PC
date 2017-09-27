@@ -142,7 +142,7 @@
                                 <span><i id="bannerNum3"></i>+</span>
                             </li>
                             <li class="area04">
-                                <p>管理团队</p>
+                                <p>专业团队</p>
                                 <span><i id="bannerNum4"></i>+</span>
                             </li>
                         </ul>
