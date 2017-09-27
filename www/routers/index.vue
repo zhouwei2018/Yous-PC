@@ -772,8 +772,8 @@
             //数字滚动
             this.show_num('#bannerNum1', 250000);
             this.show_num('#bannerNum2', 1200);
-            this.show_num('#bannerNum3', 550);
-            this.show_num('#bannerNum4', 160);
+            this.show_num('#bannerNum3', 21000);
+            this.show_num('#bannerNum4', 500);
 
 
             $('#sideTop').click(function () {
