@@ -14,7 +14,7 @@
     }
     .pid{
          color: #3facf8;
-          margin-right:  20px;     
+          margin-right:  20px;
     }
 
 </style>
@@ -662,7 +662,7 @@
             $('#ys_weixin_img').qrcode({
                 width: 78,
                 height: 78,
-                text: window.location.href
+                text: "http://omc.urskongjian.com/nx/#/order?house_id="+this.house_id
             });
 
             //微信
