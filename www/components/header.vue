@@ -19,11 +19,11 @@
                     <router-link to="/index" active-class="active">首页
                         <div class="lion_nav_line"></div>
                     </router-link>
-                    <!--<router-link to="/list" active-class="active">办公空间<div class="lion_nav_line"></div></router-link>-->
+                    <router-link to="/list" active-class="active">办公空间<div class="lion_nav_line"></div></router-link>
                     <!-- <router-link to="/list" active-class="active">办公空间<div class="lion_nav_line"></div></router-link> -->
-                    <a href="javascript:;">办公空间
+                    <!-- <a href="javascript:;">办公空间
                         <div class="lion_nav_line"></div>
-                    </a>
+                    </a> -->
                     <router-link to="/update" active-class="active">升级服务
                         <div class="lion_nav_line"></div>
                     </router-link>

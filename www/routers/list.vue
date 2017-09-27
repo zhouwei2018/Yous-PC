@@ -400,10 +400,10 @@
                                                 class="font-num"> m²</span>, 待租办公室&nbsp;<span
                                             class="font-num text-black fb" v-text="item.lease_nums"></span>&nbsp;套
                                     </dd>
-                                    <dd>
+                                    <!-- <dd>
                                         <span><i class="sem_icon item_see"></i>近7天有 <b
                                                 class="hover" v-text="item.inquiries_nums"></b> 位用户咨询过</span>
-                                    </dd>
+                                    </dd> -->
                                     <dd class="last_fix_bottom">
                                         <div class="fl building_tag">
                                             <span v-for="perlabel in item.tags" v-text="perlabel"></span>
