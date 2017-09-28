@@ -10,7 +10,7 @@
         <div update>
             <div class="update-wrapper">
                 <div class="update-slide slide1">
-                    <img src="../resources/images/update/update_01.png" alt="">
+                    <img src="../resources/images/update/update_01.jpg" alt="">
                 </div>
                 <div class="update-slide slide2">
                     <img src="../resources/images/update/update_02.png" alt="">
