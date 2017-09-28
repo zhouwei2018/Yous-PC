@@ -121,7 +121,7 @@
                             <span>工位</span>
                         </dd>
                         <dd>
-                            <span class="bold db rent_num"><i class="bold">精装修</i></span>
+                            <span class="bold db rent_num"><i class="bold" v-text="decoration_level"></i></span>
                             <span>装修</span>
                         </dd>
                     </dl>
@@ -360,6 +360,7 @@
                 building_level: '', //楼盘级别
                 property_rights: '', //产权性质
                 building_area: '', //建筑面积
+                decoration_level:""
 
             }
         },
@@ -545,6 +546,7 @@
                             _this.address = result.data.address;
                             _this.address = result.data.address;
                             _this.address = result.data.address;
+                            _this.decoration_level = result.data.decoration_level;  //建筑面积
                         }
                     }
 
