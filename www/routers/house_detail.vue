@@ -120,15 +120,19 @@
                             <span class="bold db rent_num">暂无数据</span>
                             <span>工位</span>
                         </dd>
-                        <dd>
+                        <dd v-if="decoration_level">
                             <span class="bold db rent_num"><i class="bold" v-text="decoration_level"></i></span>
-                            <span>装修</span>
+                            <span>房间状态</span>
+                        </dd>
+                        <dd v-else>
+                            <span class="bold db rent_num"><i class="bold" >暂无数据</i></span>
+                            <span>房间状态</span>
                         </dd>
                     </dl>
                     <p class="building-address mb20 clearfix">
                         <span v-if="locat_floor">楼层：<i v-text="locat_floor" class="build_name_wid"></i></span>
                         <span v-else>楼层：<i class="build_name_wid">暂无数据</i></span>
-                        <span>朝向：<i>朝南</i></span>
+                        <span>朝向：<i v-text="direction"></i></span>
                     </p>
                     <p class="building-address mb20 clearfix">
                         <span v-if="locat_floor">层高：<i v-text="floor_height+'m'" class="build_name_wid"></i></span>
@@ -360,7 +364,8 @@
                 building_level: '', //楼盘级别
                 property_rights: '', //产权性质
                 building_area: '', //建筑面积
-                decoration_level:""
+                decoration_level:"",
+                direction:""
 
             }
         },
@@ -546,7 +551,8 @@
                             _this.address = result.data.address;
                             _this.address = result.data.address;
                             _this.address = result.data.address;
-                            _this.decoration_level = result.data.decoration_level;  //建筑面积
+                            _this.decoration_level = result.data.decoration_level;  //房间状态
+                            _this.direction = result.data.direction;  //朝向
                         }
                     }
 
